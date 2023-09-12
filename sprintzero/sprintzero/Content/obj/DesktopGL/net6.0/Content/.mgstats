@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/ugonnao/Projects/sprintzero/sprintzero/Content/font.spritefont","/Users/ugonnao/Projects/sprintzero/sprintzero/Content/bin/DesktopGL/Content/font.xnb","FontDescriptionProcessor","SpriteFontContent",4008,21535,0.327657
+"/Users/ugonnao/Projects/sprintzero/sprintzero/Content/mario.png","/Users/ugonnao/Projects/sprintzero/sprintzero/Content/bin/DesktopGL/Content/mario.xnb","TextureProcessor","Texture2DContent",1384,7701,0.018754

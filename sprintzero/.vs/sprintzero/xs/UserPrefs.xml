@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{2EF09528-D0E4-4E70-98CB-EC06A1B2CE29}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="sprintzero/MouseController.cs">
+    <Files>
+      <File FileName="sprintzero/Game1.cs" Line="31" Column="52" />
+      <File FileName="sprintzero/MovingAnimatedSprite.cs" Line="1" Column="1" />
+      <File FileName="sprintzero/NonMovingAnimatedSprite.cs" Line="1" Column="1" />
+      <File FileName="sprintzero/MovingNonAnimatedSprite.cs" Line="1" Column="1" />
+      <File FileName="sprintzero/NonMovingNonAnimatedSprite.cs" />
+      <File FileName="sprintzero/KeyboardController.cs" Line="12" Column="1" />
+      <File FileName="sprintzero/MouseController.cs" Line="30" Column="28" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="sprintzero" expanded="True">
+            <Node name="sprintzero" expanded="True">
+              <Node name="MouseController.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.sprintzero PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

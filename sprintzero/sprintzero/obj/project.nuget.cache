@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "93KZmFzJw2qYftANoHdPEvx+CahtUl7UsD9/p+McgNa2mr5+TFsZQbjrJh8ronev6H2nCYOiggtfUK11ysABsw==",
+  "success": true,
+  "projectFilePath": "/Users/ugonnao/Projects/sprintzero/sprintzero/sprintzero.csproj",
+  "expectedPackageFiles": [
+    "/Users/ugonnao/.nuget/packages/monogame.content.builder.task/3.8.1.303/monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "/Users/ugonnao/.nuget/packages/monogame.framework.desktopgl/3.8.1.303/monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}
