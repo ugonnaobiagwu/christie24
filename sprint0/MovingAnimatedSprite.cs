@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-public class MovingAnimatedSprite: ISprite
+public class MovingAnimatedSprite : ISprite
 {
 	//POTENTIAL BAD PROGRAMING: Hardcoded numbers
 	//Instantiating
