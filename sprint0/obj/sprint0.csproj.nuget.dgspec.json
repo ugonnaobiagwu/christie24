@@ -46,11 +46,11 @@
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
-              "version": "[3.8.1.303, )"
+              "version": "[3.8.1.*, )"
             },
             "MonoGame.Framework.DesktopGL": {
               "target": "Package",
-              "version": "[3.8.1.303, )"
+              "version": "[3.8.1.*, )"
             }
           },
           "imports": [

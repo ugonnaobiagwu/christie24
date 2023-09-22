@@ -97,8 +97,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "MonoGame.Content.Builder.Task >= 3.8.1.303",
-      "MonoGame.Framework.DesktopGL >= 3.8.1.303"
+      "MonoGame.Content.Builder.Task >= 3.8.1.*",
+      "MonoGame.Framework.DesktopGL >= 3.8.1.*"
     ]
   },
   "packageFolders": {
@@ -147,11 +147,11 @@
         "dependencies": {
           "MonoGame.Content.Builder.Task": {
             "target": "Package",
-            "version": "[3.8.1.303, )"
+            "version": "[3.8.1.*, )"
           },
           "MonoGame.Framework.DesktopGL": {
             "target": "Package",
-            "version": "[3.8.1.303, )"
+            "version": "[3.8.1.*, )"
           }
         },
         "imports": [

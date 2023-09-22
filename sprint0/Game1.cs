@@ -40,7 +40,7 @@ namespace sprint0
           
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("luigiSpriteSheet");
+            texture = Content.Load<Texture2D>("Link");
            
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
            
