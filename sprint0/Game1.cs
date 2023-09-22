@@ -49,7 +49,7 @@ namespace sprint0
             
 
             //Creates Luigi's default state
-            Luigi = new FixedSingleSprite(texture, 7, 14);
+           
 
 
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
