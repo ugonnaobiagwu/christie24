@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <RollForward>Major</RollForward>
