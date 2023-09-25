@@ -3,18 +3,21 @@ namespace sprint0.Items
 {
 	public class BlazeStateMachine : IItemStateMachine
 	{
-        private enum GoombaHealth { Normal, Stomped, Flipped };
+        private enum Direction { Up, Left, Right, Down };
 
         public BlazeStateMachine()
 		{
 		}
 
-        public void inPocket()
+        public void Use()
         {
-            throw new NotImplementedException();
+            /*
+             * return the correct orientation of the item so the object can 
+             * construct the right sprite
+             */
         }
 
-        public void inUse()
+        public void Equip()
         {
             throw new NotImplementedException();
         }
