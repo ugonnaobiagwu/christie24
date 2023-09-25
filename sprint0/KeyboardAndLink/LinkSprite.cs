@@ -14,10 +14,12 @@ public class Link : ILink
     State linkGetDamage;
     State linkUseItem;
 
-    int health, xVal, yVal;
+    int healthVal, xVal, yVal;
 
     public int x { get; set; }
     public int y { get; set; }
+
+    public int health { get; set; }
 
      //getting and setting
 
@@ -40,10 +42,7 @@ public class Link : ILink
         this.xVal = x;  
         this.yVal = y;
 
-        // do loop
-        if (this.health == 0) {
-            state = linkAttack;
-        }
+        state = linkDown;
 
         this.state = state;
 
@@ -68,6 +67,10 @@ public class Link : ILink
     { state.LinkLeft(); }
 
     public void LinkGetDamage()
-    { state.LinkGetDamage(); }
+    { 
+        state.LinkGetDamage(); 
+        this.health = 
+    
+    }
    
 }
