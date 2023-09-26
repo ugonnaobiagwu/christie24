@@ -19,7 +19,7 @@ namespace sprint0.Items.groundItems
             Rows = rows;
             Columns = columns;
             CurrentFrame = 0;
-            TotalFrames = 1; // zero indexed ofc
+            TotalFrames = 2; 
         }
 
         public void Update()

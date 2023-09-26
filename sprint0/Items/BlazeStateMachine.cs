@@ -21,6 +21,16 @@ namespace sprint0.Items
         {
             throw new NotImplementedException();
         }
+
+        public void CeaseUse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isItemInUse()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
