@@ -5,11 +5,15 @@ using System.Collections.Generic;
 
 public class KeyboardController : IController
 {
+    //Instantiaze commands
+    ICommand command;
+
 	// makes a dictionary for the keys and commands
 	private Dictionary<Keys, ICommand> KeyMap;
 	public KeyboardController()
 	{
 		KeyMap = new Dictionary<Keys, ICommand>();
+
 	}
 
 
@@ -19,6 +23,8 @@ public class KeyboardController : IController
 	{
 		// KeyMap[key] = command;
         // Names of Commands are not permanent
+        // does not detect transition states
+        // you need to detect transitions 
         KeyMap.Add(Keys.W, LinkWalkingUp);
         KeyMap.Add(Keys.A, LinkWalkingLeft);
         KeyMap.Add(Keys.S, LinkWalkingDown);
