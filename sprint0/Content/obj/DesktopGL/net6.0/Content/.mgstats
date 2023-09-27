@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/File.spritefont","C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/bin/DesktopGL/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0.373052
+"C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/Link.png","C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/bin/DesktopGL/Content/Link.xnb","TextureProcessor","Texture2DContent",3331,63133,0.0349327
+"C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/luigiSpriteSheet.png","C:/Users/xingw/source/repos/ugonnaobiagwu/christie24/sprint0/Content/bin/DesktopGL/Content/luigiSpriteSheet.xnb","TextureProcessor","Texture2DContent",6625,304645,0.0221459

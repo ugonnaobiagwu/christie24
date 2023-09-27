@@ -82,3 +82,9 @@ C:\Users\Ryan\Downloads\sprint0\obj\Debug\net6.0\refint\sprint0.dll
 C:\Users\Ryan\Downloads\sprint0\obj\Debug\net6.0\sprint0.pdb
 C:\Users\Ryan\Downloads\sprint0\obj\Debug\net6.0\sprint0.genruntimeconfig.cache
 C:\Users\Ryan\Downloads\sprint0\obj\Debug\net6.0\ref\sprint0.dll
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\sprint0.csproj.AssemblyReference.cache
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\sprint0.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\sprint0.csproj.CoreCompileInputs.cache
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\sprint0.dll
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\refint\sprint0.dll
+C:\Users\xingw\source\repos\ugonnaobiagwu\christie24\sprint0\obj\Debug\net6.0\sprint0.pdb

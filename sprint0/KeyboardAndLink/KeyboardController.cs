@@ -12,10 +12,29 @@ public class KeyboardController : IController
 		KeyMap = new Dictionary<Keys, ICommand>();
 	}
 
+
 	// used to register keys with their respective commands
+	// perhaps an array that has all the commands?
 	public void registerKeys(Keys key, ICommand command)
 	{
 		KeyMap[key] = command;
+        KeyMap.Add(Keys.W, LinkWalkingUp);
+        KeyMap.Add(Keys.A, LinkWalkingLeft);
+        KeyMap.Add(Keys.S, LinkWalkingDown);
+        KeyMap.Add(Keys.D, LinkWalkingRight);
+        KeyMap.Add(Keys.N, LinkAttack);
+        KeyMap.Add(Keys.Z, LinkAttack);
+        KeyMap.Add(Keys.NumPad1, LinkEquipItem1);
+        KeyMap.Add(Keys.NumPad2, LinkEquipItem2);
+        KeyMap.Add(Keys.E, LinkDamaged);
+        KeyMap.Add(Keys.T, PreviousBlock);
+        KeyMap.Add(Keys.Y, NextBlock);
+        KeyMap.Add(Keys.U, PreviousItemD);
+        KeyMap.Add(Keys.I, NextItem);
+        KeyMap.Add(Keys.O, PreviousEnemy);
+        KeyMap.Add(Keys.P, NextEnemy);
+        KeyMap.Add(Keys.Q, Quit);
+        KeyMap.Add(Keys.R, Reset);
 
     }
 

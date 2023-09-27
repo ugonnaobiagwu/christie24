@@ -25,8 +25,6 @@ public class Link : ILink
 
     State state;
 
-
-
     public Link()
     {
         // write default health, link state, and x and y locations
@@ -47,7 +45,9 @@ public class Link : ILink
         this.state = state;
 
     }
-
+    public void LinkState() {
+        this.state = state;
+    }
     public void LinkAttack() 
     { state.LinkAttack(); }
 
@@ -68,8 +68,8 @@ public class Link : ILink
 
     public void LinkGetDamage()
     { 
-        state.LinkGetDamage(); 
-        this.health = 
+        state.LinkGetDamage();
+        this.health = health - 5;
     
     }
    
