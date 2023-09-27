@@ -18,6 +18,7 @@ public class KeyboardController : IController
     public void registerKeys(ICommand[] command)
 	{
 		// KeyMap[key] = command;
+        // Names of Commands are not permanent
         KeyMap.Add(Keys.W, LinkWalkingUp);
         KeyMap.Add(Keys.A, LinkWalkingLeft);
         KeyMap.Add(Keys.S, LinkWalkingDown);
