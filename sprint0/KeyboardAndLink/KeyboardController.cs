@@ -17,7 +17,7 @@ public class KeyboardController : IController
     // perhaps pass an array that has all the commands?
     public void registerKeys(ICommand[] command)
 	{
-		KeyMap[key] = command;
+		// KeyMap[key] = command;
         KeyMap.Add(Keys.W, LinkWalkingUp);
         KeyMap.Add(Keys.A, LinkWalkingLeft);
         KeyMap.Add(Keys.S, LinkWalkingDown);
