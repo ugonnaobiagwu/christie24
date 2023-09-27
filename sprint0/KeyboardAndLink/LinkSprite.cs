@@ -36,7 +36,7 @@ public class Link : ILink
         linkGetDamage = new LinkGetDamage();
         linkUseItem = new LinkUseItem();
 
-        this.health = 0;
+        this.health = 100;
         this.xVal = x;  
         this.yVal = y;
 
