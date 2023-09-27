@@ -19,6 +19,7 @@ public class MouseController : IController
         {
             // if right mouse button is pressed, i have no idea what to implement
             // perhaps defend for now?
+            // just learned that Link always has a shield. Perhaps use it for something else?
             LinkDefend.execute();
         }
         else if (mouseState.ScrollWheelValue == mouseState.HorizontalScrollWheelValue)
