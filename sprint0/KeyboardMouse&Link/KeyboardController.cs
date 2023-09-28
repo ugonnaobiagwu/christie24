@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class KeyboardController : IController
 {
-    //Instantiaze commands
+    //Instantiaze commands 
     ICommand linkWalkingUp;
     ICommand linkWalkingDown;
     ICommand linkWalkingLeft;

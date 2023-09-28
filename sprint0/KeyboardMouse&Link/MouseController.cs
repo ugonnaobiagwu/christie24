@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class MouseController : IController
 {
-    ICommand linkAttack;
+    ICommand linkAttack; 
     ICommand linkGetDamage;
 
     private Dictionary<MouseState, ICommand> MouseMap;
