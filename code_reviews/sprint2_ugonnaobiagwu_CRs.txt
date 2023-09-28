@@ -44,3 +44,4 @@ Number of minutes taken to complete the review
 Specific comments on what is readable and what is not
 * Given it's a rather simple class, it's pretty readable and easy to navigate. 
 * This may be more of a code quality thing, but you may be able to omit the specification of the Commands namespace by simply using sprint0 but I shouldn't be quoted on that.
+
