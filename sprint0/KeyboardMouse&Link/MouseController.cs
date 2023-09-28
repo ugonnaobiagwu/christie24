@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Sprint_2;
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 
 public class MouseController : IController
 {
@@ -39,13 +39,13 @@ public class MouseController : IController
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 linkAttack.execute();
-            }
+            } 
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
                 linkGetDamage.execute();
             }
         }
-
+            
 
         /* this is the code i had previously but I decided to change the code
         * 
