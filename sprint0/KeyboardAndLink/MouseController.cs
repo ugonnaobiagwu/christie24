@@ -5,10 +5,52 @@ using System.Collections.Generic;
 
 public class MouseController : IController
 {
+    ICommand linkAttack;
+    ICommand linkGetDamage;
+
+    private Dictionary<MouseState, ICommand> MouseMap;
+    public KeyboardController()
+    {
+        MouseMap = new Dictionary<int, MouseState>();
+
+    }
+
+    // used to register mouse states with their respective commands
+    public void registerKeys()
+    {
+        // isn't really follwing the name of the method
+        // there is probably an easier way to implement this
+        // no idea how to implement the transition states at the moment
+        linkAttack = new LinkAttack();
+        linkGetDamage = new LinkGetDamage();
+
+    }
+
     public void Update()
     {
-        int scrollWheel, horizontalScrollWheel;
+        // I have no idea how to put mouse states into an array like keyboard control
+        // so I will just make it so
+        // hopefully this only works while NOTHING is pressed
+        MouseState mouseState = Mouse.GetState();
 
+        while (mouseState != null)
+        {
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                linkAttack.execute();
+            } 
+            else if (mouseState.RightButton == ButtonState.Pressed)
+            {
+                linkGetDamage.execute();
+            }
+        }
+            
+
+        /* this is the code i had previously but I decided to change the code
+        * 
+        * not sure how to implement this but here is the tentative code
+        * 
+        int scrollWheel, horizontalScrollWheel;
         MouseState mouseState = Mouse.GetState();
         if (mouseState.LeftButton == ButtonState.Pressed)
         {
@@ -32,6 +74,7 @@ public class MouseController : IController
             // if it scrolls down, the weapon changes to previous weapon
             LinkChangePreviousWeapon.execute();
         }
+       */
 
         // I have no idea how the scroll wheel value thing works but i hope this is how you do it
     }

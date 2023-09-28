@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 public class Link : ILink 
 {
+    /* Waiting on fixing this */
     State linkAttack;
     State linkUp;
     State linkDown;
