@@ -4,7 +4,7 @@ using Sprint_2;
 using System;
 using System.Collections.Generic;
 
-public class Link : ILink
+public class Link : ILink 
 {
     /* Waiting on fixing this */
 
