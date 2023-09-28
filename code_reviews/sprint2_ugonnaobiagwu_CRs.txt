@@ -1,0 +1,46 @@
+[CODE QUALITY]
+Author of the code review: 
+UGONNA OBIAGWU
+
+Date of the code review
+September 28th, 2023.
+
+Sprint number
+2
+
+Name of the .cs file(s) being reviewed
+sprint0/Commands/WalkUpCommand.cs
+
+Author of the .cs file being reviewed
+Alex Kim
+
+Specific comments on code quality
+* Comments left behind are good since you're still waiting on implementation of the classes and interfaces the Command System is dependent on. 
+* The code is clean and easy to maintain.. the implementation of the Command Patter is well executed (pun intended). The execute method of the Command Object calls the one line it needs to, 
+and uses the member of the class to do it's bidding.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+* Since you are still waiting, I would see if you can at least push a version of this code up with the right interfaces in the comments so that it's more up to date while avoiding warnings.
+
+[READABILITY]
+Author of the code review: 
+UGONNA OBIAGWU
+
+Date of the code review
+September 28th, 2023.
+
+Sprint number
+2
+
+Name of the .cs file(s) being reviewed
+sprint0/Commands/NextItemCommand.cs
+
+Author of the .cs file being reviewed
+Alex Kim
+
+Number of minutes taken to complete the review
+5
+
+Specific comments on what is readable and what is not
+* Given it's a rather simple class, it's pretty readable and easy to navigate. 
+* This may be more of a code quality thing, but you may be able to omit the specification of the Commands namespace by simply using sprint0 but I shouldn't be quoted on that.
