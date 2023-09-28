@@ -4,7 +4,7 @@ using Sprint_2;
 using System;
 using System.Collections.Generic;
 
-public class Link : ILink 
+public class Link : ILink
 {
     /* Waiting on fixing this */
 
@@ -23,7 +23,7 @@ public class Link : ILink
 
     public int health { get; set; }
 
-     //getting and setting
+    //getting and setting
 
     State state;
 
@@ -33,13 +33,13 @@ public class Link : ILink
         linkAttack = new LinkAttack();
         linkUp = new LinkUp();
         linkDown = new LinkDown();
-        linkRight = new  LinkRight();
+        linkRight = new LinkRight();
         linkLeft = new LinkLeft();
         linkGetDamage = new LinkGetDamage();
         linkUseItem = new LinkUseItem();
 
         this.health = 100;
-        this.xVal = x;  
+        this.xVal = x;
         this.yVal = y;
 
         state = linkDown;
@@ -47,10 +47,11 @@ public class Link : ILink
         this.state = state;
 
     }
-    public void LinkState() {
+    public void LinkState()
+    {
         this.state = state;
     }
-    public void LinkAttack() 
+    public void LinkAttack()
     { state.LinkAttack(); }
 
     public void LinkUseItem()
@@ -69,10 +70,10 @@ public class Link : ILink
     { state.LinkLeft(); }
 
     public void LinkGetDamage()
-    { 
+    {
         state.LinkGetDamage();
         this.health = health - 5;
-    
+
     }
-   
+
 }

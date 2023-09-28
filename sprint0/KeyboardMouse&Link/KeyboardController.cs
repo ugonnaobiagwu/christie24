@@ -1,4 +1,4 @@
-﻿﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using Sprint_2;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ public class KeyboardController : IController
     ICommand linkAttack;
     ICommand linkEquipItem1;
     ICommand linkEquipItem2;
-    ICommand linkDamaged; 
+    ICommand linkDamaged;
     ICommand previousBlock;
     ICommand nextBlock;
     ICommand previousItem;
@@ -26,9 +26,9 @@ public class KeyboardController : IController
 
     // makes a dictionary for the keys and commands
     private Dictionary<Keys, ICommand> KeyMap;
-	public KeyboardController()
-	{
-		KeyMap = new Dictionary<Keys, ICommand>();
+    public KeyboardController()
+    {
+        KeyMap = new Dictionary<Keys, ICommand>();
 
         // not sure if I should put this in here or registerkeys
         linkWalkingUp = new LinkWalkingUp();
@@ -55,8 +55,8 @@ public class KeyboardController : IController
     // used to register keys with their respective commands
     // perhaps pass an array that has all the commands?
     public void registerKeys()
-	{
-		// KeyMap[key] = command;
+    {
+        // KeyMap[key] = command;
         // Names of Commands are not permanent
         // does not detect transition states
         // you need to detect transitions 
@@ -80,13 +80,13 @@ public class KeyboardController : IController
 
     }
 
-	// executes commands for each key pressed
+    // executes commands for each key pressed
     public void Update()
-	{
-		Keys[] Pressed = Keyboard.GetState().GetPressedKeys(); 
-		foreach (Keys key in Pressed)
-		{
-			KeyMap[key].execute();
-		}
-	}
+    {
+        Keys[] Pressed = Keyboard.GetState().GetPressedKeys();
+        foreach (Keys key in Pressed)
+        {
+            KeyMap[key].execute();
+        }
+    }
 }
