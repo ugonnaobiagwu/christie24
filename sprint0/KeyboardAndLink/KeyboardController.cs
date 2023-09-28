@@ -6,20 +6,55 @@ using System.Collections.Generic;
 public class KeyboardController : IController
 {
     //Instantiaze commands
-    ICommand command;
+    ICommand linkWalkingUp;
+    ICommand linkWalkingDown;
+    ICommand linkWalkingLeft;
+    ICommand linkWalkingRight;
+    ICommand linkAttack;
+    ICommand linkAttack;
+    ICommand linkEquipItem1;
+    ICommand linkEquipItem2;
+    ICommand linkDamaged; 
+    ICommand previousBlock;
+    ICommand nextBlock;
+    ICommand previousItem;
+    ICommand nextItem;
+    ICommand previousEnemy;
+    ICommand nextEnemy;
+    ICommand quit;
+    ICommand reset;
 
-	// makes a dictionary for the keys and commands
-	private Dictionary<Keys, ICommand> KeyMap;
+    // makes a dictionary for the keys and commands
+    private Dictionary<Keys, ICommand> KeyMap;
 	public KeyboardController()
 	{
 		KeyMap = new Dictionary<Keys, ICommand>();
 
-	}
+        // not sure if I should put this in here or registerkeys
+        linkWalkingUp = new LinkWalkingUp();
+        linkWalkingLeft = new LinkWalkingLeft();
+        linkWalkingDown = new LinkWalkingDown();
+        linkWalkingRight = new LinkWalkingRight();
+        linkAttack = new LinkAttack();
+        linkAttack = new LinkAttack();
+        linkEquipItem2 = new LinkEquipItem1();
+        linkEquipItem2 = new LinkEquipItem2();
+        linkDamaged = new LinkDamaged();
+        previousBlock = new PreviousBlock();
+        nextBlock = new NextBlock();
+        previousItem = new PreviousItemD();
+        nextItem = new NextItem();
+        previousEnemy = new PreviousEnemy();
+        nextEnemy = new NextEnemy();
+        quit = new Quit();
+        reset = new Reset();
+
+    }
 
 
     // used to register keys with their respective commands
     // perhaps pass an array that has all the commands?
-    public void registerKeys(ICommand[] command)
+    public void registerKeys()
 	{
 		// KeyMap[key] = command;
         // Names of Commands are not permanent

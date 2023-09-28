@@ -31,6 +31,7 @@ public class MouseController : IController
         // I have no idea how to put mouse states into an array like keyboard control
         // so I will just make it so
         // hopefully this only works while NOTHING is pressed
+
         MouseState mouseState = Mouse.GetState();
 
         while (mouseState != null)
