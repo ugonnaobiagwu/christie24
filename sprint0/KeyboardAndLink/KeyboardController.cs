@@ -30,7 +30,7 @@ public class KeyboardController : IController
 	{
 		KeyMap = new Dictionary<Keys, ICommand>();
 
-        // not sure if I should put this in here or registerkeys
+        // not sure if I should put this in here or registerkeys 
         linkWalkingUp = new LinkWalkingUp();
         linkWalkingLeft = new LinkWalkingLeft();
         linkWalkingDown = new LinkWalkingDown();

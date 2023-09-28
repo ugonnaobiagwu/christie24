@@ -15,7 +15,7 @@ public class MouseController : IController
 
     }
 
-    // used to register mouse states with their respective commands
+    // used to register mouse states with their respective commands 
     public void registerKeys()
     {
         // isn't really follwing the name of the method
