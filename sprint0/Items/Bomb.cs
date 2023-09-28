@@ -9,7 +9,7 @@ namespace sprint0.Items
 		{
 		}
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();
         }

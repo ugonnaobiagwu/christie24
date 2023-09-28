@@ -5,16 +5,33 @@ namespace sprint0
 {
 	public class BombStateMachine : IItemStateMachine
     {
-		public BombStateMachine()
+        public BombStateMachine()
 		{
 		}
 
-        public void inPocket()
+        public void Explode()
+        {
+            throw new NotImplementedException();
+        }
+        public void Use()
+        {
+            /*
+             * return the correct orientation of the item so the object can 
+             * construct the right sprite
+             */
+        }
+
+        public void IsEquipped()
         {
             throw new NotImplementedException();
         }
 
-        public void inUse()
+        public void CeaseUse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool isItemInUse()
         {
             throw new NotImplementedException();
         }
