@@ -1,17 +1,39 @@
 [CODE QUALITY]
 Author of the code review: 
-UGONNA OBIAGWU
+Matthew Dannery
 
 Date of the code review
-September 28th, 2023.
+September 29th, 2023.
 
 Sprint number
 2
 
 Name of the .cs file(s) being reviewed
-sprint0/Commands/WalkUpCommand.cs
+LinkStates.cs - drawing sprites
 
 Author of the .cs file being reviewed
-Alex Kim
+Ryan Greene
 
 Specific comments on code quality
+Lots of lines for drawing textures, unique values for each method that depend on the sprite sheet. Does not seem easily maintainable as scale grows. Code also could use more comments.
+Hard to parse through the code than with.
+
+[CODE QUALITY]
+Author of the code review: 
+Matthew Dannery
+
+Date of the code review
+September 29th, 2023.
+
+Sprint number
+2
+
+Name of the .cs file(s) being reviewed
+LinkStates.cs - Link States
+
+Author of the .cs file being reviewed
+Ryan Greene
+
+Specific comments on code quality
+Separate methods for Link states in each direction and each direction attacking. Methods are too spread out with this design, would be more design efficient to use an object to simplfy
+calls. Could be redesigned or implement a sprite factory to make maintainable and decrease technical debt. 
