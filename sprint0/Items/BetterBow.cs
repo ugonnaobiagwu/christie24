@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace sprint0.Items
 {
-	public class Boomerang : IItem
+	public class BetterBow : IItem
 	{
-		public Boomerang(IList<Texture2D> itemSpriteSheet)
+
+        public BetterBow(IList<Texture2D> itemSpriteSheet)
 		{
 		}
 
