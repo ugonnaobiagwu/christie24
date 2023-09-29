@@ -1,3 +1,5 @@
+READABILITY:
+
 Author: Ryan Greene
 Date of Code Review: 09/29
 Sprint Number: 2
@@ -6,3 +8,15 @@ Author: Matthew Dannery
 Number of Minutes: 3
 Notes: The structure is written very simple, yet effectively. Everything is appropriately named and is self-contained. There are no immediate errors on
        readabilirty, although more comments could be useful to describe the methods.
+
+MAINTAINABILITY:
+
+Author: Ryan Greene
+Date of Code Review: 09/29
+Sprint Number: 2
+Name of CS File: SpriteFacrtory.cs (This file may not be in the repository, testing Factories)
+Author: Matthew Dannery
+Notes: I believe the current file is fairly maintainable, especially with the .Sprite..() functions.  It should allow for pretty convenient addition of 
+       sprites, assuming this is they all share those functions.  If not, this may create issues in that those sprites don't have corresponding states.
+Way to change?: If this becomes an issue, I'd recommend splitting the finer details of the factory into smaller factories, so there is one for 
+                Link, the enemies, etc. 
