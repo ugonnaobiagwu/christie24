@@ -1,0 +1,8 @@
+Author: Ryan Greene
+Date of Code Review: 09/29
+Sprint Number: 2
+Name of CS File: EnemySpriteFactory.cs (This file may not be in the repository, testing Factories)
+Author: Matthew Dannery
+Number of Minutes: 3
+Notes: The structure is written very simple, yet effectively. Everything is appropriately named and is self-contained. There are no immediate errors on
+       readabilirty, although more comments could be useful to describe the methods.
