@@ -3,8 +3,10 @@ namespace sprint0.Items
 {
 	public interface IItemStateMachine
 	{
-		public void inPocket();
-		public void inUse();
-	}
+		public void Use();
+		public void CeaseUse();
+        public bool isItemInUse(); // reports the current state of the item usage
+
+    }
 }
 

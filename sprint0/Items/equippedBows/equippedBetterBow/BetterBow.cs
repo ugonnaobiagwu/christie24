@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace sprint0.Items
 {
-	public class Bow : IItem
+	public class BetterBow : IItem
 	{
-		public Bow(IList<Texture2D> itemSpriteSheet)
+
+        public BetterBow(IList<Texture2D> itemSpriteSheet)
 		{
 		}
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
             throw new NotImplementedException();
         }

@@ -14,9 +14,9 @@ namespace sprint0.Items
             
 		}
 
-        public void Draw()
+        public void Draw(SpriteBatch spriteBatch)
         {
-            //thisSprite.Draw();
+            throw new NotImplementedException();
         }
 
         public void Update()
