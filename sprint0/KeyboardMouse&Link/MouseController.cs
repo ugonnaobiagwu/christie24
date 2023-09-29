@@ -8,13 +8,6 @@ public class MouseController : IController
     ICommand linkAttack; 
     ICommand linkGetDamage;
 
-    private Dictionary<MouseState, ICommand> MouseMap;
-    public KeyboardController()
-    {
-        MouseMap = new Dictionary<int, MouseState>();
-
-    }
-
     // used to register mouse states with their respective commands 
     public void registerKeys()
     {
@@ -39,9 +32,11 @@ public class MouseController : IController
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 linkAttack.execute();
+                // if you left-click, link attacks
             } 
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
+                // if you right-click, link gets damage
                 linkGetDamage.execute();
             }
         }

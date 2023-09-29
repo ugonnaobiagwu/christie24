@@ -71,7 +71,8 @@ public class Link : ILink
     public void LinkGetDamage()
     { 
         state.LinkGetDamage();
-        this.health = health - 5;
+        // i am not sure how many hits link can take so here is a estimate
+        this.health = health - 20;
     
     }
    
