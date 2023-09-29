@@ -38,6 +38,7 @@ internal class FacingLeftLinkState : ISprite
             spriteBatch.Draw(Texture, DestinationRec, SourceRec, Color.White);
             spriteBatch.End();
         }
+        
     }
 
 internal class FacingRightLinkState : ISprite

@@ -12,7 +12,15 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         //ATTENTION: Additional Sprites added for demonstration
-        public ISprite Luigi;
+        public ISprite FacingUpLink;
+        public ISprite FacingDownLink;
+        public ISprite FacingLeftLink;
+        public ISprite FacingRightLink;
+        public ISprite AttackingUpLink;
+        public ISprite AttackingDownLink;
+        public ISprite AttackingLeftLink;
+        public ISprite AttackingRightLink;
+
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
@@ -49,10 +57,16 @@ namespace sprint0
             KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
 
             
-
-            //Creates Luigi's default state
-            Luigi = new FixedSingleSprite(texture, 7, 14);
-
+            /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
+            //Creates Link's default state
+            FacingUpLink = new FacingUpLinkState(texture, 7, 14);
+            FacingDownLink = new FacingDownLinkState(texture, 7, 14);
+            FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
+            FacingRightLink = new FacingRightLinkState(texture, 7, 14);
+            AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
+            AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
+            AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
+            AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
 
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
             //These keys successfully bind to something, as there is no error message when pressed
@@ -112,10 +126,18 @@ namespace sprint0
             // TODO: Add your update logic here
            
             KeyboardCont.Update();
-            //Additional Update() added for testing
-            groundItems.Update();
-            Luigi.Update();
+
             
+            groundItems.Update();
+            //Additional Update() added for testing
+            FacingUpLink.Update();
+            FacingDownLink.Update();
+            FacingLeftLink.Update();
+            FacingRightLink.Update();
+            AttackingUpLink.Update();
+            AttackingDownLink.Update();
+            AttackingRightLink.Update();
+            AttackingLeftLink.Update();
 
             base.Update(gameTime);
             
@@ -125,9 +147,18 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+
+            /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Draws Luigi
-            Luigi.Draw(spriteBatch,xLoc,yLoc);
-            
+            FacingUpLink.Draw(spriteBatch,0,100);
+            FacingDownLink.Draw(spriteBatch, 50, 100);
+            FacingLeftLink.Draw(spriteBatch, 100, 100);
+            FacingRightLink.Draw(spriteBatch, 150, 100);
+            AttackingUpLink.Draw(spriteBatch, 200, 100);
+            AttackingDownLink.Draw(spriteBatch, 250, 100);
+            AttackingLeftLink.Draw(spriteBatch, 300, 100);
+            AttackingRightLink.Draw(spriteBatch, 350, 100);
+
             //Draws the Textbox
             TextBox.Draw(spriteBatch, 100, 300);
             groundItems.Draw();
@@ -136,7 +167,7 @@ namespace sprint0
 
         public void SetSprite(ISprite NewSpriteType)
         {
-            Luigi = NewSpriteType;
+            FacingLeftLink = NewSpriteType;
             
         }
     }
