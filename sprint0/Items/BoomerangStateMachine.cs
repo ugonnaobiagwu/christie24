@@ -7,25 +7,12 @@ namespace sprint0.Items
 		{
 		}
 
-        public void Use()
-        {
-            /*
-             * return the correct orientation of the item so the object can 
-             * construct the right sprite
-             */
-        }
-
-        public void isEquipped()
+        public void inPocket()
         {
             throw new NotImplementedException();
         }
 
-        public void CeaseUse()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool isItemInUse()
+        public void inUse()
         {
             throw new NotImplementedException();
         }
