@@ -1,18 +1,18 @@
 ﻿﻿using Microsoft.Xna.Framework.Input;
-using Sprint0;
+
 using sprint0.Commands;
 using System;
 using System.Collections.Generic;
 
-public class KeyboardController : IController
+public class KeyboardController
 {
     //Instantiaze commands
     private ICommand linkWalkingUp;
     private ICommand linkWalkingDown;
     private ICommand linkWalkingLeft;
     private ICommand linkWalkingRight;
-    private ICommand linkAttack;
-    private ICommand linkAttack;
+    private ICommand linkAttack1;
+    private ICommand linkAttack2;
     private ICommand linkEquipItem1;
     private ICommand linkEquipItem2;
     private ICommand linkDamaged;
@@ -31,31 +31,33 @@ public class KeyboardController : IController
     private List<Keys> previousKeys;
     private List<Keys> pressed;
 
-    public KeyboardController()
+    public KeyboardController(sprint0.Sprint0 Game)
 	{
 		KeyMap = new Dictionary<Keys, ICommand>();
         previousKeys = new List<Keys>();
 
         // not sure if I should put this in here or registerkeys
-        linkWalkingUp = new WalkUpCommand();
-        linkWalkingLeft = new WalkLeftCommand();
-        linkWalkingDown = new WalkDownCommand();
-        linkWalkingRight = new WalkRightCommand();
-        linkAttack = new AttackCommand();
-        linkAttack = new AttackCommand();
-        linkEquipItem2 = new EquipItem1Command();
-        linkEquipItem2 = new EquipItem2Command();
-        linkDamaged = new DamagedCommand();
-        previousBlock = new PreviousBlockCommand();
-        nextBlock = new NextBlockCommand();
-        previousItem = new PreviousItemCommand();
-        nextItem = new NextItemCommand();
-        previousEnemy = new PreviousEnemyCommand();
-        nextEnemy = new NextEnemyCommand();
-        quit = new QuitCommand();
-        reset = new ResetCommand();
+        //linkWalkingUp = new WalkUpCommand(Game);
+        //linkWalkingLeft = new WalkLeftCommand(Game);
+        //linkWalkingDown = new WalkDownCommand(Game);
+        //linkWalkingRight = new WalkRightCommand(Game);
+        //linkAttack1 = new AttackCommand(Game);
+        //linkAttack2 = new AttackCommand(Game);
+        //linkEquipItem2 = new EquipItem1Command(Game);
+        //linkEquipItem2 = new EquipItem2Command(Game);
+        //linkDamaged = new DamagedCommand(Game);
+        //previousBlock = new PreviousBlockCommand(Game);
+        //nextBlock = new NextBlockCommand(Game);
+        previousItem = new PreviousItemCommand(Game, Game.groundItems);
+        nextItem = new NextItemCommand(Game, Game.groundItems);
+        //previousEnemy = new PreviousEnemyCommand(Game);
+        //nextEnemy = new NextEnemyCommand(Game);
+        quit = new QuitCommand(Game);
+        //reset = new ResetCommand(Game);
 
     }
+
+    
 
 
     // used to register keys with their respective commands
@@ -68,14 +70,14 @@ public class KeyboardController : IController
         KeyMap.Add(Keys.A, linkWalkingLeft);
         KeyMap.Add(Keys.S, linkWalkingDown);
         KeyMap.Add(Keys.D, linkWalkingRight);
-        KeyMap.Add(Keys.N, linkAttack);
-        KeyMap.Add(Keys.Z, linkAttack);
+        KeyMap.Add(Keys.N, linkAttack1);
+        KeyMap.Add(Keys.Z, linkAttack2);
         KeyMap.Add(Keys.NumPad1, linkEquipItem1);
         KeyMap.Add(Keys.NumPad2, linkEquipItem2);
         KeyMap.Add(Keys.E, linkDamaged);
         KeyMap.Add(Keys.T, previousBlock);
         KeyMap.Add(Keys.Y, nextBlock);
-        KeyMap.Add(Keys.U, previousItemD);
+        KeyMap.Add(Keys.U, previousItem);
         KeyMap.Add(Keys.I, nextItem);
         KeyMap.Add(Keys.O, previousEnemy);
         KeyMap.Add(Keys.P, nextEnemy);
@@ -92,7 +94,7 @@ public class KeyboardController : IController
 
         // tentative transitions
         // so this loop adds new command in to previousKeys
-		foreach (Keys key in Pressed)
+		foreach (Keys key in pressed)
 		{
             // adds to the list the current action/command
             if (!previousKeys.Contains(key) && pressed.Contains(key))
@@ -107,11 +109,11 @@ public class KeyboardController : IController
         // makes sure it executes
         if (lastPressed != Keys.None)
         {
-            lastPressed.execute();
+            KeyMap[lastPressed].execute();
         }
 
         // does the other commands
-        foreach(Keys key in Pressed)
+        foreach(Keys key in pressed)
         {
             KeyMap[key].execute();
         }

@@ -11,9 +11,9 @@ namespace sprint0.Commands
     public class NextItemCommand : ICommand
     {
         Sprint0 Game;
-        GroundItemSystem Weapon;
+        IGroundItemSystem Weapon;
 
-        public NextItemCommand(Sprint0 game, GroundItemSystem weapon)
+        public NextItemCommand(Sprint0 game, IGroundItemSystem weapon)
         {
             this.Game = game;
             this.Weapon = weapon;

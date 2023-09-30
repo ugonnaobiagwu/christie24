@@ -25,29 +25,29 @@ namespace sprint0
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
-        IGroundItemSystem groundItems;
+        public IGroundItemSystem groundItems;
        
         
         //Concrete Commands
       
-        IController KeyboardCont;
+        KeyboardController KeyboardCont;
 
-        WalkUpCommand LinkWalkingUp;
-        WalkDownCommand LinkWalkingDown;
-        WalkLeftCommand LinkWalkingLeft;
-        WalkRightCommand LinkWalkingRight;
-        AttackCommand LinkAttack;
-        DamagedCommand LinkDamaged;
-        EquipItem1Command LinkEquipItem1;
-        EquipItem2Command LinkEquipItem2;
-        PreviousBlockCommand PreviousBlock;
-        NextBlockCommand NextBlock;
+        //WalkUpCommand LinkWalkingUp;
+        //WalkDownCommand LinkWalkingDown;
+        //WalkLeftCommand LinkWalkingLeft;
+        //WalkRightCommand LinkWalkingRight;
+        //AttackCommand LinkAttack;
+        //DamagedCommand LinkDamaged;
+        //EquipItem1Command LinkEquipItem1;
+        //EquipItem2Command LinkEquipItem2;
+        //PreviousBlockCommand PreviousBlock;
+        //NextBlockCommand NextBlock;
         PreviousItemCommand PreviousItem;
         NextItemCommand NextItem;
-        PreviousEnemyCommand PreviousEnemy;
-        NextEnemyCommand NextEnemy;
+        //PreviousEnemyCommand PreviousEnemy;
+        //NextEnemyCommand NextEnemy;
         QuitCommand Quit;
-        ResetCommand Reset;
+        //ResetCommand Reset;
 
         //Textbox variables
         public SpriteFont font;
@@ -57,7 +57,7 @@ namespace sprint0
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            KeyboardCont = new KeyboardController();
+            KeyboardCont = new KeyboardController(this);
             
             
         }
@@ -71,7 +71,7 @@ namespace sprint0
            
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
            
-            KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
+            //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
 
             
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
@@ -87,10 +87,10 @@ namespace sprint0
 
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
             //These keys successfully bind to something, as there is no error message when pressed
-            KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D2, new FixedAnimatedCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D3, new UpAndDownCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D4, new MovingAnimatedCommand(this, texture));
+            //KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
+            //KeyboardCont.registerKey(Keys.D2, new FixedAnimatedCommand(this, texture));
+            //KeyboardCont.registerKey(Keys.D3, new UpAndDownCommand(this, texture));
+            //KeyboardCont.registerKey(Keys.D4, new MovingAnimatedCommand(this, texture));
             base.Initialize();
         }
       
