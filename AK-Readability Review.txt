@@ -1,0 +1,14 @@
+Alex Kim
+Sept. 29, 2023
+Sprint 2
+
+ItemSystem.cs - Ugonna Obiagwu
+
+Time to complete: 3 minutes
+
+Readable:
+- Load Commands are all short and concise
+- Longer and unimplemented Commands have detailed descriptions
+
+Not Readable:
+- Location of descriptions is not consistent, sometimes above code, sometimes below code, sometimes beside code

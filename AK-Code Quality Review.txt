@@ -1,0 +1,14 @@
+Alex Kim
+Sept. 29, 2023
+Sprint 2
+
+GroundItemSystem.cs - Ugonna Obiagwu
+
+Code Quality:
+- Separate ISprite variable for every single item seems far too inefficient
+- Load methods all add the item to the theseGroundItems list, but it could probably be done in a more efficient manner
+
+Suggestions for fixing it:
+- Create a list of ISprite objects instead ofa separate instance variable for each one.
+Making this adjustment could also allow you to consolodate all of the load methods into a
+single methods, allowing for a much more efficient class.
