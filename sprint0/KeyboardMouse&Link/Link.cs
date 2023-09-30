@@ -8,7 +8,7 @@ public class Link : ILink
 {
     /* Waiting on fixing this */  
 
-    ISprite linkAttack;
+    ISprite linkAttack; 
     ISprite linkUp;
     ISprite linkDown;
     ISprite linkRight;

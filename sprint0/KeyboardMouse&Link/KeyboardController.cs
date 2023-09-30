@@ -16,7 +16,7 @@ public class KeyboardController : IController
     private ICommand linkEquipItem1;
     private ICommand linkEquipItem2;
     private ICommand linkDamaged;
-    private ICommand previousBlock;
+    private ICommand previousBlock; 
     private ICommand nextBlock;
     private ICommand previousItem;
     private ICommand nextItem;
