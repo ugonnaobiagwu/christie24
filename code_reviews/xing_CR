@@ -18,16 +18,35 @@ Number of minutes taken to complete the review:
 10 minutes
 
 Specific comments on what is readable and what is not:
-Overall, the code was well spaced, clear, and well structured and indented.
-The code isn't cluttered, and isn't too long. 
+Overall, the code was well-spaced, clear, well structured, and indented.
+The code isn't cluttered and isn't too long. 
 
 [CODE QUALITY REVIEW]
 
 Author of the code review:
 Xing Wu
-Date of the code review
-Sprint number
-Name of the .cs file being reviewed
-Author of the .cs file being reviewed
-Specific comments on code quality
+
+Date of the code review:
+September 29th, 2023
+
+Sprint number:
+Sprint 2
+
+Name of the .cs file being reviewed:
+Block1.cs
+
+Author of the .cs file being reviewed:
+Madoka Kamishima
+
+Number of minutes taken to complete the review:
+10 minutes
+
+Specific comments on code quality:
+There isn't much for me to critique, however, I have included a few notes below:
+- TotalFrame could definitely be a const since it doesn't change (shouldn't change).
+- In terms of maintainability, since it is relatively simple, I don't think it would be complicated to change in the future.
+
 A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+Since this is relatively simple code made for a VERY specific purpose (for this sprint), it may seem like it might not support future changes. 
+However, it should actually be relatively easy to transform the block into doing other functions (such as twirling), since the 
+code is relatively direct.
