@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0.Commands;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
+using sprint0.Block;
 
 namespace sprint0
 {
@@ -25,8 +26,10 @@ namespace sprint0
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
+
+        //Block
+        IBlock block;
         public IGroundItemSystem groundItems;
-       
         
         //Concrete Commands
       
@@ -102,6 +105,10 @@ namespace sprint0
 
             TextBox = new TextSprite(font);
 
+            //Block 
+            Texture2D textBlock = Content.Load<Texture2D>("edited_block");
+            block = new Block(spriteBatch,1,3);
+
             //GROUND ITEM SYSTEM STUFF
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
             Texture2D groundBow = Content.Load<Texture2D>("groundItemSprites/groundBow");
@@ -175,6 +182,9 @@ namespace sprint0
             AttackingDownLink.Draw(spriteBatch, 250, 100);
             AttackingLeftLink.Draw(spriteBatch, 300, 100);
             AttackingRightLink.Draw(spriteBatch, 350, 100);
+
+            //Block Draw
+            block.Draw(spriteBatch,200,100);
 
             //Draws the Textbox
             TextBox.Draw(spriteBatch, 100, 300);
