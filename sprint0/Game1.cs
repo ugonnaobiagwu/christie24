@@ -25,7 +25,9 @@ namespace sprint0
         public int yLoc = 200;
         Texture2D texture;
         IGroundItemSystem groundItems;
-       
+
+        //Block
+        IBlock block;
         
         //Concrete Commands
       
@@ -84,6 +86,9 @@ namespace sprint0
             font = Content.Load<SpriteFont>("Font");
 
             TextBox = new TextSprite(font);
+
+            //Block 
+            block = new Block(spriteBatch,1,3);
 
             //GROUND ITEM SYSTEM STUFF
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
@@ -158,6 +163,9 @@ namespace sprint0
             AttackingDownLink.Draw(spriteBatch, 250, 100);
             AttackingLeftLink.Draw(spriteBatch, 300, 100);
             AttackingRightLink.Draw(spriteBatch, 350, 100);
+
+            //Block Draw
+            block.Draw(spriteBatch,200,100);
 
             //Draws the Textbox
             TextBox.Draw(spriteBatch, 100, 300);
