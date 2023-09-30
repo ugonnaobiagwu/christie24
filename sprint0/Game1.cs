@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0.Commands;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 
@@ -30,7 +31,23 @@ namespace sprint0
         //Concrete Commands
       
         IController KeyboardCont;
-       
+
+        WalkUpCommand LinkWalkingUp;
+        WalkDownCommand LinkWalkingDown;
+        WalkLeftCommand LinkWalkingLeft;
+        WalkRightCommand LinkWalkingRight;
+        AttackCommand LinkAttack;
+        DamagedCommand LinkDamaged;
+        EquipItem1Command LinkEquipItem1;
+        EquipItem2Command LinkEquipItem2;
+        PreviousBlockCommand PreviousBlock;
+        NextBlockCommand NextBlock;
+        PreviousItemCommand PreviousItem;
+        NextItemCommand NextItem;
+        PreviousEnemyCommand PreviousEnemy;
+        NextEnemyCommand NextEnemy;
+        QuitCommand Quit;
+        ResetCommand Reset;
 
         //Textbox variables
         public SpriteFont font;
