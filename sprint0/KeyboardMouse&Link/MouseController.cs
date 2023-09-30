@@ -1,21 +1,21 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using Sprint_2;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 
 public class MouseController : IController
 {
-    ICommand linkAttack; 
-    ICommand linkGetDamage;
-
+    private ICommand linkAttack; 
+    private ICommand linkGetDamage;
+     
     // used to register mouse states with their respective commands 
     public void registerKeys()
     {
         // isn't really follwing the name of the method
         // there is probably an easier way to implement this
         // no idea how to implement the transition states at the moment
-        linkAttack = new LinkAttack();
-        linkGetDamage = new LinkGetDamage();
+        linkAttack = new AttackCommand();
+        linkGetDamage = new DamagedCommand();
 
     }
 
@@ -24,6 +24,7 @@ public class MouseController : IController
         // I have no idea how to put mouse states into an array like keyboard control
         // so I will just make it so
         // hopefully this only works while NOTHING is pressed
+
 
         MouseState mouseState = Mouse.GetState();
 

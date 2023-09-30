@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint_2;
+using Sprint0;
 using System;
 using System.Collections.Generic;
 
@@ -8,13 +8,13 @@ public class Link : ILink
 {
     /* Waiting on fixing this */  
 
-    State linkAttack;
-    State linkUp;
-    State linkDown;
-    State linkRight;
-    State linkLeft;
-    State linkGetDamage;
-    State linkUseItem;
+    ISprite linkAttack; 
+    ISprite linkUp;
+    ISprite linkDown;
+    ISprite linkRight;
+    ISprite linkLeft;
+    ISprite linkGetDamage;
+    ISprite linkUseItem;
 
     int healthVal, xVal, yVal;
 
