@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
+using sprint0.Block;
 
 namespace sprint0
 {
@@ -88,6 +89,7 @@ namespace sprint0
             TextBox = new TextSprite(font);
 
             //Block 
+            Texture2D textBlock = Content.Load<Texture2D>("edited_block");
             block = new Block(spriteBatch,1,3);
 
             //GROUND ITEM SYSTEM STUFF
