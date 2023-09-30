@@ -4,24 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0;
-using sprint0.Items;
 
 namespace sprint0.Commands
 {
-    public class EquipItem2Command
+    public class NextEnemyCommand : ICommand
     {
         Sprint0 Game;
-        ItemSystem Item;
+        //Enemy Monster;
 
-        public EquipItem2Command(Sprint0 game, ItemSystem item)
+        public NextEnemyCommand(Sprint0 game) //(Enemy monster)
         {
             this.Game = game;
-            this.Item = item;
+            //this.Monster = monster;
+            throw new NotImplementedException();
         }
 
         public void execute()
         {
-            //Item.EquiPreviousItem();
+            //Monster.NextEnemy();
             throw new NotImplementedException();
         }
     }
