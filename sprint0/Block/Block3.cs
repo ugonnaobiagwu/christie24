@@ -43,9 +43,8 @@ namespace sprint0.Block
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
 
 
-            spriteBatch.Begin();
             spriteBatch.Draw(texture, destinationRectangle, sourceLocation, Color.White);
-            spriteBatch.End();
+           
         }
 
         public void Update()

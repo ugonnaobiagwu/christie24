@@ -29,6 +29,9 @@ namespace sprint0.Block
             Rows = rows;
             Columns = columns;
 
+            block1 = new Block1(texture, rows, columns);
+            block2 = new Block2(texture, rows, columns);
+
             currentBlock = block1;
 
         }
@@ -56,8 +59,10 @@ namespace sprint0.Block
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
+            spriteBatch.Begin();
 
             currentBlock.Draw(spriteBatch, x, y);
+            spriteBatch.End();
         }
 
 

@@ -6,61 +6,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace sprint0.Block
 {
-    internal class Block : IBlock
+    internal class Block1 : IBlock
     {
 
+        private Block block;
+        private Texture2D texture;
+        int Rows, Columns;
+        int blockRow = 1;
+        int blockColumn = 1;
+        int currentFrame = 0;
+        int TotalFrame = 3;
 
-        IBlock block1 = new Block1();
-        IBlock block2 = new Block2();
 
 
-        IBlock currentBlock;
-
-
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-
-        public Block(Texture2D texture, int rows, int columns)
+        public Block1()
         {
-            Texture = texture;
-            Rows = rows;
-            Columns = columns;
-
-            currentBlock = block1;
 
         }
+        public Block1(Texture2D texture, int rows, int columns)
+        {
+            this.texture = texture;
+            Rows = rows;
+            Columns = columns;
+        }
 
+
+        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        {
+
+            int width = texture.Width / Columns;
+            int height = texture.Height / Rows;
+
+            Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+
+
+           
+            spriteBatch.Draw(texture, destinationRectangle, sourceLocation, Color.White);
+           
+        }
 
         public void Update()
         {
-            currentBlock.Update();
-        }
 
-        public void Explode()
-        {// nothing here 
         }
+        public void Explode() { }
         public void NextBlock()
         {
-
-            currentBlock.NextBlock();
+            currentFrame++;
         }
 
         public void PreviousBlock()
         {
 
-            currentBlock.PreviousBlock();
+            if (currentFrame == 0) { currentFrame = TotalFrame - 1; }
+            else
+            { currentFrame--; }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
-        {
 
-            currentBlock.Draw(spriteBatch, x, y);
-        }
 
 
 
     }
+
 }
+
+
+
