@@ -16,6 +16,7 @@ namespace sprint0.Factory
         private string SpriteName { get; set; }
         private string SpriteDirection { get; set; }
         private int SpriteFrames { get; set; }
+        private Boolean SpriteCollidable { get; set; }
         //Texture dictionary will have each animation frame indexed with ascending ints
         //Maybe make direction index consistant in dictionary, could implement all directions of draw in SpriteFactory instead of separatly
         //Tentative: up:0-9, right:10-19, down: 20-29, left: 30-39. It goes clockwise...
@@ -23,10 +24,17 @@ namespace sprint0.Factory
         //ie attack method will assign a dictionary with attacking frames to the texture dictionary
         private IDictionary<int, Rectangle> TextureDictionary { get; set; }
 
+        //Link specific fields
+        private string linkArmor;
+        private string linkSword;
 
         public LinkFactory()
         {
             //Need to make texture dictionary in the constructor
+
+            //Link Sprite always instantiated with beginning armor and sword - "green" and "wood"
+            linkArmor = "green";
+            linkSword = "wood";
 
         }
         // public IDictionary<int, Rectangle> MakeDictionary(Texture2D newSpriteSheet, int spriteSheetRows, int spriteSheetColumns, int[] currentRow, int[] currentColumn, int frameCount)
@@ -142,30 +150,9 @@ namespace sprint0.Factory
             }
 
             //Methods to change sprite details, going to have to call update if sprite changes tangibly
-            public override void changeDirection(string newDirection)
-            {
-                SpriteDirection = newDirection;
-            //May be able to change the direction change to be in sprite factory, have a Sprite type instance var, do stuff etc
-            }
-
-            void changePosition(Vector2 newPosition)
-            {
-                SpritePosition = newPosition;
-            }
 
             //Methods to get sprite details
-            String getDirection()
-            {
-                return SpriteDirection;
-            }
-            String getName()
-            {
-                return SpriteName;
-            }
-            Vector2 getPosition()
-            {
-                return SpritePosition;
-            }
+
         
     }
 }

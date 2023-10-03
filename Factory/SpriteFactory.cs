@@ -16,7 +16,9 @@ namespace sprint0.Factory
         private string SpriteName { get; set; }
         private string SpriteDirection { get; set; }
         private int SpriteFrames { get; set; }
+        private Boolean SpriteCollidable { get; set; }
         private IDictionary<int, Rectangle> textureDictionary;
+
 		public SpriteFactory()
 		{
 		}
@@ -67,10 +69,43 @@ namespace sprint0.Factory
             return textureDictionary;
         }
 
+        //Methods to change sprite fields
+        public void changeDirection(String newDirection)
+        {
+            if (newDirection != SpriteDirection)
+            {
+                SpriteDirection = newDirection;
+                //Call update here to draw in new direction
+            }
+        }
+
+        void changePosition(Vector2 newPosition)
+        {
+            SpritePosition = newPosition;
+        }
+
+        void changeCollidable(Boolean newCollidable)
+        {
+            SpriteCollidable = newCollidable;
+        }
+
+        //Getter methods
+        String getDirection()
+        {
+            return SpriteDirection;
+        }
+        String getName()
+        {
+            return SpriteName;
+        }
+        Vector2 getPosition()
+        {
+            return SpritePosition;
+        }
+
         //Factory specific methods, to be implemented in their own classes
-        //Why doesn't this work????
         public abstract void attack();
-        public abstract void changeDirection(string v);
+       // public abstract void changeDirection(string v);
     }
 }
 
