@@ -73,6 +73,8 @@ namespace sprint0.Factory
                     //default just keeps current texture dictionary
                     break;
             }
+            //Add spritebatch field? Would go in SpriteFactory since it would be used by all
+            //this.Draw();
         }
 
         //Updates dictionary with walking sprites in current direction

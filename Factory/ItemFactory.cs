@@ -17,14 +17,26 @@ namespace sprint0.Factory
         private int SpriteFrames { get; set; }
         private Boolean SpriteCollidable { get; set; }
         private IDictionary<int, Rectangle> TextureDictionary { get; set; }
-        public ItemFactory()
+
+        //Item specific fields
+        private Boolean itemAttackable;
+        //items that attack in zelda 1 do so by moving and colliding with player/enemy
+        private int velocityHorizontal; //left = negative, right = positive
+        private int velocityVertical; //up = negative, down = positive
+        private SpriteBatch itemSpriteBatch { get; set; }
+        public ItemFactory(String itemName, SpriteBatch passedBatch)
 		{
+            SpriteName = itemName;
+            itemSpriteBatch = passedBatch;
 		}
 
         public override void attack()
         {
-            //Unless items have uniform attack animation this is gonna have a ton of cases dependent of SpriteName
-            throw new NotImplementedException();
+            
+            this.Draw(itemSpriteBatch);
+            //Update sprite position based on velocity
+            SpritePosition = new Vector2(SpritePosition.X + (float)velocityHorizontal, SpritePosition.Y + (float)velocityVertical);
+            //Going to have to make a loop for this, will loop based on total active frames of an item and if item has collided yet (if collidable)
         }
     }
 }

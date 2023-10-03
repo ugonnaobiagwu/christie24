@@ -17,12 +17,14 @@ namespace sprint0.Factory
         private int SpriteFrames { get; set; }
         private Boolean SpriteCollidable { get; set; }
         private IDictionary<int, Rectangle> TextureDictionary { get; set; }
-        public EnemyFactory()
+        public EnemyFactory(string enemyName, SpriteBatch passedBatch)
 		{
+            SpriteName = enemyName;
 		}
 
         //updates dictionary to attacking sprites in current direction
         //Copied from Link factory for now, not editing coordinates for now - will wait for level loader details
+        //Currently should grab octorok textures
         public override void attack()
         {
             int[] rowIndex = new int[2];
@@ -31,25 +33,25 @@ namespace sprint0.Factory
             {
                 case "up":
                     //set texture dictionary to hold attacking up textures
-                    rowIndex = new int[] { 3, 4 };
+                    rowIndex = new int[] { 0, 1 };
                     columnIndex = new int[] { 2, 2 };
                     TextureDictionary = MakeDictionary(SpriteSheet, 5, 4, rowIndex, columnIndex, 2);
                     break;
                 case "right":
                     //set texture dictionary to hold attacking right textures
-                    rowIndex = new int[] { 3, 4 };
+                    rowIndex = new int[] { 0, 1 };
                     columnIndex = new int[] { 3, 3 };
                     TextureDictionary = MakeDictionary(SpriteSheet, 5, 4, rowIndex, columnIndex, 2);
                     break;
                 case "down":
                     //set texture dictionary to hold attacking down textures
-                    rowIndex = new int[] { 3, 4 };
+                    rowIndex = new int[] { 0, 1 };
                     columnIndex = new int[] { 0, 0 };
                     TextureDictionary = MakeDictionary(SpriteSheet, 5, 4, rowIndex, columnIndex, 2);
                     break;
                 case "left":
                     //set texture dictionary to hold attacking right textures
-                    rowIndex = new int[] { 3, 4 };
+                    rowIndex = new int[] { 1, 0 };
                     columnIndex = new int[] { 1, 1 };
                     TextureDictionary = MakeDictionary(SpriteSheet, 5, 4, rowIndex, columnIndex, 2);
                     break;

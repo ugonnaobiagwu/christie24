@@ -19,6 +19,7 @@ namespace sprint0.Factory
         private Boolean SpriteCollidable { get; set; }
         private IDictionary<int, Rectangle> textureDictionary;
 
+
 		public SpriteFactory()
 		{
 		}
@@ -79,26 +80,26 @@ namespace sprint0.Factory
             }
         }
 
-        void changePosition(Vector2 newPosition)
+        public void changePosition(Vector2 newPosition)
         {
             SpritePosition = newPosition;
         }
 
-        void changeCollidable(Boolean newCollidable)
+        public void changeCollidable(Boolean newCollidable)
         {
             SpriteCollidable = newCollidable;
         }
 
         //Getter methods
-        String getDirection()
+        public String getDirection()
         {
             return SpriteDirection;
         }
-        String getName()
+        public String getName()
         {
             return SpriteName;
         }
-        Vector2 getPosition()
+        public Vector2 getPosition()
         {
             return SpritePosition;
         }
