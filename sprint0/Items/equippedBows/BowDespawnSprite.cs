@@ -6,7 +6,7 @@ namespace sprint0.Items
 {
 	public class BowDespawnSprite : ISprite, IItemSprite
 	{
-        private bool animationCycleFinished = false;
+        private bool animationCycleFinished;
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -19,16 +19,7 @@ namespace sprint0.Items
             Columns = columns;
             CurrentFrame = 0;
             TotalFrames = 1;
-        }
-
-        public int currentItemXPos()
-        {
-            return -1;
-        }
-
-        public int currentItemYPos()
-        {
-            return -1;
+            animationCycleFinished = false;
         }
 
         public bool finishedAnimationCycle()

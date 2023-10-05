@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-	public class Bow : IItem
-	{
+    public class Bow : IItem
+    {
         private int itemXPos;
         private int itemYPos;
         private int itemMaxX;
         private int itemMaxY;
         private int itemMinX;
         private int itemMinY;
+        private int spriteVelocity = 1;
         // needs these positions for sprite swapping.
-        private int linkYPos;
-        private int linkXPos;
-        // needs these positions for where to start the item.
+
+        //direction stuff
+        private enum Direction { LEFT, RIGHT, UP, DOWN };
         private Texture2D upBowTexture;
         private Texture2D downBowTexture;
         private Texture2D leftBowTexture;
@@ -22,6 +23,8 @@ namespace sprint0.Items
         private Texture2D bowDespawnTextures;
         private IItemSprite currentItemSprite;
         private IItemStateMachine thisBowStateMachine;
+        private Direction currentItemDirection;
+        private bool spriteChanged;
 
         public Bow(IList<Texture2D> itemSpriteSheet)
 		{
@@ -31,6 +34,8 @@ namespace sprint0.Items
             rightBowTexture = itemSpriteSheet[3];
             bowDespawnTextures = itemSpriteSheet[4];
             thisBowStateMachine = new BowStateMachine();
+            currentItemDirection = Direction.LEFT;
+            spriteChanged = false;
 
 		}
 
@@ -38,7 +43,7 @@ namespace sprint0.Items
         {
             if (thisBowStateMachine.isItemInUse())
             {
-                currentItemSprite.Draw(spriteBatch, linkXPos, linkYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
         }
 
@@ -46,20 +51,32 @@ namespace sprint0.Items
         {
             if (thisBowStateMachine.isItemInUse())
             {
-                // update the x and y position of the item positions based on
-                // the adventures the sprite has taken.
-                this.itemXPos = this.currentItemSprite.currentItemXPos();
-                this.itemYPos = this.currentItemSprite.currentItemYPos();
-
                 // has the sprite reached it's final location?
-                if (itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)  
+                if (itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)
                 {
                     ChangeSprite();
                 }
-
-                if (this.currentItemSprite.finishedAnimationCycle())
+                else
                 {
-                    thisBowStateMachine.CeaseUse();
+                    // update the x and y position of the item positions based on
+                    // the adventures the sprite has taken.
+                    // switch case bad i know, i know.
+
+                    switch (this.currentItemDirection)
+                    {
+                        case Direction.RIGHT:
+                            itemXPos+= spriteVelocity;
+                            break;
+                        case Direction.UP:
+                            itemYPos+= spriteVelocity;
+                            break;
+                        case Direction.DOWN:
+                            itemYPos-= spriteVelocity;
+                            break;
+                        default:
+                            itemXPos-= spriteVelocity;
+                            break;
+                    }
                 }
 
             }
@@ -71,25 +88,50 @@ namespace sprint0.Items
          */
         public void ChangeSprite()
         {
-            this.currentItemSprite = new BowDespawnSprite(bowDespawnTextures, 1, 1);
+            if (!this.spriteChanged)
+            {
+                this.currentItemSprite = new BowDespawnSprite(bowDespawnTextures, 1, 1);
+                this.spriteChanged = true;
+            } else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
+            {
+                thisBowStateMachine.CeaseUse();
+                this.spriteChanged = false; //reset
+            }
         }
 
-        public void Use(/* incoming link's orientation */)
+        public void Use(int linkDirection, int linkXPos, int linkYPos)
         {
             if (!thisBowStateMachine.isItemInUse())
             {
                 thisBowStateMachine.Use(); // sets usage in play
-                // this.linkYPos = Link's X Position
-                // this.linkXPos = Link's Y Position
-                this.itemXPos = this.linkXPos;
-                this.itemYPos = this.linkXPos;
-                this.itemMaxX = this.linkXPos + 100;
-                this.itemMaxY = this.linkYPos + 100;
-                this.itemMinX = this.linkXPos - 100;
-                this.itemMinY = this.linkYPos - 100;
+                this.itemXPos = linkXPos;
+                this.itemYPos = linkYPos;
+                this.itemMaxX = linkXPos + 100;
+                this.itemMaxY = linkYPos + 100;
+                this.itemMinX = linkXPos - 100;
+                this.itemMinY = linkYPos - 100;
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
+                switch (linkDirection)
+                {
+                    case (int)Direction.RIGHT:
+                        currentItemSprite = new RightBowSprite(rightBowTexture, 1, 1);
+                        currentItemDirection = Direction.RIGHT;
+                        break;
+                    case (int)Direction.UP:
+                        currentItemSprite = new UpBowSprite(upBowTexture, 1, 1);
+                        currentItemDirection = Direction.UP;
+                        break;
+                    case (int)Direction.DOWN:
+                        currentItemSprite = new DownBowSprite(downBowTexture, 1, 1);
+                        currentItemDirection = Direction.DOWN;
+                        break;
+                    default:
+                        currentItemSprite = new LeftBowSprite(leftBowTexture, 1, 1);
+                        break;
+
+                }
             }
         }
     }

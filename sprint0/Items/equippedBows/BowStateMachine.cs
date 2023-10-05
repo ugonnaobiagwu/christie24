@@ -22,15 +22,12 @@ namespace sprint0.Items
             return inUse;
         }
 
-        public void isEquipped()
-        {
-            throw new NotImplementedException();
-        }
-
         public void CeaseUse()
         {
             inUse = false;
         }
+
+        
     }
 }
 

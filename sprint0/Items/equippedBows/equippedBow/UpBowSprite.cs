@@ -11,9 +11,6 @@ namespace sprint0
         private int Rows;
         private int Columns;
         private int CurrentFrame = 0;
-        private int SpriteXPos;
-        private int SpriteYPos;
-        private int spriteVelocity = 1;
 
         public UpBowSprite(Texture2D texture, int rows, int columns)
         {
@@ -21,16 +18,6 @@ namespace sprint0
             Rows = rows;
             Columns = columns;
 
-        }
-
-        public int currentItemXPos()
-        {
-            return SpriteXPos;
-        }
-
-        public int currentItemYPos()
-        {
-            return SpriteYPos;
         }
 
         public bool finishedAnimationCycle()
@@ -41,10 +28,8 @@ namespace sprint0
 
         public void Update()
         {
-            SpriteYPos+=spriteVelocity;
+           
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
@@ -53,10 +38,8 @@ namespace sprint0
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle incomingSprite = new Rectangle(width * column, height * row, width, height);
-            Rectangle drawnSprite = new Rectangle(SpriteXPos, y + SpriteYPos, width, height);
-            spriteBatch.Begin();
+            Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
-            spriteBatch.End();
         }
     }
 }

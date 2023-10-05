@@ -111,48 +111,9 @@ namespace sprint0
             }
         }
 
-        ///*
-        // *  Requires that theseItems is not empty 
-        // *  (load your items into the system!)
-        // */
-        //public void EquipNextItem()
-        //{
-        //    if (this.theseItems.Count > 0)
-        //    {
-        //        currentItemIndex++;
-        //        if (this.currentItemIndex < this.theseItems.Count)
-        //        {
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //        else // equal to or greater than count of items.
-        //        {
-        //            this.currentItemIndex = 0; // from the top!
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //    }
-        //}
-
-        ///*
-        // *  Requires that theseItems is not empty 
-        // *  (load your items into the system!)
-        // */
-        //public void EquipPreviousItem()
-        //{
-        //    if (this.theseItems.Count > 0)
-        //    {
-        //        currentItemIndex--;
-        //        if (this.currentItemIndex > 0)
-        //        {
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //        else // index is less than the start of the list.
-        //        {
-        //            this.currentItemIndex = this.theseItems.Count - 1; // from the top!
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //    }
-        //}
-
+        /*
+         * Item Equipment: This will change the current item that Link has in his hand at the time it's called.
+         */
         public void EquipBow()
         {
             if (this.bow != null)
@@ -200,9 +161,9 @@ namespace sprint0
             }
         }
 
-        public void UseCurrentItem(/* send links info here */)
+        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos)
         {
-            this.currentItem.Use(/*FEATURING: links info!*/);
+            this.currentItem.Use(linkDirection, linkXPos, linkYPos);
         }
 
         public void Draw()
