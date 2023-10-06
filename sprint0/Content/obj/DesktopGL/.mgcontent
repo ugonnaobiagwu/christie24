@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Ryan/source/repos/ugonnaobiagwu/christie24/sprint0/Content/File.spritefont</File>
+    <File>C:/Users/Ryan/source/repos/ugonnaobiagwu/christie24/sprint0/Content/luigiSpriteSheet.png</File>
+    <File>C:/Users/Ryan/source/repos/ugonnaobiagwu/christie24/sprint0/Content/Link.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Font.spritefont</File>
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

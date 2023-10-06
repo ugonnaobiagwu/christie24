@@ -37,10 +37,6 @@ namespace sprint0
                 SpriteBatch = spriteBatch;
             }
 
-            public int GetHealth()
-            {
-                return HealthVal;
-            }
             public void LinkAttack()
             {
                 /*This may need altered to fit sprite animation length*/
@@ -110,6 +106,38 @@ namespace sprint0
                 LinkSpriteFactory.Update();
             }
 
+            public int GetXVal()
+            {
+                return XVal;
+            }
+            public int GetYVal()
+            {
+                return YVal;
+            }
+            public int GetHealth()
+            {
+                return HealthVal;
+            }
+            public String GetDirection()
+            {
+                String direction = "";
+                switch(LinkDirection)
+                {
+                    case Direction.Left:
+                        direction = "left";
+                        break;
+                    case Direction.Right:
+                        direction = "right";
+                        break;
+                    case Direction.Up:
+                        direction = "up";
+                        break;
+                    case Direction.Down:
+                        direction = "down";
+                        break;
+                }
+                return direction;
+            }
         }
     }
 }
