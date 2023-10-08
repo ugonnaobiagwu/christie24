@@ -11,7 +11,7 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         //ATTENTION: Additional Sprites added for demonstration
-        public ISprite Luigi;
+        public ILink Link;
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
@@ -101,10 +101,7 @@ namespace sprint0
             base.Draw(gameTime);
         }
 
-        public void SetSprite(ISprite NewSpriteType)
-        {
-            Luigi = NewSpriteType;
-            
-        }
+        
+        
     }
 }
