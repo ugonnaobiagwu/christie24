@@ -1,6 +1,4 @@
-﻿//using Microsoft.Xna.Framework.Graphics;
-//using Microsoft.Xna.Framework.Input;
-//using sprint0;
+﻿//using Microsoft.Xna.Framework.Input;
 //using System;
 //using System.Collections.Generic;
 
@@ -73,7 +71,7 @@
 //        state.LinkGetDamage();
 //        // i am not sure how many hits link can take so here is a estimate
 //        this.health = health - 20;
-    
+
 //    }
-   
+
 //}

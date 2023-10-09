@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</SourceFile>
-  <SourceTime>2023-09-29T14:28:05.7300177-04:00</SourceTime>
-  <DestFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/bin/DesktopGL/Content/groundItemSprites/groundTriforce.xnb</DestFile>
-  <DestTime>2023-09-30T10:42:02.0989993-04:00</DestTime>
+  <SourceFile>C:/Users/xingw/Source/Repos/ugonnaobiagwu/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</SourceFile>
+  <SourceTime>2023-10-02T15:28:16.3594484-04:00</SourceTime>
+  <DestFile>C:/Users/xingw/Source/Repos/ugonnaobiagwu/christie24/sprint0/Content/bin/DesktopGL/Content/groundItemSprites/groundTriforce.xnb</DestFile>
+  <DestTime>2023-10-08T21:39:57.3182098-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

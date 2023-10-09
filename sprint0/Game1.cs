@@ -76,6 +76,8 @@ namespace sprint0
            
             //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
 
+            //Register keys with this.
+            KeyboardCont.registerKeys();
             
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Creates Link's default state
