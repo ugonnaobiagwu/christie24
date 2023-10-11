@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public interface IController
 {
    
-    public void registerKey(Keys key, ICommand command);
+    public void registerKeys();
     public void Update();
    
 

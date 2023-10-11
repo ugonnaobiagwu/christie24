@@ -2,82 +2,49 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using sprint0.Commands;
+using sprint0;
 
-public class MouseController : IController
+namespace sprint0.Controllers
 {
-    private ICommand linkAttack;
-    private ICommand linkGetDamage;
-
-    public void registerKey(Keys key, ICommand command)
+    public class MouseController : IController
     {
-        throw new NotImplementedException();
-    }
+        // this is what I would imagine them to be named as, not permanent
+        private ICommand previousLevel;
+        private ICommand nextLevel;
 
-    // used to register mouse states with their respective commands 
-    public void registerKeys()
-    {
-        // isn't really follwing the name of the method
-        // there is probably an easier way to implement this
-        // no idea how to implement the transition states at the moment
-        linkAttack = new AttackCommand();
-        linkGetDamage = new DamagedCommand();
-
-    }
-
-    public void Update()
-    {
-        // I have no idea how to put mouse states into an array like keyboard control
-        // so I will just make it so
-        // hopefully this only works while NOTHING is pressed
-
-
-        MouseState mouseState = Mouse.GetState();
-
-        while (mouseState != null)
+        public void registerKey(Keys key, ICommand command)
         {
+            throw new NotImplementedException();
+        }
+
+        // used to register mouse states with their respective commands 
+        public void registerKeys()
+        {
+            // for Sprint3, i will need to implement the room/level changes
+            previousLevel = new PreviousLevel();
+            nextLevel = new NextLevel();
+
+        }
+
+        public void Update()
+        {
+            // in future updates, using the mouse to click the room/level on a map might be an option
+            // i just need to study it more to see how it would work
+            MouseState mouseState = Mouse.GetState();
+
+
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                linkAttack.execute();
-                // if you left-click, link attacks
+                previousLevel.execute();
+                // if you left-click, changes to previous level
             }
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
-                // if you right-click, link gets damage
-                linkGetDamage.execute();
+                // if you right-click, changes to next level
+                nextLevel.execute();
             }
-        }
 
-
-        /* this is the code i had previously but I decided to change the code
-        * 
-        * not sure how to implement this but here is the tentative code
-        * 
-        int scrollWheel, horizontalScrollWheel;
-        MouseState mouseState = Mouse.GetState();
-        if (mouseState.LeftButton == ButtonState.Pressed)
-        {
-            // if left mouse button is pressed, it activates attack
-            LinkAttack.execute();
         }
-        else if (mouseState.RightButton == ButtonState.Pressed)
-        {
-            // if right mouse button is pressed, i have no idea what to implement
-            // perhaps defend for now?
-            // just learned that Link always has a shield. Perhaps use it for something else?
-            LinkDefend.execute();
-        }
-        else if (mouseState.ScrollWheelValue == mouseState.HorizontalScrollWheelValue)
-        {
-            // if it scrolls up, the weapon changes to next weapon
-            LinkChangeNextWeapon.execute();
-        }
-        else if (mouseState.ScrollWheelValue > mouseState.HorizontalScrollWheelValue)
-        { 
-            // if it scrolls down, the weapon changes to previous weapon
-            LinkChangePreviousWeapon.execute();
-        }
-       */
-
-        // I have no idea how the scroll wheel value thing works but i hope this is how you do it
     }
 }
