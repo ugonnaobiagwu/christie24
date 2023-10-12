@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-	public class Boomerang : IItem
+	public class Bow : IItem
 	{
-		public Boomerang(IList<Texture2D> itemSpriteSheet)
+		public Bow(IList<Texture2D> itemSpriteSheet)
 		{
 		}
 

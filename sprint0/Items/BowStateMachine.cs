@@ -1,11 +1,9 @@
 ﻿using System;
 namespace sprint0.Items
 {
-	public class BlazeStateMachine : IItemStateMachine
+	public class BowStateMachine : IItemStateMachine
 	{
-        private enum GoombaHealth { Normal, Stomped, Flipped };
-
-        public BlazeStateMachine()
+		public BowStateMachine()
 		{
 		}
 

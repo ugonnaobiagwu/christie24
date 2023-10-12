@@ -9,23 +9,22 @@ namespace sprint0
 	{
         private static ItemSystem instance;
         private IItem currentItem;
+        private int currentItemIndex;
         private IItem bow;
         private IItem betterBow;
         private IItem boomerang;
         private IItem betterBoomerang;
         private IItem bomb;
         private IItem blaze;
-        private SpriteBatch spriteBatch;
-        private Dictionary<IItem, Boolean> theseItems;
-        /*
-         * [code: theseItems] will be used to limit whether or not link can equip an 
-         * item depending on how the inventory system works
-         */
+        private IList<IItem> theseItems;
 
         private ItemSystem() {
             // instantiate all of the items and add them to the array list.
-            this.theseItems = new Dictionary<IItem, Boolean>();
+            this.currentItemIndex = 0;
+            this.theseItems = new List<IItem>();
         }
+
+
 
         public static ItemSystem Instance
         {
@@ -47,7 +46,7 @@ namespace sprint0
          * EACH LOAD METHOD REQUIRES THAT THE ITEM HAS NOT BEEN LOADED UP.
          * 
          * THIS IS BECAUSE IN ORDER TO KEEP THE SYSTEM A SINGLETON,
-         * YOU HAVE TO SETUP WHAT THE CONSTRUCTOR WOULD NORMALLY SETUP. 
+         * YOU HAVE TO SETUP THE ITEMS GOING INTO IT.
          * 
          * ITEMS REALLY SHOULDN'T BE MESSED WITH ONCE IN THE SYSTEM.
          * 
@@ -61,6 +60,8 @@ namespace sprint0
             if (this.bow == null)
             {
                 this.bow = new Bow(itemSpriteSheet);
+                this.theseItems.Add(this.bow);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
 
@@ -69,6 +70,8 @@ namespace sprint0
             if (this.betterBow == null)
             {
                 this.betterBow = new BetterBow(itemSpriteSheet);
+                this.theseItems.Add(this.betterBow);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
 
@@ -77,6 +80,8 @@ namespace sprint0
             if (this.boomerang == null)
             {
                 this.boomerang = new Boomerang(itemSpriteSheet);
+                this.theseItems.Add(this.boomerang);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
 
@@ -85,6 +90,8 @@ namespace sprint0
             if (this.betterBoomerang == null)
             {
                 this.betterBoomerang = new BetterBoomerang(itemSpriteSheet);
+                this.theseItems.Add(this.betterBoomerang);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
 
@@ -93,6 +100,8 @@ namespace sprint0
             if (this.bomb == null)
             {
                 this.bomb = new Bomb(itemSpriteSheet);
+                this.theseItems.Add(this.bomb);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
 
@@ -101,113 +110,62 @@ namespace sprint0
             if (this.blaze == null)
             {
                 this.blaze = new Blaze(itemSpriteSheet);
+                this.theseItems.Add(this.blaze);
+                this.currentItem = this.theseItems[this.currentItemIndex];
             }
         }
-        public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch)
+
+
+        /*
+         *  Requires that theseItems is not empty 
+         *  (load your items into the system!)
+         */
+        public void EquipNextItem()
         {
-            if (this.spriteBatch == null)
+            if (this.theseItems.Count > 0)
             {
-                this.spriteBatch = incomingSpriteBatch;
+                currentItemIndex++;
+                if (this.currentItemIndex < this.theseItems.Count)
+                {
+                    this.currentItem = this.theseItems[this.currentItemIndex];
+                }
+                else // equal to or greater than count of items.
+                {
+                    this.currentItemIndex = 0; // from the top!
+                    this.currentItem = this.theseItems[this.currentItemIndex];
+                }
             }
         }
 
-        ///*
-        // *  Requires that theseItems is not empty 
-        // *  (load your items into the system!)
-        // */
-        //public void EquipNextItem()
-        //{
-        //    if (this.theseItems.Count > 0)
-        //    {
-        //        currentItemIndex++;
-        //        if (this.currentItemIndex < this.theseItems.Count)
-        //        {
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //        else // equal to or greater than count of items.
-        //        {
-        //            this.currentItemIndex = 0; // from the top!
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //    }
-        //}
-
-        ///*
-        // *  Requires that theseItems is not empty 
-        // *  (load your items into the system!)
-        // */
-        //public void EquipPreviousItem()
-        //{
-        //    if (this.theseItems.Count > 0)
-        //    {
-        //        currentItemIndex--;
-        //        if (this.currentItemIndex > 0)
-        //        {
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //        else // index is less than the start of the list.
-        //        {
-        //            this.currentItemIndex = this.theseItems.Count - 1; // from the top!
-        //            this.currentItem = this.theseItems[this.currentItemIndex];
-        //        }
-        //    }
-        //}
-
-        public void EquipBow()
+        /*
+         *  Requires that theseItems is not empty 
+         *  (load your items into the system!)
+         */
+        public void EquipPreviousItem()
         {
-            if (this.bow != null)
+            if (this.theseItems.Count > 0)
             {
-                this.currentItem = this.bow;
+                currentItemIndex--;
+                if (this.currentItemIndex > 0)
+                {
+                    this.currentItem = this.theseItems[this.currentItemIndex];
+                }
+                else // index is less than the start of the list.
+                {
+                    this.currentItemIndex = this.theseItems.Count - 1; // from the top!
+                    this.currentItem = this.theseItems[this.currentItemIndex];
+                }
             }
         }
 
-        public void EquipBetterBow()
+        public void UseCurrentItem()
         {
-            if (this.betterBow != null)
-            {
-                this.currentItem = this.betterBow;
-            }
-        }
-
-        public void EquipBoomerang()
-        {
-            if (this.boomerang != null)
-            {
-                this.currentItem = this.boomerang;
-            }
-        }
-
-        public void EquipBetterBoomerang()
-        {
-            if (this.betterBoomerang != null)
-            {
-                this.currentItem = this.betterBoomerang;
-            }
-        }
-
-        public void EquipBlaze()
-        {
-            if (this.blaze != null)
-            {
-                this.currentItem = this.blaze;
-            }
-        }
-        public void EquipBomb()
-        {
-            if (this.bomb != null)
-            {
-                this.currentItem = this.bomb;
-            }
-        }
-
-        public void UseCurrentItem(/* send links info here */)
-        {
-            this.currentItem.Use(/*FEATURING: links info!*/);
+            this.currentItem.Use();
         }
 
         public void Draw()
         {
-            this.currentItem.Draw(this.spriteBatch);
+            this.currentItem.Draw();
         }
 
         public void Update()
