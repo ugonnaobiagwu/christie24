@@ -5,14 +5,14 @@ using sprint0.Items;
 
 namespace sprint0
 {
-    public class UpBowSprite : ISprite, IItemSprite
+    public class BowSprite : ISprite, IItemSprite
     {
         private Texture2D Texture;
         private int Rows;
         private int Columns;
         private int CurrentFrame = 0;
 
-        public UpBowSprite(Texture2D texture, int rows, int columns)
+        public BowSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
@@ -28,7 +28,7 @@ namespace sprint0
 
         public void Update()
         {
-           
+
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)

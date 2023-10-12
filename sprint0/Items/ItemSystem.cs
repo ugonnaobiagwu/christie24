@@ -22,7 +22,7 @@ namespace sprint0
          * item depending on how the inventory system works
          */
 
-        private ItemSystem() {
+        public ItemSystem() {
             // instantiate all of the items and add them to the array list.
             this.theseItems = new Dictionary<IItem, Boolean>();
         }

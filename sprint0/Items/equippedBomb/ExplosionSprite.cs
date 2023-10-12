@@ -5,30 +5,41 @@ using sprint0.Items;
 
 namespace sprint0
 {
-    public class LeftBowSprite : ISprite, IItemSprite
+    public class ExplosionSprite : ISprite, IItemSprite
     {
         private Texture2D Texture;
         private int Rows;
         private int Columns;
-        private int CurrentFrame = 0;
+        private int CurrentFrame;
+        private int TotalFrames;
+        private bool animationCycleFinished;
 
-        public LeftBowSprite(Texture2D texture, int rows, int columns)
+        public ExplosionSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
-
+            CurrentFrame = 0;
+            TotalFrames = 2;
+            animationCycleFinished = false;
         }
 
         public bool finishedAnimationCycle()
         {
-            return false; // infinite cycle / no cycle .
+            return animationCycleFinished; 
         }
 
 
         public void Update()
         {
-
+            
+            if (CurrentFrame == TotalFrames)
+            {
+                animationCycleFinished = true;
+            } else
+            {
+                CurrentFrame++;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)

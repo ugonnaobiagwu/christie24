@@ -5,18 +5,21 @@ using sprint0.Items;
 
 namespace sprint0
 {
-    public class RightBowSprite : ISprite, IItemSprite
+    public class BlazeSprite : ISprite, IItemSprite
     {
         private Texture2D Texture;
         private int Rows;
         private int Columns;
-        private int CurrentFrame = 0;
+        private int CurrentFrame;
+        private int TotalFrames;
 
-        public RightBowSprite(Texture2D texture, int rows, int columns)
+        public BlazeSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
+            CurrentFrame = 0;
+            TotalFrames = 2;
 
         }
 
@@ -28,7 +31,11 @@ namespace sprint0
 
         public void Update()
         {
-
+            CurrentFrame++;
+            if (CurrentFrame == TotalFrames)
+            {
+                CurrentFrame = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)

@@ -5,14 +5,14 @@ using sprint0.Items;
 
 namespace sprint0
 {
-    public class DownBowSprite : ISprite, IItemSprite
+    public class BombSprite : ISprite, IItemSprite
     {
         private Texture2D Texture;
         private int Rows;
         private int Columns;
         private int CurrentFrame = 0;
 
-        public DownBowSprite(Texture2D texture, int rows, int columns)
+        public BombSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;

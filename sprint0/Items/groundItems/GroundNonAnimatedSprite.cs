@@ -35,9 +35,8 @@ namespace sprint0.Items.groundItems
             Rectangle sheetLocation = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
 
-            spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sheetLocation, Color.White);
-            spriteBatch.End();
+
         }
     }
 }

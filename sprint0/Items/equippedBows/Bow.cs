@@ -28,12 +28,12 @@ namespace sprint0.Items
 
         public Bow(IList<Texture2D> itemSpriteSheet)
 		{
-            upBowTexture = itemSpriteSheet[0];
-            downBowTexture = itemSpriteSheet[1];
-            leftBowTexture = itemSpriteSheet[2];
-            rightBowTexture = itemSpriteSheet[3];
+            upBowTexture = itemSpriteSheet[3];
+            downBowTexture = itemSpriteSheet[2];
+            leftBowTexture = itemSpriteSheet[0];
+            rightBowTexture = itemSpriteSheet[1];
             bowDespawnTextures = itemSpriteSheet[4];
-            thisBowStateMachine = new BowStateMachine();
+            thisBowStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.LEFT;
             spriteChanged = false;
 
@@ -61,7 +61,6 @@ namespace sprint0.Items
                     // update the x and y position of the item positions based on
                     // the adventures the sprite has taken.
                     // switch case bad i know, i know.
-
                     switch (this.currentItemDirection)
                     {
                         case Direction.RIGHT:
@@ -77,7 +76,9 @@ namespace sprint0.Items
                             itemXPos-= spriteVelocity;
                             break;
                     }
+                    
                 }
+                this.currentItemSprite.Update();
 
             }
 
@@ -116,19 +117,19 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        currentItemSprite = new RightBowSprite(rightBowTexture, 1, 1);
+                        currentItemSprite = new BowSprite(rightBowTexture, 1, 1);
                         currentItemDirection = Direction.RIGHT;
                         break;
                     case (int)Direction.UP:
-                        currentItemSprite = new UpBowSprite(upBowTexture, 1, 1);
+                        currentItemSprite = new BowSprite(upBowTexture, 1, 1);
                         currentItemDirection = Direction.UP;
                         break;
                     case (int)Direction.DOWN:
-                        currentItemSprite = new DownBowSprite(downBowTexture, 1, 1);
+                        currentItemSprite = new BowSprite(downBowTexture, 1, 1);
                         currentItemDirection = Direction.DOWN;
                         break;
                     default:
-                        currentItemSprite = new LeftBowSprite(leftBowTexture, 1, 1);
+                        currentItemSprite = new BowSprite(leftBowTexture, 1, 1);
                         break;
 
                 }
