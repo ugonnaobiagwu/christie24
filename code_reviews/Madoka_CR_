@@ -1,0 +1,38 @@
+Author of Code Review: Madoka Kamishima
+September 30th, 2023
+Sprint 2
+
+
+Maintainability:
+
+Code to be reviewed:KeyboardController.cs
+Author of code: Xing Wu
+
+Implements brief comment and on each methods and what it does helps readers understand the methods quickers.
+
+There are two linkAttack under the KeyController Constructor.You will only need one linkAttack instatniation.
+The instantiated 
+
+ The linkItem2 instatntiation seems to 
+ linkEquipItem2 = new LinkEquipItem1();
+ linkEquipItem2 = new LinkEquipItem2();
+
+As an organization and maitainablity, the intantiation can be moved to another class.
+Not a bad idea to have the logic in one class and the initialization in another, if possible. 
+Implement commands rather than method names
+
+As for grouping, try to only add in Controllers in the controller folders and link class with the link classes.
+There may have been issues with communication witht naming with the commands, but alter the name to 
+the current command names, or have Command classes to be changed to what you have. 
+
+
+
+Readiblity:
+
+Code to be reviewed:MouseController.cs
+Author of code: Xing Wu
+
+There are still implmentation logics that will still need to be done. There are comments that help
+understand that this should be done.
+There aren't much to really read in this since, the logics aren't completed. 
+If this was the case, if you have any ideas in methods, it you can also jot done brief ideas for structure purpuses. 
