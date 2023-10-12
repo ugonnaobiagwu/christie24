@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    public class Block : IBlock
+    public class Block : IBlock,ISprite
     {
 
         private List<IBlock> blockStates;
-        private int currentIndex = 0;
+        private int currentIndex; // default is 0
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
-        /* IBlock block1;
-         IBlock block2;
-         IBlock block3;*/
+       
 
         IBlock currentBlock;
 
@@ -32,9 +30,9 @@ namespace sprint0.Blocks
 
             blockStates = new List<IBlock>
         {
-            new Block1(texture, rows, columns),
-            new Block2(texture, rows, columns),
-            new Block3(texture, rows, columns)
+            new DungenBlueBlock(texture, rows, columns),
+            new DungenPyramidBlock(texture, rows, columns),
+            new DungenFishBlock(texture, rows, columns)
         };
             currentBlock = blockStates[currentIndex]; // default block
 
@@ -44,7 +42,7 @@ namespace sprint0.Blocks
 
         public void Update()
         {
-            //currentBlock.Update();
+            currentBlock.Update();
         }
 
         public void Explode()
@@ -78,10 +76,9 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            spriteBatch.Begin();
-
+            
             currentBlock.Draw(spriteBatch, x, y);
-            spriteBatch.End();
+        
         }
 
 

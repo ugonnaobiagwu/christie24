@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class Block1 : IBlock
+    internal class DungenBlueBlock : IBlock
     {
 
         private Block block;
@@ -25,11 +25,11 @@ namespace sprint0.Blocks
 
 
 
-        public Block1()
+        public DungenBlueBlock()
         {
 
         }
-        public Block1(Texture2D texture, int rows, int columns)
+        public DungenBlueBlock(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;

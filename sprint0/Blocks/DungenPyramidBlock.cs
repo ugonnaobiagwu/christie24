@@ -9,37 +9,45 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class Block3 : IBlock
+    internal class DungenPyramidBlock : IBlock
     {
-
+        /*private int TotalFrame;
+        private int currentFrame;*/
+        private Block block;
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
 
 
+        public DungenPyramidBlock() { }
 
-        public Block3()
-        {
-
-        }
-        public Block3(Texture2D texture, int rows, int columns)
+        public DungenPyramidBlock(Texture2D texture, int rows, int columns)
         {
             this.Texture = texture;
             Rows = rows;
             Columns = columns;
 
+            /*InitializeFrame();*/
         }
+
+        /*  private void InitializeFrame()
+          {
+
+              TotalFrame = Rows * Columns;
+              currentFrame = 1;
+          }
+  */
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 
-            int width = this.Texture.Width / Columns;
-            int height = this.Texture.Height / Rows;
+            int width = Texture.Width / Columns;
+            int height = Texture.Height / Rows;
+            int blockColumn = 1;
             int blockRow = 0;
-            int blockColumn = 2;
 
-            Rectangle sourceLocation = new Rectangle(width * blockRow, height * blockColumn, width, height);
+            Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
             //resize block image
             double scale = 0.2; //40% of the orignal size image
@@ -50,7 +58,8 @@ namespace sprint0.Blocks
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
 
 
-            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
+
+            spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
 
@@ -58,15 +67,24 @@ namespace sprint0.Blocks
         {
 
         }
-
-        public void Explode()
+        public void Explode() { }
+        public void NextBlock()
         {
-            //explode logic
 
         }
-        public void NextBlock() { }
 
-        public void PreviousBlock() { }
+        public void PreviousBlock()
+        {
+
+        }
+
+
+
+
 
     }
+
 }
+
+
+

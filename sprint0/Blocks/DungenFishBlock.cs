@@ -9,43 +9,35 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class Block2 : IBlock
+    internal class DungenFishBlock : IBlock
     {
-        /*private int TotalFrame;
-        private int currentFrame;*/
-        private Block block;
+
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
 
 
-        public Block2() { }
 
-        public Block2(Texture2D texture, int rows, int columns)
+        public DungenFishBlock()
+        {
+
+        }
+        public DungenFishBlock(Texture2D texture, int rows, int columns)
         {
             this.Texture = texture;
             Rows = rows;
             Columns = columns;
 
-            /*InitializeFrame();*/
         }
-
-        /*  private void InitializeFrame()
-          {
-
-              TotalFrame = Rows * Columns;
-              currentFrame = 1;
-          }
-  */
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int blockColumn = 1;
+            int width = this.Texture.Width / Columns;
+            int height = this.Texture.Height / Rows;
             int blockRow = 0;
+            int blockColumn = 2;
 
             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
@@ -58,8 +50,7 @@ namespace sprint0.Blocks
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
 
 
-
-            spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
+            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
 
@@ -67,24 +58,15 @@ namespace sprint0.Blocks
         {
 
         }
-        public void Explode() { }
-        public void NextBlock()
+
+        public void Explode()
         {
+            //explode logic
 
         }
+        public void NextBlock() { }
 
-        public void PreviousBlock()
-        {
-
-        }
-
-
-
-
+        public void PreviousBlock() { }
 
     }
-
 }
-
-
-

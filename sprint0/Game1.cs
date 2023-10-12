@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0.Commands;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
+using sprint0.Controllers;
 using sprint0.Blocks;
 
 
@@ -30,7 +31,7 @@ namespace sprint0
         Texture2D textureBlock;
 
         //Block
-        public IBlock block;
+        public Block block;
         public IGroundItemSystem groundItems;
         
         //Concrete Commands
@@ -75,8 +76,9 @@ namespace sprint0
             texture = Content.Load<Texture2D>("luigiSpriteSheet");
 
             //Block 
-            textureBlock = Content.Load<Texture2D>("edited_block");
-            block = new Block(textureBlock, 1, 3);
+            textureBlock = Content.Load<Texture2D>("block_image");
+            block = new Block(textureBlock, 3, 4);
+            NextBlockCommand nextBlock = new NextBlockCommand(this, block);
             //keyboardController = new KeyboardController(this);
             //NextBlockCommand NextBlock = new NextBlockCommand(this, block);
 
@@ -84,23 +86,25 @@ namespace sprint0
 
             //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
 
+            //Register keys with this.
+            KeyboardCont.registerKeys();
 
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Creates Link's default state
             //FacingUpLink = new FacingUpLinkState(texture, 7, 14);
-           /* FacingDownLink = new FacingDownLinkState(texture, 7, 14);
-            FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
-            FacingRightLink = new FacingRightLinkState(texture, 7, 14);
-            AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
-            AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
-            AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
-            AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
-*/
+            /* FacingDownLink = new FacingDownLinkState(texture, 7, 14);
+             FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
+             FacingRightLink = new FacingRightLinkState(texture, 7, 14);
+             AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
+             AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
+             AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
+             AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
+ */
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
             //These keys successfully bind to something, as there is no error message when pressed
             //KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
-            //KeyboardCont.registerKey(Keys.D2, new FixedAnimatedCommand(this, texture));
-            //KeyboardCont.registerKey(Keys.D3, new UpAndDownCommand(this, texture));
+            //KeyboardCont.registerKey(Keys.Y, new NextBlockCommand(this,block));
+            //KeyboardCont.registerKey(Keys.T, new PreviousBlockCommand(this, block));
             //KeyboardCont.registerKey(Keys.D4, new MovingAnimatedCommand(this, texture));
             base.Initialize();
         }
@@ -155,7 +159,7 @@ namespace sprint0
             // TODO: Add your update logic here
            
             KeyboardCont.Update();
-            block.Update();
+            //block.Update();
 
             groundItems.Update();
             //Additional Update() added for testing
@@ -179,20 +183,22 @@ namespace sprint0
 
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Draws Luigi
-           /* FacingUpLink.Draw(spriteBatch,0,100);
-            FacingDownLink.Draw(spriteBatch, 50, 100);
-            FacingLeftLink.Draw(spriteBatch, 100, 100);
-            FacingRightLink.Draw(spriteBatch, 150, 100);
-            AttackingUpLink.Draw(spriteBatch, 200, 100);
-            AttackingDownLink.Draw(spriteBatch, 250, 100);
-            AttackingLeftLink.Draw(spriteBatch, 300, 100);
-            AttackingRightLink.Draw(spriteBatch, 350, 100);
-*/
+            /* FacingUpLink.Draw(spriteBatch,0,100);
+             FacingDownLink.Draw(spriteBatch, 50, 100);
+             FacingLeftLink.Draw(spriteBatch, 100, 100);
+             FacingRightLink.Draw(spriteBatch, 150, 100);
+             AttackingUpLink.Draw(spriteBatch, 200, 100);
+             AttackingDownLink.Draw(spriteBatch, 250, 100);
+             AttackingLeftLink.Draw(spriteBatch, 300, 100);
+             AttackingRightLink.Draw(spriteBatch, 350, 100);
+ */
             //Block Draw
+            spriteBatch.Begin();
             block.Draw(spriteBatch,300,200);
+            spriteBatch.End();
 
             //Draws the Textbox
-            TextBox.Draw(spriteBatch, 100, 300);
+            //TextBox.Draw(spriteBatch, 100, 300);
             groundItems.Draw();
             base.Draw(gameTime);
         }
