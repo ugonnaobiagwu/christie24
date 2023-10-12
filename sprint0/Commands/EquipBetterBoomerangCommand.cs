@@ -7,12 +7,12 @@ using sprint0;
 
 namespace sprint0.Commands
 {
-    public class EquipItem1Command
+    public class EquipBetterBoomerangCommand : ICommand
     {
         Sprint0 Game;
         //ItemSystem Item;
 
-        public EquipItem1Command(Sprint0 game) //(ItemSystem item)
+        public EquipBetterBoomerangCommand(Sprint0 game) //(ItemSystem item)
         {
             this.Game = game;
             //this.Item = item;
@@ -21,7 +21,7 @@ namespace sprint0.Commands
 
         public void execute()
         {
-            //Item.equipItem1();
+            //Item.EquipBetterBoomerang();
             throw new NotImplementedException();
         }
     }

@@ -7,12 +7,12 @@ using sprint0;
 
 namespace sprint0.Commands
 {
-    public class EquipItem2Command
+    public class EquipBowCommand : ICommand
     {
         Sprint0 Game;
         //ItemSystem Item;
 
-        public EquipItem2Command(Sprint0 game) //(ItemSystem item)
+        public EquipBowCommand(Sprint0 game) //(ItemSystem item)
         {
             this.Game = game;
             //this.Item = item;
@@ -21,7 +21,7 @@ namespace sprint0.Commands
 
         public void execute()
         {
-            //Item.equipItem2();
+            //Item.EquipBow();
             throw new NotImplementedException();
         }
     }
