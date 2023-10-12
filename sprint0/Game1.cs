@@ -17,7 +17,7 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         //ATTENTION: Additional Sprites added for demonstration
-       /* public ISprite FacingUpLink;
+        public ISprite FacingUpLink;
         public ISprite FacingDownLink;
         public ISprite FacingLeftLink;
         public ISprite FacingRightLink;
@@ -25,8 +25,7 @@ namespace sprint0
         public ISprite AttackingDownLink;
         public ISprite AttackingLeftLink;
         public ISprite AttackingRightLink;
-*/
-        //public ILink Link;
+        public ILink Link;
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
@@ -87,9 +86,6 @@ namespace sprint0
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
 
             //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
-            
-
-          
 
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Creates Link's default state
@@ -170,6 +166,11 @@ namespace sprint0
 
             groundItems.Update();
             //Additional Update() added for testing
+            Luigi.Update();
+            
+            groundItems.Update();
+            //Additional Update() added for testing
+            FacingUpLink.Update();
             /*FacingUpLink.Update();
             FacingDownLink.Update();
             FacingLeftLink.Update();
@@ -177,6 +178,7 @@ namespace sprint0
             AttackingUpLink.Update();
             AttackingDownLink.Update();
             AttackingRightLink.Update();
+            AttackingLeftLink.Update();
             AttackingLeftLink.Update();*/
 
             base.Update(gameTime);
@@ -202,17 +204,18 @@ namespace sprint0
             //Block Draw
             spriteBatch.Begin();
             block.Draw(spriteBatch,300,200);
-            spriteBatch.End();
+            
 
             //Draws the Textbox
             //TextBox.Draw(spriteBatch, 100, 300);
             groundItems.Draw();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
         public void SetSprite(ISprite NewSpriteType)
         {
-           /* FacingLeftLink = NewSpriteType;*/
+            FacingLeftLink = NewSpriteType;
             
         }
     }
