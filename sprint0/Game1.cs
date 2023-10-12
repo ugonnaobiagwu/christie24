@@ -6,6 +6,7 @@ using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 using sprint0.Controllers;
 using sprint0.Blocks;
+//using sprint0.Link;
 
 
 namespace sprint0
@@ -16,7 +17,7 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         //ATTENTION: Additional Sprites added for demonstration
-        public ISprite FacingUpLink;
+       /* public ISprite FacingUpLink;
         public ISprite FacingDownLink;
         public ISprite FacingLeftLink;
         public ISprite FacingRightLink;
@@ -24,14 +25,15 @@ namespace sprint0
         public ISprite AttackingDownLink;
         public ISprite AttackingLeftLink;
         public ISprite AttackingRightLink;
-
+*/
+        //public ILink Link;
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
         Texture2D textureBlock;
 
         //Block
-        public Block block;
+        public IBlock block;
         public IGroundItemSystem groundItems;
         
         //Concrete Commands
@@ -63,8 +65,8 @@ namespace sprint0
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            KeyboardCont = new KeyboardController(this);
-            
+            /*KeyboardCont = new KeyboardController(this);
+            */
             
         }
 
@@ -78,28 +80,28 @@ namespace sprint0
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
             block = new Block(textureBlock, 3, 4);
-            NextBlockCommand nextBlock = new NextBlockCommand(this, block);
+
             //keyboardController = new KeyboardController(this);
             //NextBlockCommand NextBlock = new NextBlockCommand(this, block);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
 
             //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
+            
 
-            //Register keys with this.
-            KeyboardCont.registerKeys();
+          
 
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Creates Link's default state
-            //FacingUpLink = new FacingUpLinkState(texture, 7, 14);
-            /* FacingDownLink = new FacingDownLinkState(texture, 7, 14);
+            /*FacingUpLink = new FacingUpLinkState(texture, 7, 14);
+             FacingDownLink = new FacingDownLinkState(texture, 7, 14);
              FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
              FacingRightLink = new FacingRightLinkState(texture, 7, 14);
              AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
              AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
              AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
-             AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
- */
+             AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);*/
+ 
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
             //These keys successfully bind to something, as there is no error message when pressed
             //KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
@@ -149,6 +151,11 @@ namespace sprint0
             groundItems.LoadCompass(groundCompass);
             groundItems.LoadClock(groundClock);
             // TODO: use this.Content to load your game content here
+
+            KeyboardCont = new KeyboardController(this);
+
+            //Register keys with this.
+            KeyboardCont.registerKeys();
         }
 
         protected override void Update(GameTime gameTime)
@@ -205,7 +212,7 @@ namespace sprint0
 
         public void SetSprite(ISprite NewSpriteType)
         {
-            FacingLeftLink = NewSpriteType;
+           /* FacingLeftLink = NewSpriteType;*/
             
         }
     }

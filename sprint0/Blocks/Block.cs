@@ -32,7 +32,8 @@ namespace sprint0.Blocks
         {
             new DungenBlueBlock(texture, rows, columns),
             new DungenPyramidBlock(texture, rows, columns),
-            new DungenFishBlock(texture, rows, columns)
+            new DungenFishBlock(texture, rows, columns),
+            new DungenDragonBlock(texture, rows, columns)
         };
             currentBlock = blockStates[currentIndex]; // default block
 

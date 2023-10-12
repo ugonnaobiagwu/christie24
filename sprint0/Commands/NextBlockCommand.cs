@@ -10,19 +10,19 @@ namespace sprint0.Commands
     public class NextBlockCommand : ICommand
     {
         Sprint0 Game;
-        //Block Bl;
+        IBlock Bl;
 
-        public NextBlockCommand(Sprint0 game) //(Block block)
+        public NextBlockCommand(Sprint0 game,IBlock block) //(Block block)
         {
             this.Game = game;
-            //this.Bl = block;
+            this.Bl = block;
 //            throw new NotImplementedException();
         }
 
         public void execute()
         {
-            //Bl.NextBlock();
-            throw new NotImplementedException();
+            Bl.NextBlock();
+            //throw new NotImplementedException();
         }
    }
 }
