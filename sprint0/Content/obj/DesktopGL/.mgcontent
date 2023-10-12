@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Madoka/source/repos/ugonnaobiagwu/christie24/sprint0/Content/../../../../../../Documents/college/Project_3902/zelda/edited_block.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowDown.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowLeft.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowRight.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowUp.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBlaze.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBombExplode.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangComing.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangGoing.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowDown.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowLeft.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowUp.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/weaponProjectileHit.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/File.spritefont</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBigHeart.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBlaze.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBomb.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBoomerang.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBow.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundClock.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundCompass.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundFairy.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundHeart.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundKey.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundPage.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundRupee.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundShimmeringRupee.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/Link.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/luigiSpriteSheet.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>edited_block.png</File>
+    <File xsi:nil="true" />
+    <File>Font.spritefont</File>
+  </DestFiles>
+</SourceFileCollection>

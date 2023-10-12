@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿/*using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
@@ -22,3 +22,4 @@ public class KeyboardController : IController
 		}
 	}
 }
+*/
