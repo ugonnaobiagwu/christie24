@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0.Block
+namespace sprint0.Blocks
 {
 
     public interface IBlock

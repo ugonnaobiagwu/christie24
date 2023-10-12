@@ -4,7 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using sprint0.Commands;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
-using sprint0.Block;
+using sprint0.Blocks;
+
 
 namespace sprint0
 {
@@ -26,9 +27,10 @@ namespace sprint0
         public int xLoc = 400;
         public int yLoc = 200;
         Texture2D texture;
+        Texture2D textureBlock;
 
         //Block
-        IBlock block;
+        public IBlock block;
         public IGroundItemSystem groundItems;
         
         //Concrete Commands
@@ -43,8 +45,8 @@ namespace sprint0
         //DamagedCommand LinkDamaged;
         //EquipItem1Command LinkEquipItem1;
         //EquipItem2Command LinkEquipItem2;
-        //PreviousBlockCommand PreviousBlock;
-        //NextBlockCommand NextBlock;
+        PreviousBlockCommand PreviousBlock;
+        NextBlockCommand NextBlock;
         PreviousItemCommand PreviousItem;
         NextItemCommand NextItem;
         //PreviousEnemyCommand PreviousEnemy;
@@ -71,23 +73,29 @@ namespace sprint0
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
             texture = Content.Load<Texture2D>("luigiSpriteSheet");
-           
+
+            //Block 
+            textureBlock = Content.Load<Texture2D>("edited_block");
+            block = new Block(textureBlock, 1, 3);
+            //keyboardController = new KeyboardController(this);
+            //NextBlockCommand NextBlock = new NextBlockCommand(this, block);
+
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
-           
+
             //KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
 
-            
+
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Creates Link's default state
-            FacingUpLink = new FacingUpLinkState(texture, 7, 14);
-            FacingDownLink = new FacingDownLinkState(texture, 7, 14);
+            //FacingUpLink = new FacingUpLinkState(texture, 7, 14);
+           /* FacingDownLink = new FacingDownLinkState(texture, 7, 14);
             FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
             FacingRightLink = new FacingRightLinkState(texture, 7, 14);
             AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
             AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
             AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
             AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
-
+*/
             //BAD CODE POTENTIAL: This can probably be shunted to a class function
             //These keys successfully bind to something, as there is no error message when pressed
             //KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
@@ -105,9 +113,6 @@ namespace sprint0
 
             TextBox = new TextSprite(font);
 
-            //Block 
-            Texture2D textBlock = Content.Load<Texture2D>("edited_block");
-            block = new Block(spriteBatch,1,3);
 
             //GROUND ITEM SYSTEM STUFF
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
@@ -150,18 +155,18 @@ namespace sprint0
             // TODO: Add your update logic here
            
             KeyboardCont.Update();
+            block.Update();
 
-            
             groundItems.Update();
             //Additional Update() added for testing
-            FacingUpLink.Update();
+            /*FacingUpLink.Update();
             FacingDownLink.Update();
             FacingLeftLink.Update();
             FacingRightLink.Update();
             AttackingUpLink.Update();
             AttackingDownLink.Update();
             AttackingRightLink.Update();
-            AttackingLeftLink.Update();
+            AttackingLeftLink.Update();*/
 
             base.Update(gameTime);
             
@@ -174,7 +179,7 @@ namespace sprint0
 
             /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
             //Draws Luigi
-            FacingUpLink.Draw(spriteBatch,0,100);
+           /* FacingUpLink.Draw(spriteBatch,0,100);
             FacingDownLink.Draw(spriteBatch, 50, 100);
             FacingLeftLink.Draw(spriteBatch, 100, 100);
             FacingRightLink.Draw(spriteBatch, 150, 100);
@@ -182,9 +187,9 @@ namespace sprint0
             AttackingDownLink.Draw(spriteBatch, 250, 100);
             AttackingLeftLink.Draw(spriteBatch, 300, 100);
             AttackingRightLink.Draw(spriteBatch, 350, 100);
-
+*/
             //Block Draw
-            block.Draw(spriteBatch,200,100);
+            block.Draw(spriteBatch,300,200);
 
             //Draws the Textbox
             TextBox.Draw(spriteBatch, 100, 300);
