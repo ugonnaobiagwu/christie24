@@ -18,18 +18,18 @@ namespace sprint0.Link
         {
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
-
             private int XVal { get; set; }
             private int YVal { get; set; }
 
-            private enum Direction { Left, Right, Up, Down };
+            private enum Direction { Left, Right, Up, Down};
+            public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
-
-            SpriteBatch SpriteBatch;
+            State LinkState = State.Default;
             /*This is needed in order to pass to the decorators and resent Link; There must be a better way.*/
-            /*NOTE: MAY GET DELETED*/
-            Sprint0 GameObj;
-
+            private Sprint0 GameObj;
+            ILink LinkObj;
+            SpriteBatch SpriteBatch;
+            
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
             public Link(SpriteBatch spriteBatch, Sprint0 game)
             {
@@ -37,21 +37,17 @@ namespace sprint0.Link
                 HealthVal = 10;
                 LinkSpriteFactory = new LinkFactory();
                 SpriteBatch = spriteBatch;
+                GameObj = game;
+                LinkObj = this;
             }
 
-            public void LinkAttack()
-            {
-                /*This may need altered to fit sprite animation length*/
-                LinkSpriteFactory.attack();
-
-                LinkSpriteFactory.walk();
-            }
-
+            /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
             public void LinkUseItem()
             {
                 /*This may need altered to fit sprite animation length*/
-                LinkSpriteFactory.useItem();
-                LinkSpriteFactory.walk();
+                LinkObj.SetState("UseItem");
+                LinkObj = new ItemUseLink(LinkSpriteFactory, SpriteBatch, this);
+
             }
 
 
@@ -61,6 +57,7 @@ namespace sprint0.Link
 
                 if (LinkDirection != Direction.Up)
                 {
+                    LinkDirection = Direction.Up;
                     LinkSpriteFactory.changeDirection("up");
                 }
                 YVal++;
@@ -71,6 +68,7 @@ namespace sprint0.Link
             {
                 if (LinkDirection != Direction.Down)
                 {
+                    LinkDirection = Direction.Down;
                     LinkSpriteFactory.changeDirection("down");
                 }
                 YVal--;
@@ -81,6 +79,7 @@ namespace sprint0.Link
             {
                 if (LinkDirection != Direction.Right)
                 {
+                    LinkDirection = Direction.Right;
                     LinkSpriteFactory.changeDirection("right");
                 }
                 XVal++;
@@ -91,17 +90,18 @@ namespace sprint0.Link
             {
                 if (LinkDirection != Direction.Left)
                 {
+                    LinkDirection = Direction.Left;
                     LinkSpriteFactory.changeDirection("left");
                 }
                 XVal--;
                 LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
-            public void LinkGetDamage()
+            public void LinkTakeDamage()
             {
                 HealthVal--;
                 /*Will need to add a way to make link invulnerable */
-            
+                LinkObj = new DamagedLink(LinkSpriteFactory, this, SpriteBatch);
             }
 
             public void Update()
@@ -140,14 +140,40 @@ namespace sprint0.Link
                         break;
                 }
                 return direction;
+            }
+            public String GetState()
+            {
+                String state = "";
+                switch(LinkState)
+                {
+                    case State.UseItem:
+                        state = "UseItem";
+                        break;
+                    case State.Default:
+                        state = "Default";
+                        break;
+                }
+                return state;
+            }
+            public void SetState(String newState)
+            {
+                switch(newState)
+                {
+                    case "UseItem":
+                        LinkState = State.UseItem;
+                        break;
+                    case "Default":
+                        LinkState = State.Default;
+                    break;
+                }
+            }
+            /*Needed to reset link after decorator finishes*/
+            public void SetLink(ILink link)
+            {
+                LinkObj = link;
+            }
+            
         }
-        /*Needed to reset link after decorator finishes*/
-        public void SetLink(ILink link)
-        {
-            this = link;
-
-        }
-    }
         
 
 }
