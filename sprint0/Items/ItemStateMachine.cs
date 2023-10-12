@@ -1,10 +1,10 @@
 ﻿using System;
 namespace sprint0.Items
 {
-	public class BowStateMachine : IItemStateMachine
+	public class ItemStateMachine : IItemStateMachine
 	{
         private bool inUse;
-        public BowStateMachine()
+        public ItemStateMachine()
 		{
             inUse = false;
 		}
@@ -22,15 +22,12 @@ namespace sprint0.Items
             return inUse;
         }
 
-        public void isEquipped()
-        {
-            throw new NotImplementedException();
-        }
-
         public void CeaseUse()
         {
             inUse = false;
         }
+
+        
     }
 }
 

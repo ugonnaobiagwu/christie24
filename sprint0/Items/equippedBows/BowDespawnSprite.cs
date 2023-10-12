@@ -6,29 +6,22 @@ namespace sprint0.Items
 {
 	public class BowDespawnSprite : ISprite, IItemSprite
 	{
-        private bool animationCycleFinished = false;
+        private bool animationCycleFinished;
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
         private int CurrentFrame;
         private int TotalFrames;
+        private int FrameDisplay;
         public BowDespawnSprite(Texture2D texture, int rows, int columns)
 		{
             Texture = texture;
             Rows = rows;
             Columns = columns;
             CurrentFrame = 0;
-            TotalFrames = 1;
-        }
-
-        public int currentItemXPos()
-        {
-            return -1;
-        }
-
-        public int currentItemYPos()
-        {
-            return -1;
+            FrameDisplay = 0;
+            TotalFrames = 10;
+            animationCycleFinished = false;
         }
 
         public bool finishedAnimationCycle()
@@ -36,31 +29,32 @@ namespace sprint0.Items
             return animationCycleFinished;
         }
 
+        public void Update()
+        {
+            FrameDisplay++;
+            if (FrameDisplay >= TotalFrames)
+            {
+                animationCycleFinished = true;
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             /*Figures out where the sprite we want is*/
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
-            int xLoc = 1;
-            int yLoc = 0;
-
-            Rectangle sheetLocation = new Rectangle(width * xLoc, height * yLoc, width, height);
+            int row = CurrentFrame / Columns;
+            int column = CurrentFrame % Columns;
+            Rectangle sheetLocation = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
 
             /*POTENTIAL BAD CODE: Dr. Kirby mentioned that Begin() and End() before and after each draw is sketchy*/
-            spriteBatch.Begin();
+           
             spriteBatch.Draw(Texture, destinationRectangle, sheetLocation, Color.White);
-            spriteBatch.End();
+           
         }
 
-        public void Update()
-        {
-            CurrentFrame++;
-            if (CurrentFrame == TotalFrames)
-            {
-                this.animationCycleFinished = true;
-            }
-        }
+        
     }
 }
 

@@ -5,46 +5,42 @@ using sprint0.Items;
 
 namespace sprint0
 {
-    public class DownBowSprite : ISprite, IItemSprite
+    public class ExplosionSprite : ISprite, IItemSprite
     {
         private Texture2D Texture;
         private int Rows;
         private int Columns;
-        private int CurrentFrame = 0;
-        private int SpriteXPos;
-        private int SpriteYPos;
-        private int spriteVelocity = 1;
+        private int CurrentFrame;
+        private int TotalFrames;
+        private bool animationCycleFinished;
 
-        public DownBowSprite(Texture2D texture, int rows, int columns)
+        public ExplosionSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
-
-        }
-
-        public int currentItemXPos()
-        {
-            return SpriteXPos;
-        }
-
-        public int currentItemYPos()
-        {
-            return SpriteYPos;
+            CurrentFrame = 0;
+            TotalFrames = 2;
+            animationCycleFinished = false;
         }
 
         public bool finishedAnimationCycle()
         {
-            return false; // infinite cycle / no cycle .
+            return animationCycleFinished; 
         }
 
 
         public void Update()
         {
-            SpriteYPos-= spriteVelocity;  
+            
+            if (CurrentFrame == TotalFrames)
+            {
+                animationCycleFinished = true;
+            } else
+            {
+                CurrentFrame++;
+            }
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
@@ -53,10 +49,8 @@ namespace sprint0
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle incomingSprite = new Rectangle(width * column, height * row, width, height);
-            Rectangle drawnSprite = new Rectangle(SpriteXPos, y + SpriteYPos, width, height);
-            spriteBatch.Begin();
+            Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
-            spriteBatch.End();
         }
     }
 }

@@ -15,13 +15,14 @@ namespace sprint0
 		public void LoadBetterBoomerang(IList<Texture2D> itemSpriteSheet);
 		public void LoadBlaze(IList<Texture2D> itemSpriteSheet);
 		public void LoadBomb(IList<Texture2D> itemSpriteSheet);
-		public void EquipBow();
+		public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
+        public void EquipBow();
 		public void EquipBetterBow();
 		public void EquipBoomerang();
 		public void EquipBetterBoomerang();
 		public void EquipBlaze();
 		public void EquipBomb();
-		public void UseCurrentItem();
+		public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos); // send in link's data as the parameters. enumerations are built upon ints.
 		public void Draw(); // draws the current item in link's equipment
         public void Update(); // updates the current item in link's equipment
 
