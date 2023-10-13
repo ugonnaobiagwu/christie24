@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using sprint0.Commands;
+using sprint0.Block;
+using sprint0.Items;
 using sprint0;
 
 namespace sprint0.Controllers

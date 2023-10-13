@@ -3,11 +3,13 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using sprint0.Commands;
+using sprint0.Block;
+using sprint0.Items;
 using sprint0;
 
 namespace sprint0.Controllers
 {
-        public class KeyboardController : IController
+    public class KeyboardController : IController
     {
         //Instantiaze commands
         private ICommand linkWalkingUp;
@@ -27,20 +29,19 @@ namespace sprint0.Controllers
         private ICommand nextEnemy;
         private ICommand quit;
         private ICommand reset;
-
+        
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
         // to store the previous keyboard state
         private List<Keys> previousKeys;
         private List<Keys> pressed;
-
-    
+         
         public KeyboardController(sprint0.Sprint0 Game)
 	    {
-		    KeyMap = new Dictionary<Keys, ICommand>();
+            KeyMap = new Dictionary<Keys, ICommand>();
             previousKeys = new List<Keys>();
-
-            // not sure if I should put this in here or registerkeys
+            
+            //not sure if I should put this in here or registerkeys
             linkWalkingUp = new WalkUpCommand(Game);
             linkWalkingLeft = new WalkLeftCommand(Game);
             linkWalkingDown = new WalkDownCommand(Game);
@@ -58,19 +59,16 @@ namespace sprint0.Controllers
             nextEnemy = new NextEnemyCommand(Game);
             quit = new QuitCommand(Game);
             reset = new ResetCommand(Game);
-
         }
-
-    
 
 
         // used to register keys with their respective commands
         // perhaps pass an array that has all the commands?
         public void registerKeys()
-	    {
-		    // KeyMap[key] = command;
+        {
+            // KeyMap[key] = command;
             // Names of Commands are not permanent
-
+            
             // Movement Controls
             // link moves up for up arrow key, and w key
             KeyMap.Add(Keys.W, linkWalkingUp);
@@ -84,7 +82,7 @@ namespace sprint0.Controllers
             // link moves right for right arrow key, and d key
             KeyMap.Add(Keys.D, linkWalkingRight);
             KeyMap.Add(Keys.Right, linkWalkingRight);
-
+            
             // other commands
             KeyMap.Add(Keys.N, linkAttack1);
             KeyMap.Add(Keys.Z, linkAttack2);
@@ -99,19 +97,18 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
             KeyMap.Add(Keys.R, reset);
-
         }
 
 	    // executes commands for each key pressed
         public void Update()
-	    {
+        {
             // testing purposes
             //Keys[] Pressed = Keyboard.GetState().GetPressedKeys();
             //foreach (Keys key in Pressed)
             //{
             //    KeyMap[key].execute();
             //}
-
+            
             // EDGE TRANSITIONS
             // If a key is in pressed but not in previousKeys
             // it means it was just pressed, so we execute.
@@ -120,7 +117,7 @@ namespace sprint0.Controllers
             // we then execute the 'last' pressed key
             pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
             Keys lastPressed = Keys.None;
-
+            
             // press transitions
             foreach (Keys key in pressed)
             {
@@ -135,22 +132,22 @@ namespace sprint0.Controllers
                     break;
                 }
             }
-            // release transititions
-            foreach (Keys key in previousKeys)
-            {
-                // removes previously pressed and executed keys
-                if (!pressed.Contains(key))
-                {
-                    previousKeys.Remove(key);
-                }
-            }
-
-            // executes the last command 
-            if(lastPressed != Keys.None)
-            {
-                KeyMap[lastPressed].execute();
-            }
-
+            //// release transititions
+            //foreach (Keys key in previousKeys)
+            //{
+            //    // removes previously pressed and executed keys
+            //    if (!pressed.Contains(key))
+            //    {
+            //        previousKeys.Remove(key);
+            //    }
+            //}
+            
+            //// executes the last command 
+            //if(lastPressed != Keys.None)
+            //{
+            //    KeyMap[lastPressed].execute();
+            //}
+            
             // save current keys into previous keys
             previousKeys = new List<Keys>(pressed);
         }
