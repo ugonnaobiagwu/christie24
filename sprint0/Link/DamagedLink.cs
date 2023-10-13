@@ -100,7 +100,7 @@ namespace sprint0.Link
             {
                 /*The case where Link's model is not shown*/
                 /*THIS DOES NOT EXIST IN THE SPRITE FACTOEY YET*/
-                LinkFactory.damage();
+                //LinkFactory.damage();
                 LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
             }
             else
@@ -113,13 +113,13 @@ namespace sprint0.Link
                 }
                 else if (LinkObj.GetState().Equals("UseItem")) 
                 {
-                    LinkFactory.useItem();
+                    //LinkFactory.useItem();
                     LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
                 }
                 else
                 { 
                     /*Default State*/
-                    LinkFactory.walk();
+                    //LinkFactory.walk();
                     LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
                 }
                     

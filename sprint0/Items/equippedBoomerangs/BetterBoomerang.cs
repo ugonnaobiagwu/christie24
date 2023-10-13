@@ -111,7 +111,7 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new BoomerangSprite(goingTexture, 1, 3);
+                this.currentItemSprite = new BoomerangSprite(comingTexture, 1, 3);
                 this.spriteChanged = true;
             }
         }
@@ -137,7 +137,7 @@ namespace sprint0.Items
                 this.itemMaxY = linkYPos + 200;
                 this.itemMinX = linkXPos - 200;
                 this.itemMinY = linkYPos - 200;
-                currentItemSprite = new BoomerangSprite(comingTexture, 1, 3);
+                currentItemSprite = new BoomerangSprite(goingTexture, 1, 3);
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).

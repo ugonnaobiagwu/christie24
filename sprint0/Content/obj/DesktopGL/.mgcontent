@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Madoka/source/repos/ugonnaobiagwu/christie24/sprint0/Content/../../../../../../Documents/college/Project_3902/zelda/edited_block.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/block_image.png</File>
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowDown.png</File>
@@ -39,8 +39,38 @@
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/luigiSpriteSheet.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>edited_block.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

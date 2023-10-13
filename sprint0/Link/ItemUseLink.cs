@@ -75,7 +75,7 @@ namespace sprint0.Link
             }
             else
             {   if(!LinkObj.GetState().Equals("UseItem"))
-                    LinkFactory.useItem();
+                    //LinkFactory.useItem();
                 LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
             }
             LinkObj.Update();
