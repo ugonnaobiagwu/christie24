@@ -172,15 +172,12 @@ namespace sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             //Block Draw
             spriteBatch.Begin();
             block.Draw(spriteBatch,300,200);
-            
             groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();
         }
-
     }
 }
