@@ -17,13 +17,13 @@ namespace sprint0.Commands
         {
             this.Game = game;
             //this.Item = item;
-            throw new NotImplementedException();
+            
         }
 
         public void execute()
         {
             //Item.EquipBow();
-            throw new NotImplementedException();
+          
         }
     }
 }
