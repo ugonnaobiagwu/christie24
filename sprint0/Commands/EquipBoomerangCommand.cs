@@ -7,21 +7,21 @@ using sprint0;
 
 namespace sprint0.Commands
 {
-    public class NextEnemyCommand : ICommand
+    public class EquipBoomerangCommand : ICommand
     {
         Sprint0 Game;
-        //Enemy Monster;
+        //ItemSystem Item;
 
-        public NextEnemyCommand(Sprint0 game) //(Enemy monster)
+        public EquipBoomerangCommand(Sprint0 game) //(ItemSystem item)
         {
             this.Game = game;
-            //this.Monster = monster;
+            //this.Item = item;
             throw new NotImplementedException();
         }
 
         public void execute()
         {
-            //Monster.NextEnemy();
+            //Item.EquipBoomerang();
             throw new NotImplementedException();
         }
     }
