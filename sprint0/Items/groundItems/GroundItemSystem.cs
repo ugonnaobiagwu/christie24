@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.Items.groundItems
 
-    // this code REEKS. i know.
+// this code REEKS. i know.
 {
-	public class GroundItemSystem : IGroundItemSystem
-	{
+    public class GroundItemSystem : IGroundItemSystem
+    {
         private IList<ISprite> theseGroundItems;
         private int currentGroundItemIndex;
         private ISprite blaze;
@@ -29,8 +29,8 @@ namespace sprint0.Items.groundItems
         private int xPos;
         private int yPos;
 
-		public GroundItemSystem(SpriteBatch spritebatch, int xPos, int yPos)
-		{
+        public GroundItemSystem(SpriteBatch spritebatch, int xPos, int yPos)
+        {
             theseGroundItems = new List<ISprite>();
             this.spriteBatch = spritebatch;
             this.xPos = xPos;
@@ -91,7 +91,7 @@ namespace sprint0.Items.groundItems
             this.displayedSprite = this.bigHeart;
             this.theseGroundItems.Add(this.bigHeart);
         }
-        
+
         public void LoadCompass(Texture2D itemSpriteSheet)
         {
             this.compass = new GroundNonAnimatedSprite(itemSpriteSheet, 1, 1);
@@ -176,4 +176,3 @@ namespace sprint0.Items.groundItems
         }
     }
 }
-

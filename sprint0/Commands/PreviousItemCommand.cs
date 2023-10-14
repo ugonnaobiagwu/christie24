@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0;
+using sprint0.Items.groundItems;
 
 namespace sprint0.Commands
 {
     public class PreviousItemCommand : ICommand
     {
         Sprint0 Game;
-        //Item Weapon;
+        IGroundItemSystem Weapon;
 
-        public PreviousItemCommand(Sprint0 game) //(Item weapon)
+        public PreviousItemCommand(Sprint0 game, IGroundItemSystem weapon)
         {
             this.Game = game;
-            //this.Weapon = weapon;
-            throw new NotImplementedException();
+            this.Weapon = weapon;
         }
 
         public void execute()
         {
-            //Weapon.PreviousItem();
-            throw new NotImplementedException();
+            Weapon.PreviousItem();
         }
     }
 }

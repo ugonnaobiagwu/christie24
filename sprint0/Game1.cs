@@ -1,8 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0.Commands;
 using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
+using sprint0.Controllers;
+using sprint0.Blocks;
+using sprint0.Link;
+using System.Collections.Generic;
+//using sprint0.Link;
+
 
 namespace sprint0
 {
@@ -11,82 +18,48 @@ namespace sprint0
         
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        //ATTENTION: Additional Sprites added for demonstration
-        public ISprite FacingUpLink;
-        public ISprite FacingDownLink;
-        public ISprite FacingLeftLink;
-        public ISprite FacingRightLink;
-        public ISprite AttackingUpLink;
-        public ISprite AttackingDownLink;
-        public ISprite AttackingLeftLink;
-        public ISprite AttackingRightLink;
+        //public ILink Link;
+        Texture2D textureBlock;
 
-        public int xLoc = 400;
-        public int yLoc = 200;
-        Texture2D texture;
-        IGroundItemSystem groundItems;
-       
-        
-        //Concrete Commands
+        //Block
+        public IBlock block;
+        public IGroundItemSystem groundItems;
+        public IItemSystem linkItemSystem;
       
-        IController KeyboardCont;
-       
+        KeyboardController KeyboardCont;
 
-        //Textbox variables
-        public SpriteFont font;
-        ISprite TextBox;
         public Sprint0()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            KeyboardCont = new KeyboardController();
-            
-            
         }
 
         protected override void Initialize()
         {
-          
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            texture = Content.Load<Texture2D>("luigiSpriteSheet");
-           
+         
+            //Block 
+            textureBlock = Content.Load<Texture2D>("block_image");
+            block = new Block(textureBlock, 3, 4);
+
+            // Linky
+            //Link = new Link()
+            //Link's Item System
+            linkItemSystem = new ItemSystem();
+            linkItemSystem.LoadSpriteBatch(spriteBatch);
+
+            //Items on the Ground
+            groundItems = new GroundItemSystem(spriteBatch, 200, 200);
+
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
-           
-            KeyboardCont.registerKey(Keys.D0, new QuitCommand(this));
-
-            
-            /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
-            //Creates Link's default state
-            FacingUpLink = new FacingUpLinkState(texture, 7, 14);
-            FacingDownLink = new FacingDownLinkState(texture, 7, 14);
-            FacingLeftLink = new FacingLeftLinkState(texture, 7, 14);
-            FacingRightLink = new FacingRightLinkState(texture, 7, 14);
-            AttackingUpLink = new AttackUpLinkState(texture, 7, 14);
-            AttackingDownLink = new AttackDownLinkState(texture, 7, 14);
-            AttackingRightLink = new AttackRightLinkState(texture, 7, 14);
-            AttackingLeftLink = new  AttackLeftLinkState(texture, 7, 14);
-
-            //BAD CODE POTENTIAL: This can probably be shunted to a class function
-            //These keys successfully bind to something, as there is no error message when pressed
-            KeyboardCont.registerKey(Keys.D1, new FixedSingleCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D2, new FixedAnimatedCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D3, new UpAndDownCommand(this, texture));
-            KeyboardCont.registerKey(Keys.D4, new MovingAnimatedCommand(this, texture));
             base.Initialize();
         }
       
         protected override void LoadContent()
         {
-            //Iniitializes the textbox
-            //POSSIBLE BAD CODE: Not sure if these should be in here or Initialize
-            font = Content.Load<SpriteFont>("Font");
-
-            TextBox = new TextSprite(font);
-
             //GROUND ITEM SYSTEM STUFF
-            groundItems = new GroundItemSystem(spriteBatch, 200, 200);
             Texture2D groundBow = Content.Load<Texture2D>("groundItemSprites/groundBow");
             Texture2D groundBoomerang = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
             Texture2D groundBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
@@ -115,7 +88,71 @@ namespace sprint0
             groundItems.LoadBigHeart(groundBigHeart);
             groundItems.LoadCompass(groundCompass);
             groundItems.LoadClock(groundClock);
+
+            //LINK'S ITEM SYSTEM STUFF
+
+            //Bow
+            IList<Texture2D> bowSprites = new List<Texture2D>();
+            Texture2D leftBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowLeft");
+            Texture2D rightBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowRight");
+            Texture2D downBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowDown");
+            Texture2D upBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowUp");
+            Texture2D bowDespawnSprite = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
+            bowSprites.Add(leftBow);
+            bowSprites.Add(rightBow);
+            bowSprites.Add(downBow);
+            bowSprites.Add(upBow);
+            bowSprites.Add(bowDespawnSprite);
+            linkItemSystem.LoadBow(bowSprites);
+
+            //BetterBow
+            IList<Texture2D> betterBowSprites = new List<Texture2D>();
+            Texture2D leftBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowLeft");
+            Texture2D rightBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowRight");
+            Texture2D downBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowDown");
+            Texture2D upBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowUp");
+            betterBowSprites.Add(leftBetterBow);
+            betterBowSprites.Add(rightBetterBow);
+            betterBowSprites.Add(downBetterBow);
+            betterBowSprites.Add(upBetterBow);
+            betterBowSprites.Add(bowDespawnSprite);
+            linkItemSystem.LoadBetterBow(betterBowSprites);
+
+            //Boomerang
+            IList<Texture2D> boomerangSprites = new List<Texture2D>();
+            Texture2D boomerangGoing = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerangGoing");
+            Texture2D boomerangComing = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerangComing");
+            boomerangSprites.Add(boomerangGoing);
+            boomerangSprites.Add(boomerangComing);
+            linkItemSystem.LoadBoomerang(boomerangSprites);
+
+            //Boomerang
+            IList<Texture2D> betterBoomerangSprites = new List<Texture2D>();
+            Texture2D betterBoomerangGoing = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerangGoing");
+            Texture2D betterBoomerangComing = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerangComing");
+            betterBoomerangSprites.Add(betterBoomerangGoing);
+            betterBoomerangSprites.Add(betterBoomerangComing);
+            linkItemSystem.LoadBetterBoomerang(betterBoomerangSprites);
+
+            //Blaze
+            IList<Texture2D> blazeSprites = new List<Texture2D>();
+            Texture2D blazeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBlaze");
+            blazeSprites.Add(blazeSprite);
+            linkItemSystem.LoadBlaze(blazeSprites);
+
+            //Bomb
+            IList<Texture2D> bombSprites = new List<Texture2D>();
+            Texture2D bombExplodeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
+            bombSprites.Add(groundBomb);
+            bombSprites.Add(bombExplodeSprite);
+            linkItemSystem.LoadBlaze(bombSprites);
+
             // TODO: use this.Content to load your game content here
+
+            KeyboardCont = new KeyboardController(this);
+
+            //Register keys with this.
+            KeyboardCont.registerKeys();
         }
 
         protected override void Update(GameTime gameTime)
@@ -126,19 +163,8 @@ namespace sprint0
             // TODO: Add your update logic here
            
             KeyboardCont.Update();
-
-            
             groundItems.Update();
-            //Additional Update() added for testing
-            FacingUpLink.Update();
-            FacingDownLink.Update();
-            FacingLeftLink.Update();
-            FacingRightLink.Update();
-            AttackingUpLink.Update();
-            AttackingDownLink.Update();
-            AttackingRightLink.Update();
-            AttackingLeftLink.Update();
-
+            //Link.Update();
             base.Update(gameTime);
             
         }
@@ -147,28 +173,14 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-
-            /*MULTIPLE SPRITES FOR DEMONSTRATION - TO BE REMOVED*/
-            //Draws Luigi
-            FacingUpLink.Draw(spriteBatch,0,100);
-            FacingDownLink.Draw(spriteBatch, 50, 100);
-            FacingLeftLink.Draw(spriteBatch, 100, 100);
-            FacingRightLink.Draw(spriteBatch, 150, 100);
-            AttackingUpLink.Draw(spriteBatch, 200, 100);
-            AttackingDownLink.Draw(spriteBatch, 250, 100);
-            AttackingLeftLink.Draw(spriteBatch, 300, 100);
-            AttackingRightLink.Draw(spriteBatch, 350, 100);
-
-            //Draws the Textbox
-            TextBox.Draw(spriteBatch, 100, 300);
+            //Block Draw
+            spriteBatch.Begin();
+            block.Draw(spriteBatch,300,200);
+            
             groundItems.Draw();
             base.Draw(gameTime);
+            spriteBatch.End();
         }
 
-        public void SetSprite(ISprite NewSpriteType)
-        {
-            FacingLeftLink = NewSpriteType;
-            
-        }
     }
 }
