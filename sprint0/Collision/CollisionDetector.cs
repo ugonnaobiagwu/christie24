@@ -18,13 +18,18 @@ namespace sprint0.Collision
     public static class CollisionDetector
 	{
 		public enum CollisionType { TOP, BOTTOM, LEFT, RIGHT, NONE };
-		// Do we need this enum in every Collision Class?
+        // Do we need this enum in every Collision Class?
 
-		/*
+        /*
 		 * Returns the type of collision that occured on Rectangle b from 
 		 * Rectangle a, if any.
+		 * 
+		 * DESIGN DETAILS FOR FUTUTE ME WHO HAS YET TO IMPLEMENT:
+		 * -----
+		 * Using the area / location of both gameObjects, build a rectangle
+		 * that can be used to call the respective intersection methids needed.
 		 */
-		public static CollisionType CollisionCheck(IGameObject a, IGameObject b)
+        public static CollisionType CollisionCheck(IGameObject a, IGameObject b)
 		{
 			return 0;
 		}
@@ -59,6 +64,15 @@ namespace sprint0.Collision
 		{
 			return false;
 		}
+
+        /*
+		 * Private method used to construct a rectangle based on an object's
+		 * data.
+		 */
+        private static Rectangle ConstructObjectRectangle(int objXPos, int objYPos, int objWidth, int objHeight)
+        {
+            return Rectangle.Empty;
+        }
 
     }
 }

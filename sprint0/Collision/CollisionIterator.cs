@@ -34,7 +34,7 @@ namespace sprint0.Collision
 
         public static void Search(IList<IGameObject> collidables, int screenWidth, int screenHeight)
         {
-            
+			BranchOrIterate(collidables, 0, screenWidth, 0, screenHeight);
         }
 
         private static void BranchOrIterate(IList<IGameObject> collidablesInQuadrant,
@@ -103,22 +103,22 @@ namespace sprint0.Collision
             IList<IGameObject> q4 = new List<IGameObject>();
             foreach (IGameObject obj in collidablesInQuadrant)
             {
-                if (obj.xPosition <= xQuadrantHalfBound && obj.yPosition <= yQuadrantHalfBound)
+                if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
                 {
                     q1.Add(obj);
 					CollisionIterator.BranchOrIterate(q1, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantMinBound, yQuadrantHalfBound);
                 }
-                else if (obj.xPosition > xQuadrantHalfBound && obj.yPosition <= yQuadrantHalfBound)
+                else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
                 {
                     q2.Add(obj);
                     CollisionIterator.BranchOrIterate(q2, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantMinBound, yQuadrantHalfBound);
                 }
-                else if (obj.xPosition <= xQuadrantHalfBound && obj.yPosition > yQuadrantHalfBound)
+                else if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
                 {
                     q3.Add(obj);
                     CollisionIterator.BranchOrIterate(q3, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantHalfBound, yQuadrantMaxBound);
                 }
-                else if (obj.xPosition > xQuadrantHalfBound && obj.yPosition > yQuadrantHalfBound)
+                else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
                 {
                     q4.Add(obj);
                     CollisionIterator.BranchOrIterate(q4, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantHalfBound, yQuadrantMaxBound);
