@@ -12,17 +12,15 @@ namespace sprint0.Commands
         Sprint0 Game;
         IBlock Bl;
 
-        public NextBlockCommand(Sprint0 game,IBlock block) //(Block block)
+        public NextBlockCommand(Sprint0 game, IBlock block)
         {
             this.Game = game;
             this.Bl = block;
-//            throw new NotImplementedException();
         }
 
         public void execute()
         {
             Bl.NextBlock();
-            //throw new NotImplementedException();
         }
    }
 }
