@@ -8,5 +8,4 @@ public interface IController
     public void registerKeys();
     public void Update();
 
-
 }
