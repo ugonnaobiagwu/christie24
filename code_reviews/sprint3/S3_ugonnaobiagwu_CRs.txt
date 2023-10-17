@@ -1,0 +1,50 @@
+[CODE QUALITY]
+Author of the code review: 
+UGONNA OBIAGWU
+
+Date of the code review
+October 17th, 2023.
+
+Sprint Number
+3
+
+Name of the .cs file(s) being reviewed
+sprint0/Level Loading + Parsers/XmlParser.cs
+
+Author of the .cs file being reviewed
+Ryan Greene
+
+Specific comments on code quality
+* Theres a lot of duplicated code in the ParseRoom method. Maybe figure out a way you can have the data drive individual nodeLists
+  so you can collpase the code into one small chunk of code for each different type of object? You could use delegates, and
+  the type system to achieve that
+* Alternatively, to help with the length of ParseRoom, perhaps just putting all of the if statements into their own methods may help?
+* Good use of the type system in ParseLink!
+* Overall, the code is easy to follow and makes sense from my POV, I'd just see if you can move out the code for each gameobject into a method to keep the amount of code down.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change
+* The only thing I could say here would maybe consider if the parser can survive a change of the organization of the XML / level file.
+
+[READABILITY]
+Author of the code review: 
+UGONNA OBIAGWU
+
+Date of the code review
+October 17th, 2023.
+
+Sprint number
+3
+
+Name of the .cs file(s) being reviewed
+sprint0/Commands/EquipBetterBoomerangCommand.cs
+
+Author of the .cs file being reviewed
+Alex Kim
+
+Number of minutes taken to complete the review
+5
+
+Specific comments on what is readable and what is not
+* As the person that created the Item System this is such a nitpick, but I'd rename the parameter to linkItemSystem or 
+something to avoid confusion between what is an item and what is the ItemSystem.
+* Other than that, the class is extremely easy to follow and looks beautiful. There is no unneccesary code anywhere.
