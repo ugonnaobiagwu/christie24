@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\sprint0"
+    "\\sprint0",
+    "\\sprint0\\Blocks",
+    "\\sprint0\\Controllers",
+    "\\sprint0\\Items",
+    "\\sprint0\\Items\\equippedBoomerangs",
+    "\\sprint0\\Items\\groundItems"
   ],
-  "SelectedNode": "\\sprint0\\Game1.cs",
+  "SelectedNode": "\\sprint0\\Items\\groundItems\\GroundNonAnimatedSprite.cs",
   "PreviewInSolutionExplorer": false
 }
