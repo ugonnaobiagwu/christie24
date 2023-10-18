@@ -9,11 +9,15 @@ namespace sprint0
 {
     public class Object : IGameObjects
     {
+        // UNFINISHED!!!
+
+
         // five lists, one for drawables, one for updateables, and one for removeables, objects in a room, and dynamics.
         private List<Object> drawables;
         private List<Object> updateables;
         private List<Object> removeables;
         private List<Object> dynamics;
+        Object obj;
 
         // makes a dictionary for the levels and objects
         // I will need to do something with this
