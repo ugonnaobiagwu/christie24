@@ -12,33 +12,33 @@ namespace sprint0.Link
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    
+    using System.Numerics;
+
     /* Need to make interface*/
-        public class Link : ILink
+    public class Link : ILink
         {
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
             private int XVal { get; set; }
             private int YVal { get; set; }
+            private int RoomId;        
 
             private enum Direction { Left, Right, Up, Down};
             public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
-            /*This is needed in order to pass to the decorators and resent Link; There must be a better way.*/
-            private Sprint0 GameObj;
             ILink LinkObj;
-            SpriteBatch SpriteBatch;
+            
             
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
-            public Link(SpriteBatch spriteBatch, Sprint0 game)
+            public Link(int x, int y, int roomId)
             {
                 /*This number is arbitrary*/
                 HealthVal = 10;
                 LinkSpriteFactory = new LinkFactory();
-                SpriteBatch = spriteBatch;
-                GameObj = game;
+                XVal = x; YVal = y;
                 LinkObj = this;
+                RoomId = roomId;
             }
 
             /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
@@ -166,6 +166,14 @@ namespace sprint0.Link
                         LinkState = State.Default;
                     break;
                 }
+            }
+            public void SetRoomID(int id)
+            {
+                RoomId = id;
+            }
+            public int GetRoomId() 
+            {
+                return RoomId;
             }
             /*Needed to reset link after decorator finishes*/
             public void SetLink(ILink link)

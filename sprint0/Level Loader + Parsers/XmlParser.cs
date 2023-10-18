@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text;
@@ -27,12 +28,12 @@ namespace sprint0.Level_Loading___Parsers
         /*Parses every item in the room*/
         private static void ParseRoom(XmlNode doc)
         {
+           
             /*Starts by getting the attribute, tests that it isn't null, and stores it to a variable if it isn't*/
             var RoomIDAttribute = doc.Attributes["id"];
-            if (RoomIDAttribute != null)
-            {
-                string roomID = RoomIDAttribute.Value;
-            }
+            string RoomIDStr = RoomIDAttribute.Value;
+            int RoomID = Int32.Parse(RoomIDStr);
+            
 
             /*Creates the new Xml Node Lists and calls each's parser recursively*/
             XmlNodeList EnemyNodeList = doc.SelectNodes("Enemy");
@@ -49,7 +50,7 @@ namespace sprint0.Level_Loading___Parsers
             {
                 foreach (XmlNode node in LinkNodeList)
                 {
-                    ParseLink(node);
+                    ParseLink(node, oomID);
                 }
             }
 
@@ -80,15 +81,17 @@ namespace sprint0.Level_Loading___Parsers
 
         }
 
-        private static void ParseLink(XmlNode doc)
+        private static void ParseLink(XmlNode doc, int roomId)
         {
             /*Creates the parameter for Link's constructor*/
             XmlNode XNode = doc.SelectSingleNode("x");
             XmlNode YNode = doc.SelectSingleNode("y");
-            Vector2 Location = new Vector2(float.Parse(XNode.InnerText), float.Parse(YNode.InnerText));
-
-            Type ObjType = typeof(sprint0.Link.Link);
-            ConstructorInfo const = Type.GetConstructor
+            /*NOTE: Vector2 is fighting me so this needs to be split into x and y*/
+            Vector2 Location = new Vector2(float.Parse(XNode.InnerText), float.Parse(YNode.InnerText));\
+            /*Gets Constructor Info for typeof() instantiation*/
+            XmlNode ConstrNode = doc.SelectSingleNode("ConstructorInfo");
+            string ConstrInfo = ConstrNode.InnerText;
+            LevelLoader.CreateLink(ConstrInfo,Location, roomId);
 
         }
     }
