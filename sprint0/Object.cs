@@ -68,6 +68,9 @@ namespace sprint0
         public void addToList(int room) {
             // get the list of objects for the given level
             List<Objects> objects = KeyMap[room];
+            // WORKING ON IT
+            objects.Add(this);
+            KeyMap[room] = objects;
 
             // check the type of the object and add it to the corresponding list
             if (this is IBlock)
