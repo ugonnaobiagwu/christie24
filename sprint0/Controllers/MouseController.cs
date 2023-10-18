@@ -9,9 +9,12 @@ namespace sprint0.Controllers
 {
     public class MouseController : IController
     {
+        // make the changing of rooms in GameObject Manager
+        // go through a list of rooms
+
         // this is what I would imagine them to be named as, not permanent
-        private ICommand previousLevel;
-        private ICommand nextLevel;
+        private ICommand previousRoom;
+        private ICommand nextRoom;
 
         public void registerKey(Keys key, ICommand command)
         {
@@ -36,13 +39,13 @@ namespace sprint0.Controllers
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                previousLevel.execute();
+                previousRoom.execute();
                 // if you left-click, changes to previous level
             }
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
                 // if you right-click, changes to next level
-                nextLevel.execute();
+                nextRoom.execute();
             }
 
         }
