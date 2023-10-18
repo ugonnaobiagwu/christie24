@@ -100,29 +100,13 @@ namespace sprint0.Controllers
 
         }
 
-
-       
-
-
-
-
-
         // executes commands for each key pressed
         public void Update()
         {
-            // testing purposes
-            //Keys[] Pressed = Keyboard.GetState().GetPressedKeys();
-            //foreach (Keys key in Pressed)
-            //{
-            //    KeyMap[key].execute();
-            //}
-
             // EDGE TRANSITIONS
             // If a key is in pressed but not in previousKeys
             // it means it was just pressed, so we execute.
             // If a key is in previousKeys but not in pressed
-            // it means it was just released, so we discard it
-            // we then execute the 'last' pressed key
             pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
             Keys lastPressed = Keys.None;
 
@@ -140,21 +124,6 @@ namespace sprint0.Controllers
                     break;
                 }
             }
-            //// release transititions
-            //foreach (Keys key in previousKeys)
-            //{
-            //    // removes previously pressed and executed keys
-            //    if (!pressed.Contains(key))
-            //    {
-            //        previousKeys.Remove(key);
-            //    }
-            //}
-
-            //// executes the last command 
-            //if (lastPressed != Keys.None)
-            //{
-            //    KeyMap[lastPressed].execute();
-            //}
 
             // save current keys into previous keys
             previousKeys = new List<Keys>(pressed);
