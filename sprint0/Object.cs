@@ -18,7 +18,7 @@ namespace sprint0
         private List<Object> removeables;
         private List<Object> dynamics;
 
-        // makes a dictionary for the levels and objects
+        // makes a dictionary for the rooms and objects
         // I will need to do something with this
         private Dictionary<int, List<Objects>> ObjectMap;
         private List<Object> room1;
