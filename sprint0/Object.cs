@@ -17,7 +17,6 @@ namespace sprint0
         private List<Object> updateables;
         private List<Object> removeables;
         private List<Object> dynamics;
-        Object obj;
 
         // makes a dictionary for the levels and objects
         // I will need to do something with this
@@ -66,34 +65,34 @@ namespace sprint0
 
         }
 
-        public void addToList(int level, Object obj) {
+        public void addToList(int room) {
             // get the list of objects for the given level
-            List<Objects> objects = KeyMap[level];
+            List<Objects> objects = KeyMap[room];
 
             // check the type of the object and add it to the corresponding list
-            if (obj is IBlock)
+            if (this is IBlock)
             {
-                drawables.Add(obj); // blocks are only drawable
+                drawables.Add(this); // blocks are only drawable
             }
-            else if (obj is IItem)
+            else if (this is IItem)
             {
-                drawables.Add(obj); // items are only drawable
-                dynamics.Add(obj); // items are also dynamic (can be picked up or used)
-                updateables.Add(obj); // items are updateable
-                removeables.Add(obj); // when you use it, it is removed
+                drawables.Add(this); // items are only drawable
+                dynamics.Add(this); // items are also dynamic (can be picked up or used)
+                updateables.Add(this); // items are updateable
+                removeables.Add(this); // when you use it, it is removed
             }
-            else if (obj is ILink)
+            else if (this is ILink)
             {
-                drawables.Add(obj); // link is drawable
-                updateables.Add(obj); // link is updateable (can move and interact)
-                dynamics.Add(obj); // link is dynamic (can be affected by collisions or commands)
+                drawables.Add(this); // link is drawable
+                updateables.Add(this); // link is updateable (can move and interact)
+                dynamics.Add(this); // link is dynamic (can be affected by collisions or commands)
             }
-            else if (obj is IEnemy)
+            else if (this is IEnemy)
             {
-                drawables.Add(obj); // enemies are drawable
-                updateables.Add(obj); // enemies are updateable (can move and attack)
-                dynamics.Add(obj); // enemies are dynamic (can be damaged or killed)
-                removeables.Add(obj); // enemies are removeable (can be removed from the game when killed)
+                drawables.Add(this); // enemies are drawable
+                updateables.Add(this); // enemies are updateable (can move and attack)
+                dynamics.Add(this); // enemies are dynamic (can be damaged or killed)
+                removeables.Add(this); // enemies are removeable (can be removed from the game when killed)
             }
         }
 
@@ -101,18 +100,14 @@ namespace sprint0
         public int xPosition()
         {
             // still working on it
-            int x = 0;
-
-            return x;
+            return this.xPosition;
         }
 
         // returns Y pos of object
         public int yPosition()
         {
             // still working on it
-            int y = 0;
-
-            return y;
+            return this.yPosition;
         }
 
         // (i.e.) "how big are you?"
