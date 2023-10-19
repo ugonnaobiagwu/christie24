@@ -38,6 +38,7 @@ namespace sprint0
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle incomingSprite = new Rectangle(width * column, height * row, width, height);
+            
             Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
         }

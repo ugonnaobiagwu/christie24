@@ -37,8 +37,8 @@ namespace sprint0.Collision
 				(a.xPosition(), a.yPosition(), a.width(), a.height());
             Rectangle bRect = CollisionDetector.ConstructObjectRectangle
 				(b.xPosition(), b.yPosition(), b.width(), b.height());
-			Rectangle cRect = CollisionIntersection(aRect, bRect); // collision rect
-			return CollisionDetector.CollisionLocation(aRect, bRect, cRect);
+            Rectangle cRect = Rectangle.Intersect(aRect, bRect); // collision rect
+            return CollisionDetector.CollisionLocation(aRect, bRect, cRect);
 		}
 
         /*
@@ -70,19 +70,6 @@ namespace sprint0.Collision
 				collisionType = LeftOrRightCollision(b, c);
             }
             return collisionType;
-		}
-
-        /*
-		 * Private method used to determine if two rectangles, representing 
-		 * game objects, intersect, and returns the intersection rectangle if so.
-		 * 
-		 * DESIGN DETAILS FOR FUTUTE ME WHO HAS YET TO IMPLEMENT:
-		 * -----
-		 * Reports whether or not two rectangles intersect
-		 */
-        private static Rectangle CollisionIntersection(Rectangle a, Rectangle b)
-		{
-			return Rectangle.Intersect(a, b);
 		}
 
         /*
