@@ -158,7 +158,6 @@ namespace sprint0
         protected override void Update(GameTime gameTime)
         {
             
-
             // TODO: Add your update logic here
            
             KeyboardCont.Update();

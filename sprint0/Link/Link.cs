@@ -22,24 +22,24 @@ namespace sprint0.Link
             private int HealthVal { get; set; }
             private int XVal { get; set; }
             private int YVal { get; set; }
-            private int RoomId;        
-
+            private int RoomId;
+            private Boolean IsDynamic;
             private enum Direction { Left, Right, Up, Down};
             public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
             ILink LinkObj;
             
-            
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
-            public Link(int x, int y, int roomId)
+            public Link(int x, int y, int roomId, SpriteFactory spriteFactory)
             {
                 /*This number is arbitrary*/
                 HealthVal = 10;
-                LinkSpriteFactory = new LinkFactory();
+                LinkSpriteFactory = spriteFactory;
                 XVal = x; YVal = y;
                 LinkObj = this;
                 RoomId = roomId;
+                IsDynamic = true;
             }
 
             /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
@@ -107,11 +107,11 @@ namespace sprint0.Link
                 LinkSpriteFactory.Update();
             }
 
-            public int GetXVal()
+            public int xPosition()
             {
                 return XVal;
             }
-            public int GetYVal()
+            public int yPosition()
             {
                 return YVal;
             }
@@ -178,10 +178,14 @@ namespace sprint0.Link
             {
                 LinkObj = link;
             }
+            public Boolean isDynamic() 
+            {
+                return IsDynamic;
+            }
             public void Draw(SpriteBatch spriteBatch) 
             {
             /*This comes down to Sprite Factory*/
-        
+            
             }
         }
         

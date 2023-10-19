@@ -10,15 +10,16 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using sprint0.Factory;
 
 namespace sprint0.Level_Loading___Parsers
 {
     internal static class LevelLoader
     {
 
-        public static void CreateLink(int x, int y, int roomId)
+        public static void CreateLink(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-            IGameObject Link = new sprint0.Link.Link(x,y, roomId);
+            IGameObject Link = new sprint0.Link.Link(x,y, roomId,spriteFactory);
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
         }

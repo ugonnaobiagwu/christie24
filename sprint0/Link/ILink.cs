@@ -15,8 +15,6 @@ namespace sprint0.Link
         public void LinkTakeDamage();
         public void LinkUseItem();
         public String GetState();
-        public int GetXVal();
-        public int GetYVal();
         public String GetDirection();
         public int GetHealth();
         public void Update();
