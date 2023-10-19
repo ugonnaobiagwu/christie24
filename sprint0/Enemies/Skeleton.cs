@@ -29,8 +29,8 @@ namespace sprint0.Enemies
 
             /* Should be reformatted to 1 line */
             SpriteSheetFrames = new int[2];
-            SpriteSheetFrames[0] = 75;
-            SpriteSheetFrames[1] = 90;
+            SpriteSheetFrames[0] = 74;
+            SpriteSheetFrames[1] = 89;
         }
 
         /* ---Movement--- */
@@ -109,7 +109,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the skeleton */
+                /* Code to delete the Skeleton */
             }
         }
 
