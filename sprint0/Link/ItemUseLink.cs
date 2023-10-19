@@ -15,10 +15,10 @@ namespace sprint0.Link
         ILink LinkObj;
         /*NOTE: This number needs to be updated to reflect the actual length of the animation*/
         int timer = 10;
-        public ItemUseLink(SpriteFactory linkFactory, SpriteBatch spriteBatch, ILink link)
+        public ItemUseLink(SpriteFactory linkFactory, ILink link)
         {
             LinkFactory = linkFactory;
-            SpriteBatch = spriteBatch;
+            
             LinkObj = link;
         }
         /*Link can't move while using an item*/
@@ -74,9 +74,9 @@ namespace sprint0.Link
                 RemoveDecorator();
             }
             else
-            {   if(!LinkObj.GetState().Equals("UseItem"))
+            {   if (!LinkObj.GetState().Equals("UseItem")) ;
                     //LinkFactory.useItem();
-                LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+               
             }
             LinkObj.Update();
             

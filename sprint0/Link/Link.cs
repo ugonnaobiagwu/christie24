@@ -15,7 +15,7 @@ namespace sprint0.Link
     using System.Numerics;
 
     /* Need to make interface*/
-    public class Link : ILink
+    public class Link : ILink, IGameObject, ISprite
         {
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
@@ -46,7 +46,7 @@ namespace sprint0.Link
             {
                 /*This may need altered to fit sprite animation length*/
                 LinkObj.SetState("UseItem");
-                LinkObj = new ItemUseLink(LinkSpriteFactory, SpriteBatch, this);
+                LinkObj = new ItemUseLink(LinkSpriteFactory, this);
 
             }
 
@@ -61,7 +61,7 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("up");
                 }
                 YVal++;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
+                
             }
 
             public void LinkDown()
@@ -72,7 +72,6 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("down");
                 }
                 YVal--;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkRight()
@@ -83,7 +82,6 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("right");
                 }
                 XVal++;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkLeft()
@@ -94,14 +92,13 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("left");
                 }
                 XVal--;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkTakeDamage()
             {
                 HealthVal--;
-                /*Will need to add a way to make link invulnerable */
-                LinkObj = new DamagedLink(LinkSpriteFactory, this, SpriteBatch);
+                
+                LinkObj = new DamagedLink(LinkSpriteFactory, this);
             }
 
             public void Update()
@@ -180,7 +177,11 @@ namespace sprint0.Link
             {
                 LinkObj = link;
             }
-            
+            public void Draw(SpriteBatch spriteBatch) 
+            {
+            /*This comes down to Sprite Factory*/
+        
+            }
         }
         
 

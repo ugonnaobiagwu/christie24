@@ -13,13 +13,11 @@ namespace sprint0.Link
     {
         SpriteFactory LinkFactory;
         ILink LinkObj;
-        SpriteBatch SpriteBatch;
         /*This is arbitrary*/
         int timer = 20;
-        public DamagedLink(SpriteFactory linkFactory, ILink link, SpriteBatch spriteBatch)
+        public DamagedLink(SpriteFactory linkFactory, ILink link)
         {
             LinkFactory = linkFactory;
-            SpriteBatch = spriteBatch;
             LinkObj = link;
         }
 
@@ -101,7 +99,7 @@ namespace sprint0.Link
                 /*The case where Link's model is not shown*/
                 /*THIS DOES NOT EXIST IN THE SPRITE FACTOEY YET*/
                 //LinkFactory.damage();
-                LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+               
             }
             else
             {
@@ -109,18 +107,18 @@ namespace sprint0.Link
                 if (LinkObj.GetState().Equals("Attacking"))
                 {
                     LinkFactory.attack();
-                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+                    
                 }
                 else if (LinkObj.GetState().Equals("UseItem")) 
                 {
                     //LinkFactory.useItem();
-                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+                    
                 }
                 else
                 { 
                     /*Default State*/
                     //LinkFactory.walk();
-                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+                    
                 }
                     
             }

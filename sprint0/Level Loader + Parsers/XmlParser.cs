@@ -2,21 +2,32 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Reflection;
 using System.Reflection.Metadata;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+
 
 namespace sprint0.Level_Loading___Parsers
 {
     internal static class XmlParser
     {
+        public delegate void ParseDelegate(XmlNode node, int RoomID);
+        static Dictionary<String, ParseDelegate> ParseInstructions = new Dictionary<string, ParseDelegate>();
+        static ParseDelegate LinkParser = new ParseDelegate(ParseLink);
+        static ParseDelegate EnemyParser = new ParseDelegate(ParseEnemy);
+        static ParseDelegate BlockParser = new ParseDelegate(ParseBlock);
+        static ParseDelegate BoundaryParser = new ParseDelegate(ParseBoundary);
+        static ParseDelegate DoorParser = new ParseDelegate(ParseDoor);
+
         /*This is the method called in main.
          An XML Document must be made there and parsed into an XmlNodeList with */
         public static void ParseFile(XmlDocument doc)
         {
+            PopulateParseInstructions();
             /*Gets a list of each room and iterates through each*/
             XmlNodeList NodeList = doc.DocumentElement.SelectNodes("Room");
             foreach (XmlNode node in doc)
@@ -25,74 +36,101 @@ namespace sprint0.Level_Loading___Parsers
             }
 
         }
+        public static void PopulateParseInstructions()
+        {
+            ParseInstructions.Add("Link", LinkParser);
+            ParseInstructions.Add("Enemy", EnemyParser);
+            ParseInstructions.Add("Block", BlockParser);
+            ParseInstructions.Add("Boundary", BoundaryParser);
+            ParseInstructions.Add("Door", DoorParser);
+
+        }
         /*Parses every item in the room*/
-        private static void ParseRoom(XmlNode doc)
+        private static void ParseRoom(XmlNode subtree)
         {
            
             /*Starts by getting the attribute, tests that it isn't null, and stores it to a variable if it isn't*/
-            var RoomIDAttribute = doc.Attributes["id"];
+            var RoomIDAttribute = subtree.Attributes["id"];
             string RoomIDStr = RoomIDAttribute.Value;
             int RoomID = Int32.Parse(RoomIDStr);
+
+            /*NOTE: This may cause issues depending on how selectnodes() interprets ""*/
+            XmlNodeList RoomNodes = subtree.SelectNodes("");
             
-
-            /*Creates the new Xml Node Lists and calls each's parser recursively*/
-            XmlNodeList EnemyNodeList = doc.SelectNodes("Enemy");
-            /*NOTE: Must check before each foreach in case there are none of the specified objects in the room.*/
-            if (EnemyNodeList.Count != 0)
+            foreach(XmlNode node in RoomNodes)
             {
-                foreach (XmlNode node in EnemyNodeList)
-                {
-                    ParseEnemy(node);
-                }
-            }
-            XmlNodeList LinkNodeList = doc.SelectNodes("Link");
-            if (LinkNodeList.Count != 0)
-            {
-                foreach (XmlNode node in LinkNodeList)
-                {
-                    ParseLink(node, oomID);
-                }
-            }
-
-            XmlNodeList BlockNodeList = doc.SelectNodes("Block");
-            if (BlockNodeList.Count != 0)
-            {
-                foreach (XmlElement node in BlockNodeList)
-                {
-                    ParseBlock(node);
-                }
-            }
-            XmlNodeList BoundaryNodeList = doc.SelectNodes("Boundary");
-            if (BoundaryNodeList.Count != 0)
-            {
-                foreach (XmlElement node in BoundaryNodeList)
-                {
-                    ParseBoundary(node);
-                }
-            }
-            XmlNodeList DoorNodeList = doc.SelectNodes("Door");
-            if (DoorNodeList.Count != 0)
-            {
-                foreach (XmlAttribute node in DoorNodeList)
-                {
-                    ParseDoor(node);
-                }
-            }
+                ParseDelegate parser = ParseInstructions[node.Name];
+                parser(node, RoomID);
+            } 
 
         }
 
-        private static void ParseLink(XmlNode doc, int roomId)
+        private static void ParseLink(XmlNode subtree, int roomId)
         {
-            /*Creates the parameter for Link's constructor*/
-            XmlNode XNode = doc.SelectSingleNode("x");
-            XmlNode YNode = doc.SelectSingleNode("y");
-            /*NOTE: Vector2 is fighting me so this needs to be split into x and y*/
-            Vector2 Location = new Vector2(float.Parse(XNode.InnerText), float.Parse(YNode.InnerText));\
-            /*Gets Constructor Info for typeof() instantiation*/
-            XmlNode ConstrNode = doc.SelectSingleNode("ConstructorInfo");
-            string ConstrInfo = ConstrNode.InnerText;
-            LevelLoader.CreateLink(ConstrInfo,Location, roomId);
+            /*Gets the x and y location*/
+            XmlNode XNode = subtree.SelectSingleNode("x");
+            XmlNode YNode = subtree.SelectSingleNode("y");
+            int x = (int)float.Parse(XNode.InnerText);
+            int y = (int)float.Parse(YNode.InnerText);
+            /*Makes object*/
+            LevelLoader.CreateLink(x, y, roomId);
 
+        }
+        private static void ParseBlock(XmlNode subtree, int roomId)
+        {
+            /*Gets the x and y location*/
+            XmlNode XNode = subtree.SelectSingleNode("x");
+            XmlNode YNode = subtree.SelectSingleNode("y");
+            int x = (int)float.Parse(XNode.InnerText);
+            int y = (int)float.Parse(YNode.InnerText);
+            /*Gets Block Type*/
+            string BlockType = subtree.SelectSingleNode("BlockType").InnerText;
+            /*Makes object*/
+            LevelLoader.CreateBlock(x, y, roomId, BlockType);
+
+        }
+        private static void ParseEnemy(XmlNode subtree, int roomId)
+        {
+            /*Gets the x and y location*/
+            XmlNode XNode = subtree.SelectSingleNode("x");
+            XmlNode YNode = subtree.SelectSingleNode("y");
+            int x = (int)float.Parse(XNode.InnerText);
+            int y = (int)float.Parse(YNode.InnerText);
+            /*Gets Enemy Type*/
+            string EnemyType = subtree.SelectSingleNode("EnemyType").InnerText;
+            /*Makes object*/
+            LevelLoader.CreateBlock(x, y, roomId, EnemyType);
+        }
+        private static void ParseBoundary(XmlNode subtree, int roomId)
+        {
+            /*Gets the x and y location*/
+            XmlNode XNode = subtree.SelectSingleNode("x");
+            XmlNode YNode = subtree.SelectSingleNode("y");
+            int x = (int)float.Parse(XNode.InnerText);
+            int y = (int)float.Parse(YNode.InnerText);
+            /*Gets width and height of rectangle*/
+            XmlNode WidthNode = subtree.SelectSingleNode("BoundaryWidth");
+            int Width =(int) float.Parse(WidthNode.InnerText);
+            XmlNode HeightNode = subtree.SelectSingleNode("BoundaryHeight");
+            int Height= (int) float.Parse(HeightNode.InnerText);
+            /*Makes object*/
+            LevelLoader.CreateBoundary(x, y, roomId, Width, Height);
+        }
+        private static void ParseDoor(XmlNode subtree, int roomId)
+        {
+            /*Gets the x and y location*/
+            XmlNode XNode = subtree.SelectSingleNode("x");
+            XmlNode YNode = subtree.SelectSingleNode("y");
+            int x = (int)float.Parse(XNode.InnerText);
+            int y = (int)float.Parse(YNode.InnerText);
+            /*Gets width and height of rectangle*/
+            XmlNode WidthNode = subtree.SelectSingleNode("DoorWidth");
+            int Width = (int)float.Parse(WidthNode.InnerText);
+            XmlNode HeightNode = subtree.SelectSingleNode("DoorHeight");
+            int Height = (int)float.Parse(HeightNode.InnerText);
+            XmlNode ToWhereNode = subtree.SelectSingleNode("ToWhichRoom");
+            int ToWhere = (int)float.Parse(ToWhereNode.InnerText);
+            LevelLoader.CreateDoor(x, y, roomId, Width, Height, ToWhere);
         }
     }
 }
