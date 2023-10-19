@@ -73,8 +73,8 @@ namespace sprint0.Link
                 LinkObj.SetState("Default");
                 RemoveDecorator();
             }
-            else
-            {   if (!LinkObj.GetState().Equals("UseItem")) ;
+            else if (!LinkObj.GetState().Equals("UseItem")) 
+            {
                     //LinkFactory.useItem();
                
             }
