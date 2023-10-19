@@ -12,33 +12,34 @@ namespace sprint0.Link
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Numerics;
     
+
     /* Need to make interface*/
-        public class Link : ILink
+    public class Link : ILink, IGameObject, ISprite
         {
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
             private int XVal { get; set; }
             private int YVal { get; set; }
+            private int RoomId;        
 
             private enum Direction { Left, Right, Up, Down};
             public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
-            /*This is needed in order to pass to the decorators and resent Link; There must be a better way.*/
-            private Sprint0 GameObj;
             ILink LinkObj;
-            SpriteBatch SpriteBatch;
+            
             
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
-            public Link(SpriteBatch spriteBatch, Sprint0 game)
+            public Link(int x, int y, int roomId)
             {
                 /*This number is arbitrary*/
                 HealthVal = 10;
                 LinkSpriteFactory = new LinkFactory();
-                SpriteBatch = spriteBatch;
-                GameObj = game;
+                XVal = x; YVal = y;
                 LinkObj = this;
+                RoomId = roomId;
             }
 
             /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
@@ -46,7 +47,7 @@ namespace sprint0.Link
             {
                 /*This may need altered to fit sprite animation length*/
                 LinkObj.SetState("UseItem");
-                LinkObj = new ItemUseLink(LinkSpriteFactory, SpriteBatch, this);
+                LinkObj = new ItemUseLink(LinkSpriteFactory, this);
 
             }
 
@@ -61,7 +62,7 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("up");
                 }
                 YVal++;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
+                
             }
 
             public void LinkDown()
@@ -72,7 +73,6 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("down");
                 }
                 YVal--;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkRight()
@@ -83,7 +83,6 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("right");
                 }
                 XVal++;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkLeft()
@@ -94,14 +93,13 @@ namespace sprint0.Link
                     LinkSpriteFactory.changeDirection("left");
                 }
                 XVal--;
-                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkTakeDamage()
             {
                 HealthVal--;
-                /*Will need to add a way to make link invulnerable */
-                LinkObj = new DamagedLink(LinkSpriteFactory, this, SpriteBatch);
+                
+                LinkObj = new DamagedLink(LinkSpriteFactory, this);
             }
 
             public void Update()
@@ -167,12 +165,24 @@ namespace sprint0.Link
                     break;
                 }
             }
+            public void SetRoomID(int id)
+            {
+                RoomId = id;
+            }
+            public int GetRoomId() 
+            {
+                return RoomId;
+            }
             /*Needed to reset link after decorator finishes*/
             public void SetLink(ILink link)
             {
                 LinkObj = link;
             }
-            
+            public void Draw(SpriteBatch spriteBatch) 
+            {
+            /*This comes down to Sprite Factory*/
+        
+            }
         }
         
 
