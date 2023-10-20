@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.Items.groundItems
 {
-    public interface IGroundItem
+    public interface IGroundItem : IGameObject
     {
         public void Update();
-        public void Draw(SpriteBatch spriteBatch, int x, int y);
+        public void Draw();
     }
 }

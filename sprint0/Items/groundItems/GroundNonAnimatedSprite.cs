@@ -4,12 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.Items.groundItems
 {
-	public class GroundNonAnimatedSprite : ISprite
+	public class GroundNonAnimatedSprite : IGroundSprite
 	{
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
         private int CurrentFrame;
+        private int width;
+        private int height;
 
 
         public GroundNonAnimatedSprite(Texture2D texture, int rows, int columns)
@@ -17,6 +19,8 @@ namespace sprint0.Items.groundItems
             Texture = texture;
             Rows = rows;
             Columns = columns;
+            width = Texture.Width / Columns;
+            height = Texture.Height / Rows;
         }
 
         public void Update()
@@ -26,9 +30,6 @@ namespace sprint0.Items.groundItems
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
             int row = CurrentFrame / Columns;
             int column = (CurrentFrame % Columns);
 
@@ -37,6 +38,16 @@ namespace sprint0.Items.groundItems
 
             spriteBatch.Draw(Texture, destinationRectangle, sheetLocation, Color.White);
 
+        }
+
+        public int itemWidth()
+        {
+            return this.width;
+        }
+
+        public int itemHeight()
+        {
+            return this.height;
         }
     }
 }
