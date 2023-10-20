@@ -37,12 +37,36 @@ namespace sprint0.Collision
 		 * 
 		 * (be sure to check if a delegate entry is null, this signifies that
 		 * an object does not have any collision reaction in that combo)
+		 * 
+		 * Get type of an IGameObject returns the concrete class. So it's
+		 * really important our GameObjects implement the IGameObject interface
 		 */
         public void HandleCollision(IGameObject a, IGameObject b, CollisionDetector.CollisionType collisionType)
 		{
-		
-
-		}
+            String objAType = a.GetType().ToString();
+            String objBType = b.GetType().ToString();
+            DataRow rowWithDelegates = null;
+            foreach (DataRow row in collisionTable.Rows)
+            {
+                if (row["ObjectA"].Equals(objAType) && row["ObjectB"].Equals(objBType)) {
+                    rowWithDelegates = row;
+                    break;
+                }
+            }
+            if (rowWithDelegates != null)
+            {
+                if (rowWithDelegates["HandleA"] != null)
+                {
+                    GameObjectDelegate aDelegate = (GameObjectDelegate)rowWithDelegates["HandleA"];
+                    aDelegate(collisionType, a);
+                }
+                if (rowWithDelegates["HandleB"] != null)
+                {
+                    GameObjectDelegate bDelegate = (GameObjectDelegate)rowWithDelegates["HandleB"];
+                    bDelegate(collisionType, b);
+                }
+            }
+        }
 
 		/*
 		 * Private method used to populate the data table with all the right 
@@ -80,7 +104,7 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "ILink", "Blaze", MoveLinkAndTakeDamageDelegate, BlazeImpactDelegate });
         }
 
-		/*
+        /*
 		 * DELEGATES & METHODS
 		 * ----
 		 * 
@@ -97,6 +121,7 @@ namespace sprint0.Collision
 		 * signatures match.
 		 * 
 		 */
+        private delegate void GameObjectDelegate(CollisionDetector.CollisionType collisionType, IGameObject obj);
 
 		//LINK
 		private delegate void LinkDelegate(CollisionDetector.CollisionType collisionType, ILink link);
