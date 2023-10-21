@@ -5,7 +5,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.AnimatedSpriteFactory
 {
-    public class AnimatedSprite : ISprite
+    /*EDITED FOR LINK TESTING: TO BE DELETED*/
+    public class AnimatedSprite :/* ISprite*/ ITestSprite
     {
 
         public Texture2D Texture;
@@ -21,7 +22,7 @@ namespace sprint0.AnimatedSpriteFactory
         public GameTime GameTime;
         //Add methods to get width and height
 
-
+        
         public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns)
         {
             Texture = texture;
@@ -35,8 +36,11 @@ namespace sprint0.AnimatedSpriteFactory
             frameTimeLeft = (float)0.0;
             position = new Vector2(0, 0);
         }
-
-
+        public void changeXandY(int x, int y)
+        {
+            position.X = x;
+            position.Y = y;
+        }
         public void Update()
         {
             //CurrentFrame = (int)GameTime.ElapsedGameTime.TotalSeconds % TotalFrames;
@@ -53,14 +57,15 @@ namespace sprint0.AnimatedSpriteFactory
             }
 
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        /*NOTE: EDITED FOR LINK TESTING*/
+        public void Draw(SpriteBatch spriteBatch/*, int x, int y*/)
         {
             //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
 
-            position.X = x;
-            position.Y = y;
+           /* position.X = x;
+            position.Y = y;*/
 
             //Old code for finding rectangle on sprite sheet
             //int row = CurrentFrame / Columns;

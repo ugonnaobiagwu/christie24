@@ -32,7 +32,7 @@ namespace sprint0.Link
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
             ILink LinkObj;
-            ISprite LinkSprite;
+            ITestSprite/*ISprite*/ LinkSprite;
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
             public Link(int x, int y, int roomId, SpriteFactory spriteFactory)
             {
@@ -182,12 +182,8 @@ namespace sprint0.Link
             {
                 LinkObj = link;
             }
-            public void Draw(SpriteBatch spriteBatch) 
-            {
-            /*This comes down to Sprite Factory*/
-                LinkSprite.Draw(spriteBatch, XVal, YVal);
-            }
-            public void SetSprite(ISprite newLink) 
+        /*EDITED FOR TESTING: ChANGE*/
+            public void SetSprite(/*ISprite */ ITestSprite newLink) 
             {
                 LinkSprite = newLink;
             }
@@ -217,9 +213,10 @@ namespace sprint0.Link
             {
                 return IsDrawable;
             }
-            public void Draw(SpriteBatch spriteBatch, int x, int y)
+            public void Draw(SpriteBatch spriteBatch)
             {
-                LinkSprite.Draw(spriteBatch, x, y);
+                LinkSprite.changeXandY(XVal,YVal);
+                LinkSprite.Draw(spriteBatch);
             }
     }
         

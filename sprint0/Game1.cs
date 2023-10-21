@@ -191,7 +191,7 @@ namespace sprint0
             //Block Draw
             spriteBatch.Begin();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch, LinkObj.xPosition(), LinkObj.yPosition());
+            LinkObj.Draw(spriteBatch);
             groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();

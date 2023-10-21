@@ -21,8 +21,8 @@ namespace sprint0.Link
         public void Update();
         public void SetLink(ILink link);
         public void SetState(String state);
-        public void SetSprite(ISprite newSprite);
-        /*TO BE DELETED: FOR TESTING*/
-        public void Draw(SpriteBatch spriteBatch, int x, int y);
+        /*public void SetSprite(ISprite newSprite);*/
+        public void Draw(SpriteBatch spriteBatch);
+        
     }
 }
