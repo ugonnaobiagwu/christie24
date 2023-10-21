@@ -37,6 +37,7 @@
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</File>
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/Link.png</File>
     <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/luigiSpriteSheet.png</File>
+    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/zelda-sprites-enemies.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -56,6 +57,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
