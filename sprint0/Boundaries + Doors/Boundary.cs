@@ -37,4 +37,5 @@ namespace sprint0.Boundaries___Doors
         /*TO ADD: GameObject methods
           ALSO: need to ask if you can draw clear rectangles*/
     }
+    //
 }

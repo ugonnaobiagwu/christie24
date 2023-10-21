@@ -85,5 +85,5 @@ namespace sprint0.AnimatedSpriteFactory
             int height = Texture.Height / Rows;
             spriteBatch.Draw(Texture, position, SourceRectangles[CurrentFrame], Color.White);
         }*/
-    }
+        //
 }

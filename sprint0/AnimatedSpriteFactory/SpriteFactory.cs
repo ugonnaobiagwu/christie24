@@ -56,5 +56,6 @@ namespace sprint0.AnimatedSpriteFactory
         {
             return animationDictionary[animationName];
         }
+        //
     }
 }
