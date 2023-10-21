@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using sprint0.Factory;
+using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +10,13 @@ namespace sprint0.Link
 {
     internal class ItemUseLink : ILink
     {
-        SpriteBatch SpriteBatch;
         SpriteFactory LinkFactory;
         ILink LinkObj;
         /*NOTE: This number needs to be updated to reflect the actual length of the animation*/
         int timer = 10;
-        public ItemUseLink(SpriteFactory linkFactory, SpriteBatch spriteBatch, ILink link)
+        public ItemUseLink(SpriteFactory linkFactory, ILink link)
         {
             LinkFactory = linkFactory;
-            SpriteBatch = spriteBatch;
             LinkObj = link;
         }
         /*Link can't move while using an item*/
@@ -31,13 +29,13 @@ namespace sprint0.Link
         {
             LinkObj.LinkTakeDamage();           
         }
-        public int GetXVal()
+        public int xPosition()
         {
-            return LinkObj.GetXVal();
+            return LinkObj.xPosition();
         }
-        public int GetYVal()
+        public int yPosition()
         {
-            return LinkObj.GetYVal();
+            return LinkObj.yPosition();
         }
         public String GetDirection()
         {
@@ -73,13 +71,54 @@ namespace sprint0.Link
                 LinkObj.SetState("Default");
                 RemoveDecorator();
             }
-            else
-            {   if(!LinkObj.GetState().Equals("UseItem"))
-                    //LinkFactory.useItem();
-                LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+            else if (!LinkObj.GetState().Equals("UseItem")) 
+            {
+                LinkObj.SetSprite(LinkFactory.getAnimatedSprite("UseItem"));
+               
             }
             LinkObj.Update();
             
+        }
+        public void SetSprite(ISprite newSprite)
+        {
+            LinkObj.SetSprite(newSprite);
+        }
+        public int height()
+        {
+            return LinkObj.height();
+        }
+        public int width()
+        {
+            return LinkObj.width();
+        }
+        public bool isDynamic()
+        {
+            return LinkObj.isDynamic();
+        }
+        public bool isUpdateable()
+        {
+            return LinkObj.isUpdateable();
+        }
+        public bool isDrawable()
+        {
+            return LinkObj.isDrawable();
+        }
+        public bool isRemoveable()
+        {
+            return LinkObj.isRemoveable();
+        }
+        public void SetRoomId(int roomId)
+        {
+            LinkObj.SetRoomId(roomId);
+        }
+        public int GetRoomId()
+        {
+            return LinkObj.GetRoomId();
+        }
+        /*TO BE DELETE: FOR TESTING*/
+        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        {
+            LinkObj.Draw(spriteBatch, x, y);
         }
     }
 }
