@@ -8,7 +8,6 @@ namespace sprint0.AnimatedSpriteFactory
     {
         private Texture2D spriteSheet;
         private Vector2 position;
-        /*EDITED FOR TESTING: CHANGE*/
         private IDictionary<string, ISprite> animationDictionary;
         private int spriteSheetRows, spriteSheetColumns;
 
@@ -48,17 +47,10 @@ namespace sprint0.AnimatedSpriteFactory
             animationDictionary.Add(animationName, currentSprite);
         }
 
-        public void updatePosition(int x, int y)
-        {
-            position.X = x;
-            position.Y = y;
-        }
-
-        /*COMMENTED FOR LINK TESTING: TO BE CHANGED*/
-        /*public void playAnimation(string animationName, SpriteBatch spriteBatch)
+        public void playAnimation(string animationName, SpriteBatch spriteBatch)
         {
             animationDictionary[animationName].Draw(spriteBatch, (int)position.X, (int)position.Y);
-        }*/
+        }
 
         public ISprite getAnimatedSprite(string animationName)
         {
