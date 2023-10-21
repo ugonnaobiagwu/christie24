@@ -9,7 +9,7 @@ namespace sprint0.AnimatedSpriteFactory
         private Texture2D spriteSheet;
         private Vector2 position;
         /*EDITED FOR TESTING: CHANGE*/
-        private IDictionary<string,/* ISprite*/ITestSprite> animationDictionary;
+        private IDictionary<string, ISprite> animationDictionary;
         private int spriteSheetRows, spriteSheetColumns;
 
 
@@ -18,7 +18,7 @@ namespace sprint0.AnimatedSpriteFactory
             spriteSheet = newSpriteSheet;
             spriteSheetRows = sheetRows;
             spriteSheetColumns = sheetColumns;
-            animationDictionary = new Dictionary<string,/*ISprite*/ ITestSprite>();
+            animationDictionary = new Dictionary<string, ISprite>();
 
             //Setting position at 0 for default, can use method to change or add new constructor field in the future
             position = new Vector2(0, 0);
@@ -42,7 +42,7 @@ namespace sprint0.AnimatedSpriteFactory
             }
 
             //Create AnimatedSprite object using created sourceRectangle list
-            /*ISprite*/ ITestSprite currentSprite = new AnimatedSprite(spriteSheet, sourceRectangleList, frameCount, spriteSheetRows, spriteSheetColumns);
+            ISprite currentSprite = new AnimatedSprite(spriteSheet, sourceRectangleList, frameCount, spriteSheetRows, spriteSheetColumns);
 
             //Add animated sprite to dictionary
             animationDictionary.Add(animationName, currentSprite);
@@ -60,7 +60,7 @@ namespace sprint0.AnimatedSpriteFactory
             animationDictionary[animationName].Draw(spriteBatch, (int)position.X, (int)position.Y);
         }*/
 
-        public /* ISprite*/ ITestSprite getAnimatedSprite(string animationName)
+        public ISprite getAnimatedSprite(string animationName)
         {
             return animationDictionary[animationName];
         }
