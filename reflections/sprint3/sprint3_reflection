@@ -1,0 +1,14 @@
+Sprint 3 Reflection
+
+Created by: Ryan Greene, Ugonna Obiagwu, Alex Kim, Madoka Kamishima, Matthew Dannery, Xing Wu
+
+Sprint 2 Catch Up: The team allotted themselves a week and a half to get the majority of the backlog from Sprint 2 finished. This was overall a success. The blocks and items are fully tested and Link has code written, all of which were completed by that deadline. Link was used as the test subject for level loading, so his testing is going to have to happen after their completion. The enemies and SpriteFactory are mostly finished, with finishing touches needed. The development of these two fell behind due to the person in charge of the SpriteFactory falling ill and the person in charge of enemies focused on fixing up commands.
+
+Sprint 3 Accomplishments: So far, the team does not have functioning code in terms of level loading and game object management. The level loader and xml parsers are written, with testing needed with a complete xml file. The game object manager is currently in development, while the xml room file was put to the side in order to focus on getting caught up with the backlog. Collision has code written and is currently waiting on the ability to get game objects. Project-wise, the general architecture of the game has been largely pinned down. 
+
+Challenges: The largest difficulty with this sprint was the inability to test many of the features due to their reliance on another piece of code. Specifically, the xml parser is waiting on a complete xml file and both collision and waiting on the game object manager. The SpriteFactory has also prevented code from being finished, with most objects still in need of a SpriteFactory implementation. It’s apparent that we will need to adopt the “Build a Little, Test a Little” Strategy for Sprints 4 and 5, but it proves to be difficult, especially for things like collision and level loading since object dependencies are a serious blocker.
+
+The team was also forced to adapt to scheduling conflicts due to the sprint taking place during midterm season as well as the aforementioned sick group member. These issues were handled efficiently, with a few reallocations of tasks, although they still likely contributed to our current waiting pattern.
+
+Moving Forward: The team’s first act for Sprint 4 will be to finalize all of the missing pieces of the program and get them thoroughly tested. This should be possible within the first week of the sprint. Then, it will be time to tackle sprint 4, with some overlap if testing takes longer than anticipated.
+ 
