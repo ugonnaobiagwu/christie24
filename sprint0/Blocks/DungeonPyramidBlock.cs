@@ -9,38 +9,39 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungenPyramidBlock : IBlock
+    internal class DungeonPyramidBlock : ISprite, IGameObject
     {
-        /*private int TotalFrame;
-        private int currentFrame;*/
-        private Block block;
+        
+        
+        int blockX;
+        int blockY;
+        int scaledWidth;
+        int scaledHeight;
+
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
 
 
-        public DungenPyramidBlock() { }
+        public DungeonPyramidBlock() { }
 
-        public DungenPyramidBlock(Texture2D texture, int rows, int columns)
+        public DungeonPyramidBlock(Texture2D texture, int rows, int columns)
         {
-            this.Texture = texture;
+            Texture = texture;
             Rows = rows;
             Columns = columns;
 
-            /*InitializeFrame();*/
+            
         }
 
-        /*  private void InitializeFrame()
-          {
-
-              TotalFrame = Rows * Columns;
-              currentFrame = 1;
-          }
-  */
+        
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
+            //for the IGameObject methods
+            blockX = x;
+            blockY = y;
 
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -51,8 +52,8 @@ namespace sprint0.Blocks
 
             //resize block image
             double scale = 0.2; //40% of the orignal size image
-            int scaledWidth = (int)(width * scale);
-            int scaledHeight = (int)(height * scale);
+            scaledWidth = (int)(width * scale);
+            scaledHeight = (int)(height * scale);
 
 
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
@@ -63,23 +64,14 @@ namespace sprint0.Blocks
 
         }
 
-        public void Update()
-        {
+        public void Update() { }
 
-        }
-        public void Explode() { }
-        public void NextBlock()
-        {
-
-        }
-
-        public void PreviousBlock()
-        {
-
-        }
-
-
-
+        //hard code for now (make new class for these?)
+        public int xPosition() { return blockX; } // returns X pos of object
+        public int yPosition() { return blockY; } // returns Y pos of object
+        public int width() { return scaledWidth; } // (i.e.) "how big are you?"
+        public int height() { return scaledHeight; } // (i.e.) "how big are you?"
+        public bool isDynamic() { return false; } // does this object move? 
 
 
     }

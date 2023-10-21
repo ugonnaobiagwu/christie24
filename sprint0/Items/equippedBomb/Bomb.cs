@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Bomb : IItem
+    public class Bomb : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -16,7 +16,7 @@ namespace sprint0.Items
         private Texture2D bombTexture;
         private Texture2D explosionTexture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private bool spriteChanged;
 
         public Bomb(IList<Texture2D> itemSpriteSheet)
@@ -77,6 +77,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemYPos = linkYPos + 1;
                 currentItemSprite = new BombSprite(bombTexture, 1, 1);
@@ -101,6 +102,31 @@ namespace sprint0.Items
                 }
             }
         }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return false;
+        }
+
     }
 }
 

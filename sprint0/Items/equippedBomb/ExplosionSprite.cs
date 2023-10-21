@@ -14,6 +14,8 @@ namespace sprint0
         private int TotalFrames;
         private bool animationCycleFinished;
 
+        private int width;
+        private int height;
         public ExplosionSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
@@ -22,6 +24,8 @@ namespace sprint0
             CurrentFrame = 0;
             TotalFrames = 2;
             animationCycleFinished = false;
+            width = Texture.Width / Columns;
+            height = Texture.Height / Rows;
         }
 
         public bool finishedAnimationCycle()
@@ -44,13 +48,23 @@ namespace sprint0
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
+            
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle incomingSprite = new Rectangle(width * column, height * row, width, height);
             Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
+        }
+
+        // collision: hit box is expanded since explosion has bigger radius
+        public int itemWidth()
+        {
+            return width + 5;
+        }
+
+        public int itemHeight()
+        {
+            return height + 5;
         }
     }
 }

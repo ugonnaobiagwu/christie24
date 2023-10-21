@@ -11,12 +11,16 @@ namespace sprint0
         private int Rows;
         private int Columns;
         private int CurrentFrame = 0;
+        private int width;
+        private int height;
 
         public BowSprite(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
+            width = Texture.Width / Columns;
+            height = Texture.Height / Rows;
 
         }
 
@@ -31,13 +35,17 @@ namespace sprint0
 
         }
 
+        public int itemWidth()
+        {
+            return width;
+        }
+
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle incomingSprite = new Rectangle(width * column, height * row, width, height);
+            
             Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
         }
