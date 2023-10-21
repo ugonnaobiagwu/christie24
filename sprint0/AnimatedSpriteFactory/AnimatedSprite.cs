@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.AnimatedSpriteFactory
 {
     /*EDITED FOR LINK TESTING: TO BE DELETED*/
-    public class AnimatedSprite :ISprite
+    public class AnimatedSprite : ISprite
     {
 
         public Texture2D Texture;
@@ -22,7 +22,7 @@ namespace sprint0.AnimatedSpriteFactory
         public GameTime GameTime;
         //Add methods to get width and height
 
-        
+
         public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns)
         {
             Texture = texture;
@@ -64,8 +64,8 @@ namespace sprint0.AnimatedSpriteFactory
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
 
-           /* position.X = x;
-            position.Y = y;*/
+            /* position.X = x;
+             position.Y = y;*/
 
             //Old code for finding rectangle on sprite sheet
             //int row = CurrentFrame / Columns;
@@ -85,5 +85,6 @@ namespace sprint0.AnimatedSpriteFactory
             int height = Texture.Height / Rows;
             spriteBatch.Draw(Texture, position, SourceRectangles[CurrentFrame], Color.White);
         }*/
-        //
+    }
+        
 }
