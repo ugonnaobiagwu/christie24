@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Boomerang : IItem
+    public class Boomerang : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -156,6 +156,30 @@ namespace sprint0.Items
 
                 }
             }
+        }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return true;
         }
     }
 }
