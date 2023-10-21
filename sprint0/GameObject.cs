@@ -10,38 +10,38 @@ using System.ComponentModel.Design;
 
 namespace sprint0
 {
-    public class GameObject : IGameObject
+    public class GameObjectManager : IManager<IGameObject>
     {
         // UNFINISHED!!!
         // lists for drawable objects updateable objects, dynamic objects and all objects that need to be removed
-        private List<GameObject> drawables;
-        private List<GameObject> updateables;
-        private List<GameObject> removeables;
-        private List<GameObject> dynamics;
+        private List<IGameObject> drawables;
+        private List<IGameObject> updateables;
+        private List<IGameObject> removeables;
+        private List<IGameObject> dynamics;
         private List<int> roomIDs;
 
         // makes a dictionary for the rooms and objects
         // need a constructor
-        private Dictionary<int, List<GameObject>> ObjectMap;
+        private Dictionary<int, List<IGameObject>> ObjectMap;
 
-        public GameObject() {
-            drawables = new List<GameObject>();
-            updateables = new List<GameObject>();
-            removeables = new List<GameObject>();
-            dynamics = new List<GameObject>();
+        public IGameObjectManager() {
+            drawables = new List<IGameObject>();
+            updateables = new List<IGameObject>();
+            removeables = new List<IGameObject>();
+            dynamics = new List<IGameObject>();
             roomIDs = new List<int>();
 
             // map to hold all the objects in each room
-            ObjectMap = new Dictionary<int, List<GameObject>>();
+            ObjectMap = new Dictionary<int, List<IGameObject>>();
         }
 
         // adds object into their respective lists
-        public void addObject(int room, GameObject obj) {
+        public void addObject(int room, IGameObject obj) {
             
             // if it is a new room, it makes a new room and add the object in 
             if (!ObjectMap.ContainsKey(room))
             {
-                ObjectMap[room] = new List<GameObject>();
+                ObjectMap[room] = new List<IGameObject>();
                 roomIDs.Add(room);
             }
             // adds object in the stated room 
@@ -67,7 +67,7 @@ namespace sprint0
         }
 
         // removes object from room
-        public void removeObject(int room, GameObject obj)
+        public void removeObject(int room, IGameObject obj)
         {
             // removes the object from the room
             if (ObjectMap[room].Contains(obj))
@@ -78,8 +78,8 @@ namespace sprint0
         }
 
         // returns list 
-        public List<GameObject> getList(string listName) {
-            List<GameObject> list = new List<GameObject>();
+        public List<IGameObject> getList(string listName) {
+            List<IGameObject> list = new List<IGameObject>();
             // switch case instead of if-else if 
             switch (listName)
             {
@@ -92,7 +92,7 @@ namespace sprint0
                 case "dynamics":
                     return dynamics;
                 default:
-                    return new List<GameObject>();
+                    return new List<IGameObject>();
             }
         }
 
@@ -103,15 +103,15 @@ namespace sprint0
         }
 
         // returns list of room IDs
-        public List<GameObject> getRoomList(int roomID)
+        public List<IGameObject> getRoomList(int roomID)
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
-            return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<GameObject>();
+            return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<IGameObject>();
         }
 
         // to get the list of objects in a room just by its ID
         // might not be necessary, but it might also simplify things alot
-        public Dictionary<int, List<GameObject>> getDictionary()
+        public Dictionary<int, List<IGameObject>> getDictionary()
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
             return ObjectMap;
