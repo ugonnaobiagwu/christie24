@@ -52,6 +52,7 @@ namespace sprint0.Level_Loading___Parsers
         private static void ParseRoom(XmlNode subtree, ContentManager Content)
         {
            
+
             /*Starts by getting the attribute, tests that it isn't null, and stores it to a variable if it isn't*/
             var RoomIDAttribute = subtree.Attributes["id"];
             string RoomIDStr = RoomIDAttribute.Value;

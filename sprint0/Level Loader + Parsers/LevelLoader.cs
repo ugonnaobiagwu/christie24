@@ -19,6 +19,7 @@ namespace sprint0.Level_Loading___Parsers
 
         public static void CreateLink(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
+
             IGameObject Link = new sprint0.Link.Link(x,y, roomId,spriteFactory);
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/

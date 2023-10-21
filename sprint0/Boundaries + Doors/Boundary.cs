@@ -11,6 +11,7 @@ namespace sprint0.Boundaries___Doors
 {
     internal class Boundary/* : IGameObject, ISprite*/
     {
+
         Rectangle BoundaryObj;
         int RoomId;
         SpriteFactory BoundaryFactory;

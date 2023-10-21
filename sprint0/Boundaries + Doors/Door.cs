@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Boundaries___Doors
 {
+
     internal class Door /*: IGameObject, ISprite*/
     {
         Rectangle DoorObj;
