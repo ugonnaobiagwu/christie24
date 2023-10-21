@@ -13,6 +13,9 @@ namespace sprint0.Items
         private int CurrentFrame;
         private int TotalFrames;
         private int FrameDisplay;
+        private int width;
+        private int height;
+
         public BowDespawnSprite(Texture2D texture, int rows, int columns)
 		{
             Texture = texture;
@@ -22,6 +25,8 @@ namespace sprint0.Items
             FrameDisplay = 0;
             TotalFrames = 10;
             animationCycleFinished = false;
+            width = Texture.Width / Columns;
+            height = Texture.Height / Rows;
         }
 
         public bool finishedAnimationCycle()
@@ -41,8 +46,7 @@ namespace sprint0.Items
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             /*Figures out where the sprite we want is*/
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
+            
             int row = CurrentFrame / Columns;
             int column = CurrentFrame % Columns;
             Rectangle sheetLocation = new Rectangle(width * column, height * row, width, height);
@@ -54,7 +58,15 @@ namespace sprint0.Items
            
         }
 
-        
+        public int itemWidth()
+        {
+            return width;
+        }
+
+        public int itemHeight()
+        {
+            return height;
+        }
     }
 }
 

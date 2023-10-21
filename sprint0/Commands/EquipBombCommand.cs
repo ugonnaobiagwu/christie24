@@ -10,19 +10,17 @@ namespace sprint0.Commands
     public class EquipBombCommand : ICommand
     {
         Sprint0 Game;
-        //ItemSystem Item;
+        IItemSystem Item;
 
-        public EquipBombCommand(Sprint0 game) //(ItemSystem item)
+        public EquipBombCommand(Sprint0 game, IItemSystem item)
         {
             this.Game = game;
-            //this.Item = item;
-            throw new NotImplementedException();
+            this.Item = item;
         }
 
         public void execute()
         {
-            //Item.EquipBomb();
-            throw new NotImplementedException();
+            Item.EquipBomb();
         }
     }
 }

@@ -9,10 +9,15 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungenDragonBlock : IBlock
+    internal class DungenDragonBlock : ISprite
     {
 
         private Block block;
+        int blockX;
+        int blockY;
+        int scaledWidth;
+        int scaledHeight;
+
 
         /* private int currentFrame;
          private int TotalFrame;*/
@@ -49,7 +54,8 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-
+            blockX = x;
+            blockY = y;
             int width = Texture.Width / Columns; //width of a one frame per whole column
             int height = Texture.Height / Rows;
             int blockColumn = 3;
@@ -59,8 +65,8 @@ namespace sprint0.Blocks
 
             //resize block image
             double scale = 0.2; //40% of the orignal size image
-            int scaledWidth = (int)(width * scale);
-            int scaledHeight = (int)(height * scale);
+            scaledWidth = (int)(width * scale);
+            scaledHeight = (int)(height * scale);
 
 
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
@@ -71,24 +77,13 @@ namespace sprint0.Blocks
 
         }
 
-        public void Update()
-        {
-
-        }
-        public void Explode() { }
-        public void NextBlock()
-        {
-
-        }
-
-        public void PreviousBlock()
-        {
-
-
-        }
-
-
-
+        public void Update(){}
+        //hard code for now (make new class for these?)
+        public int xPosition() { return blockX; } // returns X pos of object
+        public int yPosition() { return blockY; } // returns Y pos of object
+        public int width() { return scaledWidth; } // (i.e.) "how big are you?"
+        public int height() { return scaledHeight; } // (i.e.) "how big are you?"
+        public bool isDynamic() { return false; } // does this object move? 
 
 
     }

@@ -10,19 +10,17 @@ namespace sprint0.Commands
     public class EquipBoomerangCommand : ICommand
     {
         Sprint0 Game;
-        //ItemSystem Item;
+        IItemSystem Item;
 
-        public EquipBoomerangCommand(Sprint0 game) //(ItemSystem item)
+        public EquipBoomerangCommand(Sprint0 game, IItemSystem item)
         {
             this.Game = game;
-            //this.Item = item;
-            throw new NotImplementedException();
+            this.Item = item;
         }
 
         public void execute()
         {
-            //Item.EquipBoomerang();
-            throw new NotImplementedException();
+            Item.EquipBoomerang();
         }
     }
 }
