@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Boomerang : IItem
+    public class Boomerang : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -21,7 +21,7 @@ namespace sprint0.Items
         private Texture2D goingTexture;
         private Texture2D comingTexture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
@@ -127,6 +127,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemXOrigin = linkXPos;
@@ -156,6 +157,30 @@ namespace sprint0.Items
 
                 }
             }
+        }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return true;
         }
     }
 }

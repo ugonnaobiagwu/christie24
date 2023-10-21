@@ -9,42 +9,33 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungenBlueBlock : IBlock
+    internal class DungeonBlueBlock : ISprite
     {
 
-        private Block block;
-
-       /* private int currentFrame;
-        private int TotalFrame;*/
-
+        int blockColumn = 0;
+        int blockRow = 0;
+        int scaledWidth;
+        int scaledHeight;
+        int blockX;
+        int blockY;
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
 
-
-
-
-        public DungenBlueBlock()
+        public DungeonBlueBlock()
         {
 
         }
-        public DungenBlueBlock(Texture2D texture, int rows, int columns)
+        public DungeonBlueBlock(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
 
-            /*InitializeFrame();*/
+            
         }
 
-       /* private void InitializeFrame()
-        {
-
-            TotalFrame = Rows * Columns;
-            currentFrame = 0;
-        }
-*/
 
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
@@ -52,43 +43,32 @@ namespace sprint0.Blocks
 
             int width = Texture.Width / Columns; //width of a one frame per whole column
             int height = Texture.Height / Rows;
-            int blockColumn = 0;
-            int blockRow = 0;
+           
 
             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
             //resize block image
             double scale = 0.2; //40% of the orignal size image
-            int scaledWidth = (int)(width * scale);
-            int scaledHeight = (int)(height * scale);
+            scaledWidth = (int)(width * scale);
+            scaledHeight = (int)(height * scale);
 
 
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
-
-
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
 
-        public void Update()
-        {
-
-        }
-        public void Explode() { }
-        public void NextBlock()
-        {
-
-        }
-
-        public void PreviousBlock()
-        {
+        public void Update(){}
 
 
-        }
-
-
-
+        //Methods to return for IGameObject for Block
+        //hard code for now (make new class for these?)
+        public int xPosition() { return blockX; } // returns X pos of object
+        public int yPosition() { return blockY; } // returns Y pos of object
+        public int width() { return scaledWidth; } // (i.e.) "how big are you?"
+        public int height() { return scaledHeight; } // (i.e.) "how big are you?"
+        public bool isDynamic() { return false; } // does this object move? 
 
 
     }

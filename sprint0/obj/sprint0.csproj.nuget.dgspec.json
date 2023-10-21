@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexy\\source\\repos\\christie24\\sprint0\\sprint0.csproj": {}
+    "/Users/ugonnao/Projects/christie24/christie24/sprint0/sprint0.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexy\\source\\repos\\christie24\\sprint0\\sprint0.csproj": {
+    "/Users/ugonnao/Projects/christie24/christie24/sprint0/sprint0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexy\\source\\repos\\christie24\\sprint0\\sprint0.csproj",
+        "projectUniqueName": "/Users/ugonnao/Projects/christie24/christie24/sprint0/sprint0.csproj",
         "projectName": "sprint0",
-        "projectPath": "C:\\Users\\alexy\\source\\repos\\christie24\\sprint0\\sprint0.csproj",
-        "packagesPath": "C:\\Users\\alexy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexy\\source\\repos\\christie24\\sprint0\\obj\\",
+        "projectPath": "/Users/ugonnao/Projects/christie24/christie24/sprint0/sprint0.csproj",
+        "packagesPath": "/Users/ugonnao/.nuget/packages/",
+        "outputPath": "/Users/ugonnao/Projects/christie24/christie24/sprint0/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alexy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/ugonnao/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.413/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,34 @@
+Code Review 
+Author: Madoka Kamishima
+
+Sprint 3
+
+Name of File being Reviewed:  Object.cs
+Author of of File: Xing Wu
+
+Date of Review 10/19/2023
+
+Code Quality:
+
+*Change the name Object.cs to something more detailed since  classes in OOP is an interitence of a class from OOP class Object (for future code error when we call Object). 
+
+* watch out with  the name error in List. Most says List<Object>, but there are a few that says List<Objects>.
+If these are two different list names, change the names so it is more distiguishable.
+
+* If else state when checking  what objects they are seem to be tightly coupled. Maybe separate these into own method.
+
+
+
+Name of File being Reviewed:  MouseController.cs
+Author of of File: Xing Wu
+
+Date of Review 10/20/2023
+
+Readiblility:
+
+
+Minutes spent reading: 1-2 minutes
+
+*The code is short and easy to read. The comments for the functions help out with understanding what the functions are doing much quicker. 
+The names of the variables helped out with understanding the functions of the code. If I had to be very stingy, then it would be the position of the comments. 
+For the future code, if there were to be more comments and codes, having the postiion of the comments the same for most comments would be quicker to identify. 

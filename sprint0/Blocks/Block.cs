@@ -3,48 +3,47 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    public class Block : IBlock,ISprite
+    public class Block : IBlock
     {
 
-        private List<IBlock> blockStates;
+        private List<ISprite> blockStates;
         private int currentIndex; // default is 0
+
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
 
        
 
-        IBlock currentBlock;
+        ISprite currentBlock;
 
-        /* public Block() { }*/
         public Block(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
 
-            blockStates = new List<IBlock>
+            blockStates = new List<ISprite>
         {
-            new DungenBlueBlock(texture, rows, columns),
-            new DungenPyramidBlock(texture, rows, columns),
-            new DungenFishBlock(texture, rows, columns),
-            new DungenDragonBlock(texture, rows, columns)
+            new DungeonBlueBlock(texture, rows, columns),
+            new DungeonPyramidBlock(texture, rows, columns),
+            new DungeonFishBlock(texture, rows, columns),
+            new DungenDragonBlock(texture, rows, columns),
+            new DungeonPitBlock(texture, rows, columns),
+            new StairBlock(texture, rows, columns),
+
         };
             currentBlock = blockStates[currentIndex]; // default block
 
         }
 
-
-
-        public void Update()
-        {
-            currentBlock.Update();
-        }
+        //IBlock Methods
 
         public void Explode()
         {// nothing here 
@@ -74,13 +73,22 @@ namespace sprint0.Blocks
             }
             currentBlock = blockStates[currentIndex];
         }
-
+        //ISprite Methods
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             
             currentBlock.Draw(spriteBatch, x, y);
-        
+
         }
+
+        public void Update()
+        {
+            currentBlock.Update();
+        }
+
+       
+
+
 
 
 

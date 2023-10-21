@@ -6,44 +6,39 @@ using System.Threading.Tasks;
 
 namespace sprint0.Link
 {
-    using global::sprint0.AnimatedSpriteFactory;
+    using global::sprint0.Factory;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Numerics;
     
-
     /* Need to make interface*/
-    public class Link : ILink 
-    {
-            private bool IsUpdateable = true;
-            private bool IsDrawable = true;
-            private bool IsRemoveable = true;
-            private bool IsDynamic = true;
+        public class Link : ILink
+        {
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
             private int XVal { get; set; }
             private int YVal { get; set; }
-            private int RoomId;
+
             private enum Direction { Left, Right, Up, Down};
             public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
+            /*This is needed in order to pass to the decorators and resent Link; There must be a better way.*/
+            private Sprint0 GameObj;
             ILink LinkObj;
-            ISprite LinkSprite;
+            SpriteBatch SpriteBatch;
+            
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
-            public Link(int x, int y, int roomId, SpriteFactory spriteFactory)
+            public Link(SpriteBatch spriteBatch, Sprint0 game)
             {
                 /*This number is arbitrary*/
                 HealthVal = 10;
-                LinkSpriteFactory = spriteFactory;
-                XVal = x; YVal = y;
+                LinkSpriteFactory = new LinkFactory();
+                SpriteBatch = spriteBatch;
+                GameObj = game;
                 LinkObj = this;
-                RoomId = roomId;
-                IsDynamic = true;
-                LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
             }
 
             /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
@@ -51,7 +46,7 @@ namespace sprint0.Link
             {
                 /*This may need altered to fit sprite animation length*/
                 LinkObj.SetState("UseItem");
-                LinkObj = new ItemUseLink(LinkSpriteFactory, this);
+                LinkObj = new ItemUseLink(LinkSpriteFactory, SpriteBatch, this);
 
             }
 
@@ -63,10 +58,10 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Up)
                 {
                     LinkDirection = Direction.Up;
-                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Up");
+                    LinkSpriteFactory.changeDirection("up");
                 }
                 YVal++;
-                
+                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkDown()
@@ -74,9 +69,10 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Down)
                 {
                     LinkDirection = Direction.Down;
-                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
+                    LinkSpriteFactory.changeDirection("down");
                 }
                 YVal--;
+                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkRight()
@@ -84,9 +80,10 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Right)
                 {
                     LinkDirection = Direction.Right;
-                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Right");
+                    LinkSpriteFactory.changeDirection("right");
                 }
                 XVal++;
+                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkLeft()
@@ -94,28 +91,29 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Left)
                 {
                     LinkDirection = Direction.Left;
-                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Left");
+                    LinkSpriteFactory.changeDirection("left");
                 }
                 XVal--;
+                LinkSpriteFactory.Draw(SpriteBatch, XVal, YVal);
             }
 
             public void LinkTakeDamage()
             {
                 HealthVal--;
-                
-                LinkObj = new DamagedLink(LinkSpriteFactory, this);
+                /*Will need to add a way to make link invulnerable */
+                LinkObj = new DamagedLink(LinkSpriteFactory, this, SpriteBatch);
             }
 
             public void Update()
             {
-                LinkSprite.Update();
+                LinkSpriteFactory.Update();
             }
 
-            public int xPosition()
+            public int GetXVal()
             {
                 return XVal;
             }
-            public int yPosition()
+            public int GetYVal()
             {
                 return YVal;
             }
@@ -129,16 +127,16 @@ namespace sprint0.Link
                 switch(LinkDirection)
                 {
                     case Direction.Left:
-                        direction = "Left";
+                        direction = "left";
                         break;
                     case Direction.Right:
-                        direction = "Right";
+                        direction = "right";
                         break;
                     case Direction.Up:
-                        direction = "Up";
+                        direction = "up";
                         break;
                     case Direction.Down:
-                        direction = "Down";
+                        direction = "down";
                         break;
                 }
                 return direction;
@@ -169,55 +167,13 @@ namespace sprint0.Link
                     break;
                 }
             }
-            public void SetRoomId(int id)
-            {
-                RoomId = id;
-            }
-            public int GetRoomId() 
-            {
-                return RoomId;
-            }
             /*Needed to reset link after decorator finishes*/
             public void SetLink(ILink link)
             {
                 LinkObj = link;
             }
-
-            public void SetSprite(ISprite newLink) 
-            {
-                LinkSprite = newLink;
-            }
-            public int width()
-            {
-                //DEPENDS ON SPRITEFACTORY
-                return 1;
-            }
-            public int height()
-            {
-                //DEPENDS ON SPRITEFACTORY
-                return 1;
-            }
-            public bool isDynamic()
-            {
-                return IsDynamic;
-            }
-            public bool isUpdateable()
-            {
-                return IsUpdateable;
-            }
-            public bool isRemoveable()
-            {
-                return IsRemoveable;
-            }
-            public bool isDrawable()
-            {
-                return IsDrawable;
-            }
-            public void Draw(SpriteBatch spriteBatch)
-            {
-                LinkSprite.Draw(spriteBatch, XVal, YVal);
-            }
-    }
+            
+        }
         
 
 }
