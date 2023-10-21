@@ -49,6 +49,11 @@ namespace sprint0
             Rectangle drawnSprite = new Rectangle(x, y, width, height);
             spriteBatch.Draw(Texture, drawnSprite, incomingSprite, Color.White);
         }
+
+        public int itemHeight()
+        {
+            return height;
+        }
     }
 }
 

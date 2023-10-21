@@ -24,7 +24,7 @@ namespace sprint0
         // need a constructor
         private Dictionary<int, List<IGameObject>> ObjectMap;
 
-        public IGameObjectManager()
+        public void IGameObjectManager()
         {
             drawables = new List<IGameObject>();
             updateables = new List<IGameObject>();
@@ -37,7 +37,7 @@ namespace sprint0
         }
 
         // adds object into their respective lists
-        public void addObject(int room, IGameObject obj)
+        public void AddObject(int room, IGameObject obj)
         {
 
             // if it is a new room, it makes a new room and add the object in 
@@ -54,22 +54,22 @@ namespace sprint0
             {
                 dynamics.Add(obj);
             }
-            if (obj.isDrawable())
-            {
-                drawables.Add(obj);
-            }
-            if (obj.isRemovable())
-            {
-                removeables.Add(obj);
-            }
-            if (obj.isUpdateable())
-            {
-                updateables.Add(obj);
-            }
+            //if (obj.isDrawable())
+            //{
+            //    drawables.Add(obj);
+            //}
+            //if (obj.isRemovable())
+            //{
+            //    removeables.Add(obj);
+            //}
+            //if (obj.isUpdateable())
+            //{
+            //    updateables.Add(obj);
+            //}
         }
 
         // removes object from room
-        public void removeObject(int room, IGameObject obj)
+        public void RemoveObject(int room, IGameObject obj)
         {
             // removes the object from the room
             if (ObjectMap[room].Contains(obj))
