@@ -9,7 +9,7 @@ namespace sprint0.Items.groundItems
 
         namespace sprint0.Items.groundItems
         {
-            public class GroundBlaze : IGroundItem
+            public class GroundBlaze : IGroundItem, IGameObject
             {
                 public SpriteBatch itemSpriteBatch;
                 private IGroundSprite itemSprite;
@@ -40,7 +40,7 @@ namespace sprint0.Items.groundItems
 
                 public void Update()
                 {
-
+                    this.itemSprite.Update();
                 }
 
                 public int width()

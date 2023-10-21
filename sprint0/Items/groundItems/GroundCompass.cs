@@ -9,7 +9,7 @@ namespace sprint0.Items.groundItems
 
         namespace sprint0.Items.groundItems
         {
-            public class GroundCompass : IGroundItem
+            public class GroundCompass : IGroundItem, IGameObject
             {
                 public SpriteBatch itemSpriteBatch;
                 private IGroundSprite itemSprite;

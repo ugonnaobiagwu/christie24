@@ -6,7 +6,7 @@ namespace sprint0.Items.groundItems
 
     namespace sprint0.Items.groundItems
     {
-        public class GroundPage : IGroundItem
+        public class GroundPage : IGroundItem, IGameObject
         {
             public SpriteBatch itemSpriteBatch;
             private IGroundSprite itemSprite;

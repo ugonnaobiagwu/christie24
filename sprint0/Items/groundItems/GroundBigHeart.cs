@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.Items.groundItems
 {
-    public class GroundBigHeart : IGroundItem
+    public class GroundBigHeart : IGroundItem, IGameObject
     {
         public SpriteBatch itemSpriteBatch;
         private IGroundSprite itemSprite;
