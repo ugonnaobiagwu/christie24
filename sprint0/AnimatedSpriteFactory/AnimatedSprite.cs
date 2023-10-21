@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.AnimatedSpriteFactory
 {
     /*EDITED FOR LINK TESTING: TO BE DELETED*/
-    public class AnimatedSprite :/* ISprite*/ ITestSprite
+    public class AnimatedSprite :ISprite
     {
 
         public Texture2D Texture;
@@ -58,7 +58,7 @@ namespace sprint0.AnimatedSpriteFactory
 
         }
         /*NOTE: EDITED FOR LINK TESTING*/
-        public void Draw(SpriteBatch spriteBatch/*, int x, int y*/)
+        public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
