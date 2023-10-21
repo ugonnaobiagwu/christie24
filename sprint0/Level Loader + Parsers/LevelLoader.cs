@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
-using sprint0.Factory;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Level_Loading___Parsers
 {
@@ -23,11 +23,11 @@ namespace sprint0.Level_Loading___Parsers
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
         }
-        public static void CreateBlock(int x, int y, int roomId, string blockType)
+       /* public static void CreateBlock(int x, int y, int roomId, string blockType, SpriteFactory spriteFactory)
         {
             IGameObject Block;
             /*NOTE: Make into typeof() later IF you can cast from Object to IGameObject, if you can't it is impossible to use many of the object's methods needed by the GOM*/
-            /*NOTE: All of these will need parameters added once the block classes are cleaned up.*/
+            /*NOTE: All of these will need parameters added once the block classes are cleaned up: Sprite Factory, x, y.
             switch (blockType)
             {
                 case "DungeonBlueBlock":
@@ -46,14 +46,14 @@ namespace sprint0.Level_Loading___Parsers
                     break;
             }
             /*CODE TO ASSIGN ROOMID*/
-            /*CODE TO SEND TO GAME OBJECT MANAGER*/
-        }
-        public static void CreateEnemy(int x, int y, int roomId, string enemyType)
+            /*CODE TO SEND TO GAME OBJECT MANAGER
+        }*/
+       /* public static void CreateEnemy(int x, int y, int roomId, string enemyType, SpriteFactory spriteFactory)
         {
             IGameObject Enemy;
             /*NOTE: Make into typeof() later IF you can cast from Object to IGameObject, if you can't it is impossible to use many of the object's methods needed by the GOM*/
-            /*NOTE: All of these will need parameters added once the block classes are cleaned up.*/
-            /*NOTE: I don't have the enemy classes yet so I'll need to see those before finishing*/
+            /*NOTE: All of these will need parameters added once the block classes are cleaned up: Sprite Factory, x, y.*/
+            /*NOTE: I don't have the enemy classes yet so I'll need to see those before finishing
             switch (enemyType)
             {
                 case "DungeonBlueBlock":
@@ -71,22 +71,26 @@ namespace sprint0.Level_Loading___Parsers
                 default:
                     break;
             }
-        }
-        public static void CreateBoundary(int x, int y, int roomId, int width, int height)
+        }*/
+        public static void CreateBoundary(int x, int y, int roomId, int width, int height, SpriteFactory spriteFactory)
         {
-            
+            /*Creates the Boundary Object*/
             Rectangle BoundaryBox = new Rectangle(x, y, width, height);
-            IGameObject Boundary = new Boundary(BoundaryBox,roomId);
+            /*IGameObject Boundary = new Boundary(BoundaryBox,roomId,spriteFactory);*/
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
 
         }
-        public static void CreateDoor(int x, int y, int roomId, int width, int height, int toWhere)
+        public static void CreateDoor(int x, int y, int roomId, int width, int height, int toWhere, SpriteFactory spriteFactory)
         {
             Rectangle DoorBox = new Rectangle(x, y, width,height);
-            IGameObject Door = new Door(DoorBox, roomId, toWhere);
+            /*IGameObject Door = new Door(DoorBox, roomId, toWhere, spriteFactory);*/
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
+        }
+        public static void CreateItems()
+        {
+            /*TO BE FINISHED LATER*/
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Link
 {
-    using global::sprint0.Factory;
+    using global::sprint0.AnimatedSpriteFactory;
     using Microsoft.Xna.Framework.Graphics;
     using Microsoft.Xna.Framework.Input;
     using System;
@@ -16,20 +16,23 @@ namespace sprint0.Link
     
 
     /* Need to make interface*/
-    public class Link : ILink, IGameObject, ISprite
-        {
+    public class Link : ILink 
+    {
+            private bool IsUpdateable = true;
+            private bool IsDrawable = true;
+            private bool IsRemoveable = true;
+            private bool IsDynamic = true;
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
             private int XVal { get; set; }
             private int YVal { get; set; }
             private int RoomId;
-            private Boolean IsDynamic;
             private enum Direction { Left, Right, Up, Down};
             public enum State { UseItem, Default }
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
             ILink LinkObj;
-            
+            ISprite LinkSprite;
             /*Edited to have a texture, row, and column input for the purpose of drawing*/
             public Link(int x, int y, int roomId, SpriteFactory spriteFactory)
             {
@@ -40,6 +43,7 @@ namespace sprint0.Link
                 LinkObj = this;
                 RoomId = roomId;
                 IsDynamic = true;
+                LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
             }
 
             /*This can be used for both attacking and use item because they have the same Link sprite but different items, which are handled by the item system*/
@@ -59,7 +63,7 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Up)
                 {
                     LinkDirection = Direction.Up;
-                    LinkSpriteFactory.changeDirection("up");
+                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Up");
                 }
                 YVal++;
                 
@@ -70,7 +74,7 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Down)
                 {
                     LinkDirection = Direction.Down;
-                    LinkSpriteFactory.changeDirection("down");
+                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
                 }
                 YVal--;
             }
@@ -80,7 +84,7 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Right)
                 {
                     LinkDirection = Direction.Right;
-                    LinkSpriteFactory.changeDirection("right");
+                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Right");
                 }
                 XVal++;
             }
@@ -90,7 +94,7 @@ namespace sprint0.Link
                 if (LinkDirection != Direction.Left)
                 {
                     LinkDirection = Direction.Left;
-                    LinkSpriteFactory.changeDirection("left");
+                    LinkSprite = LinkSpriteFactory.getAnimatedSprite("Left");
                 }
                 XVal--;
             }
@@ -104,7 +108,7 @@ namespace sprint0.Link
 
             public void Update()
             {
-                LinkSpriteFactory.Update();
+                LinkSprite.Update();
             }
 
             public int xPosition()
@@ -125,16 +129,16 @@ namespace sprint0.Link
                 switch(LinkDirection)
                 {
                     case Direction.Left:
-                        direction = "left";
+                        direction = "Left";
                         break;
                     case Direction.Right:
-                        direction = "right";
+                        direction = "Right";
                         break;
                     case Direction.Up:
-                        direction = "up";
+                        direction = "Up";
                         break;
                     case Direction.Down:
-                        direction = "down";
+                        direction = "Down";
                         break;
                 }
                 return direction;
@@ -165,7 +169,7 @@ namespace sprint0.Link
                     break;
                 }
             }
-            public void SetRoomID(int id)
+            public void SetRoomId(int id)
             {
                 RoomId = id;
             }
@@ -178,16 +182,46 @@ namespace sprint0.Link
             {
                 LinkObj = link;
             }
-            public Boolean isDynamic() 
-            {
-                return IsDynamic;
-            }
             public void Draw(SpriteBatch spriteBatch) 
             {
             /*This comes down to Sprite Factory*/
-            
+                LinkSprite.Draw(spriteBatch, XVal, YVal);
             }
-        }
+            public void SetSprite(ISprite newLink) 
+            {
+                LinkSprite = newLink;
+            }
+            public int width()
+            {
+                //DEPENDS ON SPRITEFACTORY
+                return 1;
+            }
+            public int height()
+            {
+                //DEPENDS ON SPRITEFACTORY
+                return 1;
+            }
+            public bool isDynamic()
+            {
+                return IsDynamic;
+            }
+            public bool isUpdateable()
+            {
+                return IsUpdateable;
+            }
+            public bool isRemoveable()
+            {
+                return IsRemoveable;
+            }
+            public bool isDrawable()
+            {
+                return IsDrawable;
+            }
+            public void Draw(SpriteBatch spriteBatch, int x, int y)
+            {
+                LinkSprite.Draw(spriteBatch, x, y);
+            }
+    }
         
 
 }
