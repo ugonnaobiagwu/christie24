@@ -48,19 +48,19 @@ namespace sprint0
             ObjectMap[room].Add(obj);
 
             // check the type of the object and add it to the corresponding list
-            if (isDynamic(obj)) // This is how you call it right?
+            if (obj.isDynamic()) 
             {
                 dynamics.Add(obj);
             }
-            if (isDrawable(obj)) // This is how you call it right?
+            if (obj.isDrawable()) 
             {
                 drawables.Add(obj); 
             }
-            if (isRemovable(obj)) // This is how you call it right?
+            if (obj.isRemovable()) 
             {
                 removeables.Add(obj);
             }
-            if (isUpdateable(obj)) // This is how you call it right?
+            if (obj.isUpdateable()) 
             {
                 updateables.Add(obj); 
             }
