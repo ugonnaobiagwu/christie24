@@ -21,7 +21,7 @@ namespace sprint0.Items
         private Texture2D goingTexture;
         private Texture2D comingTexture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
@@ -128,6 +128,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemXOrigin = linkXPos;

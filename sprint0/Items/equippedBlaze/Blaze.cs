@@ -20,7 +20,7 @@ namespace sprint0.Items
         private enum Direction { LEFT, RIGHT, UP, DOWN };
         private Texture2D texture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
 
         public Blaze(IList<Texture2D> itemSpriteSheet)

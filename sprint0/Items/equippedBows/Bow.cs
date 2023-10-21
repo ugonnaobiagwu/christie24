@@ -22,7 +22,7 @@ namespace sprint0.Items
         private Texture2D rightBowTexture;
         private Texture2D bowDespawnTextures;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisBowStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
@@ -33,7 +33,7 @@ namespace sprint0.Items
             leftBowTexture = itemSpriteSheet[0];
             rightBowTexture = itemSpriteSheet[1];
             bowDespawnTextures = itemSpriteSheet[4];
-            thisBowStateMachine = new ItemStateMachine();
+            thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.LEFT;
             spriteChanged = false;
 
@@ -41,7 +41,7 @@ namespace sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisBowStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse())
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -49,7 +49,7 @@ namespace sprint0.Items
 
         public void Update()
         {
-            if (thisBowStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse())
             {
                 // has the sprite reached it's final location?
                 if (itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)
@@ -95,16 +95,17 @@ namespace sprint0.Items
                 this.spriteChanged = true;
             } else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
             {
-                thisBowStateMachine.CeaseUse();
+                thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
             }
         }
 
         public void Use(int linkDirection, int linkXPos, int linkYPos)
         {
-            if (!thisBowStateMachine.isItemInUse())
+            if (!thisStateMachine.isItemInUse())
             {
-                thisBowStateMachine.Use(); // sets usage in play
+                this.spriteChanged = false; //reset
+                thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
                 this.itemMaxX = linkXPos + 100;
