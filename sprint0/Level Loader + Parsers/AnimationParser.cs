@@ -13,8 +13,7 @@ namespace sprint0.Level_Loader___Parsers
     internal static class AnimationParser
     {
         public static SpriteFactory ParseAnimations(XmlNode AnimationNode, Microsoft.Xna.Framework.Content.ContentManager Content)
-        {
-            /*Gets the texture for the factory*/
+        {             /*Gets the texture for the factory*/
             XmlNode AnimationSetNode = AnimationNode.SelectSingleNode("AnimationSet");
             XmlNode Texture2DNode = AnimationSetNode.SelectSingleNode("Texture2D");
             Texture2D TextureSheet = Content.Load<Texture2D>(Texture2DNode.InnerText);
