@@ -42,23 +42,24 @@ namespace sprint0.Controllers
             previousKeys = new List<Keys>();
 
             // not sure if I should put this in here or registerkeys
-            //linkWalkingUp = new WalkUpCommand(Game);
-            //linkWalkingLeft = new WalkLeftCommand(Game);
-            //linkWalkingDown = new WalkDownCommand(Game);
-            //linkWalkingRight = new WalkRightCommand(Game);
-            //linkAttack1 = new AttackCommand(Game);
-            //linkAttack2 = new AttackCommand(Game);
-            //linkEquipItem1 = new EquipItem1Command(Game);
-            //linkEquipItem2 = new EquipItem2Command(Game);
-            //linkDamaged = new DamagedCommand(Game);
+            // not sure which ones are completed yet
+            linkWalkingUp = new WalkUpCommand(Game);
+            linkWalkingLeft = new WalkLeftCommand(Game);
+            linkWalkingDown = new WalkDownCommand(Game);
+            linkWalkingRight = new WalkRightCommand(Game);
+            linkAttack1 = new AttackCommand(Game);
+            linkAttack2 = new AttackCommand(Game);
+            linkEquipItem1 = new EquipItem1Command(Game);
+            linkEquipItem2 = new EquipItem2Command(Game);
+            linkDamaged = new DamagedCommand(Game);
             nextBlock = new NextBlockCommand(Game, Game.block);
             previousBlock = new PreviousBlockCommand(Game, Game.block);
             previousItem = new PreviousItemCommand(Game, Game.groundItems);
             nextItem = new NextItemCommand(Game, Game.groundItems);
-            //previousEnemy = new PreviousEnemyCommand(Game);
-            //nextEnemy = new NextEnemyCommand(Game);
-            //quit = new QuitCommand(Game);
-            //reset = new ResetCommand(Game);
+            previousEnemy = new PreviousEnemyCommand(Game);
+            nextEnemy = new NextEnemyCommand(Game);
+            quit = new QuitCommand(Game);
+            reset = new ResetCommand(Game);
 
         }
 

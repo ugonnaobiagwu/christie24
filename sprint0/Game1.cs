@@ -27,6 +27,10 @@ namespace sprint0
         public IItemSystem linkItemSystem;
       
         KeyboardController KeyboardCont;
+        MouseController MouseCont;
+        ChangeRooms changeRooms;
+
+        public int currentRoomID;
 
         public Sprint0()
         {
@@ -37,6 +41,10 @@ namespace sprint0
 
         protected override void Initialize()
         {
+            // with this, you can load the current room based on its ID
+            currentRoomID = 0;
+            changeRooms = new ChangeRooms(this);
+
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
          
@@ -150,9 +158,11 @@ namespace sprint0
             // TODO: use this.Content to load your game content here
 
             KeyboardCont = new KeyboardController(this);
+            MouseCont = new MouseController(changeRooms);
 
             //Register keys with this.
             KeyboardCont.registerKeys();
+            MouseCont.registerKeys();
         }
 
         protected override void Update(GameTime gameTime)
@@ -160,6 +170,7 @@ namespace sprint0
             // TODO: Add your update logic here
            
             KeyboardCont.Update();
+            MouseCont.Update();
             groundItems.Update();
             //Link.Update();
             base.Update(gameTime);

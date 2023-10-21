@@ -9,45 +9,39 @@ namespace sprint0.Controllers
 {
     public class MouseController : IController
     {
+        // need to know current room and list of objects... but how?
+        ICommand previousRoom;
+        ICommand nextRoom;
         // make the changing of rooms in GameObject Manager
         // go through a list of rooms
 
-        // this is what I would imagine them to be named as, not permanent
-        private ICommand previousRoom;
-        private ICommand nextRoom;
-
-        public void registerKey(Keys key, ICommand command)
+        public MouseController(ChangeRooms changeRooms)
         {
-            throw new NotImplementedException();
+            previousRoom = new PreviousRoomCommand(changeRooms);
+            nextRoom = new NextRoomCommand(changeRooms);
         }
-
-        // used to register mouse states with their respective commands 
+        
         public void registerKeys()
         {
-            // for Sprint3, i will need to implement the room/level changes
-            //previousLevel = new PreviousLevel();
-            //nextLevel = new NextLevel();
-
+            // nothing to really register
         }
 
         public void Update()
         {
-            // in future updates, using the mouse to click the room/level on a map might be an option
+            // in future updates, using the mouse to click the room on a map might be an option
             // i just need to study it more to see how it would work
-            MouseState mouseState = Mouse.GetState();
 
+            MouseState mouseState = Mouse.GetState();
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 previousRoom.execute();
-                // if you left-click, changes to previous level
             }
             else if (mouseState.RightButton == ButtonState.Pressed)
             {
-                // if you right-click, changes to next level
                 nextRoom.execute();
             }
-
+                     
         }
     }
 }
