@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonBlueBlock : ISprite
+    internal class DungeonBlueBlock : IGameObject, IBlock
     {
 
         int blockColumn = 0;
@@ -40,7 +40,8 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-
+            blockX = x;
+            blockY = y;
             int width = Texture.Width / Columns; //width of a one frame per whole column
             int height = Texture.Height / Rows;
            
@@ -60,6 +61,10 @@ namespace sprint0.Blocks
         }
 
         public void Update(){}
+
+        public void Explode() { }
+        public void NextBlock() { }
+        public void PreviousBlock() { }
 
 
         //Methods to return for IGameObject for Block

@@ -12,7 +12,7 @@ namespace sprint0.Blocks
     public class Block : IBlock
     {
 
-        private List<ISprite> blockStates;
+        private List<IBlock> blockStates;
         private int currentIndex; // default is 0
 
         public Texture2D Texture { get; set; }
@@ -21,7 +21,7 @@ namespace sprint0.Blocks
 
        
 
-        ISprite currentBlock;
+        IBlock currentBlock;
 
         public Block(Texture2D texture, int rows, int columns)
         {
@@ -29,7 +29,7 @@ namespace sprint0.Blocks
             Rows = rows;
             Columns = columns;
 
-            blockStates = new List<ISprite>
+            blockStates = new List<IBlock>
         {
             new DungeonBlueBlock(texture, rows, columns),
             new DungeonPyramidBlock(texture, rows, columns),
@@ -83,7 +83,7 @@ namespace sprint0.Blocks
 
         public void Update()
         {
-            currentBlock.Update();
+            //currentBlock.Update();
         }
 
        

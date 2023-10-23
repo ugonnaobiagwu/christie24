@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonPyramidBlock : ISprite, IGameObject
+    internal class DungeonPyramidBlock : IGameObject, IBlock
     {
         
         
@@ -65,6 +65,10 @@ namespace sprint0.Blocks
         }
 
         public void Update() { }
+
+        public void Explode() { }
+        public void NextBlock() { }
+        public void PreviousBlock() { }
 
         //hard code for now (make new class for these?)
         public int xPosition() { return blockX; } // returns X pos of object
