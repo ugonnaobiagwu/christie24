@@ -24,7 +24,7 @@ namespace sprint0
         // need a constructor
         private Dictionary<int, List<IGameObject>> ObjectMap;
 
-        public void IGameObjectManager()
+        public void GameObjectManager()
         {
             drawables = new List<IGameObject>();
             updateables = new List<IGameObject>();
