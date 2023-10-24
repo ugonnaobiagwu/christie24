@@ -102,7 +102,7 @@ namespace sprint0.Link
             public void LinkTakeDamage()
             {
                 HealthVal--;
-                
+                //Add an if else to turn link dead if the health is 0 
                 LinkObj = new DamagedLink(LinkSpriteFactory, this);
             }
 
@@ -123,6 +123,7 @@ namespace sprint0.Link
             {
                 return HealthVal;
             }
+            /*These next three methods could be compact probably*/
             public String GetDirection()
             {
                 String direction = "";

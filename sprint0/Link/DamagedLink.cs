@@ -184,9 +184,9 @@ namespace sprint0.Link
             return LinkObj.GetRoomId();
         }
         /*TO BE DELETE: FOR TESTING*/
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            LinkObj.Draw(spriteBatch,x,y);
+            LinkObj.Draw(spriteBatch);
         }
     }
 }

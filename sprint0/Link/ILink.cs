@@ -23,6 +23,5 @@ namespace sprint0.Link
         public void SetState(String state);
         public void SetSprite(ISprite newSprite);
         public void Draw(SpriteBatch spriteBatch);
-        
     }
 }
