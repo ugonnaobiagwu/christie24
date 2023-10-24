@@ -130,7 +130,7 @@ namespace sprint0.Controllers
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (!previousKeys.Contains(key) && pressed.Contains(key))
+                if (!previousKeys.Contains(key) && pressed.Contains(key) && KeyMap.ContainsKey(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();
