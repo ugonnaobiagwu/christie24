@@ -67,6 +67,10 @@ namespace sprint0.Boundaries___Doors
         {
             return RoomId;
         }
+        public int GetToWhichRoom()
+        {
+            return ToWhichRoom;
+        }
         /*TO ADD: GameObject methods
           ALSO: need to ask if you can draw clear rectangles*/
     }
