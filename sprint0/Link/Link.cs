@@ -65,7 +65,8 @@ namespace sprint0.Link
                     LinkDirection = Direction.Up;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Up");
                 }
-                YVal++;
+                YVal--;
+                LinkSprite.Update();
                 
             }
 
@@ -76,8 +77,9 @@ namespace sprint0.Link
                     LinkDirection = Direction.Down;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
                 }
-                YVal--;
-            }
+                YVal++;
+                LinkSprite.Update();
+        }
 
             public void LinkRight()
             {
@@ -87,7 +89,8 @@ namespace sprint0.Link
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Right");
                 }
                 XVal++;
-            }
+                LinkSprite.Update();
+        }
 
             public void LinkLeft()
             {
@@ -97,7 +100,8 @@ namespace sprint0.Link
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Left");
                 }
                 XVal--;
-            }
+                LinkSprite.Update();
+        }
 
             public void LinkTakeDamage()
             {
@@ -108,7 +112,7 @@ namespace sprint0.Link
 
             public void Update()
             {
-                LinkSprite.Update();
+                //LinkSprite.Update();
             }
 
             public int xPosition()
@@ -124,22 +128,22 @@ namespace sprint0.Link
                 return HealthVal;
             }
             /*These next three methods could be compact probably*/
-            public String GetDirection()
+            public int GetDirection()
             {
-                String direction = "";
+                int direction = 0;
                 switch(LinkDirection)
                 {
                     case Direction.Left:
-                        direction = "Left";
+                        direction = 0;
                         break;
                     case Direction.Right:
-                        direction = "Right";
+                        direction = 1;
                         break;
                     case Direction.Up:
-                        direction = "Up";
+                        direction = 2;
                         break;
                     case Direction.Down:
-                        direction = "Down";
+                        direction = 3;
                         break;
                 }
                 return direction;

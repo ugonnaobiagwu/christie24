@@ -37,7 +37,7 @@ namespace sprint0.Link
         {
             return LinkObj.yPosition();
         }
-        public String GetDirection()
+        public int GetDirection()
         {
             return LinkObj.GetDirection();
         }

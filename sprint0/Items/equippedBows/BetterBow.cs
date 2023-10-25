@@ -34,14 +34,14 @@ namespace sprint0.Items
             rightBowTexture = itemSpriteSheet[1];
             bowDespawnTextures = itemSpriteSheet[4];
             thisBowStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.LEFT;
+            currentItemDirection = Direction.DOWN;
             spriteChanged = false;
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisBowStateMachine.isItemInUse())
+            if (thisBowStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -67,10 +67,10 @@ namespace sprint0.Items
                             itemXPos += spriteVelocity;
                             break;
                         case Direction.UP:
-                            itemYPos += spriteVelocity;
+                            itemYPos -= spriteVelocity;
                             break;
                         case Direction.DOWN:
-                            itemYPos -= spriteVelocity;
+                            itemYPos += spriteVelocity;
                             break;
                         default:
                             itemXPos -= spriteVelocity;
@@ -78,7 +78,10 @@ namespace sprint0.Items
                     }
 
                 }
-                this.currentItemSprite.Update();
+                if (this.currentItemSprite != null)
+                {
+                    this.currentItemSprite.Update();
+                }
 
             }
 
@@ -98,6 +101,7 @@ namespace sprint0.Items
             {
                 thisBowStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
+                this.currentItemSprite = null;
             }
         }
 
@@ -129,13 +133,16 @@ namespace sprint0.Items
                         currentItemSprite = new BowSprite(downBowTexture, 1, 1);
                         currentItemDirection = Direction.DOWN;
                         break;
-                    default:
+                    case (int)Direction.LEFT:
                         currentItemSprite = new BowSprite(leftBowTexture, 1, 1);
+                        currentItemDirection = Direction.LEFT;
                         break;
 
                 }
             }
         }
+
+        
     }
 }
 

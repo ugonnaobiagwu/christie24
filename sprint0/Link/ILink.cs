@@ -16,7 +16,7 @@ namespace sprint0.Link
         public void LinkTakeDamage();
         public void LinkUseItem();
         public String GetState();
-        public String GetDirection();
+        public int GetDirection();
         public int GetHealth();
         public void Update();
         public void SetLink(ILink link);

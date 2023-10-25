@@ -61,7 +61,7 @@ namespace sprint0.Link
         {
             return LinkObj.GetState();
         }
-        public String GetDirection()
+        public int GetDirection()
         {
             return LinkObj.GetDirection();
         }
@@ -108,16 +108,16 @@ namespace sprint0.Link
                 {
                     switch (LinkObj.GetDirection())
                     {
-                        case "Up":
+                        case 2:
                             LinkObj.SetSprite( LinkFactory.getAnimatedSprite("ItemUp"));
                             break;
-                        case "Down":
+                        case 3:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemDown"));
                             break;
-                        case "Left":
+                        case 0:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemLeft"));
                             break;
-                        case "Right":
+                        case 1:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemRight"));
                             break;
                     }
@@ -128,16 +128,16 @@ namespace sprint0.Link
 
                     switch (LinkObj.GetDirection())
                     {
-                        case "Up":
+                        case 2:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Up"));
                             break;
-                        case "Down":
+                        case 3:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Down"));
                             break;
-                        case "Left":
+                        case 0:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Left"));
                             break;
-                        case "Right":
+                        case 1:
                             LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Right"));
                             break;
                     }
