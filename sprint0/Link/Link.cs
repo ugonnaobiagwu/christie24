@@ -51,7 +51,22 @@ namespace sprint0.Link
             {
                 /*This may need altered to fit sprite animation length*/
                 LinkObj.SetState("UseItem");
-                LinkObj = new ItemUseLink(LinkSpriteFactory, this);
+                switch (LinkDirection)
+                {   
+                    case Direction.Left:
+                        LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemLeft");
+                        break;
+                    case Direction.Right:
+                        LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemRight");
+                        break; 
+                    case Direction.Up:
+                        LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemUp");
+                        break;
+                    default:
+                        LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemDown");
+                        break;
+                }
+               
 
             }
 
@@ -60,7 +75,7 @@ namespace sprint0.Link
             public void LinkUp()
             {
 
-                if (LinkDirection != Direction.Up)
+                if (LinkDirection != Direction.Up && LinkState == State.Default)
                 {
                     LinkDirection = Direction.Up;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Up");
@@ -71,7 +86,7 @@ namespace sprint0.Link
 
             public void LinkDown()
             {
-                if (LinkDirection != Direction.Down)
+                if (LinkDirection != Direction.Down && LinkState == State.Default)
                 {
                     LinkDirection = Direction.Down;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Down");
@@ -81,7 +96,7 @@ namespace sprint0.Link
 
             public void LinkRight()
             {
-                if (LinkDirection != Direction.Right)
+                if (LinkDirection != Direction.Right && LinkState == State.Default)
                 {
                     LinkDirection = Direction.Right;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Right");
@@ -91,7 +106,7 @@ namespace sprint0.Link
 
             public void LinkLeft()
             {
-                if (LinkDirection != Direction.Left)
+                if (LinkDirection != Direction.Left && LinkState == State.Default)
                 {
                     LinkDirection = Direction.Left;
                     LinkSprite = LinkSpriteFactory.getAnimatedSprite("Left");
@@ -108,7 +123,27 @@ namespace sprint0.Link
 
             public void Update()
             {
-                LinkSprite.Update();
+                if (LinkState == State.UseItem)
+                {
+                    if(LinkSprite.GetCurrentFrame() == LinkSprite.GetTotalFrames)
+                    {
+                        switch (LinkDirection)
+                        {
+                            case Direction.Left:
+                                LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemLeft");
+                                break;
+                            case Direction.Right:
+                                LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemRight");
+                                break;
+                            case Direction.Up:
+                                LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemUp");
+                                break;
+                            default:
+                                LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemDown");
+                                break;
+                        }
+                    }
+                }
             }
 
             public int xPosition()
@@ -190,13 +225,11 @@ namespace sprint0.Link
             }
             public int width()
             {
-                //DEPENDS ON SPRITEFACTORY
-                return 1;
+                return LinkSpriteFactory.GetWidth(); 
             }
             public int height()
             {
-                //DEPENDS ON SPRITEFACTORY
-                return 1;
+                return LinkSpriteFactory.GetHeight();
             }
             public bool isDynamic()
             {
