@@ -160,10 +160,11 @@ namespace sprint0
 
             //Bomb
             IList<Texture2D> bombSprites = new List<Texture2D>();
+            Texture2D equippedBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
             Texture2D bombExplodeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
-            bombSprites.Add(groundBomb);
+            bombSprites.Add(equippedBomb);
             bombSprites.Add(bombExplodeSprite);
-            linkItemSystem.LoadBlaze(bombSprites);
+            linkItemSystem.LoadBomb(bombSprites);
 
             // TODO: use this.Content to load your game content here
 
@@ -180,6 +181,7 @@ namespace sprint0
            
             KeyboardCont.Update();
             groundItems.Update();
+            linkItemSystem.Update();
             
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
@@ -194,6 +196,7 @@ namespace sprint0
             spriteBatch.Begin();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
+            linkItemSystem.Draw();
             groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();

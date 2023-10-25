@@ -64,8 +64,8 @@ namespace sprint0.AnimatedSpriteFactory
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
 
-           /* position.X = x;
-            position.Y = y;*/
+            position.X = x;
+            position.Y = y;
 
             //Old code for finding rectangle on sprite sheet
             //int row = CurrentFrame / Columns;

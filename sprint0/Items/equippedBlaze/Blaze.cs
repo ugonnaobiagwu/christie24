@@ -27,14 +27,14 @@ namespace sprint0.Items
         {
             texture = itemSpriteSheet[0];
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.LEFT;
+            currentItemDirection = Direction.DOWN;
             maxFireTicks = 120;
             fireTicks = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -51,6 +51,7 @@ namespace sprint0.Items
                     if (fireTicks == maxFireTicks)
                     {
                         thisStateMachine.CeaseUse();
+                        fireTicks = 0;
                     }
                 }
                 else
@@ -64,19 +65,22 @@ namespace sprint0.Items
                             itemXPos += spriteVelocity;
                             break;
                         case Direction.UP:
-                            itemYPos += spriteVelocity;
-                            break;
-                        case Direction.DOWN:
                             itemYPos -= spriteVelocity;
                             break;
-                        default:
+                        case Direction.DOWN:
+                            itemYPos += spriteVelocity;
+                            break;
+                        case Direction.LEFT:
                             itemXPos -= spriteVelocity;
                             break;
                     }
 
                 }
                 fireTicks++;
-                this.currentItemSprite.Update();
+                if (this.currentItemSprite != null)
+                {
+                    this.currentItemSprite.Update();
+                }
 
             }
 
@@ -108,7 +112,8 @@ namespace sprint0.Items
                     case (int)Direction.DOWN:
                         currentItemDirection = Direction.DOWN;
                         break;
-                    default:
+                    case (int)Direction.LEFT:
+                        currentItemDirection = Direction.LEFT;
                         break;
 
                 }
