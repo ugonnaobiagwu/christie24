@@ -15,10 +15,14 @@ namespace sprint0.Controllers
         private ICommand linkWalkingDown;
         private ICommand linkWalkingLeft;
         private ICommand linkWalkingRight;
-        private ICommand linkAttack1;
-        private ICommand linkAttack2;
-        private ICommand linkEquipItem1;
-        private ICommand linkEquipItem2;
+        private ICommand linkItemUse;
+        private ICommand linkSword;
+        private ICommand linkEquipBow;
+        private ICommand linkEquipBetterBow;
+        private ICommand linkEquipBoomerang;
+        private ICommand linkEquipBetterBoomerang;
+        private ICommand linkEquipBomb;
+        private ICommand linkEquipBlaze;
         private ICommand linkDamaged;
         private ICommand previousBlock;
         private ICommand nextBlock;
@@ -42,15 +46,20 @@ namespace sprint0.Controllers
             previousKeys = new List<Keys>();
 
             // not sure if I should put this in here or registerkeys
-            /*    linkWalkingUp = new WalkUpCommand(Game);
-                linkWalkingLeft = new WalkLeftCommand(Game);
-                linkWalkingDown = new WalkDownCommand(Game);
-                linkWalkingRight = new WalkRightCommand(Game);
-                linkAttack1 = new AttackCommand(Game);
-                linkAttack2 = new AttackCommand(Game);
-                linkEquipItem1 = new EquipItem1Command(Game);
-                linkEquipItem2 = new EquipItem2Command(Game);
-                linkDamaged = new DamagedCommand(Game);*/
+            linkWalkingUp = new WalkUpCommand(Game, Game.LinkObj);
+            linkWalkingLeft = new WalkLeftCommand(Game, Game.LinkObj);
+            linkWalkingDown = new WalkDownCommand(Game, Game.LinkObj);
+            linkWalkingRight = new WalkRightCommand(Game, Game.LinkObj);
+
+            linkItemUse = new AttackCommand(Game, Game.LinkObj, Game.linkItemSystem);
+            //linkSword = new SwingSwordCommand(Game);
+            linkEquipBow = new EquipBowCommand(Game, Game.linkItemSystem);
+            linkEquipBetterBow = new EquipBetterBowCommand(Game, Game.linkItemSystem);
+            linkEquipBoomerang = new EquipBoomerangCommand(Game, Game.linkItemSystem);
+            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Game.linkItemSystem);
+            linkEquipBomb = new EquipBombCommand(Game, Game.linkItemSystem);
+            linkEquipBlaze = new EquipBlazeCommand(Game, Game.linkItemSystem);
+            //linkDamaged = new DamagedCommand(Game);
             nextBlock = new NextBlockCommand(Game, Game.block);
             previousBlock = new PreviousBlockCommand(Game, Game.block);
             previousItem = new PreviousItemCommand(Game, Game.groundItems);
@@ -84,10 +93,14 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.Right, linkWalkingRight);
 
             // other commands
-            KeyMap.Add(Keys.N, linkAttack1);
-            KeyMap.Add(Keys.Z, linkAttack2);
-            KeyMap.Add(Keys.NumPad1, linkEquipItem1);
-            KeyMap.Add(Keys.NumPad2, linkEquipItem2);
+            KeyMap.Add(Keys.N, linkItemUse);
+            KeyMap.Add(Keys.Z, linkSword);
+            KeyMap.Add(Keys.D1, linkEquipBow);
+            KeyMap.Add(Keys.D2, linkEquipBetterBow);
+            KeyMap.Add(Keys.D3, linkEquipBoomerang);
+            KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
+            KeyMap.Add(Keys.D5, linkEquipBomb);
+            KeyMap.Add(Keys.D6, linkEquipBlaze);
             KeyMap.Add(Keys.E, linkDamaged);
             KeyMap.Add(Keys.T, previousBlock);
             KeyMap.Add(Keys.Y, nextBlock);
@@ -130,7 +143,7 @@ namespace sprint0.Controllers
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (!previousKeys.Contains(key) && pressed.Contains(key))
+                if (previousKeys.Contains(key) && pressed.Contains(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();
