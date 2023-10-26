@@ -48,7 +48,6 @@ namespace sprint0.Level_Loader___Parsers
             foreach(XmlNode node in AnimationNode)
             {
                 Indexes[ArrayIndex] = (int) float.Parse(node.InnerText);
-                ArrayIndex++;
             }
             return Indexes;
         }

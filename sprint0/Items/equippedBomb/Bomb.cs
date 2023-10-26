@@ -30,7 +30,7 @@ namespace sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
+            if (thisStateMachine.isItemInUse())
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -50,10 +50,7 @@ namespace sprint0.Items
                 {
                     bombTicks++;
                 }
-                if (this.currentItemSprite != null)
-                {
-                    this.currentItemSprite.Update();
-                }
+                this.currentItemSprite.Update();
 
             }
 
@@ -73,9 +70,6 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                this.currentItemSprite = null;
-                bombTicks = 0;
-                
             }
         }
 
@@ -85,7 +79,7 @@ namespace sprint0.Items
             {
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
-                
+                this.itemYPos = linkYPos + 1;
                 currentItemSprite = new BombSprite(bombTexture, 1, 1);
                 // since the bow may go up or down.
                 // all items start at the same position as link.
@@ -93,20 +87,16 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        this.itemXPos = linkXPos + 15;
-                        this.itemYPos = linkYPos;
+                        this.itemXPos = linkXPos + 1;
                         break;
                     case (int)Direction.UP:
-                        this.itemYPos = linkYPos - 15;
-                        this.itemXPos = linkXPos;
+                        this.itemYPos = linkYPos + 1;
                         break;
                     case (int)Direction.DOWN:
-                        this.itemYPos = linkYPos + 15;
-                        this.itemXPos = linkXPos;
+                        this.itemYPos = linkYPos - 1;
                         break;
-                    case (int)Direction.LEFT:
-                        this.itemXPos = linkXPos + 15;
-                        this.itemYPos = linkYPos;
+                    default:
+                        this.itemXPos = linkXPos - 1;
                         break;
 
                 }

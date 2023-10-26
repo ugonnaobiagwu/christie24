@@ -12,21 +12,16 @@ namespace sprint0.Commands
     {
         Sprint0 Game;
         ILink Link;
-        IItemSystem LinkItems;
 
-
-        public AttackCommand(Sprint0 game, ILink link, IItemSystem linkItemSystem)
+        public AttackCommand(Sprint0 game, ILink link)
         {
             this.Game = game;
             this.Link = link;
-            this.LinkItems = linkItemSystem;
         }
 
         public void execute()
         {
             Link.LinkUseItem();
-            LinkItems.UseCurrentItem(Link.GetDirection(), Link.xPosition(), Link.yPosition());
-
         }
     }
 }

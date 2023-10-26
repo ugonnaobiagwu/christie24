@@ -8,24 +8,24 @@ using sprint0.Controllers;
 using sprint0.Blocks;
 using sprint0.Link;
 using System.Collections.Generic;
-using sprint0.AnimatedSpriteFactory;
+//using sprint0.Link;
 
 
 namespace sprint0
 {
     public class Sprint0 : Game
     {
-
+        
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public ILink LinkObj;
+        //public ILink Link;
         Texture2D textureBlock;
 
         //Block
         public IBlock block;
         public IGroundItemSystem groundItems;
         public IItemSystem linkItemSystem;
-
+      
         KeyboardController KeyboardCont;
 
         public Sprint0()
@@ -39,7 +39,7 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+         
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
             block = new Block(textureBlock, 3, 4);
@@ -53,28 +53,10 @@ namespace sprint0
             //Items on the Ground
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
 
-
-
-            /*LINK TEST: TO BE DELETED*/
-            Texture2D LinkTexture = Content.Load<Texture2D>("Link");
-            /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 3, 4);
-            LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2);
-            LinkFactory.createAnimation("ItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("ItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
-            /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
-
-            LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
         }
-
+      
         protected override void LoadContent()
         {
             //GROUND ITEM SYSTEM STUFF
@@ -160,11 +142,10 @@ namespace sprint0
 
             //Bomb
             IList<Texture2D> bombSprites = new List<Texture2D>();
-            Texture2D equippedBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
             Texture2D bombExplodeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
-            bombSprites.Add(equippedBomb);
+            bombSprites.Add(groundBomb);
             bombSprites.Add(bombExplodeSprite);
-            linkItemSystem.LoadBomb(bombSprites);
+            linkItemSystem.LoadBlaze(bombSprites);
 
             // TODO: use this.Content to load your game content here
 
@@ -176,17 +157,16 @@ namespace sprint0
 
         protected override void Update(GameTime gameTime)
         {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
 
             // TODO: Add your update logic here
-
+           
             KeyboardCont.Update();
             groundItems.Update();
-            linkItemSystem.Update();
-
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Update();
+            //Link.Update();
             base.Update(gameTime);
-
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -194,9 +174,7 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch);
-            linkItemSystem.Draw();
+            block.Draw(spriteBatch,300,200);
             groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();

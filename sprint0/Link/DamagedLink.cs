@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using sprint0.AnimatedSpriteFactory;
+using sprint0.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +13,13 @@ namespace sprint0.Link
     {
         SpriteFactory LinkFactory;
         ILink LinkObj;
-        IGameObject LinkGameObj;
+        SpriteBatch SpriteBatch;
         /*This is arbitrary*/
         int timer = 20;
-        public DamagedLink(SpriteFactory linkFactory, ILink link)
+        public DamagedLink(SpriteFactory linkFactory, ILink link, SpriteBatch spriteBatch)
         {
             LinkFactory = linkFactory;
+            SpriteBatch = spriteBatch;
             LinkObj = link;
         }
 
@@ -61,17 +62,17 @@ namespace sprint0.Link
         {
             return LinkObj.GetState();
         }
-        public int GetDirection()
+        public String GetDirection()
         {
             return LinkObj.GetDirection();
         }
-        public int xPosition()
+        public int GetXVal()
         {
-            return LinkObj.xPosition();
+            return LinkObj.GetXVal();
         }
-        public int yPosition()
+        public int GetYVal()
         {
-            return LinkObj.yPosition();
+            return LinkObj.GetYVal();
         }
         public int GetHealth()
         {
@@ -86,10 +87,10 @@ namespace sprint0.Link
             LinkObj.SetLink(link); 
         }
         /*NOTE: This may need tweaking to get tweaked to work properly, specifically it should end with Link shown, so timer may need adjusted.*/
-        /*NOTE: TURN ALL SWITCH CASES INTO DELEGATES*/
         public void Update()
         {
             timer--;
+            LinkObj.Update();
             if(timer == 0)
             {
                 LinkObj.SetState("Default");
@@ -97,96 +98,33 @@ namespace sprint0.Link
 
             }else if(timer%2 == 0)
             {
-                /*The case where Link isn't shown*/
-                LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Damaged"));
-               
+                /*The case where Link's model is not shown*/
+                /*THIS DOES NOT EXIST IN THE SPRITE FACTOEY YET*/
+                //LinkFactory.damage();
+                LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
             }
             else
             {
                 /*The case where Link's model is shown*/
-               if (LinkObj.GetState().Equals("UseItem")) 
+                if (LinkObj.GetState().Equals("Attacking"))
                 {
-                    switch (LinkObj.GetDirection())
-                    {
-                        case 2:
-                            LinkObj.SetSprite( LinkFactory.getAnimatedSprite("ItemUp"));
-                            break;
-                        case 3:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemDown"));
-                            break;
-                        case 0:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemLeft"));
-                            break;
-                        case 1:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("ItemRight"));
-                            break;
-                    }
-
+                    LinkFactory.attack();
+                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
+                }
+                else if (LinkObj.GetState().Equals("UseItem")) 
+                {
+                    //LinkFactory.useItem();
+                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
                 }
                 else
-                {
-
-                    switch (LinkObj.GetDirection())
-                    {
-                        case 2:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Up"));
-                            break;
-                        case 3:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Down"));
-                            break;
-                        case 0:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Left"));
-                            break;
-                        case 1:
-                            LinkObj.SetSprite(LinkFactory.getAnimatedSprite("Right"));
-                            break;
-                    }
-
+                { 
+                    /*Default State*/
+                    //LinkFactory.walk();
+                    LinkFactory.Draw(SpriteBatch, LinkObj.GetXVal(), LinkObj.GetYVal());
                 }
                     
             }
-            LinkObj.Update();
-        }
-        public void SetSprite(ISprite newSprite) 
-        { 
-            LinkObj.SetSprite(newSprite);
-        }
-        public int height()
-        {
-            return LinkObj.height();
-        }
-        public int width()
-        {
-            return LinkObj.width();
-        }
-        public bool isDynamic()
-        {
-            return LinkObj.isDynamic();
-        }
-        public bool isUpdateable()
-        {
-            return LinkObj.isUpdateable();
-        }
-        public bool isDrawable()
-        {
-            return LinkObj.isDrawable();
-        }
-        public bool isRemoveable()
-        {
-            return LinkObj.isRemoveable();
-        }
-        public void SetRoomId(int roomId)
-        {
-            LinkObj.SetRoomId(roomId);
-        }
-        public int GetRoomId()
-        {
-            return LinkObj.GetRoomId();
-        }
-        /*TO BE DELETE: FOR TESTING*/
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            LinkObj.Draw(spriteBatch);
+
         }
     }
 }

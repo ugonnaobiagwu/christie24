@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.AnimatedSpriteFactory
 {
+    /*EDITED FOR LINK TESTING: TO BE DELETED*/
     public class AnimatedSprite : ISprite
     {
 
@@ -12,17 +13,17 @@ namespace sprint0.AnimatedSpriteFactory
         public Vector2 position;
         public int Rows;
         public int Columns;
-        private int Width, Height;
         private int CurrentFrame;
         private int TotalFrames;
         private float frameTime;
         private float frameTimeLeft;
         private bool active = true;
         private List<Rectangle> SourceRectangles;
+        public GameTime GameTime;
         //Add methods to get width and height
 
 
-        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, int width, int height)
+        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns)
         {
             Texture = texture;
             Rows = rows;
@@ -30,47 +31,23 @@ namespace sprint0.AnimatedSpriteFactory
             CurrentFrame = 0;
             TotalFrames = totalFrames;
             SourceRectangles = sourceRectangles;
-            frameTime = secondsPerFrame;
-            frameTimeLeft = secondsPerFrame;
-            position = new Vector2(0,0);
-            Width = width;
-            Height = height;
+            GameTime = new GameTime();
+            frameTime = (float)0.0;
+            frameTimeLeft = (float)0.0;
+            position = new Vector2(0, 0);
         }
-        public int GetWidth()
+        public void changeXandY(int x, int y)
         {
-            return Width;
-        }
-        public int GetHeight()
-        {
-            return Height;
-        }
-        public int GetTotalFrames()
-        {
-            return TotalFrames;
-        }
-        public int GetCurrentFrame()
-        {
-            return CurrentFrame;
-        }
-        public void Stop()
-        {
-            active = false;
-        }
-        public void Start()
-        {
-            active = true;
-        }
-        public void Reset()
-        {
-            CurrentFrame = 0;
-            active = true;
+            position.X = x;
+            position.Y = y;
         }
         public void Update()
         {
             //CurrentFrame = (int)GameTime.ElapsedGameTime.TotalSeconds % TotalFrames;
             if (!active) return;
-            
-            frameTimeLeft -= Globals.TotalSeconds;
+
+            frameTimeLeft -= (float)GameTime.ElapsedGameTime.TotalSeconds;
+            Console.WriteLine((float)GameTime.ElapsedGameTime.TotalSeconds);
             if (frameTimeLeft <= 0)
             {
                 frameTimeLeft += frameTime;
@@ -80,14 +57,15 @@ namespace sprint0.AnimatedSpriteFactory
             }
 
         }
+        /*NOTE: EDITED FOR LINK TESTING*/
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
 
-            position.X = x;
-            position.Y = y;
+            /* position.X = x;
+             position.Y = y;*/
 
             //Old code for finding rectangle on sprite sheet
             //int row = CurrentFrame / Columns;
@@ -100,12 +78,13 @@ namespace sprint0.AnimatedSpriteFactory
             spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        /*public void Draw(SpriteBatch spriteBatch)
         {
             //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
             spriteBatch.Draw(Texture, position, SourceRectangles[CurrentFrame], Color.White);
-        }
+        }*/
     }
+        
 }
