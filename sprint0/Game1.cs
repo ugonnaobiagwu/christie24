@@ -6,9 +6,11 @@ using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 using sprint0.Controllers;
 using sprint0.Blocks;
-using sprint0.Link;
-using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
+
+using System.Collections.Generic;
+using System;
+//using sprint0.Link;
 
 
 namespace sprint0
@@ -18,7 +20,7 @@ namespace sprint0
         
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public ILink LinkObj;
+        //public ILink Link;
         Texture2D textureBlock;
 
         //Block
@@ -27,6 +29,10 @@ namespace sprint0
         public IItemSystem linkItemSystem;
       
         KeyboardController KeyboardCont;
+
+        public SpriteFactory linkFactory;
+        public ISprite linkSprite;
+        public GameTime timer;
 
         public Sprint0()
         {
@@ -44,6 +50,9 @@ namespace sprint0
             textureBlock = Content.Load<Texture2D>("block_image");
             block = new Block(textureBlock, 3, 4);
 
+            //SpriteFactory LinkSprite
+            
+
             // Linky
             //Link = new Link()
             //Link's Item System
@@ -53,30 +62,23 @@ namespace sprint0
             //Items on the Ground
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
 
-
-
-            /*LINK TEST: TO BE DELETED*/
-            Texture2D LinkTexture = Content.Load<Texture2D>("Link");
-            /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 3, 4);
-            LinkFactory.createAnimation("Up", new int[] {0,1}, new int[] {2,2},2);
-            LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2);
-            LinkFactory.createAnimation("ItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("ItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
-            /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 },1 );
-
-            LinkObj = new sprint0.Link.Link(400,200,1,LinkFactory);
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
+
+            timer = new GameTime();
         }
       
         protected override void LoadContent()
         {
+
+            //Animated Sprite Factory Testing
+            Texture2D linkSheet = Content.Load<Texture2D>("Link");
+            Vector2 linkVector = new Vector2(100,100);
+            linkFactory = new SpriteFactory(linkSheet, 5,4);
+            linkFactory.createAnimation("walkDown",new int[]{0,1},new int[]{0,0},2);
+            linkFactory.createAnimation("walkLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
+            linkSprite = linkFactory.getAnimatedSprite("walkDown");
+
             //GROUND ITEM SYSTEM STUFF
             Texture2D groundBow = Content.Load<Texture2D>("groundItemSprites/groundBow");
             Texture2D groundBoomerang = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
@@ -160,11 +162,10 @@ namespace sprint0
 
             //Bomb
             IList<Texture2D> bombSprites = new List<Texture2D>();
-            Texture2D equippedBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
             Texture2D bombExplodeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
-            bombSprites.Add(equippedBomb);
+            bombSprites.Add(groundBomb);
             bombSprites.Add(bombExplodeSprite);
-            linkItemSystem.LoadBomb(bombSprites);
+            linkItemSystem.LoadBlaze(bombSprites);
 
             // TODO: use this.Content to load your game content here
 
@@ -176,15 +177,17 @@ namespace sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
             // TODO: Add your update logic here
-           
+            Console.WriteLine(Globals.TotalSeconds);
+            
+            Globals.Update(gameTime);
             KeyboardCont.Update();
             groundItems.Update();
-            linkItemSystem.Update();
-            
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Update();
+            linkSprite.Update();
+            //Link.Update();
             base.Update(gameTime);
             
         }
@@ -194,9 +197,16 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch);
-            linkItemSystem.Draw();
+            block.Draw(spriteBatch,300,200);
+            linkFactory.playAnimation("walkDown", spriteBatch);
+
+            //This method of drawing with a link sprite works
+            // linkSprite = linkFactory.getAnimatedSprite("walkDown");
+            //linkSprite.Draw(spriteBatch, 50, 50);
+            //linkSprite = linkFactory.getAnimatedSprite("walkLeft");
+            // linkSprite.Draw(spriteBatch, 200, 200);
+            //End of link sprite drawing
+            linkSprite.Draw(spriteBatch, 100,100);
             groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();
