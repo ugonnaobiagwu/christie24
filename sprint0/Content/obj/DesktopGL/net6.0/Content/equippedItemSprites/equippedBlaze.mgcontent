@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< Updated upstream
   <SourceFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBlaze.png</SourceFile>
   <SourceTime>2023-10-11T20:10:20-04:00</SourceTime>
   <DestFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/bin/DesktopGL/Content/equippedItemSprites/equippedBlaze.xnb</DestFile>
   <DestTime>2023-10-12T20:03:26.022285-04:00</DestTime>
+=======
+  <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBlaze.png</SourceFile>
+  <SourceTime>2023-10-25T21:45:15.4005809-04:00</SourceTime>
+  <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/equippedItemSprites/equippedBlaze.xnb</DestFile>
+  <DestTime>2023-10-25T21:51:10.2899505-04:00</DestTime>
+>>>>>>> Stashed changes
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

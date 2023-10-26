@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< Updated upstream
   <SourceFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/File.spritefont</SourceFile>
   <SourceTime>2023-09-22T18:04:25.1182655-04:00</SourceTime>
   <DestFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/bin/DesktopGL/Content/Font.xnb</DestFile>
   <DestTime>2023-10-12T19:58:35.1520311-04:00</DestTime>
+=======
+  <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/File.spritefont</SourceFile>
+  <SourceTime>2023-10-25T21:45:15.3794294-04:00</SourceTime>
+  <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/Font.xnb</DestFile>
+  <DestTime>2023-10-25T21:51:10.4586379-04:00</DestTime>
+>>>>>>> Stashed changes
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
