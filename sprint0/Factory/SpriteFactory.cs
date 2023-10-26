@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace sprint0.Factory
 {
-	public abstract class SpriteFactory : ISprite
+	public abstract class SpriteFactory
 	{
         private Texture2D SpriteSheet { get; set; }
         private Vector2 SpritePosition { get; set; }
