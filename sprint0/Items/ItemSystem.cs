@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.Items;
+using sprint0.LinkSword;
 
 namespace sprint0
 {
@@ -23,6 +24,9 @@ namespace sprint0
         private IList<Texture2D> blazeTexture;
         private SpriteBatch spriteBatch;
         private Dictionary<IItem, Boolean> theseItems;
+
+        private IList<Texture2D> swordTexture;
+        private ILinkSword sword;
         /*
          * [code: theseItems] will be used to limit whether or not link can equip an 
          * item depending on how the inventory system works
@@ -109,6 +113,15 @@ namespace sprint0
                 this.blazeTexture = itemSpriteSheet;
             }
         }
+
+        public void LoadSword(IList<Texture2D> itemSpriteSheet)
+        {
+            if (this.swordTexture == null)
+            {
+                this.swordTexture = itemSpriteSheet;
+                
+            }
+        }
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch)
         {
             if (this.spriteBatch == null)
@@ -116,6 +129,7 @@ namespace sprint0
                 this.spriteBatch = incomingSpriteBatch;
             }
         }
+
 
         /*
          * Item Equipment: This will change the current item that Link has in his hand at the time it's called.
@@ -161,6 +175,11 @@ namespace sprint0
                 this.currentItem.Use(linkDirection, linkXPos, linkYPos);
                 Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
             }
+        }
+
+        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        {
+            this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
         }
 
         public void Draw()
