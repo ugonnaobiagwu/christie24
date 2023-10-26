@@ -16,8 +16,6 @@ namespace sprint0.Enemies
         public void TakeDamage();
         public void BokoblinThrow();
 
-        public int getX();
-        public int getY();
         public int getDirection();
         public int getHealth();
 

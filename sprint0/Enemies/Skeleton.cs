@@ -9,7 +9,7 @@ using sprint0.Factory;
 
 namespace sprint0.Enemies
 {
-    public class Skeleton: ISkeleton
+    public class Skeleton: ISkeleton, IGameObject
     {
         Sprint0 Game;
         SpriteFactory SkeletonFactory;
@@ -68,19 +68,37 @@ namespace sprint0.Enemies
             return Direction;
         }
 
-        public int getX()
+        public int getHealth()
+        {
+            return Health;
+        }
+
+        /* ---IGameObject--- */
+        public int xPosition()
         {
             return xPos;
         }
 
-        public int getY()
+        public int yPosition()
         {
             return yPos;
         }
 
-        public int getHealth()
+        public int width()
         {
-            return Health;
+            /* Temporary Value */
+            return 1;
+        }
+
+        public int height()
+        {
+            /* Temporary Value */
+            return 1;
+        }
+
+        public bool isDynamic()
+        {
+            return true;
         }
 
         /* ---Other Methods--- */

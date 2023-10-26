@@ -9,7 +9,7 @@ using sprint0.Factory;
 
 namespace sprint0.Enemies
 {
-    public class Oktorok : IOktorok
+    public class Oktorok : IOktorok, IGameObject
     {
         private Sprint0 Game;
         private SpriteFactory OktorokFactory;
@@ -93,16 +93,6 @@ namespace sprint0.Enemies
             return direction;
         }
 
-        public int getX()
-        {
-            return xPos;
-        }
-
-        public int getY()
-        {
-            return yPos;
-        }
-
         public int getHealth()
         {
             return Health;
@@ -115,6 +105,34 @@ namespace sprint0.Enemies
                 return 1;
             }
             return 0;
+        }
+
+        /* ---IGameObject--- */
+        public int xPosition()
+        {
+            return xPos;
+        }
+
+        public int yPosition()
+        {
+            return yPos;
+        }
+
+        public int width()
+        {
+            /* Temporary Value */
+            return 1;
+        }
+
+        public int height()
+        {
+            /* Temporary Value */
+            return 1;
+        }
+
+        public bool isDynamic()
+        {
+            return true;
         }
 
         /* ---Other Methods--- */

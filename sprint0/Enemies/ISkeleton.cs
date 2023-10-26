@@ -20,10 +20,6 @@ namespace sprint0.Enemies
 
         public void takeDamage();
 
-        public int getX();
-
-        public int getY();
-
         public int getHealth();
 
         public void Update();
