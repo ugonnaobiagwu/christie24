@@ -18,7 +18,7 @@ namespace sprint0
         
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public ILink LinkObj;
+        //public ILink Link;
         Texture2D textureBlock;
 
         //Block
@@ -176,9 +176,11 @@ namespace sprint0
 
         protected override void Update(GameTime gameTime)
         {
-            
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
             // TODO: Add your update logic here
-           
+            Globals.Update(gameTime);
             KeyboardCont.Update();
             groundItems.Update();
             linkItemSystem.Update();

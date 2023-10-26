@@ -1,0 +1,17 @@
+Author of Code Review: Matthew Dannery
+Date of Code Review: 10/20/2023
+Sprint: 3
+Name of .cs file: skeleton.cs
+Author of .cd file: Alex Kim
+Skeleton implements interface ISkeleton, contains 2 preset animation frames. Has methods for changing movement in each direction, and getter methods for accessing skeleton members. 
+Switch case for take damage may be messy but is functional, may or may not be worth refactoring in the future. Code for deleting skeleton is still needed. Overall clean and readable.
+
+
+Author of Code Review: Matthew Dannery
+Date of Code Review: 10/20/2023
+Sprint: 3
+Name of .cs file: octorok.cs
+Author of .cd file: Alex Kim
+Comments on code:
+I like ocotorok having enums for states and directions, useful for the future. In the future maybe could add enum for octorok color and different health in the constructor, I think there are atleast 2 types of octorks in the original Zelda (red and blue?). 
+Comments are present to differentiate direction, getter, and misc methods. More comments could be added in the future when the file is more complete but seems good for now. For getDirection, a dictionary could be used instead to avoid a switch case.  

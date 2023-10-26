@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class BetterBow : IItem
+    public class BetterBow : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -22,7 +22,7 @@ namespace sprint0.Items
         private Texture2D rightBowTexture;
         private Texture2D bowDespawnTextures;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisBowStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
@@ -49,7 +49,7 @@ namespace sprint0.Items
 
         public void Update()
         {
-            if (thisBowStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse())
             {
                 // has the sprite reached it's final location?
                 if (itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)
@@ -99,7 +99,7 @@ namespace sprint0.Items
             }
             else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
             {
-                thisBowStateMachine.CeaseUse();
+                thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
                 this.currentItemSprite = null;
             }
@@ -107,9 +107,10 @@ namespace sprint0.Items
 
         public void Use(int linkDirection, int linkXPos, int linkYPos)
         {
-            if (!thisBowStateMachine.isItemInUse())
+            if (!thisStateMachine.isItemInUse())
             {
-                thisBowStateMachine.Use(); // sets usage in play
+                this.spriteChanged = false; //reset
+                thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
                 this.itemMaxX = linkXPos + 200;
@@ -142,7 +143,30 @@ namespace sprint0.Items
             }
         }
 
-        
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return true;
+        }
     }
 }
 

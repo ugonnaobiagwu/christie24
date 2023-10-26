@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Blaze : IItem
+    public class Blaze : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -20,7 +20,7 @@ namespace sprint0.Items
         private enum Direction { LEFT, RIGHT, UP, DOWN };
         private Texture2D texture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
 
         public Blaze(IList<Texture2D> itemSpriteSheet)
@@ -118,6 +118,30 @@ namespace sprint0.Items
 
                 }
             }
+        }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return false;
         }
     }
 }
