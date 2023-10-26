@@ -20,7 +20,7 @@ namespace sprint0.Link
     {
             private bool IsUpdateable = true;
             private bool IsDrawable = true;
-            private bool IsRemoveable = true;
+            private bool IsInPlay = true;
             private bool IsDynamic = true;
             SpriteFactory LinkSpriteFactory;
             private int HealthVal { get; set; }
@@ -129,7 +129,7 @@ namespace sprint0.Link
             {
                 if (LinkState == State.UseItem)
                 {
-                    if(LinkSprite.GetCurrentFrame() == LinkSprite.GetTotalFrames)
+                    if(LinkSprite.GetCurrentFrame() == LinkSprite.GetTotalFrames())
                     {
                         switch (LinkDirection)
                         {
@@ -229,11 +229,11 @@ namespace sprint0.Link
             }
             public int width()
             {
-                return LinkSpriteFactory.GetWidth(); 
+                return LinkSprite.GetWidth(); 
             }
             public int height()
             {
-                return LinkSpriteFactory.GetHeight();
+                return LinkSprite.GetHeight();
             }
             public bool isDynamic()
             {
@@ -243,9 +243,9 @@ namespace sprint0.Link
             {
                 return IsUpdateable;
             }
-            public bool isRemoveable()
+            public bool isInPlay()
             {
-                return IsRemoveable;
+                return IsInPlay;
             }
             public bool isDrawable()
             {

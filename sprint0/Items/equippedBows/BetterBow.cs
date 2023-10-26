@@ -33,7 +33,7 @@ namespace sprint0.Items
             leftBowTexture = itemSpriteSheet[0];
             rightBowTexture = itemSpriteSheet[1];
             bowDespawnTextures = itemSpriteSheet[4];
-            thisBowStateMachine = new ItemStateMachine();
+            thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
 
@@ -41,7 +41,7 @@ namespace sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisBowStateMachine.isItemInUse() && this.currentItemSprite != null)
+            if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
