@@ -161,7 +161,7 @@ namespace sprint0
                 Exit();
 
             // TODO: Add your update logic here
-           
+            Globals.Update(gameTime);
             KeyboardCont.Update();
             groundItems.Update();
             //Link.Update();
