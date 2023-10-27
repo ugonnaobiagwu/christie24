@@ -13,6 +13,8 @@ namespace sprint0
         public bool isDrawable();
         public void SetRoomId(int roomId);
         public int GetRoomId();
+	public void Draw(SpriteBatch spritebatch);
+	public void Update();
     }
 }
 
