@@ -7,11 +7,11 @@ public interface IManager<T> where T : IGameObject
     // need to fix this
     // probably dont even need this
 
-    void addObject(int room, T obj);
+    void addObject(T obj);
     void removeObject(T obj);
     void deleteObjects();
     List<IGameObject> getList(string listName);
     List<int> getRoomIDs();
-    List<IGameObject> getObjectsInRoom(int roomID);
+    List<IGameObject> getObjectsInRoom();
     Dictionary<int, List<IGameObject>> getDictionary();
 }

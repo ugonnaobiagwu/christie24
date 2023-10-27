@@ -16,11 +16,12 @@ namespace sprint0
         // lists for drawable objects updateable objects, dynamic objects and all objects that need to be removed
         private List<IGameObject> drawables;
         private List<IGameObject> updateables;
-        private List<IGameObject> removeables;
         private List<IGameObject> dynamics;
         private List<IGameObject> inPlay;
         private List<IGameObject> deleteList;
         private List<int> roomIDs;
+
+        private int currentRoomID;
 
         // makes a dictionary for the rooms and objects
         // need a constructor
@@ -30,7 +31,6 @@ namespace sprint0
         {
             drawables = new List<IGameObject>();
             updateables = new List<IGameObject>();
-            removeables = new List<IGameObject>();
             dynamics = new List<IGameObject>();
             inPlay = new List<IGameObject>();
             deleteList = new List<IGameObject>();
@@ -38,20 +38,23 @@ namespace sprint0
 
             // map to hold all the objects in each room
             ObjectMap = new Dictionary<int, List<IGameObject>>();
+
+            currentRoomID = 0;
         }
 
         // adds object into their respective lists
-        public void addObject(int room, IGameObject obj)
+        public void addObject(IGameObject obj)
         {
+            currentRoomID = obj.GetRoomId();
 
             // if it is a new room, it makes a new room and add the object in 
-            if (!ObjectMap.ContainsKey(room))
+            if (!ObjectMap.ContainsKey(currentRoomID))
             {
-                ObjectMap[room] = new List<IGameObject>();
-                roomIDs.Add(room);
+                ObjectMap[currentRoomID] = new List<IGameObject>();
+                roomIDs.Add(currentRoomID);
             }
             // adds object in the stated room 
-            ObjectMap[room].Add(obj);
+            ObjectMap[currentRoomID].Add(obj);
 
             // check the type of the object and add it to the corresponding list
             if (obj.isDynamic()) // dynamic objects
@@ -61,10 +64,6 @@ namespace sprint0
             if (obj.isDrawable()) // drawable objects
             {
                 drawables.Add(obj);
-            }
-            if (obj.isRemovable()) // removable objects
-            {
-                removeables.Add(obj);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -79,8 +78,9 @@ namespace sprint0
         // if objects are not in play and are removable are added into the delete queue
         public void removeObject(IGameObject obj)
         {
+            currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            if (removeables.Contains(obj) && !inPlay.Contains(obj))
+            if (!inPlay.Contains(obj))
             {
                 deleteList.Add(obj);
             }
@@ -115,11 +115,11 @@ namespace sprint0
                 case "updateables":
                     return updateables;
                 case "removeables":
-                    return removeables;
+                    return deleteList;
                 case "dynamics":
                     return dynamics;
                 case "isInPlay":
-                    return isInPlay;
+                    return inPlay;
                 default:
                     return list;
             }
@@ -132,10 +132,10 @@ namespace sprint0
         }
 
         // returns list of room objects
-        public List<IGameObject> getObjectsInRoom(int roomID)
+        public List<IGameObject> getObjectsInRoom()
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
-            return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<IGameObject>();
+            return ObjectMap.ContainsKey(currentRoomID) ? ObjectMap[currentRoomID] : new List<IGameObject>();
         }
 
         // to get the list of objects in a room just by its ID
