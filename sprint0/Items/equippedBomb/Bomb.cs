@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 namespace sprint0.Items
 {
     public class Bomb : IItem, IGameObject
@@ -12,17 +13,18 @@ namespace sprint0.Items
         // needs these positions for sprite swapping.
 
         //direction stuff
+        private int itemRoomID;
         private enum Direction { LEFT, RIGHT, UP, DOWN };
         private Texture2D bombTexture;
         private Texture2D explosionTexture;
-        private IItemSprite currentItemSprite;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
+        private SpriteFactory explosivesFactory; 
         private bool spriteChanged;
 
-        public Bomb(IList<Texture2D> itemSpriteSheet)
+        public Bomb(SpriteFactory factory)
         {
-            bombTexture = itemSpriteSheet[0];
-            explosionTexture = itemSpriteSheet[1];
+            explosivesFactory = factory; 
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
@@ -69,7 +71,7 @@ namespace sprint0.Items
                 this.currentItemSprite = new ExplosionSprite(explosionTexture, 1, 3);
                 this.spriteChanged = true;
             }
-            else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
+            else if (this.finishedAnimationCycle() && this.spriteChanged)
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
@@ -86,7 +88,7 @@ namespace sprint0.Items
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 
-                currentItemSprite = new BombSprite(bombTexture, 1, 1);
+                currentItemSprite = explosivesFactory.getAnimatedSprite("groundBomb");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
@@ -124,12 +126,12 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -137,6 +139,41 @@ namespace sprint0.Items
             return false;
         }
 
+        public bool isUpdateable()
+        {
+            return true; 
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true; 
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
+        private bool finishedAnimationCycle()
+        {
+            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 
