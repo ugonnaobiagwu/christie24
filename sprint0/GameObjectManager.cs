@@ -18,18 +18,22 @@ namespace sprint0
         private List<IGameObject> updateables;
         private List<IGameObject> removeables;
         private List<IGameObject> dynamics;
+        private List<IGameObject> inPlay;
+        private List<IGameObject> deleteList;
         private List<int> roomIDs;
 
         // makes a dictionary for the rooms and objects
         // need a constructor
         private Dictionary<int, List<IGameObject>> ObjectMap;
 
-        public void GameObjectManager()
+        public GameObjectManager()
         {
             drawables = new List<IGameObject>();
             updateables = new List<IGameObject>();
             removeables = new List<IGameObject>();
             dynamics = new List<IGameObject>();
+            inPlay = new List<IGameObject>();
+            deleteList = new List<IGameObject>();
             roomIDs = new List<int>();
 
             // map to hold all the objects in each room
@@ -37,7 +41,7 @@ namespace sprint0
         }
 
         // adds object into their respective lists
-        public void AddObject(int room, IGameObject obj)
+        public void addObject(int room, IGameObject obj)
         {
 
             // if it is a new room, it makes a new room and add the object in 
@@ -50,33 +54,53 @@ namespace sprint0
             ObjectMap[room].Add(obj);
 
             // check the type of the object and add it to the corresponding list
-            if (obj.isDynamic())
+            if (obj.isDynamic()) // dynamic objects
             {
                 dynamics.Add(obj);
             }
-            //if (obj.isDrawable())
-            //{
-            //    drawables.Add(obj);
-            //}
-            //if (obj.isRemovable())
-            //{
-            //    removeables.Add(obj);
-            //}
-            //if (obj.isUpdateable())
-            //{
-            //    updateables.Add(obj);
-            //}
+            if (obj.isDrawable()) // drawable objects
+            {
+                drawables.Add(obj);
+            }
+            if (obj.isRemovable()) // removable objects
+            {
+                removeables.Add(obj);
+            }
+            if (obj.isUpdateable()) // updateable objects
+            {
+                updateables.Add(obj);
+            }
+            if (obj.isInPlay()) // objects that are in play
+            {
+                inPlay.Add(obj);
+            }
+        }
+
+        // if objects are not in play and are removable are added into the delete queue
+        public void removeObject(IGameObject obj)
+        {
+            // removes the object from the room
+            if (removeables.Contains(obj) && !inPlay.Contains(obj))
+            {
+                deleteList.Add(obj);
+            }
+
         }
 
         // removes object from room
-        public void RemoveObject(int room, IGameObject obj)
+        public void deleteObjects()
         {
-            // removes the object from the room
-            if (ObjectMap[room].Contains(obj))
+            foreach (IGameObject obj in deleteList)
             {
-                ObjectMap[room].Remove(obj);
-            }
+                // removes the objects from the room
+                if (ObjectMap[currentRoomID].Contains(obj))
+                {
+                    ObjectMap[currentRoomID].Remove(obj);
+                }
 
+            }
+            // clears list
+            deleteList = new List<IGameObject>();
         }
 
         // returns list 
@@ -94,8 +118,10 @@ namespace sprint0
                     return removeables;
                 case "dynamics":
                     return dynamics;
+                case "isInPlay":
+                    return isInPlay;
                 default:
-                    return new List<IGameObject>();
+                    return list;
             }
         }
 
@@ -105,8 +131,8 @@ namespace sprint0
             return roomIDs;
         }
 
-        // returns list of room IDs
-        public List<IGameObject> getRoomList(int roomID)
+        // returns list of room objects
+        public List<IGameObject> getObjectsInRoom(int roomID)
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
             return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<IGameObject>();
