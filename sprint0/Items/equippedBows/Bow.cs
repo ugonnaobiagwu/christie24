@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
-namespace sprint0.Items
-{
+using sprint0.Items;
+
+namespace sprint0.AnimatedSpriteFactory;
+
     public class Bow : IItem , IGameObject
     {
         private int itemXPos;
@@ -16,23 +18,16 @@ namespace sprint0.Items
 
         //direction stuff
         private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D upBowTexture;
-        private Texture2D downBowTexture;
-        private Texture2D leftBowTexture;
-        private Texture2D rightBowTexture;
-        private Texture2D bowDespawnTextures;
-        private IItemSprite currentItemSprite;
+        private int itemRoomID;
+        private SpriteFactory itemSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
-        public Bow(IList<Texture2D> itemSpriteSheet)
+        public Bow(SpriteFactory factory)
 		{
-            upBowTexture = itemSpriteSheet[3];
-            downBowTexture = itemSpriteSheet[2];
-            leftBowTexture = itemSpriteSheet[0];
-            rightBowTexture = itemSpriteSheet[1];
-            bowDespawnTextures = itemSpriteSheet[4];
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
@@ -93,9 +88,9 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new BowDespawnSprite(bowDespawnTextures, 1, 1);
+                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("bowDespawn");
                 this.spriteChanged = true;
-            } else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
+            } else if (finishedAnimationCycle() && this.spriteChanged)
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
@@ -122,27 +117,34 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        currentItemSprite = new BowSprite(rightBowTexture, 1, 1);
+                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
                         currentItemDirection = Direction.RIGHT;
                         break;
                     case (int)Direction.UP:
-                        currentItemSprite = new BowSprite(upBowTexture, 1, 1);
+                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
                         currentItemDirection = Direction.UP;
                         break;
                     case (int)Direction.DOWN:
-                        currentItemSprite = new BowSprite(downBowTexture, 1, 1);
+                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
                         currentItemDirection = Direction.DOWN;
                         break;
                     case(int)Direction.LEFT:
-                        currentItemSprite = new BowSprite(leftBowTexture, 1, 1);
+                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
                         currentItemDirection = Direction.LEFT;
                         break;
-
                 }
-            }
-
-           
+            }         
         }
+
+    private bool finishedAnimationCycle()
+    {
+        if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+        {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
         public int xPosition()
         {
@@ -156,18 +158,43 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
         {
             return true;
         }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
     }
-}
+
 
