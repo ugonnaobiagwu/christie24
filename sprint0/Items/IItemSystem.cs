@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0
 {
@@ -9,12 +10,13 @@ namespace sprint0
 		/* 
 		 * Requires that items are properly loaded before system use.
 		*/
-		public void LoadBow(IList<Texture2D> itemSpriteSheet);
-		public void LoadBetterBow(IList<Texture2D> itemSpriteSheet);
-		public void LoadBoomerang(IList<Texture2D> itemSpriteSheet);
-		public void LoadBetterBoomerang(IList<Texture2D> itemSpriteSheet);
-		public void LoadBlaze(IList<Texture2D> itemSpriteSheet);
-		public void LoadBomb(IList<Texture2D> itemSpriteSheet);
+		public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+        public void LoadBow(SpriteFactory factory);
+		public void LoadBetterBow(SpriteFactory factory);
+		public void LoadBoomerang(SpriteFactory factory);
+		public void LoadBetterBoomerang(SpriteFactory factory);
+		public void LoadBlaze(SpriteFactory factory);
+		public void LoadBomb(SpriteFactory factory);
 		public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
         public void EquipBow();
 		public void EquipBetterBow();

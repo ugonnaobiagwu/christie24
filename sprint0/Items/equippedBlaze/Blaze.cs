@@ -20,15 +20,14 @@ namespace sprint0.Items
         //direction stuff
         private int itemRoomID;
         private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D texture;
-        SpriteFactory blazedFactory;
+        SpriteFactory itemSpriteFactory;
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
 
         public Blaze(SpriteFactory factory)
         {
-            blazedFactory = factory;
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             maxFireTicks = 120;
@@ -100,7 +99,7 @@ namespace sprint0.Items
                 this.itemMaxY = linkYPos + 50;
                 this.itemMinX = linkXPos - 50;
                 this.itemMinY = linkYPos - 50;
-                currentItemSprite = blazedFactory.getAnimatedSprite("blaze");
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
@@ -171,17 +170,7 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
-        private bool finishedAnimationCycle()
-        {
-            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
     }
 }
 

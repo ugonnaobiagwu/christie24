@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
 using sprint0.Items.LinkSword;
 
@@ -21,34 +22,26 @@ namespace sprint0.LinkSword
      */
 	public class LinkSword : ILinkSword
 	{
-		private SwordSprite currentSprite;
+		private ISprite currentSprite;
+        private int itemRoomID;
         private int xPos;
         private int yPos;
         private int linkHeight;
         private int linkWidth;
-        private Texture2D upSword;
-        private Texture2D downSword;
-        private Texture2D leftSword;
-        private Texture2D rightSword;
+        SpriteFactory itemSpriteFactory;
         private IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool isDrawn;
-        private int maxTime;
-        private int elapsedTime;
 
         private enum Direction { LEFT, RIGHT, UP, DOWN };
 
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
          */
-        public LinkSword(IList<Texture2D> itemSpriteSheet)
+        public LinkSword(SpriteFactory factory)
 		{
-            upSword = itemSpriteSheet[0];
-            downSword = itemSpriteSheet[1];
-            leftSword = itemSpriteSheet[2];
-            rightSword = itemSpriteSheet[3];
             currentItemDirection = Direction.LEFT;
-            
+            thisStateMachine = new ItemStateMachine();
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -77,7 +70,7 @@ namespace sprint0.LinkSword
 
         public int height()
         {
-            return this.currentSprite.getHeight();
+            return this.currentSprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -87,7 +80,7 @@ namespace sprint0.LinkSword
 
         public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
-          
+            thisStateMachine.Use();
             this.xPos = linkXPos;
             this.yPos = linkYPos;
             this.linkHeight = linkHeight;
@@ -96,16 +89,16 @@ namespace sprint0.LinkSword
             switch (currentItemDirection)
             {
                 case Direction.LEFT:
-                    currentSprite = new SwordSprite(leftSword, 1, 1);
+                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
                     break;
                 case Direction.RIGHT:
-                    currentSprite = new SwordSprite(rightSword, 1, 1);
+                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
                     break;
                 case Direction.UP:
-                    currentSprite = new SwordSprite(upSword, 1, 1);
+                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
                     break;
                 case Direction.DOWN:
-                    currentSprite = new SwordSprite(downSword, 1, 1);
+                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
                     break;
             }
             isDrawn = true;
@@ -116,11 +109,17 @@ namespace sprint0.LinkSword
           /* if the amount of time thats passed is equal to or exceeds the max amount of time for a sword to be drawn, 
            * set isDrawn to false.
            */
+          if (currentSprite.GetCurrentFrame() > currentSprite.GetTotalFrames()) {
+                this.isDrawn = false;
+                this.thisStateMachine.CeaseUse();
+            }
+
+
         }
 
         public int width()
         {
-            return this.currentSprite.getWidth();
+            return this.currentSprite.GetWidth();
         }
 
         public int xPosition()
@@ -166,6 +165,25 @@ namespace sprint0.LinkSword
             return isDrawn;
         }
 
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
     }
 }
 

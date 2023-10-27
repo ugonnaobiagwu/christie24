@@ -15,16 +15,14 @@ namespace sprint0.Items
         //direction stuff
         private int itemRoomID;
         private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D bombTexture;
-        private Texture2D explosionTexture;
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
-        private SpriteFactory explosivesFactory; 
+        private SpriteFactory itemSpriteFactory; 
         private bool spriteChanged;
 
         public Bomb(SpriteFactory factory)
         {
-            explosivesFactory = factory; 
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
@@ -68,7 +66,7 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new ExplosionSprite(explosionTexture, 1, 3);
+                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("BombExplosion");
                 this.spriteChanged = true;
             }
             else if (this.finishedAnimationCycle() && this.spriteChanged)
@@ -88,7 +86,7 @@ namespace sprint0.Items
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 
-                currentItemSprite = explosivesFactory.getAnimatedSprite("groundBomb");
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bomb");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
