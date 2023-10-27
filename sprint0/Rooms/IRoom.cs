@@ -7,8 +7,7 @@ namespace sprint0.Rooms
 
     public interface IRoom
     {
-        public void NextRoom();
-        public void PreviousRoom();
+        public void Draw(SpriteBatch spriteBatch);
 
     }
 }
