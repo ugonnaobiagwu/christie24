@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.Items;
+using sprint0.LinkSword;
 
 namespace sprint0
 {
@@ -15,8 +16,17 @@ namespace sprint0
         private IItem betterBoomerang;
         private IItem bomb;
         private IItem blaze;
+        private IList<Texture2D> bowTexture;
+        private IList<Texture2D> betterBowTexture;
+        private IList<Texture2D> boomerangTexture;
+        private IList<Texture2D> betterBoomerangTexture;
+        private IList<Texture2D> bombTexture;
+        private IList<Texture2D> blazeTexture;
         private SpriteBatch spriteBatch;
         private Dictionary<IItem, Boolean> theseItems;
+
+        private IList<Texture2D> swordTexture;
+        private ILinkSword sword;
         /*
          * [code: theseItems] will be used to limit whether or not link can equip an 
          * item depending on how the inventory system works
@@ -58,49 +68,58 @@ namespace sprint0
         // These load methods could be data driven tbh.
         public void LoadBow(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.bow == null)
+            if (this.bowTexture == null)
             {
-                this.bow = new Bow(itemSpriteSheet);
+                this.bowTexture = itemSpriteSheet;
             }
         }
 
         public void LoadBetterBow(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.betterBow == null)
+            if (this.betterBowTexture == null)
             {
-                this.betterBow = new BetterBow(itemSpriteSheet);
+                this.betterBowTexture = itemSpriteSheet;
             }
         }
 
         public void LoadBoomerang(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.boomerang == null)
+            if (this.boomerangTexture == null)
             {
-                this.boomerang = new Boomerang(itemSpriteSheet);
+                this.boomerangTexture = itemSpriteSheet;
             }
         }
 
         public void LoadBetterBoomerang(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.betterBoomerang == null)
+            if (this.betterBoomerangTexture == null)
             {
-                this.betterBoomerang = new BetterBoomerang(itemSpriteSheet);
+                this.betterBoomerangTexture = itemSpriteSheet;
             }
         }
 
         public void LoadBomb(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.bomb == null)
+            if (this.bombTexture == null)
             {
-                this.bomb = new Bomb(itemSpriteSheet);
+                this.bombTexture = itemSpriteSheet;
             }
         }
 
         public void LoadBlaze(IList<Texture2D> itemSpriteSheet)
         {
-            if (this.blaze == null)
+            if (this.blazeTexture == null)
             {
-                this.blaze = new Blaze(itemSpriteSheet);
+                this.blazeTexture = itemSpriteSheet;
+            }
+        }
+
+        public void LoadSword(IList<Texture2D> itemSpriteSheet)
+        {
+            if (this.swordTexture == null)
+            {
+                this.swordTexture = itemSpriteSheet;
+                
             }
         }
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch)
@@ -111,69 +130,72 @@ namespace sprint0
             }
         }
 
+
         /*
          * Item Equipment: This will change the current item that Link has in his hand at the time it's called.
+         * 
+         * THESE EQUIPMENTS WILL BE MOVED TO THE INVENTORY SYSTEM 
+         * TO AVOID NEW ITEMS BEING EQUIPPED IN THE MIDDLE OF THE CURRENT ONE
          */
         public void EquipBow()
         {
-            if (this.bow != null)
-            {
-                this.currentItem = this.bow;
-            }
+          
+            this.currentItem = new Bow(bowTexture);
         }
 
         public void EquipBetterBow()
         {
-            if (this.betterBow != null)
-            {
-                this.currentItem = this.betterBow;
-            }
+            this.currentItem = new BetterBow(betterBowTexture);
         }
 
         public void EquipBoomerang()
         {
-            if (this.boomerang != null)
-            {
-                this.currentItem = this.boomerang;
-            }
+            this.currentItem = new Boomerang(boomerangTexture);
         }
 
         public void EquipBetterBoomerang()
         {
-            if (this.betterBoomerang != null)
-            {
-                this.currentItem = this.betterBoomerang;
-            }
+            this.currentItem = new BetterBoomerang(betterBoomerangTexture);
         }
 
         public void EquipBlaze()
         {
-            if (this.blaze != null)
-            {
-                this.currentItem = this.blaze;
-            }
+            this.currentItem = new Blaze(blazeTexture);
         }
         public void EquipBomb()
         {
-            if (this.bomb != null)
-            {
-                this.currentItem = this.bomb;
-            }
+            this.currentItem = new Bomb(bombTexture);
         }
 
         public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos)
         {
-            this.currentItem.Use(linkDirection, linkXPos, linkYPos);
+            
+            if (this.currentItem != null)
+            {
+                this.currentItem.Use(linkDirection, linkXPos, linkYPos);
+                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+            }
+        }
+
+        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        {
+            this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
         }
 
         public void Draw()
         {
-            this.currentItem.Draw(this.spriteBatch);
+            if (this.currentItem != null)
+            {
+                this.currentItem.Draw(this.spriteBatch);
+            }
         }
 
         public void Update()
         {
-            this.currentItem.Update();
+            if (this.currentItem != null)
+            {
+                this.currentItem.Update();
+            }
         }
     }
 }

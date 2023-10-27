@@ -1,0 +1,33 @@
+Author of the code review: 
+  Xing Wu
+Date of the code review: 
+  October 20th, 2023
+Sprint number: 
+  Sprint 3
+
+----READABILITY----
+Name of the .cs file being reviewed:
+  DungeonFishBlock.cs
+Author of the .cs file being reviewed:
+  Madoka Kamishima
+Number of minutes taken to complete the review:
+  5 minutes
+Specific comments on what is readable and what is not:
+  Overall, it seems rather easy to read. However, there are weird spaces throughout.
+  There aren't a lot of comments, but the content itself is pretty self-explanatory so that's fine.
+  
+----CODE QUALITY----
+Name of the .cs file being reviewed:
+  PreviousBlockCommand.cs
+Author of the .cs file being reviewed:
+  Madoka Kamishima
+Specific comments on code quality:
+  I don't think these are necessarily needed:
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+  In a hypothetical situation where there is a special effect added to the blocks, 
+  for example, transitioning from a light block, damage from attack, and to a broken block, 
+  i think it would be relatively simple to incorporate since the code is pretty simple and straightforward

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Boomerang : IItem
+    public class Boomerang : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -21,7 +21,7 @@ namespace sprint0.Items
         private Texture2D goingTexture;
         private Texture2D comingTexture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
@@ -30,14 +30,14 @@ namespace sprint0.Items
             goingTexture = itemSpriteSheet[0];
             comingTexture = itemSpriteSheet[1];
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.LEFT;
+            currentItemDirection = Direction.DOWN;
             spriteChanged = false;
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -53,27 +53,27 @@ namespace sprint0.Items
                     ChangeSprite();
                 } else if (this.spriteChanged) // sprite has reached its max and is on its way home
                 {
-                    if (SpriteAtOrigin())
-                    { // if sprite makes it home
-                        thisStateMachine.CeaseUse();
-                    }
                     switch (this.currentItemDirection)
                     {
                         case Direction.RIGHT:
                             itemXPos -= spriteVelocity;
                             break;
                         case Direction.UP:
-                            itemYPos -= spriteVelocity;
-                            break;
-                        case Direction.DOWN:
                             itemYPos += spriteVelocity;
                             break;
-                        default:
+                        case Direction.DOWN:
+                            itemYPos -= spriteVelocity;
+                            break;
+                        case Direction.LEFT:
                             itemXPos += spriteVelocity;
                             break;
                     }
-                    if (SpriteAtOrigin()) // if sprite makes it home
+                    if (SpriteAtOrigin())
+                    {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
+                        this.spriteChanged = false; //reset
+                        this.currentItemSprite = null;
+                    }
                 }
                 else
                 {
@@ -86,18 +86,21 @@ namespace sprint0.Items
                             itemXPos += spriteVelocity;
                             break;
                         case Direction.UP:
-                            itemYPos += spriteVelocity;
-                            break;
-                        case Direction.DOWN:
                             itemYPos -= spriteVelocity;
                             break;
-                        default:
+                        case Direction.DOWN:
+                            itemYPos += spriteVelocity;
+                            break;
+                        case Direction.LEFT:
                             itemXPos -= spriteVelocity;
                             break;
                     }
 
                 }
-                this.currentItemSprite.Update();
+                if (this.currentItemSprite != null)
+                {
+                    this.currentItemSprite.Update();
+                }
 
             }
 
@@ -127,6 +130,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemXOrigin = linkXPos;
@@ -151,11 +155,35 @@ namespace sprint0.Items
                     case (int)Direction.DOWN:
                         currentItemDirection = Direction.DOWN;
                         break;
-                    default:
+                    case (int)Direction.LEFT:
+                        currentItemDirection = Direction.LEFT;
                         break;
-
                 }
             }
+        }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return true;
         }
     }
 }

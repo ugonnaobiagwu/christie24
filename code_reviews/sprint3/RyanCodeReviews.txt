@@ -1,0 +1,20 @@
+Author of Code Review: Ryan Greene
+Date of Code Review: 10/19/2023
+Sprint: 3
+Name of .cs file: CollisionDetector.cs
+Author of .cd file: UGONNA OBIAGWU
+Minutes Spent Reading: 2
+I believe your code is very readable. The comments are good at guiding the reader through the code and your methods are split up well as to keep their
+structure simple. My only critiques are with the alignment of some of the text.  The comments being in the middle are a little jarring and some of your methods and 
+brackets do not line up. 
+
+Author of Code Review: Ryan Greene
+Date of Code Review: 10/19/2023
+Sprint: 3
+Name of .cs file: CollisionHandler.cs
+Author of .cd file: UGONNA OBIAGWU
+Your code does a good job at separating the responsibilities of each method. The main concerns aer with the use of switch cases and the delegates. 
+If it is possible, try and find a way to make the switch cases into a function and make a dictionary of (String,Delegate). It also appears all of your 
+Impact methods could be turned into one with the generic type IItem in the parameter instead of the specific type.
+I must also question what the CollisionDetector.CollisionType collisionType parameter does in your methods. It does not appear to do anything since 
+the only method call uses the item's object.

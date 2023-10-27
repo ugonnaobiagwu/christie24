@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +40,7 @@ namespace sprint0.Enemies
             yPos++;
             SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
         }
-
+        x
         public void SkeletonDown()
         {
             Direction = 2;
@@ -66,6 +66,11 @@ namespace sprint0.Enemies
         public int getDirection()
         {
             return Direction;
+        }
+
+        public int getX()
+        {
+            return xPos;
         }
 
         public int getHealth()

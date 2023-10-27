@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 namespace sprint0.Items
 {
-    public class Bomb : IItem
+    public class Bomb : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -16,7 +16,7 @@ namespace sprint0.Items
         private Texture2D bombTexture;
         private Texture2D explosionTexture;
         private IItemSprite currentItemSprite;
-        private IItemStateMachine thisStateMachine;
+        public IItemStateMachine thisStateMachine;
         private bool spriteChanged;
 
         public Bomb(IList<Texture2D> itemSpriteSheet)
@@ -30,7 +30,7 @@ namespace sprint0.Items
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (thisStateMachine.isItemInUse())
+            if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
             }
@@ -50,7 +50,10 @@ namespace sprint0.Items
                 {
                     bombTicks++;
                 }
-                this.currentItemSprite.Update();
+                if (this.currentItemSprite != null)
+                {
+                    this.currentItemSprite.Update();
+                }
 
             }
 
@@ -70,6 +73,9 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
+                this.currentItemSprite = null;
+                bombTicks = 0;
+                
             }
         }
 
@@ -77,8 +83,9 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
-                this.itemYPos = linkYPos + 1;
+                
                 currentItemSprite = new BombSprite(bombTexture, 1, 1);
                 // since the bow may go up or down.
                 // all items start at the same position as link.
@@ -86,21 +93,50 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        this.itemXPos = linkXPos + 1;
+                        this.itemXPos = linkXPos + 15;
+                        this.itemYPos = linkYPos;
                         break;
                     case (int)Direction.UP:
-                        this.itemYPos = linkYPos + 1;
+                        this.itemYPos = linkYPos - 15;
+                        this.itemXPos = linkXPos;
                         break;
                     case (int)Direction.DOWN:
-                        this.itemYPos = linkYPos - 1;
+                        this.itemYPos = linkYPos + 15;
+                        this.itemXPos = linkXPos;
                         break;
-                    default:
-                        this.itemXPos = linkXPos - 1;
+                    case (int)Direction.LEFT:
+                        this.itemXPos = linkXPos + 15;
+                        this.itemYPos = linkYPos;
                         break;
 
                 }
             }
         }
+        public int xPosition()
+        {
+            return itemXPos;
+        }
+
+        public int yPosition()
+        {
+            return itemYPos;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.itemWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.itemHeight();
+        }
+
+        public bool isDynamic()
+        {
+            return false;
+        }
+
     }
 }
 

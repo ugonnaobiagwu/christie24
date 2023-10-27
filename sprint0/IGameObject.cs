@@ -7,7 +7,12 @@ namespace sprint0
 		public int yPosition(); // returns Y pos of object
 		public int width(); // (i.e.) "how big are you?"
         public int height(); // (i.e.) "how big are you?"
-        public bool isDynamic(); // does this object move? 
-	}
+        public bool isDynamic(); // does this object move?
+        public bool isUpdateable();
+        public bool isInPlay();
+        public bool isDrawable();
+        public void SetRoomId(int roomId);
+        public int GetRoomId();
+    }
 }
 

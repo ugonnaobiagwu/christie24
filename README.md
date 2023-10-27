@@ -1,2 +1,7 @@
-# christie24
-# We have code in our sprint that is the ground work for getting the features in, but unfortunately our tech issues stunted our ability to collaborate, and get our dependencies ready, so the program has Keyboard input bugs, as well as code from Sprint0 that we were not able to move out of Game1 in time.
+
+# SPRINT 3: 
+We were able to get our items and blocks toggling using their respective controls T Y and U I
+There's a lot of foundational code for the Collision System and Level Loader, as well as Link and Enemies that just needs polished.
+Since Level Loading is in the works currently, Mouse Controller is still behind.
+
+Link code can be found in LinkDev
