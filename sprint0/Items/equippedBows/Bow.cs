@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.Items;
+using sprint0.AnimatedSpriteFactory;
 
-namespace sprint0.AnimatedSpriteFactory;
-
-    public class Bow : IItem , IGameObject
+namespace sprint0.Items
+{
+    public class Bow : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
@@ -26,13 +27,13 @@ namespace sprint0.AnimatedSpriteFactory;
         private bool spriteChanged;
 
         public Bow(SpriteFactory factory)
-		{
+        {
             itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
 
-		}
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -59,19 +60,19 @@ namespace sprint0.AnimatedSpriteFactory;
                     switch (this.currentItemDirection)
                     {
                         case Direction.RIGHT:
-                            itemXPos+= spriteVelocity;
+                            itemXPos += spriteVelocity;
                             break;
                         case Direction.UP:
-                            itemYPos-= spriteVelocity;
+                            itemYPos -= spriteVelocity;
                             break;
                         case Direction.DOWN:
-                            itemYPos+= spriteVelocity;
+                            itemYPos += spriteVelocity;
                             break;
                         case Direction.LEFT:
-                            itemXPos-= spriteVelocity;
+                            itemXPos -= spriteVelocity;
                             break;
                     }
-                    
+
                 }
                 if (this.currentItemSprite != null)
                 {
@@ -90,7 +91,8 @@ namespace sprint0.AnimatedSpriteFactory;
             {
                 this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("bowDespawn");
                 this.spriteChanged = true;
-            } else if (finishedAnimationCycle() && this.spriteChanged)
+            }
+            else if (finishedAnimationCycle() && this.spriteChanged)
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
@@ -100,7 +102,7 @@ namespace sprint0.AnimatedSpriteFactory;
 
         public void Use(int linkDirection, int linkXPos, int linkYPos)
         {
-            
+
             if (!thisStateMachine.isItemInUse())
             {
                 this.spriteChanged = false; //reset
@@ -128,23 +130,25 @@ namespace sprint0.AnimatedSpriteFactory;
                         currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
                         currentItemDirection = Direction.DOWN;
                         break;
-                    case(int)Direction.LEFT:
+                    case (int)Direction.LEFT:
                         currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
                         currentItemDirection = Direction.LEFT;
                         break;
                 }
-            }         
+            }
         }
 
-    private bool finishedAnimationCycle()
-    {
-        if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+        private bool finishedAnimationCycle()
         {
-            return true;
-        } else {
-            return false;
+            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-    }
 
         public int xPosition()
         {
@@ -196,5 +200,6 @@ namespace sprint0.AnimatedSpriteFactory;
             return this.itemRoomID;
         }
     }
+}
 
 
