@@ -89,7 +89,7 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("bowDespawn");
+                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("BowDespawn");
                 this.spriteChanged = true;
             }
             else if (finishedAnimationCycle() && this.spriteChanged)
