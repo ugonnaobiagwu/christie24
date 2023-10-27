@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace sprint0
 {
 	public interface IGameObject
