@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungenDragonBlock : ISprite
+    internal class DungenDragonBlock : IBlock,IGameObject
     {
 
         private Block block;
@@ -76,7 +76,7 @@ namespace sprint0.Blocks
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
-
+        public void Explode() { }
         public void Update(){}
         //hard code for now (make new class for these?)
         public int xPosition() { return blockX; } // returns X pos of object

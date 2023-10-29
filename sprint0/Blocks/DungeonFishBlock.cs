@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonFishBlock : ISprite
+    internal class DungeonFishBlock : IBlock
     {
 
         int blockX;
@@ -35,11 +35,8 @@ namespace sprint0.Blocks
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
-        {
-
-            blockX = x;
-            blockY = y;
+        public void Draw(SpriteBatch spriteBatch)
+        {  
 
             int width = this.Texture.Width / Columns;
             int height = this.Texture.Height / Rows;
@@ -61,6 +58,7 @@ namespace sprint0.Blocks
 
         }
 
+        public void Explode() { }
         public void Update() { }
 
         //hard code for now (make new class for these?)
@@ -69,6 +67,7 @@ namespace sprint0.Blocks
         public int width() { return scaledWidth; } // (i.e.) "how big are you?"
         public int height() { return scaledHeight; } // (i.e.) "how big are you?"
         public bool isDynamic() { return false; } // does this object move? 
+
 
 
     }

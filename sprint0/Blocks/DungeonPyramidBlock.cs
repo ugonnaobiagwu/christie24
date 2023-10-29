@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonPyramidBlock : ISprite, IGameObject
+    internal class DungeonPyramidBlock : IBlock
     {
         
         
@@ -64,6 +64,7 @@ namespace sprint0.Blocks
 
         }
 
+        public void Explode() { }
         public void Update() { }
 
         //hard code for now (make new class for these?)

@@ -11,6 +11,7 @@ namespace sprint0.Items
         private int itemMaxY;
         private int itemMinX;
         private int itemMinY;
+        private int RoomId;
         private int spriteVelocity = 1;
         private int maxFireTicks; // should use game time tbh.
         private int fireTicks;
@@ -44,7 +45,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse())
             {
-                
+
                 // has the sprite reached it's final location?
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)) // sprite just reached its max
                 {
@@ -143,6 +144,12 @@ namespace sprint0.Items
         {
             return false;
         }
+
+        public bool isUpdateable(){ return true; }
+        public bool isInPlay() { return true; }
+        public bool isDrawable() { return true;}
+        public void SetRoomId(int roomId) { RoomId = roomId; }
+        public int GetRoomId() { return RoomId; }
     }
 }
 

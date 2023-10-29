@@ -11,6 +11,7 @@ namespace sprint0.Items
         private int itemMaxY;
         private int itemMinX;
         private int itemMinY;
+        private int roomId;
         private int spriteVelocity = 3;
         // needs these positions for sprite swapping.
 
@@ -167,6 +168,12 @@ namespace sprint0.Items
         {
             return true;
         }
+
+        public bool isUpdateable() { return true; }
+        public bool isInPlay() { return true; }
+        public bool isDrawable() { return true; }
+        public void SetRoomId(int roomId) { RoomId = roomId; }
+        public int GetRoomId() { return RoomId; }
     }
 }
 

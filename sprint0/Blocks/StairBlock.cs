@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class StairBlock : ISprite, IGameObject
+    internal class StairBlock : IBlock
     {
 
         int blockX;
@@ -60,6 +60,7 @@ namespace sprint0.Blocks
 
         }
 
+        public void Explode() { }
         public void Update() { }
 
         //hard code for now (make new class for these?)

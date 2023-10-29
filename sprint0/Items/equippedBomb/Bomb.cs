@@ -9,6 +9,7 @@ namespace sprint0.Items
         private int itemYPos;
         private int maxBombTicks;
         private int bombTicks;
+        private int RoomId;
         // needs these positions for sprite swapping.
 
         //direction stuff
@@ -136,6 +137,12 @@ namespace sprint0.Items
         {
             return false;
         }
+
+        public bool isUpdateable() { return true; }
+        public bool isInPlay() { return true; }
+        public bool isDrawable() { return true; }
+        public void SetRoomId(int roomId) { RoomId = roomId; }
+        public int GetRoomId() { return RoomId; }
 
     }
 }

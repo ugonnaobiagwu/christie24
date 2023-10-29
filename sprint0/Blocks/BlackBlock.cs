@@ -3,18 +3,20 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonPitBlock:ISprite,IGameObject
+    internal class BlackBlock:IBlock,IGameObject
     {
 
         int blockX;
         int blockY;
         int scaledWidth;
         int scaledHeight;
+        private int RoomId;
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -22,11 +24,11 @@ namespace sprint0.Blocks
 
 
 
-        public DungeonPitBlock()
+        public BlackBlock()
         {
 
         }
-        public DungeonPitBlock(Texture2D texture, int rows, int columns)
+        public BlackBlock(Texture2D texture, int rows, int columns)
         {
             this.Texture = texture;
             Rows = rows;
@@ -59,7 +61,7 @@ namespace sprint0.Blocks
             spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
-
+        public void Explode() { }
         public void Update() { }
 
         //hard code for now (make new class for these?)
@@ -68,6 +70,11 @@ namespace sprint0.Blocks
         public int width() { return scaledWidth; } // (i.e.) "how big are you?"
         public int height() { return scaledHeight; } // (i.e.) "how big are you?"
         public bool isDynamic() { return false; } // does this object move? 
+        public bool isUpdateable() { return true; }
+        public bool isInPlay() { return true; }
+        public bool isDrawable() { return true; }
+        public void SetRoomId(int roomId) { RoomId = roomId; }
+        public int GetRoomId() { return RoomId; }
 
 
     }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonBlueBlock : ISprite
+    internal class DungeonBlueBlock : IBlock
     {
 
         int blockColumn = 0;
@@ -59,8 +59,8 @@ namespace sprint0.Blocks
 
         }
 
+        public void Explode() { }
         public void Update(){}
-
 
         //Methods to return for IGameObject for Block
         //hard code for now (make new class for these?)
