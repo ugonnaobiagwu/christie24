@@ -19,10 +19,12 @@ namespace sprint0
         private IItem blaze;
         private ILinkSword sword;
         private SpriteFactory bowFactory;
+        private SpriteFactory bowDespawnFactory;
         private SpriteFactory betterBowFactory;
         private SpriteFactory boomerangFactory;
         private SpriteFactory betterBoomerangFactory;
         private SpriteFactory bombFactory;
+        private SpriteFactory bombExplodeFactory;
         private SpriteFactory blazeFactory;
         private SpriteFactory swordFactory;
         private SpriteBatch spriteBatch;
@@ -64,19 +66,21 @@ namespace sprint0
         */
 
         // These load methods could be data driven tbh.
-        public void LoadBow(SpriteFactory factory)
+        public void LoadBow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
             if (this.bowFactory == null)
             {
                 this.bowFactory = factory;
+                this.bowDespawnFactory = despawnFactory;
             }
         }
 
-        public void LoadBetterBow(SpriteFactory factory)
+        public void LoadBetterBow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
             if (this.betterBowFactory == null)
             {
                 this.betterBowFactory = factory;
+                this.bowDespawnFactory = despawnFactory;
             }
         }
 
@@ -96,11 +100,12 @@ namespace sprint0
             }
         }
 
-        public void LoadBomb(SpriteFactory factory)
+        public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory)
         {
             if (this.bombFactory == null)
             {
                 this.bombFactory = factory;
+                this.bombExplodeFactory = explosiveFactory;
             }
         }
 
@@ -138,12 +143,12 @@ namespace sprint0
         public void EquipBow()
         {
           
-            this.currentItem = new Bow(bowFactory);
+            this.currentItem = new Bow(bowFactory, bowDespawnFactory);
         }
 
         public void EquipBetterBow()
         {
-            this.currentItem = new BetterBow(betterBowFactory);
+            this.currentItem = new BetterBow(betterBowFactory, bowDespawnFactory);
         }
 
         public void EquipBoomerang()
@@ -162,7 +167,7 @@ namespace sprint0
         }
         public void EquipBomb()
         {
-            this.currentItem = new Bomb(bombFactory);
+            this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
         }
 
         public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos)
@@ -178,6 +183,7 @@ namespace sprint0
         public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+            Console.WriteLine("DEBUG: SWORD HAS BEEN SWUNG.");
         }
 
         /*

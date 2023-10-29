@@ -14,6 +14,7 @@ namespace sprint0.Items
         private int itemMaxY;
         private int itemMinX;
         private int itemMinY;
+        private float rotation;
         private int spriteVelocity = 1;
         // needs these positions for sprite swapping.
 
@@ -21,17 +22,20 @@ namespace sprint0.Items
         private enum Direction { LEFT, RIGHT, UP, DOWN };
         private int itemRoomID;
         private SpriteFactory itemSpriteFactory;
+        private SpriteFactory despawnSpriteFactory;
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
-        public Bow(SpriteFactory factory)
+        public Bow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
             itemSpriteFactory = factory;
+            despawnSpriteFactory = despawnFactory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
+            rotation = 0;
 
         }
 
@@ -39,7 +43,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, rotation);
             }
         }
 
@@ -89,7 +93,7 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("BowDespawn");
+                this.currentItemSprite = despawnSpriteFactory.getAnimatedSprite("BowDespawn");
                 this.spriteChanged = true;
             }
             else if (finishedAnimationCycle() && this.spriteChanged)
@@ -116,22 +120,23 @@ namespace sprint0.Items
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bow");
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
+                        rotation = -90;
                         currentItemDirection = Direction.RIGHT;
                         break;
                     case (int)Direction.UP:
-                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
+                        rotation = 180;
                         currentItemDirection = Direction.UP;
                         break;
                     case (int)Direction.DOWN:
-                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+                        rotation = 0;
                         currentItemDirection = Direction.DOWN;
                         break;
                     case (int)Direction.LEFT:
-                        currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
+                        rotation = 90;
                         currentItemDirection = Direction.LEFT;
                         break;
                 }

@@ -53,8 +53,6 @@ namespace sprint0
             //Items on the Ground
             groundItems = new GroundItemSystem(spriteBatch, 200, 200);
 
-
-
             /*LINK TEST: TO BE DELETED*/
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/

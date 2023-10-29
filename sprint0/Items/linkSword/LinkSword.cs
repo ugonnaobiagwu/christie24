@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
-using sprint0.Items.LinkSword;
 
 namespace sprint0.LinkSword
 {
@@ -22,12 +21,13 @@ namespace sprint0.LinkSword
      */
 	public class LinkSword : ILinkSword
 	{
-		private ISprite currentSprite;
+		private ISprite currentItemSprite;
         private int itemRoomID;
         private int xPos;
         private int yPos;
         private int linkHeight;
         private int linkWidth;
+        private float rotation;
         SpriteFactory itemSpriteFactory;
         private IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
@@ -40,8 +40,9 @@ namespace sprint0.LinkSword
          */
         public LinkSword(SpriteFactory factory)
 		{
-            currentItemDirection = Direction.LEFT;
+            currentItemDirection = Direction.DOWN;
             thisStateMachine = new ItemStateMachine();
+            rotation = 0;
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -53,16 +54,16 @@ namespace sprint0.LinkSword
                     // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                     // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
                     case Direction.LEFT:
-                        currentSprite.Draw(spritebatch, xPos - linkWidth, yPos - (linkHeight / 2));
+                        currentItemSprite.Draw(spritebatch, xPos - linkWidth, yPos - (linkHeight / 2), rotation);
                         break;
                     case Direction.RIGHT:
-                        currentSprite.Draw(spritebatch, xPos + linkWidth, yPos - (linkHeight / 2));
+                        currentItemSprite.Draw(spritebatch, xPos + linkWidth, yPos - (linkHeight / 2), rotation);
                         break;
                     case Direction.DOWN:
-                        currentSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos + linkHeight);
+                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos + linkHeight, rotation);
                         break;
                     case Direction.UP:
-                        currentSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos - linkHeight);
+                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos - linkHeight, rotation);
                         break;
                 }
             }
@@ -70,7 +71,7 @@ namespace sprint0.LinkSword
 
         public int height()
         {
-            return this.currentSprite.GetHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -89,16 +90,20 @@ namespace sprint0.LinkSword
             switch (currentItemDirection)
             {
                 case Direction.LEFT:
-                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
+                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
+                    rotation = 0;
                     break;
                 case Direction.RIGHT:
-                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
+                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
+                    rotation = 0;
                     break;
                 case Direction.UP:
-                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
+                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
+                    rotation = -90;
                     break;
                 case Direction.DOWN:
-                    currentSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+                    rotation = 90;
                     break;
             }
             isDrawn = true;
@@ -109,7 +114,7 @@ namespace sprint0.LinkSword
           /* if the amount of time thats passed is equal to or exceeds the max amount of time for a sword to be drawn, 
            * set isDrawn to false.
            */
-          if (currentSprite.GetCurrentFrame() > currentSprite.GetTotalFrames()) {
+          if (currentItemSprite.GetCurrentFrame() > currentItemSprite.GetTotalFrames()) {
                 this.isDrawn = false;
                 this.thisStateMachine.CeaseUse();
             }
@@ -119,7 +124,7 @@ namespace sprint0.LinkSword
 
         public int width()
         {
-            return this.currentSprite.GetWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int xPosition()

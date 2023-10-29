@@ -1,30 +1,32 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Items.groundItems
 {
-    public class GroundBigHeart : IGroundItem, IGameObject
+    public class GroundBigHeart : IGroundItem
     {
-        public SpriteBatch itemSpriteBatch;
-        private IGroundSprite itemSprite;
+        private ISprite currentItemSprite;
         public int xPos;
         public int yPos;
+        public bool isPickedUp;
+        private int roomID;
 
         // Does Level Loader like this signature?
-        public GroundBigHeart(SpriteBatch incomingSpriteBatch, Texture2D incomingSpriteSheet, int xPos, int yPos)
+        public GroundBigHeart(SpriteFactory factory, int xPos, int yPos)
         {
-            this.itemSpriteBatch = incomingSpriteBatch;
-            this.itemSprite = new GroundNonAnimatedSprite(incomingSpriteSheet, 1, 1);
+            this.currentItemSprite = factory.getAnimatedSprite("GroundBigHeart");
+            this.xPos = xPos;
+            this.yPos = yPos;
+            isPickedUp = false;
         }
 
-        public void Draw()
+        public void Draw(SpriteBatch spritebatch)
         {
-            this.itemSprite.Draw(this.itemSpriteBatch, this.xPos, this.yPos);
-        }
-
-        public int height()
-        {
-            return this.itemSprite.itemHeight();
+            if (!isPickedUp)
+            {
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+            }
         }
 
         public bool isDynamic()
@@ -34,12 +36,6 @@ namespace sprint0.Items.groundItems
 
         public void Update()
         {
-
-        }
-
-        public int width()
-        {
-            return this.itemSprite.itemWidth();
         }
 
         public int xPosition()
@@ -50,6 +46,46 @@ namespace sprint0.Items.groundItems
         public int yPosition()
         {
             return this.yPos;
+        }
+
+        public void PickUp()
+        {
+            isPickedUp = true;
+        }
+
+        public bool isUpdateable()
+        {
+            return false;
+        }
+
+        public bool isInPlay()
+        {
+            return isPickedUp;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.roomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.roomID;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.GetWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.GetHeight();
         }
     }
 }

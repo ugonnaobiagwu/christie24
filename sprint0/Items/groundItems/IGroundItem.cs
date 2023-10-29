@@ -3,9 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0.Items.groundItems
 {
-    public interface IGroundItem
+    public interface IGroundItem : IGameObject
     {
-        public void Update();
-        public void Draw();
+        public void PickUp();
     }
 }

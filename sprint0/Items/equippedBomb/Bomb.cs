@@ -14,15 +14,17 @@ namespace sprint0.Items
 
         //direction stuff
         private int itemRoomID;
+        private SpriteFactory explosionSpriteFactory;
         private enum Direction { LEFT, RIGHT, UP, DOWN };
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private SpriteFactory itemSpriteFactory; 
         private bool spriteChanged;
 
-        public Bomb(SpriteFactory factory)
+        public Bomb(SpriteFactory factory, SpriteFactory explosionFactory)
         {
             itemSpriteFactory = factory;
+            explosionSpriteFactory = explosionFactory;
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
@@ -66,7 +68,7 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("BombExplosion");
+                this.currentItemSprite = explosionSpriteFactory.getAnimatedSprite("BombExplosion");
                 this.spriteChanged = true;
             }
             else if (this.finishedAnimationCycle() && this.spriteChanged)
@@ -124,12 +126,25 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.GetWidth();
+            if (spriteChanged) // change hitbox if in explosion state 
+            {
+                return this.currentItemSprite.GetWidth() + 15;
+            } else
+            {
+                return this.currentItemSprite.GetWidth();
+            }
         }
 
         public int height()
         {
-            return this.currentItemSprite.GetHeight();
+            if (spriteChanged) // change hitbox if in explosion state 
+            {
+                return this.currentItemSprite.GetHeight() + 15;
+            }
+            else
+            {
+                return this.currentItemSprite.GetHeight();
+            }
         }
 
         public bool isDynamic()

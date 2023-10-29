@@ -11,6 +11,7 @@ public interface ISprite
 	public int GetHeight();
 	public int GetTotalFrames();
 	public int GetCurrentFrame();
+	public void Draw(SpriteBatch spriteBatch, int x, int y, float rotation);
 
 
 
