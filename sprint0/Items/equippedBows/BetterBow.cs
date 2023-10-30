@@ -120,7 +120,7 @@ namespace sprint0.Items
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
-                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bow");
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("BetterBow");
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:

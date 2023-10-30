@@ -11,13 +11,15 @@ namespace sprint0
 		 * Requires that items are properly loaded before system use.
 		*/
 		public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
-        public void LoadBow(SpriteFactory factory);
-		public void LoadBetterBow(SpriteFactory factory);
-		public void LoadBoomerang(SpriteFactory factory);
+		public void LoadBow(SpriteFactory factory, SpriteFactory despawnFactory);
+		public void LoadBetterBow(SpriteFactory factory, SpriteFactory despawnFactory);
+
+        public void LoadBoomerang(SpriteFactory factory);
 		public void LoadBetterBoomerang(SpriteFactory factory);
 		public void LoadBlaze(SpriteFactory factory);
-		public void LoadBomb(SpriteFactory factory);
-		public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
+		public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory);
+
+        public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
         public void EquipBow();
 		public void EquipBetterBow();
 		public void EquipBoomerang();

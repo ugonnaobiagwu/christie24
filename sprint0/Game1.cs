@@ -23,7 +23,6 @@ namespace sprint0
 
         //Block
         public IBlock block;
-        public IGroundItemSystem groundItems;
         public IItemSystem linkItemSystem;
 
         KeyboardController KeyboardCont;
@@ -50,9 +49,6 @@ namespace sprint0
             linkItemSystem = new ItemSystem();
             linkItemSystem.LoadSpriteBatch(spriteBatch);
 
-            //Items on the Ground
-            groundItems = new GroundItemSystem(spriteBatch, 200, 200);
-
             /*LINK TEST: TO BE DELETED*/
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
@@ -75,94 +71,86 @@ namespace sprint0
 
         protected override void LoadContent()
         {
-            //GROUND ITEM SYSTEM STUFF
-            Texture2D groundBow = Content.Load<Texture2D>("groundItemSprites/groundBow");
-            Texture2D groundBoomerang = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
-            Texture2D groundBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
-            Texture2D groundBlaze = Content.Load<Texture2D>("groundItemSprites/groundBlaze");
-            Texture2D groundHeart = Content.Load<Texture2D>("groundItemSprites/groundHeart");
-            Texture2D groundShimmeringRupee = Content.Load<Texture2D>("groundItemSprites/groundShimmeringRupee");
-            Texture2D groundFairy = Content.Load<Texture2D>("groundItemSprites/groundFairy");
-            Texture2D groundTriforce = Content.Load<Texture2D>("groundItemSprites/groundTriforce");
-            Texture2D groundKey = Content.Load<Texture2D>("groundItemSprites/groundKey");
-            Texture2D groundRupee = Content.Load<Texture2D>("groundItemSprites/groundRupee");
-            Texture2D groundPage = Content.Load<Texture2D>("groundItemSprites/groundPage");
-            Texture2D groundBigHeart = Content.Load<Texture2D>("groundItemSprites/groundBigHeart");
-            Texture2D groundCompass = Content.Load<Texture2D>("groundItemSprites/groundCompass");
-            Texture2D groundClock = Content.Load<Texture2D>("groundItemSprites/groundClock");
-            groundItems.LoadBow(groundBow);
-            groundItems.LoadBoomerang(groundBoomerang);
-            groundItems.LoadBomb(groundBomb);
-            groundItems.LoadBlaze(groundBlaze);
-            groundItems.LoadHeart(groundHeart);
-            groundItems.LoadShimmeringRupee(groundShimmeringRupee);
-            groundItems.LoadFairy(groundFairy);
-            groundItems.LoadTriforcePiece(groundTriforce);
-            groundItems.LoadKey(groundKey);
-            groundItems.LoadRupee(groundRupee);
-            groundItems.LoadPage(groundPage);
-            groundItems.LoadBigHeart(groundBigHeart);
-            groundItems.LoadCompass(groundCompass);
-            groundItems.LoadClock(groundClock);
+            // GROUND ITEM SYSTEM STUFF
+            // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
+            Texture2D groundBoomerangTexture = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
+            SpriteFactory groundBoomerangFactory = new SpriteFactory(groundBoomerangTexture, 1, 1);
+            groundBoomerangFactory.createAnimation("GroundBoomerang", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundBombTexture = Content.Load<Texture2D>("groundItemSprites/groundBomb");
+            SpriteFactory groundBombFactory = new SpriteFactory(groundBombTexture, 1, 1);
+            groundBombFactory.createAnimation("GroundBomb", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundBlazeTexture = Content.Load<Texture2D>("groundItemSprites/groundBlaze");
+            SpriteFactory groundBlazeFactory = new SpriteFactory(groundBlazeTexture, 1, 1);
+            groundBlazeFactory.createAnimation("GroundBlaze", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundHeart");
+            SpriteFactory groundHeartFactory = new SpriteFactory(groundHeartTexture, 1, 1);
+            groundHeartFactory.createAnimation("GroundHeart", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundTriforceTexture = Content.Load<Texture2D>("groundItemSprites/groundTriforce");
+            SpriteFactory groundTriforceFactory = new SpriteFactory(groundTriforceTexture, 1, 1);
+            groundTriforceFactory.createAnimation("GroundTriforce", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundKeyTexture = Content.Load<Texture2D>("groundItemSprites/groundKey");
+            SpriteFactory groundKeyFactory = new SpriteFactory(groundKeyTexture, 1, 1);
+            groundKeyFactory.createAnimation("GroundKey", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundPageTexture = Content.Load<Texture2D>("groundItemSprites/groundPage");
+            SpriteFactory groundPageFactory = new SpriteFactory(groundPageTexture, 1, 1);
+            groundPageFactory.createAnimation("GroundPage", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundBigHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundBigHeart");
+            SpriteFactory groundBigHeartFactory = new SpriteFactory(groundBigHeartTexture, 1, 1);
+            groundBigHeartFactory.createAnimation("GroundBigHeart", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundCompassTexture = Content.Load<Texture2D>("groundItemSprites/groundCompass");
+            SpriteFactory groundCompassFactory = new SpriteFactory(groundCompassTexture, 1, 1);
+            groundCompassFactory.createAnimation("GroundCompass", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            // Level Loader should place these items in the right spots, yes? I can instantiate them here and draw them for testing purposes if we'd like.
 
             //LINK'S ITEM SYSTEM STUFF
 
-            //Bow
-            IList<Texture2D> bowSprites = new List<Texture2D>();
-            Texture2D leftBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowLeft");
-            Texture2D rightBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowRight");
-            Texture2D downBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowDown");
-            Texture2D upBow = Content.Load<Texture2D>("equippedItemSprites/equippedBowUp");
-            Texture2D bowDespawnSprite = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
-            bowSprites.Add(leftBow);
-            bowSprites.Add(rightBow);
-            bowSprites.Add(downBow);
-            bowSprites.Add(upBow);
-            bowSprites.Add(bowDespawnSprite);
-            linkItemSystem.LoadBow(bowSprites);
+            //Bow + Better Bow
+            Texture2D bowTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBowDown");
+            SpriteFactory bowFactory = new SpriteFactory(bowTexture, 1, 1);
+            bowFactory.createAnimation("Bow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            Texture2D betterBowTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowDown");
+            SpriteFactory betterBowFactory = new SpriteFactory(betterBowTexture, 1, 1);
+            bowFactory.createAnimation("BetterBow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            Texture2D bowDespawnTexture = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
+            SpriteFactory bowDespawnFactory = new SpriteFactory(bowDespawnTexture, 1, 1);
+            bowFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            linkItemSystem.LoadBow(bowFactory, bowDespawnFactory);
+            linkItemSystem.LoadBetterBow(betterBowFactory, bowDespawnFactory);
 
-            //BetterBow
-            IList<Texture2D> betterBowSprites = new List<Texture2D>();
-            Texture2D leftBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowLeft");
-            Texture2D rightBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowRight");
-            Texture2D downBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowDown");
-            Texture2D upBetterBow = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowUp");
-            betterBowSprites.Add(leftBetterBow);
-            betterBowSprites.Add(rightBetterBow);
-            betterBowSprites.Add(downBetterBow);
-            betterBowSprites.Add(upBetterBow);
-            betterBowSprites.Add(bowDespawnSprite);
-            linkItemSystem.LoadBetterBow(betterBowSprites);
-
-            //Boomerang
-            IList<Texture2D> boomerangSprites = new List<Texture2D>();
-            Texture2D boomerangGoing = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerangGoing");
-            Texture2D boomerangComing = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerangComing");
-            boomerangSprites.Add(boomerangGoing);
-            boomerangSprites.Add(boomerangComing);
-            linkItemSystem.LoadBoomerang(boomerangSprites);
-
-            //Boomerang
-            IList<Texture2D> betterBoomerangSprites = new List<Texture2D>();
-            Texture2D betterBoomerangGoing = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerangGoing");
-            Texture2D betterBoomerangComing = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerangComing");
-            betterBoomerangSprites.Add(betterBoomerangGoing);
-            betterBoomerangSprites.Add(betterBoomerangComing);
-            linkItemSystem.LoadBetterBoomerang(betterBoomerangSprites);
+            //Boomerang + Better Boomerang
+            Texture2D boomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
+            SpriteFactory boomerangFactory = new SpriteFactory(boomerangTexture, 2, 3);
+            boomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            boomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            Texture2D betterBoomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerang");
+            SpriteFactory betterBoomerangFactory = new SpriteFactory(betterBoomerangTexture, 2, 3);
+            betterBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            betterBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            linkItemSystem.LoadBoomerang(boomerangFactory);
+            linkItemSystem.LoadBetterBoomerang(betterBoomerangFactory);
 
             //Blaze
-            IList<Texture2D> blazeSprites = new List<Texture2D>();
-            Texture2D blazeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBlaze");
-            blazeSprites.Add(blazeSprite);
-            linkItemSystem.LoadBlaze(blazeSprites);
+            Texture2D blazeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBlaze");
+            SpriteFactory blazeFactory = new SpriteFactory(blazeTexture, 1, 2);
+            blazeFactory.createAnimation("Blaze", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            linkItemSystem.LoadBlaze(blazeFactory);
 
             //Bomb
-            IList<Texture2D> bombSprites = new List<Texture2D>();
-            Texture2D equippedBomb = Content.Load<Texture2D>("groundItemSprites/groundBomb");
-            Texture2D bombExplodeSprite = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
-            bombSprites.Add(equippedBomb);
-            bombSprites.Add(bombExplodeSprite);
-            linkItemSystem.LoadBomb(bombSprites);
+            Texture2D bombTexture = Content.Load<Texture2D>("groundItemSprites/groundBomb");
+            SpriteFactory bombFactory = new SpriteFactory(bombTexture, 1, 1);
+            bombFactory.createAnimation("Bomb", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            Texture2D bombExplodeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
+            SpriteFactory bombExplodeFactory = new SpriteFactory(bombExplodeTexture, 1, 3);
+            bombExplodeFactory.createAnimation("Going", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            linkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
 
             // TODO: use this.Content to load your game content here
 
@@ -178,7 +166,6 @@ namespace sprint0
             // TODO: Add your update logic here
 
             KeyboardCont.Update();
-            groundItems.Update();
             linkItemSystem.Update();
 
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
@@ -195,7 +182,6 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             linkItemSystem.Draw();
-            groundItems.Draw();
             base.Draw(gameTime);
             spriteBatch.End();
         }
