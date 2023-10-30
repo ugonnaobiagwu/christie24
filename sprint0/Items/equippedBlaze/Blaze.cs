@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 namespace sprint0.Items
 {
     public class Blaze : IItem, IGameObject
@@ -17,15 +18,16 @@ namespace sprint0.Items
         // needs these positions for sprite swapping.
 
         //direction stuff
+        private int itemRoomID;
         private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D texture;
-        private IItemSprite currentItemSprite;
+        SpriteFactory itemSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
 
-        public Blaze(IList<Texture2D> itemSpriteSheet)
+        public Blaze(SpriteFactory factory)
         {
-            texture = itemSpriteSheet[0];
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             maxFireTicks = 120;
@@ -97,7 +99,7 @@ namespace sprint0.Items
                 this.itemMaxY = linkYPos + 50;
                 this.itemMinX = linkXPos - 50;
                 this.itemMinY = linkYPos - 50;
-                currentItemSprite = new BlazeSprite(texture, 1, 2);
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
@@ -131,18 +133,44 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
         {
             return false;
         }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
+        
     }
 }
 

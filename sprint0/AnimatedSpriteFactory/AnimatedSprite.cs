@@ -100,6 +100,29 @@ namespace sprint0.AnimatedSpriteFactory
             spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White);
 
         }
+        public void Draw(SpriteBatch spriteBatch, int x, int y, float rotation)
+        {
+            //Sets length of each source rectangle relative to sprite sheet
+            int width = Texture.Width / Columns;
+            int height = Texture.Height / Rows;
+            Vector2 origin = new Vector2();
+            origin.X = width - (width/2);
+            origin.Y = height - (height / 2);
+            SpriteEffects spriteEffect = SpriteEffects.None;
+            position.X = x;
+            position.Y = y;
+
+            //Old code for finding rectangle on sprite sheet
+            //int row = CurrentFrame / Columns;
+            //int column = (CurrentFrame % Columns);
+            //Rectangle sheetLocation = new Rectangle(width * column, height * row, width, height);
+
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y,width ,height);
+
+
+            spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White, rotation, origin,spriteEffect , 0f);
+
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             //Sets length of each source rectangle relative to sprite sheet

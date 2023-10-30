@@ -1,62 +1,92 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
+
 namespace sprint0.Items.groundItems
 {
-    using System;
-    using Microsoft.Xna.Framework.Graphics;
-
-    namespace sprint0.Items.groundItems
+    public class GroundBoomerang : IGroundItem
     {
-        public class GroundBoomerang : IGroundItem, IGameObject
+        private ISprite currentItemSprite;
+        public int xPos;
+        public int yPos;
+        public bool isPickedUp;
+        private int roomID;
+
+        // Does Level Loader like this signature?
+        public GroundBoomerang(SpriteFactory factory, int xPos, int yPos)
         {
-            public SpriteBatch itemSpriteBatch;
-            private IGroundSprite itemSprite;
-            public int xPos;
-            public int yPos;
+            this.currentItemSprite = factory.getAnimatedSprite("GroundBoomerang");
+            this.xPos = xPos;
+            this.yPos = yPos;
+            isPickedUp = false;
+        }
 
-            // Does Level Loader like this signature?
-            public GroundBoomerang(SpriteBatch incomingSpriteBatch, Texture2D incomingSpriteSheet, int xPos, int yPos)
+        public void Draw(SpriteBatch spritebatch)
+        {
+            if (!isPickedUp)
             {
-                this.itemSpriteBatch = incomingSpriteBatch;
-                this.itemSprite = new GroundNonAnimatedSprite(incomingSpriteSheet, 1, 1);
-            }
-
-            public void Draw()
-            {
-                this.itemSprite.Draw(this.itemSpriteBatch, this.xPos, this.yPos);
-            }
-
-            public int height()
-            {
-                return this.itemSprite.itemHeight();
-            }
-
-            public bool isDynamic()
-            {
-                return false;
-            }
-
-            public void Update()
-            {
-
-            }
-
-            public int width()
-            {
-                return this.itemSprite.itemWidth();
-            }
-
-            public int xPosition()
-            {
-                return this.xPos;
-            }
-
-            public int yPosition()
-            {
-                return this.yPos;
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
             }
         }
+
+        public bool isDynamic()
+        {
+            return false;
+        }
+
+        public void Update()
+        {
+        }
+
+        public int xPosition()
+        {
+            return this.xPos;
+        }
+
+        public int yPosition()
+        {
+            return this.yPos;
+        }
+
+        public void PickUp()
+        {
+            isPickedUp = true;
+        }
+
+        public bool isUpdateable()
+        {
+            return false;
+        }
+
+        public bool isInPlay()
+        {
+            return isPickedUp;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.roomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.roomID;
+        }
+
+        public int width()
+        {
+            return this.currentItemSprite.GetWidth();
+        }
+
+        public int height()
+        {
+            return this.currentItemSprite.GetHeight();
+        }
     }
-
-
 }
 
