@@ -62,12 +62,11 @@ namespace sprint0.Controllers
             //linkDamaged = new DamagedCommand(Game);
             nextBlock = new NextBlockCommand(Game, Game.block);
             previousBlock = new PreviousBlockCommand(Game, Game.block);
-            previousItem = new PreviousItemCommand(Game, Game.groundItems);
-            nextItem = new NextItemCommand(Game, Game.groundItems);
+
             previousEnemy = new PreviousEnemyCommand(Game);
             nextEnemy = new NextEnemyCommand(Game);
-            quit = new QuitCommand(Game);
-            reset = new ResetCommand(Game);
+            //quit = new QuitCommand(Game);
+            //reset = new ResetCommand(Game);
 
         }
 
@@ -101,8 +100,8 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.E, linkDamaged);
             KeyMap.Add(Keys.T, previousBlock);
             KeyMap.Add(Keys.Y, nextBlock);
-            KeyMap.Add(Keys.U, previousItem);
-            KeyMap.Add(Keys.I, nextItem);
+            //KeyMap.Add(Keys.U, previousItem);
+            //KeyMap.Add(Keys.I, nextItem);
             KeyMap.Add(Keys.O, previousEnemy);
             KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
@@ -123,7 +122,7 @@ namespace sprint0.Controllers
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (previousKeys.Contains(key) && pressed.Contains(key))
+                if (KeyMap.ContainsKey(key) && !previousKeys.Contains(key) && pressed.Contains(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();
