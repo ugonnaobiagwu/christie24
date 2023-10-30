@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,26 @@ namespace sprint0.Blocks
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+        private int Xvalue { get; set; }
+        private int Yvalue { get; set; }
+        public int RoomId { get; set; }
 
-       
 
-        ISprite currentBlock;
+        IBlock currentBlock;
+        SpriteFactory blockSpriteFactory;
 
+
+        //Methods Start here
+
+        public Block(int x, int y, int roomId, SpriteFactory spriteFactory) {
+        Xvalue = x;
+        Yvalue = y;
+        RoomId = roomId;
+        blockSpriteFactory = spriteFactory;
+
+            //default Block
+            currentBlock = blockStates[currentIndex];
+        }
         public Block(Texture2D texture, int rows, int columns)
         {
             Texture = texture;
@@ -45,10 +61,9 @@ namespace sprint0.Blocks
 
         //IBlock Methods
 
-        public void Explode()
-        {// nothing here 
-        }
-        public void NextBlock()
+        public void Explode() {*//* nothing here *//*}
+
+        *//*public void NextBlock()
         {
 
 
@@ -72,12 +87,13 @@ namespace sprint0.Blocks
                 currentIndex = blockStates.Count - 1;
             }
             currentBlock = blockStates[currentIndex];
-        }
+        }*//*
+
         //ISprite Methods
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch)
         {
             
-            currentBlock.Draw(spriteBatch, x, y);
+            currentBlock.Draw(spriteBatch);
 
         }
 
@@ -86,11 +102,19 @@ namespace sprint0.Blocks
             currentBlock.Update();
         }
 
-       
+        //Methods to return for IGameObject for Block
+        //hard code for now (make new class for these?)
+        public int xPosition() { return Xvalue; } // returns X pos of object
+        public int yPosition() { return Yvalue; } // returns Y pos of object
+        public int width() {  } // (i.e.) "how big are you?"
+        public int height() {  } // (i.e.) "how big are you?"
+        public bool isDynamic() { return false; } // does this object move? 
+
+
 
 
 
 
 
     }
-}
+}*/

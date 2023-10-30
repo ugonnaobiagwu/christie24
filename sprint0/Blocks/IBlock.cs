@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace sprint0.Blocks
 {
 
-    public interface IBlock
+    public interface IBlock:IGameObject
     {
 
       
