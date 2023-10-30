@@ -19,7 +19,7 @@ namespace sprint0.Enemies
         public int getDirection();
         public int getHealth();
 
-        public int getState();
+        public String getState();
         public void setState(String state);
 
         public void Update();
