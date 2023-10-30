@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonPyramidBlock : IBlock
-    {
+    internal class DungeonPyramidBlock : IBlock, IGameObject
+    {   
 
         int scaledWidth;
         int scaledHeight;

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class BlackBlock:IBlock
+    internal class BlackBlock: IBlock, IGameObject
     {
         int blockRow = 1;
         int blockColumn = 0;

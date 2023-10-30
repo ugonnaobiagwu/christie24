@@ -10,10 +10,9 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonBlueBlock : IBlock
+    internal class DungeonBlueBlock : IBlock, IGameObject
     {
-        int blockRow = 0;
-        int blockColumn = 0;
+
         int scaledWidth;
         int scaledHeight;
         int RoomId;
@@ -39,21 +38,19 @@ namespace sprint0.Blocks
         }
         public DungeonBlueBlock(Texture2D texture, int rows, int columns)
         {
-            Texture = texture;
+            this.Texture = texture;
             Rows = rows;
             Columns = columns;
 
-            
         }
-
-
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 
-            int width = Texture.Width / Columns; //width of a one frame per whole column
-            int height = Texture.Height / Rows;
-           
+            int width = this.Texture.Width / Columns;
+            int height = this.Texture.Height / Rows;
+            int blockRow = 0;
+            int blockColumn = 0;
 
             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
@@ -65,26 +62,30 @@ namespace sprint0.Blocks
 
             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
+
+            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
 
         }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            blockSprite.Draw(spriteBatch, XValue, YValue);
+        }
 
-
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
         public void Explode() { }
         public void Update() { }
 
         //hard code for now (make new class for these?)
         public int xPosition() { return XValue; } // returns X pos of object
         public int yPosition() { return YValue; } // returns Y pos of object
-        public int width() { return scaledWidth; } // (i.e.) "how big are you?"
-        public int height() { return scaledHeight; } // (i.e.) "how big are you?"
+        public int width() { return blockSprite.GetWidth(); } // (i.e.) "how big are you?"
+        public int height() { return blockSprite.GetHeight(); } // (i.e.) "how big are you?"
         public bool isDynamic() { return false; } // does this object move? 
         public bool isUpdateable() { return true; }
         public bool isInPlay() { return true; }
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
+
     }
 
 }

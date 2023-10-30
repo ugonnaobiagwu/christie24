@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class StairBlock : IBlock
+    internal class StairBlock : IBlock,IGameObject
     {
 
         
@@ -46,9 +46,6 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-
-            XValue = x;
-            YValue = y;
 
             int width = this.Texture.Width / Columns;
             int height = this.Texture.Height / Rows;
