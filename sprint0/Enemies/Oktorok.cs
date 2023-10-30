@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
-using sprint0.Factory;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Enemies
 {
@@ -14,8 +14,12 @@ namespace sprint0.Enemies
         private Sprint0 Game;
         private SpriteFactory OktorokFactory;
         private SpriteBatch SpriteBatch;
+        private ISprite OktoSprite;
         private int xPos;
         private int yPos;
+        private int Height;
+        private int Width;
+        private int RoomId;
         private enum Direction { Up, Down, Left, Right };
         private Direction OktorokDirection;
         private int Health;
@@ -23,23 +27,22 @@ namespace sprint0.Enemies
         private State OktorokState;
         private int[] SpriteSheetFrames;
 
-        public Oktorok(SpriteBatch spriteBatch, Sprint0 game)
+        public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-            Game = game;
-            SpriteBatch = spriteBatch;
             /* Subject to Change */
             Health = 3;
 
-            /* Should be reduced to 1 line */
-            SpriteSheetFrames = new int[8];
-            SpriteSheetFrames[0] = 0;
-            SpriteSheetFrames[1] = 15;
-            SpriteSheetFrames[2] = 1;
-            SpriteSheetFrames[3] = 16;
-            SpriteSheetFrames[4] = 2;
-            SpriteSheetFrames[5] = 17;
-            SpriteSheetFrames[6] = 3;
-            SpriteSheetFrames[7] = 18;
+            xPos = x;
+            yPos = y;
+            RoomId = roomId;
+            OktorokFactory = spriteFactory;
+            OktoSprite = OktorokFactory.getAnimatedSprite("Down");
+
+            /* Temporary Values */
+            Height = 1;
+            Width = 1;
+
+            SpriteSheetFrames = new int[] { 0, 15, 1, 16, 2, 17, 3, 18 };
         }
 
         /* ---Movement--- */
@@ -47,28 +50,24 @@ namespace sprint0.Enemies
         {
             OktorokDirection = Direction.Up;
             yPos++;
-            OktorokFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void OktorokDown()
         {
             OktorokDirection = Direction.Down;
             yPos--;
-            OktorokFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void OktorokLeft()
         {
             OktorokDirection = Direction.Left;
             xPos--;
-            OktorokFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void OktorokRight()
         {
             OktorokDirection = Direction.Right;
             xPos++;
-            OktorokFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         /* ---Get Methods--- */
@@ -98,13 +97,13 @@ namespace sprint0.Enemies
             return Health;
         }
 
-        public int getState()
+        public String getState()
         {
             if(OktorokState == State.Attack)
             {
-                return 1;
+                return "Attack";
             }
-            return 0;
+            return "Walk";
         }
 
         /* ---IGameObject--- */
@@ -120,19 +119,52 @@ namespace sprint0.Enemies
 
         public int width()
         {
-            /* Temporary Value */
-            return 1;
+            return Width;
         }
 
         public int height()
         {
-            /* Temporary Value */
-            return 1;
+            return Height;
         }
 
         public bool isDynamic()
         {
             return true;
+        }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return true;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            RoomId = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return RoomId;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            OktoSprite.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public void Update()
+        {
+            OktoSprite.Update();
         }
 
         /* ---Other Methods--- */
@@ -181,11 +213,6 @@ namespace sprint0.Enemies
         public void OktorokShoot()
         {
             /* Code to make oktorok shoot */
-        }
-
-        public void Update()
-        {
-            OktorokFactory.Update();
         }
     }
 }

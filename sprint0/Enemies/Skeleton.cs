@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
-using sprint0.Factory;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Enemies
 {
@@ -14,23 +14,26 @@ namespace sprint0.Enemies
         Sprint0 Game;
         SpriteFactory SkeletonFactory;
         SpriteBatch SpriteBatch;
+        ISprite SkellySprite;
         private int Health;
         private int xPos;
         private int yPos;
         private int Direction;
         private int[] SpriteSheetFrames;
+        private int RoomId;
 
-        public Skeleton(Sprint0 game, SpriteBatch spriteBatch)
+        public Skeleton(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
             /* Can be adjusted */
             Health = 3;
-            SpriteBatch = spriteBatch;
-            Game = game;
 
-            /* Should be reformatted to 1 line */
-            SpriteSheetFrames = new int[2];
-            SpriteSheetFrames[0] = 74;
-            SpriteSheetFrames[1] = 89;
+            xPos = x;
+            yPos = y;
+            RoomId = roomId;
+            SkeletonFactory = spriteFactory;
+            SkellySprite = SkeletonFactory.getAnimatedSprite("Default");
+
+            SpriteSheetFrames = new int[] { 74, 89 };
         }
 
         /* ---Movement--- */
@@ -38,28 +41,24 @@ namespace sprint0.Enemies
         {
             Direction = 0;
             yPos++;
-            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
         }
-        x
+        
         public void SkeletonDown()
         {
             Direction = 2;
             yPos--;
-            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void SkeletonLeft()
         {
             Direction = 1;
             xPos--;
-            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void SkeletonRight()
         {
             Direction = 3;
             xPos++;
-            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         /* ---Get Methods--- */
@@ -106,6 +105,41 @@ namespace sprint0.Enemies
             return true;
         }
 
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return true;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            RoomId = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return RoomId;
+        }
+        
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            SkellySprite.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public void Update()
+        {
+            SkellySprite.Update();
+        }
+
         /* ---Other Methods--- */
         public void takeDamage()
         {
@@ -134,11 +168,6 @@ namespace sprint0.Enemies
             {
                 /* Code to delete the Skeleton */
             }
-        }
-
-        public void Update()
-        {
-            SkeletonFactory.Update();
         }
     }
 }

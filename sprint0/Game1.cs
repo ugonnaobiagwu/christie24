@@ -9,7 +9,7 @@ using sprint0.Blocks;
 using sprint0.Link;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
-
+using sprint0.Enemies;
 
 namespace sprint0
 {
@@ -20,6 +20,11 @@ namespace sprint0
         private SpriteBatch spriteBatch;
         public ILink LinkObj;
         Texture2D textureBlock;
+
+        /* For Testing Purposes */
+        public ISkeleton SkeletonObj;
+        public IOktorok OktorokObj;
+        public IBokoblin BokoblinObj;
 
         //Block
         public IBlock block;
@@ -71,6 +76,29 @@ namespace sprint0
             LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
+
+            /*ENEMY TESTS: TO BE DELETED*/
+            Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
+            SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
+            SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
+
+            Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
+            OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
+            OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
+
+            Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
+            BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
+            BokoblinObj = new sprint0.Enemies.Bokoblin(200, 400, 1, BokoblinFactory);
+
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
         }
@@ -185,8 +213,13 @@ namespace sprint0
 
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
-            base.Update(gameTime);
 
+            /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
+            SkeletonObj.Update();
+            OktorokObj.Update();
+            BokoblinObj.Update();
+
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
