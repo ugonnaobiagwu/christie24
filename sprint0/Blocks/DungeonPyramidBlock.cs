@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonPyramidBlock : IBlock, IGameObject
+    internal class DungeonPyramidBlock : IBlock
     {   
 
         int scaledWidth;
@@ -30,8 +30,8 @@ namespace sprint0.Blocks
 
         public DungeonPyramidBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-
             blockSpriteFactory = spriteFactory;
+            blockSprite = spriteFactory.getAnimatedSprite("DungeonPyramidBlock");
             XValue = x; YValue = y;
             iblock = this;
             RoomId = roomId;
@@ -48,7 +48,7 @@ namespace sprint0.Blocks
 
         
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        /*public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
             //for the IGameObject methods
           
@@ -72,7 +72,7 @@ namespace sprint0.Blocks
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
-        }
+        }*/
 
         public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
         public void Explode() { }
@@ -81,8 +81,8 @@ namespace sprint0.Blocks
         //hard code for now (make new class for these?)
         public int xPosition() { return XValue; } // returns X pos of object
         public int yPosition() { return YValue; } // returns Y pos of object
-        public int width() { return scaledWidth; } // (i.e.) "how big are you?"
-        public int height() { return scaledHeight; } // (i.e.) "how big are you?"
+        public int width() { return blockSprite.GetWidth(); } // (i.e.) "how big are you?"
+        public int height() { return blockSprite.GetHeight(); } // (i.e.) "how big are you?"
         public bool isDynamic() { return false; } // does this object move? 
         public bool isUpdateable() { return true; }
         public bool isInPlay() { return true; }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
@@ -7,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace sprint0.Blocks
 {
-    internal class DungeonFishBlock : IBlock
-    { 
+    internal class BlueFishBlock:IBlock
+    {
 
         int scaledWidth;
         int scaledHeight;
@@ -28,46 +26,22 @@ namespace sprint0.Blocks
 
 
 
-        public DungeonFishBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public BlueFishBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-            blockSprite = spriteFactory.getAnimatedSprite("DungeonFishBlock");
+            blockSprite = spriteFactory.getAnimatedSprite("BlueFishBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
             RoomId = roomId;
         }
-        public DungeonFishBlock(Texture2D texture, int rows, int columns)
-        {
-            this.Texture = texture;
-            Rows = rows;
-            Columns = columns;
 
+
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            blockSprite.Draw(spriteBatch, XValue, YValue);
         }
 
-       /* public void Draw(SpriteBatch spriteBatch,int x,int y)
-        {  
-
-            int width = this.Texture.Width / Columns;
-            int height = this.Texture.Height / Rows;
-            int blockRow = 0;
-            int blockColumn = 2;
-
-            Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
-
-            //resize block image
-            double scale = 0.2; //40% of the orignal size image
-            scaledWidth = (int)(width * scale);
-            scaledHeight = (int)(height * scale);
-
-
-            Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
-
-
-            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
-
-        }*/
-
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
         public void Explode() { }
         public void Update() { }
 
@@ -82,8 +56,5 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
-
-
-
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class DungeonBlueBlock : IBlock, IGameObject
+    internal class DungeonBlueBlock : IBlock
     {
 
         int scaledWidth;
@@ -30,7 +30,7 @@ namespace sprint0.Blocks
 
         public DungeonBlueBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-
+            blockSprite = spriteFactory.getAnimatedSprite("DungeonBlueBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
@@ -44,7 +44,7 @@ namespace sprint0.Blocks
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        /*public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 
             int width = this.Texture.Width / Columns;
@@ -65,7 +65,7 @@ namespace sprint0.Blocks
 
             spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
 
-        }
+        }*/
         public void Draw(SpriteBatch spriteBatch)
         {
             blockSprite.Draw(spriteBatch, XValue, YValue);
