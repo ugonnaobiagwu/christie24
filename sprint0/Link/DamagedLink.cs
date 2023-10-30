@@ -171,9 +171,9 @@ namespace sprint0.Link
         {
             return LinkObj.isDrawable();
         }
-        public bool isRemoveable()
+        public bool isInPlay()
         {
-            return LinkObj.isRemoveable();
+            return LinkObj.isInPlay();
         }
         public void SetRoomId(int roomId)
         {
