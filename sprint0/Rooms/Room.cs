@@ -87,7 +87,7 @@ namespace sprint0.Rooms
             foreach(IGameObject gameObject in gameObjects[currentRoomID])
             {
 
-                gameObject.Draw(spriteBatch)
+                gameObject.Draw(spriteBatch);
             }
         }
     }
