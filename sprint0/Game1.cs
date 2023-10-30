@@ -29,7 +29,6 @@ namespace sprint0
         //Block
         public IBlock block;
         public IItemSystem linkItemSystem;
-
         KeyboardController KeyboardCont;
 
         public Sprint0()
@@ -46,7 +45,20 @@ namespace sprint0
 
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
-            block = new Block(textureBlock, 3, 4);
+            SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
+            blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
+            blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1);
+            blockFactory.createAnimation("DungeonFishBlock", new int[] { 0 }, new int[] { 2 }, 1);
+            blockFactory.createAnimation("DungeonDragonBlock", new int[] { 0 }, new int[] { 3 }, 1);
+            blockFactory.createAnimation("BlackBlock", new int[] { 1 }, new int[] { 0 }, 1);
+            blockFactory.createAnimation("GrassBlock", new int[] { 1 }, new int[] { 1 }, 1);
+            blockFactory.createAnimation("StairBlock", new int[] { 1 }, new int[] { 2 }, 1);
+            blockFactory.createAnimation("WaterBlock", new int[] { 1 }, new int[] { 3 }, 1);
+            blockFactory.createAnimation("PyramidRedBlock", new int[] { 2 }, new int[] { 0 }, 1);
+            blockFactory.createAnimation("BlueFishBlock", new int[] { 2 }, new int[] { 1 }, 1);
+            blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
+
+            block = new DungeonBlueBlock(300, 200, 1, blockFactory);
 
             // Linky
             //Link = new Link()
@@ -215,6 +227,7 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             linkItemSystem.Draw();
+            block.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }

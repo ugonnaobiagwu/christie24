@@ -10,6 +10,7 @@ namespace sprint0.Items
         private int itemYPos;
         private int maxBombTicks;
         private int bombTicks;
+        private int RoomId;
         // needs these positions for sprite swapping.
 
         //direction stuff

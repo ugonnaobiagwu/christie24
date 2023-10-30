@@ -46,7 +46,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse())
             {
-                
+
                 // has the sprite reached it's final location?
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)) // sprite just reached its max
                 {

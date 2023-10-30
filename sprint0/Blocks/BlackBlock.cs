@@ -4,15 +4,16 @@ using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace sprint0.Blocks
 {
-    internal class DungeonFishBlock : IBlock
-    { 
-
+    internal class BlackBlock: IBlock
+    {
+        int blockRow = 1;
+        int blockColumn = 0;
         int scaledWidth;
         int scaledHeight;
         int RoomId;
@@ -27,16 +28,15 @@ namespace sprint0.Blocks
 
 
 
-
-        public DungeonFishBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public BlackBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-            blockSprite = spriteFactory.getAnimatedSprite("DungeonFishBlock");
+            blockSprite = spriteFactory.getAnimatedSprite("BlackBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
             RoomId = roomId;
         }
-        public DungeonFishBlock(Texture2D texture, int rows, int columns)
+        public BlackBlock(Texture2D texture, int rows, int columns)
         {
             this.Texture = texture;
             Rows = rows;
@@ -44,13 +44,15 @@ namespace sprint0.Blocks
 
         }
 
-       /* public void Draw(SpriteBatch spriteBatch,int x,int y)
-        {  
+       /* public void Draw(SpriteBatch spriteBatch, int x, int y)
+        {
+
+            XValue = x;
+            YValue = y;
 
             int width = this.Texture.Width / Columns;
             int height = this.Texture.Height / Rows;
-            int blockRow = 0;
-            int blockColumn = 2;
+           
 
             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
@@ -82,7 +84,6 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
-
 
 
     }
