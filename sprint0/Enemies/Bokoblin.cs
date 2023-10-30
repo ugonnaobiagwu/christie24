@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
-using sprint0.Factory;
+using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Enemies
 {
@@ -14,8 +14,12 @@ namespace sprint0.Enemies
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
         private SpriteBatch SpriteBatch;
+        private ISprite BokoSprite;
         private int xPos;
         private int yPos;
+        private int Height;
+        private int Width;
+        private int RoomId;
         private enum Direction { Up, Down, Left, Right };
         private Direction BokoblinDirection;
         private int Health;
@@ -23,23 +27,23 @@ namespace sprint0.Enemies
         private State BokoblinState;
         private int[] SpriteSheetFrames;
 
-        public Bokoblin(SpriteBatch spriteBatch, Sprint0 game)
+        public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
-            Game = game;
-            SpriteBatch = spriteBatch;
             /* Subject to Change */
             Health = 3;
 
+            xPos = x;
+            yPos = y;
+            RoomId = roomId;
+            BokoblinFactory = spriteFactory;
+            BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
+
+            /* Temporary Values */
+            Width = 1;
+            Height = 1;
+
             /* Should be reduced to 1 line */
-            SpriteSheetFrames = new int[8];
-            SpriteSheetFrames[0] = 64;
-            SpriteSheetFrames[1] = 79;
-            SpriteSheetFrames[2] = 65;
-            SpriteSheetFrames[3] = 80;
-            SpriteSheetFrames[4] = 66;
-            SpriteSheetFrames[5] = 81;
-            SpriteSheetFrames[6] = 67;
-            SpriteSheetFrames[7] = 82;
+            SpriteSheetFrames = new int[] {64, 79, 65, 80, 66, 81, 67, 82};
         }
 
         /* ---Movement--- */
@@ -47,28 +51,24 @@ namespace sprint0.Enemies
         {
             BokoblinDirection = Direction.Up;
             yPos++;
-            BokoblinFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void BokoblinDown()
         {
             BokoblinDirection = Direction.Down;
             yPos--;
-            BokoblinFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void BokoblinLeft()
         {
             BokoblinDirection = Direction.Left;
             xPos--;
-            BokoblinFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         public void BokoblinRight()
         {
             BokoblinDirection = Direction.Right;
             xPos++;
-            BokoblinFactory.Draw(SpriteBatch, xPos, yPos);
         }
 
         /* ---Get Methods--- */
@@ -98,13 +98,13 @@ namespace sprint0.Enemies
             return Health;
         }
 
-        public int getState()
+        public String getState()
         {
             if (BokoblinState == State.Attack)
             {
-                return 1;
+                return "Attack";
             }
-            return 0;
+            return "Walk";
         }
 
         /* ---IGameObject--- */
@@ -120,19 +120,52 @@ namespace sprint0.Enemies
 
         public int width()
         {
-            /* Temporary Value */
-            return 1;
+            return Width;
         }
 
         public int height()
         {
-            /* Temporary Value */
-            return 1;
+            return Height;
         }
 
         public bool isDynamic()
         {
             return true;
+        }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return true;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            RoomId = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return RoomId;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            BokoSprite.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public void Update()
+        {
+            BokoSprite.Update();
         }
 
         /* ---Other Methods--- */
@@ -181,11 +214,6 @@ namespace sprint0.Enemies
         public void BokoblinThrow()
         {
             /* Code to make Bokoblin throw boomerang */
-        }
-
-        public void Update()
-        {
-            BokoblinFactory.Update();
         }
     }
 }
