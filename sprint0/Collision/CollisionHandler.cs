@@ -48,7 +48,15 @@ namespace sprint0.Collision
             DataRow rowWithDelegates = null;
             foreach (DataRow row in collisionTable.Rows)
             {
+                //AB check.
                 if (row["ObjectA"].Equals(objAType) && row["ObjectB"].Equals(objBType)) {
+                    rowWithDelegates = row;
+                    break;
+                }
+
+                //BA check
+                else if (row["ObjectA"].Equals(objBType) && row["ObjectB"].Equals(objAType))
+                {
                     rowWithDelegates = row;
                     break;
                 }
