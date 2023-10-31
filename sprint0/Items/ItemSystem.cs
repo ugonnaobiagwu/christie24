@@ -165,6 +165,10 @@ namespace sprint0
         {
             this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
         }
+        public void EquipSword()
+        {
+            this.currentItem = new Sword(swordFactory);
+        }
 
         public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {

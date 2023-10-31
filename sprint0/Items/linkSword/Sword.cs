@@ -19,7 +19,7 @@ namespace sprint0.LinkSword
      * 
      * 
      */
-	public class LinkSword : IItem, IGameObject
+	public class Sword : IItem, IGameObject
 	{
 		private ISprite currentItemSprite;
         private int itemRoomID;
@@ -38,7 +38,7 @@ namespace sprint0.LinkSword
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
          */
-        public LinkSword(SpriteFactory factory)
+        public Sword(SpriteFactory factory)
 		{
             currentItemDirection = Direction.DOWN;
             thisStateMachine = new ItemStateMachine();

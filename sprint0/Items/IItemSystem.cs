@@ -38,10 +38,9 @@ namespace sprint0
 		public void EquipBetterBoomerang(/*int itemButton*/);
 		public void EquipBlaze(/*int itemButton*/);
 		public void EquipBomb(/*int itemButton*/);
+        public void EquipSword(/*int itemButton*/);
 
-		//public void EquipSword(/*int itemButton*/); // WILL BE ADDED LATER
-
-		public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
+        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
         /*
 		 * public void UseCurrentItemA(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
 		 * 
