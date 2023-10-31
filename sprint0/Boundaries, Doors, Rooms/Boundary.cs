@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ namespace sprint0.Boundaries___Doors
         Rectangle BoundaryObj;
         int RoomId;
         SpriteFactory BoundaryFactory;
+        ISprite BoundarySprite;
         bool IsDynamic = false;
-        bool IsRemoveable = false;
+        bool IsInPlay = false;
         bool IsUpdateable = false;
         bool IsDrawable = true;
         public Boundary(Rectangle boundary, int roomId, SpriteFactory spriteFactory) 
@@ -24,6 +26,7 @@ namespace sprint0.Boundaries___Doors
             BoundaryObj = boundary;
             RoomId = roomId;
             BoundaryFactory = spriteFactory;
+            BoundarySprite = spriteFactory.getAnimatedSprite("Boundary");
         }
         public int xPosition()
         {
@@ -45,9 +48,9 @@ namespace sprint0.Boundaries___Doors
         {
             return BoundaryObj.Height;
         }
-        public bool isRemoveable()
+        public bool isInPlay()
         {
-            return IsRemoveable;
+            return IsInPlay;
         }
         public bool isUpdateable()
         {
@@ -64,6 +67,14 @@ namespace sprint0.Boundaries___Doors
         public int GetRoomId()
         {
             return RoomId;
+        }
+        public void Update()
+        {
+            /*Nothing to update*/
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            BoundarySprite.Draw(spriteBatch, xPosition(),yPosition());
         }
     }
 }
