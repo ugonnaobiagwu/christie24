@@ -10,7 +10,8 @@ namespace sprint0
 		/* 
 		 * Requires that items are properly loaded before system use.
 		*/
-		public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+		//public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // WILL GET REMOVED LATER
+
 		public void LoadBow(SpriteFactory factory, SpriteFactory despawnFactory);
 		public void LoadBetterBow(SpriteFactory factory, SpriteFactory despawnFactory);
 
@@ -20,15 +21,30 @@ namespace sprint0
 		public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory);
 
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
-        public void EquipBow();
-		public void EquipBetterBow();
-		public void EquipBoomerang();
-		public void EquipBetterBoomerang();
-		public void EquipBlaze();
-		public void EquipBomb();
-		public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos); // send in link's data as the parameters. enumerations are built upon ints.
-		public void Draw(); // draws the current item in link's equipment
-        public void Update(); // updates the current item in link's equipment
+
+		/* Equipment methods. Can only be called if an item is not alraedy equipped to that 
+		 * button.
+		 * 
+		 * itemButton 1 - A BUTTON
+		 * itemButton 2 - B BUTTON
+		 */
+        public void EquipBow(/*int itemButton*/);
+		public void EquipBetterBow(/*int itemButton*/);
+		public void EquipBoomerang(/*int itemButton*/);
+		public void EquipBetterBoomerang(/*int itemButton*/);
+		public void EquipBlaze(/*int itemButton*/);
+		public void EquipBomb(/*int itemButton*/);
+
+		//public void EquipSword(/*int itemButton*/); // WILL BE ADDED LATER
+
+		public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
+        /*
+		 * public void UseCurrentItemA(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+		 * 
+		 * public void UseCurrentItemB(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+		 */
+        public void Draw(); // draws both items in link's equipment
+        public void Update(); // updates the both items in link's equipment
 
     }
 }

@@ -11,12 +11,8 @@ namespace sprint0
 	{
         private static ItemSystem instance;
         private IItem currentItem;
-        private IItem bow;
-        private IItem betterBow;
-        private IItem boomerang;
-        private IItem betterBoomerang;
-        private IItem bomb;
-        private IItem blaze;
+        private IItem currentItemA;
+        private IItem currentItemB;
         private ILinkSword sword;
         private SpriteFactory bowFactory;
         private SpriteFactory bowDespawnFactory;
@@ -170,21 +166,21 @@ namespace sprint0
             this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
         }
 
-        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos)
+        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             
             if (this.currentItem != null)
             {
-                this.currentItem.Use(linkDirection, linkXPos, linkYPos);
+                this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
                 Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
             }
         }
 
-        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
-        {
-            this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-            Console.WriteLine("DEBUG: SWORD HAS BEEN SWUNG.");
-        }
+        //public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        //{
+        //    this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+        //    Console.WriteLine("DEBUG: SWORD HAS BEEN SWUNG.");
+        //}
 
         /*
          * Draw and Update takes care of all items plus sword.

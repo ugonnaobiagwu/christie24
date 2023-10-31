@@ -19,7 +19,7 @@ namespace sprint0.LinkSword
      * 
      * 
      */
-	public class LinkSword : ILinkSword
+	public class LinkSword : IItem
 	{
 		private ISprite currentItemSprite;
         private int itemRoomID;
@@ -79,7 +79,7 @@ namespace sprint0.LinkSword
            return false;
         }
 
-        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             thisStateMachine.Use();
             this.xPos = linkXPos;
