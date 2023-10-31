@@ -22,12 +22,16 @@ namespace sprint0
 
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
 
-		/* Equipment methods. Can only be called if an item is not alraedy equipped to that 
+        /* Equipment methods. Can only be called if an item is not alraedy equipped to that 
 		 * button.
 		 * 
 		 * itemButton 1 - A BUTTON
 		 * itemButton 2 - B BUTTON
 		 */
+
+        //Will later ensures that you cant have two items equipped to the same button, by swapping them out if so
+		//Link Sword will need a new instance upon equipment 
+
         public void EquipBow(/*int itemButton*/);
 		public void EquipBetterBow(/*int itemButton*/);
 		public void EquipBoomerang(/*int itemButton*/);

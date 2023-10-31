@@ -19,7 +19,7 @@ namespace sprint0.LinkSword
      * 
      * 
      */
-	public class LinkSword : IItem
+	public class LinkSword : IItem, IGameObject
 	{
 		private ISprite currentItemSprite;
         private int itemRoomID;

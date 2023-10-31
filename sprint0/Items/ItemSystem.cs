@@ -13,7 +13,7 @@ namespace sprint0
         private IItem currentItem;
         private IItem currentItemA;
         private IItem currentItemB;
-        private ILinkSword sword;
+        private IItem sword;
         private SpriteFactory bowFactory;
         private SpriteFactory bowDespawnFactory;
         private SpriteFactory betterBowFactory;
