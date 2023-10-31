@@ -17,7 +17,7 @@ namespace sprint0.Sound.Ocarina
             = new Dictionary<Songs, WindWakerSongData>();
 
         // Returns true or false if the track was loaded into the library.
-        public static bool LoadSong(WindWaker.Songs songName, Songs song)
+        public static bool LoadSong(WindWaker.Songs songName, Songs song, bool isLoopable = false)
         {
             return false;
         }
