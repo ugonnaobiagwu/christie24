@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Xna.Framework.Graphics;
+
 namespace sprint0
 {
 	public interface IGameObject
@@ -11,8 +13,11 @@ namespace sprint0
         public bool isUpdateable();
         public bool isInPlay();
         public bool isDrawable();
+
         public void SetRoomId(int roomId);
         public int GetRoomId();
+	public void Draw(SpriteBatch spritebatch);
+	public void Update();
     }
 }
 

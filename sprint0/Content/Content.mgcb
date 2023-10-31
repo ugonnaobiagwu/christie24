@@ -49,18 +49,6 @@
 /processorParam:TextureFormat=Color
 /build:equippedItemSprites/equippedBetterBoomerangGoing.png
 
-#begin equippedItemSprites/equippedBetterBowDown.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:equippedItemSprites/equippedBetterBowDown.png
-
 #begin equippedItemSprites/equippedBetterBowLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,18 +132,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:equippedItemSprites/equippedBoomerangGoing.png
-
-#begin equippedItemSprites/equippedBowDown.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:equippedItemSprites/equippedBowDown.png
 
 #begin equippedItemSprites/equippedBowLeft.png
 /importer:TextureImporter

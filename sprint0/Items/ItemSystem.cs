@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
+using sprint0.LinkSword;
 
 namespace sprint0
 {
@@ -15,22 +17,24 @@ namespace sprint0
         private IItem betterBoomerang;
         private IItem bomb;
         private IItem blaze;
-        private IList<Texture2D> bowTexture;
-        private IList<Texture2D> betterBowTexture;
-        private IList<Texture2D> boomerangTexture;
-        private IList<Texture2D> betterBoomerangTexture;
-        private IList<Texture2D> bombTexture;
-        private IList<Texture2D> blazeTexture;
+        private ILinkSword sword;
+        private SpriteFactory bowFactory;
+        private SpriteFactory bowDespawnFactory;
+        private SpriteFactory betterBowFactory;
+        private SpriteFactory boomerangFactory;
+        private SpriteFactory betterBoomerangFactory;
+        private SpriteFactory bombFactory;
+        private SpriteFactory bombExplodeFactory;
+        private SpriteFactory blazeFactory;
+        private SpriteFactory swordFactory;
         private SpriteBatch spriteBatch;
-        private Dictionary<IItem, Boolean> theseItems;
+        private IList<String> theseItems;       
         /*
          * [code: theseItems] will be used to limit whether or not link can equip an 
          * item depending on how the inventory system works
          */
 
         public ItemSystem() {
-            // instantiate all of the items and add them to the array list.
-            this.theseItems = new Dictionary<IItem, Boolean>();
         }
 
         public static ItemSystem Instance
@@ -62,51 +66,63 @@ namespace sprint0
         */
 
         // These load methods could be data driven tbh.
-        public void LoadBow(IList<Texture2D> itemSpriteSheet)
+        public void LoadBow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
-            if (this.bowTexture == null)
+            if (this.bowFactory == null)
             {
-                this.bowTexture = itemSpriteSheet;
+                this.bowFactory = factory;
+                this.bowDespawnFactory = despawnFactory;
             }
         }
 
-        public void LoadBetterBow(IList<Texture2D> itemSpriteSheet)
+        public void LoadBetterBow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
-            if (this.betterBowTexture == null)
+            if (this.betterBowFactory == null)
             {
-                this.betterBowTexture = itemSpriteSheet;
+                this.betterBowFactory = factory;
+                this.bowDespawnFactory = despawnFactory;
             }
         }
 
-        public void LoadBoomerang(IList<Texture2D> itemSpriteSheet)
+        public void LoadBoomerang(SpriteFactory factory)
         {
-            if (this.boomerangTexture == null)
+            if (this.boomerangFactory == null)
             {
-                this.boomerangTexture = itemSpriteSheet;
+                this.boomerangFactory = factory;
             }
         }
 
-        public void LoadBetterBoomerang(IList<Texture2D> itemSpriteSheet)
+        public void LoadBetterBoomerang(SpriteFactory factory)
         {
-            if (this.betterBoomerangTexture == null)
+            if (this.betterBoomerangFactory == null)
             {
-                this.betterBoomerangTexture = itemSpriteSheet;
+                this.betterBoomerangFactory = factory;
             }
         }
 
-        public void LoadBomb(IList<Texture2D> itemSpriteSheet)
+        public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory)
         {
-            if (this.bombTexture == null)
+            if (this.bombFactory == null)
             {
-                this.bombTexture = itemSpriteSheet;
+                this.bombFactory = factory;
+                this.bombExplodeFactory = explosiveFactory;
             }
         }
 
-        public void LoadBlaze(IList<Texture2D> itemSpriteSheet)
+        public void LoadBlaze(SpriteFactory factory)
         {
-            if (this.blazeTexture == null)
+            if (this.blazeFactory == null)
             {
-                this.blazeTexture = itemSpriteSheet;
+                this.blazeFactory = factory;
+            }
+        }
+
+        public void LoadSword(SpriteFactory factory)
+        {
+            if (this.swordFactory == null)
+            {
+                this.swordFactory = factory;
+                
             }
         }
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch)
@@ -117,6 +133,7 @@ namespace sprint0
             }
         }
 
+
         /*
          * Item Equipment: This will change the current item that Link has in his hand at the time it's called.
          * 
@@ -126,31 +143,31 @@ namespace sprint0
         public void EquipBow()
         {
           
-            this.currentItem = new Bow(bowTexture);
+            this.currentItem = new Bow(bowFactory, bowDespawnFactory);
         }
 
         public void EquipBetterBow()
         {
-            this.currentItem = new BetterBow(betterBowTexture);
+            this.currentItem = new BetterBow(betterBowFactory, bowDespawnFactory);
         }
 
         public void EquipBoomerang()
         {
-            this.currentItem = new Boomerang(boomerangTexture);
+            this.currentItem = new Boomerang(boomerangFactory);
         }
 
         public void EquipBetterBoomerang()
         {
-            this.currentItem = new BetterBoomerang(betterBoomerangTexture);
+            this.currentItem = new BetterBoomerang(betterBoomerangFactory);
         }
 
         public void EquipBlaze()
         {
-            this.currentItem = new Blaze(blazeTexture);
+            this.currentItem = new Blaze(blazeFactory);
         }
         public void EquipBomb()
         {
-            this.currentItem = new Bomb(bombTexture);
+            this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
         }
 
         public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos)
@@ -163,12 +180,24 @@ namespace sprint0
             }
         }
 
+        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        {
+            this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+            Console.WriteLine("DEBUG: SWORD HAS BEEN SWUNG.");
+        }
+
+        /*
+         * Draw and Update takes care of all items plus sword.
+         */
         public void Draw()
         {
             if (this.currentItem != null)
             {
                 this.currentItem.Draw(this.spriteBatch);
+                this.sword.Draw(this.spriteBatch);
             }
+
+           
         }
 
         public void Update()
@@ -177,6 +206,9 @@ namespace sprint0
             {
                 this.currentItem.Update();
             }
+            this.sword.Update();
+
+            
         }
     }
 }

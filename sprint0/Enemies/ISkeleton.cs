@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,6 @@ namespace sprint0.Enemies
         public int getDirection();
 
         public void takeDamage();
-
-        public int getX();
-
-        public int getY();
 
         public int getHealth();
 

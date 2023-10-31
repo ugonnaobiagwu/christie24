@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.Items;
+using sprint0.AnimatedSpriteFactory;
+
 namespace sprint0.Items
 {
     public class BetterBow : IItem, IGameObject
@@ -11,31 +14,28 @@ namespace sprint0.Items
         private int itemMaxY;
         private int itemMinX;
         private int itemMinY;
+        private float rotation;
         private int spriteVelocity = 3;
         // needs these positions for sprite swapping.
 
         //direction stuff
         private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D upBowTexture;
-        private Texture2D downBowTexture;
-        private Texture2D leftBowTexture;
-        private Texture2D rightBowTexture;
-        private Texture2D bowDespawnTextures;
-        private IItemSprite currentItemSprite;
+        private int itemRoomID;
+        private SpriteFactory itemSpriteFactory;
+        private SpriteFactory despawnSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
-        public BetterBow(IList<Texture2D> itemSpriteSheet)
+        public BetterBow(SpriteFactory factory, SpriteFactory despawnFactory)
         {
-            upBowTexture = itemSpriteSheet[3];
-            downBowTexture = itemSpriteSheet[2];
-            leftBowTexture = itemSpriteSheet[0];
-            rightBowTexture = itemSpriteSheet[1];
-            bowDespawnTextures = itemSpriteSheet[4];
+            itemSpriteFactory = factory;
+            despawnSpriteFactory = despawnFactory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
+            rotation = 0;
 
         }
 
@@ -43,7 +43,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, rotation);
             }
         }
 
@@ -72,7 +72,7 @@ namespace sprint0.Items
                         case Direction.DOWN:
                             itemYPos += spriteVelocity;
                             break;
-                        default:
+                        case Direction.LEFT:
                             itemXPos -= spriteVelocity;
                             break;
                     }
@@ -82,7 +82,6 @@ namespace sprint0.Items
                 {
                     this.currentItemSprite.Update();
                 }
-
             }
 
         }
@@ -94,10 +93,10 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new BowDespawnSprite(bowDespawnTextures, 1, 1);
+                this.currentItemSprite = despawnSpriteFactory.getAnimatedSprite("BowDespawn");
                 this.spriteChanged = true;
             }
-            else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
+            else if (finishedAnimationCycle() && this.spriteChanged)
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
@@ -107,39 +106,52 @@ namespace sprint0.Items
 
         public void Use(int linkDirection, int linkXPos, int linkYPos)
         {
+
             if (!thisStateMachine.isItemInUse())
             {
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
-                this.itemMaxX = linkXPos + 200;
-                this.itemMaxY = linkYPos + 200;
-                this.itemMinX = linkXPos - 200;
-                this.itemMinY = linkYPos - 200;
+                this.itemMaxX = linkXPos + 100;
+                this.itemMaxY = linkYPos + 100;
+                this.itemMinX = linkXPos - 100;
+                this.itemMinY = linkYPos - 100;
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("BetterBow");
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        currentItemSprite = new BowSprite(rightBowTexture, 1, 1);
+                        rotation = -90;
                         currentItemDirection = Direction.RIGHT;
                         break;
                     case (int)Direction.UP:
-                        currentItemSprite = new BowSprite(upBowTexture, 1, 1);
+                        rotation = 180;
                         currentItemDirection = Direction.UP;
                         break;
                     case (int)Direction.DOWN:
-                        currentItemSprite = new BowSprite(downBowTexture, 1, 1);
+                        rotation = 0;
                         currentItemDirection = Direction.DOWN;
                         break;
                     case (int)Direction.LEFT:
-                        currentItemSprite = new BowSprite(leftBowTexture, 1, 1);
+                        rotation = 90;
                         currentItemDirection = Direction.LEFT;
                         break;
-
                 }
+            }
+        }
+
+        private bool finishedAnimationCycle()
+        {
+            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -155,18 +167,44 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
         {
             return true;
         }
+        
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
     }
 }
+
 

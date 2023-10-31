@@ -62,10 +62,9 @@ namespace sprint0.Controllers
             //linkDamaged = new DamagedCommand(Game);
             nextBlock = new NextBlockCommand(Game, Game.block);
             previousBlock = new PreviousBlockCommand(Game, Game.block);
-            previousItem = new PreviousItemCommand(Game, Game.groundItems);
-            nextItem = new NextItemCommand(Game, Game.groundItems);
-            /*previousEnemy = new PreviousEnemyCommand(Game);
-            nextEnemy = new NextEnemyCommand(Game);*/
+
+            previousEnemy = new PreviousEnemyCommand(Game);
+            nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
 
@@ -75,9 +74,6 @@ namespace sprint0.Controllers
         // perhaps pass an array that has all the commands?
         public void registerKeys()
         {
-            // KeyMap[key] = command;
-            // Names of Commands are not permanent
-
             // Movement Controls
             // link moves up for up arrow key, and w key
             KeyMap.Add(Keys.W, linkWalkingUp);
@@ -104,8 +100,8 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.E, linkDamaged);
             KeyMap.Add(Keys.T, previousBlock);
             KeyMap.Add(Keys.Y, nextBlock);
-            KeyMap.Add(Keys.U, previousItem);
-            KeyMap.Add(Keys.I, nextItem);
+            //KeyMap.Add(Keys.U, previousItem);
+            //KeyMap.Add(Keys.I, nextItem);
             KeyMap.Add(Keys.O, previousEnemy);
             KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
@@ -113,61 +109,28 @@ namespace sprint0.Controllers
 
         }
 
-
-       
-
-
-
-
-
         // executes commands for each key pressed
         public void Update()
         {
-            // testing purposes
-            //Keys[] Pressed = Keyboard.GetState().GetPressedKeys();
-            //foreach (Keys key in Pressed)
-            //{
-            //    KeyMap[key].execute();
-            //}
 
             // EDGE TRANSITIONS
             // If a key is in pressed but not in previousKeys
             // it means it was just pressed, so we execute.
-            // If a key is in previousKeys but not in pressed
-            // it means it was just released, so we discard it
-            // we then execute the 'last' pressed key
             pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
-            Keys lastPressed = Keys.None;
 
             // press transitions
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (previousKeys.Contains(key) && pressed.Contains(key))
+                if (KeyMap.ContainsKey(key) && !previousKeys.Contains(key) && pressed.Contains(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();
                     previousKeys.Add(key);
-                    lastPressed = key;
                     // just executes ONE command
                     break;
                 }
             }
-            // release transititions
-            /*foreach (Keys key in previousKeys)
-            {
-                // removes previously pressed and executed keys
-                if (!pressed.Contains(key))
-                {
-                    previousKeys.Remove(key);
-                }
-            }*/
-
-            // executes the last command 
-            /*if (lastPressed != Keys.None)
-            {
-                KeyMap[lastPressed].execute();
-            }*/
 
             // save current keys into previous keys
             previousKeys = new List<Keys>(pressed);
