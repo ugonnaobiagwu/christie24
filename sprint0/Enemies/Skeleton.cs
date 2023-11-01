@@ -138,6 +138,25 @@ namespace sprint0.Enemies
         public void Update()
         {
             SkellySprite.Update();
+
+            Random rnd = new Random();
+            int direction = rnd.Next(4);
+
+            switch (direction)
+            {
+                case 0:
+                    SkeletonUp();
+                    break;
+                case 1:
+                    SkeletonLeft();
+                    break;
+                case 2:
+                    SkeletonDown();
+                    break;
+                case 3:
+                    SkeletonRight();
+                    break;
+            }
         }
 
         /* ---Other Methods--- */

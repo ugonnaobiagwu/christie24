@@ -26,6 +26,7 @@ namespace sprint0.Enemies
         private enum State { Attack, Walk };
         private State BokoblinState;
         private int[] SpriteSheetFrames;
+        private IItem Boomerang;
 
         public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
@@ -37,6 +38,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
+            Boomerang = new Items.Boomerang(spriteFactory);
 
             /* Temporary Values */
             Width = 1;
@@ -166,6 +168,27 @@ namespace sprint0.Enemies
         public void Update()
         {
             BokoSprite.Update();
+
+            Random rnd = new Random();
+            int direction = rnd.Next(4);
+
+            switch (direction)
+            {
+                case 0:
+                    BokoblinUp();
+                    break;
+                case 1:
+                    BokoblinLeft();
+                    break;
+                case 2:
+                    BokoblinDown();
+                    break;
+                case 3:
+                    BokoblinRight();
+                    break;
+            }
+
+            BokoblinThrow();
         }
 
         /* ---Other Methods--- */
@@ -213,7 +236,7 @@ namespace sprint0.Enemies
 
         public void BokoblinThrow()
         {
-            /* Code to make Bokoblin throw boomerang */
+            Boomerang.Use(getDirection(), xPos, yPos);
         }
     }
 }

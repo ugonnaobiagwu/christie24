@@ -7,7 +7,6 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/block_image.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
-    <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowDown.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowLeft.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowRight.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowUp.png</File>
@@ -15,7 +14,6 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBombExplode.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangComing.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangGoing.png</File>
-    <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBowDown.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBowLeft.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBowUp.png</File>
@@ -40,8 +38,6 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/zelda-sprites-enemies.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
