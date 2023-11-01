@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
+using sprint0.AnimatedSpriteFactory;
 using sprint0.Commands;
+using sprint0.Factory;
 
 namespace sprint0.Rooms
 {
     public class Room : IRoom, IGameObject
     {
         private List<int> roomList;
+        private SpriteFactory spriteFactory;
         private int currentRoomIndex;
         private int currentRoomID;
         private Dictionary<int, List<IGameObject>> gameObjects;
@@ -84,11 +88,7 @@ namespace sprint0.Rooms
         // tentative code
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach(IGameObject gameObject in gameObjects[currentRoomID])
-            {
-
-                gameObject.Draw(spriteBatch);
-            }
+            spriteFactory.draw(spriteBatch);
         }
     }
 }
