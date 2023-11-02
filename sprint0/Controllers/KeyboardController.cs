@@ -23,6 +23,7 @@ namespace sprint0.Controllers
         private ICommand linkEquipBetterBoomerang;
         private ICommand linkEquipBomb;
         private ICommand linkEquipBlaze;
+        private ICommand linkEquipSword;
         private ICommand linkDamaged;
         private ICommand previousBlock;
         private ICommand nextBlock;
@@ -59,11 +60,12 @@ namespace sprint0.Controllers
             linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Game.linkItemSystem);
             linkEquipBomb = new EquipBombCommand(Game, Game.linkItemSystem);
             linkEquipBlaze = new EquipBlazeCommand(Game, Game.linkItemSystem);
+            linkEquipSword = new EquipSwordCommand(Game, Game.linkItemSystem);
             //linkDamaged = new DamagedCommand(Game);
             nextBlock = new NextBlockCommand(Game, Game.block);
             previousBlock = new PreviousBlockCommand(Game, Game.block);
 
-            previousEnemy = new PreviousEnemyCommand(Game);
+            //previousEnemy = new PreviousEnemyCommand(Game);
             nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
@@ -97,6 +99,7 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
             KeyMap.Add(Keys.D5, linkEquipBomb);
             KeyMap.Add(Keys.D6, linkEquipBlaze);
+            KeyMap.Add(Keys.D7, linkEquipSword);
             KeyMap.Add(Keys.E, linkDamaged);
             KeyMap.Add(Keys.T, previousBlock);
             KeyMap.Add(Keys.Y, nextBlock);

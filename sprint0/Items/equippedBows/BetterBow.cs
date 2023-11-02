@@ -104,7 +104,7 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos)
+        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
 
             if (!thisStateMachine.isItemInUse())

@@ -25,7 +25,7 @@ namespace sprint0.Commands
         public void execute()
         {
             Link.LinkUseItem();
-            LinkItems.UseCurrentItem(Link.GetDirection(), Link.xPosition(), Link.yPosition());
+            LinkItems.UseCurrentItem(Link.GetDirection(), Link.xPosition(), Link.yPosition(), Link.height(), Link.width());
 
         }
     }

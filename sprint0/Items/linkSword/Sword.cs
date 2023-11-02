@@ -19,7 +19,7 @@ namespace sprint0.LinkSword
      * 
      * 
      */
-	public class LinkSword : ILinkSword
+	public class Sword : IItem, IGameObject
 	{
 		private ISprite currentItemSprite;
         private int itemRoomID;
@@ -38,7 +38,7 @@ namespace sprint0.LinkSword
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
          */
-        public LinkSword(SpriteFactory factory)
+        public Sword(SpriteFactory factory)
 		{
             currentItemDirection = Direction.DOWN;
             thisStateMachine = new ItemStateMachine();
@@ -79,7 +79,7 @@ namespace sprint0.LinkSword
            return false;
         }
 
-        public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             thisStateMachine.Use();
             this.xPos = linkXPos;
