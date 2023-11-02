@@ -31,6 +31,7 @@ namespace sprint0.Collision
 		 */
 
 		private const int INITIATE_LOOP_THRESHOLD = 4;
+        private static CollisionHandler handler = new CollisionHandler();
 
         public static void Search(IList<IGameObject> collidables, int screenWidth, int screenHeight)
         {
@@ -71,7 +72,23 @@ namespace sprint0.Collision
 				{
                     foreach (IGameObject obj2 in collidablesInQuadrant)
 					{
-						CollisionDetector.CollisionCheck(obj1, obj2);
+						CollisionDetector.CollisionType thisCollisionType = CollisionDetector.CollisionCheck(obj1, obj2);
+`						if (thisCollisionType != CollisionDetector.CollisionType.NONE)
+						{
+							bool foundCollision = handler.HandleCollision(obj1, obj2, thisCollisionType);
+							if (!foundCollision)
+							{
+                                foundCollision = handler.HandleCollision(obj2, obj1, thisCollisionType); // BA Check.
+								if(!foundCollision)
+								{
+                                    Console.WriteLine("DEBUG: COLLISION HANDLER COULD NOT FIND HANDLER FOR COMBINATION OF OBJECT:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                                }
+							} else
+							{
+                                Console.WriteLine("DEBUG: COLLISION HAS OCCURRED BETWEEN:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                            }
+						}
+
 					}
 
                 }
