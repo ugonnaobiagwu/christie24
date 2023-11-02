@@ -22,8 +22,8 @@ namespace sprint0.Blocks
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
-        private int XValue { get; set; }
-        private int YValue { get; set; }
+        public int XValue { get; set; }
+        public int YValue { get; set; }
 
 
 
@@ -83,7 +83,7 @@ namespace sprint0.Blocks
         public int yPosition() { return YValue; } // returns Y pos of object
         public int width() { return blockSprite.GetWidth(); } // (i.e.) "how big are you?"
         public int height() { return blockSprite.GetHeight(); } // (i.e.) "how big are you?"
-        public bool isDynamic() { return false; } // does this object move? 
+        public bool isDynamic() { return true; } // does this object move? 
         public bool isUpdateable() { return true; }
         public bool isInPlay() { return true; }
         public bool isDrawable() { return true; }
