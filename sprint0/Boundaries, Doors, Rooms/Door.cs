@@ -23,13 +23,13 @@ namespace sprint0.Boundaries___Doors
         bool IsInPlay = false;
         ISprite DoorSprite;
         SideOfRoom sideOfRoom;
-        public Door(Rectangle door, int roomId, int toWhichRoom, SpriteFactory spriteFactory, int SideOfScreen, SideOfRoom side) 
+        public Door(Rectangle door, int roomId, int toWhichRoom, SpriteFactory spriteFactory, int SideOfScreen) 
         {
             DoorObj = door;
             RoomId = roomId;
             ToWhichRoom = toWhichRoom;
             DoorSprite = spriteFactory.getAnimatedSprite("Door");
-            sideOfRoom = side;
+            sideOfRoom = (SideOfRoom)SideOfScreen;
         }
         public int xPosition()
         {

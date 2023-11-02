@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
+using sprint0.AnimatedSpriteFactory;
 using sprint0.Commands;
 
 namespace sprint0.Rooms
@@ -14,7 +15,8 @@ namespace sprint0.Rooms
         private Dictionary<int, List<IGameObject>> gameObjects;
         private int xPos, yPos, width1, height1;
         bool inPlay, dynamic;
-
+        SpriteFactory RoomFactory;
+        ISprite RoomSprite;
         // Constructor, initialization, and other methods...
         // need to draw rooms
 
@@ -33,18 +35,19 @@ namespace sprint0.Rooms
         public void SetRoomId(int roomId) { currentRoomID = roomId; }
         public int GetRoomId() { return currentRoomID; }
 
-        public Room(sprint0.Sprint0 Game)
+        public Room(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
+            /*NOTE: ASK ABOUT THIS*/
             GameObjectManager obj = new GameObjectManager();
             gameObjects = obj.getDictionary();
             roomList = obj.getRoomIDs();
             currentRoomIndex = 0;
             currentRoomID = roomList[currentRoomIndex];
-
+            RoomSprite = spriteFactory.getAnimatedSprite("Room");
             // need to implement this
             inPlay = true;
             dynamic = true;
-            xPos = 0; yPos = 0; width1 = 0; height1 = 0;
+            xPos = x; yPos = y; width1 = RoomSprite.GetWidth(); height1 = RoomSprite.GetHeight(); ;
         }
 
         public void PreviousRoom()
@@ -68,10 +71,13 @@ namespace sprint0.Rooms
             }
             //You can directly access the current room using rooms[currentRoomIndex]
         }
-
+        public void Update()
+        {
+            //nothing to update
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
-            // implement this
+            RoomSprite.Draw(spriteBatch, xPos, yPos);
         }
     }
 }

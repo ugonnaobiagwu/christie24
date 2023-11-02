@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Level_Loader___Parsers;
+using sprint0.Rooms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,18 +58,24 @@ namespace sprint0.Level_Loading___Parsers
             var RoomIDAttribute = subtree.Attributes["id"];
             string RoomIDStr = RoomIDAttribute.Value;
             int RoomID = Int32.Parse(RoomIDStr);
-            /*NOTE: NEED TO ADD A <RoomTexture> parser, currently not sure where rooms will be saved and drawn.*/
-            /*NOTE: This may cause issues depending on how selectnodes() interprets ""*/
-            XmlNodeList RoomNodes = subtree.SelectNodes("");
+            int x = ParseXCoordinate(subtree);
+            int y = ParseYCoordinate(subtree);
+            SpriteFactory RoomFactory = AnimationParser.ParseAnimations(subtree, Content);
+            /*EDIT THE PARAMETERS TO MATCH LevelLoader.cs*/
+            LevelLoader.CreateRoom(x,y,RoomID,RoomFactory);
+            XmlNode RoomContentNodes = subtree.SelectSingleNode("Contents");
+            ParseRoomContents(RoomContentNodes, RoomID,Content);
             
-            foreach(XmlNode node in RoomNodes)
+        }
+        private static void ParseRoomContents(XmlNode roomContentsNode, int roomId, ContentManager Content)
+        {
+            foreach (XmlNode node in roomContentsNode)
             {
                 ParseDelegate parser = ParseInstructions[node.Name];
-                parser(node, RoomID, Content);
-            } 
+                parser(node, roomId, Content);
+            }
 
         }
-
         private static void ParseLink(XmlNode subtree, int roomId, ContentManager Content)
         {
             /*Gets the x and y location*/
@@ -90,7 +97,7 @@ namespace sprint0.Level_Loading___Parsers
             /*Parses animation*/
             SpriteFactory BlockFactory = AnimationParser.ParseAnimations(subtree, Content);
             /*Makes object*/
-          /*  LevelLoader.CreateBlock(x, y, roomId, BlockType, BlockFactory);*/
+             LevelLoader.CreateBlock(x, y, roomId, BlockType, BlockFactory);
 
         }
         private static void ParseEnemy(XmlNode subtree, int roomId, ContentManager Content)
@@ -118,6 +125,8 @@ namespace sprint0.Level_Loading___Parsers
             /*Makes object*/
             LevelLoader.CreateBoundary(x, y, roomId, Width, Height, BoundaryFactory);
         }
+
+        /*NEED TO ADD PARAMETERS FOR DOORLOCATION IN LevelLoader.cs AND DevRoom.xml*/
         private static void ParseDoor(XmlNode subtree, int roomId, ContentManager Content)
         {
             /*Gets the x and y location*/
@@ -128,9 +137,10 @@ namespace sprint0.Level_Loading___Parsers
             int Height = ParseHeight(subtree);
             /*Gets the room the door leads to*/
             int ToWhere = ParseToWhere(subtree);
+            int SideOfRoom = ParseSideOfRoom(subtree);
             /*Parses Animation*/
             SpriteFactory DoorFactory = AnimationParser.ParseAnimations(subtree, Content);
-            LevelLoader.CreateDoor(x, y, roomId, Width, Height, ToWhere, DoorFactory);
+            LevelLoader.CreateDoor(x, y, roomId, Width, Height, ToWhere, DoorFactory,SideOfRoom);
         }
         private static int ParseXCoordinate(XmlNode subtree)
         {
@@ -156,6 +166,11 @@ namespace sprint0.Level_Loading___Parsers
         {
             XmlNode ToWhereNode = subtree.SelectSingleNode("ToWhichRoom");
             return (int)float.Parse(ToWhereNode.InnerText);
+        }
+        private static int ParseSideOfRoom(XmlNode subtree)
+        {
+            XmlNode SideNode = subtree.SelectSingleNode("SideOfRoom");
+            return (int)float.Parse(SideNode.InnerText);
         }
     }
     //
