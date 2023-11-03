@@ -15,18 +15,14 @@ namespace sprint0.Boundaries___Doors
 
         Rectangle BoundaryObj;
         int RoomId;
-        SpriteFactory BoundaryFactory;
-        ISprite BoundarySprite;
         bool IsDynamic = false;
         bool IsInPlay = false;
         bool IsUpdateable = false;
-        bool IsDrawable = true;
-        public Boundary(Rectangle boundary, int roomId, SpriteFactory spriteFactory) 
+        bool IsDrawable = false;
+        public Boundary(Rectangle boundary, int roomId) 
         { 
             BoundaryObj = boundary;
             RoomId = roomId;
-            BoundaryFactory = spriteFactory;
-            BoundarySprite = spriteFactory.getAnimatedSprite("Boundary");
         }
         public int xPosition()
         {
@@ -74,7 +70,7 @@ namespace sprint0.Boundaries___Doors
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            BoundarySprite.Draw(spriteBatch, xPosition(),yPosition());
+            //Nothing to draw
         }
     }
 }

@@ -19,16 +19,14 @@ namespace sprint0.Boundaries___Doors
         int RoomId;
         bool IsDynamic = false;
         bool IsUpdateable = false;
-        bool IsDrawable = true;
+        bool IsDrawable = false;
         bool IsInPlay = false;
-        ISprite DoorSprite;
         SideOfRoom sideOfRoom;
-        public Door(Rectangle door, int roomId, int toWhichRoom, SpriteFactory spriteFactory, int SideOfScreen) 
+        public Door(Rectangle door, int roomId, int toWhichRoom,int SideOfScreen) 
         {
             DoorObj = door;
             RoomId = roomId;
             ToWhichRoom = toWhichRoom;
-            DoorSprite = spriteFactory.getAnimatedSprite("Door");
             sideOfRoom = (SideOfRoom)SideOfScreen;
         }
         public int xPosition()
@@ -81,7 +79,7 @@ namespace sprint0.Boundaries___Doors
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            DoorSprite.Draw(spriteBatch, xPosition(), yPosition());
+           //Nothing to draw
         }
         public int GetSideOfRoom()
         {
