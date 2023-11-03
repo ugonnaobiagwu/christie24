@@ -20,6 +20,7 @@ namespace sprint0.Collision
     public static class CollisionDetector
 	{
 		public enum CollisionType { TOP, BOTTOM, LEFT, RIGHT, NONE };
+		
         // Do we need this enum in every Collision Class?
 
         /*

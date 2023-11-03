@@ -8,9 +8,8 @@ namespace sprint0.Items
     {
         private int itemXPos;
         private int itemYPos;
-        private int maxBombTicks;
-        private int bombTicks;
-        private int RoomId;
+        public int maxBombTicks;
+        public int bombTicks;
         // needs these positions for sprite swapping.
 
         //direction stuff
@@ -82,7 +81,7 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos)
+        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
