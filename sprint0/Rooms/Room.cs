@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
+using sprint0.AnimatedSpriteFactory;
 using sprint0.Commands;
+using sprint0.Factory;
 
 namespace sprint0.Rooms
 {
     public class Room : IRoom, IGameObject
     {
         private List<int> roomList;
+        private SpriteFactory spriteFactory;
         private int currentRoomIndex;
         private int currentRoomID;
         private Dictionary<int, List<IGameObject>> gameObjects;
@@ -23,14 +27,25 @@ namespace sprint0.Rooms
         public int width() { return width1; }
         public int height() { return height1; }
         public bool isDynamic()
-        { // for smooth scrolling???
+        { // for smooth scrolling??? i have no idea
             return dynamic;
         }
         public bool isUpdateable() { return false; }
         public bool isInPlay() { return inPlay; }
         public bool isDrawable() { return true; }
 
-        public void SetRoomId(int roomId) { currentRoomID = roomId; }
+        public void SetRoomId(int roomId) 
+        { 
+            currentRoomID = roomId; 
+            // finds index of room id
+            for (int i = 0; i < roomList.Count; i++)
+            {
+                if (roomList[i] == currentRoomID) { 
+                    currentRoomIndex = i;
+                }
+            }
+        
+        }
         public int GetRoomId() { return currentRoomID; }
 
         public Room(sprint0.Sprint0 Game)
@@ -69,9 +84,11 @@ namespace sprint0.Rooms
             //You can directly access the current room using rooms[currentRoomIndex]
         }
 
+        // draws each object in the room
+        // tentative code
         public void Draw(SpriteBatch spriteBatch)
         {
-            // implement this
+            spriteFactory.draw(spriteBatch);
         }
     }
 }
