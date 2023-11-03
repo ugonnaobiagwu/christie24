@@ -14,7 +14,8 @@ namespace sprint0.Sound.Ocarina
      */
     public static class WindWaker
     {
-        public enum Songs { TITLE, OVERWORLD, DUNGEON, GAME_OVER_ENDING, BOSS_THEME };
+        public enum Songs { TITLE, OVERWORLD, DUNGEON, ENDING,
+          TRIFORCE_OBTAIN };
         private static IDictionary<Songs, WindWakerSongData> Library
             = new Dictionary<Songs, WindWakerSongData>();
 
