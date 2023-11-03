@@ -28,7 +28,6 @@ namespace sprint0
 
         //Block
         public IBlock block;
-        public IItemSystem linkItemSystem;
         KeyboardController KeyboardCont;
 
         public Sprint0()
@@ -63,8 +62,7 @@ namespace sprint0
             // Linky
             //Link = new Link()
             //Link's Item System
-            linkItemSystem = new ItemSystem();
-            linkItemSystem.LoadSpriteBatch(spriteBatch);
+            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
             /*LINK TEST: TO BE DELETED*/
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
@@ -162,8 +160,8 @@ namespace sprint0
             Texture2D bowDespawnTexture = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
             SpriteFactory bowDespawnFactory = new SpriteFactory(bowDespawnTexture, 1, 1);
             bowFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
-            linkItemSystem.LoadBow(bowFactory, bowDespawnFactory);
-            linkItemSystem.LoadBetterBow(betterBowFactory, bowDespawnFactory);
+            Globals.LinkItemSystem.LoadBow(bowFactory, bowDespawnFactory);
+            Globals.LinkItemSystem.LoadBetterBow(betterBowFactory, bowDespawnFactory);
 
             //Boomerang + Better Boomerang
             Texture2D boomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
@@ -174,14 +172,14 @@ namespace sprint0
             SpriteFactory betterBoomerangFactory = new SpriteFactory(betterBoomerangTexture, 2, 3);
             betterBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
             betterBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
-            linkItemSystem.LoadBoomerang(boomerangFactory);
-            linkItemSystem.LoadBetterBoomerang(betterBoomerangFactory);
+            Globals.LinkItemSystem.LoadBoomerang(boomerangFactory);
+            Globals.LinkItemSystem.LoadBetterBoomerang(betterBoomerangFactory);
 
             //Blaze
             Texture2D blazeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBlaze");
             SpriteFactory blazeFactory = new SpriteFactory(blazeTexture, 1, 2);
             blazeFactory.createAnimation("Blaze", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
-            linkItemSystem.LoadBlaze(blazeFactory);
+            Globals.LinkItemSystem.LoadBlaze(blazeFactory);
 
             //Bomb
             Texture2D bombTexture = Content.Load<Texture2D>("groundItemSprites/groundBomb");
@@ -190,7 +188,7 @@ namespace sprint0
             Texture2D bombExplodeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
             SpriteFactory bombExplodeFactory = new SpriteFactory(bombExplodeTexture, 1, 3);
             bombExplodeFactory.createAnimation("Going", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
-            linkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
+            Globals.LinkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
 
             // TODO: use this.Content to load your game content here
 
@@ -206,7 +204,7 @@ namespace sprint0
             // TODO: Add your update logic here
 
             KeyboardCont.Update();
-            linkItemSystem.Update();
+            Globals.LinkItemSystem.Update();
 
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
@@ -226,7 +224,7 @@ namespace sprint0
             spriteBatch.Begin();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
-            linkItemSystem.Draw();
+            Globals.LinkItemSystem.Draw();
             block.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
