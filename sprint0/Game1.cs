@@ -10,6 +10,8 @@ using sprint0.Link;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
+using sprint0.Sound.Ocarina;
+using Microsoft.Xna.Framework.Audio;
 
 namespace sprint0
 {
@@ -42,6 +44,47 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ////SoundEffects
+            //SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
+            //SoundEffect SWORD_SHOOT = Content.Load<SoundEffect>("soundEffects/SWORD_SHOOT");
+            //SoundEffect SHIELD = Content.Load<SoundEffect>("soundEffects/SHIELD");
+            //SoundEffect ARROW_BOOMERANG_LAUNCH = Content.Load<SoundEffect>("soundEffects/ARROW_BOOMERANG_LAUNCH");
+            //SoundEffect BOMB_DROP = Content.Load<SoundEffect>("soundEffects/BOMB_DROP");
+            //SoundEffect BOMB_EXPLODE = Content.Load<SoundEffect>("soundEffects/BOMB_EXPLODE");
+            //SoundEffect ENEMY_HIT = Content.Load<SoundEffect>("soundEffects/ENEMY_HIT");
+            //SoundEffect ENEMY_DIE = Content.Load<SoundEffect>("soundEffects/ENEMY_DIE");
+            //SoundEffect LINK_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/LINK_TAKE_DAMAGE");
+            //SoundEffect LINK_DEATH = Content.Load<SoundEffect>("soundEffects/LINK_DEATH");
+            //SoundEffect LINK_LOW_HEALTH = Content.Load<SoundEffect>("soundEffects/LINK_LOW_HEALTH");
+            //SoundEffect FANFARE = Content.Load<SoundEffect>("soundEffects/FANFARE");
+            //SoundEffect LINK_ITEM_GET = Content.Load<SoundEffect>("soundEffects/LINK_ITEM_GET");
+            //SoundEffect GET_GROUND_HEART_KEY = Content.Load<SoundEffect>("soundEffects/GET_GROUND_HEART_KEY");
+            //SoundEffect GET_GROUND_RUPEE = Content.Load<SoundEffect>("soundEffects/GET_GROUND_RUPEE");
+            //SoundEffect REFILL = Content.Load<SoundEffect>("soundEffects/REFILL");
+            //SoundEffect TEXT_APPEAR = Content.Load<SoundEffect>("soundEffects/TEXT_APPEAR");
+            //SoundEffect GROUND_KEY_APPEAR = Content.Load<SoundEffect>("soundEffects/GROUND_KEY_APPEAR");
+            //SoundEffect DOOR_UNLOCK = Content.Load<SoundEffect>("soundEffects/DOOR_UNLOCK");
+            //SoundEffect BOSS_AQUAMENTUS_SCREAM = Content.Load<SoundEffect>("soundEffects/BOSS_AQUAMENTUS_SCREAM");
+            //SoundEffect BOSS_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/BOSS_TAKE_DAMAGE");
+            //SoundEffect STAIRS = Content.Load<SoundEffect>("soundEffects/STAIRS");
+            //SoundEffect PUZZLE_SOLVED = Content.Load<SoundEffect>("soundEffects/PUZZLE_SOLVED");
+            //SoundEffect BLAZE = Content.Load<SoundEffect>("soundEffects/BLAZE");
+
+            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
+            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
+            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
+            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
+
+
+            ////Songs
+            //SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
+            //SoundEffect OVERWORLD = Content.Load<SoundEffect>("songs/OVERWORLD");
+            //SoundEffect DUNGEON = Content.Load<SoundEffect>("songs/DUNGEON");
+            //SoundEffect ENDING = Content.Load<SoundEffect>("songs/ENDING");
+            //SoundEffect TRIFORCE_OBTAIN = Content.Load<SoundEffect>("songs/TRIFORCE_OBTAIN");
+
+
 
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
@@ -191,6 +234,72 @@ namespace sprint0
             SpriteFactory bombExplodeFactory = new SpriteFactory(bombExplodeTexture, 1, 3);
             bombExplodeFactory.createAnimation("Going", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
             linkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
+
+
+            //SoundEffects
+            SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
+            SoundEffect SWORD_SHOOT = Content.Load<SoundEffect>("soundEffects/SWORD_SHOOT");
+            SoundEffect SHIELD = Content.Load<SoundEffect>("soundEffects/SHIELD");
+            SoundEffect ARROW_BOOMERANG_LAUNCH = Content.Load<SoundEffect>("soundEffects/ARROW_BOOMERANG_LAUNCH");
+            SoundEffect BOMB_DROP = Content.Load<SoundEffect>("soundEffects/BOMB_DROP");
+            SoundEffect BOMB_EXPLODE = Content.Load<SoundEffect>("soundEffects/BOMB_EXPLODE");
+            SoundEffect ENEMY_HIT = Content.Load<SoundEffect>("soundEffects/ENEMY_HIT");
+            SoundEffect ENEMY_DIE = Content.Load<SoundEffect>("soundEffects/ENEMY_DIE");
+            SoundEffect LINK_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/LINK_TAKE_DAMAGE");
+            SoundEffect LINK_DEATH = Content.Load<SoundEffect>("soundEffects/LINK_DEATH");
+            SoundEffect LINK_LOW_HEALTH = Content.Load<SoundEffect>("soundEffects/LINK_LOW_HEALTH");
+            SoundEffect FANFARE = Content.Load<SoundEffect>("soundEffects/FANFARE");
+            SoundEffect LINK_ITEM_GET = Content.Load<SoundEffect>("soundEffects/LINK_ITEM_GET");
+            SoundEffect GET_GROUND_HEART_KEY = Content.Load<SoundEffect>("soundEffects/GET_GROUND_HEART_KEY");
+            SoundEffect GET_GROUND_RUPEE = Content.Load<SoundEffect>("soundEffects/GET_GROUND_RUPEE");
+            SoundEffect REFILL = Content.Load<SoundEffect>("soundEffects/REFILL");
+            SoundEffect TEXT_APPEAR = Content.Load<SoundEffect>("soundEffects/TEXT_APPEAR");
+            SoundEffect GROUND_KEY_APPEAR = Content.Load<SoundEffect>("soundEffects/GROUND_KEY_APPEAR");
+            SoundEffect DOOR_UNLOCK = Content.Load<SoundEffect>("soundEffects/DOOR_UNLOCK");
+            SoundEffect BOSS_AQUAMENTUS_SCREAM = Content.Load<SoundEffect>("soundEffects/BOSS_AQUAMENTUS_SCREAM");
+            SoundEffect BOSS_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/BOSS_TAKE_DAMAGE");
+            SoundEffect STAIRS = Content.Load<SoundEffect>("soundEffects/STAIRS");
+            SoundEffect PUZZLE_SOLVED = Content.Load<SoundEffect>("soundEffects/PUZZLE_SOLVED");
+            SoundEffect BLAZE = Content.Load<SoundEffect>("soundEffects/BLAZE");
+
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ARROW_LAUNCH, ARROW_BOOMERANG_LAUNCH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH, ARROW_BOOMERANG_LAUNCH, true);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_DROP, BOMB_DROP);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE, BOMB_EXPLODE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_HIT, ENEMY_HIT);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_DIE, ENEMY_DIE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE, LINK_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_DEATH, LINK_DEATH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_LOW_HEALTH, LINK_LOW_HEALTH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.FANFARE, FANFARE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET, LINK_ITEM_GET);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY, GET_GROUND_HEART_KEY);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE, GET_GROUND_RUPEE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.REFILL, REFILL, true);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.TEXT_APPEAR, TEXT_APPEAR, true);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GROUND_KEY_APPEAR, GROUND_KEY_APPEAR);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.DOOR_UNLOCK, DOOR_UNLOCK);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_AQUAMENTUS_SCREAM, BOSS_AQUAMENTUS_SCREAM);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE, BOSS_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.STAIRS, STAIRS);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
+
+            //Songs
+            SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
+            SoundEffect OVERWORLD = Content.Load<SoundEffect>("songs/OVERWORLD");
+            SoundEffect DUNGEON = Content.Load<SoundEffect>("songs/DUNGEON");
+            SoundEffect ENDING = Content.Load<SoundEffect>("songs/ENDING");
+            SoundEffect TRIFORCE_OBTAIN = Content.Load<SoundEffect>("songs/TRIFORCE_OBTAIN");
+
+            WindWaker.LoadSong(WindWaker.Songs.TITLE, TITLE, true);
+            WindWaker.LoadSong(WindWaker.Songs.OVERWORLD, OVERWORLD, true);
+            WindWaker.LoadSong(WindWaker.Songs.DUNGEON, DUNGEON, true);
+            WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
+            WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
 
             // TODO: use this.Content to load your game content here
 

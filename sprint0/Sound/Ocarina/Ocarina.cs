@@ -12,13 +12,13 @@ namespace sprint0.Sound.Ocarina
      */
     public static class Ocarina
     {
-        public enum SoundEffects { SWORD_SLASH, SWORD_SHOOT, SHEILD,
+        public enum SoundEffects { SWORD_SLASH, SWORD_SHOOT, SHIELD,
             ARROW_BOOMERANG_LAUNCH, BOMB_DROP, BOMB_EXPLODE, ENEMY_HIT,
             ENEMY_DIE, LINK_TAKE_DAMAGE, LINK_DEATH, LINK_LOW_HEALTH, FANFARE,
-            INVENTORY_LINK_ITEM_GET, GET_GROUND_HEART_KEY, GET_GROUND_RUPEE,
-            REFILL, TEXT_APPEAR, TEXT_APPEAR_SLOW, GROUND_KEY_APPEAR, DOOR_UNLOCK,
+            LINK_ITEM_GET, GET_GROUND_HEART_KEY, GET_GROUND_RUPEE,
+            REFILL, TEXT_APPEAR, GROUND_KEY_APPEAR, DOOR_UNLOCK,
             BOSS_AQUAMENTUS_SCREAM, BOSS_TAKE_DAMAGE, STAIRS, PUZZLE_SOLVED,
-            TRIFORCE
+            BLAZE
         };
         private static IDictionary<SoundEffects, OcarinaEffectData> Library 
             = new Dictionary<SoundEffects, OcarinaEffectData>();
