@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Items;
 
 namespace sprint0.Enemies
 {
@@ -26,7 +27,7 @@ namespace sprint0.Enemies
         private enum State { Attack, Walk };
         private State BokoblinState;
         private int[] SpriteSheetFrames;
-        private IItem Boomerang;
+        private BokoblinBoomerang Boomerang;
 
         public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
@@ -38,7 +39,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
-            Boomerang = new Items.Boomerang(spriteFactory);
+            Boomerang = new BokoblinBoomerang(spriteFactory);
 
             /* Temporary Values */
             Width = 1;
@@ -236,7 +237,7 @@ namespace sprint0.Enemies
 
         public void BokoblinThrow()
         {
-            Boomerang.Use(getDirection(), xPos, yPos);
+            Boomerang.Use();
         }
     }
 }

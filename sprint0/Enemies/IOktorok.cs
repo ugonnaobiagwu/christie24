@@ -19,6 +19,9 @@ namespace sprint0.Enemies
         public int getDirection();
         public int getHealth();
 
+        public int xPosition();
+        public int yPosition();
+
         public String getState();
         public void setState(String state);
 

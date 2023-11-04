@@ -72,12 +72,12 @@ namespace sprint0
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
 
             /*ENEMY TESTS: TO BE DELETED*/
-            Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
             SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
             SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
             SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
 
-            Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
             SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
             OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
             OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
@@ -85,7 +85,7 @@ namespace sprint0
             OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
             OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
 
-            Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemies");
+            Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemie-condensed");
             SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
             BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
             BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);

@@ -27,7 +27,7 @@ namespace sprint0.Enemies
         private enum State { Attack, Walk };
         private State OktorokState;
         private int[] SpriteSheetFrames;
-        private IItem Projectile;
+        private OktorokBlaze Projectile;
 
         public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
@@ -39,7 +39,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             OktorokFactory = spriteFactory;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
-            Projectile = new Blaze(spriteFactory);
+            Projectile = new OktorokBlaze(spriteFactory);
 
             /* Temporary Values */
             Height = 1;
@@ -236,7 +236,7 @@ namespace sprint0.Enemies
 
         public void OktorokShoot()
         {
-            Projectile.Use(getDirection(), xPos, yPos);
+            Projectile.Use();
         }
     }
 }

@@ -404,6 +404,30 @@
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
 
+#begin sprites-bosses.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites-bosses.png
+
+#begin zelda-sprites-enemies-condensed.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zelda-sprites-enemies-condensed.png
+
 #begin zelda-sprites-enemies.png
 /importer:TextureImporter
 /processor:TextureProcessor
