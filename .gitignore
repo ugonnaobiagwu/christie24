@@ -1,3 +1,5 @@
 sprint0/obj/Debug/net6.0/sprint0.csproj.AssemblyReference.cache
-sprint0/obj/
-sprint0/bin/
+*.mgcontent
+*.mgcontent
+sprint0/Content/obj/DesktopGL/net6.0/Content/.mgstats
+*.mgcontent

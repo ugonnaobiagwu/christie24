@@ -28,7 +28,7 @@ namespace sprint0.Link
             private int YVal { get; set; }
             private int RoomId;
             private enum Direction { Left, Right, Up, Down};
-            public enum State { UseItem, Default }
+            public enum State { UseItem, Default , Dead}
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
             ILink LinkObj;
@@ -194,6 +194,9 @@ namespace sprint0.Link
                     case State.Default:
                         state = "Default";
                         break;
+                case State.Dead:
+                    state = "Dead";
+                    break;
                 }
                 return state;
             }

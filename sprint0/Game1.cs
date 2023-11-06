@@ -281,7 +281,7 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: transformMatrix);
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
