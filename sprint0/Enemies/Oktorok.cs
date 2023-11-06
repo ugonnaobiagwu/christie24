@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Items;
 
 namespace sprint0.Enemies
 {
@@ -26,6 +27,7 @@ namespace sprint0.Enemies
         private enum State { Attack, Walk };
         private State OktorokState;
         private int[] SpriteSheetFrames;
+        private OktorokBlaze Projectile;
 
         public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
@@ -37,6 +39,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             OktorokFactory = spriteFactory;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
+            Projectile = new OktorokBlaze(spriteFactory);
 
             /* Temporary Values */
             Height = 1;
@@ -165,6 +168,27 @@ namespace sprint0.Enemies
         public void Update()
         {
             OktoSprite.Update();
+
+            Random rnd = new Random();
+            int direction = rnd.Next(4);
+
+            switch (direction) 
+            {
+                case 0:
+                    OktorokUp();
+                    break;
+                case 1:
+                    OktorokLeft();
+                    break;
+                case 2:
+                    OktorokDown();
+                    break;
+                case 3:
+                    OktorokRight();
+                    break;
+            }
+
+            OktorokShoot();
         }
 
         /* ---Other Methods--- */
@@ -212,7 +236,7 @@ namespace sprint0.Enemies
 
         public void OktorokShoot()
         {
-            /* Code to make oktorok shoot */
+            Projectile.Use();
         }
     }
 }

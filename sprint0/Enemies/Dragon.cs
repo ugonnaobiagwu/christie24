@@ -1,18 +1,20 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Items;
 
 namespace sprint0.Enemies
 {
-    public class Skeleton: ISkeleton, IGameObject
+    public class Dragon : IDragon, IGameObject
     {
         Sprint0 Game;
-        SpriteFactory SkeletonFactory;
+        SpriteFactory DragonFactory;
         SpriteBatch SpriteBatch;
         ISprite SkellySprite;
         private int Health;
@@ -21,41 +23,42 @@ namespace sprint0.Enemies
         private int Direction;
         private int[] SpriteSheetFrames;
         private int RoomId;
+        private DragonBlaze[] Fireballs;
 
-        public Skeleton(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
             /* Can be adjusted */
-            Health = 3;
+            Health = 10;
 
             xPos = x;
             yPos = y;
             RoomId = roomId;
-            SkeletonFactory = spriteFactory;
-            SkellySprite = SkeletonFactory.getAnimatedSprite("Default");
-
-            SpriteSheetFrames = new int[] { 74, 89 };
+            DragonFactory = spriteFactory;
+            SkellySprite = DragonFactory.getAnimatedSprite("Default");
+            Fireballs = new DragonBlaze[] { new DragonBlaze(spriteFactory, 0), new DragonBlaze(spriteFactory, 1), new DragonBlaze(spriteFactory, 2) };
+            SpriteSheetFrames = new int[] { 0, 1, 2, 3 };
         }
 
         /* ---Movement--- */
-        public void SkeletonUp()
+        public void DragonUp()
         {
             Direction = 0;
             yPos++;
         }
-        
-        public void SkeletonDown()
+
+        public void DragonDown()
         {
             Direction = 2;
             yPos--;
         }
 
-        public void SkeletonLeft()
+        public void DragonLeft()
         {
             Direction = 1;
             xPos--;
         }
 
-        public void SkeletonRight()
+        public void DragonRight()
         {
             Direction = 3;
             xPos++;
@@ -129,7 +132,7 @@ namespace sprint0.Enemies
         {
             return RoomId;
         }
-        
+
         public void Draw(SpriteBatch spriteBatch)
         {
             SkellySprite.Draw(spriteBatch, xPos, yPos);
@@ -145,16 +148,16 @@ namespace sprint0.Enemies
             switch (direction)
             {
                 case 0:
-                    SkeletonUp();
+                    DragonUp();
                     break;
                 case 1:
-                    SkeletonLeft();
+                    DragonLeft();
                     break;
                 case 2:
-                    SkeletonDown();
+                    DragonDown();
                     break;
                 case 3:
-                    SkeletonRight();
+                    DragonRight();
                     break;
             }
         }
@@ -181,11 +184,20 @@ namespace sprint0.Enemies
                         break;
                 }
             }
-            
+
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Skeleton */
+                /* Code to delete the Dragon */
+            }
+
+        }
+
+        public void DragonShoot()
+        {
+            foreach(DragonBlaze fireball in Fireballs)
+            {
+                fireball.Use();
             }
         }
     }

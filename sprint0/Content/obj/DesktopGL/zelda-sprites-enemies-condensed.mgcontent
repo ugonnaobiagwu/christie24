@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowDown.png</SourceFile>
-  <SourceTime>2023-10-16T15:34:35.9870485-04:00</SourceTime>
-  <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/equippedItemSprites/equippedBetterBowDown.xnb</DestFile>
-  <DestTime>2023-10-17T23:33:54.1177168-04:00</DestTime>
+  <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/zelda-sprites-enemies-condensed.png</SourceFile>
+  <SourceTime>2023-11-04T16:18:32.0489766-04:00</SourceTime>
+  <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/zelda-sprites-enemies-condensed.xnb</DestFile>
+  <DestTime>2023-11-04T16:29:39.382752-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
