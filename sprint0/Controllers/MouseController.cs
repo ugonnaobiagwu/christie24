@@ -19,7 +19,7 @@ namespace sprint0.Controllers
 
         public MouseController()
         {
-            room = new Room();
+            //room = new Room();
             previousRoom = new PreviousRoomCommand(room);
             nextRoom = new NextRoomCommand(room);
         }

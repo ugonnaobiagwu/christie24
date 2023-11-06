@@ -237,7 +237,7 @@ namespace sprint0.Enemies
 
         public void BokoblinThrow()
         {
-            Boomerang.Use();
+            Boomerang.Use(this);
         }
     }
 }

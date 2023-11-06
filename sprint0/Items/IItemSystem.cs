@@ -19,7 +19,7 @@ namespace sprint0
 		public void LoadBetterBoomerang(SpriteFactory factory);
 		public void LoadBlaze(SpriteFactory factory);
 		public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory);
-
+        public void LoadSword(SpriteFactory factory);
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
 
         /* Equipment methods. Can only be called if an item is not alraedy equipped to that 

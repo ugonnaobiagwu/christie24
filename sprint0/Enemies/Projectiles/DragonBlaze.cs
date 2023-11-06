@@ -15,7 +15,6 @@ namespace sprint0.Items
         private int itemMinX;
         private int itemMinY;
         private int spriteVelocity = 1;
-        private IDragon Owner;
         private int ProjectileID;
         //private int maxFireTicks; // should use game time tbh.
         //private int fireTicks;
@@ -92,7 +91,7 @@ namespace sprint0.Items
 
         }
 
-        public void Use()
+        public void Use(IDragon Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {

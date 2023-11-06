@@ -96,7 +96,7 @@ namespace sprint0.Level_Loading___Parsers
         {
             /*Creates the Boundary Object*/
             Rectangle BoundaryBox = new Rectangle(x, y, width, height);
-            IGameObject Boundary = new Boundary(BoundaryBox,roomId,spriteFactory);
+            //IGameObject Boundary = new Boundary(BoundaryBox,roomId,spriteFactory);
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
 
@@ -105,7 +105,7 @@ namespace sprint0.Level_Loading___Parsers
         public static void CreateDoor(int x, int y, int roomId, int width, int height, int toWhere, SpriteFactory spriteFactory, int SideOfRoom)
         {
             Rectangle DoorBox = new Rectangle(x, y, width,height);
-            IGameObject Door = new Door(DoorBox, roomId, toWhere, spriteFactory, SideOfRoom);
+            //IGameObject Door = new Door(DoorBox, roomId, toWhere, spriteFactory, SideOfRoom);
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
         }

@@ -52,21 +52,21 @@ namespace sprint0.Controllers
             linkWalkingDown = new WalkDownCommand(Game, Game.LinkObj);
             linkWalkingRight = new WalkRightCommand(Game, Game.LinkObj);
 
-            linkItemUse = new AttackCommand(Game, Game.LinkObj, Game.linkItemSystem);
+            linkItemUse = new AttackCommand(Game, Game.LinkObj, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
-            linkEquipBow = new EquipBowCommand(Game, Game.linkItemSystem);
-            linkEquipBetterBow = new EquipBetterBowCommand(Game, Game.linkItemSystem);
-            linkEquipBoomerang = new EquipBoomerangCommand(Game, Game.linkItemSystem);
-            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Game.linkItemSystem);
-            linkEquipBomb = new EquipBombCommand(Game, Game.linkItemSystem);
-            linkEquipBlaze = new EquipBlazeCommand(Game, Game.linkItemSystem);
-            linkEquipSword = new EquipSwordCommand(Game, Game.linkItemSystem);
+            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
+            linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
+            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
+            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
+            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
+            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
+            linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
             //linkDamaged = new DamagedCommand(Game);
-            nextBlock = new NextBlockCommand(Game, Game.block);
-            previousBlock = new PreviousBlockCommand(Game, Game.block);
+            //nextBlock = new NextBlockCommand(Game, Game.block);
+            //previousBlock = new PreviousBlockCommand(Game, Game.block);
 
             //previousEnemy = new PreviousEnemyCommand(Game);
-            nextEnemy = new NextEnemyCommand(Game);
+            //nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
 
@@ -125,7 +125,7 @@ namespace sprint0.Controllers
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (KeyMap.ContainsKey(key) && !previousKeys.Contains(key) && pressed.Contains(key))
+                if (KeyMap.ContainsKey(key) && previousKeys.Contains(key) && pressed.Contains(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();

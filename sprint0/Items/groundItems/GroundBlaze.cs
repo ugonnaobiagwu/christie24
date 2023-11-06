@@ -12,7 +12,6 @@ namespace sprint0.Items.groundItems
         public bool isPickedUp;
         private int roomID;
 
-        // Does Level Loader like this signature?
         public GroundBlaze(SpriteFactory factory, int xPos, int yPos)
         {
             this.currentItemSprite = factory.getAnimatedSprite("GroundBlaze");

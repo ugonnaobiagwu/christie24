@@ -43,6 +43,8 @@ namespace sprint0.LinkSword
             currentItemDirection = Direction.DOWN;
             thisStateMachine = new ItemStateMachine();
             rotation = 0;
+            itemSpriteFactory = factory;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
         }
 
         public void Draw(SpriteBatch spritebatch)

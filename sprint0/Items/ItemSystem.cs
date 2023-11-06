@@ -191,9 +191,12 @@ namespace sprint0
          */
         public void Draw()
         {
-            if (this.currentItem != null)
+            if (this.currentItem != null )
             {
                 this.currentItem.Draw(this.spriteBatch);
+            }
+            if (this.sword != null)
+            {
                 this.sword.Draw(this.spriteBatch);
             }
 
@@ -206,9 +209,12 @@ namespace sprint0
             {
                 this.currentItem.Update();
             }
-            this.sword.Update();
+            if (this.sword != null)
+            {
+                this.sword.Draw(this.spriteBatch);
+            }
 
-            
+
         }
     }
 }

@@ -244,6 +244,10 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "Bomb", "Oktorok", BombImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "Bomb", "Skeleton", BombImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "Bomb", "Link", null, null });
+
+            collisionTable.Rows.Add(new Object[] { "Sword", "Bokoblin", null, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "Sword", "Oktorok", null, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "Sword", "Skeleton", null, MoveSkeletonAndTakeDamageDelegate });
         }
 
 
