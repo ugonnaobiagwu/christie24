@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</SourceFile>
-  <SourceTime>2023-10-25T21:56:47.1254375-04:00</SourceTime>
-  <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/equippedItemSprites/equippedBowRight.xnb</DestFile>
-  <DestTime>2023-11-03T19:00:39.4735627-04:00</DestTime>
+  <SourceFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</SourceFile>
+  <SourceTime>2023-10-14T15:46:03.003138-04:00</SourceTime>
+  <DestFile>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/bin/DesktopGL/Content/equippedItemSprites/equippedBowRight.xnb</DestFile>
+  <DestTime>2023-11-06T12:00:50.6338435-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
