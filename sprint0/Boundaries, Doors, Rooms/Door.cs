@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using System;
 using System.Collections.Generic;
 
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sprint0.Boundaries___Doors
 {
-
+    public enum SideOfRoom {LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3};
     internal class Door : IGameObject
     {
         Rectangle DoorObj;
@@ -17,15 +19,15 @@ namespace sprint0.Boundaries___Doors
         int RoomId;
         bool IsDynamic = false;
         bool IsUpdateable = false;
-        bool IsDrawable = true;
-        bool IsRemoveable = false;
-        SpriteFactory SpriteFactory;
-        public Door(Rectangle door, int roomId, int toWhichRoom, SpriteFactory spriteFactory) 
+        bool IsDrawable = false;
+        bool IsInPlay = false;
+        SideOfRoom sideOfRoom;
+        public Door(Rectangle door, int roomId, int toWhichRoom,int SideOfScreen) 
         {
             DoorObj = door;
             RoomId = roomId;
             ToWhichRoom = toWhichRoom;
-            SpriteFactory = spriteFactory;
+            sideOfRoom = (SideOfRoom)SideOfScreen;
         }
         public int xPosition()
         {
@@ -55,9 +57,9 @@ namespace sprint0.Boundaries___Doors
         {
             return IsDrawable;
         }
-        public bool isRemoveable()
+        public bool isInPlay()
         {
-            return IsRemoveable;
+            return IsInPlay;
         }
         public void SetRoomId(int newId)
         {
@@ -71,7 +73,17 @@ namespace sprint0.Boundaries___Doors
         {
             return ToWhichRoom;
         }
-        /*TO ADD: GameObject methods
-          ALSO: need to ask if you can draw clear rectangles*/
+        public void Update()
+        {
+            //Nothing to update 
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+           //Nothing to draw
+        }
+        public int GetSideOfRoom()
+        {
+            return (int) sideOfRoom;
+        }
     }
 }

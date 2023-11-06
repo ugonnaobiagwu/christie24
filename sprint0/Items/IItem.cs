@@ -3,12 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace sprint0
 {
-	public interface IItem
+	public interface IItem : IGameObject
 	{
-		public void Draw(SpriteBatch spriteBatch);
-		public void Update();
-		public void Use(int linkDirection, int linkXPos, int linkYPos);
-		
+		public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
 	}
 }
 
