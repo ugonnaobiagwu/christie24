@@ -44,47 +44,6 @@ namespace sprint0
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            ////SoundEffects
-            //SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
-            //SoundEffect SWORD_SHOOT = Content.Load<SoundEffect>("soundEffects/SWORD_SHOOT");
-            //SoundEffect SHIELD = Content.Load<SoundEffect>("soundEffects/SHIELD");
-            //SoundEffect ARROW_BOOMERANG_LAUNCH = Content.Load<SoundEffect>("soundEffects/ARROW_BOOMERANG_LAUNCH");
-            //SoundEffect BOMB_DROP = Content.Load<SoundEffect>("soundEffects/BOMB_DROP");
-            //SoundEffect BOMB_EXPLODE = Content.Load<SoundEffect>("soundEffects/BOMB_EXPLODE");
-            //SoundEffect ENEMY_HIT = Content.Load<SoundEffect>("soundEffects/ENEMY_HIT");
-            //SoundEffect ENEMY_DIE = Content.Load<SoundEffect>("soundEffects/ENEMY_DIE");
-            //SoundEffect LINK_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/LINK_TAKE_DAMAGE");
-            //SoundEffect LINK_DEATH = Content.Load<SoundEffect>("soundEffects/LINK_DEATH");
-            //SoundEffect LINK_LOW_HEALTH = Content.Load<SoundEffect>("soundEffects/LINK_LOW_HEALTH");
-            //SoundEffect FANFARE = Content.Load<SoundEffect>("soundEffects/FANFARE");
-            //SoundEffect LINK_ITEM_GET = Content.Load<SoundEffect>("soundEffects/LINK_ITEM_GET");
-            //SoundEffect GET_GROUND_HEART_KEY = Content.Load<SoundEffect>("soundEffects/GET_GROUND_HEART_KEY");
-            //SoundEffect GET_GROUND_RUPEE = Content.Load<SoundEffect>("soundEffects/GET_GROUND_RUPEE");
-            //SoundEffect REFILL = Content.Load<SoundEffect>("soundEffects/REFILL");
-            //SoundEffect TEXT_APPEAR = Content.Load<SoundEffect>("soundEffects/TEXT_APPEAR");
-            //SoundEffect GROUND_KEY_APPEAR = Content.Load<SoundEffect>("soundEffects/GROUND_KEY_APPEAR");
-            //SoundEffect DOOR_UNLOCK = Content.Load<SoundEffect>("soundEffects/DOOR_UNLOCK");
-            //SoundEffect BOSS_AQUAMENTUS_SCREAM = Content.Load<SoundEffect>("soundEffects/BOSS_AQUAMENTUS_SCREAM");
-            //SoundEffect BOSS_TAKE_DAMAGE = Content.Load<SoundEffect>("soundEffects/BOSS_TAKE_DAMAGE");
-            //SoundEffect STAIRS = Content.Load<SoundEffect>("soundEffects/STAIRS");
-            //SoundEffect PUZZLE_SOLVED = Content.Load<SoundEffect>("soundEffects/PUZZLE_SOLVED");
-            //SoundEffect BLAZE = Content.Load<SoundEffect>("soundEffects/BLAZE");
-
-            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
-            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
-            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-            //Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-
-
-            ////Songs
-            //SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
-            //SoundEffect OVERWORLD = Content.Load<SoundEffect>("songs/OVERWORLD");
-            //SoundEffect DUNGEON = Content.Load<SoundEffect>("songs/DUNGEON");
-            //SoundEffect ENDING = Content.Load<SoundEffect>("songs/ENDING");
-            //SoundEffect TRIFORCE_OBTAIN = Content.Load<SoundEffect>("songs/TRIFORCE_OBTAIN");
-
-
-
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
@@ -124,27 +83,27 @@ namespace sprint0
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
 
-            /*ENEMY TESTS: TO BE DELETED*/
-            Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
-            SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
-            SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
+            ///*ENEMY TESTS: TO BE DELETED*/
+            //Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
+            //SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
+            //SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
+            //SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
 
-            Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
-            OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
-            OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
-            OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
-            OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
+            //Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
+            //SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
+            //OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            //OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
+            //OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
+            //OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
+            //OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
 
-            Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemie-condensed");
-            SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
-            BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
-            BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
-            BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
-            BokoblinObj = new sprint0.Enemies.Bokoblin(200, 400, 1, BokoblinFactory);
+            //Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
+            //SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
+            //BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
+            //BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
+            //BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
+            //BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
+            //BokoblinObj = new sprint0.Enemies.Bokoblin(200, 400, 1, BokoblinFactory);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -199,10 +158,10 @@ namespace sprint0
             bowFactory.createAnimation("Bow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             Texture2D betterBowTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowDown");
             SpriteFactory betterBowFactory = new SpriteFactory(betterBowTexture, 1, 1);
-            bowFactory.createAnimation("BetterBow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            betterBowFactory.createAnimation("BetterBow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             Texture2D bowDespawnTexture = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
             SpriteFactory bowDespawnFactory = new SpriteFactory(bowDespawnTexture, 1, 1);
-            bowFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            bowDespawnFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
             Globals.LinkItemSystem.LoadBow(bowFactory, bowDespawnFactory);
             Globals.LinkItemSystem.LoadBetterBow(betterBowFactory, bowDespawnFactory);
 
@@ -230,8 +189,17 @@ namespace sprint0
             bombFactory.createAnimation("Bomb", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             Texture2D bombExplodeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
             SpriteFactory bombExplodeFactory = new SpriteFactory(bombExplodeTexture, 1, 3);
-            bombExplodeFactory.createAnimation("Going", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            bombExplodeFactory.createAnimation("BombExplosion", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
             Globals.LinkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
+
+            //Sword
+            Texture2D swordTexture = Content.Load<Texture2D>("linkSword");
+            SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
+            swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
+            Globals.LinkItemSystem.LoadSword(swordFactory);
 
 
             //SoundEffects
@@ -247,7 +215,7 @@ namespace sprint0
             SoundEffect LINK_DEATH = Content.Load<SoundEffect>("soundEffects/LINK_DEATH");
             SoundEffect LINK_LOW_HEALTH = Content.Load<SoundEffect>("soundEffects/LINK_LOW_HEALTH");
             SoundEffect FANFARE = Content.Load<SoundEffect>("soundEffects/FANFARE");
-            SoundEffect LINK_ITEM_GET = Content.Load<SoundEffect>("soundEffects/LINK_ITEM_GET");
+            SoundEffect LINK_ITEM_GET = Content.Load<SoundEffect>("soundEffects/INVENTORY_LINK_ITEM_GET");
             SoundEffect GET_GROUND_HEART_KEY = Content.Load<SoundEffect>("soundEffects/GET_GROUND_HEART_KEY");
             SoundEffect GET_GROUND_RUPEE = Content.Load<SoundEffect>("soundEffects/GET_GROUND_RUPEE");
             SoundEffect REFILL = Content.Load<SoundEffect>("soundEffects/REFILL");
@@ -263,28 +231,8 @@ namespace sprint0
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ARROW_LAUNCH, ARROW_BOOMERANG_LAUNCH);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH, ARROW_BOOMERANG_LAUNCH, true);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_DROP, BOMB_DROP);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE, BOMB_EXPLODE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_HIT, ENEMY_HIT);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_DIE, ENEMY_DIE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE, LINK_TAKE_DAMAGE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_DEATH, LINK_DEATH);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_LOW_HEALTH, LINK_LOW_HEALTH);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.FANFARE, FANFARE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET, LINK_ITEM_GET);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY, GET_GROUND_HEART_KEY);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE, GET_GROUND_RUPEE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.REFILL, REFILL, true);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.TEXT_APPEAR, TEXT_APPEAR, true);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GROUND_KEY_APPEAR, GROUND_KEY_APPEAR);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.DOOR_UNLOCK, DOOR_UNLOCK);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_AQUAMENTUS_SCREAM, BOSS_AQUAMENTUS_SCREAM);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE, BOSS_TAKE_DAMAGE);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.STAIRS, STAIRS);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
+
 
             //Songs
             SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
@@ -298,7 +246,9 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.DUNGEON, DUNGEON, true);
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
-            
+
+
+
 
             // TODO: use this.Content to load your game content here
 
@@ -320,9 +270,9 @@ namespace sprint0
             LinkObj.Update();
 
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
-            SkeletonObj.Update();
-            OktorokObj.Update();
-            BokoblinObj.Update();
+            //SkeletonObj.Update();
+            //OktorokObj.Update();
+            //BokoblinObj.Update();
 
             base.Update(gameTime);
         }

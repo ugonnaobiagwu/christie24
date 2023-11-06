@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:block_image.png
 
+#begin equippedItemSprites/equippedBetterBoomerang.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:equippedItemSprites/equippedBetterBoomerang.png
+
 #begin equippedItemSprites/equippedBetterBoomerangComing.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,6 +60,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:equippedItemSprites/equippedBetterBoomerangGoing.png
+
+#begin equippedItemSprites/equippedBetterBow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:equippedItemSprites/equippedBetterBow.png
 
 #begin equippedItemSprites/equippedBetterBowLeft.png
 /importer:TextureImporter
@@ -109,6 +133,18 @@
 /processorParam:TextureFormat=Color
 /build:equippedItemSprites/equippedBombExplode.png
 
+#begin equippedItemSprites/equippedBoomerang.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:equippedItemSprites/equippedBoomerang.png
+
 #begin equippedItemSprites/equippedBoomerangComing.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -132,6 +168,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:equippedItemSprites/equippedBoomerangGoing.png
+
+#begin equippedItemSprites/equippedBow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:equippedItemSprites/equippedBow.png
 
 #begin equippedItemSprites/equippedBowLeft.png
 /importer:TextureImporter
@@ -368,6 +416,18 @@
 /processorParam:TextureFormat=Color
 /build:Link.png
 
+#begin linkSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkSword.png
+
 #begin luigiSpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -379,6 +439,180 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
+
+#begin songs/DUNGEON.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:songs/DUNGEON.mp3
+
+#begin songs/ENDING.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:songs/ENDING.mp3
+
+#begin songs/OVERWORLD.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:songs/OVERWORLD.mp3
+
+#begin songs/TITLE.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:songs/TITLE.mp3
+
+#begin songs/TRIFORCE_OBTAIN.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:songs/TRIFORCE_OBTAIN.mp3
+
+#begin soundEffects/ARROW_BOOMERANG_LAUNCH.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/ARROW_BOOMERANG_LAUNCH.wav
+
+#begin soundEffects/BLAZE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/BLAZE.wav
+
+#begin soundEffects/BOMB_DROP.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/BOMB_DROP.wav
+
+#begin soundEffects/BOMB_EXPLODE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/BOMB_EXPLODE.wav
+
+#begin soundEffects/BOSS_AQUAMENTUS_SCREAM.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/BOSS_AQUAMENTUS_SCREAM.wav
+
+#begin soundEffects/BOSS_TAKE_DAMAGE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/BOSS_TAKE_DAMAGE.wav
+
+#begin soundEffects/DOOR_UNLOCK.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/DOOR_UNLOCK.wav
+
+#begin soundEffects/ENEMY_DIE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/ENEMY_DIE.wav
+
+#begin soundEffects/ENEMY_HIT.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/ENEMY_HIT.wav
+
+#begin soundEffects/FANFARE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/FANFARE.wav
+
+#begin soundEffects/GET_GROUND_HEART_KEY.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/GET_GROUND_HEART_KEY.wav
+
+#begin soundEffects/GET_GROUND_RUPEE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/GET_GROUND_RUPEE.wav
+
+#begin soundEffects/GROUND_KEY_APPEAR.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/GROUND_KEY_APPEAR.wav
+
+#begin soundEffects/INVENTORY_LINK_ITEM_GET.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/INVENTORY_LINK_ITEM_GET.wav
+
+#begin soundEffects/LINK_DEATH.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/LINK_DEATH.wav
+
+#begin soundEffects/LINK_LOW_HEALTH.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/LINK_LOW_HEALTH.wav
+
+#begin soundEffects/LINK_TAKE_DAMAGE.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/LINK_TAKE_DAMAGE.wav
+
+#begin soundEffects/PUZZLE_SOLVED.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/PUZZLE_SOLVED.wav
+
+#begin soundEffects/REFILL.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/REFILL.wav
+
+#begin soundEffects/SHIELD.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/SHIELD.wav
+
+#begin soundEffects/STAIRS.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/STAIRS.wav
+
+#begin soundEffects/SWORD_SHOOT.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/SWORD_SHOOT.wav
+
+#begin soundEffects/SWORD_SLASH.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/SWORD_SLASH.wav
+
+#begin soundEffects/TEXT_APPEAR.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:soundEffects/TEXT_APPEAR.wav
 
 #begin sprites-bosses.png
 /importer:TextureImporter
@@ -403,6 +637,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:zelda-sprites-enemies-condensed.png
+
+#begin zelda-sprites-enemies.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zelda-sprites-enemies.png
 
 #begin zelda-sprites-enemies.png
 /importer:TextureImporter

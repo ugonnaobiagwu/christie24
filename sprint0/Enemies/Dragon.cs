@@ -197,7 +197,7 @@ namespace sprint0.Enemies
         {
             foreach(DragonBlaze fireball in Fireballs)
             {
-                fireball.Use();
+                fireball.Use(this);
             }
         }
     }

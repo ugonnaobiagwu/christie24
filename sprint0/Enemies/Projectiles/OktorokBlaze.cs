@@ -15,7 +15,6 @@ namespace sprint0.Items
         private int itemMinX;
         private int itemMinY;
         private int spriteVelocity = 1;
-        private IOktorok Owner;
         //private int maxFireTicks; // should use game time tbh.
         //private int fireTicks;
         // needs these positions for sprite swapping.
@@ -93,7 +92,7 @@ namespace sprint0.Items
 
         }
 
-        public void Use()
+        public void Use(IOktorok Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {

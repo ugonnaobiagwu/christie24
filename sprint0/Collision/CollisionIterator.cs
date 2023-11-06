@@ -73,7 +73,7 @@ namespace sprint0.Collision
                     foreach (IGameObject obj2 in collidablesInQuadrant)
 					{
 						CollisionDetector.CollisionType thisCollisionType = CollisionDetector.CollisionCheck(obj1, obj2);
-`						if (thisCollisionType != CollisionDetector.CollisionType.NONE)
+						if (thisCollisionType != CollisionDetector.CollisionType.NONE)
 						{
 							bool foundCollision = handler.HandleCollision(obj1, obj2, thisCollisionType);
 							if (!foundCollision)

@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Commands;
-using sprint0.Factory;
 
 namespace sprint0.Rooms
 {

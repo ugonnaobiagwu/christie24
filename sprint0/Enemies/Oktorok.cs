@@ -236,7 +236,7 @@ namespace sprint0.Enemies
 
         public void OktorokShoot()
         {
-            Projectile.Use();
+            Projectile.Use(this);
         }
     }
 }
