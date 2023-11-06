@@ -41,7 +41,7 @@ namespace sprint0.GameStates
         {
             player.SetState("Dead");
             //Find a better way to change this var beyond adding a setter method?
-            player.IsUpdateable = false;
+            
         }
 
         public void RoomUpdate()
