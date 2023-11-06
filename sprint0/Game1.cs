@@ -268,7 +268,7 @@ namespace sprint0
 
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
-
+            Globals.Update(gameTime);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             //SkeletonObj.Update();
             //OktorokObj.Update();
