@@ -195,10 +195,10 @@ namespace sprint0
             {
                 this.currentItem.Draw(this.spriteBatch);
             }
-            if (this.sword != null)
-            {
-                this.sword.Draw(this.spriteBatch);
-            }
+            //if (this.sword != null)
+            //{
+            //    this.sword.Draw(this.spriteBatch);
+            //}
 
            
         }
@@ -209,10 +209,10 @@ namespace sprint0
             {
                 this.currentItem.Update();
             }
-            if (this.sword != null)
-            {
-                this.sword.Draw(this.spriteBatch);
-            }
+            //if (this.sword != null)
+            //{
+            //    this.sword.Draw(this.spriteBatch);
+            //}
 
 
         }

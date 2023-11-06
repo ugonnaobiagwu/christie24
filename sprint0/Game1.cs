@@ -69,7 +69,7 @@ namespace sprint0
             /*LINK TEST: TO BE DELETED*/
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 3, 4);
+            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
             LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
             LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
             LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
