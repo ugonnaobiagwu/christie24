@@ -19,6 +19,7 @@ namespace sprint0.AnimatedSpriteFactory
         private float frameTimeLeft;
         private bool active = true;
         private List<Rectangle> SourceRectangles;
+        private bool animationComplete;
         //Add methods to get width and height
 
 
@@ -35,6 +36,7 @@ namespace sprint0.AnimatedSpriteFactory
             position = new Vector2(0,0);
             Width = width;
             Height = height;
+            animationComplete = false;
         }
         public int GetWidth()
         {
@@ -52,6 +54,10 @@ namespace sprint0.AnimatedSpriteFactory
         {
             return CurrentFrame;
         }
+        public bool GetAnimationComplete()
+        {
+            return animationComplete;
+        }
         public void Stop()
         {
             active = false;
@@ -65,6 +71,7 @@ namespace sprint0.AnimatedSpriteFactory
             CurrentFrame = 0;
             active = true;
         }
+
         public void Update()
         {
             //CurrentFrame = (int)GameTime.ElapsedGameTime.TotalSeconds % TotalFrames;
@@ -76,9 +83,13 @@ namespace sprint0.AnimatedSpriteFactory
                 frameTimeLeft += frameTime;
                 CurrentFrame = (CurrentFrame + 1) % TotalFrames;
 
-                Console.WriteLine("sprite updated");
+                //Console.WriteLine("sprite updated");
             }
 
+            if ((CurrentFrame + 1) == TotalFrames)
+            {
+                animationComplete = true;
+            }
         }
         public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
