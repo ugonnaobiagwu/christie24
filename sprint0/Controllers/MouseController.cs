@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using sprint0.Commands;
 using sprint0;
-using sprint0.Globals;
 
 namespace sprint0.Controllers
 {
