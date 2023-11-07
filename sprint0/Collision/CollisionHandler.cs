@@ -6,6 +6,7 @@ using sprint0.Items;
 using sprint0.Items.groundItems;
 using sprint0.Blocks;
 using sprint0.Enemies;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Collision
 {
@@ -345,6 +346,7 @@ namespace sprint0.Collision
                     break;
             }
 			link.LinkTakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
         }
 
         /*
@@ -404,6 +406,7 @@ namespace sprint0.Collision
         private void GroundBigHeartPickUp(CollisionDetector.CollisionType collisionType, GroundBigHeart groundBigHeart)
         {
             groundBigHeart.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
             // code that impacts inventory system goes here.
         }
 
@@ -411,12 +414,14 @@ namespace sprint0.Collision
         private void GroundBoomerangPickUp(CollisionDetector.CollisionType collisionType, GroundBoomerang groundBoomerang)
         {
             groundBoomerang.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             // code that impacts inventory system goes here.
         }
         private delegate void GroundCompassDelegate(CollisionDetector.CollisionType collisionType, GroundCompass groundCompass);
         private void GroundCompassPickUp(CollisionDetector.CollisionType collisionType, GroundCompass groundCompass)
         {
             groundCompass.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             // code that impacts inventory system goes here.
         }
 
@@ -424,6 +429,7 @@ namespace sprint0.Collision
         private void GroundKeyPickUp(CollisionDetector.CollisionType collisionType, GroundKey groundKey)
         {
             groundKey.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
             // code that impacts inventory system goes here.
         }
 
@@ -431,6 +437,7 @@ namespace sprint0.Collision
         private void GroundPagePickUp(CollisionDetector.CollisionType collisionType, GroundPage groundPage)
         {
             groundPage.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             // code that impacts inventory system goes here.
         }
 
@@ -438,6 +445,8 @@ namespace sprint0.Collision
         private void GroundTriforcePickUp(CollisionDetector.CollisionType collisionType, GroundTriforce groundTriforce)
         {
             groundTriforce.PickUp();
+            WindWaker.PauseSong(WindWaker.Songs.DUNGEON); //Should pause this song if playing.
+            WindWaker.PlaySong(WindWaker.Songs.TRIFORCE_OBTAIN);
             // code that impacts inventory system goes here.
         }
 
@@ -445,6 +454,7 @@ namespace sprint0.Collision
         private void GroundBlazeSteppedOn(CollisionDetector.CollisionType collisionType, GroundBlaze groundBlaze)
         {
             groundBlaze.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             // code that impacts inventory system goes here.
         }
 
@@ -476,6 +486,7 @@ namespace sprint0.Collision
         private void MoveOktorokAndTakeDamage(CollisionDetector.CollisionType collisionType, Oktorok enemy)
         {
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
         private delegate void SkeletonDelegate(CollisionDetector.CollisionType collisionType, Skeleton enemy);
@@ -502,6 +513,7 @@ namespace sprint0.Collision
         {
 
             enemy.takeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
         private delegate void BokoblinDelegate (CollisionDetector.CollisionType collisionType, Bokoblin enemy);
@@ -528,6 +540,7 @@ namespace sprint0.Collision
         {
 
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
     }

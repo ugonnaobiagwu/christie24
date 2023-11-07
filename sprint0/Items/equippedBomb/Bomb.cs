@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+
 namespace sprint0.Items
 {
     public class Bomb : IItem, IGameObject
@@ -70,6 +72,7 @@ namespace sprint0.Items
             {
                 this.currentItemSprite = explosionSpriteFactory.getAnimatedSprite("BombExplosion");
                 this.spriteChanged = true;
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE);
             }
             else if (this.finishedAnimationCycle() && this.spriteChanged)
             {
@@ -85,6 +88,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_DROP);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 
