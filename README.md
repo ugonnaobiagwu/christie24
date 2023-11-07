@@ -2,9 +2,7 @@
 # SPRINT 4: 
 
 WHAT WE ACCOMPLISHED:
-* Sound
-* SpriteFactory Implementation
-* GameObjectManager Feature
+* UPDATE ME ON NOVEMBER 10TH PLZ *
   
 WHAT WE DID NOT ACCOMPLISH:
 * UPDATE ME ON NOVEMBER 10TH PLZ *
