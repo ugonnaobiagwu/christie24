@@ -7,8 +7,6 @@ namespace sprint0.Rooms
 
     public interface IRoom
     {
-        public void NextRoom();
-        public void PreviousRoom();
-
+        // nothing for now
     }
 }
