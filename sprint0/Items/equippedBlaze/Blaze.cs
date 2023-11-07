@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+
 namespace sprint0.Items
 {
     public class Blaze : IItem, IGameObject
@@ -92,6 +94,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BLAZE);
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
