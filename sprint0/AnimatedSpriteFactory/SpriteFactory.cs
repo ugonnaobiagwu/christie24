@@ -75,14 +75,11 @@ namespace sprint0.AnimatedSpriteFactory
             position.Y = y;
         }
 
-        public void playAnimation(string animationName, SpriteBatch spriteBatch)
-        {
-            animationDictionary[animationName].Draw(spriteBatch, (int)position.X, (int)position.Y);
-        }
 
         public ISprite getAnimatedSprite(string animationName)
         {
-            return animationDictionary[animationName];
+         ISprite newSprite =  animationDictionary[animationName];
+            return newSprite;
         }
     }
 }
