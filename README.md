@@ -1,7 +1,18 @@
 
-# SPRINT 3: 
-We were able to get our items and blocks toggling using their respective controls T Y and U I
-There's a lot of foundational code for the Collision System and Level Loader, as well as Link and Enemies that just needs polished.
-Since Level Loading is in the works currently, Mouse Controller is still behind.
+# SPRINT 4: 
 
-Link code can be found in LinkDev
+WHAT WE ACCOMPLISHED:
+
+WHAT WE DID NOT ACCOMPLISH:
+
+Please see the Sprint 4 Reflection for more details.
+
+
+----
+
+CONTROLS:
+
+KNOWN BUGS AND ISSUES:
+* Link and Item Animations: Really wonky right now. Item Sprite switches don't work, and Link;s "UseItem" pose remains once the item is out of usage.
+* Item Locations: Bows and Swords come from special directions and are oriented to meet that criteria, but their rotations are out of wack currently.
+* Unregistered Keys cause game to crash.
