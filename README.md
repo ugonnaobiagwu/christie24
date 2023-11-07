@@ -1,6 +1,5 @@
 
 # SPRINT 4: 
-----
 
 WHAT WE ACCOMPLISHED:
 
@@ -8,8 +7,7 @@ WHAT WE DID NOT ACCOMPLISH:
 
 Please see the Sprint 4 Reflection for more details.
 
-
---
+----
 
 CONTROLS:
 
