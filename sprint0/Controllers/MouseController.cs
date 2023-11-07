@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using sprint0.Commands;
 using sprint0;
+using sprint0.Globals;
 
 namespace sprint0.Controllers
 {
@@ -15,11 +16,15 @@ namespace sprint0.Controllers
         private Dictionary<int, List<IGameObject>> gameObjects;
         private MouseState previousMouseState;
         private MouseState currentMouseState;
+        private GameObjectManager gameObjectManager;
 
-        public MouseController(sprint0.Sprint0 Game, GameObjectManager obj)
+        public MouseController(sprint0.Sprint0 Game)
         {
-            gameObjects = obj.getDictionary();
-            roomList = obj.getRoomIDs();
+            // or something like that to get the global
+            gameObjectManager = Globals.GameObjectManager;
+
+            gameObjects = gameObjectManager.getDictionary();
+            roomList = gameObjectManager.getRoomIDs();
             currentRoomIndex = 0;
             currentRoomID = roomList[currentRoomIndex];
 
@@ -47,6 +52,7 @@ namespace sprint0.Controllers
                 {
                     currentRoomIndex = roomList.Count - 1; // Wrap around to the last room's index
                     currentRoomID = roomList[currentRoomIndex];
+                    gameObjectManager.setCurrentRoomID(currentRoomID);
                 }
             }
             else if (previousMouseState.RightButton != ButtonState.Pressed && currentMouseState.RightButton == ButtonState.Pressed)
@@ -57,6 +63,7 @@ namespace sprint0.Controllers
                 {
                     currentRoomIndex = 0; // Wrap around to the first room's index
                     currentRoomID = roomList[currentRoomIndex];
+                    gameObjectManager.setCurrentRoomID(currentRoomID);
                 }
             }
         }
