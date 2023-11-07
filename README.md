@@ -2,10 +2,15 @@
 # SPRINT 4: 
 
 WHAT WE ACCOMPLISHED:
-
+* Sound
+* SpriteFactory Implementation
+* GameObjectManager Feature
+  
 WHAT WE DID NOT ACCOMPLISH:
+* UPDATE ME ON NOVEMBER 10TH PLZ *
 
-Please see the Sprint 4 Reflection for more details.
+  
+Please see the Sprint 4 Reflection / Planning Document for more details.
 
 ----
 
