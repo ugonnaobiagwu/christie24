@@ -67,9 +67,9 @@ namespace sprint0
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
             /*LINK TEST: TO BE DELETED*/
-            Texture2D LinkTexture = Content.Load<Texture2D>("Link");
+            Texture2D LinkTexture = Content.Load<Texture2D>("LinkSpriteSheet");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
+            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 4, 10);
             LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
             LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
             LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
@@ -79,7 +79,7 @@ namespace sprint0
             LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
             LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
             /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
+            LinkFactory.createAnimation("Damaged", new int[] { 03}, new int[] { 3 }, 1);
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
 
