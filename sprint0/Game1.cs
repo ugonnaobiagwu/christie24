@@ -247,6 +247,8 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
 
+            WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
+
 
 
 
