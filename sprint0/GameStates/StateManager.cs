@@ -28,18 +28,43 @@ namespace sprint0.GameStates
 		public StateManager()
 		{
 		}
-
-        private void Update()
+         
+        //Methods for activating and deactivating game objects - Will be inherited by state classes
+        private void LinkActivate()
         {
-            if (player.GetState().Equals("Dead"))
+            player.SetState("Default");
+        }
+        private void LinkDeactivate()
+        {
+            if (state.GetState() = "Dead")
             {
-                state = DeathState;
+                player.SetState("Dead");
             }
-            //check for inventory
+            else
+            {
+                player.SetState("NotUpdatable");
+            }
+        }
+        private IList RoomActivate()
+        {
 
-            //check for playing
+        }
+        private IList RoomDeactivate()
+        {
 
-            //check for pause 
+        }
+        private IList EnemyActivate()
+        {
+
+        }
+        private IList EnemyDeactivate()
+        {
+
+        }
+        //Calls to state specific methods below
+        public void Update()
+        {
+            state.Update();
         }
 
         //Updates if ememies are updatable

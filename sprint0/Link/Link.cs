@@ -28,7 +28,7 @@ namespace sprint0.Link
             private int YVal { get; set; }
             private int RoomId;
             private enum Direction { Left, Right, Up, Down};
-            public enum State { UseItem, Default , Dead}
+            public enum State { UseItem, Default , Dead, NotUpdatable}
             Direction LinkDirection = Direction.Down;
             State LinkState = State.Default;
             ILink LinkObj;
@@ -129,7 +129,7 @@ namespace sprint0.Link
             {
                 if (LinkState == State.UseItem)
                 {
-                    if(LinkSprite.GetCurrentFrame() == LinkSprite.GetTotalFrames())
+                    if(LinkSprite.GetAnimationComplete())
                     {
                         switch (LinkDirection)
                         {
@@ -146,6 +146,24 @@ namespace sprint0.Link
                                 LinkSprite = LinkSpriteFactory.getAnimatedSprite("ItemDown");
                                 break;
                         }
+                    }
+                //Else to return to walking animation once item animation is complete - added by Matthew
+                else
+                {
+                    switch (LinkDirection)
+                    {
+                        case Direction.Left:
+                            LinkLeft();
+                            break;
+                        case Direction.Right:
+                            LinkRight();
+                            break;
+                        case Direction.Up:
+                            LinkUp();
+                            break;
+                        default:
+                            LinkDown();
+                            break;
                     }
                 }
             }
@@ -197,6 +215,9 @@ namespace sprint0.Link
                 case State.Dead:
                     state = "Dead";
                     break;
+                    case State.NotUpdatable:
+                        state = "NotUpdatable";
+                        break;
                 }
                 return state;
             }
@@ -210,6 +231,12 @@ namespace sprint0.Link
                     case "Default":
                         LinkState = State.Default;
                     break;
+                    case "Dead":
+                    LinkState = State.Dead;
+                        break;
+                    case "NotUpdatable":
+                        LinkState = State.NotUpdatable;
+                        break;
                 }
             }
             public void SetRoomId(int id)

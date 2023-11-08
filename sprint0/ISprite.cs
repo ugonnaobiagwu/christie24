@@ -12,7 +12,7 @@ public interface ISprite
 	public int GetTotalFrames();
 	public int GetCurrentFrame();
 	public void Draw(SpriteBatch spriteBatch, int x, int y, float rotation);
-
+	public bool GetAnimationComplete();
 
 
 }

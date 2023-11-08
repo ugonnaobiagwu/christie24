@@ -14,6 +14,7 @@ namespace sprint0
         public bool isInPlay();
         public bool isDrawable();
 
+        public void SetUpdatable(bool updatable); //method to set if objects in GOM are updateable - added by Matthew, I'll try to implement this but may have questions
         public void SetRoomId(int roomId);
         public int GetRoomId();
 	public void Draw(SpriteBatch spritebatch);

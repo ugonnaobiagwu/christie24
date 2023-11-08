@@ -4,6 +4,7 @@ namespace sprint0.GameStates
 	public interface IState
 	{
 		//Very early interface, subject to change in every way
+		void Update();
 		//Gets current state and returns a string
 		string GetState();
 		//Updates each corresponding object's updateable method dependent on state ie link cant be updated in the DeathState
