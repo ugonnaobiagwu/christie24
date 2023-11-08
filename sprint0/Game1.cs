@@ -58,7 +58,7 @@ namespace sprint0
 
             inventory = new Inventory();
 
-            //TEST FOR HUD
+            //TEST FOR HUD DELETE LATER!!
 
             for (int i = 0; i < 6; i++)
             {
@@ -69,9 +69,12 @@ namespace sprint0
                 inventory.loseHeart();
             }
 
-            inventory.countGem(10);
-            inventory.countKey(2);
-            inventory.countBomb(2);
+            inventory.countGem();
+            inventory.countKey();
+            inventory.countKey();
+            inventory.gainBomb();
+            inventory.gainBomb();
+            inventory.loseBomb();
 
             //TEST FOR HUD
 

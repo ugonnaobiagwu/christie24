@@ -87,30 +87,38 @@ namespace sprint0.HUDs
 
         }
 
-        public void countGem(int gemCount)
+        public void countGem()
         {
 
-            items[ItemTypes.GEM] += 5 * gemCount; //increase count gem by 5 per count
+            items[ItemTypes.GEM] += 5; //increase count gem by 5 per count
 
 
 
         }
 
-        public void countKey(int keyCount)
+        public void countKey()
         {
 
-            items[ItemTypes.KEY] += keyCount; //increase count key
+            items[ItemTypes.KEY]++; //increase count key
 
-            //code to display Ruby            
+
 
         }
 
-        public void countBomb(int bombCount)
+        public void gainBomb()
         {
 
-            items[ItemTypes.BOMB] += 4 * bombCount; //increase count bomb
+            items[ItemTypes.BOMB] += 4; //increase count bomb
 
-            //code to display Ruby            
+
+        }
+
+        public void loseBomb()
+        {
+
+            items[ItemTypes.BOMB]--; //increase count bomb
+
+
 
         }
 
