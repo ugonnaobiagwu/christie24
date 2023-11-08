@@ -60,14 +60,14 @@ namespace sprint0
 
             //TEST FOR HUD DELETE LATER!!
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
                 inventory.gainHeart();
             }
-            for (int i = 0; i < 3; i++)
+          /*  for (int i = 0; i < 3; i++)
             {
                 inventory.loseHeart();
-            }
+            } */
 
             inventory.countGem();
             inventory.countKey();

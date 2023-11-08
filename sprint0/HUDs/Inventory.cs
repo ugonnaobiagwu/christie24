@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sprint0.Link;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,10 +27,15 @@ namespace sprint0.HUDs
             SLOTB
         }
 
-        int fullLife = 5;
-        int defaultLife = 3;
+        ILink link;
+        ISprite currentSprite;
+        IGameObject igameObject;
+        int fullLife = 10; //5 hearts
+        int defaultLife = 6; // 3 hearts
         int noLife = 0;
         int initialState = 0;
+        
+        
 
         HUD hud;
         public Dictionary<ItemTypes, int> items;
@@ -40,7 +46,7 @@ namespace sprint0.HUDs
             items = new Dictionary<ItemTypes, int>
             {
 
-                {ItemTypes.HEART, defaultLife}, //Begin with 3 Hearts
+                {ItemTypes.HEART, defaultLife}, //Begins with 3 Hearts
                 {ItemTypes.GEM, initialState},
                 {ItemTypes.KEY,initialState},
                 {ItemTypes.BOMB,initialState},
@@ -55,6 +61,8 @@ namespace sprint0.HUDs
             };
         }
 
+        public void AddItem() { }
+
         //METHOD STARTS FROM HERE
         //DELETE ALL int PARAMETERS (except for ROOMID in roomLevel method)LATER in INVENTORY!! IT WILL CALLED WHEN WE NEED IT!
 
@@ -62,13 +70,14 @@ namespace sprint0.HUDs
         {
 
             //compare the first roomID number. The first number of the roomID indicates the level number
+            items[ItemTypes.LEVEL] = igameObject.GetRoomId();
 
         }
         public void gainHeart()
         {
 
             //gain up to five hearts in total
-            if (items[ItemTypes.HEART] <= fullLife)
+            if (items[ItemTypes.HEART] < fullLife)
             {
                 items[ItemTypes.HEART]++; //increase Heart
 

@@ -21,12 +21,12 @@ namespace sprint0.HUDs
         //_spriteBatch.DrawString(font, "X %d", new Vector2(100, 10), Color.White);
 
         Texture2D hudBackground;
-        Texture2D heart, ruby, itemA, itemB;
+        Texture2D heart, gem, itemA, itemB;
         SpriteBatch spriteBatch;
-        SpriteFont font;
-        float fontSize = 1.5f;
+        SpriteFont font;     
         Inventory inventory;
         HUD hud;
+        float fontSize = 1.5f;
 
 
         public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Inventory inventory)
@@ -39,7 +39,7 @@ namespace sprint0.HUDs
         }
 
 
-        public void backgroundDisplay()
+        protected void backgroundDisplay()
         {
             {
                 float scaledWidth = 0.95f;
@@ -60,44 +60,38 @@ namespace sprint0.HUDs
             }
 
         }
-        /* public void heartDisplay()
-         {
+        
 
-             int j = 0;
-             int i;
-             int heartNum = 5; ; // Number of hearts for now (this will be passed in the parameter later??)
-             int heartWidth = heart.Width / 3;
-             int heartHeight = heart.Height;
-             Rectangle sourceRectangle = new Rectangle(0, 0, heartWidth, heartHeight); // first full Heart
-
-
-             for (i = 0; i < heartNum; i++)
-             {
-
-                 spriteBatch.Draw(heart, new Vector2(570 + j, 90), sourceRectangle, Color.White);
-
-                 j += 40;
-             }
-
-         }*/
-
-        public void heartDisplay()
+        protected void heartDisplay()
         {
-
+            int fullHeart = 10; //5 hearts
             int j = 0;
             int i;
-            int heartNum = inventory.items[Inventory.ItemTypes.HEART]; ; // Number of hearts for now (this will be passed in the parameter later??)
+            int heartNum = inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
             int heartWidth = heart.Width / 3;
             int heartHeight = heart.Height;
-            Rectangle sourceRectangle = new Rectangle(0, 0, heartWidth, heartHeight); // first full Heart
+            Rectangle fullHeartsheet = new Rectangle(0, 0, heartWidth, heartHeight); // first full Heart
+            Rectangle halfHeartsheet = new Rectangle(heartWidth, 0, heartWidth, heartHeight);
+            Rectangle emptyHeartsheet = new Rectangle(2, 0, heartWidth, heartHeight);
+           
 
-
-            for (i = 0; i < heartNum; i++)
+            for (i = 1; i <= heartNum; i++)
             {
+               
+                if (i == heartNum && i % 2 != 0) {
 
-                spriteBatch.Draw(heart, new Vector2(590 + j, 90), sourceRectangle, Color.White);
+                    //if odd
+                    spriteBatch.Draw(heart, new Vector2(590 + j, 90), halfHeartsheet, Color.White);
+                    j += 40;
+                }
+                else if (i % 2 == 0)
+                {
+                    spriteBatch.Draw(heart, new Vector2(590 + j, 90), fullHeartsheet, Color.White);
+                    j += 40;
+                }
 
-                j += 40;
+               
+
             }
 
         }
@@ -108,7 +102,7 @@ namespace sprint0.HUDs
         //public void heartLine() { }
 
         //Gem
-        public void gemDisplay()
+        protected void gemDisplay()
         {
             int gemCount = inventory.items[Inventory.ItemTypes.GEM];
             //draw gem number
@@ -117,13 +111,13 @@ namespace sprint0.HUDs
 
         }
         //Key display
-        public void keyDisplay()
+        protected void keyDisplay()
         {
             int keyCount = inventory.items[Inventory.ItemTypes.KEY];
             spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(340, 75), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
         }
 
-        public void bombDisplay()
+        protected void bombDisplay()
         {
             int bombCount = inventory.items[Inventory.ItemTypes.BOMB];
 
@@ -142,7 +136,7 @@ namespace sprint0.HUDs
             //get current B item if not null
         }
 
-        public void levelDisplay()
+        protected void levelDisplay()
         {
             //get the level room number
             //change "1" so it links to the roomID that gets passed into the parameter of Inventory
@@ -160,8 +154,8 @@ namespace sprint0.HUDs
             this.gemDisplay();
             this.keyDisplay();
             this.bombDisplay();
-            this.slotADisplay("");
-            this.slotBDisplay("");
+            this.slotADisplay(""); //change
+            this.slotBDisplay(""); //change
             this.levelDisplay();
 
 
