@@ -12,6 +12,7 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+using sprint0.HUDs;
 
 namespace sprint0
 {
@@ -22,6 +23,12 @@ namespace sprint0
         private SpriteBatch spriteBatch;
         public ILink LinkObj;
         Texture2D textureBlock;
+
+        //HUD
+        Texture2D testHeart, hudspriteSheet;
+        SpriteFont font;
+        Inventory inventory;
+        HUD hud;
 
         /* For Testing Purposes */
         public ISkeleton SkeletonObj;
@@ -43,6 +50,32 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //HUD
+            font = Content.Load<SpriteFont>("hudFont");
+            testHeart = Content.Load<Texture2D>("lives");
+            hudspriteSheet = Content.Load<Texture2D>("background_sheet");
+
+            inventory = new Inventory();
+
+            //TEST FOR HUD
+
+            for (int i = 0; i < 6; i++)
+            {
+                inventory.gainHeart();
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                inventory.loseHeart();
+            }
+
+            inventory.countGem(10);
+            inventory.countKey(2);
+            inventory.countBomb(2);
+
+            //TEST FOR HUD
+
+            hud = new HUD(spriteBatch, font, hudspriteSheet, testHeart, inventory);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");
@@ -282,6 +315,9 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
+
+            //HUD draw
+            hud.Draw();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
