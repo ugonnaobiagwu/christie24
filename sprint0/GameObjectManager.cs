@@ -103,6 +103,18 @@ namespace sprint0
             deleteList = new List<IGameObject>();
         }
 
+        // returns the current room ID
+        public int getCurrentRoomID()
+        {
+            return currentRoomID;
+        }
+
+        // to set the Room ID
+        public void setCurrentRoomID(int ID)
+        {
+            currentRoomID = ID;
+        }
+
         // returns list 
         public List<IGameObject> getList(string listName)
         {

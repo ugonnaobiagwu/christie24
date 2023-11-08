@@ -79,7 +79,7 @@ namespace sprint0
             LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
             LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
             /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
+            LinkFactory.createAnimation("Damaged", new int[] { 03}, new int[] { 3 }, 1);
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
 
@@ -231,7 +231,35 @@ namespace sprint0
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH, ARROW_BOOMERANG_LAUNCH, true);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ARROW_LAUNCH, ARROW_BOOMERANG_LAUNCH, false);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_DROP, BOMB_DROP);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE, BOMB_EXPLODE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_HIT, ENEMY_HIT);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_DIE, ENEMY_DIE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE, LINK_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_DEATH, LINK_DEATH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_LOW_HEALTH, LINK_LOW_HEALTH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.FANFARE, FANFARE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET, LINK_ITEM_GET);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY, GET_GROUND_HEART_KEY);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE, GET_GROUND_RUPEE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.REFILL, REFILL);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.TEXT_APPEAR, TEXT_APPEAR);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GROUND_KEY_APPEAR, GROUND_KEY_APPEAR);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.DOOR_UNLOCK, DOOR_UNLOCK);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_AQUAMENTUS_SCREAM, BOSS_AQUAMENTUS_SCREAM);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE, BOSS_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.STAIRS, STAIRS);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
+
+
+
+
+
+
+
 
 
             //Songs
@@ -246,6 +274,8 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.DUNGEON, DUNGEON, true);
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
+
+            WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
 
 
@@ -268,7 +298,7 @@ namespace sprint0
 
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
-
+            Globals.Update(gameTime);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             //SkeletonObj.Update();
             //OktorokObj.Update();
@@ -281,7 +311,7 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
-            spriteBatch.Begin(transformMatrix: transformMatrix);
+            spriteBatch.Begin();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();

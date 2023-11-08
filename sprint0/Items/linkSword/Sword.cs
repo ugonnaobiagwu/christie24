@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.LinkSword
 {
@@ -32,6 +33,8 @@ namespace sprint0.LinkSword
         private IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool isDrawn;
+        private int totalSwordTicks = 25;
+        private int currentSwordTicks;
 
         private enum Direction { LEFT, RIGHT, UP, DOWN };
 
@@ -45,6 +48,7 @@ namespace sprint0.LinkSword
             rotation = 0;
             itemSpriteFactory = factory;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+            currentSwordTicks = 0;
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -62,7 +66,7 @@ namespace sprint0.LinkSword
                         currentItemSprite.Draw(spritebatch, xPos + linkWidth, yPos - (linkHeight / 2), rotation);
                         break;
                     case Direction.DOWN:
-                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos + linkHeight, rotation);
+                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 6), yPos, rotation);
                         break;
                     case Direction.UP:
                         currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos - linkHeight, rotation);
@@ -83,6 +87,8 @@ namespace sprint0.LinkSword
 
         public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
+            currentSwordTicks = 0;
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.SWORD_SLASH);
             thisStateMachine.Use();
             this.xPos = linkXPos;
             this.yPos = linkYPos;
@@ -101,11 +107,11 @@ namespace sprint0.LinkSword
                     break;
                 case Direction.UP:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
-                    rotation = -90;
+                    rotation = (float)-67.5;
                     break;
                 case Direction.DOWN:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
-                    rotation = 90;
+                    rotation = (float)67.5;
                     break;
             }
             isDrawn = true;
@@ -116,11 +122,14 @@ namespace sprint0.LinkSword
           /* if the amount of time thats passed is equal to or exceeds the max amount of time for a sword to be drawn, 
            * set isDrawn to false.
            */
-          if (currentItemSprite.GetCurrentFrame() > currentItemSprite.GetTotalFrames()) {
+          //if (currentItemSprite.GetCurrentFrame() > currentItemSprite.GetTotalFrames()) {
+          if (currentSwordTicks >= totalSwordTicks) { 
                 this.isDrawn = false;
                 this.thisStateMachine.CeaseUse();
+                
             }
-
+            currentItemSprite.Update();
+            currentSwordTicks++;
 
         }
 
