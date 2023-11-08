@@ -23,14 +23,19 @@ namespace sprint0.GameStates
 		IState PauseState;
 		IState PlayingState;
 
-		private IState state;
+		IState state;
 
         ILink player;
         List<IGameObject> CurrentUpdatables;
 		public StateManager()
 		{
 		}
-         
+        //Method for transitioning state, called by state classes - may use, may not use
+        public void StateTransition(IState newState)
+        {
+            this.state = newState;
+        }
+
         //Methods for activating and deactivating game objects - Will be inherited by state classes
         public void LinkActivate()
         {

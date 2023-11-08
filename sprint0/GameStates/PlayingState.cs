@@ -17,20 +17,48 @@ public class PlayingState: StateManager, IState
     IState DeathState;
     IState PauseState;
     IState InventoryState;
+    IState ScrollState;
 
-    private IState state;
+    IState state;
 
     ILink player;
+    bool PauseCommand;
     List<IGameObject> CurrentUpdatables;
    
-		public PlayingState()
+		public PlayingState(IState deathState, IState inventoryState, IState scrollState)
 		{
+        //Define transition states
+        DeathState = deathState;
+        InventoryState = inventoryState;
+        ScrollState = scrollState;
+
+        //Set conditions for state
+        this.state.EnemyUpdate();
+        this.state.GameResettable();
+        this.state.LinkUpdate();
+        this.state.RoomUpdate();
+
+        PauseCommand = false;
 		}
 
-    public void Update()
+    public new void Update()
     {
         //Code for state transitons => Death, inventory, scroll
+        if (player.GetHealth() <= 0)
+        {
+            this.state = ScrollState;
+        }
+        else if (PauseCommand) {
+            this.state = InventoryState;
+        } //inventory transition check
+        else if () { } //scroll transition check
     }
+    //Method to update pause bool based on commands
+    public void UpdatePause()
+    {
+        PauseCommand = true;
+    }
+ 
     public void EnemyUpdate()
     {
         this.state.EnemyActivate();

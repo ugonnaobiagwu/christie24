@@ -33,6 +33,7 @@ namespace sprint0.Controllers
         private ICommand nextEnemy;
         private ICommand quit;
         private ICommand reset;
+        private ICommand pause;
 
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
@@ -61,6 +62,7 @@ namespace sprint0.Controllers
             linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
             linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
             linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
+            pause = new PauseCommand(Game, Game.StateManager.PauseState);
             //linkDamaged = new DamagedCommand(Game);
             //nextBlock = new NextBlockCommand(Game, Game.block);
             //previousBlock = new PreviousBlockCommand(Game, Game.block);
@@ -109,6 +111,7 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
             KeyMap.Add(Keys.R, reset);
+            KeyMap.Add(Keys.Space, pause);
 
         }
 

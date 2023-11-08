@@ -127,6 +127,10 @@ namespace sprint0.Link
 
             public void Update()
             {
+            if (LinkState == State.NotUpdatable) {
+                return; //Check to see if link is updatable - added by Matthew 
+            }
+
                 if (LinkState == State.UseItem)
                 {
                     if(LinkSprite.GetAnimationComplete())

@@ -19,42 +19,62 @@ namespace sprint0.GameStates
 	public class InventoryState : StateManager, IState
 	{
 
-        IState DeathState;
-        IState PauseState;
         IState PlayingState;
 
         private IState state;
 
         ILink player;
+        bool PauseCommand;
         List<IGameObject> CurrentUpdatables;
-        public InventoryState()
+        public InventoryState(IState playingState)
 		{
-		}
-        public void Update()
-        {
-            //Code for transition from inventory to play state 
+            //Define transition states
+            PlayingState = playingState;
+
+            //Set conditions for state
+            this.state.EnemyUpdate();
+            this.state.GameResettable();
+            this.state.LinkUpdate();
+            this.state.RoomUpdate();
+
+            //Set pause command
+            PauseCommand = false;
         }
-        public void EnemyUpdate()
+        public new void Update()
+        {
+            //Code for transition from inventory to play state
+            if (PauseCommand) {
+                this.state = PlayingState;
+            } 
+        }
+
+        //Method to update pause bool based on commands
+        public void UpdatePause()
+        {
+            PauseCommand = true;
+        }
+
+        public new void EnemyUpdate()
         {
             this.state.EnemyDeactivate();
         }
 
-        public bool GameResettable()
+        public new bool GameResettable()
         {
             return false;
         }
 
-        public string GetState()
+        public new string GetState()
         {
             return "Inventory";
         }
 
-        public void LinkUpdate()
+        public new void LinkUpdate()
         {
             this.state.LinkDeactivate();
         }
 
-        public void RoomUpdate()
+        public new void RoomUpdate()
         {
             this.state.RoomDeactivate();
         }

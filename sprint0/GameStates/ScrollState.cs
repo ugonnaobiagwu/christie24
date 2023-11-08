@@ -14,9 +14,17 @@ namespace sprint0.GameStates
 
         ILink player;
         List<IGameObject> CurrentUpdatables;
-        public ScrollState()
+        public ScrollState(IState playingState)
 		{
-		}
+            //Define transition states
+            PlayingState = playingState;
+
+            //Set conditions for state
+            this.state.EnemyUpdate();
+            this.state.GameResettable();
+            this.state.LinkUpdate();
+            this.state.RoomUpdate();
+        }
 
         public void Update()
         {
