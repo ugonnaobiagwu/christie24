@@ -19,19 +19,16 @@ public class PlayingState: StateManager, IState
     IState InventoryState;
     IState ScrollState;
 
-    IState state;
+    StateManager state;
 
     ILink player;
     bool PauseCommand;
     List<IGameObject> CurrentUpdatables;
    
-		public PlayingState(IState deathState, IState inventoryState, IState scrollState)
+		public PlayingState(ILink link)
 		{
-        //Define transition states
-        DeathState = deathState;
-        InventoryState = inventoryState;
-        ScrollState = scrollState;
 
+        player = link;
         //Set conditions for state
         this.state.EnemyUpdate();
         this.state.GameResettable();
@@ -46,10 +43,10 @@ public class PlayingState: StateManager, IState
         //Code for state transitons => Death, inventory, scroll
         if (player.GetHealth() <= 0)
         {
-            this.state = ScrollState;
+            state.StateTransition("Dead");
         }
         else if (PauseCommand) {
-            this.state = InventoryState;
+            state.StateTransition("Inventory");
         } //inventory transition check
         else if () { } //scroll transition check
     }
@@ -59,27 +56,27 @@ public class PlayingState: StateManager, IState
         PauseCommand = true;
     }
  
-    public void EnemyUpdate()
+    public new void EnemyUpdate()
     {
         this.state.EnemyActivate();
     }
 
-    public bool GameResettable()
+    public new bool GameResettable()
     {
         return false;
     }
 
-    public string GetState()
+    public new string GetState()
     {
         return "Playing";
     }
 
-    public void LinkUpdate()
+    public new void LinkUpdate()
     {
         this.state.LinkActivate();
     }
 
-    public void RoomUpdate()
+    public new void RoomUpdate()
     {
         this.state.RoomActivate();
     }

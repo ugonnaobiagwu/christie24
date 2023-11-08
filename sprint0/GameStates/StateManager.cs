@@ -22,18 +22,43 @@ namespace sprint0.GameStates
 		IState DeathState;
 		IState PauseState;
 		IState PlayingState;
+        IState ScrollState;
 
 		IState state;
 
         ILink player;
         List<IGameObject> CurrentUpdatables;
-		public StateManager()
+		public StateManager(ILink link)
 		{
+            //link :)
+            player = link;
+
+            //Instantiate states
+            InventoryState = new InventoryState();
+            DeathState = new DeathState();
+            PlayingState = new PlayingState(player);
+            ScrollState = new ScrollState();
 		}
         //Method for transitioning state, called by state classes - may use, may not use
-        public void StateTransition(IState newState)
+        public void StateTransition(String newState)
         {
-            this.state = newState;
+            switch (newState)
+            {
+                case "Inventory":
+                    this.state = InventoryState;
+                    break;
+                case "Dead":
+                    this.state = DeathState;
+                    break;
+                case "Playing":
+                    this.state = PlayingState;
+                    break;
+                case "Scroll":
+                    this.state = ScrollState;
+                    break;
+
+            }
+
         }
 
         //Methods for activating and deactivating game objects - Will be inherited by state classes
