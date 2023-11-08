@@ -14,17 +14,29 @@ using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.GameStates
 {
+
+    //Notes - Have to implement a list of inventory items and decide which ones to activate/deactivate based on inventory system
 	public class InventoryState : StateManager, IState
 	{
 
+        IState DeathState;
+        IState PauseState;
+        IState PlayingState;
+
+        private IState state;
+
         ILink player;
-		public InventoryState()
+        List<IGameObject> CurrentUpdatables;
+        public InventoryState()
 		{
 		}
-
+        public void Update()
+        {
+            //Code for transition from inventory to play state 
+        }
         public void EnemyUpdate()
         {
-            throw new NotImplementedException();
+            this.state.EnemyDeactivate();
         }
 
         public bool GameResettable()
@@ -39,14 +51,12 @@ namespace sprint0.GameStates
 
         public void LinkUpdate()
         {
-            player.SetState("Dead");
-            //Find a better way to change this var beyond adding a setter method?
-            player.IsUpdateable = false;
+            this.state.LinkDeactivate();
         }
 
         public void RoomUpdate()
         {
-            throw new NotImplementedException();
+            this.state.RoomDeactivate();
         }
     }
 }

@@ -12,36 +12,48 @@ using sprint0.Link;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 
-	public class DeathState : IState
+	public class DeathState : StateManager, IState
 	{
-		public DeathState()
+
+    IState InventoryState;
+    IState PauseState;
+    IState PlayingState;
+
+    private IState state;
+
+    ILink player;
+    List<IGameObject> CurrentUpdatables;
+    public DeathState()
 		{
 		}
-
+    private void Update()
+    {
+        //Add logic for transition into play state here - based on commands, key press?
+    }
         //Takes a list of all enemies and updates their 
         public void EnemyUpdate()
         {
-            throw new NotImplementedException();
+        this.state.EnemyDeactivate();
         }
 
         public bool GameResettable()
         {
-            throw new NotImplementedException();
+        return true;
         }
 
         public string GetState()
         {
-            throw new NotImplementedException();
+        return "Dead";
         }
 
         public void LinkUpdate()
         {
-            throw new NotImplementedException();
+        this.state.LinkDeactivate();
         }
 
         public void RoomUpdate()
         {
-            throw new NotImplementedException();
+        this.state.RoomDeactivate();
         }
     }
 
