@@ -459,16 +459,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.OktorokUp();
+                    enemy.EnemyUp();
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.OktorokDown();
+                    enemy.EnemyDown();
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.OktorokLeft();
+                    enemy.EnemyLeft();
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.OktorokRight();
+                    enemy.EnemyRight();
                     break;
             }
         }
@@ -484,16 +484,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.SkeletonUp();
+                    enemy.EnemyUp();
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.SkeletonDown();
+                    enemy.EnemyDown();
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.SkeletonLeft();
+                    enemy.EnemyLeft();
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.SkeletonRight();
+                    enemy.EnemyRight();
                     break;
             }
         }
@@ -510,16 +510,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.BokoblinUp();
+                    enemy.EnemyUp();
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.BokoblinDown();
+                    enemy.EnemyDown();
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.BokoblinLeft();
+                    enemy.EnemyLeft();
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.BokoblinRight();
+                    enemy.EnemyRight();
                     break;
             }
         }

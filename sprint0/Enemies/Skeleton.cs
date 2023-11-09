@@ -37,25 +37,25 @@ namespace sprint0.Enemies
         }
 
         /* ---Movement--- */
-        public void SkeletonUp()
+        public void EnemyUp()
         {
             Direction = 0;
             yPos++;
         }
         
-        public void SkeletonDown()
+        public void EnemyDown()
         {
             Direction = 2;
             yPos--;
         }
 
-        public void SkeletonLeft()
+        public void EnemyLeft()
         {
             Direction = 1;
             xPos--;
         }
 
-        public void SkeletonRight()
+        public void EnemyRight()
         {
             Direction = 3;
             xPos++;
@@ -145,16 +145,16 @@ namespace sprint0.Enemies
             switch (direction)
             {
                 case 0:
-                    SkeletonUp();
+                    EnemyUp();
                     break;
                 case 1:
-                    SkeletonLeft();
+                    EnemyLeft();
                     break;
                 case 2:
-                    SkeletonDown();
+                    EnemyDown();
                     break;
                 case 3:
-                    SkeletonRight();
+                    EnemyRight();
                     break;
             }
         }

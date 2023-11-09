@@ -25,6 +25,25 @@
 /processorParam:TextureFormat=Color
 /build:block_image.png
 
+#begin Debug.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Debug.spritefont
+
+#begin Dragon.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dragon.png
+
 #begin equippedItemSprites/equippedBetterBoomerang.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -637,18 +656,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:zelda-sprites-enemies-condensed.png
-
-#begin zelda-sprites-enemies.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:zelda-sprites-enemies.png
 
 #begin zelda-sprites-enemies.png
 /importer:TextureImporter

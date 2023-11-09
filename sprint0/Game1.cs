@@ -27,6 +27,7 @@ namespace sprint0
         public ISkeleton SkeletonObj;
         public IOktorok OktorokObj;
         public IBokoblin BokoblinObj;
+        public IDragon DragonObj;
 
         //Block
         public IBlock block;
@@ -69,7 +70,7 @@ namespace sprint0
             /*LINK TEST: TO BE DELETED*/
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 3, 4);
+            SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
             LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
             LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
             LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
@@ -83,27 +84,39 @@ namespace sprint0
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
 
-            ///*ENEMY TESTS: TO BE DELETED*/
-            //Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
-            //SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
-            //SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
+            /*ENEMY TESTS: TO BE DELETED*/
+            Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
 
-            //Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            //OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
-            //OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
+            SpriteFactory SkeletonFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
+            SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
 
-            //Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            //BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
-            //BokoblinObj = new sprint0.Enemies.Bokoblin(200, 400, 1, BokoblinFactory);
+            SpriteFactory OktorokFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            SpriteFactory OktorokProjectileFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
+            OktorokProjectileFactory.createAnimation("Blaze", new int[] { 12 }, new int[] { 1 }, 1);
+            OktorokObj = new sprint0.Enemies.Oktorok(100, 200, 1, OktorokFactory, OktorokProjectileFactory);
+
+            SpriteFactory BokoblinFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            Texture2D BokoblinBoomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
+            SpriteFactory BokoblinBoomerangFactory = new SpriteFactory(BokoblinBoomerangTexture, 2, 3);
+            BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
+            BokoblinBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            BokoblinBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            BokoblinObj = new sprint0.Enemies.Bokoblin(400, 50, 1, BokoblinFactory, BokoblinBoomerangFactory);
+
+            Texture2D DragonTexture = Content.Load<Texture2D>("Dragon");
+            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 2);
+            SpriteFactory DragonBlazeFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            DragonFactory.createAnimation("Default", new int[] {0, 1}, new int[] {0, 0}, 2);
+            DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
+            DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -270,9 +283,10 @@ namespace sprint0
             LinkObj.Update();
 
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
-            //SkeletonObj.Update();
-            //OktorokObj.Update();
-            //BokoblinObj.Update();
+            SkeletonObj.Update();
+            OktorokObj.Update();
+            BokoblinObj.Update();
+            DragonObj.Update();
 
             base.Update(gameTime);
         }
@@ -284,6 +298,11 @@ namespace sprint0
             spriteBatch.Begin();
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
+            /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
+            SkeletonObj.Draw(spriteBatch);
+            BokoblinObj.Draw(spriteBatch);
+            OktorokObj.Draw(spriteBatch);
+            DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
             block.Draw(spriteBatch);
             base.Draw(gameTime);

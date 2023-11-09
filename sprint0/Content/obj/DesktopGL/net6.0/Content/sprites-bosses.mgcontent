@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/sprites-bosses.png</SourceFile>
-  <SourceTime>2023-11-05T20:14:48.9368806-05:00</SourceTime>
-  <DestFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/bin/DesktopGL/Content/sprites-bosses.xnb</DestFile>
-  <DestTime>2023-11-05T20:29:27.4030513-05:00</DestTime>
+  <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/sprites-bosses.png</SourceFile>
+  <SourceTime>2023-11-06T00:43:03.7177268-05:00</SourceTime>
+  <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/Content/sprites-bosses.xnb</DestFile>
+  <DestTime>2023-11-06T15:51:24.3561553-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

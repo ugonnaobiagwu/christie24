@@ -7,22 +7,19 @@ using System.Threading.Tasks;
 
 namespace sprint0.Enemies
 {
-    public interface ISkeleton
+    public interface ISkeleton: IEnemy
     {
-        public void SkeletonUp();
-
-        public void SkeletonDown();
-
-        public void SkeletonLeft();
-
-        public void SkeletonRight();
+        public void EnemyUp();
+        public void EnemyDown();
+        public void EnemyLeft();
+        public void EnemyRight();
 
         public int getDirection();
 
         public void takeDamage();
-
         public int getHealth();
 
+        public void Draw(SpriteBatch spriteBatch);
         public void Update();
     }
 }

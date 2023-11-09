@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace sprint0.Enemies
 {
-    public interface IDragon
+    public interface IDragon: IEnemy
     {
-        public void DragonUp();
-
-        public void DragonDown();
-
-        public void DragonLeft();
-
-        public void DragonRight();
+        public void EnemyUp();
+        public void EnemyDown();
+        public void EnemyLeft();
+        public void EnemyRight();
 
         public int xPosition();
         public int yPosition();
@@ -22,9 +20,9 @@ namespace sprint0.Enemies
         public int getDirection();
 
         public void takeDamage();
-
         public int getHealth();
 
+        public void Draw(SpriteBatch spriteBatch);
         public void Update();
 
         public void DragonShoot();
