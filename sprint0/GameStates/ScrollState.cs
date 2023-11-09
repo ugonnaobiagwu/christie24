@@ -6,11 +6,7 @@ namespace sprint0.GameStates
 {
 	public class ScrollState: StateManager, IState
 	{
-        IState DeathState;
-        IState PauseState;
-        IState PlayingState;
-
-        private IState state;
+        IState state;
 
         ILink player;
         List<IGameObject> CurrentUpdatables;

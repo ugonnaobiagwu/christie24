@@ -12,22 +12,18 @@ using sprint0.Link;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 
-public class PlayingState: StateManager, IState
+public class PlayingState:  StateManager, IState
 	{
-    IState DeathState;
-    IState PauseState;
-    IState InventoryState;
-    IState ScrollState;
 
-    StateManager state;
+    IState state;
 
     ILink player;
     bool PauseCommand;
     List<IGameObject> CurrentUpdatables;
-   
-		public PlayingState(ILink link)
-		{
 
+    public PlayingState(ILink link)
+    {
+        
         player = link;
         //Set conditions for state
         this.state.EnemyUpdate();

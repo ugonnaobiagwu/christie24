@@ -12,7 +12,8 @@ namespace sprint0.AnimatedSpriteFactory
         public Vector2 position;
         public int Rows;
         public int Columns;
-        private int Width, Height;
+        private Vector2 scaleVector;
+        private float scaleWidth, scaleHeight;
         private int CurrentFrame;
         private int TotalFrames;
         private float frameTime;
@@ -23,7 +24,7 @@ namespace sprint0.AnimatedSpriteFactory
         //Add methods to get width and height
 
 
-        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, int width, int height)
+        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, float width, float height)
         {
             Texture = texture;
             Rows = rows;
@@ -34,17 +35,22 @@ namespace sprint0.AnimatedSpriteFactory
             frameTime = secondsPerFrame;
             frameTimeLeft = secondsPerFrame;
             position = new Vector2(0,0);
-            Width = width;
-            Height = height;
+            scaleWidth = width;
+            scaleHeight = height;
+            scaleVector.X = width;
+            scaleVector.Y = height;
             animationComplete = false;
         }
         public int GetWidth()
         {
-            return Width;
+            int width = Texture.Width / Columns;
+            
+            return (int)(scaleWidth * width);
         }
         public int GetHeight()
         {
-            return Height;
+            int height = Texture.Height / Rows;
+            return (int)(scaleHeight *height);
         }
         public int GetTotalFrames()
         {
@@ -85,7 +91,7 @@ namespace sprint0.AnimatedSpriteFactory
 
                 //Console.WriteLine("sprite updated");
             }
-
+            animationComplete = false;
             if ((CurrentFrame + 1) == TotalFrames)
             {
                 animationComplete = true;
@@ -131,7 +137,8 @@ namespace sprint0.AnimatedSpriteFactory
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y,width ,height);
 
 
-            spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White, rotation, origin,spriteEffect , 0f);
+            spriteBatch.Draw(Texture, new Vector2(50, 50), SourceRectangles[CurrentFrame], Color.White, rotation, origin, scaleVector, spriteEffect, 0.0f);
+
 
         }
         public void Draw(SpriteBatch spriteBatch)
