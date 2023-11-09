@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sprint0;
 using sprint0.Link;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Commands
 {
@@ -26,7 +27,7 @@ namespace sprint0.Commands
         {
             Link.LinkUseItem();
             LinkItems.UseCurrentItem(Link.GetDirection(), Link.xPosition(), Link.yPosition(), Link.height(), Link.width());
-
+          
         }
     }
 }

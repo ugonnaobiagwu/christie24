@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Items
 {
@@ -75,6 +76,7 @@ namespace sprint0.Items
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
                         this.currentItemSprite = null;
+                        Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
                     }
                 }
                 else
@@ -133,6 +135,7 @@ namespace sprint0.Items
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;

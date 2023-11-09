@@ -78,7 +78,7 @@ namespace sprint0.AnimatedSpriteFactory
 
         public ISprite getAnimatedSprite(string animationName)
         {
-            ISprite newSprite = this.animationDictionary[animationName];
+         ISprite newSprite =  animationDictionary[animationName];
             return newSprite;
         }
     }

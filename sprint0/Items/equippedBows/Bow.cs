@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.Items;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Items
 {
@@ -109,6 +110,7 @@ namespace sprint0.Items
 
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ARROW_LAUNCH);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
@@ -124,11 +126,11 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case (int)Direction.RIGHT:
-                        rotation = -90;
+                        rotation = (float)67.5;
                         currentItemDirection = Direction.RIGHT;
                         break;
                     case (int)Direction.UP:
-                        rotation = 180;
+                        rotation = (float)135;
                         currentItemDirection = Direction.UP;
                         break;
                     case (int)Direction.DOWN:
@@ -136,7 +138,7 @@ namespace sprint0.Items
                         currentItemDirection = Direction.DOWN;
                         break;
                     case (int)Direction.LEFT:
-                        rotation = 90;
+                        rotation = (float)-67.5;
                         currentItemDirection = Direction.LEFT;
                         break;
                 }
