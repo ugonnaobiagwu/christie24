@@ -46,7 +46,7 @@ namespace sprint0.AnimatedSpriteFactory
             //Add animated sprite to dictionary
             animationDictionary.Add(animationName, currentSprite);
         }
-        public void createAnimation(string animationName, int[] spriteRows, int[] spriteColumns, int frameCount, float secondsPerFrame, float spriteWidthScale, float spriteHeightScale)
+        public void createAnimation(string animationName, int[] spriteRows, int[] spriteColumns, int frameCount, float secondsPerFrame, float spriteWidthScale = 1.0f, float spriteHeightScale = 1.0f)
         {
             List<Rectangle> sourceRectangleList = new List<Rectangle>();
             int width = spriteSheet.Width / spriteSheetColumns;
