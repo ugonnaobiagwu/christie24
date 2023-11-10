@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0.Items;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
 
 namespace sprint0.Items
 {
@@ -20,7 +21,6 @@ namespace sprint0.Items
         // needs these positions for sprite swapping.
 
         //direction stuff
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
         private int itemRoomID;
         private SpriteFactory itemSpriteFactory;
         private SpriteFactory despawnSpriteFactory;
@@ -34,7 +34,7 @@ namespace sprint0.Items
             itemSpriteFactory = factory;
             despawnSpriteFactory = despawnFactory;
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.DOWN;
+            currentItemDirection = Direction.Down;
             spriteChanged = false;
             rotation = 0;
 
@@ -64,16 +64,16 @@ namespace sprint0.Items
                     // switch case bad i know, i know.
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos += spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos -= spriteVelocity;
                             break;
                     }
@@ -105,7 +105,7 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
 
             if (!thisStateMachine.isItemInUse())
@@ -125,21 +125,21 @@ namespace sprint0.Items
                 currentItemSprite = itemSpriteFactory.getAnimatedSprite("BetterBow");
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
+                    case Direction.Right:
                         rotation = (float)67.5;
-                        currentItemDirection = Direction.RIGHT;
+                        currentItemDirection = Direction.Right;
                         break;
-                    case (int)Direction.UP:
+                    case Direction.Up:
                         rotation = (float)135;
-                        currentItemDirection = Direction.UP;
+                        currentItemDirection = Direction.Up;
                         break;
-                    case (int)Direction.DOWN:
+                    case Direction.Down:
                         rotation = 0;
-                        currentItemDirection = Direction.DOWN;
+                        currentItemDirection = Direction.Down;
                         break;
-                    case (int)Direction.LEFT:
+                    case Direction.Left:
                         rotation = (float)-67.5;
-                        currentItemDirection = Direction.LEFT;
+                        currentItemDirection = Direction.Left;
                         break;
                 }
             }

@@ -6,9 +6,9 @@ using sprint0;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Commands;
 
-namespace sprint0.Rooms
+namespace sprint0.BoundariesDoorsAndRooms
 {
-    public class Room : IRoom, IGameObject
+    public class Room :IGameObject
     {
         private int xPos, yPos, width1, height1, currentRoomID;
         private bool inPlay;

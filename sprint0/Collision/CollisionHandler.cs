@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using sprint0.Link;
+using sprint0.LinkObj;
 using sprint0.Items;
 using sprint0.Items.groundItems;
 using sprint0.Blocks;
@@ -292,8 +292,8 @@ namespace sprint0.Collision
         }
 
         //LINK
-        private delegate void LinkDelegate(CollisionDetector.CollisionType collisionType, Link.Link link);
-        private void MoveLink (CollisionDetector.CollisionType collisionType, Link.Link link) {
+        private delegate void LinkDelegate(CollisionDetector.CollisionType collisionType, LinkObj.Link link);
+        private void MoveLink (CollisionDetector.CollisionType collisionType, LinkObj.Link link) {
             // I need a better way to change Link's stuff without making such a mess.
             switch (collisionType)
 			{
@@ -312,7 +312,7 @@ namespace sprint0.Collision
             }
 		}
 
-        private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, Link.Link link)
+        private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, LinkObj.Link link)
         {
             switch (collisionType)
             {
