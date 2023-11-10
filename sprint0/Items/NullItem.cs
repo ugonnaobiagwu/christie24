@@ -56,7 +56,7 @@ namespace sprint0.Items
 
         public int yPosition()
         {
-            return itemYPos;
+            return items;
         }
 
         public int width()
@@ -81,12 +81,12 @@ namespace sprint0.Items
 
         public bool isInPlay()
         {
-            return false;
+            return true;
         }
 
         public bool isDrawable()
         {
-            return false;
+            return true;
         }
 
         public void SetRoomId(int roomId)
