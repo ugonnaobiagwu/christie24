@@ -5,6 +5,8 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/block_image.png</File>
+    <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/Debug.spritefont</File>
+    <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/Dragon.png</File>
     <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerang.png</File>
     <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
     <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
@@ -74,6 +76,8 @@
     <File>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/zelda-sprites-enemies.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

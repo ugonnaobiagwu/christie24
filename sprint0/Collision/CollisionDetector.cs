@@ -4,23 +4,23 @@ using Microsoft.Xna.Framework;
 namespace sprint0.Collision
 {
     /*
-		 * NOTE FOR FUTURE ME, OR ANYONE ELSE HERE. (HI!): 
-		 * Consider changing the protection level of this class?
-		 * 
-		 * The only thing that will/should touch this utility class, 
-		 * and the handler utility, would be the 
-		 * overall iterator, and I'm considering making that a utility 
-		 * class as you don't really need an "instance" of a collision object,
-		 * since all your doing is reporting.
-		 * 
-		 * This is contigent that objects don't move so fast that they end up
-		 * slipping the system's checks.
-		 */
+       * NOTE FOR FUTURE ME, OR ANYONE ELSE HERE. (HI!): 
+       * Consider changing the protection level of this class?
+       * 
+       * The only thing that will/should touch this utility class, 
+       * and the handler utility, would be the 
+       * overall iterator, and I'm considering making that a utility 
+       * class as you don't really need an "instance" of a collision object,
+       * since all your doing is reporting.
+       * 
+       * This is contigent that objects don't move so fast that they end up
+       * slipping the system's checks.
+       */
 
     public static class CollisionDetector
-	{
-		public enum CollisionType { TOP, BOTTOM, LEFT, RIGHT, NONE };
-		
+    {
+        public enum CollisionType { TOP, BOTTOM, LEFT, RIGHT, NONE };
+
         // Do we need this enum in every Collision Class?
 
         /*
@@ -33,14 +33,14 @@ namespace sprint0.Collision
 		 * that can be used to call the respective intersection methods needed.
 		 */
         public static CollisionType CollisionCheck(IGameObject a, IGameObject b)
-		{
-			Rectangle aRect = CollisionDetector.ConstructObjectRectangle
-				(a.xPosition(), a.yPosition(), a.width(), a.height());
+        {
+            Rectangle aRect = CollisionDetector.ConstructObjectRectangle
+                (a.xPosition(), a.yPosition(), a.width(), a.height());
             Rectangle bRect = CollisionDetector.ConstructObjectRectangle
-				(b.xPosition(), b.yPosition(), b.width(), b.height());
+                (b.xPosition(), b.yPosition(), b.width(), b.height());
             Rectangle cRect = Rectangle.Intersect(aRect, bRect); // collision rect
             return CollisionDetector.CollisionLocation(aRect, bRect, cRect);
-		}
+        }
 
         /*
 		 * Private method used to return exactly where a collision occured.
@@ -62,26 +62,30 @@ namespace sprint0.Collision
 		* making sure collision was detected early enough.
 		*/
         private static CollisionType CollisionLocation(Rectangle a,
-			Rectangle b, Rectangle c) {
-			if (c.IsEmpty) return CollisionType.NONE;
-			CollisionType collisionType = CollisionType.LEFT; // default?
-			if (c.Width > c.Height) {
+            Rectangle b, Rectangle c)
+        {
+            if (c.IsEmpty) return CollisionType.NONE;
+            CollisionType collisionType = CollisionType.LEFT; // default?
+            if (c.Width > c.Height)
+            {
                 collisionType = TopOrBottomCollision(b, c);
-			} else {
-				collisionType = LeftOrRightCollision(b, c);
+            }
+            else
+            {
+                collisionType = LeftOrRightCollision(b, c);
             }
             return collisionType;
-		}
+        }
 
         /*
 		 * Private method used to construct a rectangle based on an object's
 		 * data.
 		 */
         private static Rectangle ConstructObjectRectangle
-			(int objXPos, int objYPos, int objWidth, int objHeight)
+            (int objXPos, int objYPos, int objWidth, int objHeight)
         {
-			return new Rectangle
-				(new Point(objXPos, objYPos), new Point(objWidth * objHeight));
+            return new Rectangle
+                (objXPos, objYPos, objWidth, objHeight);
         }
 
         /*
@@ -94,14 +98,15 @@ namespace sprint0.Collision
 		 * otherwise, it is a bottom collsion.
 		 */
         private static CollisionType TopOrBottomCollision
-			(Rectangle b, Rectangle c)
+            (Rectangle b, Rectangle c)
         {
-			if (c.Bottom > ((b.Height / 2) + b.Top))
-			{
-				return CollisionDetector.CollisionType.TOP;
-			} else
-			{
+            if (c.Bottom > ((b.Height / 2) + b.Top))
+            {
                 return CollisionDetector.CollisionType.BOTTOM;
+            }
+            else
+            {
+                return CollisionDetector.CollisionType.TOP;
             }
         }
 

@@ -63,7 +63,7 @@ namespace sprint0.AnimatedSpriteFactory
             }
 
             //Create AnimatedSprite object using created sourceRectangle list
-            ISprite currentSprite = new AnimatedSprite(spriteSheet, sourceRectangleList, frameCount, spriteSheetRows, spriteSheetColumns, secondsPerFrame,spriteWidthScale, spriteHeightScale);
+            ISprite currentSprite = new AnimatedSprite(spriteSheet, sourceRectangleList, frameCount, spriteSheetRows, spriteSheetColumns, secondsPerFrame, spriteWidthScale, spriteHeightScale);
 
             //Add animated sprite to dictionary
             animationDictionary.Add(animationName, currentSprite);

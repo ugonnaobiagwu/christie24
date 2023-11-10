@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
@@ -48,6 +49,7 @@ namespace sprint0.Items
 
         public void Update()
         {
+            Debug.WriteLine(this.thisStateMachine.isItemInUse());
             if (thisStateMachine.isItemInUse())
             {
                 // has the sprite reached it's final location?
@@ -141,10 +143,10 @@ namespace sprint0.Items
                 this.itemXOrigin = Owner.xPosition();
                 this.itemYPos = Owner.yPosition();
                 this.itemYOrigin = Owner.yPosition();
-                this.itemMaxX = Owner.xPosition() + 200;
-                this.itemMaxY = Owner.yPosition() + 200;
-                this.itemMinX = Owner.xPosition() - 200;
-                this.itemMinY = Owner.yPosition() - 200;
+                this.itemMaxX = Owner.xPosition() + 50;
+                this.itemMaxY = Owner.yPosition() + 50;
+                this.itemMinX = Owner.xPosition() - 50;
+                this.itemMinY = Owner.yPosition() - 50;
                 currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
@@ -176,6 +178,11 @@ namespace sprint0.Items
         public int yPosition()
         {
             return itemYPos;
+        }
+
+        public IItemStateMachine ThisStateMachine()
+        {
+            return thisStateMachine;
         }
 
         public int width()

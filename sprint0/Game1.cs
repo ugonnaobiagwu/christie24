@@ -6,12 +6,15 @@ using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 using sprint0.Controllers;
 using sprint0.Blocks;
-using sprint0.Link;
+using sprint0.LinkObj;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+using sprint0.Collision;
+using sprint0.LevelLoading;
+using System.Xml;
 
 namespace sprint0
 {
@@ -27,6 +30,7 @@ namespace sprint0
         public ISkeleton SkeletonObj;
         public IOktorok OktorokObj;
         public IBokoblin BokoblinObj;
+        public IDragon DragonObj;
 
         //Block
         public IBlock block;
@@ -45,7 +49,7 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Block 
-            textureBlock = Content.Load<Texture2D>("block_image");
+            textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
             blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
             blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1);
@@ -59,7 +63,7 @@ namespace sprint0
             blockFactory.createAnimation("BlueFishBlock", new int[] { 2 }, new int[] { 1 }, 1);
             blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
 
-            block = new DungeonBlueBlock(300, 200, 1, blockFactory);
+            block = new DungeonPyramidBlock(0, 0, 1, blockFactory);
 
             // Linky
             //Link = new Link()
@@ -70,40 +74,53 @@ namespace sprint0
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
             SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
-            LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2);
-            LinkFactory.createAnimation("ItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("ItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
-            /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 03}, new int[] { 3 }, 1);
+            LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
+            LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenRight", new int[] { 0, 1 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+           
+            LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
 
-            LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
+            LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
+            LinkObj.SetRoomId(0);
 
-            ///*ENEMY TESTS: TO BE DELETED*/
-            //Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory SkeletonFactory = new SpriteFactory(SkeletonTexture, 15, 8);
-            //SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
-            //SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
+            /*ENEMY TESTS: TO BE DELETED*/
+            Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
 
-            //Texture2D OktorokTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory OktorokFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            //OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
-            //OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
-            //OktorokObj = new sprint0.Enemies.Oktorok(200, 400, 1, OktorokFactory);
+            SpriteFactory SkeletonFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            SkeletonFactory.createAnimation("Default", new int[] { 14, 14 }, new int[] { 4, 5 }, 2);
+            SkeletonObj = new sprint0.Enemies.Skeleton(200, 400, 1, SkeletonFactory);
 
-            //Texture2D BokoblinTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-            //SpriteFactory BokoblinFactory = new SpriteFactory(OktorokTexture, 15, 8);
-            //BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
-            //BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
-            //BokoblinObj = new sprint0.Enemies.Bokoblin(200, 400, 1, BokoblinFactory);
+            SpriteFactory OktorokFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            SpriteFactory OktorokProjectileFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            OktorokFactory.createAnimation("Down", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Left", new int[] { 1, 1 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Up", new int[] { 2, 2 }, new int[] { 0, 1 }, 2);
+            OktorokFactory.createAnimation("Right", new int[] { 3, 3 }, new int[] { 0, 1 }, 2);
+            OktorokProjectileFactory.createAnimation("Blaze", new int[] { 12 }, new int[] { 1 }, 1);
+            OktorokObj = new sprint0.Enemies.Oktorok(100, 200, 1, OktorokFactory, OktorokProjectileFactory);
+
+            SpriteFactory BokoblinFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            Texture2D BokoblinBoomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
+            SpriteFactory BokoblinBoomerangFactory = new SpriteFactory(BokoblinBoomerangTexture, 2, 3);
+            BokoblinFactory.createAnimation("Down", new int[] { 4, 4 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Left", new int[] { 5, 5 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Up", new int[] { 6, 6 }, new int[] { 4, 5 }, 2);
+            BokoblinFactory.createAnimation("Right", new int[] { 7, 7 }, new int[] { 4, 5 }, 2);
+            BokoblinBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            BokoblinBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            BokoblinObj = new sprint0.Enemies.Bokoblin(400, 50, 1, BokoblinFactory, BokoblinBoomerangFactory);
+
+            Texture2D DragonTexture = Content.Load<Texture2D>("Dragon");
+            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 2);
+            SpriteFactory DragonBlazeFactory = new SpriteFactory(EnemyTexture, 6, 15);
+            DragonFactory.createAnimation("Default", new int[] {0, 1}, new int[] {0, 0}, 2);
+            DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
+            DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -111,6 +128,10 @@ namespace sprint0
 
         protected override void LoadContent()
         {
+            XmlDocument xmlFile = new XmlDocument();
+            xmlFile.Load("Content/RoomTestRoom.xml");
+            XmlParser.ParseFile(xmlFile, Content, this);
+
             // GROUND ITEM SYSTEM STUFF
             // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
             Texture2D groundBoomerangTexture = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
@@ -254,14 +275,6 @@ namespace sprint0
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
 
-
-
-
-
-
-
-
-
             //Songs
             SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
             SoundEffect OVERWORLD = Content.Load<SoundEffect>("songs/OVERWORLD");
@@ -278,7 +291,13 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
 
-
+            Globals.GameObjectManager.addObject(LinkObj);
+            //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
+            Globals.GameObjectManager.addObject(block);
+            //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
+            //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
 
             // TODO: use this.Content to load your game content here
 
@@ -295,15 +314,20 @@ namespace sprint0
 
             KeyboardCont.Update();
             Globals.LinkItemSystem.Update();
-
+            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
+            foreach (IGameObject updateable in Updateables)
+            {
+                updateable.Update();
+            }
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
             Globals.Update(gameTime);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
-            //SkeletonObj.Update();
-            //OktorokObj.Update();
-            //BokoblinObj.Update();
-
+            SkeletonObj.Update();
+            OktorokObj.Update();
+            BokoblinObj.Update();
+            DragonObj.Update();
+            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             base.Update(gameTime);
         }
 
@@ -312,10 +336,23 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch);
-            Globals.LinkItemSystem.Draw();
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach(IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
+            if (LinkObj != null)
+            {
+                LinkObj.Draw(spriteBatch);
+            }
             block.Draw(spriteBatch);
+            /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
+            SkeletonObj.Draw(spriteBatch);
+            BokoblinObj.Draw(spriteBatch);
+            OktorokObj.Draw(spriteBatch);
+            DragonObj.Draw(spriteBatch);
+            Globals.LinkItemSystem.Draw();
+            LinkObj.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }
