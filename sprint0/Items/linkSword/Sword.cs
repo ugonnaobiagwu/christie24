@@ -49,6 +49,8 @@ namespace sprint0.LinkSword
             itemSpriteFactory = factory;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
             currentSwordTicks = 0;
+            itemRoomID = 0;
+
         }
 
         public void Draw(SpriteBatch spritebatch)

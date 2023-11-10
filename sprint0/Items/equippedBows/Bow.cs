@@ -37,6 +37,8 @@ namespace sprint0.Items
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
             rotation = 0;
+            itemRoomID = 0;
+
 
         }
 

@@ -10,9 +10,9 @@ namespace sprint0
 	public class ItemSystem : IItemSystem
 	{
         private static ItemSystem instance;
-        private IItem currentItem;
-        private IItem currentItemA;
-        private IItem currentItemB;
+        public IItem currentItem;
+        public IItem currentItemA;
+        public IItem currentItemB;
         private IItem sword;
         private SpriteFactory bowFactory;
         private SpriteFactory bowDespawnFactory;
@@ -31,6 +31,7 @@ namespace sprint0
          */
 
         public ItemSystem() {
+            currentItem = new NullItem();
         }
 
         public static ItemSystem Instance
@@ -216,6 +217,7 @@ namespace sprint0
 
 
         }
+
     }
 }
 

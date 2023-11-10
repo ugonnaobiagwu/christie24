@@ -34,6 +34,7 @@ namespace sprint0.Items
             currentItemDirection = Direction.DOWN;
             maxFireTicks = 120;
             fireTicks = 0;
+            itemRoomID = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -146,7 +147,7 @@ namespace sprint0.Items
 
         public bool isDynamic()
         {
-            return false;
+            return true;
         }
 
         public bool isUpdateable()

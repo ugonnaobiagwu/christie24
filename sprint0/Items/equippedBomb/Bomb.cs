@@ -30,6 +30,8 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
+            itemRoomID = 0;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)

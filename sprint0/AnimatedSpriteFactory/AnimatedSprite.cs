@@ -38,11 +38,11 @@ namespace sprint0.AnimatedSpriteFactory
         }
         public int GetWidth()
         {
-            return Width;
+            return SourceRectangles[CurrentFrame].Width;
         }
         public int GetHeight()
         {
-            return Height;
+            return SourceRectangles[CurrentFrame].Height;
         }
         public int GetTotalFrames()
         {

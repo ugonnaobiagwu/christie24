@@ -188,5 +188,15 @@ namespace sprint0.Enemies
                 /* Code to delete the Skeleton */
             }
         }
+
+        public void ChangeEnemyY(int change)
+        {
+            xPos += change;
+        }
+
+        public void ChangeEnemyX(int change)
+        {
+            yPos += change;
+        }
     }
 }
