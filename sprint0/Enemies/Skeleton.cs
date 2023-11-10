@@ -9,7 +9,7 @@ using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.Enemies
 {
-    public class Skeleton: ISkeleton, IGameObject
+    public class Skeleton: IEnemy
     {
         Sprint0 Game;
         SpriteFactory SkeletonFactory;
@@ -72,7 +72,7 @@ namespace sprint0.Enemies
             return xPos;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }

@@ -13,7 +13,7 @@ using sprint0.Items;
 
 namespace sprint0.Enemies
 {
-    public class Bokoblin : IBokoblin, IGameObject
+    public class Bokoblin : IEnemy
     {
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
@@ -107,7 +107,7 @@ namespace sprint0.Enemies
             return direction;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }

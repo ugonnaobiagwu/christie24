@@ -93,7 +93,7 @@ namespace sprint0.Items
 
         }
 
-        public void Use(IOktorok Owner)
+        public void Use(Oktorok Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {

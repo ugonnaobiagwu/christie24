@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace sprint0.Enemies
 {
-    public interface IEnemy
+    public interface IEnemy: IGameObject
     {
         public void EnemyUp();
         public void EnemyDown();
         public void EnemyLeft();
         public void EnemyRight();
 
-        public void Update();
-        public void Draw(SpriteBatch spriteBatch);
+        public int GetHealth();
     }
 }

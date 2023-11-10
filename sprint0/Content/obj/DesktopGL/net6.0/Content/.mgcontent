@@ -39,6 +39,7 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/groundItemSprites/groundRupee.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/groundItemSprites/groundShimmeringRupee.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</File>
+    <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/legendofzelda_bosses_sheet.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/Link.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/linkSword.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/luigiSpriteSheet.png</File>
@@ -97,6 +98,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
