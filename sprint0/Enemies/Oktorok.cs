@@ -11,7 +11,7 @@ using sprint0.Items;
 
 namespace sprint0.Enemies
 {
-    public class Oktorok : IOktorok, IGameObject
+    public class Oktorok : IEnemy
     {
         private Sprint0 Game;
         private SpriteFactory OktorokFactory;
@@ -104,7 +104,7 @@ namespace sprint0.Enemies
             return direction;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Enemies
 {
-    public interface IEnemy
+    public interface IEnemy: IGameObject
     {
         public void EnemyUp();
         public void EnemyDown();
@@ -17,7 +17,6 @@ namespace sprint0.Enemies
 
         public void ChangeEnemyX(int change);
 
-        public void Update();
-        public void Draw(SpriteBatch spriteBatch);
+        public int GetHealth();
     }
 }

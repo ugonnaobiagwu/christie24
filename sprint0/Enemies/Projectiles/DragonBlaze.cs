@@ -92,7 +92,7 @@ namespace sprint0.Items
 
         }
 
-        public void Use(IDragon Owner)
+        public void Use(Dragon Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {

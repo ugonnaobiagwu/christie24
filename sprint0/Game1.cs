@@ -27,10 +27,10 @@ namespace sprint0
         Texture2D textureBlock;
 
         /* For Testing Purposes */
-        public ISkeleton SkeletonObj;
-        public IOktorok OktorokObj;
-        public IBokoblin BokoblinObj;
-        public IDragon DragonObj;
+        public Skeleton SkeletonObj;
+        public Oktorok OktorokObj;
+        public Bokoblin BokoblinObj;
+        public Dragon DragonObj;
 
         //Block
         public IBlock block;
@@ -115,10 +115,10 @@ namespace sprint0
             BokoblinBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
             BokoblinObj = new sprint0.Enemies.Bokoblin(400, 50, 1, BokoblinFactory, BokoblinBoomerangFactory);
 
-            Texture2D DragonTexture = Content.Load<Texture2D>("Dragon");
-            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 2);
+            Texture2D DragonTexture = Content.Load<Texture2D>("legendofzelda_bosses_sheet");
+            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 4);
             SpriteFactory DragonBlazeFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            DragonFactory.createAnimation("Default", new int[] {0, 1}, new int[] {0, 0}, 2);
+            DragonFactory.createAnimation("Default", new int[] {0, 1, 2, 3}, new int[] {0, 0, 0, 0}, 4);
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 

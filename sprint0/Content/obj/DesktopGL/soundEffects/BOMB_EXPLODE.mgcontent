@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/soundEffects/BOMB_EXPLODE.wav</SourceFile>
   <SourceTime>2023-11-06T00:43:03.6808882-05:00</SourceTime>
   <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/soundEffects/BOMB_EXPLODE.xnb</DestFile>
-  <DestTime>2023-11-08T15:15:05.8345511-05:00</DestTime>
+  <DestTime>2023-11-10T14:56:58.4875536-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
