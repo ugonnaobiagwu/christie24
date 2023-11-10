@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
 
 namespace sprint0.Items
 {
@@ -21,7 +22,6 @@ namespace sprint0.Items
         // needs these positions for sprite swapping.
 
         //direction stuff
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
         private SpriteFactory itemSpriteFactory;
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
@@ -32,7 +32,7 @@ namespace sprint0.Items
         {
             itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.DOWN;
+            currentItemDirection = Direction.Down;
             spriteChanged = false;
 
         }
@@ -58,16 +58,16 @@ namespace sprint0.Items
                 {
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos -= spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos += spriteVelocity;
                             break;
                     }
@@ -86,16 +86,16 @@ namespace sprint0.Items
                     // switch case bad i know, i know.
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos += spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos -= spriteVelocity;
                             break;
                     }
@@ -131,7 +131,7 @@ namespace sprint0.Items
             return (itemXPos == itemXOrigin) && (itemYPos == itemYOrigin);
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
@@ -152,17 +152,17 @@ namespace sprint0.Items
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
-                        currentItemDirection = Direction.RIGHT;
+                    case Direction.Right:
+                        currentItemDirection = Direction.Right;
                         break;
-                    case (int)Direction.UP:
-                        currentItemDirection = Direction.UP;
+                    case Direction.Up:
+                        currentItemDirection = Direction.Up;
                         break;
-                    case (int)Direction.DOWN:
-                        currentItemDirection = Direction.DOWN;
+                    case Direction.Down:
+                        currentItemDirection = Direction.Down;
                         break;
-                    case (int)Direction.LEFT:
-                        currentItemDirection = Direction.LEFT;
+                    case Direction.Left:
+                        currentItemDirection = Direction.Left;
                         break;
 
                 }

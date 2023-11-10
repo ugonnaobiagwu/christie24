@@ -12,6 +12,7 @@ namespace sprint0
 		}
         public static IItemSystem LinkItemSystem =  new ItemSystem();
 		public static GameObjectManager GameObjectManager = new GameObjectManager();
+		public enum Direction { Left, Right, Up, Down }
     }
 }
 

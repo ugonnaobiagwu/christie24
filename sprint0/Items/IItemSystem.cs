@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
+using static sprint0.Globals;
 
 namespace sprint0
 {
@@ -40,7 +41,7 @@ namespace sprint0
 		public void EquipBomb(/*int itemButton*/);
         public void EquipSword(/*int itemButton*/);
 
-        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
+        public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
         /*
 		 * public void UseCurrentItemA(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
 		 * 
