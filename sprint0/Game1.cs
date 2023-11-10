@@ -12,6 +12,7 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+using sprint0.Collision;
 
 namespace sprint0
 {
@@ -60,7 +61,7 @@ namespace sprint0
             blockFactory.createAnimation("BlueFishBlock", new int[] { 2 }, new int[] { 1 }, 1);
             blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
 
-            block = new DungeonBlueBlock(300, 200, 1, blockFactory);
+            block = new DungeonPyramidBlock(0, 0, 1, blockFactory);
 
             // Linky
             //Link = new Link()
@@ -268,14 +269,6 @@ namespace sprint0
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
 
-
-
-
-
-
-
-
-
             //Songs
             SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
             SoundEffect OVERWORLD = Content.Load<SoundEffect>("songs/OVERWORLD");
@@ -292,7 +285,13 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
 
-
+            Globals.GameObjectManager.addObject(LinkObj);
+            Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
+            //Globals.GameObjectManager.addObject(block);
+            Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
+            Globals.GameObjectManager.addObject((IGameObject)DragonObj);
 
             // TODO: use this.Content to load your game content here
 
@@ -318,7 +317,7 @@ namespace sprint0
             OktorokObj.Update();
             BokoblinObj.Update();
             DragonObj.Update();
-
+            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             base.Update(gameTime);
         }
 
@@ -327,8 +326,6 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
             BokoblinObj.Draw(spriteBatch);
@@ -336,6 +333,7 @@ namespace sprint0
             DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
             block.Draw(spriteBatch);
+            LinkObj.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }

@@ -34,6 +34,8 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.Down;
             spriteChanged = false;
+            itemRoomID = 0;
+
 
         }
 
