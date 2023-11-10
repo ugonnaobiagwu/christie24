@@ -21,7 +21,8 @@ namespace sprint0.AnimatedSpriteFactory
         private bool active = true;
         private List<Rectangle> SourceRectangles;
         private bool animationComplete;
-        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, float width, float height)
+        private float ScaledWidth, ScaledHeight;
+        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, float widthScale, float heightScale)
         {
             Texture = texture;
             Rows = rows;
@@ -32,23 +33,20 @@ namespace sprint0.AnimatedSpriteFactory
             frameTime = secondsPerFrame;
             frameTimeLeft = secondsPerFrame;
             position = new Vector2(0, 0);
-            scaleWidth = width;
-            scaleHeight = height;
-            scaleVector.X = width;
-            scaleVector.Y = height;
             animationComplete = false;
+
+            //Scale sprite dimensions
+            ScaledHeight = (float)sourceRectangles[0].Y * heightScale;
+            ScaledWidth = (float)sourceRectangles[0].X * widthScale;
+
         }
         public int GetWidth()
         {
-
-            int width = Texture.Width / Columns;
-            return (int)(scaleWidth * width);
+            return (int)ScaledWidth;
         }
-
         public int GetHeight()
-        {
-            int height = Texture.Height / Rows;
-            return (int)(scaleHeight * height);
+        {   
+            return (int)(ScaledHeight);
         }
         public int GetTotalFrames()
         {
@@ -71,10 +69,7 @@ namespace sprint0.AnimatedSpriteFactory
             CurrentFrame = 0;
             active = true;
         }
-        public bool GetAnimationComplete()
-        {
-            return animationComplete;
-        }
+
         public void Update()
         {
 
