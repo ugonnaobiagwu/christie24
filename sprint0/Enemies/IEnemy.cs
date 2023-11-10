@@ -13,6 +13,9 @@ namespace sprint0.Enemies
         public void EnemyDown();
         public void EnemyLeft();
         public void EnemyRight();
+        public void ChangeEnemyY(int change);
+
+        public void ChangeEnemyX(int change);
 
         public int GetHealth();
     }

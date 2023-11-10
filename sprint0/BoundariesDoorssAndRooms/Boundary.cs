@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace sprint0.Boundaries___Doors
+namespace sprint0.BoundariesDoorsAndRooms
 {
     internal class Boundary : IGameObject
     {

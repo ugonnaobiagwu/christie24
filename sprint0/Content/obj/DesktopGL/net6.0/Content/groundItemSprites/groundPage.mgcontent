@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/groundItemSprites/groundPage.png</SourceFile>
-  <SourceTime>2023-10-16T15:34:36.0018793-04:00</SourceTime>
-  <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/Content/groundItemSprites/groundPage.xnb</DestFile>
-  <DestTime>2023-11-06T15:51:17.9673109-05:00</DestTime>
+  <SourceFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/groundItemSprites/groundPage.png</SourceFile>
+  <SourceTime>2023-10-30T21:20:49.31535-04:00</SourceTime>
+  <DestFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/bin/DesktopGL/Content/groundItemSprites/groundPage.xnb</DestFile>
+  <DestTime>2023-11-10T01:57:11.6138328-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

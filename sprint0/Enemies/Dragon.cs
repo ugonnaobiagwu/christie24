@@ -213,5 +213,15 @@ namespace sprint0.Enemies
                 fireball.Use(this);
             }
         }
+
+        public void ChangeEnemyY(int change)
+        {
+            xPos += change;
+        }
+
+        public void ChangeEnemyX(int change)
+        {
+            yPos += change;
+        }
     }
 }

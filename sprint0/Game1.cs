@@ -6,12 +6,15 @@ using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 using sprint0.Controllers;
 using sprint0.Blocks;
-using sprint0.Link;
+using sprint0.LinkObj;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+using sprint0.Collision;
+using sprint0.LevelLoading;
+using System.Xml;
 
 namespace sprint0
 {
@@ -46,7 +49,7 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Block 
-            textureBlock = Content.Load<Texture2D>("block_image");
+            textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
             blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
             blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1);
@@ -60,7 +63,7 @@ namespace sprint0
             blockFactory.createAnimation("BlueFishBlock", new int[] { 2 }, new int[] { 1 }, 1);
             blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
 
-            block = new DungeonBlueBlock(300, 200, 1, blockFactory);
+            block = new DungeonPyramidBlock(0, 0, 1, blockFactory);
 
             // Linky
             //Link = new Link()
@@ -71,18 +74,19 @@ namespace sprint0
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
             SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
-            LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2);
-            LinkFactory.createAnimation("ItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("ItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
-            /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
+            LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
+            LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenRight", new int[] { 0, 1 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+           
+            LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
 
-            LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
+            LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
+            LinkObj.SetRoomId(0);
 
             /*ENEMY TESTS: TO BE DELETED*/
             Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
@@ -124,6 +128,10 @@ namespace sprint0
 
         protected override void LoadContent()
         {
+            XmlDocument xmlFile = new XmlDocument();
+            xmlFile.Load("Content/RoomTestRoom.xml");
+            XmlParser.ParseFile(xmlFile, Content, this);
+
             // GROUND ITEM SYSTEM STUFF
             // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
             Texture2D groundBoomerangTexture = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
@@ -244,8 +252,28 @@ namespace sprint0
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SLASH, SWORD_SLASH);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SWORD_SHOOT, SWORD_SHOOT);
             Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.SHIELD, SHIELD);
-
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH, ARROW_BOOMERANG_LAUNCH, true);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ARROW_LAUNCH, ARROW_BOOMERANG_LAUNCH, false);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_DROP, BOMB_DROP);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE, BOMB_EXPLODE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_HIT, ENEMY_HIT);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.ENEMY_DIE, ENEMY_DIE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE, LINK_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_DEATH, LINK_DEATH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_LOW_HEALTH, LINK_LOW_HEALTH);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.FANFARE, FANFARE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET, LINK_ITEM_GET);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY, GET_GROUND_HEART_KEY);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE, GET_GROUND_RUPEE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.REFILL, REFILL);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.TEXT_APPEAR, TEXT_APPEAR);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.GROUND_KEY_APPEAR, GROUND_KEY_APPEAR);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.DOOR_UNLOCK, DOOR_UNLOCK);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_AQUAMENTUS_SCREAM, BOSS_AQUAMENTUS_SCREAM);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE, BOSS_TAKE_DAMAGE);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.STAIRS, STAIRS);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED, PUZZLE_SOLVED);
+            Ocarina.LoadSoundEffect(Ocarina.SoundEffects.BLAZE, BLAZE);
 
             //Songs
             SoundEffect TITLE = Content.Load<SoundEffect>("songs/TITLE");
@@ -260,8 +288,16 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
 
+            WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
 
+            Globals.GameObjectManager.addObject(LinkObj);
+            //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
+            Globals.GameObjectManager.addObject(block);
+            //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
+            //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
 
             // TODO: use this.Content to load your game content here
 
@@ -278,16 +314,20 @@ namespace sprint0
 
             KeyboardCont.Update();
             Globals.LinkItemSystem.Update();
-
+            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
+            foreach (IGameObject updateable in Updateables)
+            {
+                updateable.Update();
+            }
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
-
+            Globals.Update(gameTime);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
             BokoblinObj.Update();
             DragonObj.Update();
-
+            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             base.Update(gameTime);
         }
 
@@ -296,15 +336,23 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Draw(spriteBatch);
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach(IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
+            if (LinkObj != null)
+            {
+                LinkObj.Draw(spriteBatch);
+            }
+            block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
             BokoblinObj.Draw(spriteBatch);
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
-            block.Draw(spriteBatch);
+            LinkObj.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }
