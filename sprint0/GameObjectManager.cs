@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using sprint0.Commands;
 using sprint0.Blocks;
 using sprint0.Items;
-using sprint0.Link;
+using sprint0.LinkObj;
 using sprint0;
 using System.ComponentModel.Design;
 

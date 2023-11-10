@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
 
 namespace sprint0.Items
 {
@@ -17,7 +18,6 @@ namespace sprint0.Items
         //direction stuff
         private int itemRoomID;
         private SpriteFactory explosionSpriteFactory;
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private SpriteFactory itemSpriteFactory; 
@@ -86,7 +86,7 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
@@ -100,19 +100,19 @@ namespace sprint0.Items
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
+                    case Direction.Right:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;
-                    case (int)Direction.UP:
+                    case Direction.Up:
                         this.itemYPos = linkYPos - 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.DOWN:
+                    case Direction.Down:
                         this.itemYPos = linkYPos + 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.LEFT:
+                    case Direction.Left:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;

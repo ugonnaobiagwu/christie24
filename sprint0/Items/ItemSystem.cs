@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
 using sprint0.LinkSword;
+using static sprint0.Globals;
 
 namespace sprint0
 {
@@ -171,7 +172,7 @@ namespace sprint0
             this.currentItem = new Sword(swordFactory);
         }
 
-        public void UseCurrentItem(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             
             if (this.currentItem != null)

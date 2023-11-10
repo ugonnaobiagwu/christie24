@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
 
 namespace sprint0.LinkSword
 {
@@ -36,14 +37,12 @@ namespace sprint0.LinkSword
         private int totalSwordTicks = 25;
         private int currentSwordTicks;
 
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
-
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
          */
         public Sword(SpriteFactory factory)
 		{
-            currentItemDirection = Direction.DOWN;
+            currentItemDirection = Direction.Down;
             thisStateMachine = new ItemStateMachine();
             rotation = 0;
             itemSpriteFactory = factory;
@@ -61,16 +60,16 @@ namespace sprint0.LinkSword
                 {
                     // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                     // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
-                    case Direction.LEFT:
+                    case Direction.Left:
                         currentItemSprite.Draw(spritebatch, xPos - linkWidth, yPos - (linkHeight / 2), rotation);
                         break;
-                    case Direction.RIGHT:
+                    case Direction.Right:
                         currentItemSprite.Draw(spritebatch, xPos + linkWidth, yPos - (linkHeight / 2), rotation);
                         break;
-                    case Direction.DOWN:
+                    case Direction.Down:
                         currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 6), yPos, rotation);
                         break;
-                    case Direction.UP:
+                    case Direction.Up:
                         currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos - linkHeight, rotation);
                         break;
                 }
@@ -87,7 +86,7 @@ namespace sprint0.LinkSword
            return false;
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             currentSwordTicks = 0;
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.SWORD_SLASH);
@@ -99,19 +98,19 @@ namespace sprint0.LinkSword
             this.currentItemDirection = (Direction)linkDirection;
             switch (currentItemDirection)
             {
-                case Direction.LEFT:
+                case Direction.Left:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
                     rotation = 0;
                     break;
-                case Direction.RIGHT:
+                case Direction.Right:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
                     rotation = 0;
                     break;
-                case Direction.UP:
+                case Direction.Up:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
                     rotation = (float)-67.5;
                     break;
-                case Direction.DOWN:
+                case Direction.Down:
                     currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
                     rotation = (float)67.5;
                     break;
@@ -146,13 +145,13 @@ namespace sprint0.LinkSword
             {
                 // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                 // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
-                case Direction.LEFT:
+                case Direction.Left:
                     return xPos - linkWidth;
-                case Direction.RIGHT:
+                case Direction.Right:
                     return xPos + linkWidth;
-                case Direction.DOWN:
+                case Direction.Down:
                     return xPos + (linkWidth / 2);
-                case Direction.UP:
+                case Direction.Up:
                     return xPos + (linkWidth / 2);
                 default:
                     return xPos;
@@ -165,13 +164,13 @@ namespace sprint0.LinkSword
             {
                 // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                 // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
-                case Direction.LEFT:
+                case Direction.Left:
                     return yPos - (linkHeight / 2);
-                case Direction.RIGHT:
+                case Direction.Right:
                     return yPos - (linkHeight / 2);
-                case Direction.DOWN:
+                case Direction.Down:
                     return yPos + linkHeight;
-                case Direction.UP:
+                case Direction.Up:
                     return yPos - linkHeight;
                 default:
                     return yPos;

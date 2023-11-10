@@ -6,7 +6,7 @@ using sprint0.Items.groundItems;
 using System.Runtime.CompilerServices;
 using sprint0.Controllers;
 using sprint0.Blocks;
-using sprint0.Link;
+using sprint0.LinkObj;
 using System.Collections.Generic;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
@@ -72,18 +72,19 @@ namespace sprint0
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
             SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
-            LinkFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2);
-            LinkFactory.createAnimation("ItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2);
-            LinkFactory.createAnimation("ItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2);
-            LinkFactory.createAnimation("ItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2);
-            LinkFactory.createAnimation("ItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2);
-            /*NOTE: This is to attempt and get a square outside of the sprite sheet so it is blank, may need tweaked if it can't find squares off of the sprite sheet*/
-            LinkFactory.createAnimation("Damaged", new int[] { 03}, new int[] { 3 }, 1);
+            LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
+            LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenRight", new int[] { 0, 1 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
+            LinkFactory.createAnimation("GreenItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
+           
+            LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
 
-            LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
+            LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
+            LinkObj.SetRoomId(0);
 
             /*ENEMY TESTS: TO BE DELETED*/
             Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
