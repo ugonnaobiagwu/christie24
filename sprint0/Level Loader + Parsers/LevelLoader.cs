@@ -71,7 +71,7 @@ namespace sprint0.Level_Loading___Parsers
             /*CODE TO ASSIGN ROOMID*/
             /*CODE TO SEND TO GAME OBJECT MANAGER*/
         }
-       public static void CreateEnemy(int x, int y, int roomId, string enemyType, SpriteFactory spriteFactory)
+       public static void CreateEnemy(int x, int y, int roomId, string enemyType, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             IGameObject Enemy;
             /*NOTE: Make into typeof() later IF you can cast from Object to IGameObject, if you can't it is impossible to use many of the object's methods needed by the GOM*/
@@ -80,10 +80,10 @@ namespace sprint0.Level_Loading___Parsers
             switch (enemyType)
             {
                 case "Bokoblin":
-                    Enemy = new Bokoblin(x, y, roomId, spriteFactory);
+                    Enemy = new Bokoblin(x, y, roomId, spriteFactory, projectileFactory);
                     break;
                 case "Oktorok":
-                    Enemy = new Oktorok(x, y, roomId, spriteFactory);
+                    Enemy = new Oktorok(x, y, roomId, spriteFactory, projectileFactory);
                     break;
                 case "Skeleton":
                     Enemy = new Skeleton(x, y, roomId, spriteFactory);

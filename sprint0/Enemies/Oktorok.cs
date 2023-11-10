@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
@@ -29,7 +30,7 @@ namespace sprint0.Enemies
         private int[] SpriteSheetFrames;
         private OktorokBlaze Projectile;
 
-        public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Subject to Change */
             Health = 3;
@@ -39,7 +40,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             OktorokFactory = spriteFactory;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
-            Projectile = new OktorokBlaze(spriteFactory);
+            Projectile = new OktorokBlaze(projectileFactory);
 
             /* Temporary Values */
             Height = 1;
@@ -49,28 +50,36 @@ namespace sprint0.Enemies
         }
 
         /* ---Movement--- */
-        public void OktorokUp()
+        public void EnemyUp()
         {
             OktorokDirection = Direction.Up;
+            OktoSprite = OktorokFactory.getAnimatedSprite("Up");
             yPos++;
+            OktoSprite.Update();
         }
 
-        public void OktorokDown()
+        public void EnemyDown()
         {
             OktorokDirection = Direction.Down;
+            OktoSprite = OktorokFactory.getAnimatedSprite("Down");
             yPos--;
+            OktoSprite.Update();
         }
 
-        public void OktorokLeft()
+        public void EnemyLeft()
         {
             OktorokDirection = Direction.Left;
+            OktoSprite = OktorokFactory.getAnimatedSprite("Left");
             xPos--;
+            OktoSprite.Update();
         }
 
-        public void OktorokRight()
+        public void EnemyRight()
         {
             OktorokDirection = Direction.Right;
+            OktoSprite = OktorokFactory.getAnimatedSprite("Right");
             xPos++;
+            OktoSprite.Update();
         }
 
         /* ---Get Methods--- */
@@ -163,11 +172,16 @@ namespace sprint0.Enemies
         public void Draw(SpriteBatch spriteBatch)
         {
             OktoSprite.Draw(spriteBatch, xPos, yPos);
+            if (Projectile.ThisStateMachine().isItemInUse())
+            {
+                Projectile.Draw(spriteBatch);
+            }
         }
 
         public void Update()
         {
             OktoSprite.Update();
+            Projectile.Update();
 
             Random rnd = new Random();
             int direction = rnd.Next(4);
@@ -175,16 +189,16 @@ namespace sprint0.Enemies
             switch (direction) 
             {
                 case 0:
-                    OktorokUp();
+                    EnemyUp();
                     break;
                 case 1:
-                    OktorokLeft();
+                    EnemyLeft();
                     break;
                 case 2:
-                    OktorokDown();
+                    EnemyDown();
                     break;
                 case 3:
-                    OktorokRight();
+                    EnemyRight();
                     break;
             }
 
