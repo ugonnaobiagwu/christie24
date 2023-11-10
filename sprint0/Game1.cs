@@ -308,7 +308,11 @@ namespace sprint0
 
             KeyboardCont.Update();
             Globals.LinkItemSystem.Update();
-
+            List<IGameObject> Updateables = Globals.GameObjectManager.GetList("Updateables");
+            foreach (IGameObject updateable in Updateables)
+            {
+                updateable.Update();
+            }
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
             Globals.Update(gameTime);
@@ -326,6 +330,15 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
+            List<IGameObject> Drawables = Globals.GameObjectManager.GetList("Drawables");
+            foreach(IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
+            if (LinkObj != null)
+            {
+                LinkObj.Draw(spriteBatch);
+            }
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
             BokoblinObj.Draw(spriteBatch);
