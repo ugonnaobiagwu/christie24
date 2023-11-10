@@ -43,7 +43,6 @@ namespace sprint0.AnimatedSpriteFactory
         {
 
             int width = Texture.Width / Columns;
-
             return (int)(scaleWidth * width);
         }
 

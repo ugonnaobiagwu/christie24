@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using sprint0.Link;
+using sprint0.LinkObj;
 using sprint0.Items;
 using sprint0.Items.groundItems;
 using sprint0.Blocks;
@@ -151,82 +151,86 @@ namespace sprint0.Collision
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
 
             // BOUNDARIES
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Boundaries___Doors.Boundary", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Boundaries___Doors.Door", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Boundaries___Doors.", MoveSkeletonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Boundaries___Doors.Boundary", MoveBokoblinDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Boundaries___Doors.Boundary", MoveOktorokDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Boundaries___Doors.Boundary", MoveDragonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Boundaries___Doors.Boundary", BowImpactDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Boundaries___Doors.Boundary", BetterBowImpactDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Boundaries___Doors.Boundary", BoomerangImpactDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Boundaries___Doors.Boundary", BetterBoomerangImpactDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Boundaries___Doors.Boundary", BlazeImpactDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Boundaries___Doors.Boundary", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.BoundariesDoorsAndRooms.Boundary", BowImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBowImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BoomerangImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBoomerangImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.BoundariesDoorsAndRooms.Boundary", BlazeImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", null, null });
 
             // BLOCKS
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.DungeonFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonFishBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonFishBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonFishBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonFishBlock", MoveDragonDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.DungeonPyramidBlock", MoveLinkDelegate, MoveDungeonPyramidBlockDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonPyramidBlock", MoveLinkDelegate, MoveDungeonPyramidBlockDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonPyramidBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonPyramidBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonPyramidBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonPyramidBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.WaterBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.WaterBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.WaterBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.WaterBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.WaterBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.WaterBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.RedPyramidBlock", null, MoveDungeonPyramidBlockDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.RedPyramidBlock", null, MoveDungeonPyramidBlockDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.RedPyramidBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.RedPyramidBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.RedPyramidBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.RedPyramidBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.GrassBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.GrassBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.GrassBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.GrassBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.GrassBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.GrassBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.BlackBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlackBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlackBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlackBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlackBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlackBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.BlueFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueFishBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueFishBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueFishBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueFishBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueFishBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Blocks.BlueDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueDragonBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueDragonBlock", MoveOktorokDelegate, null });
@@ -235,40 +239,40 @@ namespace sprint0.Collision
 
             // LINK ITEMS + GROUND ITEMS
             //Grounds
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundBigHeartPickUpDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundBlaze", null, GroundBlazeSteppedOnDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundBoomerang", null, GroundBoomerangPickUpDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundCompassPickUpDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundKey", null, GroundKeyPickUpDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundPage", null, GroundPagePickUpDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundTriforcePickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundBigHeartPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBlaze", null, GroundBlazeSteppedOnDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBoomerang", null, GroundBoomerangPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundCompassPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundKey", null, GroundKeyPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundPagePickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundTriforcePickUpDelegate });
 
             //LinkItems
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Bokoblin", BowImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Oktorok", BowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Skeleton", BowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Dragon", BowImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Bokoblin", BetterBowImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Skeleton", BoomerangImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Dragon", BoomerangImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Bokoblin", BetterBoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Oktorok", BetterBoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Skeleton", BetterBoomerangImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Dragon", BetterBoomerangImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Bokoblin", BlazeImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Oktorok", BlazeImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Skeleton", BlazeImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
@@ -278,7 +282,7 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Oktorok", BombImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Skeleton", BombImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Dragon", BombImpactDelegate, MoveDragonAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Link.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.LinkObj.Link", null, null });
 
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Bokoblin", null, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Oktorok", null, MoveOktorokAndTakeDamageDelegate });
@@ -287,14 +291,14 @@ namespace sprint0.Collision
 
 
             // COMBAT ON LINK COLLISIONS
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Link.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
 
 
 
@@ -345,7 +349,7 @@ namespace sprint0.Collision
         private void MoveLink(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             // I need a better way to change Link's stuff without making such a mess.
-            Link.Link link = (Link.Link)obj;
+            LinkObj.Link link = (LinkObj.Link)obj;
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
@@ -365,7 +369,7 @@ namespace sprint0.Collision
 
         private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
-            Link.Link link = (Link.Link)obj;
+            LinkObj.Link link = (LinkObj.Link)obj;
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:

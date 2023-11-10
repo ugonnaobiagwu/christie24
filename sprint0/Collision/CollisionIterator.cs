@@ -72,29 +72,29 @@ namespace sprint0.Collision
             {
                 if (obj1.isDynamic())
                 {
-                    //System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
+                    System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
                     foreach (IGameObject obj2 in collidablesInQuadrant)
                     {
                         if (obj2 != obj1)
                         {
-                            System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION DETECTOR TESTS COLLISION BETWEEN  " + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                            //System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION DETECTOR TESTS COLLISION BETWEEN  " + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
                             //System.Diagnostics.Debug.WriteLine("OBJ2 WIDTH AND HEIGHT  " + obj2.width() + " " + obj2.height());
                             CollisionDetector.CollisionType thisCollisionType = CollisionDetector.CollisionCheck(obj1, obj2);
                             if (thisCollisionType != CollisionDetector.CollisionType.NONE)
                             {
-                                System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION TYPE FOUND:  " + thisCollisionType.ToString());
+                                //System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION TYPE FOUND:  " + thisCollisionType.ToString());
                                 bool foundCollision = handler.HandleCollision(obj1, obj2, thisCollisionType);
                                 if (!foundCollision)
                                 {
                                     foundCollision = handler.HandleCollision(obj2, obj1, thisCollisionType); // BA Check.
                                     if (!foundCollision)
                                     {
-                                        System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION HANDLER COULD NOT FIND HANDLER FOR COMBINATION OF OBJECT:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                                        //System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION HANDLER COULD NOT FIND HANDLER FOR COMBINATION OF OBJECT:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
                                     }
                                 }
                                 else
                                 {
-                                    System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION HAS BEEN HANDLED BETWEEN:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                                    //System.Diagnostics.Debug.WriteLine("DEBUG: COLLISION HAS BEEN HANDLED BETWEEN:" + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
                                 }
                             }
                         }

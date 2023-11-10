@@ -13,6 +13,8 @@ using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
 using sprint0.Collision;
+using sprint0.LevelLoading;
+using System.Xml;
 
 namespace sprint0
 {
@@ -47,7 +49,7 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Block 
-            textureBlock = Content.Load<Texture2D>("block_image");
+            textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
             blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
             blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1);
@@ -126,6 +128,10 @@ namespace sprint0
 
         protected override void LoadContent()
         {
+            XmlDocument xmlFile = new XmlDocument();
+            xmlFile.Load("Content/RoomTestRoom.xml");
+            XmlParser.ParseFile(xmlFile, Content, this);
+
             // GROUND ITEM SYSTEM STUFF
             // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
             Texture2D groundBoomerangTexture = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
@@ -286,12 +292,12 @@ namespace sprint0
 
 
             Globals.GameObjectManager.addObject(LinkObj);
-            Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
-            //Globals.GameObjectManager.addObject(block);
-            Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
-            Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
-            Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
-            Globals.GameObjectManager.addObject((IGameObject)DragonObj);
+            //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
+            Globals.GameObjectManager.addObject(block);
+            //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
+            //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
 
             // TODO: use this.Content to load your game content here
 
@@ -308,7 +314,7 @@ namespace sprint0
 
             KeyboardCont.Update();
             Globals.LinkItemSystem.Update();
-            List<IGameObject> Updateables = Globals.GameObjectManager.GetList("Updateables");
+            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
             foreach (IGameObject updateable in Updateables)
             {
                 updateable.Update();
@@ -330,7 +336,7 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
             spriteBatch.Begin();
-            List<IGameObject> Drawables = Globals.GameObjectManager.GetList("Drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach(IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
@@ -339,13 +345,13 @@ namespace sprint0
             {
                 LinkObj.Draw(spriteBatch);
             }
+            block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
             BokoblinObj.Draw(spriteBatch);
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
-            block.Draw(spriteBatch);
             LinkObj.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();

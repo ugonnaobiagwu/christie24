@@ -27,8 +27,8 @@ namespace sprint0.LinkObj
         private bool IsDynamic = true;
         SpriteFactory LinkSpriteFactory;
         private int HealthVal { get; set; }
-        private int XVal { get; set; }
-        private int YVal { get; set; }
+        public int XVal { get; set; }
+        public int YVal { get; set; }
         private int RoomId;
         public enum State { UseItem, Default, Dead }
         Direction LinkDirection = Direction.Down;
