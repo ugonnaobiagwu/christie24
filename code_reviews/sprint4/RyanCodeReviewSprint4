@@ -1,0 +1,20 @@
+Readability:
+Code Review Author: Ryan Greene
+Date: 11/10/2023
+Sprint 4
+Name of File: StateMachine.cs
+C Sharp Author: Matthew Dannery
+Time Taken: 5 Minutes
+Notes: A lot of the functions are kept simple and for one purpose, which is good. The main issue with readability is the strange variation in indentation. 
+There appears to be little reason why some things are formatted the way they are.  The use of comments does a long way in helping understandability.
+
+Quality:
+Code Review Author: Ryan Greene
+Date: 11/10/2023
+Sprint 4
+Name of File: PlayingState.cs
+C Sharp Author: Matthew Dannery
+Notes: This file is about as simple as it needs to be. There is no unnecessary methods or methods that handle too many situations. One issue I could see is the various Update() methods.
+I may be misunderstanding their function, however I assume many could be combined into single functions or handled from a universal source.
+Recommendation: You could create a list of delegates that holds a string and a method such that, when you need to activate a specific entity, you get it from the list and call it. 
+This would just condesne a few functions into one and would make it a little more maintainable since all of the action comes from one source.

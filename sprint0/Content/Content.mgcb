@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+
+#begin background_sheet.png
+
 #begin Debug.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -45,6 +48,7 @@
 /build:Dungeon1BlockSpriteSheet.png
 
 #begin Dungeon1Boundaries.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -54,9 +58,13 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+/build:background_sheet.png
+
 /build:Dungeon1Boundaries.png
 
 #begin Dungeon1Doors.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -447,6 +455,14 @@
 /processorParam:TextureFormat=Color
 /build:groundItemSprites/groundTriforce.png
 
+
+#begin hudFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:hudFont.spritefont
+
 #begin legendofzelda_bosses_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -458,6 +474,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:legendofzelda_bosses_sheet.png
+
 
 #begin Link.png
 /importer:TextureImporter
@@ -471,7 +488,11 @@
 /processorParam:TextureFormat=Color
 /build:Link.png
 
+
+#begin linkLocator.png
+
 #begin LinkSpriteSheet.png
+
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -481,7 +502,11 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+
+/build:linkLocator.png
+
 /build:LinkSpriteSheet.png
+
 
 #begin linkSword.png
 /importer:TextureImporter
@@ -495,6 +520,18 @@
 /processorParam:TextureFormat=Color
 /build:linkSword.png
 
+#begin lives.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:lives.png
+
 #begin luigiSpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -507,8 +544,22 @@
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
 
+
+#begin miniMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:miniMap.png
+
 #begin RoomTestRoom.xml
 /copy:RoomTestRoom.xml
+
 
 #begin songs/DUNGEON.mp3
 /importer:Mp3Importer
