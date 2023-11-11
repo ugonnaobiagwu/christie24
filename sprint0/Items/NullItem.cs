@@ -56,7 +56,7 @@ namespace sprint0.Items
 
         public int yPosition()
         {
-            return items;
+            return itemYPos;
         }
 
         public int width()
