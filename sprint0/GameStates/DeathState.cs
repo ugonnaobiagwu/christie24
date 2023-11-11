@@ -14,13 +14,14 @@ using sprint0.AnimatedSpriteFactory;
 
 	public class DeathState : StateManager, IState
 	{
+    IState PlayingState;   
 
-    IState PlayingState;
+    IState state;
 
-    private IState state;
 
-    ILink player;
+    bool PauseCommand;
     List<IGameObject> CurrentUpdatables;
+
     public DeathState(IState playingState)
 		{
         //Define transition states
@@ -35,6 +36,7 @@ using sprint0.AnimatedSpriteFactory;
     private new void Update()
     {
         //Add logic for transition into play state here - based on commands, key press?
+        //Pause command that gets activated/deactivated here
     }
         //Takes a list of all enemies and updates their 
         public new void EnemyUpdate()

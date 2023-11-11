@@ -14,6 +14,10 @@ using sprint0.AnimatedSpriteFactory;
 
 public class PlayingState:  StateManager, IState
 	{
+    IState InventoryState;
+    IState DeathState;
+    IState PauseState;
+    IState ScrollState;
 
     IState state;
 
@@ -21,10 +25,10 @@ public class PlayingState:  StateManager, IState
     bool PauseCommand;
     List<IGameObject> CurrentUpdatables;
 
-    public PlayingState(ILink link)
+    public PlayingState()
     {
         
-        player = link;
+        
         //Set conditions for state
         this.state.EnemyUpdate();
         this.state.GameResettable();
@@ -39,12 +43,16 @@ public class PlayingState:  StateManager, IState
         //Code for state transitons => Death, inventory, scroll
         if (player.GetHealth() <= 0)
         {
-            state.StateTransition("Dead");
+            //state.StateTransition("Dead");
+            currentState = GameState.Death;
+            state = DeathState;
         }
         else if (PauseCommand) {
-            state.StateTransition("Inventory");
+            //state.StateTransition("Inventory");
+            currentState = GameState.Pause;
+            state = InventoryState;
         } //inventory transition check
-        else if () { } //scroll transition check
+       // else if () { } //scroll transition check
     }
     //Method to update pause bool based on commands
     public void UpdatePause()
