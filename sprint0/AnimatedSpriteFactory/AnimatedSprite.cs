@@ -1,28 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System;
+using sprint0;
 
 namespace sprint0.AnimatedSpriteFactory
 {
     public class AnimatedSprite : ISprite
     {
-
         public Texture2D Texture;
         public Vector2 position;
         public int Rows;
         public int Columns;
-        private int Width, Height;
+        private Vector2 scaleVector;
+        private float scaleWidth, scaleHeight;
         private int CurrentFrame;
         private int TotalFrames;
         private float frameTime;
         private float frameTimeLeft;
         private bool active = true;
         private List<Rectangle> SourceRectangles;
-        //Add methods to get width and height
-
-
-        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, int width, int height)
+        private bool animationComplete;
+        public int ScaledSpriteWidth, ScaledSpriteHeight;
+        public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, float width, float height)
         {
             Texture = texture;
             Rows = rows;
@@ -32,17 +32,26 @@ namespace sprint0.AnimatedSpriteFactory
             SourceRectangles = sourceRectangles;
             frameTime = secondsPerFrame;
             frameTimeLeft = secondsPerFrame;
-            position = new Vector2(0,0);
-            Width = width;
-            Height = height;
+            position = new Vector2(0, 0);
+            scaleWidth = width;
+            scaleHeight = height;
+            scaleVector.X = width;
+            scaleVector.Y = height;
+            animationComplete = false;
+
+
+           ScaledSpriteWidth =(int)( (Texture.Width / Columns) * width);
+            ScaledSpriteHeight = (int)((Texture.Height / Rows) * height);
         }
         public int GetWidth()
         {
-            return Width;
+
+            return ScaledSpriteWidth;
         }
+
         public int GetHeight()
         {
-            return Height;
+            return ScaledSpriteHeight;
         }
         public int GetTotalFrames()
         {
@@ -56,36 +65,39 @@ namespace sprint0.AnimatedSpriteFactory
         {
             active = false;
         }
-        public void Start()
-        {
-            active = true;
-        }
         public void Reset()
         {
             CurrentFrame = 0;
             active = true;
         }
+        public bool GetAnimationComplete()
+        {
+            return animationComplete;
+        }
         public void Update()
         {
-            //CurrentFrame = (int)GameTime.ElapsedGameTime.TotalSeconds % TotalFrames;
+
             if (!active) return;
-            
             frameTimeLeft -= Globals.TotalSeconds;
             if (frameTimeLeft <= 0)
             {
                 frameTimeLeft += frameTime;
                 CurrentFrame = (CurrentFrame + 1) % TotalFrames;
-
-                Console.WriteLine("sprite updated");
             }
-
+            if ((CurrentFrame + 1) == TotalFrames)
+            {
+                animationComplete = true;
+            }
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void Draw(SpriteBatch spriteBatch, int x, int y, float rotation)
         {
             //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
-
+            Vector2 origin = new Vector2();
+            origin.X = width - (width / 2);
+            origin.Y = height - (height / 2);
+            SpriteEffects spriteEffect = SpriteEffects.None;
             position.X = x;
             position.Y = y;
 
@@ -97,38 +109,18 @@ namespace sprint0.AnimatedSpriteFactory
             Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
 
 
-            spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White);
+            spriteBatch.Draw(Texture, position, SourceRectangles[CurrentFrame], Color.White, rotation, origin, scaleVector, spriteEffect, 0.0f);
+
 
         }
-        public void Draw(SpriteBatch spriteBatch, int x, int y, float rotation)
+        public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
-            //Sets length of each source rectangle relative to sprite sheet
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            Vector2 origin = new Vector2();
-            origin.X = width - (width/2);
-            origin.Y = height - (height / 2);
-            SpriteEffects spriteEffect = SpriteEffects.None;
             position.X = x;
             position.Y = y;
-
-            //Old code for finding rectangle on sprite sheet
-            //int row = CurrentFrame / Columns;
-            //int column = (CurrentFrame % Columns);
-            //Rectangle sheetLocation = new Rectangle(width * column, height * row, width, height);
-
-            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y,width ,height);
-
-
-            spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White, rotation, origin,spriteEffect , 0f);
-
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            //Sets length of each source rectangle relative to sprite sheet
             int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            spriteBatch.Draw(Texture, position, SourceRectangles[CurrentFrame], Color.White);
+            int height = Texture.Height / Columns;
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            spriteBatch.Draw(Texture, destinationRectangle, SourceRectangles[CurrentFrame], Color.White);
         }
     }
 }

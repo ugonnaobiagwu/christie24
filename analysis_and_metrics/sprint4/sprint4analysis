@@ -1,0 +1,4 @@
+With more code in our project than ever we were able to run a more comprehensive Code Analysis and Metrics.
+
+As of writing our Maintainability Index is in the green, but we do have a lot of instances of Cyclomatic Complexity (over 1500), and some Class coupling as well (this may be moreso due to the nature and architecture of some our features, but its worth noting regardless)
+Per usual, we have a large number of warnings and messagers. Lots of unused and hidden members as well. There are plenty simplifications that can be made to improve code quality as well. 

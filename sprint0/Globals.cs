@@ -10,7 +10,9 @@ namespace sprint0
 		{
 			TotalSeconds = (float)timer.ElapsedGameTime.TotalSeconds;
 		}
-        public static IItemSystem LinkItemSystem =  new ItemSystem();
+        public static ItemSystem LinkItemSystem =  new ItemSystem();
+		public static GameObjectManager GameObjectManager = new GameObjectManager();
+		public enum Direction { Left, Right, Up, Down }
     }
 }
 

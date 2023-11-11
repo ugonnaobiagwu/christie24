@@ -1,12 +1,16 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using sprint0.AnimatedSpriteFactory;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static sprint0.Globals;
+using sprint0.LinkObj;
 
-namespace sprint0.Link
+namespace sprint0.LinkObj
 {
+
     public interface ILink : IGameObject
     {
         public void LinkUp();
@@ -16,14 +20,12 @@ namespace sprint0.Link
         public void LinkTakeDamage();
         public void LinkUseItem();
         public String GetState();
-        public int GetDirection();
+        public Direction GetDirection();
         public int GetHealth();
-        public void Update();
         public void SetLink(ILink link);
-        public void SetState(String state);
+        public void SetState(Link.State newState);
         public void SetSprite(ISprite newSprite);
-        public void Draw(SpriteBatch spriteBatch);
 
 
-    }
+    } 
 }

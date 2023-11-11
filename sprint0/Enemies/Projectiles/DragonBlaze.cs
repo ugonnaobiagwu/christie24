@@ -54,6 +54,7 @@ namespace sprint0.Items
                 // has the sprite reached it's final location?
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)) // sprite just reached its max
                 {
+                    thisStateMachine.CeaseUse();
                     /*
                     if (fireTicks == maxFireTicks)
                     {
@@ -68,8 +69,8 @@ namespace sprint0.Items
                     switch (ProjectileID) 
                     {
                         case 0:
-                            itemYPos -= spriteVelocity;
-                            itemXPos += spriteVelocity;
+                            itemYPos += spriteVelocity;
+                            itemXPos -= spriteVelocity;
                             break;
                         case 1:
                             itemXPos -= spriteVelocity;
@@ -91,17 +92,17 @@ namespace sprint0.Items
 
         }
 
-        public void Use(IDragon Owner)
+        public void Use(Dragon Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = Owner.xPosition();
                 this.itemYPos = Owner.yPosition();
-                this.itemMaxX = Owner.xPosition() + 50;
-                this.itemMaxY = Owner.yPosition() + 50;
-                this.itemMinX = Owner.xPosition() - 50;
-                this.itemMinY = Owner.yPosition() - 50;
+                this.itemMaxX = Owner.xPosition() + 200;
+                this.itemMaxY = Owner.yPosition() + 200;
+                this.itemMinX = Owner.xPosition() - 200;
+                this.itemMinY = Owner.yPosition() - 200;
                 currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
@@ -117,6 +118,11 @@ namespace sprint0.Items
         public int yPosition()
         {
             return itemYPos;
+        }
+
+        public IItemStateMachine ThisStateMachine()
+        {
+            return thisStateMachine;
         }
 
         public int width()

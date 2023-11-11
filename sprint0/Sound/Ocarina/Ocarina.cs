@@ -20,6 +20,8 @@ namespace sprint0.Sound.Ocarina
             BOSS_AQUAMENTUS_SCREAM, BOSS_TAKE_DAMAGE, STAIRS, PUZZLE_SOLVED,
             BLAZE
         };
+        private static IDictionary<Ocarina.SoundEffects, SoundEffectInstance>
+            InPlaySound = new Dictionary<Ocarina.SoundEffects, SoundEffectInstance>();
         private static IDictionary<SoundEffects, OcarinaEffectData> Library 
             = new Dictionary<SoundEffects, OcarinaEffectData>();
 
@@ -48,6 +50,10 @@ namespace sprint0.Sound.Ocarina
                     effectInstance.IsLooped = true;
                 }
                 effectInstance.Play();
+                if (!InPlaySound.ContainsKey(sfxName))
+                {
+                    InPlaySound.Add(sfxName, effectInstance);
+                }
                 
 
             } else
@@ -56,27 +62,21 @@ namespace sprint0.Sound.Ocarina
             }
 
         }
-        //// Stops the given sound effect on the assumption that it was properly loaded into the system.
-        //// As well as is currently playing. If not, will print error to console.
-        //public static void StopSoundEffect(Ocarina.SoundEffects sfxName)
-        //{
-        //    if (Library.ContainsKey(sfxName))
-        //    {
-        //        OcarinaEffectData effectData = Library[sfxName];
-        //        SoundEffectInstance effectInstance = effectData.sfx.CreateInstance();
-        //        if (effectData.isLoopable)
-        //        {
-        //            effectInstance.IsLooped = true;
-        //        }
-        //        effectInstance.Play();
+        // Stops the given sound effect on the assumption that it was properly loaded into the system.
+        // As well as is currently playing. If not, will print error to console.
+        public static void StopSoundEffect(Ocarina.SoundEffects sfxName)
+        {
+            if (InPlaySound.ContainsKey(sfxName))
+            {
+                SoundEffectInstance effectInstance = InPlaySound[sfxName];
+                effectInstance.Stop();
+                InPlaySound.Remove(sfxName);
+            }
+            else
+            {
+                Console.WriteLine("DEBUG: WINDWAKER_SOUND_SYSTEM: TRACK KILL FAILED: SONG NOT FOUND / WAS NOT BEING PLAYED.");
+            }
 
-
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("DEBUG: OCARINA_SOUND_SYSTEM: TRACK KILL FAILED: EFFECT NOT FOUND / WAS NOT BEING PLAYED.");
-        //    }
-
-        //}
+        }
     }
 }
