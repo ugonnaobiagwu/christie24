@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using sprint0;
-using sprint0.Link;
+using sprint0.LinkObj;
 
 
 public class Camera

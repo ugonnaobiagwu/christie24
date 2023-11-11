@@ -374,7 +374,7 @@ namespace sprint0
             Globals.Update(gameTime);
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-            //Globals.Camera.FollowLink(LinkObj, graphics);
+            Globals.Camera.FollowLink(LinkObj, graphics);
             Console.WriteLine(LinkObj.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
@@ -388,7 +388,7 @@ namespace sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(transformMatrix: camera.Transform);
+            spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
             //HUD draw
             hud.Draw();
             List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");

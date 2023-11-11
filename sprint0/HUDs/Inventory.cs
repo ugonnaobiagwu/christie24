@@ -1,4 +1,4 @@
-﻿using sprint0.Link;
+﻿using sprint0.LinkObj;
 using System;
 using System.Collections.Generic;
 using System.Linq;
