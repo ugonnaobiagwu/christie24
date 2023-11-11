@@ -32,6 +32,9 @@ namespace sprint0
         public Bokoblin BokoblinObj;
         public Dragon DragonObj;
 
+        //Camera
+        public Camera camera;
+
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
@@ -74,6 +77,10 @@ namespace sprint0
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
             SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
+
+            
+            
+            
             LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
             LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
             LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
@@ -121,6 +128,10 @@ namespace sprint0
             DragonFactory.createAnimation("Default", new int[] {0, 1, 2, 3}, new int[] {0, 0, 0, 0}, 4);
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
+
+            // Camera
+            camera = new Camera();
+            camera.FollowLink(LinkObj, graphics);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -322,6 +333,9 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
             Globals.Update(gameTime);
+
+            //Camera
+            camera.FollowLink(LinkObj, graphics);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
@@ -334,8 +348,7 @@ namespace sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //Block Draw
-            spriteBatch.Begin();
+            spriteBatch.Begin(transformMatrix: camera.Transform);
             List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach(IGameObject obj in Drawables)
             {

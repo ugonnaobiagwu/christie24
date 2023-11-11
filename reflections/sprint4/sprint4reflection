@@ -1,0 +1,28 @@
+Sprint 4 Reflection
+
+Created by: 
+Greene, Ugonna Obiagwu, Alex Kim, Madoka Kamishima, Matthew Dannery, Xing Wu
+
+Sprint 3 Catch Up:
+Sprint 4 had the team split between catch up and add beginning work on new features. 
+As of now, the Xml Parsing is functional, with it being able to create objects and send them to the GameObjectManager, 
+which are retrieved and drawn in Game1. With level loading’s structure in place, all that needs to be done is add 
+the rest of the parsers for the remaining game items and finish the final xml room sheet. Enemies have also received progress, 
+with much of their implementation complete. The enemies still need to have their final movement patterns implemented.as well as other 
+minor tweaks. Collision has also seen major improvements, although not fully finalized. 
+
+Sprint 4 Accomplishments: 
+With the level loading being the backbone of our code, it has been difficult to get much of the sprint 4 features tested, 
+although progress has been made. Game states have been written and simply need tested, while smooth scrolling and the inventory system are still in development. 
+Collision has been tested and works but an issue with our SpriteFactory is affecting the performance of the Collision System. With our code finally starting to snowball, 
+these implementations should not take a super long time if the team works efficiently. More of these accomplishments in greater detail can be found in our ReadMe.
+
+Challenges: 
+Since the team has been behind since sprint 3, this sprint has been a challenge for team morale. 
+When something feels as though it is almost working, new difficulties arise. 
+Thankfully, the team has persevered through these moments of disillusionment and is finally seeing results. 
+
+Moving Forward: 
+The team first needs to get the rest of sprint 4 completed as soon as possible. Without that base,
+adding sprint 5 details will be very difficult since most are built off of existing code. 
+The plan for sprint 5 has been reviewed by Kirby and given the green light, giving the team a clear framework of what needs to be done. 
