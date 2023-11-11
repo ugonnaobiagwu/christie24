@@ -12,10 +12,15 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+
+using sprint0.HUDs;
+
+
 using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
 using System;
+
 
 namespace sprint0
 {
@@ -26,6 +31,12 @@ namespace sprint0
         private SpriteBatch spriteBatch;
         public ILink LinkObj;
         Texture2D textureBlock;
+
+        //HUD
+        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
+        SpriteFont font;
+        
+        HUD hud;
 
         /* For Testing Purposes */
         public Skeleton SkeletonObj;
@@ -51,6 +62,34 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //HUD
+            font = Content.Load<SpriteFont>("hudFont");
+            lifeSpriteSheet = Content.Load<Texture2D>("lives");
+            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
+            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
+            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
+
+            //inventory = new Inventory();
+
+            //TEST FOR HUD DELETE LATER!!
+
+            for (int i = 0; i < 3; i++)
+            {
+                Inventory.GainHeart();
+            }
+          
+
+            Inventory.CountRupee();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.GainBomb();
+            Inventory.GainBomb();
+            Inventory.LoseBomb();
+
+            //TEST FOR HUD
+
+            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
@@ -350,6 +389,8 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: camera.Transform);
+            //HUD draw
+            hud.Draw();
             List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach(IGameObject obj in Drawables)
             {
