@@ -1,35 +1,62 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using sprint0;
-using sprint0.LinkObj;
+using sprint0.Link;
+
 
 public class Camera
 {
-    /* The Camera now follows Link 
-	 * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)
-	 */
+    private Vector2 cameraPosition;
+    private GraphicsDeviceManager graphicsDeviceManager;
+    public Matrix Transform { get; private set; }
+    public float getCameraXPos() { return cameraPosition.X; }
 
-    public Matrix Transform { get; set; }
+    public float getCameraYPos() { return cameraPosition.Y; }
+
+    /* The Camera now follows Link 
+     * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)
+     */
     public void FollowLink(ILink link, GraphicsDeviceManager graphics)
     {
+        // Assuming link.xPosition() and link.yPosition() return the center position of Link
+        cameraPosition = new Vector2(-link.xPosition(), -link.yPosition());
+        graphicsDeviceManager = graphics;
+        UpdateTransform(graphicsDeviceManager);
 
-        // just for readibility reasons:
-        int xPosition = -link.xPosition() - (link.width() / 2);
-        int yPosition = -link.yPosition() - (link.height() / 2);
+    }
+
+    private void UpdateTransform(GraphicsDeviceManager graphics)
+    {
         int width = graphics.PreferredBackBufferWidth / 2;
         int height = graphics.PreferredBackBufferHeight / 2;
 
-        var position = Matrix.CreateTranslation(xPosition, yPosition, 0);
-
+        var position = Matrix.CreateTranslation(cameraPosition.X, cameraPosition.Y, 0);
         var offset = Matrix.CreateTranslation(width, height, 0);
 
         Transform = position * offset;
     }
 
+    public void MoveCameraLeft(int units)
+    {
+        cameraPosition.X -= units; // Adjust this value as needed
+        UpdateTransform(graphicsDeviceManager);
+    }
 
-    // implement this
-    public void MoveCameraLeft() { }
-    public void MoveCameraRight() { }
-    public void MoveCameraUp() { }
-    public void MoveCameraDown() { }
+    public void MoveCameraRight(int units)
+    {
+        cameraPosition.X += units; // Adjust this value as needed
+        UpdateTransform(graphicsDeviceManager);
+    }
+
+    public void MoveCameraUp(int units)
+    {
+        cameraPosition.Y -= units; // Adjust this value as needed
+        UpdateTransform(graphicsDeviceManager);
+    }
+
+    public void MoveCameraDown(int units)
+    {
+        cameraPosition.Y += units; // Adjust this value as needed
+        UpdateTransform(graphicsDeviceManager);
+    }
 }

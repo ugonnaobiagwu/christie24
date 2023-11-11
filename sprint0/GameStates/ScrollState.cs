@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace sprint0.GameStates
 {
     public class ScrollState : StateManager, IState
@@ -7,27 +7,23 @@ namespace sprint0.GameStates
         {
         }
 
-        public void ScrollLeft(int currentRoomID, int nextRoomID)
+        public void ScrollLeft()
         {
-            // do logic
             ScrollTransition("scrollLeft");
         }
 
-        public void ScrollRight(int currentRoomID, int nextRoomID)
+        public void ScrollRight()
         {
-            // do logic
             ScrollTransition("scrollRight");
         }
 
-        public void ScrollUp(int currentRoomID, int nextRoomID)
+        public void ScrollUp()
         {
-            // do logic
             ScrollTransition("scrollRight");
         }
 
-        public void ScrollDown(int currentRoomID, int nextRoomID)
+        public void ScrollDown()
         {
-            // do logic
             ScrollTransition("scrollRight");
         }
 
@@ -35,17 +31,18 @@ namespace sprint0.GameStates
         {
             switch (scrollInstruction)
             {
+                // hopefully this works for 16x12 rooms
                 case "scrollLeft":
-                    //logic
+                    Globals.Camera.MoveCameraLeft(16);
                     break;
                 case "scrollRight":
-                    //logic
+                    Globals.Camera.MoveCameraRight(16);
                     break;
                 case "scrollUp":
-                    //logic
+                    Globals.Camera.MoveCameraUp(12);
                     break;
                 case "scrollDown":
-                    //logic
+                    Globals.Camera.MoveCameraDown(12);
                     break;
                 default: break;
             }
