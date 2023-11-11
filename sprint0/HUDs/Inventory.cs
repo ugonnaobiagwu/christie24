@@ -10,7 +10,7 @@ namespace sprint0.HUDs
    internal static class Inventory
     {
 
-        //Checking on global for pause (!pause) or a boolean method to check if this is paused?
+        //Checking on global for pause (!pause) or a boolean method to check if this is paused??
         //ENUM
         public enum ItemTypes
         {

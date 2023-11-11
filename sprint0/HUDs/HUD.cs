@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace sprint0.HUDs
 {
     public class HUD
-    {   //change HUD to static as well?
+    {   //change HUD to static as well??
 
         static Texture2D hudBackground;
         static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB;
