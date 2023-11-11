@@ -1,0 +1,12 @@
+Alex Kim
+Nov 10, 2023
+Sprint 4
+
+Ocarina.cs
+Ugonna Obiagwu
+Time taken to complete: 8 minutes
+
+Notes:
++ Many notes included to explain what each method does
+- Inconsistent spacing between methods, making it difficult to see start and end of methods
+- SoundEffects variable that is created should be separated into lines instead of everything in a row
