@@ -34,7 +34,6 @@ namespace sprint0
 
         //Camera
         public Camera camera;
-        MouseState mouseState;
         
         //Block
         public IBlock block;
@@ -130,8 +129,7 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
-            // Camera
-            MouseState mouseState = Mouse.GetState();
+            // Camera, keep this since I need graphics
             Globals.Camera.FollowLink(LinkObj, graphics);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
@@ -335,22 +333,9 @@ namespace sprint0
             LinkObj.Update();
             Globals.Update(gameTime);
 
-            //Camera
-            MouseState mouseState = Mouse.GetState();
-            int i = 0;
-
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                Globals.Camera.MoveCameraUp(18);
-            }
-            else if (mouseState.RightButton == ButtonState.Pressed)
-            {
-                Globals.Camera.MoveCameraDown(18);
-            }
-            else
-            {   
-                //Globals.Camera.FollowLink(LinkObj, graphics);
-            }
+            //Camera 
+            // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
+            //Globals.Camera.FollowLink(LinkObj, graphics);
 
               
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
