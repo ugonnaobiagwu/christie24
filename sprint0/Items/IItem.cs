@@ -1,14 +1,12 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
+using static sprint0.Globals;
 
 namespace sprint0
 {
-	public interface IItem
+	public interface IItem : IGameObject
 	{
-		public void Draw(SpriteBatch spriteBatch);
-		public void Update();
-		public void Use(int linkDirection, int linkXPos, int linkYPos);
-		
+		public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
 	}
 }
 

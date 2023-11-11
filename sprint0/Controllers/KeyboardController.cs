@@ -23,6 +23,7 @@ namespace sprint0.Controllers
         private ICommand linkEquipBetterBoomerang;
         private ICommand linkEquipBomb;
         private ICommand linkEquipBlaze;
+        private ICommand linkEquipSword;
         private ICommand linkDamaged;
         private ICommand previousBlock;
         private ICommand nextBlock;
@@ -46,26 +47,26 @@ namespace sprint0.Controllers
             previousKeys = new List<Keys>();
 
             // not sure if I should put this in here or registerkeys
-            linkWalkingUp = new WalkUpCommand(Game, Game.LinkObj);
-            linkWalkingLeft = new WalkLeftCommand(Game, Game.LinkObj);
-            linkWalkingDown = new WalkDownCommand(Game, Game.LinkObj);
-            linkWalkingRight = new WalkRightCommand(Game, Game.LinkObj);
+            linkWalkingUp = new WalkUpCommand(Game, Globals.Link);
+            linkWalkingLeft = new WalkLeftCommand(Game, Globals.Link);
+            linkWalkingDown = new WalkDownCommand(Game, Globals.Link);
+            linkWalkingRight = new WalkRightCommand(Game, Globals.Link);
 
-            linkItemUse = new AttackCommand(Game, Game.LinkObj, Game.linkItemSystem);
+            linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
-            linkEquipBow = new EquipBowCommand(Game, Game.linkItemSystem);
-            linkEquipBetterBow = new EquipBetterBowCommand(Game, Game.linkItemSystem);
-            linkEquipBoomerang = new EquipBoomerangCommand(Game, Game.linkItemSystem);
-            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Game.linkItemSystem);
-            linkEquipBomb = new EquipBombCommand(Game, Game.linkItemSystem);
-            linkEquipBlaze = new EquipBlazeCommand(Game, Game.linkItemSystem);
+            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
+            linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
+            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
+            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
+            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
+            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
+            linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
             //linkDamaged = new DamagedCommand(Game);
-            nextBlock = new NextBlockCommand(Game, Game.block);
-            previousBlock = new PreviousBlockCommand(Game, Game.block);
-            previousItem = new PreviousItemCommand(Game, Game.groundItems);
-            nextItem = new NextItemCommand(Game, Game.groundItems);
-            /*previousEnemy = new PreviousEnemyCommand(Game);
-            nextEnemy = new NextEnemyCommand(Game);*/
+            //nextBlock = new NextBlockCommand(Game, Game.block);
+            //previousBlock = new PreviousBlockCommand(Game, Game.block);
+
+            //previousEnemy = new PreviousEnemyCommand(Game);
+            //nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
 
@@ -75,9 +76,6 @@ namespace sprint0.Controllers
         // perhaps pass an array that has all the commands?
         public void registerKeys()
         {
-            // KeyMap[key] = command;
-            // Names of Commands are not permanent
-
             // Movement Controls
             // link moves up for up arrow key, and w key
             KeyMap.Add(Keys.W, linkWalkingUp);
@@ -94,80 +92,47 @@ namespace sprint0.Controllers
 
             // other commands
             KeyMap.Add(Keys.N, linkItemUse);
-            KeyMap.Add(Keys.Z, linkSword);
+            //KeyMap.Add(Keys.Z, linkSword);
             KeyMap.Add(Keys.D1, linkEquipBow);
             KeyMap.Add(Keys.D2, linkEquipBetterBow);
             KeyMap.Add(Keys.D3, linkEquipBoomerang);
             KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
             KeyMap.Add(Keys.D5, linkEquipBomb);
             KeyMap.Add(Keys.D6, linkEquipBlaze);
-            KeyMap.Add(Keys.E, linkDamaged);
-            KeyMap.Add(Keys.T, previousBlock);
-            KeyMap.Add(Keys.Y, nextBlock);
-            KeyMap.Add(Keys.U, previousItem);
-            KeyMap.Add(Keys.I, nextItem);
-            KeyMap.Add(Keys.O, previousEnemy);
-            KeyMap.Add(Keys.P, nextEnemy);
+            KeyMap.Add(Keys.D7, linkEquipSword);
+            //KeyMap.Add(Keys.E, linkDamaged);
+            //KeyMap.Add(Keys.T, previousBlock);
+            //KeyMap.Add(Keys.Y, nextBlock);
+            //KeyMap.Add(Keys.U, previousItem);
+            //KeyMap.Add(Keys.I, nextItem);
+            //KeyMap.Add(Keys.O, previousEnemy);
+            //KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
-            KeyMap.Add(Keys.R, reset);
-
+            //KeyMap.Add(Keys.R, reset);
         }
-
-
-       
-
-
-
-
 
         // executes commands for each key pressed
         public void Update()
         {
-            // testing purposes
-            //Keys[] Pressed = Keyboard.GetState().GetPressedKeys();
-            //foreach (Keys key in Pressed)
-            //{
-            //    KeyMap[key].execute();
-            //}
 
             // EDGE TRANSITIONS
             // If a key is in pressed but not in previousKeys
             // it means it was just pressed, so we execute.
-            // If a key is in previousKeys but not in pressed
-            // it means it was just released, so we discard it
-            // we then execute the 'last' pressed key
             pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
-            Keys lastPressed = Keys.None;
 
             // press transitions
             foreach (Keys key in pressed)
             {
                 // adds to the list the current action/command
-                if (previousKeys.Contains(key) && pressed.Contains(key))
+                if (KeyMap.ContainsKey(key) && previousKeys.Contains(key) && pressed.Contains(key))
                 {
                     // edge transition from up to down
                     KeyMap[key].execute();
                     previousKeys.Add(key);
-                    lastPressed = key;
                     // just executes ONE command
                     break;
                 }
             }
-            // release transititions
-            /*foreach (Keys key in previousKeys)
-            {
-                // removes previously pressed and executed keys
-                if (!pressed.Contains(key))
-                {
-                    previousKeys.Remove(key);
-                }
-            }*/
-
-            // executes the last command 
-            /*if (lastPressed != Keys.None)
-            {
-                KeyMap[lastPressed].execute();
-            }*/
 
             // save current keys into previous keys
             previousKeys = new List<Keys>(pressed);

@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
+
 namespace sprint0.Items
 {
     public class Boomerang : IItem, IGameObject
@@ -14,24 +18,24 @@ namespace sprint0.Items
         private int itemXOrigin;
         private int itemYOrigin;
         private int spriteVelocity = 1;
+        private int itemRoomID;
         // needs these positions for sprite swapping.
 
         //direction stuff
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D goingTexture;
-        private Texture2D comingTexture;
-        private IItemSprite currentItemSprite;
+        private SpriteFactory itemSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool spriteChanged;
 
-        public Boomerang(IList<Texture2D> itemSpriteSheet)
+        public Boomerang(SpriteFactory factory)
         {
-            goingTexture = itemSpriteSheet[0];
-            comingTexture = itemSpriteSheet[1];
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.DOWN;
+            currentItemDirection = Direction.Down;
             spriteChanged = false;
+            itemRoomID = 0;
+
 
         }
 
@@ -51,20 +55,21 @@ namespace sprint0.Items
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY) && (!this.spriteChanged)) // sprite just reached its max
                 {
                     ChangeSprite();
-                } else if (this.spriteChanged) // sprite has reached its max and is on its way home
+                }
+                else if (this.spriteChanged) // sprite has reached its max and is on its way home
                 {
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos -= spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos += spriteVelocity;
                             break;
                     }
@@ -73,6 +78,7 @@ namespace sprint0.Items
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
                         this.currentItemSprite = null;
+                        Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
                     }
                 }
                 else
@@ -82,16 +88,16 @@ namespace sprint0.Items
                     // switch case bad i know, i know.
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos += spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos -= spriteVelocity;
                             break;
                     }
@@ -113,8 +119,9 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new BoomerangSprite(comingTexture, 1, 3);
+                this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("Coming");
                 this.spriteChanged = true;
+
             }
         }
 
@@ -126,41 +133,44 @@ namespace sprint0.Items
             return (itemXPos == itemXOrigin) && (itemYPos == itemYOrigin);
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemXOrigin = linkXPos;
                 this.itemYPos = linkYPos;
                 this.itemYOrigin = linkYPos;
-                this.itemMaxX = linkXPos + 100;
-                this.itemMaxY = linkYPos + 100;
-                this.itemMinX = linkXPos - 100;
-                this.itemMinY = linkYPos - 100;
-                currentItemSprite = new BoomerangSprite(goingTexture, 1, 3);
+                this.itemMaxX = linkXPos + 200;
+                this.itemMaxY = linkYPos + 200;
+                this.itemMinX = linkXPos - 200;
+                this.itemMinY = linkYPos - 200;
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
-                        currentItemDirection = Direction.RIGHT;
+                    case Direction.Right:
+                        currentItemDirection = Direction.Right;
                         break;
-                    case (int)Direction.UP:
-                        currentItemDirection = Direction.UP;
+                    case Direction.Up:
+                        currentItemDirection = Direction.Up;
                         break;
-                    case (int)Direction.DOWN:
-                        currentItemDirection = Direction.DOWN;
+                    case Direction.Down:
+                        currentItemDirection = Direction.Down;
                         break;
-                    case (int)Direction.LEFT:
-                        currentItemDirection = Direction.LEFT;
+                    case Direction.Left:
+                        currentItemDirection = Direction.Left;
                         break;
+
                 }
             }
         }
+
         public int xPosition()
         {
             return itemXPos;
@@ -173,17 +183,42 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
         {
             return true;
+        }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return itemRoomID;
         }
     }
 }

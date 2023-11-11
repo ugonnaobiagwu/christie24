@@ -1,121 +1,202 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Microsoft.Xna.Framework.Graphics;
-//using sprint0;
-//using sprint0.Factory;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0;
+using sprint0.AnimatedSpriteFactory;
 
-//namespace sprint0.Enemies
-//{
-//    public class Skeleton: ISkeleton
-//    {
-//        Sprint0 Game;
-//        SpriteFactory SkeletonFactory;
-//        SpriteBatch SpriteBatch;
-//        private int Health;
-//        private int xPos;
-//        private int yPos;
-//        private int Direction;
-//        private int[] SpriteSheetFrames;
+namespace sprint0.Enemies
+{
+    public class Skeleton: IEnemy
+    {
+        Sprint0 Game;
+        SpriteFactory SkeletonFactory;
+        SpriteBatch SpriteBatch;
+        ISprite SkellySprite;
+        private int Health;
+        private int xPos;
+        private int yPos;
+        private int Direction;
+        private int[] SpriteSheetFrames;
+        private int RoomId;
 
-//        public Skeleton(Sprint0 game, SpriteBatch spriteBatch)
-//        {
-//            /* Can be adjusted */
-//            Health = 3;
-//            SpriteBatch = spriteBatch;
-//            Game = game;
+        public Skeleton(int x, int y, int roomId, SpriteFactory spriteFactory)
+        {
+            /* Can be adjusted */
+            Health = 3;
 
-//            /* Should be reformatted to 1 line */
-//            SpriteSheetFrames = new int[2];
-//            SpriteSheetFrames[0] = 75;
-//            SpriteSheetFrames[1] = 90;
-//        }
+            xPos = x;
+            yPos = y;
+            RoomId = roomId;
+            SkeletonFactory = spriteFactory;
+            SkellySprite = SkeletonFactory.getAnimatedSprite("Default");
 
-//        /* ---Movement--- */
-//        public void SkeletonUp()
-//        {
-//            Direction = 0;
-//            yPos++;
-//            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
-//        }
-//        x
-//        public void SkeletonDown()
-//        {
-//            Direction = 2;
-//            yPos--;
-//            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
-//        }
+            SpriteSheetFrames = new int[] { 74, 89 };
+        }
 
-//        public void SkeletonLeft()
-//        {
-//            Direction = 1;
-//            xPos--;
-//            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
-//        }
+        /* ---Movement--- */
+        public void EnemyUp()
+        {
+            Direction = 0;
+            yPos++;
+        }
+        
+        public void EnemyDown()
+        {
+            Direction = 2;
+            yPos--;
+        }
 
-//        public void SkeletonRight()
-//        {
-//            Direction = 3;
-//            xPos++;
-//            SkeletonFactory.Draw(SpriteBatch, xPos, yPos);
-//        }
+        public void EnemyLeft()
+        {
+            Direction = 1;
+            xPos--;
+        }
 
-//        /* ---Get Methods--- */
-//        public int getDirection()
-//        {
-//            return Direction;
-//        }
+        public void EnemyRight()
+        {
+            Direction = 3;
+            xPos++;
+        }
 
-//        public int getX()
-//        {
-//            return xPos;
-//        }
+        /* ---Get Methods--- */
+        public int getDirection()
+        {
+            return Direction;
+        }
 
-//        public int getY()
-//        {
-//            return yPos;
-//        }
+        public int getX()
+        {
+            return xPos;
+        }
 
-//        public int getHealth()
-//        {
-//            return Health;
-//        }
+        public int GetHealth()
+        {
+            return Health;
+        }
 
-//        /* ---Other Methods--- */
-//        public void takeDamage()
-//        {
-//            /* Placeholder Knockback animation */
-//            for (int i = 0; i < 10; i++)
-//            {
-//                switch (Direction)
-//                {
-//                    case 0:
-//                        yPos--;
-//                        break;
-//                    case 1:
-//                        xPos++;
-//                        break;
-//                    case 2:
-//                        yPos++;
-//                        break;
-//                    case 3:
-//                        xPos--;
-//                        break;
-//                }
-//            }
+        /* ---IGameObject--- */
+        public int xPosition()
+        {
+            return xPos;
+        }
+
+        public int yPosition()
+        {
+            return yPos;
+        }
+
+        public int width()
+        {
+            /* Temporary Value */
+            return 1;
+        }
+
+        public int height()
+        {
+            /* Temporary Value */
+            return 1;
+        }
+
+        public bool isDynamic()
+        {
+            return true;
+        }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return true;
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            RoomId = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return RoomId;
+        }
+        
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            SkellySprite.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public void Update()
+        {
+            SkellySprite.Update();
+
+            Random rnd = new Random();
+            int direction = rnd.Next(4);
+
+            switch (direction)
+            {
+                case 0:
+                    EnemyUp();
+                    break;
+                case 1:
+                    EnemyLeft();
+                    break;
+                case 2:
+                    EnemyDown();
+                    break;
+                case 3:
+                    EnemyRight();
+                    break;
+            }
+        }
+
+        /* ---Other Methods--- */
+        public void takeDamage()
+        {
+            /* Placeholder Knockback animation */
+            for (int i = 0; i < 10; i++)
+            {
+                switch (Direction)
+                {
+                    case 0:
+                        yPos--;
+                        break;
+                    case 1:
+                        xPos++;
+                        break;
+                    case 2:
+                        yPos++;
+                        break;
+                    case 3:
+                        xPos--;
+                        break;
+                }
+            }
             
-//            Health--;
-//            if (Health <= 0)
-//            {
-//                /* Code to delete the skeleton */
-//            }
-//        }
+            Health--;
+            if (Health <= 0)
+            {
+                /* Code to delete the Skeleton */
+            }
+        }
 
-//        public void Update()
-//        {
-//            SkeletonFactory.Update();
-//        }
-//    }
-//}
+        public void ChangeEnemyY(int change)
+        {
+            xPos += change;
+        }
+
+        public void ChangeEnemyX(int change)
+        {
+            yPos += change;
+        }
+    }
+}

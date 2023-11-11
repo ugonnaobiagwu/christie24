@@ -1,16 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using sprint0.Link;
+using sprint0.LinkObj;
 using sprint0.Items;
-
+using sprint0.Items.groundItems;
+using sprint0.Blocks;
+using sprint0.Enemies;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Collision
 {
-	public class CollisionHandler
-	{
-		// Data structures needed to put this show on the road QUICKLY.
-		private DataTable collisionTable = new DataTable();
+    public class CollisionHandler
+    {
+        /*
+         * DEVELOPMENT NOTES:
+         * 
+         * 1. Stair Blocks lead nowhere currently.
+         * 2. Enemies handle their own knockback so the direction they face is slightky office.
+         * 3. Still need inventory system edits.
+         * 4. Still need enemy projectiles.
+         * 5. Still need  doors.
+         * 
+         * Things to note:
+         * 1. Link does not collide with any of his items in action.
+         * 2. Enemies don't collide with movable blocks or ground Items.
+         * 3. Bomb Boundary Collision
+         */
+
+
+
+        // Data structures needed to put this show on the road QUICKLY.
+        private DataTable collisionTable = new DataTable();
 
         /*
 		 * Constructor. May do more now that you can make an instance of this
@@ -18,13 +38,14 @@ namespace sprint0.Collision
 		 * rn.
 		 */
         public CollisionHandler()
-		{
-			PopulateDataTable();
-		}
+        {
+            PopulateDataTable();
+        }
 
         /*
 		 * Public method called from outside the handler class to begin 
-		 * handling of the two objects detected in a collision.
+		 * handling of the two objects detected in a collision. Returns true if a handler
+		 * exists for that combination.
 		 * 
 		 * DESIGN DETAILS FOR FUTUTE ME WHO HAS YET TO IMPLEMENT:
 		 * -----
@@ -41,34 +62,45 @@ namespace sprint0.Collision
 		 * Get type of an IGameObject returns the concrete class. So it's
 		 * really important our GameObjects implement the IGameObject interface
 		 */
-        public void HandleCollision(IGameObject a, IGameObject b, CollisionDetector.CollisionType collisionType)
-		{
+        public bool HandleCollision(IGameObject a, IGameObject b, CollisionDetector.CollisionType collisionType)
+        {
+            bool handleExists = false;
             String objAType = a.GetType().ToString();
             String objBType = b.GetType().ToString();
             DataRow rowWithDelegates = null;
             foreach (DataRow row in collisionTable.Rows)
             {
-                if (row["ObjectA"].Equals(objAType) && row["ObjectB"].Equals(objBType)) {
+                if (row["ObjectA"].Equals(objAType) && row["ObjectB"].Equals(objBType))
+                {
+                    System.Diagnostics.Debug.WriteLine("OBJECT A: " + row["ObjectA"].ToString() + " AND OBJECT B:  " + row["ObjectB"].ToString());
+
                     rowWithDelegates = row;
+                    System.Diagnostics.Debug.WriteLine(rowWithDelegates.ToString());
+
+                    handleExists = true;
                     break;
                 }
             }
             if (rowWithDelegates != null)
             {
-                if (rowWithDelegates["HandleA"] != null)
+
+                // use the actual value in the field
+                if (rowWithDelegates.Field<GameObjectDelegate>("HandleA") != null)
                 {
                     GameObjectDelegate aDelegate = (GameObjectDelegate)rowWithDelegates["HandleA"];
-                    aDelegate(collisionType, a);
+                    aDelegate.Invoke(collisionType, a);
                 }
-                if (rowWithDelegates["HandleB"] != null)
+                if (rowWithDelegates.Field<GameObjectDelegate>("HandleB") != null)
                 {
                     GameObjectDelegate bDelegate = (GameObjectDelegate)rowWithDelegates["HandleB"];
-                    bDelegate(collisionType, b);
+                    bDelegate.Invoke(collisionType, b);
                 }
             }
+
+            return handleExists;
         }
 
-		/*
+        /*
 		 * Private method used to populate the data table with all the right 
 		 * objects delegates in the proper rows and cols.
 		 * 
@@ -86,23 +118,193 @@ namespace sprint0.Collision
 		 * collision direction entry is ommitted in the table since it's not
 		 * consistently needed. (i.e. MoveLink, as an example of how we'll do this)
 		 */
-		private void PopulateDataTable()
+        private void PopulateDataTable()
         {
-			collisionTable.Clear();
-			collisionTable.Columns.Add("ObjectA");
+            collisionTable.Clear();
+            collisionTable.Columns.Add("ObjectA");
             collisionTable.Columns.Add("ObjectB");
-            collisionTable.Columns.Add("CollisionType");
-            collisionTable.Columns.Add("HandleA");
-            collisionTable.Columns.Add("HandleB");
-			LinkDelegate MoveLinkDelegate = MoveLink;
-			LinkDelegate MoveLinkAndTakeDamageDelegate = MoveLinkAndTakeDamage;
-			BlazeDelegate BlazeImpactDelegate = BlazeImpact;
-			collisionTable.Rows.Add(new Object[] { "ILink", "DungenDrangonBlock", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "ILink", "DungenFishBlock", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "ILink", "DungenPyramidBlock", MoveLinkDelegate, null });
-			collisionTable.Rows.Add(new Object[] { "ILink", "ExplodableBlock", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "ILink", "Blaze", MoveLinkAndTakeDamageDelegate, BlazeImpactDelegate });
+            collisionTable.Columns.Add("HandleA", typeof(GameObjectDelegate));
+            collisionTable.Columns.Add("HandleB", typeof(GameObjectDelegate));
+            GameObjectDelegate MoveLinkDelegate = new GameObjectDelegate(MoveLink);
+            GameObjectDelegate MoveLinkAndTakeDamageDelegate = new GameObjectDelegate(MoveLinkAndTakeDamage);
+            GameObjectDelegate MoveDungeonPyramidBlockDelegate = new GameObjectDelegate(MoveDungeonPyramidBlock);
+            GameObjectDelegate GroundBigHeartPickUpDelegate = new GameObjectDelegate(GroundBigHeartPickUp);
+            GameObjectDelegate GroundBlazeSteppedOnDelegate = new GameObjectDelegate(GroundBlazeSteppedOn);
+            GameObjectDelegate GroundBoomerangPickUpDelegate = new GameObjectDelegate(GroundBoomerangPickUp);
+            GameObjectDelegate GroundCompassPickUpDelegate = new GameObjectDelegate(GroundCompassPickUp);
+            GameObjectDelegate GroundKeyPickUpDelegate = new GameObjectDelegate(GroundKeyPickUp);
+            GameObjectDelegate GroundPagePickUpDelegate = new GameObjectDelegate(GroundPagePickUp);
+            GameObjectDelegate GroundTriforcePickUpDelegate = new GameObjectDelegate(GroundTriforcePickUp);
+            GameObjectDelegate MoveOktorokDelegate = new GameObjectDelegate(MoveOktorok);
+            GameObjectDelegate MoveOktorokAndTakeDamageDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamage);
+            GameObjectDelegate MoveSkeletonDelegate = new GameObjectDelegate(MoveSkeleton);
+            GameObjectDelegate MoveSkeletonAndTakeDamageDelegate = new GameObjectDelegate(MoveSkeletonAndTakeDamage);
+            GameObjectDelegate MoveBokoblinDelegate = new GameObjectDelegate(MoveBokoblin);
+            GameObjectDelegate MoveBokoblinAndTakeDamageDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamage);
+            GameObjectDelegate MoveDragonDelegate = new GameObjectDelegate(MoveDragon);
+            GameObjectDelegate MoveDragonAndTakeDamageDelegate = new GameObjectDelegate(MoveDragonAndTakeDamage);
+            GameObjectDelegate BowImpactDelegate = new GameObjectDelegate(BowImpact);
+            GameObjectDelegate BetterBowImpactDelegate = new GameObjectDelegate(BetterBowImpact);
+            GameObjectDelegate BoomerangImpactDelegate = new GameObjectDelegate(BoomerangImpact);
+            GameObjectDelegate BetterBoomerangImpactDelegate = new GameObjectDelegate(BetterBoomerangImpact);
+            GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
+            GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
+
+            // BOUNDARIES
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.BoundariesDoorsAndRooms.Boundary", BowImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBowImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BoomerangImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBoomerangImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.BoundariesDoorsAndRooms.Boundary", BlazeImpactDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", null, null });
+
+            // BLOCKS
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonFishBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonFishBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonFishBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonFishBlock", MoveDragonDelegate, null });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonPyramidBlock", MoveLinkDelegate, MoveDungeonPyramidBlockDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonPyramidBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonPyramidBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonPyramidBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonPyramidBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.WaterBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.WaterBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.WaterBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.WaterBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.WaterBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.RedPyramidBlock", null, MoveDungeonPyramidBlockDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.RedPyramidBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.RedPyramidBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.RedPyramidBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.RedPyramidBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.GrassBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.GrassBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.GrassBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.GrassBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.GrassBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlackBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlackBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlackBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlackBlock", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlackBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueFishBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueFishBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueFishBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueFishBlock", MoveDragonDelegate, null });
+
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueDragonBlock", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueDragonBlock", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueDragonBlock", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueDragonBlock", MoveDragonDelegate, null });
+
+
+            // LINK ITEMS + GROUND ITEMS
+            //Grounds
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundBigHeartPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBlaze", null, GroundBlazeSteppedOnDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBoomerang", null, GroundBoomerangPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundCompassPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundKey", null, GroundKeyPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundPagePickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundTriforcePickUpDelegate });
+
+            //LinkItems
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.LinkObj.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Bokoblin", BowImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Oktorok", BowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Skeleton", BowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.Enemies.Dragon", BowImpactDelegate, MoveDragonAndTakeDamageDelegate });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.LinkObj.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Bokoblin", BetterBowImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Skeleton", BoomerangImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Dragon", BoomerangImpactDelegate, MoveDragonAndTakeDamageDelegate });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.LinkObj.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Bokoblin", BetterBoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Oktorok", BetterBoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Skeleton", BetterBoomerangImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.Enemies.Dragon", BetterBoomerangImpactDelegate, MoveDragonAndTakeDamageDelegate });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.LinkObj.Link", null, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Bokoblin", BlazeImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Oktorok", BlazeImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Skeleton", BlazeImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.Enemies.Dragon", BlazeImpactDelegate, MoveDragonAndTakeDamageDelegate });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Bokoblin", BombImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Oktorok", BombImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Skeleton", BombImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Dragon", BombImpactDelegate, MoveDragonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.LinkObj.Link", null, null });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Bokoblin", null, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Oktorok", null, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Skeleton", null, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Dragon", null, MoveSkeletonAndTakeDamageDelegate });
+
+
+            // COMBAT ON LINK COLLISIONS
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
+
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
+
+
+
+
         }
+
 
         /*
 		 * DELEGATES & METHODS
@@ -122,107 +324,339 @@ namespace sprint0.Collision
 		 * 
 		 */
         private delegate void GameObjectDelegate(CollisionDetector.CollisionType collisionType, IGameObject obj);
-
-		//LINK
-		private delegate void LinkDelegate(CollisionDetector.CollisionType collisionType, ILink link);
-        private void MoveLink (CollisionDetector.CollisionType collisionType, ILink link) {
-            // I need a better way to change Link's stuff without making such a mess.
-            switch (collisionType)
-			{
-				case CollisionDetector.CollisionType.TOP:
-					link.LinkUp();
-                    break;
-                case CollisionDetector.CollisionType.BOTTOM:
-                    link.LinkDown();
-					break;
-                case CollisionDetector.CollisionType.LEFT:
-                    link.LinkLeft();
-                    break;
-                case CollisionDetector.CollisionType.RIGHT:
-                    link.LinkRight();
-                    break;
-            }
-		}
-
-        private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, ILink link)
+        //BLOCKS
+        private void MoveDungeonPyramidBlock(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
+            DungeonPyramidBlock block = (DungeonPyramidBlock)obj;
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    link.LinkUp();
-                    link.LinkUp();
-                    link.LinkUp();
-                    link.LinkUp();
-                    link.LinkUp();
+                    block.YValue++;
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    link.LinkDown();
-                    link.LinkDown();
-                    link.LinkDown();
-                    link.LinkDown();
-                    link.LinkDown();
+                    block.YValue--;
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    link.LinkLeft();
-                    link.LinkLeft();
-                    link.LinkLeft();
-                    link.LinkLeft();
-                    link.LinkLeft();
+                    block.XValue++;
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    link.LinkRight();
-                    link.LinkRight();
-                    link.LinkRight();
-                    link.LinkRight();
-                    link.LinkRight();
+                    block.XValue--;
                     break;
             }
-			link.LinkTakeDamage();
+        }
+
+        //LINK
+        private void MoveLink(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            // I need a better way to change Link's stuff without making such a mess.
+            LinkObj.Link link = (LinkObj.Link)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    link.YVal -= 1;
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    link.YVal += 1;
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    link.XVal -= 1;
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    link.XVal += 1;
+                    break;
+            }
+        }
+
+        private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            LinkObj.Link link = (LinkObj.Link)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    link.YVal -= 25;
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    link.YVal += 25;
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    link.XVal -= 25;
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    link.XVal += 25;
+                    break;
+            }
+            link.LinkTakeDamage();
         }
 
         /*
-         * ITEMS
+         * LINK ITEMS
          * this is expecting the item... do not throw the entire item system obj
          */
 
         //Bows
-        private delegate void BowDelegate(CollisionDetector.CollisionType collisionType, Bow bow);
-		private void BowImpact(CollisionDetector.CollisionType collisionType, Bow bow)
-		{
-			bow.thisStateMachine.CeaseUse();
-		}
-        private delegate void BetterBowDelegate(CollisionDetector.CollisionType collisionType, BetterBow betterBow);
-        private void BetterBowImpact(CollisionDetector.CollisionType collisionType, BetterBow betterBow)
+        private void BowImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
+            Bow bow = (Bow)obj;
+            bow.thisStateMachine.CeaseUse();
+        }
+        private void BetterBowImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            BetterBow betterBow = (BetterBow)obj;
             betterBow.thisStateMachine.CeaseUse();
         }
 
         //Boomerangs
-        private delegate void BoomerangDelegate(CollisionDetector.CollisionType collisionType, Boomerang boomerang);
-        private void BoomerangImpact(CollisionDetector.CollisionType collisionType, Boomerang boomerang)
+        private void BoomerangImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
+            Boomerang boomerang = (Boomerang)obj;
             boomerang.thisStateMachine.CeaseUse();
         }
-        private delegate void BetterBoomerangDelegate(CollisionDetector.CollisionType collisionType, BetterBoomerang betterBoomerang);
-        private void BetterBoomerangImpact(CollisionDetector.CollisionType collisionType, BetterBoomerang betterBoomerang)
+        private void BetterBoomerangImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
+            BetterBoomerang betterBoomerang = (BetterBoomerang)obj;
             betterBoomerang.thisStateMachine.CeaseUse();
         }
 
         //Blaze
-        private delegate void BlazeDelegate(CollisionDetector.CollisionType collisionType, Blaze blaze);
-        private void BlazeImpact(CollisionDetector.CollisionType collisionType, Blaze blaze)
+        private void BlazeImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
+            Blaze blaze = (Blaze)obj;
             blaze.thisStateMachine.CeaseUse();
         }
 
-		//Bomb
-		private delegate void BombDelegate(CollisionDetector.CollisionType collisionType, Bomb bomb);
-		private void BombImpact(CollisionDetector.CollisionType collisionType, Bomb bomb)
-		{
-            // NOTE: Bomb doesn't have splash damage implemented yet for when it's finally exploded.
-            // DESIGN DECISION: should Bomb explode if an enemy collides with it?
+        //Bomb
+        private void BombImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            // Collision with bomb in dormant state causes explosion to occur.
+            //COUPLING! EW!
+            Bomb bomb = (Bomb)obj;
+            if (bomb.bombTicks < bomb.maxBombTicks)
+            {
+                bomb.bombTicks = bomb.maxBombTicks;
+            }
         }
+
+        /*
+         * GROUND ITEMS
+         * Inventory system changes are included in these methods.
+         */
+
+        private void GroundBigHeartPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundBigHeart groundBigHeart = (GroundBigHeart)obj;
+            groundBigHeart.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        private void GroundBoomerangPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundBoomerang groundBoomerang = (GroundBoomerang)obj; 
+            groundBoomerang.PickUp();
+            // code that impacts inventory system goes here.
+        }
+        private void GroundCompassPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundCompass groundCompass = (GroundCompass)obj;
+            groundCompass.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        private void GroundKeyPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundKey groundKey = (GroundKey)obj;
+            groundKey.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        private void GroundPagePickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundPage groundPage = (GroundPage)obj;
+            groundPage.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        private void GroundTriforcePickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundTriforce groundTriforce = (GroundTriforce)obj;
+            groundTriforce.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        private void GroundBlazeSteppedOn(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            GroundBlaze groundBlaze = (GroundBlaze)obj;
+            groundBlaze.PickUp();
+            // code that impacts inventory system goes here.
+        }
+
+        // ENEMIES
+        /*
+         * Like Link, Enemies have methods to move pos
+         * Unlike Link, Enemies have knockback built into their take damage calls. Neat. Direction is built in too, but they should knock back in the direction they were hit.
+         */
+        private void MoveOktorok(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Oktorok enemy = (Oktorok)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
+        }
+
+        private void MoveOktorokAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Oktorok enemy = (Oktorok)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
+            enemy.TakeDamage();
+        }
+        private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Skeleton enemy = (Skeleton)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
+        }
+
+        private void MoveSkeletonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Skeleton enemy = (Skeleton)obj;
+            enemy.takeDamage();
+        }
+
+        private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Bokoblin enemy = (Bokoblin)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+        }
+
+        private void MoveBokoblinAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Bokoblin enemy = (Bokoblin)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+            enemy.TakeDamage();
+        }
+
+        private void MoveDragon(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Dragon enemy = (Dragon)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+        }
+
+        private void MoveDragonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Dragon enemy = (Dragon)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+            enemy.takeDamage();
+        }
+
     }
 }
 

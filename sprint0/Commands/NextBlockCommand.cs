@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using sprint0;
-using sprint0.Blocks;
-namespace sprint0.Commands
-{
-    public class NextBlockCommand : ICommand
-    {
-        Sprint0 Game;
-        IBlock Bl;
+﻿//using system;
+//using system.collections.generic;
+//using system.linq;
+//using system.text;
+//using system.threading.tasks;
+//using sprint0;
+//using sprint0.blocks;
+//namespace sprint0.commands
+//{
+//    public class nextblockcommand : icommand
+//    {
+//        sprint0 game;
+//        iblock bl;
 
-        public NextBlockCommand(Sprint0 game, IBlock block)
-        {
-            this.Game = game;
-            this.Bl = block;
-        }
+//        public nextblockcommand(sprint0 game, iblock block)
+//        {
+//            this.game = game;
+//            this.bl = block;
+//        }
 
-        public void execute()
-        {
-            Bl.NextBlock();
-        }
-   }
-}
+//        public void execute()
+//        {
+//            bl.nextblock();
+//        }
+//    }
+//}

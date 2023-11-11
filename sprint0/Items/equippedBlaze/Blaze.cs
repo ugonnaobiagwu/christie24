@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
+
 namespace sprint0.Items
 {
     public class Blaze : IItem, IGameObject
@@ -17,19 +21,20 @@ namespace sprint0.Items
         // needs these positions for sprite swapping.
 
         //direction stuff
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D texture;
-        private IItemSprite currentItemSprite;
+        private int itemRoomID;
+        SpriteFactory itemSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
 
-        public Blaze(IList<Texture2D> itemSpriteSheet)
+        public Blaze(SpriteFactory factory)
         {
-            texture = itemSpriteSheet[0];
+            itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
-            currentItemDirection = Direction.DOWN;
+            currentItemDirection = Direction.Down;
             maxFireTicks = 120;
             fireTicks = 0;
+            itemRoomID = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -44,7 +49,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse())
             {
-                
+
                 // has the sprite reached it's final location?
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)) // sprite just reached its max
                 {
@@ -61,16 +66,16 @@ namespace sprint0.Items
                     // switch case bad i know, i know.
                     switch (this.currentItemDirection)
                     {
-                        case Direction.RIGHT:
+                        case Direction.Right:
                             itemXPos += spriteVelocity;
                             break;
-                        case Direction.UP:
+                        case Direction.Up:
                             itemYPos -= spriteVelocity;
                             break;
-                        case Direction.DOWN:
+                        case Direction.Down:
                             itemYPos += spriteVelocity;
                             break;
-                        case Direction.LEFT:
+                        case Direction.Left:
                             itemXPos -= spriteVelocity;
                             break;
                     }
@@ -86,10 +91,11 @@ namespace sprint0.Items
 
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BLAZE);
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
@@ -97,23 +103,23 @@ namespace sprint0.Items
                 this.itemMaxY = linkYPos + 50;
                 this.itemMinX = linkXPos - 50;
                 this.itemMinY = linkYPos - 50;
-                currentItemSprite = new BlazeSprite(texture, 1, 2);
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
-                        currentItemDirection = Direction.RIGHT;
+                    case Direction.Right:
+                        currentItemDirection = Direction.Right;
                         break;
-                    case (int)Direction.UP:
-                        currentItemDirection = Direction.UP;
+                    case Direction.Up:
+                        currentItemDirection = Direction.Up;
                         break;
-                    case (int)Direction.DOWN:
-                        currentItemDirection = Direction.DOWN;
+                    case Direction.Down:
+                        currentItemDirection = Direction.Down;
                         break;
-                    case (int)Direction.LEFT:
-                        currentItemDirection = Direction.LEFT;
+                    case Direction.Left:
+                        currentItemDirection = Direction.Left;
                         break;
 
                 }
@@ -131,18 +137,44 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            return this.currentItemSprite.GetWidth();
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            return this.currentItemSprite.GetHeight();
         }
 
         public bool isDynamic()
         {
-            return false;
+            return true;
         }
+
+        public bool isUpdateable()
+        {
+            return true;
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true;
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
+        
     }
 }
 

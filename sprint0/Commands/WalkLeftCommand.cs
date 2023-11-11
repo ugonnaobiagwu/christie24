@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0;
-using sprint0.Link;
+using sprint0.LinkObj;
 
 namespace sprint0.Commands
 {

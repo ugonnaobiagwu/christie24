@@ -4,40 +4,80 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/block_image.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowDown.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowLeft.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowRight.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowUp.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBlaze.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBombExplode.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangComing.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangGoing.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowDown.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowLeft.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/equippedBowUp.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/equippedItemSprites/weaponProjectileHit.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/File.spritefont</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBigHeart.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBlaze.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBomb.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBoomerang.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundBow.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundClock.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundCompass.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundFairy.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundHeart.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundKey.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundPage.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundRupee.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundShimmeringRupee.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/Link.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/luigiSpriteSheet.png</File>
-    <File>/Users/ugonnao/Projects/christie24/christie24/sprint0/Content/zelda-sprites-enemies.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Debug.spritefont</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Dragon.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Dungeon1BlockSpriteSheet.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Dungeon1Boundaries.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Dungeon1Doors.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerang.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangComing.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBoomerangGoing.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBow.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowLeft.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowRight.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBetterBowUp.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBlaze.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBombExplode.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBoomerang.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangComing.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBoomerangGoing.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBow.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBowLeft.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBowRight.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/equippedBowUp.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/equippedItemSprites/weaponProjectileHit.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/File.spritefont</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundBigHeart.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundBlaze.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundBomb.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundBoomerang.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundBow.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundClock.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundCompass.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundFairy.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundHeart.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundKey.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundPage.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundRupee.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundShimmeringRupee.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/groundItemSprites/groundTriforce.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/legendofzelda_bosses_sheet.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Link.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/LinkSpriteSheet.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/linkSword.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/luigiSpriteSheet.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/songs/DUNGEON.mp3</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/songs/ENDING.mp3</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/songs/OVERWORLD.mp3</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/songs/TITLE.mp3</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/songs/TRIFORCE_OBTAIN.mp3</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/ARROW_BOOMERANG_LAUNCH.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/BLAZE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/BOMB_DROP.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/BOMB_EXPLODE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/BOSS_AQUAMENTUS_SCREAM.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/BOSS_TAKE_DAMAGE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/DOOR_UNLOCK.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/ENEMY_DIE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/ENEMY_HIT.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/FANFARE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/GET_GROUND_HEART_KEY.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/GET_GROUND_RUPEE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/GROUND_KEY_APPEAR.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/INVENTORY_LINK_ITEM_GET.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/LINK_DEATH.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/LINK_LOW_HEALTH.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/LINK_TAKE_DAMAGE.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/PUZZLE_SOLVED.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/REFILL.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/SHIELD.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/STAIRS.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/SWORD_SHOOT.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/SWORD_SLASH.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/TEXT_APPEAR.wav</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/sprites-bosses.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/zelda-sprites-enemies-condensed.png</File>
+    <File>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/zelda-sprites-enemies.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -56,7 +96,47 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>Font.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

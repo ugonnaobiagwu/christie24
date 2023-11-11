@@ -1,31 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
+
 namespace sprint0.Items
 {
     public class Bomb : IItem, IGameObject
     {
         private int itemXPos;
         private int itemYPos;
-        private int maxBombTicks;
-        private int bombTicks;
+        public int maxBombTicks;
+        public int bombTicks;
         // needs these positions for sprite swapping.
 
         //direction stuff
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
-        private Texture2D bombTexture;
-        private Texture2D explosionTexture;
-        private IItemSprite currentItemSprite;
+        private int itemRoomID;
+        private SpriteFactory explosionSpriteFactory;
+        private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
+        private SpriteFactory itemSpriteFactory; 
         private bool spriteChanged;
 
-        public Bomb(IList<Texture2D> itemSpriteSheet)
+        public Bomb(SpriteFactory factory, SpriteFactory explosionFactory)
         {
-            bombTexture = itemSpriteSheet[0];
-            explosionTexture = itemSpriteSheet[1];
+            itemSpriteFactory = factory;
+            explosionSpriteFactory = explosionFactory;
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
+            itemRoomID = 0;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -66,10 +72,11 @@ namespace sprint0.Items
         {
             if (!this.spriteChanged)
             {
-                this.currentItemSprite = new ExplosionSprite(explosionTexture, 1, 3);
+                this.currentItemSprite = explosionSpriteFactory.getAnimatedSprite("BombExplosion");
                 this.spriteChanged = true;
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE);
             }
-            else if (this.currentItemSprite.finishedAnimationCycle() && this.spriteChanged)
+            else if (this.finishedAnimationCycle() && this.spriteChanged)
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
@@ -79,32 +86,33 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_DROP);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 
-                currentItemSprite = new BombSprite(bombTexture, 1, 1);
+                currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bomb");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
+                    case Direction.Right:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;
-                    case (int)Direction.UP:
+                    case Direction.Up:
                         this.itemYPos = linkYPos - 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.DOWN:
+                    case Direction.Down:
                         this.itemYPos = linkYPos + 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.LEFT:
+                    case Direction.Left:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;
@@ -124,12 +132,25 @@ namespace sprint0.Items
 
         public int width()
         {
-            return this.currentItemSprite.itemWidth();
+            if (spriteChanged) // change hitbox if in explosion state 
+            {
+                return this.currentItemSprite.GetWidth() + 15;
+            } else
+            {
+                return this.currentItemSprite.GetWidth();
+            }
         }
 
         public int height()
         {
-            return this.currentItemSprite.itemHeight();
+            if (spriteChanged) // change hitbox if in explosion state 
+            {
+                return this.currentItemSprite.GetHeight() + 15;
+            }
+            else
+            {
+                return this.currentItemSprite.GetHeight();
+            }
         }
 
         public bool isDynamic()
@@ -137,6 +158,41 @@ namespace sprint0.Items
             return false;
         }
 
+        public bool isUpdateable()
+        {
+            return true; 
+        }
+
+        public bool isInPlay()
+        {
+            return thisStateMachine.isItemInUse();
+        }
+
+        public bool isDrawable()
+        {
+            return true; 
+        }
+
+        public void SetRoomId(int roomId)
+        {
+            this.itemRoomID = roomId;
+        }
+
+        public int GetRoomId()
+        {
+            return this.itemRoomID;
+        }
+        private bool finishedAnimationCycle()
+        {
+            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 

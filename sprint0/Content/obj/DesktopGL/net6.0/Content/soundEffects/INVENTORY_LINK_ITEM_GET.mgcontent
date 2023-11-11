@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/INVENTORY_LINK_ITEM_GET.wav</SourceFile>
+  <SourceTime>2023-11-06T14:58:32.7922218-05:00</SourceTime>
+  <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/soundEffects/INVENTORY_LINK_ITEM_GET.xnb</DestFile>
+  <DestTime>2023-11-11T09:37:50.7229351-05:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T07:44:56-04:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

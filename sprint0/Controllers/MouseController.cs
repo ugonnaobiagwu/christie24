@@ -9,42 +9,62 @@ namespace sprint0.Controllers
 {
     public class MouseController : IController
     {
-        // this is what I would imagine them to be named as, not permanent
-        private ICommand previousLevel;
-        private ICommand nextLevel;
+        private List<int> roomList;
+        private int currentRoomIndex;
+        private int currentRoomID;
+        private Dictionary<int, List<IGameObject>> gameObjects;
+        private MouseState previousMouseState;
+        private MouseState currentMouseState;
+        private GameObjectManager gameObjectManager;
 
-        public void registerKey(Keys key, ICommand command)
+        public MouseController(sprint0.Sprint0 Game)
         {
-            throw new NotImplementedException();
+            // or something like that to get the global
+            gameObjectManager = Globals.GameObjectManager;
+
+            gameObjects = gameObjectManager.getDictionary();
+            roomList = gameObjectManager.getRoomIDs();
+            currentRoomIndex = 0;
+            currentRoomID = roomList[currentRoomIndex];
+
+            previousMouseState = Mouse.GetState();
+            currentMouseState = Mouse.GetState();
         }
 
-        // used to register mouse states with their respective commands 
         public void registerKeys()
         {
-            // for Sprint3, i will need to implement the room/level changes
-          //  previousLevel = new PreviousLevel();
-            //nextLevel = new NextLevel();
-
+            // nothing to really register
         }
 
         public void Update()
         {
-            // in future updates, using the mouse to click the room/level on a map might be an option
-            // i just need to study it more to see how it would work
-            MouseState mouseState = Mouse.GetState();
+            // this is for edge? transitions
+            previousMouseState = currentMouseState;
+            currentMouseState = Mouse.GetState();
 
-
-            if (mouseState.LeftButton == ButtonState.Pressed)
+            // Essentially only executes when you press (so if you never release the mouse, it doesnt change)
+            if (previousMouseState.LeftButton != ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Pressed)
             {
-                previousLevel.execute();
-                // if you left-click, changes to previous level
+                // if you press the left button, it goes to the previous room (in the list)
+                currentRoomIndex--;
+                if (currentRoomIndex < 0)
+                {
+                    currentRoomIndex = roomList.Count - 1; // Wrap around to the last room's index
+                    currentRoomID = roomList[currentRoomIndex];
+                    gameObjectManager.setCurrentRoomID(currentRoomID);
+                }
             }
-            else if (mouseState.RightButton == ButtonState.Pressed)
+            else if (previousMouseState.RightButton != ButtonState.Pressed && currentMouseState.RightButton == ButtonState.Pressed)
             {
-                // if you right-click, changes to next level
-                nextLevel.execute();
+                // if you press the right button, it goes to the next room (in the list)
+                currentRoomIndex++;
+                if (currentRoomIndex >= roomList.Count)
+                {
+                    currentRoomIndex = 0; // Wrap around to the first room's index
+                    currentRoomID = roomList[currentRoomIndex];
+                    gameObjectManager.setCurrentRoomID(currentRoomID);
+                }
             }
-
         }
     }
 }

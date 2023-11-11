@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{B55C1DC5-FDB6-47FC-990D-1A688BCB89EA}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Items/equippedBlaze/Blaze.cs">
+    <Files>
+      <File FileName="Items/IItemSprite.cs" Line="1" Column="1" />
+      <File FileName="Items/equippedBoomerangs/Boomerang.cs" Line="1" Column="1" />
+      <File FileName="Items/equippedBoomerangs/BoomerangSprite.cs" Line="1" Column="1" />
+      <File FileName="IGameObject.cs" Line="17" Column="32" />
+      <File FileName="Items/equippedBows/Bow.cs" Line="149" Column="30" />
+      <File FileName="Items/equippedBomb/BombSprite.cs" Line="1" Column="1" />
+      <File FileName="Items/equippedBomb/ExplosionSprite.cs" Line="1" Column="1" />
+      <File FileName="Items/equippedBomb/Bomb.cs" Line="16" Column="9" />
+      <File FileName="Items/equippedBlaze/Blaze.cs" Line="181" Column="14" />
+      <File FileName="Globals.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="sprint0">
+            <Node name="sprint0">
+              <Node name="AnimatedSpriteFactory" expanded="True" />
+              <Node name="Items">
+                <Node name="equippedBlaze">
+                  <Node name="Blaze.cs" selected="True" />
+                </Node>
+                <Node name="equippedBows" expanded="True" />
+                <Node name="groundItems" expanded="True" />
+                <Node name="linkSword" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.sprint0 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+</Properties>
