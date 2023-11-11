@@ -1,0 +1,39 @@
+[Readibility]
+
+Author of the code review: 
+  Xing Wu
+Date of the code review: 
+  11/10/2023
+Sprint number: 
+  Sprint 4
+Name of the .cs file being reviewed:
+  from branch: AK-FinalEnemy2
+  christie24/sprint0/Enemies/Otorok.cs
+Author of the .cs file being reviewed: 
+  Alex Kim
+Number of minutes taken to complete the review:
+  5
+Specific comments on what is readable and what is not:
+  Overall, relatively easy to read. All the names of the variables and methods are pretty self-explanatory.
+  getDirection() cases can definitely be written in order from 0 to 3 instead of 1,3,0,2 but that's just me being a little OCD. 
+  Could use a few more comments, but not necessary as the naming and methods are pretty clear and short.
+
+[Code Quality]
+
+Author of the code review: 
+  Xing Wu
+Date of the code review: 
+  11/10/2023
+Sprint number: 
+  Sprint 4
+Name of the .cs file being reviewed:
+  from branch: AK-FinalEnemy2
+  christie24/sprint0/Enemies/Skeleton.cs
+Author of the .cs file being reviewed: 
+  Alex Kim
+Specific comments on code quality:
+  I noticed that in contrary to Otorok, width, and height aren't variables you declare in the public Skeleton() class (in contrary where it is in Otorok()).
+  Since you noted that it is a temporary value, it might be better if you do declare it in Skeleton() depending on what it changes based on.
+A hypothetical change to make to the game related to the file being reviewed and how the current implementation could or could not easily support that change:
+  Make width and height variables as noted above. 
+  
