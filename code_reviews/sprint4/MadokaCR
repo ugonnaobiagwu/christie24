@@ -1,0 +1,31 @@
+Code Review
+Date of CR: 11/10/2023
+Author of CR: Madoka Kamishima
+
+Sprint 4
+
+Readability
+
+Time taken to read: 2 minutes
+File being reviewed: Camera.cs
+Author of the file : Xing Wu
+
+Although the code is still in the process of finishing, it seems to be at a good start.
+
+The method names are well written.It is easy to see what each methods will be doing. 
+
+One note: I did this too, but change the number add variables to 2, as magic number is not allowed.
+
+
+Code Quality
+
+File being reviewed: GameObjectManager.cs
+Author of the file : Xing Wu
+
+Comment helps with what is unfinished. 
+
+*I guess the in the use if the if statements, we can create method to add for the obj.isxxxx in addObject method for less redundancy. 
+It is readable and easy follow along.
+Each method names are short but well described on what they do. 
+
+Overall the code looks pretty good in my end. 
