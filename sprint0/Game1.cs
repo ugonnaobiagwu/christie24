@@ -34,7 +34,8 @@ namespace sprint0
 
         //Camera
         public Camera camera;
-
+        MouseState mouseState;
+        
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
@@ -130,8 +131,8 @@ namespace sprint0
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
             // Camera
-            camera = new Camera();
-            camera.FollowLink(LinkObj, graphics);
+            MouseState mouseState = Mouse.GetState();
+            Globals.Camera.FollowLink(LinkObj, graphics);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -335,7 +336,23 @@ namespace sprint0
             Globals.Update(gameTime);
 
             //Camera
-            camera.FollowLink(LinkObj, graphics);
+            MouseState mouseState = Mouse.GetState();
+            int i = 0;
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                Globals.Camera.MoveCameraUp(18);
+            }
+            else if (mouseState.RightButton == ButtonState.Pressed)
+            {
+                Globals.Camera.MoveCameraDown(18);
+            }
+            else
+            {   
+                //Globals.Camera.FollowLink(LinkObj, graphics);
+            }
+
+              
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
