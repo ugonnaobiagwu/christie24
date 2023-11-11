@@ -29,7 +29,7 @@ namespace sprint0
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public ILink LinkObj;
+        //public ILink LinkObj;
         Texture2D textureBlock;
 
         //HUD
@@ -132,8 +132,8 @@ namespace sprint0
            
             LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
 
-            LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
-            LinkObj.SetRoomId(0);
+            //LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
+            //LinkObj.SetRoomId(0);
 
             /*ENEMY TESTS: TO BE DELETED*/
             Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
@@ -169,8 +169,7 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
-            // Camera, keep this since I need graphics
-            Globals.Camera.FollowLink(LinkObj, graphics);
+            
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -340,8 +339,10 @@ namespace sprint0
 
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
+            // Camera, keep this since I need graphics
+            Globals.Camera.FollowLink(Globals.Link, graphics);
 
-            Globals.GameObjectManager.addObject(LinkObj);
+            //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
             //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
@@ -370,12 +371,12 @@ namespace sprint0
                 updateable.Update();
             }
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Update();
+            //LinkObj.Update();
             Globals.Update(gameTime);
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-            Globals.Camera.FollowLink(LinkObj, graphics);
-            Console.WriteLine(LinkObj.width());
+            Globals.Camera.FollowLink(Globals.Link, graphics);
+            Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
@@ -391,15 +392,11 @@ namespace sprint0
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
             //HUD draw
             hud.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
-            foreach(IGameObject obj in Drawables)
-            {
-                obj.Draw(spriteBatch);
-            }
-            if (LinkObj != null)
-            {
-                LinkObj.Draw(spriteBatch);
-            }
+            
+            //if (LinkObj != null)
+            //{
+            //    LinkObj.Draw(spriteBatch);
+            //}
             block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
@@ -407,7 +404,12 @@ namespace sprint0
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
-            LinkObj.Draw(spriteBatch);
+            //LinkObj.Draw(spriteBatch);
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
             base.Draw(gameTime);
             spriteBatch.End();
         }

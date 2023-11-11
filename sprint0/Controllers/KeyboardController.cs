@@ -47,12 +47,12 @@ namespace sprint0.Controllers
             previousKeys = new List<Keys>();
 
             // not sure if I should put this in here or registerkeys
-            linkWalkingUp = new WalkUpCommand(Game, Game.LinkObj);
-            linkWalkingLeft = new WalkLeftCommand(Game, Game.LinkObj);
-            linkWalkingDown = new WalkDownCommand(Game, Game.LinkObj);
-            linkWalkingRight = new WalkRightCommand(Game, Game.LinkObj);
+            linkWalkingUp = new WalkUpCommand(Game, Globals.Link);
+            linkWalkingLeft = new WalkLeftCommand(Game, Globals.Link);
+            linkWalkingDown = new WalkDownCommand(Game, Globals.Link);
+            linkWalkingRight = new WalkRightCommand(Game, Globals.Link);
 
-            linkItemUse = new AttackCommand(Game, Game.LinkObj, Globals.LinkItemSystem);
+            linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
             linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
             linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
