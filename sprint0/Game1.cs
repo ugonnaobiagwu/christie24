@@ -25,9 +25,9 @@ namespace sprint0
         Texture2D textureBlock;
 
         //HUD
-        Texture2D testHeart, hudspriteSheet;
+        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
         SpriteFont font;
-        Inventory inventory;
+        
         HUD hud;
 
         /* For Testing Purposes */
@@ -53,32 +53,31 @@ namespace sprint0
 
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
-            testHeart = Content.Load<Texture2D>("lives");
-            hudspriteSheet = Content.Load<Texture2D>("background_sheet");
+            lifeSpriteSheet = Content.Load<Texture2D>("lives");
+            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
+            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
+            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
-            inventory = new Inventory();
+            //inventory = new Inventory();
 
             //TEST FOR HUD DELETE LATER!!
 
             for (int i = 0; i < 3; i++)
             {
-                inventory.gainHeart();
+                Inventory.GainHeart();
             }
-          /*  for (int i = 0; i < 3; i++)
-            {
-                inventory.loseHeart();
-            } */
+          
 
-            inventory.countGem();
-            inventory.countKey();
-            inventory.countKey();
-            inventory.gainBomb();
-            inventory.gainBomb();
-            inventory.loseBomb();
+            Inventory.CountRupee();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.GainBomb();
+            Inventory.GainBomb();
+            Inventory.LoseBomb();
 
             //TEST FOR HUD
 
-            hud = new HUD(spriteBatch, font, hudspriteSheet, testHeart, inventory);
+            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("block_image");

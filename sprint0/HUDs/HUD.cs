@@ -13,33 +13,30 @@ using System.Threading.Tasks;
 
 namespace sprint0.HUDs
 {
-    internal class HUD
-    {
+    public class HUD
+    {   //change HUD to static as well?
 
-        //object will call
-        //just do the calculation
-        //_spriteBatch.DrawString(font, "X %d", new Vector2(100, 10), Color.White);
-
-        Texture2D hudBackground;
-        Texture2D heart, gem, itemA, itemB;
+        static Texture2D hudBackground;
+        static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB;
         SpriteBatch spriteBatch;
         SpriteFont font;     
-        Inventory inventory;
+        //Inventory inventory;
         HUD hud;
         float fontSize = 1.5f;
 
-
-        public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Inventory inventory)
+        //CHANGE HUD CONSTRUCTOR SO IT DOESN"T HAVE TO PASS IN TH TEXTURE@D (Probably Level loader?)
+        public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator)
         {
             this.spriteBatch = spriteBatch;
-            this.inventory = inventory;
             this.font = font;
             hudBackground = hudspriteSheet;
-            this.heart = Hearttexture;
+            miniMap = minimap;
+            linkLocator = linklocator;
+            heart = Hearttexture;
         }
 
 
-        protected void backgroundDisplay()
+        protected void BackgroundDisplay()
         {
             {
                 float scaledWidth = 0.95f;
@@ -62,12 +59,16 @@ namespace sprint0.HUDs
         }
         
 
-        protected void heartDisplay()
+        protected void HeartDisplay()
         {
+            //Each heart is count of 2. If it's an odd number, that means it's an half heart
+
             int fullHeart = 10; //5 hearts
+            int heartSpacing = 40;
             int j = 0;
             int i;
-            int heartNum = inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
+            int heartChecker = 2;
+            int heartNum = Inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
             int heartWidth = heart.Width / 3;
             int heartHeight = heart.Height;
             Rectangle fullHeartsheet = new Rectangle(0, 0, heartWidth, heartHeight); // first full Heart
@@ -75,19 +76,19 @@ namespace sprint0.HUDs
             Rectangle emptyHeartsheet = new Rectangle(2, 0, heartWidth, heartHeight);
            
 
-            for (i = 1; i <= heartNum; i++)
+            for (i = 1; i <= heartNum; i++) //Loops the amount of hearts from enum HEART in the inventory
             {
                
-                if (i == heartNum && i % 2 != 0) {
+                if (i == heartNum && i % heartChecker != 0) { //checks if i is at the last heart and if the last heart is odd
 
-                    //if odd
+                    //if odd draw a half heart
                     spriteBatch.Draw(heart, new Vector2(590 + j, 90), halfHeartsheet, Color.White);
-                    j += 40;
+                    j += heartSpacing; 
                 }
-                else if (i % 2 == 0)
+                else if (i % heartChecker == 0) //if the the last heart is even, or if not the last heart, draw a full heart
                 {
                     spriteBatch.Draw(heart, new Vector2(590 + j, 90), fullHeartsheet, Color.White);
-                    j += 40;
+                    j += heartSpacing; //I still have to look into why there has to be two j +=heartSpacing.
                 }
 
                
@@ -97,46 +98,85 @@ namespace sprint0.HUDs
         }
 
 
-        //heart modulus 
-        //if heart is damaged, 
-        //public void heartLine() { }
-
         //Gem
-        protected void gemDisplay()
+        protected void RupeeDisplay()
         {
-            int gemCount = inventory.items[Inventory.ItemTypes.GEM];
-            //draw gem number
-            //spriteBatch.DrawString(font, gemCount.ToString(), new Vector2(350, 100), Color.White);
-            spriteBatch.DrawString(font, gemCount.ToString(), new Vector2(340, 35), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
+            int rupeeCount = Inventory.items[Inventory.ItemTypes.RUPEE];
+            
+            //draw rupee number            
+            spriteBatch.DrawString(font, rupeeCount.ToString(), new Vector2(340, 35), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
 
         }
         //Key display
-        protected void keyDisplay()
+        protected void KeyDisplay()
         {
-            int keyCount = inventory.items[Inventory.ItemTypes.KEY];
+            int keyCount = Inventory.items[Inventory.ItemTypes.KEY];
             spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(340, 75), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
         }
 
-        protected void bombDisplay()
+        protected void BombDisplay()
         {
-            int bombCount = inventory.items[Inventory.ItemTypes.BOMB];
+            int bombCount = Inventory.items[Inventory.ItemTypes.BOMB];
 
             spriteBatch.DrawString(font, bombCount.ToString(), new Vector2(340, 110), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
         }
 
         //slot A item
-        public void slotADisplay(string currentItemA)
+        public void SlotADisplay(string currentItemA)
         {
             //get currentA item if not null
 
         }
         //slot B item
-        public void slotBDisplay(string currentItemB)
+        public void SlotBDisplay(string currentItemB)
         {
             //get current B item if not null
         }
 
-        protected void levelDisplay()
+        //Will change the logic. I wanted to just display
+        protected void MiniMapDisplay()
+        {
+
+
+            float scaledWidth = 1f;
+            float scaledHeight = 1f;
+            int x = 30;
+            int y = 40;
+
+            int width = (int)(miniMap.Width * scaledWidth);
+            int height = (int)(miniMap.Height * scaledHeight);
+
+
+
+
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            spriteBatch.Draw(miniMap, destinationRectangle, Color.White);
+
+
+        }
+        
+           //Will change the logic. Just wanted to display
+        protected void linkLocatorDisplay()
+        {
+            float scaledWidth = 0.55f;
+            float scaledHeight = 0.40f;
+            int x = 40;
+            int y = 90;
+
+            int width = (int)(linkLocator.Width * scaledWidth);
+            int height = (int)(linkLocator.Height * scaledHeight);
+
+
+
+
+            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+            spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
+
+
+        }
+
+
+        protected void LevelDisplay()
         {
             //get the level room number
             //change "1" so it links to the roomID that gets passed into the parameter of Inventory
@@ -149,14 +189,16 @@ namespace sprint0.HUDs
         //Display all (called in Game1)
         public void Draw()
         {
-            this.backgroundDisplay();
-            this.heartDisplay();
-            this.gemDisplay();
-            this.keyDisplay();
-            this.bombDisplay();
-            this.slotADisplay(""); //change
-            this.slotBDisplay(""); //change
-            this.levelDisplay();
+            this.BackgroundDisplay();
+            MiniMapDisplay();
+            linkLocatorDisplay();
+            HeartDisplay();
+            this.RupeeDisplay();
+            this.KeyDisplay();
+            this.BombDisplay();
+            this.SlotADisplay(""); //change
+            this.SlotBDisplay(""); //change
+            this.LevelDisplay();
 
 
         }

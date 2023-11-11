@@ -435,6 +435,18 @@
 /processorParam:TextureFormat=Color
 /build:Link.png
 
+#begin linkLocator.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkLocator.png
+
 #begin linkSword.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -470,6 +482,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
+
+#begin miniMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:miniMap.png
 
 #begin songs/DUNGEON.mp3
 /importer:Mp3Importer

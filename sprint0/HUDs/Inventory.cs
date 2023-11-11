@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace sprint0.HUDs
 {
-    internal class Inventory
+   internal static class Inventory
     {
+
+        //Checking on global for pause (!pause) or a boolean method to check if this is paused?
         //ENUM
         public enum ItemTypes
         {
             HEART,
-            GEM,
+            RUPEE,
             KEY,
             BOMB,
             LEVEL,
@@ -27,27 +29,28 @@ namespace sprint0.HUDs
             SLOTB
         }
 
-        ILink link;
-        ISprite currentSprite;
-        IGameObject igameObject;
-        int fullLife = 10; //5 hearts
-        int defaultLife = 6; // 3 hearts
-        int noLife = 0;
-        int initialState = 0;
+        //ILink link;
+        //ISprite currentSprite;
+        static IGameObject igameObject;
+        static int fullLife = 10; //5 hearts
+        static int defaultLife = 6; //3 hearts
+        static int noLife = 0;
+        static int initialState = 0;
+        
         
         
 
-        HUD hud;
-        public Dictionary<ItemTypes, int> items;
-        public Dictionary<slotTypes, string> slotItems;
+        static HUD hud;
+        public static  Dictionary<ItemTypes, int> items;
+        public static Dictionary<slotTypes, string> slotItems;
 
-        public Inventory()
+         static Inventory()
         {
             items = new Dictionary<ItemTypes, int>
             {
 
                 {ItemTypes.HEART, defaultLife}, //Begins with 3 Hearts
-                {ItemTypes.GEM, initialState},
+                {ItemTypes.RUPEE, initialState},
                 {ItemTypes.KEY,initialState},
                 {ItemTypes.BOMB,initialState},
                 {ItemTypes.LEVEL,1}, //starts at level 1
@@ -61,19 +64,20 @@ namespace sprint0.HUDs
             };
         }
 
-        public void AddItem() { }
+        //use delegates
+        public static void AddItem() { }
 
         //METHOD STARTS FROM HERE
         //DELETE ALL int PARAMETERS (except for ROOMID in roomLevel method)LATER in INVENTORY!! IT WILL CALLED WHEN WE NEED IT!
 
-        public void roomLevel(int roomID)
+        public static void RoomLevel(int roomID)
         {
 
             //compare the first roomID number. The first number of the roomID indicates the level number
             items[ItemTypes.LEVEL] = igameObject.GetRoomId();
 
         }
-        public void gainHeart()
+        public static void GainHeart()
         {
 
             //gain up to five hearts in total
@@ -85,7 +89,7 @@ namespace sprint0.HUDs
 
         }
 
-        public void loseHeart()
+        public static void LoseHeart()
         {
 
             if (items[ItemTypes.HEART] > noLife)
@@ -96,16 +100,17 @@ namespace sprint0.HUDs
 
         }
 
-        public void countGem()
+        public static void CountRupee()
         {
+            int addRupee = 5; // adding 5 rupees per grab
 
-            items[ItemTypes.GEM] += 5; //increase count gem by 5 per count
+            items[ItemTypes.RUPEE] += addRupee; //increase count rupee by 5 per count
 
 
 
         }
 
-        public void countKey()
+        public static void CountKey()
         {
 
             items[ItemTypes.KEY]++; //increase count key
@@ -114,18 +119,19 @@ namespace sprint0.HUDs
 
         }
 
-        public void gainBomb()
+        public static void GainBomb()
         {
+            int addBomb = 4; //adding 4 bombs per pick up
 
-            items[ItemTypes.BOMB] += 4; //increase count bomb
+            items[ItemTypes.BOMB] += addBomb; 
 
 
         }
 
-        public void loseBomb()
+        public static void LoseBomb()
         {
 
-            items[ItemTypes.BOMB]--; //increase count bomb
+            items[ItemTypes.BOMB]--; //lose bomb when used
 
 
 
@@ -136,20 +142,20 @@ namespace sprint0.HUDs
         //checks for slot A before B
         //if A is empty, put the item in A, else B
         // if A and B is full, then add it to B(?)
-        public void Slots(string currentItem)
+        public static void Slots(string currentItem)
         {
 
             //before adding in slotB check for slot As
             if (slotItems[slotTypes.SLOTA] == "EMPTY")
-            { hud.slotADisplay(currentItem); }
+            { hud.SlotADisplay(currentItem); }
 
-            else { hud.slotBDisplay(currentItem); }
+            else { hud.SlotBDisplay(currentItem); }
 
 
         }
 
         //METHOD MIGHT NOT BE USED (method slots used instead)
-        public void slotAItem(string currentItemA)
+        public static void SlotAItem(string currentItemA)
         {
 
             //displayslot A item if picked up
@@ -157,7 +163,7 @@ namespace sprint0.HUDs
 
         }
 
-        public void slotBItem(string currentItemB)
+        public static void SlotBItem(string currentItemB)
         {
 
             //display slot B item if picked up
@@ -166,7 +172,7 @@ namespace sprint0.HUDs
             if (slotItems[slotTypes.SLOTA] == "EMPTY")
             {
 
-                slotAItem(currentItemB);
+                SlotAItem(currentItemB);
             }
             else
             {
