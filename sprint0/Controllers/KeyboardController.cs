@@ -62,7 +62,7 @@ namespace sprint0.Controllers
             linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
             linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
             linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
-            pause = new PauseCommand(Game, Game.StateManager.PauseState);
+            //pause = new PauseCommand(Game, Game.StateManager.PauseState);
             //linkDamaged = new DamagedCommand(Game);
             //nextBlock = new NextBlockCommand(Game, Game.block);
             //previousBlock = new PreviousBlockCommand(Game, Game.block);

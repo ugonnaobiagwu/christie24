@@ -392,11 +392,10 @@ namespace sprint0
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
             //HUD draw
             hud.Draw();
-            
-            //if (LinkObj != null)
-            //{
-            //    LinkObj.Draw(spriteBatch);
-            //}
+            if (Globals.Link != null)
+            {
+                Globals.Link.Draw(spriteBatch);
+            }
             block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
