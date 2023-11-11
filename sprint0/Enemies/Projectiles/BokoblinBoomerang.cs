@@ -19,7 +19,7 @@ namespace sprint0.Items
         private int itemYOrigin;
         private int spriteVelocity = 1;
         private int itemRoomID;
-        //private IBokoblin Owner;
+        //private Bokoblin Owner;
         // needs these positions for sprite swapping.
 
         //direction stuff
@@ -133,7 +133,7 @@ namespace sprint0.Items
             return (itemXPos == itemXOrigin) && (itemYPos == itemYOrigin);
         }
 
-        public void Use(IBokoblin Owner)
+        public void Use(Bokoblin Owner)
         {
             if (!thisStateMachine.isItemInUse())
             {

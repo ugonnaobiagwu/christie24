@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/Dungeon1BlockSpriteSheet.png</SourceFile>
-  <SourceTime>2023-10-30T23:35:36.2789762-04:00</SourceTime>
-  <DestFile>C:/Users/storm/Documents/Projects/christie24/sprint0/Content/bin/DesktopGL/Content/Dungeon1BlockSpriteSheet.xnb</DestFile>
-  <DestTime>2023-11-10T17:11:37.6640029-05:00</DestTime>
+
+  <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/Dungeon1BlockSpriteSheet.png</SourceFile>
+  <SourceTime>2023-11-10T17:41:46.2326917-05:00</SourceTime>
+  <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/Dungeon1BlockSpriteSheet.xnb</DestFile>
+  <DestTime>2023-11-11T09:37:47.8939169-05:00</DestTime>
+
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

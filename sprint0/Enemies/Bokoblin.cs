@@ -10,10 +10,11 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Enemies
 {
-    public class Bokoblin : IBokoblin, IGameObject
+    public class Bokoblin : IEnemy
     {
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
@@ -107,7 +108,7 @@ namespace sprint0.Enemies
             return direction;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }
@@ -257,6 +258,7 @@ namespace sprint0.Enemies
         public void BokoblinThrow()
         {
             Boomerang.Use(this);
+
         }
 
         public void ChangeEnemyY(int change)

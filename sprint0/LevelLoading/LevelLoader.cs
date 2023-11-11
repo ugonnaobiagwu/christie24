@@ -53,7 +53,9 @@ namespace sprint0.LevelLoading
         {
             ILink linkObj = new Link(x, y, spriteFactory);
             linkObj.SetRoomId(roomId);
-            game.LinkObj = linkObj;
+            //game.LinkObj = linkObj;
+            Globals.Link = linkObj;
+            SendToGOM(linkObj);
 
         }
         private static void SendToGOM(IGameObject gameObject)

@@ -81,12 +81,12 @@ namespace sprint0.Items
 
         public bool isInPlay()
         {
-            return false;
+            return true;
         }
 
         public bool isDrawable()
         {
-            return false;
+            return true;
         }
 
         public void SetRoomId(int roomId)

@@ -12,9 +12,15 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+
+using sprint0.HUDs;
+
+
 using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
+using System;
+
 
 namespace sprint0
 {
@@ -23,15 +29,24 @@ namespace sprint0
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        public ILink LinkObj;
+        //public ILink LinkObj;
         Texture2D textureBlock;
 
-        /* For Testing Purposes */
-        public ISkeleton SkeletonObj;
-        public IOktorok OktorokObj;
-        public IBokoblin BokoblinObj;
-        public IDragon DragonObj;
+        //HUD
+        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
+        SpriteFont font;
+        
+        HUD hud;
 
+        /* For Testing Purposes */
+        public Skeleton SkeletonObj;
+        public Oktorok OktorokObj;
+        public Bokoblin BokoblinObj;
+        public Dragon DragonObj;
+
+        //Camera
+        public Camera camera;
+        
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
@@ -47,6 +62,34 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //HUD
+            font = Content.Load<SpriteFont>("hudFont");
+            lifeSpriteSheet = Content.Load<Texture2D>("lives");
+            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
+            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
+            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
+
+            //inventory = new Inventory();
+
+            //TEST FOR HUD DELETE LATER!!
+
+            for (int i = 0; i < 3; i++)
+            {
+                Inventory.GainHeart();
+            }
+          
+
+            Inventory.CountRupee();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.GainBomb();
+            Inventory.GainBomb();
+            Inventory.LoseBomb();
+
+            //TEST FOR HUD
+
+            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
@@ -74,6 +117,10 @@ namespace sprint0
             Texture2D LinkTexture = Content.Load<Texture2D>("Link");
             /*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
             SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
+
+            
+            
+            
             LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
             LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
             LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
@@ -85,8 +132,8 @@ namespace sprint0
            
             LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
 
-            LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
-            LinkObj.SetRoomId(0);
+            //LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
+            //LinkObj.SetRoomId(0);
 
             /*ENEMY TESTS: TO BE DELETED*/
             Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
@@ -115,12 +162,14 @@ namespace sprint0
             BokoblinBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
             BokoblinObj = new sprint0.Enemies.Bokoblin(400, 50, 1, BokoblinFactory, BokoblinBoomerangFactory);
 
-            Texture2D DragonTexture = Content.Load<Texture2D>("Dragon");
-            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 2);
+            Texture2D DragonTexture = Content.Load<Texture2D>("legendofzelda_bosses_sheet");
+            SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 4);
             SpriteFactory DragonBlazeFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            DragonFactory.createAnimation("Default", new int[] {0, 1}, new int[] {0, 0}, 2);
+            DragonFactory.createAnimation("Default", new int[] {0, 1, 2, 3}, new int[] {0, 0, 0, 0}, 4);
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
+
+            
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -290,8 +339,10 @@ namespace sprint0
 
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
+            // Camera, keep this since I need graphics
+            Globals.Camera.FollowLink(Globals.Link, graphics);
 
-            Globals.GameObjectManager.addObject(LinkObj);
+            //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
             //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
@@ -320,8 +371,12 @@ namespace sprint0
                 updateable.Update();
             }
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            LinkObj.Update();
+            //LinkObj.Update();
             Globals.Update(gameTime);
+            //Camera 
+            // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
+            Globals.Camera.FollowLink(Globals.Link, graphics);
+            Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
@@ -334,17 +389,14 @@ namespace sprint0
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            //Block Draw
-            spriteBatch.Begin();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
-            foreach(IGameObject obj in Drawables)
-            {
-                obj.Draw(spriteBatch);
-            }
-            if (LinkObj != null)
-            {
-                LinkObj.Draw(spriteBatch);
-            }
+            spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
+            //HUD draw
+            hud.Draw();
+            
+            //if (LinkObj != null)
+            //{
+            //    LinkObj.Draw(spriteBatch);
+            //}
             block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
@@ -352,7 +404,12 @@ namespace sprint0
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
-            LinkObj.Draw(spriteBatch);
+            //LinkObj.Draw(spriteBatch);
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
             base.Draw(gameTime);
             spriteBatch.End();
         }

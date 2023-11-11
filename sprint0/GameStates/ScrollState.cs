@@ -1,57 +1,52 @@
-﻿//Saved for later 
-//using System;
-//using sprint0.Link;
-//using System.Collections.Generic;
+/* using System;
+namespace sprint0.GameStates
+{
+    public class ScrollState : StateManager, IState
+    {
+        public ScrollState()
+        {
+        }
 
-//namespace sprint0.GameStates
-//{
-//	public class ScrollState: StateManager, IState
-//	{
-//        IState state;
+        public void ScrollLeft()
+        {
+            ScrollTransition("scrollLeft");
+        }
 
-//        ILink player;
-//        List<IGameObject> CurrentUpdatables;
-//        public ScrollState(IState playingState)
-//		{
-//            //Define transition states
-//            PlayingState = playingState;
+        public void ScrollRight()
+        {
+            ScrollTransition("scrollRight");
+        }
 
-//            //Set conditions for state
-//            this.state.EnemyUpdate();
-//            this.state.GameResettable();
-//            this.state.LinkUpdate();
-//            this.state.RoomUpdate();
-//        }
+        public void ScrollUp()
+        {
+            ScrollTransition("scrollRight");
+        }
 
-//        public void Update()
-//        {
-//            //Code for transition from scroll => playing 
-//        }
-//        public void EnemyUpdate()
-//        {
-//            this.state.EnemyDeactivate();
-//        }
+        public void ScrollDown()
+        {
+            ScrollTransition("scrollRight");
+        }
 
-//        public bool GameResettable()
-//        {
-//            return false;
-//        }
-
-//        public string GetState()
-//        {
-//            return "Scroll";
-//        }
-
-//        public void LinkUpdate()
-//        {
-//            this.state.LinkDeactivate();
-//        }
-
-//        public void RoomUpdate()
-//        {
-//            this.state.RoomActivate();
-//        }
-//    }
-
-//}
-
+        public void ScrollTransition(string scrollInstruction)
+        {
+            switch (scrollInstruction)
+            {
+                // hopefully this works for 16x12 rooms
+                case "scrollLeft":
+                    Globals.Camera.MoveCameraLeft(16);
+                    break;
+                case "scrollRight":
+                    Globals.Camera.MoveCameraRight(16);
+                    break;
+                case "scrollUp":
+                    Globals.Camera.MoveCameraUp(12);
+                    break;
+                case "scrollDown":
+                    Globals.Camera.MoveCameraDown(12);
+                    break;
+                default: break;
+            }
+        }
+    }
+}
+*/

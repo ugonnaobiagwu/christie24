@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Enemies
 {
-    public class Dragon : IDragon, IGameObject
+    public class Dragon : IEnemy
     {
         Sprint0 Game;
         SpriteFactory DragonFactory;
@@ -75,7 +76,7 @@ namespace sprint0.Enemies
             return xPos;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }
@@ -211,6 +212,7 @@ namespace sprint0.Enemies
             foreach(DragonBlaze fireball in Fireballs)
             {
                 fireball.Use(this);
+                
             }
         }
 
