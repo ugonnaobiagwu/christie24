@@ -28,6 +28,9 @@ namespace sprint0
         public IOktorok OktorokObj;
         public IBokoblin BokoblinObj;
 
+        //Camera
+        public Camera camera;
+
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
@@ -82,6 +85,10 @@ namespace sprint0
             LinkFactory.createAnimation("Damaged", new int[] { 0 }, new int[] { 0 }, 1);
 
             LinkObj = new sprint0.Link.Link(400, 200, 1, LinkFactory);
+
+            // Camera
+            camera = new Camera();
+            camera.FollowLink(LinkObj, graphics);
 
             ///*ENEMY TESTS: TO BE DELETED*/
             //Texture2D SkeletonTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
@@ -271,6 +278,9 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
             Globals.Update(gameTime);
+
+            //Camera
+            camera.FollowLink(LinkObj, graphics);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             //SkeletonObj.Update();
             //OktorokObj.Update();
@@ -283,7 +293,8 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Block Draw
-            spriteBatch.Begin();
+            // camera to follow Link
+            spriteBatch.Begin(transformMatrix: camera.Transform);
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
