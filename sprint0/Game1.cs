@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Audio;
 using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
+using System;
 
 namespace sprint0
 {
@@ -333,7 +334,7 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             LinkObj.Update();
             Globals.Update(gameTime);
-
+            Console.WriteLine(LinkObj.width());
             //Camera
             camera.FollowLink(LinkObj, graphics);
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/

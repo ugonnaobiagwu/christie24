@@ -21,7 +21,7 @@ namespace sprint0.AnimatedSpriteFactory
         private bool active = true;
         private List<Rectangle> SourceRectangles;
         private bool animationComplete;
-
+        public int ScaledSpriteWidth, ScaledSpriteHeight;
         public AnimatedSprite(Texture2D texture, List<Rectangle> sourceRectangles, int totalFrames, int rows, int columns, float secondsPerFrame, float width, float height)
         {
             Texture = texture;
@@ -38,18 +38,20 @@ namespace sprint0.AnimatedSpriteFactory
             scaleVector.X = width;
             scaleVector.Y = height;
             animationComplete = false;
+
+
+           ScaledSpriteWidth =(int)( (Texture.Width / Columns) * width);
+            ScaledSpriteHeight = (int)((Texture.Height / Columns) * height);
         }
         public int GetWidth()
         {
 
-            int width = Texture.Width / Columns;
-            return (int)(scaleWidth * width);
+            return ScaledSpriteWidth;
         }
 
         public int GetHeight()
         {
-            int height = Texture.Height / Rows;
-            return (int)(scaleHeight * height);
+            return ScaledSpriteHeight;
         }
         public int GetTotalFrames()
         {
