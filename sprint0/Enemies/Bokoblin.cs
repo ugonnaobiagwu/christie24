@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
@@ -10,7 +13,7 @@ using sprint0.Items;
 
 namespace sprint0.Enemies
 {
-    public class Bokoblin : IBokoblin, IGameObject
+    public class Bokoblin : IEnemy
     {
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
@@ -29,7 +32,7 @@ namespace sprint0.Enemies
         private int[] SpriteSheetFrames;
         private BokoblinBoomerang Boomerang;
 
-        public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Subject to Change */
             Health = 3;
@@ -39,7 +42,7 @@ namespace sprint0.Enemies
             RoomId = roomId;
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
-            Boomerang = new BokoblinBoomerang(spriteFactory);
+            Boomerang = new BokoblinBoomerang(projectileFactory);
 
             /* Temporary Values */
             Width = 1;
@@ -50,28 +53,36 @@ namespace sprint0.Enemies
         }
 
         /* ---Movement--- */
-        public void BokoblinUp()
+        public void EnemyUp()
         {
             BokoblinDirection = Direction.Up;
+            BokoSprite = BokoblinFactory.getAnimatedSprite("Up");
             yPos++;
+            BokoSprite.Update();
         }
 
-        public void BokoblinDown()
+        public void EnemyDown()
         {
             BokoblinDirection = Direction.Down;
+            BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
             yPos--;
+            BokoSprite.Update();
         }
 
-        public void BokoblinLeft()
+        public void EnemyLeft()
         {
             BokoblinDirection = Direction.Left;
+            BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
             xPos--;
+            BokoSprite.Update();
         }
 
-        public void BokoblinRight()
+        public void EnemyRight()
         {
             BokoblinDirection = Direction.Right;
+            BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
             xPos++;
+            BokoSprite.Update();
         }
 
         /* ---Get Methods--- */
@@ -96,7 +107,7 @@ namespace sprint0.Enemies
             return direction;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }
@@ -164,11 +175,16 @@ namespace sprint0.Enemies
         public void Draw(SpriteBatch spriteBatch)
         {
             BokoSprite.Draw(spriteBatch, xPos, yPos);
+            if (Boomerang.ThisStateMachine().isItemInUse())
+            {
+                Boomerang.Draw(spriteBatch);
+            }
         }
 
         public void Update()
         {
             BokoSprite.Update();
+            Boomerang.Update();
 
             Random rnd = new Random();
             int direction = rnd.Next(4);
@@ -176,20 +192,23 @@ namespace sprint0.Enemies
             switch (direction)
             {
                 case 0:
-                    BokoblinUp();
+                    EnemyUp();
                     break;
                 case 1:
-                    BokoblinLeft();
+                    EnemyLeft();
                     break;
                 case 2:
-                    BokoblinDown();
+                    EnemyDown();
                     break;
                 case 3:
-                    BokoblinRight();
+                    EnemyRight();
                     break;
             }
 
-            BokoblinThrow();
+            if (!Boomerang.ThisStateMachine().isItemInUse())
+            {
+                BokoblinThrow();
+            }
         }
 
         /* ---Other Methods--- */
@@ -238,6 +257,16 @@ namespace sprint0.Enemies
         public void BokoblinThrow()
         {
             Boomerang.Use(this);
+        }
+
+        public void ChangeEnemyY(int change)
+        {
+            xPos += change;
+        }
+
+        public void ChangeEnemyX(int change)
+        {
+           yPos += change;
         }
     }
 }

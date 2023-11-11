@@ -11,12 +11,12 @@ using sprint0.Items;
 
 namespace sprint0.Enemies
 {
-    public class Dragon : IDragon, IGameObject
+    public class Dragon : IEnemy
     {
         Sprint0 Game;
         SpriteFactory DragonFactory;
         SpriteBatch SpriteBatch;
-        ISprite SkellySprite;
+        ISprite DragonSprite;
         private int Health;
         private int xPos;
         private int yPos;
@@ -25,7 +25,7 @@ namespace sprint0.Enemies
         private int RoomId;
         private DragonBlaze[] Fireballs;
 
-        public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Can be adjusted */
             Health = 10;
@@ -34,31 +34,31 @@ namespace sprint0.Enemies
             yPos = y;
             RoomId = roomId;
             DragonFactory = spriteFactory;
-            SkellySprite = DragonFactory.getAnimatedSprite("Default");
-            Fireballs = new DragonBlaze[] { new DragonBlaze(spriteFactory, 0), new DragonBlaze(spriteFactory, 1), new DragonBlaze(spriteFactory, 2) };
+            DragonSprite = DragonFactory.getAnimatedSprite("Default");
+            Fireballs = new DragonBlaze[] { new DragonBlaze(projectileFactory, 0), new DragonBlaze(projectileFactory, 1), new DragonBlaze(projectileFactory, 2) };
             SpriteSheetFrames = new int[] { 0, 1, 2, 3 };
         }
 
         /* ---Movement--- */
-        public void DragonUp()
+        public void EnemyUp()
         {
             Direction = 0;
             yPos++;
         }
 
-        public void DragonDown()
+        public void EnemyDown()
         {
             Direction = 2;
             yPos--;
         }
 
-        public void DragonLeft()
+        public void EnemyLeft()
         {
             Direction = 1;
             xPos--;
         }
 
-        public void DragonRight()
+        public void EnemyRight()
         {
             Direction = 3;
             xPos++;
@@ -75,7 +75,7 @@ namespace sprint0.Enemies
             return xPos;
         }
 
-        public int getHealth()
+        public int GetHealth()
         {
             return Health;
         }
@@ -135,12 +135,23 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            SkellySprite.Draw(spriteBatch, xPos, yPos);
+            DragonSprite.Draw(spriteBatch, xPos, yPos);
+            foreach (DragonBlaze fireball in Fireballs)
+            {
+                if(fireball.ThisStateMachine().isItemInUse())
+                {
+                    fireball.Draw(spriteBatch);
+                }
+            }
         }
 
         public void Update()
         {
-            SkellySprite.Update();
+            DragonSprite.Update();
+            foreach(DragonBlaze fireball in Fireballs)
+            {
+                fireball.Update();
+            }
 
             Random rnd = new Random();
             int direction = rnd.Next(4);
@@ -148,18 +159,20 @@ namespace sprint0.Enemies
             switch (direction)
             {
                 case 0:
-                    DragonUp();
+                    EnemyUp();
                     break;
                 case 1:
-                    DragonLeft();
+                    EnemyLeft();
                     break;
                 case 2:
-                    DragonDown();
+                    EnemyDown();
                     break;
                 case 3:
-                    DragonRight();
+                    EnemyRight();
                     break;
             }
+
+            DragonShoot();
         }
 
         /* ---Other Methods--- */
@@ -199,6 +212,16 @@ namespace sprint0.Enemies
             {
                 fireball.Use(this);
             }
+        }
+
+        public void ChangeEnemyY(int change)
+        {
+            xPos += change;
+        }
+
+        public void ChangeEnemyX(int change)
+        {
+            yPos += change;
         }
     }
 }

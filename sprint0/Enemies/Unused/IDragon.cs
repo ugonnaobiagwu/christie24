@@ -7,22 +7,24 @@ using System.Threading.Tasks;
 
 namespace sprint0.Enemies
 {
-    public interface ISkeleton
+    public interface IDragon: IEnemy
     {
-        public void SkeletonUp();
+        public void EnemyUp();
+        public void EnemyDown();
+        public void EnemyLeft();
+        public void EnemyRight();
 
-        public void SkeletonDown();
-
-        public void SkeletonLeft();
-
-        public void SkeletonRight();
+        public int xPosition();
+        public int yPosition();
 
         public int getDirection();
 
         public void takeDamage();
-
         public int getHealth();
 
+        public void Draw(SpriteBatch spriteBatch);
         public void Update();
+
+        public void DragonShoot();
     }
 }

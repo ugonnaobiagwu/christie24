@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
+
 namespace sprint0.Items
 {
     public class Bomb : IItem, IGameObject
@@ -15,7 +18,6 @@ namespace sprint0.Items
         //direction stuff
         private int itemRoomID;
         private SpriteFactory explosionSpriteFactory;
-        private enum Direction { LEFT, RIGHT, UP, DOWN };
         private ISprite currentItemSprite;
         public IItemStateMachine thisStateMachine;
         private SpriteFactory itemSpriteFactory; 
@@ -28,6 +30,8 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             maxBombTicks = 60;
             bombTicks = 0;
+            itemRoomID = 0;
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -70,6 +74,7 @@ namespace sprint0.Items
             {
                 this.currentItemSprite = explosionSpriteFactory.getAnimatedSprite("BombExplosion");
                 this.spriteChanged = true;
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_EXPLODE);
             }
             else if (this.finishedAnimationCycle() && this.spriteChanged)
             {
@@ -81,10 +86,11 @@ namespace sprint0.Items
             }
         }
 
-        public void Use(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
             if (!thisStateMachine.isItemInUse())
             {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_DROP);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
                 
@@ -94,19 +100,19 @@ namespace sprint0.Items
                 // Set the the current item sprite based on link orientation (if needed).
                 switch (linkDirection)
                 {
-                    case (int)Direction.RIGHT:
+                    case Direction.Right:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;
-                    case (int)Direction.UP:
+                    case Direction.Up:
                         this.itemYPos = linkYPos - 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.DOWN:
+                    case Direction.Down:
                         this.itemYPos = linkYPos + 15;
                         this.itemXPos = linkXPos;
                         break;
-                    case (int)Direction.LEFT:
+                    case Direction.Left:
                         this.itemXPos = linkXPos + 15;
                         this.itemYPos = linkYPos;
                         break;

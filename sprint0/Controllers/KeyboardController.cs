@@ -92,7 +92,7 @@ namespace sprint0.Controllers
 
             // other commands
             KeyMap.Add(Keys.N, linkItemUse);
-            KeyMap.Add(Keys.Z, linkSword);
+            //KeyMap.Add(Keys.Z, linkSword);
             KeyMap.Add(Keys.D1, linkEquipBow);
             KeyMap.Add(Keys.D2, linkEquipBetterBow);
             KeyMap.Add(Keys.D3, linkEquipBoomerang);
@@ -100,16 +100,15 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.D5, linkEquipBomb);
             KeyMap.Add(Keys.D6, linkEquipBlaze);
             KeyMap.Add(Keys.D7, linkEquipSword);
-            KeyMap.Add(Keys.E, linkDamaged);
-            KeyMap.Add(Keys.T, previousBlock);
-            KeyMap.Add(Keys.Y, nextBlock);
+            //KeyMap.Add(Keys.E, linkDamaged);
+            //KeyMap.Add(Keys.T, previousBlock);
+            //KeyMap.Add(Keys.Y, nextBlock);
             //KeyMap.Add(Keys.U, previousItem);
             //KeyMap.Add(Keys.I, nextItem);
-            KeyMap.Add(Keys.O, previousEnemy);
-            KeyMap.Add(Keys.P, nextEnemy);
+            //KeyMap.Add(Keys.O, previousEnemy);
+            //KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
-            KeyMap.Add(Keys.R, reset);
-
+            //KeyMap.Add(Keys.R, reset);
         }
 
         // executes commands for each key pressed

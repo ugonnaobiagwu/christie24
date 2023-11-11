@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using sprint0;
-using sprint0.Link;
+using sprint0.LinkObj;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Commands
 {
@@ -22,6 +23,8 @@ namespace sprint0.Commands
         public void execute()
         {
             Link.LinkTakeDamage();
+            //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+            // might remove this since collision handler may take care of this.
         }
     }
 }
