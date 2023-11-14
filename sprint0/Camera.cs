@@ -16,10 +16,10 @@ public class Camera
     /* The Camera now follows Link 
      * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)
      */
-    public void FollowLink(ILink link, GraphicsDeviceManager graphics)
+    public void FollowLink(GraphicsDeviceManager graphics)
     {
         // Assuming link.xPosition() and link.yPosition() return the center position of Link
-        cameraPosition = new Vector2(-link.xPosition(), -link.yPosition());
+        cameraPosition = new Vector2(-Globals.Link.xPosition(), -Globals.Link.yPosition());
         graphicsDeviceManager = graphics;
         UpdateTransform(graphicsDeviceManager);
 

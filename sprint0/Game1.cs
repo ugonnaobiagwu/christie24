@@ -340,7 +340,7 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
             // Camera, keep this since I need graphics
-            Globals.Camera.FollowLink(Globals.Link, graphics);
+            Globals.Camera.FollowLink(graphics);
 
             //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
@@ -375,7 +375,7 @@ namespace sprint0
             Globals.Update(gameTime);
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-            Globals.Camera.FollowLink(Globals.Link, graphics);
+            Globals.Camera.FollowLink(graphics);
             Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
