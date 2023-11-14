@@ -72,5 +72,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             //Nothing to draw
         }
+        public String type() { return "Block" }
     }
 }

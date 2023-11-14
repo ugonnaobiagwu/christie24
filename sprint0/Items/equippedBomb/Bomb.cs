@@ -193,6 +193,7 @@ namespace sprint0.Items
                 return false;
             }
         }
+        public String type() { return "Item"; }
     }
 }
 

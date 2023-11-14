@@ -185,6 +185,6 @@ namespace sprint0.LinkObj
             LinkObj.Update();
         }
 
-        
+        public String type() { return "Link"; }
     }
 }
