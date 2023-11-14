@@ -303,6 +303,7 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
 
             // LINK AND THE GROUND ITEMS.
+            // play the item use Link animation here.
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundHeart", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundItemPickUpDelegate });
@@ -458,7 +459,7 @@ namespace sprint0.Collision
 
         private void GroundBoomerangPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
-            GroundBoomerang groundBoomerang = (GroundBoomerang)obj; 
+            GroundBoomerang groundBoomerang = (GroundBoomerang)obj;
             groundBoomerang.PickUp();
             // code that impacts inventory system goes here.
         }
@@ -670,8 +671,21 @@ namespace sprint0.Collision
         {
             IGroundItem item = (IGroundItem)obj;
             item.PickUp();
-        }
+            String itemType = item.GetType().ToString();
+            if (itemType.Equals("GroundRupee"))
+            {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
 
+            }
+            else if (itemType.Equals("GroundKey") || itemType.Equals("GroundHeart"))
+            {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+            }
+            else
+            {
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+            }
+
+        }
     }
 }
-
