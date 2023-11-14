@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 
 namespace sprint0.Items.groundItems
 {
@@ -51,6 +52,7 @@ namespace sprint0.Items.groundItems
 
         public void PickUp()
         {
+            Inventory.hasTriforce = true;
             isPickedUp = true;
         }
 

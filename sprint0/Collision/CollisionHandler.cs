@@ -149,6 +149,8 @@ namespace sprint0.Collision
             GameObjectDelegate BetterBoomerangImpactDelegate = new GameObjectDelegate(BetterBoomerangImpact);
             GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
+            GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
+
 
             // BOUNDARIES
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveLinkDelegate, null });
@@ -300,8 +302,14 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
 
-
-
+            // LINK AND THE GROUND ITEMS.
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundHeart", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundKey", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundRupee", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundItemPickUpDelegate });
 
         }
 
@@ -655,6 +663,13 @@ namespace sprint0.Collision
                     break;
             }
             enemy.takeDamage();
+        }
+
+        // Ground Items handle their own "pick up call"
+        private void GenericGroundItemPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            IGroundItem item = (IGroundItem)obj;
+            item.PickUp();
         }
 
     }
