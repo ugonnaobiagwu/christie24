@@ -238,7 +238,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueDragonBlock", MoveDragonDelegate, null });
 
-
             // LINK ITEMS + GROUND ITEMS
             //Grounds
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundBigHeartPickUpDelegate });
@@ -291,7 +290,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Skeleton", null, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Dragon", null, MoveSkeletonAndTakeDamageDelegate });
 
-
             // COMBAT ON LINK COLLISIONS
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
@@ -311,7 +309,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundRupee", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundItemPickUpDelegate });
-
         }
 
 
@@ -394,6 +391,7 @@ namespace sprint0.Collision
                     link.XVal += 25;
                     break;
             }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
             link.LinkTakeDamage();
         }
 
@@ -453,6 +451,7 @@ namespace sprint0.Collision
         private void GroundBigHeartPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             GroundBigHeart groundBigHeart = (GroundBigHeart)obj;
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
             groundBigHeart.PickUp();
             // code that impacts inventory system goes here.
         }
@@ -460,6 +459,7 @@ namespace sprint0.Collision
         private void GroundBoomerangPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             GroundBoomerang groundBoomerang = (GroundBoomerang)obj;
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             groundBoomerang.PickUp();
             // code that impacts inventory system goes here.
         }
@@ -467,6 +467,8 @@ namespace sprint0.Collision
         {
             GroundCompass groundCompass = (GroundCompass)obj;
             groundCompass.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+
             // code that impacts inventory system goes here.
         }
 
@@ -474,6 +476,8 @@ namespace sprint0.Collision
         {
             GroundKey groundKey = (GroundKey)obj;
             groundKey.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+
             // code that impacts inventory system goes here.
         }
 
@@ -481,6 +485,8 @@ namespace sprint0.Collision
         {
             GroundPage groundPage = (GroundPage)obj;
             groundPage.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+
             // code that impacts inventory system goes here.
         }
 
@@ -488,6 +494,7 @@ namespace sprint0.Collision
         {
             GroundTriforce groundTriforce = (GroundTriforce)obj;
             groundTriforce.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.FANFARE);
             // code that impacts inventory system goes here.
         }
 
@@ -541,8 +548,10 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(35);
                     break;
             }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
             enemy.TakeDamage();
         }
+
         private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
@@ -566,27 +575,28 @@ namespace sprint0.Collision
         private void MoveSkeletonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
             enemy.takeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
         private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Bokoblin enemy = (Bokoblin)obj;
-            switch (collisionType)
-            {
-                case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
-                    break;
-                case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
-                    break;
-                case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
-                    break;
-                case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
-                    break;
-            }
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
@@ -623,6 +633,8 @@ namespace sprint0.Collision
                     break;
             }
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+
         }
 
         private void MoveDragon(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -664,6 +676,7 @@ namespace sprint0.Collision
                     break;
             }
             enemy.takeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE);
         }
 
         // Ground Items handle their own "pick up call"
