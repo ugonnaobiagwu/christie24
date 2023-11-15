@@ -201,6 +201,7 @@ namespace sprint0.LinkSword
         {
             return this.itemRoomID;
         }
+        public String type() { return "Item"; }
     }
 }
 

@@ -225,5 +225,6 @@ namespace sprint0.Enemies
         {
             yPos += change;
         }
+        public String type() { return "Enemy"; }
     }
 }
