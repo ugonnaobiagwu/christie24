@@ -19,12 +19,12 @@ namespace sprint0.GameStates
 
         public void ScrollUp()
         {
-            ScrollTransition("scrollRight");
+            ScrollTransition("scrollUp");
         }
 
         public void ScrollDown()
         {
-            ScrollTransition("scrollRight");
+            ScrollTransition("scrollDown");
         }
 
         public void ScrollTransition(string scrollInstruction)
