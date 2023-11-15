@@ -5,7 +5,7 @@ using sprint0.HUDs;
 
 namespace sprint0.Items.groundItems
 {
-    public class GroundKey : IGroundItem
+    public class GroundRupee : IGroundItem
     {
         private ISprite currentItemSprite;
         public int xPos;
@@ -14,9 +14,9 @@ namespace sprint0.Items.groundItems
         private int roomID;
 
         // Does Level Loader like this signature?
-        public GroundKey(SpriteFactory factory, int xPos, int yPos)
+        public GroundRupee(SpriteFactory factory, int xPos, int yPos)
         {
-            this.currentItemSprite = factory.getAnimatedSprite("GroundKey");
+            this.currentItemSprite = factory.getAnimatedSprite("Rupee");
             this.xPos = xPos;
             this.yPos = yPos;
             isPickedUp = false;
@@ -37,6 +37,7 @@ namespace sprint0.Items.groundItems
 
         public void Update()
         {
+            this.currentItemSprite.Update();
         }
 
         public int xPosition()
@@ -51,8 +52,8 @@ namespace sprint0.Items.groundItems
 
         public void PickUp()
         {
-            Inventory.CountKey();
             isPickedUp = true;
+            Inventory.CountRupee();
         }
 
         public bool isUpdateable()
@@ -89,7 +90,6 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
-        public String type() { return "Item"; }
     }
 }
 
