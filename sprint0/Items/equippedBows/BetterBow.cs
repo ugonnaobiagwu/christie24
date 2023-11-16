@@ -38,8 +38,6 @@ namespace sprint0.Items
             spriteChanged = false;
             rotation = 0;
             itemRoomID = 0;
-
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -149,7 +147,7 @@ namespace sprint0.Items
 
         private bool finishedAnimationCycle()
         {
-            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            if (currentItemSprite.GetCurrentFrame() == 0)
             {
                 return true;
             }

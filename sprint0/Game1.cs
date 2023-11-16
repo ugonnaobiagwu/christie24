@@ -376,7 +376,7 @@ namespace sprint0
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
             Globals.Camera.FollowLink(graphics);
-            Console.WriteLine(Globals.Link.width());
+            //Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
