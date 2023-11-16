@@ -33,20 +33,20 @@ namespace sprint0
         //Will later ensures that you cant have two items equipped to the same button, by swapping them out if so
 		//Link Sword will need a new instance upon equipment 
 
-        public void EquipBow(/*int itemButton*/);
-		public void EquipBetterBow(/*int itemButton*/);
-		public void EquipBoomerang(/*int itemButton*/);
-		public void EquipBetterBoomerang(/*int itemButton*/);
-		public void EquipBlaze(/*int itemButton*/);
-		public void EquipBomb(/*int itemButton*/);
-        public void EquipSword(/*int itemButton*/);
+        public void EquipBow(Globals.ItemSlots itemSlot);
+		public void EquipBetterBow(Globals.ItemSlots itemSlot);
+		public void EquipBoomerang(Globals.ItemSlots itemSlot);
+		public void EquipBetterBoomerang(Globals.ItemSlots itemSlot);
+		public void EquipBlaze(Globals.ItemSlots itemSlot);
+		public void EquipBomb(Globals.ItemSlots itemSlot);
+        public void EquipSword(Globals.ItemSlots itemSlot);
 
-        public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
-        /*
-		 * public void UseCurrentItemA(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
-		 * 
-		 * public void UseCurrentItemB(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
-		 */
+        //public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth); // send in link's data as the parameters. enumerations are built upon ints.
+        
+		public void UseCurrentItemA(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+		
+		public void UseCurrentItemB(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth);
+		 
         public void Draw(); // draws both items in link's equipment
         public void Update(); // updates the both items in link's equipment
 
