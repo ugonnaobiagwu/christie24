@@ -12,11 +12,13 @@ namespace sprint0
 		{
 			TotalSeconds = (float)timer.ElapsedGameTime.TotalSeconds;
 		}
-        public static ItemSystem LinkItemSystem =  new ItemSystem();
+		public static ItemSystem LinkItemSystem = new ItemSystem();
 		public static GameObjectManager GameObjectManager = new GameObjectManager();
 		public enum Direction { Left, Right, Up, Down }
 		public static Camera Camera = new Camera();
 		public static ILink Link;
+		public enum ItemSlots { SLOT_A, SLOT_B };
+		public enum ItemsInSlots { BOW, BETTER_BOW, BOOMERANG, BETTER_BOOMERANG, BLAZE, BOMB, SWORD, EMPTY};
     }
 }
 
