@@ -90,6 +90,11 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
+
+        public string type()
+        {
+            return "GroundRupee";
+        }
     }
 }
 
