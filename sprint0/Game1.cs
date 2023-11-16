@@ -343,7 +343,7 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
             // Camera, keep this since I need graphics
-            Globals.Camera.FollowLink(graphics);
+            Globals.Camera.FollowLink(graphics, true);
 
             //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
@@ -381,20 +381,37 @@ namespace sprint0
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
 
             // TO TEST SMOOTH SCROLL
-            MouseState mouse = Mouse.GetState();
-            if (mouse.LeftButton == ButtonState.Pressed)
-            {
-                scrollState.ScrollUp();
-            }
-            else if (mouse.RightButton == ButtonState.Pressed)
-            {
-                scrollState.ScrollDown();
-            }
+            //MouseState mouse = Mouse.GetState();
+            //if (mouse.LeftButton == ButtonState.Pressed)
+            //{
+
+            //    Globals.Camera.FollowLink(graphics, false);
+            //    Globals.Camera.MoveCameraLeft(16);
+            //}
+            //else if (mouse.RightButton == ButtonState.Pressed)
+            //{
+
+            //    Globals.Camera.FollowLink(graphics, false);
+            //    scrollState.ScrollDown();
+
+            //}
+            //else {
+
+            //    // scroll functions/camera functions wont work when followLink is on because the update is too fast
+            //    // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
+            //    // you follow link again
+            //    Globals.Camera.FollowLink(graphics, true);
+
+            //}
+
+
+            // scroll functions/camera functions wont work when followLink is true because the update is too fast
+            // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
+            // you follow link again
+            Globals.Camera.FollowLink(graphics, true);
 
             // keep this here for the final game.
             Globals.Camera.Update(gameTime);
-
-            Globals.Camera.FollowLink(graphics);
 
             Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/

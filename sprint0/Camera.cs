@@ -24,13 +24,16 @@ public class Camera
     /* The Camera now follows Link 
      * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)
      */
-    public void FollowLink(GraphicsDeviceManager graphics)
+    public void FollowLink(GraphicsDeviceManager graphics, Boolean follow)
     {
-        // Assuming link.xPosition() and link.yPosition() return the center position of Link
-        cameraPosition = new Vector2(-Globals.Link.xPosition(), -Globals.Link.yPosition());
-        graphicsDeviceManager = graphics;
-        UpdateTransform(graphicsDeviceManager);
-
+        if (follow)
+        {
+            // Assuming link.xPosition() and link.yPosition() return the center position of Link
+            cameraPosition = new Vector2(-Globals.Link.xPosition(), -Globals.Link.yPosition());
+            graphicsDeviceManager = graphics;
+            UpdateTransform(graphicsDeviceManager);
+            targetPosition = cameraPosition;
+        }
     }
 
     private void UpdateTransform(GraphicsDeviceManager graphics)
@@ -48,24 +51,28 @@ public class Camera
     {
         cameraPosition.X += units; // Adjust this value as needed
         UpdateTransform(graphicsDeviceManager);
+        targetPosition = cameraPosition;
     }
 
     public void MoveCameraRight(int units)
     {
         cameraPosition.X -= units; // Adjust this value as needed
         UpdateTransform(graphicsDeviceManager);
+        targetPosition = cameraPosition;
     }
 
     public void MoveCameraUp(int units)
     {
         cameraPosition.Y += units; // Adjust this value as needed
         UpdateTransform(graphicsDeviceManager);
+        targetPosition = cameraPosition;
     }
 
     public void MoveCameraDown(int units)
     {
         cameraPosition.Y -= units; // Adjust this value as needed
         UpdateTransform(graphicsDeviceManager);
+        targetPosition = cameraPosition;
     }
 
     // for smooth scrolling
