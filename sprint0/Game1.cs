@@ -20,7 +20,7 @@ using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
 using System;
-
+using sprint0.GameStates;
 
 namespace sprint0
 {
@@ -46,6 +46,8 @@ namespace sprint0
 
         //Camera
         public Camera camera;
+        ScrollState scrollState;
+        MouseState mouse;
         
         //Block
         public IBlock block;
@@ -169,7 +171,8 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
-            
+            scrollState = new ScrollState();
+            mouse = Mouse.GetState();
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -373,9 +376,26 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             //LinkObj.Update();
             Globals.Update(gameTime);
+
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
+
+            // TO TEST SMOOTH SCROLL
+            MouseState mouse = Mouse.GetState();
+            if (mouse.LeftButton == ButtonState.Pressed)
+            {
+                scrollState.ScrollUp();
+            }
+            else if (mouse.RightButton == ButtonState.Pressed)
+            {
+                scrollState.ScrollDown();
+            }
+
+            // keep this here for the final game.
+            Globals.Camera.Update(gameTime);
+
             Globals.Camera.FollowLink(graphics);
+
             Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
