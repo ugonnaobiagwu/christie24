@@ -376,7 +376,6 @@ namespace sprint0
             /*LINK ADDED FOR TESTING: TO BE DELETED*/
             //LinkObj.Update();
             Globals.Update(gameTime);
-
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
 
@@ -413,6 +412,7 @@ namespace sprint0
             // keep this here for the final game.
             Globals.Camera.Update(gameTime);
 
+            Console.WriteLine(Globals.Link.width());
             Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
