@@ -218,7 +218,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Skeleton */
+                SkellyState = State.Dead;
             }
         }
 
