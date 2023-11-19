@@ -36,6 +36,9 @@ namespace sprint0
         // need a constructor
         private Dictionary<int, List<IGameObject>> ObjectMap;
 
+        // dictionary of all items in rooms at the moment of leaving
+        private Dictionary<int, List<IGameObject>> pastRoomObjectMap;
+
         public GameObjectManager()
         {
             drawables = new List<IGameObject>();
