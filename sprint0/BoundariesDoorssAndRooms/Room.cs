@@ -40,7 +40,7 @@ namespace sprint0.BoundariesDoorsAndRooms
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            RoomSprite.Draw(spriteBatch, xPos, yPos);
+            RoomSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
         }
     }
 }

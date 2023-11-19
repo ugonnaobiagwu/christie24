@@ -77,7 +77,7 @@ namespace sprint0.Blocks
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }*/
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
         public void Explode() { }
         public void Update() { }
 
