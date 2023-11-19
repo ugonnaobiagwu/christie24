@@ -113,6 +113,6 @@ public class Camera
         float distance = Vector2.Distance(cameraPosition, targetPosition);
 
         // If the distance is less than the threshold, consider scrolling as over
-        return distance == 0.0f;
+        return distance < 1.0f;
     }
 }
