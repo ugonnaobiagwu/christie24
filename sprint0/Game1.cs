@@ -169,7 +169,7 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
-            
+            Globals.GameObjectManager.setCurrentRoomID(1);
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -345,15 +345,14 @@ namespace sprint0
             //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
-            //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
-            //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
-            //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
-            //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
+            Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
+            Globals.GameObjectManager.addObject((IGameObject)DragonObj);
 
             // TODO: use this.Content to load your game content here
 
             KeyboardCont = new KeyboardController(this);
-
             //Register keys with this.
             KeyboardCont.registerKeys();
         }
@@ -365,7 +364,7 @@ namespace sprint0
 
             KeyboardCont.Update();
             Globals.LinkItemSystem.Update();
-            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
+            List<IGameObject> Updateables = Globals.GameObjectManager.updateablesInRoom();
             foreach (IGameObject updateable in Updateables)
             {
                 updateable.Update();
@@ -399,13 +398,13 @@ namespace sprint0
             //}
             block.Draw(spriteBatch);
             /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
-            SkeletonObj.Draw(spriteBatch);
-            BokoblinObj.Draw(spriteBatch);
-            OktorokObj.Draw(spriteBatch);
-            DragonObj.Draw(spriteBatch);
+            //SkeletonObj.Draw(spriteBatch);
+            //BokoblinObj.Draw(spriteBatch);
+            //OktorokObj.Draw(spriteBatch);
+            //DragonObj.Draw(spriteBatch);
             Globals.LinkItemSystem.Draw();
             //LinkObj.Draw(spriteBatch);
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
