@@ -184,7 +184,7 @@ namespace sprint0.Items
         }
         private bool finishedAnimationCycle()
         {
-            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            if (currentItemSprite.GetCurrentFrame() == 2)
             {
                 return true;
             }
@@ -193,6 +193,7 @@ namespace sprint0.Items
                 return false;
             }
         }
+        public String type() { return "Item"; }
     }
 }
 

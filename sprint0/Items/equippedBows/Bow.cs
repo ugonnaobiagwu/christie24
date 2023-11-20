@@ -149,8 +149,12 @@ namespace sprint0.Items
 
         private bool finishedAnimationCycle()
         {
-            if (currentItemSprite.GetCurrentFrame() >= currentItemSprite.GetTotalFrames())
+            //Console.WriteLine(currentItemSprite.GetCurrentFrame());
+
+            if (currentItemSprite.GetCurrentFrame() == 0)
             {
+                //Console.WriteLine("eyo! an animation has finished");
+
                 return true;
             }
             else
@@ -208,6 +212,7 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
+        public String type() { return "Item"; }
     }
 }
 
