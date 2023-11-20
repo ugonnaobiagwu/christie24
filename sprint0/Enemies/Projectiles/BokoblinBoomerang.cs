@@ -224,6 +224,7 @@ namespace sprint0.Items
         {
             return itemRoomID;
         }
+        public String type() { return "Enemy"; }
     }
 }
 

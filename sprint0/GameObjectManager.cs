@@ -7,6 +7,9 @@ using sprint0.Items;
 using sprint0.LinkObj;
 using sprint0;
 using System.ComponentModel.Design;
+using sprint0.Items.groundItems;
+using sprint0.LinkSword;
+using sprint0.Enemies;
 
 namespace sprint0
 {
@@ -19,6 +22,12 @@ namespace sprint0
         private List<IGameObject> dynamics;
         private List<IGameObject> inPlay;
         private List<IGameObject> deleteList;
+
+        private List<IGameObject> blockList;
+        private List<IGameObject> itemList;
+        private List<IGameObject> enemyList;
+        private List<IGameObject> linkList;
+
         private List<int> roomIDs;
 
         private int currentRoomID;
@@ -35,6 +44,16 @@ namespace sprint0
             inPlay = new List<IGameObject>();
             deleteList = new List<IGameObject>();
             roomIDs = new List<int>();
+
+            // initialize all the types lists
+            //blockList = new List<Type> { BlackBlock, BlueDragonBlock, BlueFishBlock, DungeonBlueBlock, DungeonDragonBlock, DungeonFishBlock, DungeonPyramidBlock, GrassBlock, RedPyramidBlock, StairBlock, WaterBlock };
+            //itemList = new List<Type> { Blaze, Bomb, BetterBoomerang, Boomerang, BetterBow, Bow, GroundBigHeart, GroundBlaze, GroundBoomerang, GroundCompass, GroundKey, GroundPage, GroundTriforce, Sword };
+            //enemyList = new List<Type> { BokoblinBoomerang, DragonBlaze, OktorokBlaze, Bokoblin, Dragon, Oktorok, Skeleton };
+            //linkList = new List<Type> { Link, DamagedLink };
+            blockList = new List<IGameObject>();
+            enemyList = new List<IGameObject>();
+            itemList = new List<IGameObject>();
+            linkList = new List<IGameObject>();
 
             // map to hold all the objects in each room
             ObjectMap = new Dictionary<int, List<IGameObject>>();
@@ -63,7 +82,7 @@ namespace sprint0
             }
             if (obj.isDrawable()) // drawable objects
             {
-                drawables.Add(obj);
+                addToTypeList(obj);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -73,6 +92,34 @@ namespace sprint0
             {
                 inPlay.Add(obj);
             }
+        }
+
+        private void addToTypeList(IGameObject obj)
+        {
+            if (obj.type() == "Block")
+            {
+                blockList.Add(obj);
+            }
+            else if (obj.type() == "Item") {
+                itemList.Add(obj);
+            }
+            else if (obj.type() == "Enemy")
+            {
+                enemyList.Add(obj);
+            }
+            else if (obj.type() == "Link") 
+            {
+                linkList.Add(obj);
+            }
+        }
+
+        private void orderDrawables()
+        {
+            drawables.Clear();
+            drawables.AddRange(blockList);
+            drawables.AddRange(itemList);
+            drawables.AddRange(enemyList);
+            drawables.AddRange(linkList);
         }
 
         // if objects are not in play and are removable are added into the delete queue
@@ -123,6 +170,7 @@ namespace sprint0
             switch (listName)
             {
                 case "drawables":
+                    orderDrawables();
                     return drawables;
                 case "updateables":
                     return updateables;

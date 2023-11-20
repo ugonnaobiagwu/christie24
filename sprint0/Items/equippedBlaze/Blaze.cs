@@ -174,7 +174,8 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
-        
+        public String type() { return "Item"; }
+
     }
 }
 

@@ -20,7 +20,7 @@ using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
 using System;
-
+using sprint0.GameStates;
 
 namespace sprint0
 {
@@ -46,6 +46,8 @@ namespace sprint0
 
         //Camera
         public Camera camera;
+        ScrollState scrollState;
+        MouseState mouse;
         
         //Block
         public IBlock block;
@@ -169,7 +171,8 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 11 }, 1, 0.125f, 1.5f, 1.5f);
             DragonObj = new sprint0.Enemies.Dragon(300, 600, 1, DragonFactory, DragonBlazeFactory);
 
-            
+            scrollState = new ScrollState();
+            mouse = Mouse.GetState();
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -264,13 +267,26 @@ namespace sprint0
 
             //Sword
             Texture2D swordTexture = Content.Load<Texture2D>("linkSword");
+            Texture2D iceSwordTexture = Content.Load<Texture2D>("linkIceSword");
+            Texture2D fireSwordTexture = Content.Load<Texture2D>("linkFireSword");
             SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
             swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
-            Globals.LinkItemSystem.LoadSword(swordFactory);
+            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory iceSwordFactory = new SpriteFactory(iceSwordTexture, 1, 4);
+            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory fireSwordFactory = new SpriteFactory(fireSwordTexture, 1, 4);
+            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
+            Globals.LinkItemSystem.LoadSword(swordFactory, iceSwordFactory, fireSwordFactory);
 
+            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.FIRE;
 
             //SoundEffects
             SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
@@ -340,7 +356,7 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
             // Camera, keep this since I need graphics
-            Globals.Camera.FollowLink(graphics);
+            Globals.Camera.FollowLink(graphics, true);
 
             //Globals.GameObjectManager.addObject(LinkObj);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
@@ -375,7 +391,41 @@ namespace sprint0
             Globals.Update(gameTime);
             //Camera 
             // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-            Globals.Camera.FollowLink(graphics);
+
+            // TO TEST SMOOTH SCROLL
+            //MouseState mouse = Mouse.GetState();
+            //if (mouse.LeftButton == ButtonState.Pressed)
+            //{
+
+            //    Globals.Camera.FollowLink(graphics, false);
+            //    Globals.Camera.MoveCameraLeft(16);
+            //}
+            //else if (mouse.RightButton == ButtonState.Pressed)
+            //{
+
+            //    Globals.Camera.FollowLink(graphics, false);
+            //    scrollState.ScrollDown();
+
+            //}
+            //else {
+
+            //    // scroll functions/camera functions wont work when followLink is on because the update is too fast
+            //    // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
+            //    // you follow link again
+            //    Globals.Camera.FollowLink(graphics, true);
+
+            //}
+
+
+            // scroll functions/camera functions wont work when followLink is true because the update is too fast
+            // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
+            // you follow link again
+            Globals.Camera.FollowLink(graphics, true);
+
+            // keep this here for the final game.
+            Globals.Camera.Update(gameTime);
+
+            Console.WriteLine(Globals.Link.width());
             Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();

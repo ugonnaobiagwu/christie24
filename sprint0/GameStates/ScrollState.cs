@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Xna.Framework;
+using sprint0;
 namespace sprint0.GameStates
 {
     public class ScrollState : StateManager, IState
@@ -19,12 +21,12 @@ namespace sprint0.GameStates
 
         public void ScrollUp()
         {
-            ScrollTransition("scrollRight");
+            ScrollTransition("scrollUp");
         }
 
         public void ScrollDown()
         {
-            ScrollTransition("scrollRight");
+            ScrollTransition("scrollDown");
         }
 
         public void ScrollTransition(string scrollInstruction)
@@ -33,19 +35,21 @@ namespace sprint0.GameStates
             {
                 // hopefully this works for 16x12 rooms
                 case "scrollLeft":
-                    Globals.Camera.MoveCameraLeft(16);
+                    Globals.Camera.MoveCameraToLeftRoom();
                     break;
                 case "scrollRight":
-                    Globals.Camera.MoveCameraRight(16);
+                    Globals.Camera.MoveCameraToRightRoom();
                     break;
                 case "scrollUp":
-                    Globals.Camera.MoveCameraUp(12);
+                    Globals.Camera.MoveCameraToTopRoom();
                     break;
                 case "scrollDown":
-                    Globals.Camera.MoveCameraDown(12);
+                    Globals.Camera.MoveCameraToBottomRoom();
                     break;
                 default: break;
             }
         }
+
+        public Boolean TransitionComplete() { return Globals.Camera.cameraMovementComplete();  }
     }
 }
