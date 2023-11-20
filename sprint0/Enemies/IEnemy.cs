@@ -18,7 +18,7 @@ namespace sprint0.Enemies
         public void ChangeEnemyX(int change);
 
         public int GetHealth();
-        public void takeDamage();
+        public void TakeDamage();
 
         public String getState();
         public void setState(String state);

@@ -43,8 +43,8 @@ namespace sprint0.Enemies
             Projectile = new OktorokBlaze(projectileFactory);
 
             /* Temporary Values */
-            Height = 1;
-            Width = 1;
+            Height = OktoSprite.GetHeight();
+            Width = OktoSprite.GetWidth();
 
             SpriteSheetFrames = new int[] { 0, 15, 1, 16, 2, 17, 3, 18 };
         }
@@ -173,7 +173,7 @@ namespace sprint0.Enemies
         {
             if(OktoState != State.Dead)
             {
-                OktoSprite.Draw(spriteBatch, xPos, yPos);
+                OktoSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
                 if (Projectile.ThisStateMachine().isItemInUse())
                 {
                     Projectile.Draw(spriteBatch);
@@ -189,7 +189,7 @@ namespace sprint0.Enemies
             Random rnd = new Random();
             int direction = rnd.Next(4);
 
-            switch (direction) 
+            switch (direction)
             {
                 case 0:
                     EnemyUp();
@@ -209,7 +209,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
