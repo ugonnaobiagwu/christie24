@@ -8,19 +8,6 @@ using static sprint0.Globals;
 
 namespace sprint0.LinkSword
 {
-
-    /* 
-     * NOTE TO SELF: 
-     * 
-     * 1. NEED GLOBAL CLASS FOR TIMERS STILL.
-     * 2. NEED TO LOAD THE ITEM SYSTEM WITH THE RIGHT SPRITES STILL.
-     * 3. NEED TO UPDATE ITEM SYSTEM INTERFACE
-     * 4. NEED TO ENSURE ITEM SYSTEM KEEPS THE LINK SWORD OBJECT ALIVE
-     * 5. NEED TO ENSURE GAME1 UPDATES AND DRAWS THE SWORD THROUGH THE 
-     * ITEM SYSTEM.
-     * 
-     * 
-     */
 	public class Sword : IItem, IGameObject
 	{
 		private ISprite currentItemSprite;
@@ -30,7 +17,10 @@ namespace sprint0.LinkSword
         private int linkHeight;
         private int linkWidth;
         private float rotation;
-        SpriteFactory itemSpriteFactory;
+        SpriteFactory currentSpriteFactory;
+        SpriteFactory regularSwordFactory;
+        SpriteFactory iceSwordFactory;
+        SpriteFactory fireSwordFactory;
         private IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool isDrawn;
@@ -40,13 +30,16 @@ namespace sprint0.LinkSword
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
          */
-        public Sword(SpriteFactory factory)
+        public Sword(SpriteFactory regularSwordFactory, SpriteFactory iceSwordFactory, SpriteFactory fireSwordFactory)
 		{
             currentItemDirection = Direction.Down;
             thisStateMachine = new ItemStateMachine();
             rotation = 0;
-            itemSpriteFactory = factory;
-            currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+            currentSpriteFactory = regularSwordFactory;
+            this.regularSwordFactory = regularSwordFactory;
+            this.iceSwordFactory = iceSwordFactory;
+            this.fireSwordFactory = fireSwordFactory;
+            currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemDown");
             currentSwordTicks = 0;
             itemRoomID = 0;
 
@@ -88,6 +81,18 @@ namespace sprint0.LinkSword
 
         public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case LinkTunic.ICE:
+                    currentSpriteFactory = iceSwordFactory;
+                    break;
+                case LinkTunic.FIRE:
+                    currentSpriteFactory = fireSwordFactory;
+                    break;
+                default:
+                    currentSpriteFactory = regularSwordFactory;
+                    break;
+            }
             currentSwordTicks = 0;
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.SWORD_SLASH);
             thisStateMachine.Use();
@@ -99,19 +104,19 @@ namespace sprint0.LinkSword
             switch (currentItemDirection)
             {
                 case Direction.Left:
-                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemLeft");
+                    currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemLeft");
                     rotation = 0;
                     break;
                 case Direction.Right:
-                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemRight");
+                    currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemRight");
                     rotation = 0;
                     break;
                 case Direction.Up:
-                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemUp");
+                    currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemUp");
                     rotation = (float)-67.5;
                     break;
                 case Direction.Down:
-                    currentItemSprite = itemSpriteFactory.getAnimatedSprite("ItemDown");
+                    currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemDown");
                     rotation = (float)67.5;
                     break;
             }

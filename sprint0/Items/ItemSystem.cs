@@ -24,7 +24,10 @@ namespace sprint0
         private SpriteFactory bombExplodeFactory;
         private SpriteFactory blazeFactory;
         private SpriteFactory swordFactory;
+        private SpriteFactory iceSwordFactory;
+        private SpriteFactory fireSwordFactory;
         private SpriteBatch spriteBatch;
+        public LinkTunic CurrentTunic { get; set; }
         private IList<String> theseItems;       
         /*
          * [code: theseItems] will be used to limit whether or not link can equip an 
@@ -115,11 +118,13 @@ namespace sprint0
             }
         }
 
-        public void LoadSword(SpriteFactory factory)
+        public void LoadSword(SpriteFactory factory, SpriteFactory iceFactory, SpriteFactory fireFactory)
         {
             if (this.swordFactory == null)
             {
                 this.swordFactory = factory;
+                this.iceSwordFactory = iceFactory;
+                this.fireSwordFactory = fireFactory;
                 
             }
         }
@@ -169,7 +174,7 @@ namespace sprint0
         }
         public void EquipSword()
         {
-            this.currentItem = new Sword(swordFactory);
+            this.currentItem = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
         }
 
         public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
