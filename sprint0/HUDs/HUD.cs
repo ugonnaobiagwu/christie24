@@ -19,10 +19,14 @@ namespace sprint0.HUDs
         static Texture2D hudBackground;
         static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB;
         SpriteBatch spriteBatch;
-        SpriteFont font;     
+        SpriteFont font;
         //Inventory inventory;
         HUD hud;
         float fontSize = 1.5f;
+
+        //Vars to change hud position - need for inventory screen
+        public int HudXOffset {get;set;}
+        public int HudYOffset { get; set; }
 
         //CHANGE HUD CONSTRUCTOR SO IT DOESN"T HAVE TO PASS IN TH TEXTURE@D (Probably Level loader?)
         public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator)
@@ -33,6 +37,9 @@ namespace sprint0.HUDs
             miniMap = minimap;
             linkLocator = linklocator;
             heart = Hearttexture;
+
+            HudXOffset = 0;
+            HudYOffset = 0;
         }
 
 
@@ -41,8 +48,8 @@ namespace sprint0.HUDs
             {
                 float scaledWidth = 0.95f;
                 float scaledHeight = 0.7f;
-                int x = 0;
-                int y = 0;
+                int x = 0 + HudXOffset;
+                int y = 0 + HudYOffset;
 
                 int width = (int)(hudBackground.Width * scaledWidth);
                 int height = (int)(hudBackground.Height * scaledHeight);
@@ -82,12 +89,12 @@ namespace sprint0.HUDs
                 if (i == heartNum && i % heartChecker != 0) { //checks if i is at the last heart and if the last heart is odd
 
                     //if odd draw a half heart
-                    spriteBatch.Draw(heart, new Vector2(590 + j, 90), halfHeartsheet, Color.White);
+                    spriteBatch.Draw(heart, new Vector2(590 + j + HudXOffset, 90 + HudYOffset), halfHeartsheet, Color.White);
                     j += heartSpacing; 
                 }
                 else if (i % heartChecker == 0) //if the the last heart is even, or if not the last heart, draw a full heart
                 {
-                    spriteBatch.Draw(heart, new Vector2(590 + j, 90), fullHeartsheet, Color.White);
+                    spriteBatch.Draw(heart, new Vector2(590 + j + HudXOffset, 90 +HudYOffset), fullHeartsheet, Color.White);
                     j += heartSpacing; //I still have to look into why there has to be two j +=heartSpacing.
                 }
 
@@ -140,8 +147,8 @@ namespace sprint0.HUDs
 
             float scaledWidth = 1f;
             float scaledHeight = 1f;
-            int x = 30;
-            int y = 40;
+            int x = 30 + HudXOffset;
+            int y = 40 + HudYOffset;
 
             int width = (int)(miniMap.Width * scaledWidth);
             int height = (int)(miniMap.Height * scaledHeight);
@@ -160,8 +167,8 @@ namespace sprint0.HUDs
         {
             float scaledWidth = 0.55f;
             float scaledHeight = 0.40f;
-            int x = 40;
-            int y = 90;
+            int x = 40 + HudXOffset;
+            int y = 90 + HudYOffset;
 
             int width = (int)(linkLocator.Width * scaledWidth);
             int height = (int)(linkLocator.Height * scaledHeight);

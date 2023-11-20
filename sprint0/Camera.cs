@@ -106,7 +106,6 @@ public class Camera
         // Update the transform with the new camera position
         UpdateTransform(graphicsDeviceManager);
     }
-
     public Boolean cameraMovementComplete() {
 
         // Calculate the distance between the current and target positions

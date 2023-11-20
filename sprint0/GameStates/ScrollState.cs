@@ -1,55 +1,64 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0;
+
 namespace sprint0.GameStates
 {
-    public class ScrollState : StateManager, IState
-    {
-        public ScrollState()
-        {
-        }
+	public class ScrollState:IGameState
+	{
+        public enum Direction { Left, Right, Up, Down }
+        public Direction scrollDirection;
 
-        public void ScrollLeft()
-        {
-            ScrollTransition("scrollLeft");
-        }
+        public ScrollState(GameStateManager managers)
+		{
+		}
 
-        public void ScrollRight()
+        public void Update(GameTime gameTime)
         {
-            ScrollTransition("scrollRight");
-        }
+            Globals.Camera.Update(gameTime);
 
-        public void ScrollUp()
-        {
-            ScrollTransition("scrollUp");
-        }
-
-        public void ScrollDown()
-        {
-            ScrollTransition("scrollDown");
-        }
-
-        public void ScrollTransition(string scrollInstruction)
-        {
-            switch (scrollInstruction)
+            switch (scrollDirection)
             {
-                // hopefully this works for 16x12 rooms
-                case "scrollLeft":
+                case (Direction.Left):
                     Globals.Camera.MoveCameraToLeftRoom();
                     break;
-                case "scrollRight":
+                case (Direction.Right):
                     Globals.Camera.MoveCameraToRightRoom();
                     break;
-                case "scrollUp":
+                case (Direction.Up):
                     Globals.Camera.MoveCameraToTopRoom();
                     break;
-                case "scrollDown":
+                case (Direction.Down):
                     Globals.Camera.MoveCameraToBottomRoom();
                     break;
-                default: break;
+            }
+
+            Globals.Update(gameTime);
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Globals.LinkItemSystem.Draw();
+
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
             }
         }
 
-        public Boolean TransitionComplete() { return Globals.Camera.cameraMovementComplete();  }
+        public string GetState()
+        {
+            return "scroll";
+        }
+
+        public void TransitionState()
+        {
+            //Check to see if scroll is done
+        }
+
     }
 }
+

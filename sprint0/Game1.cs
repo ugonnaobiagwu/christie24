@@ -12,6 +12,7 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using Microsoft.Xna.Framework.Audio;
+using sprint0.GameStates;
 
 using sprint0.HUDs;
 
@@ -52,6 +53,16 @@ namespace sprint0
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
+
+        //State Manager - in progress
+        GameStateManager gameStateManager;
+        //PlayState currentGameState;
+        //PauseState tempPauseState;
+        //InventoryController inventoryController;
+        //InventoryState tempInventoryState;
+        InventoryController InventoryCont;
+        InventoryCursor Cursor;
+        //DeathState tempDeathState;
 
         public Sprint0()
         {
@@ -97,7 +108,7 @@ namespace sprint0
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
             blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
-            blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1);
+            blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1,0.0f,0.3f,0.2f);
             blockFactory.createAnimation("DungeonFishBlock", new int[] { 0 }, new int[] { 2 }, 1);
             blockFactory.createAnimation("DungeonDragonBlock", new int[] { 0 }, new int[] { 3 }, 1);
             blockFactory.createAnimation("BlackBlock", new int[] { 1 }, new int[] { 0 }, 1);
@@ -171,6 +182,13 @@ namespace sprint0
             DragonBlazeFactory.createAnimation("Blaze", new int[] { 11 }, new int[] { 0 }, 1);
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
+
+
+            //Game States - in progress
+            Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
+            Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
+            Cursor = new InventoryCursor(CursorTexture, 500, 100);
+            gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             scrollState = new ScrollState();
             mouse = Mouse.GetState();
 
@@ -372,67 +390,29 @@ namespace sprint0
 
             //Register keys with this.
             KeyboardCont.registerKeys();
+            //Everything below this is temp work for GameStates
+            Globals.keyboardController = KeyboardCont;
+           InventoryCont = new InventoryController(this, Cursor);
+            InventoryCont.registerKeys();
+            Globals.inventoryController = InventoryCont;
+
+            InitialStateHolder.InitialCamera = Globals.Camera;
+            InitialStateHolder.InitialGameObjectManager = Globals.GameObjectManager;
+            InitialStateHolder.InitialLink = Globals.Link;
+
         }
 
         protected override void Update(GameTime gameTime)
         {
 
             // TODO: Add your update logic here
+            //GameState testing
+            gameStateManager.Update(gameTime);
 
-            KeyboardCont.Update();
-            Globals.LinkItemSystem.Update();
-            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
-            foreach (IGameObject updateable in Updateables)
-            {
-                updateable.Update();
-            }
-            /*LINK ADDED FOR TESTING: TO BE DELETED*/
-            //LinkObj.Update();
-            Globals.Update(gameTime);
-            //Camera 
-            // UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-
-            // TO TEST SMOOTH SCROLL
-            //MouseState mouse = Mouse.GetState();
-            //if (mouse.LeftButton == ButtonState.Pressed)
-            //{
-
-            //    Globals.Camera.FollowLink(graphics, false);
-            //    Globals.Camera.MoveCameraLeft(16);
-            //}
-            //else if (mouse.RightButton == ButtonState.Pressed)
-            //{
-
-            //    Globals.Camera.FollowLink(graphics, false);
-            //    scrollState.ScrollDown();
-
-            //}
-            //else {
-
-            //    // scroll functions/camera functions wont work when followLink is on because the update is too fast
-            //    // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
-            //    // you follow link again
-            //    Globals.Camera.FollowLink(graphics, true);
-
-            //}
-
-
-            // scroll functions/camera functions wont work when followLink is true because the update is too fast
-            // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
-            // you follow link again
-            Globals.Camera.FollowLink(graphics, true);
-
-            // keep this here for the final game.
-            Globals.Camera.Update(gameTime);
-
-            Console.WriteLine(Globals.Link.width());
-            Console.WriteLine(Globals.Link.width());
-            /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
             BokoblinObj.Update();
             DragonObj.Update();
-            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
             base.Update(gameTime);
         }
 
@@ -440,26 +420,27 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
-            //HUD draw
-            hud.Draw();
+
+            //GameState testing
             
-            //if (LinkObj != null)
-            //{
-            //    LinkObj.Draw(spriteBatch);
-            //}
-            block.Draw(spriteBatch);
-            /* ENEMIES ADDED FOR TESTING: TO BE DELETED */
+            gameStateManager.Draw(spriteBatch);
+
+            // if (Globals.isPaused) { tempPauseState.Draw(spriteBatch); }
+            // else { currentGameState.Draw(spriteBatch); }
+            //tempInventoryState.Draw(spriteBatch);
+            //if (!Globals.isPaused) { currentGameState.Draw(spriteBatch); }
+            //else { tempDeathState.Draw(spriteBatch); }
+
+            ////HUD draw
+            //hud.Draw();
+
+            //block.Draw(spriteBatch);
+            ///* ENEMIES ADDED FOR TESTING: TO BE DELETED */
             SkeletonObj.Draw(spriteBatch);
             BokoblinObj.Draw(spriteBatch);
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
-            Globals.LinkItemSystem.Draw();
-            //LinkObj.Draw(spriteBatch);
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
-            foreach (IGameObject obj in Drawables)
-            {
-                obj.Draw(spriteBatch);
-            }
+            //Globals.LinkItemSystem.Draw();
             base.Draw(gameTime);
             spriteBatch.End();
         }
