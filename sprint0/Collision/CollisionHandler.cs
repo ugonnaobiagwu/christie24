@@ -548,8 +548,8 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(35);
                     break;
             }
+            enemy.takeDamage();
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
-            enemy.TakeDamage();
         }
 
         private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -632,9 +632,8 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(50);
                     break;
             }
-            enemy.TakeDamage();
+            enemy.takeDamage();
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
-
         }
 
         private void MoveDragon(CollisionDetector.CollisionType collisionType, IGameObject obj)

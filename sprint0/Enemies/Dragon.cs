@@ -25,6 +25,8 @@ namespace sprint0.Enemies
         private int[] SpriteSheetFrames;
         private int RoomId;
         private DragonBlaze[] Fireballs;
+        private enum State { Dead, Default };
+        private State DragonState = State.Default;
 
         public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
@@ -79,6 +81,28 @@ namespace sprint0.Enemies
         public int GetHealth()
         {
             return Health;
+        }
+
+        public String getState()
+        {
+            if(DragonState == State.Default)
+            {
+                return "Default";
+            }
+            return "Dead";
+        }
+
+        public void setState(String state)
+        {
+            switch (state)
+            {
+                case "Default":
+                    DragonState = State.Default;
+                    break;
+                case "Dead":
+                    DragonState = State.Dead;
+                    break;
+            }
         }
 
         /* ---IGameObject--- */
@@ -136,12 +160,15 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            DragonSprite.Draw(spriteBatch, xPos, yPos);
-            foreach (DragonBlaze fireball in Fireballs)
+            if(DragonState != State.Dead)
             {
-                if(fireball.ThisStateMachine().isItemInUse())
+                DragonSprite.Draw(spriteBatch, xPos, yPos);
+                foreach (DragonBlaze fireball in Fireballs)
                 {
-                    fireball.Draw(spriteBatch);
+                    if (fireball.ThisStateMachine().isItemInUse())
+                    {
+                        fireball.Draw(spriteBatch);
+                    }
                 }
             }
         }
@@ -202,7 +229,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Dragon */
+                DragonState = State.Dead;
             }
 
         }

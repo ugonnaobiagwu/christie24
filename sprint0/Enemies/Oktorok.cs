@@ -25,8 +25,8 @@ namespace sprint0.Enemies
         private enum Direction { Up, Down, Left, Right };
         private Direction OktorokDirection;
         private int Health;
-        private enum State { Attack, Walk };
-        private State OktorokState;
+        private enum State { Dead, Default };
+        private State OktoState = State.Default;
         private int[] SpriteSheetFrames;
         private OktorokBlaze Projectile;
 
@@ -111,11 +111,11 @@ namespace sprint0.Enemies
 
         public String getState()
         {
-            if(OktorokState == State.Attack)
+            if(OktoState == State.Dead)
             {
-                return "Attack";
+                return "Dead";
             }
-            return "Walk";
+            return "Default";
         }
 
         /* ---IGameObject--- */
@@ -171,10 +171,13 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            OktoSprite.Draw(spriteBatch, xPos, yPos);
-            if (Projectile.ThisStateMachine().isItemInUse())
+            if(OktoState != State.Dead)
             {
-                Projectile.Draw(spriteBatch);
+                OktoSprite.Draw(spriteBatch, xPos, yPos);
+                if (Projectile.ThisStateMachine().isItemInUse())
+                {
+                    Projectile.Draw(spriteBatch);
+                }
             }
         }
 
@@ -206,7 +209,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void TakeDamage()
+        public void takeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
@@ -231,7 +234,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Oktorok */
+                OktoState = State.Dead;
             }
         }
 
@@ -239,11 +242,11 @@ namespace sprint0.Enemies
         {
             switch(state)
             {
-                case "Attack":
-                    OktorokState = State.Attack;
+                case "Dead":
+                    OktoState = State.Dead;
                     break;
-                case "Walk":
-                    OktorokState= State.Walk;
+                case "Default":
+                    OktoState = State.Default;
                     break;
             }
         }
