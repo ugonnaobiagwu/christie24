@@ -49,5 +49,7 @@ namespace sprint0.GameStates
                 default: break;
             }
         }
+
+        public Boolean TransitionComplete() { return Globals.Camera.cameraMovementComplete();  }
     }
 }
