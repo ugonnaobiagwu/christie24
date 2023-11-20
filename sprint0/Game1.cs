@@ -189,7 +189,7 @@ namespace sprint0
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
             Cursor = new InventoryCursor(CursorTexture, 500, 100);
             gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            scrollState = new ScrollState();
+            scrollState = new ScrollState(gameStateManager);
             mouse = Mouse.GetState();
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton

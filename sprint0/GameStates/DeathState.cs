@@ -7,12 +7,12 @@ using sprint0.GameStates;
 
 namespace sprint0.GameStates
 {
-	public class DeathState: IGameState
-	{
+    public class DeathState : IGameState
+    {
 
         SpriteFont Font;
-        public DeathState(GameStateManager manager,SpriteFont font)
-		{
+        public DeathState(GameStateManager manager, SpriteFont font)
+        {
             Font = font;
         }
 
@@ -44,7 +44,7 @@ namespace sprint0.GameStates
             }
 
             //Draw Menu - magic numbers here
-            spriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150,150), Color.White);
+            spriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
         }
 
         public string GetState()
@@ -63,4 +63,3 @@ namespace sprint0.GameStates
 
     }
 }
-

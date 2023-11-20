@@ -13,7 +13,7 @@ namespace sprint0.GameStates
     //Draw items in links inventory,
     //Make cursor select items and assign them to buttons
     public class InventoryState : IGameState
-	{
+    {
         private ICommand ScrollUp;
         Texture2D InventoryTexture;
         public InventoryCursor Cursor { get; set; }
@@ -23,19 +23,19 @@ namespace sprint0.GameStates
         private float inputPoll = 2.0f;
         private bool inputLimit = true;
         GameStateManager GameStateManager;
-        public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor,HUD gameHud)
+        public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud)
         {
             GameStateManager = manager;
             InventoryTexture = inventoryTexture;
             GameHud = gameHud;
             Cursor = cursor;
             GameHud.HudYOffset = 100;
-            
+
         }
         public void Update(GameTime gameTime)
         {
             //Cursor and inventory system will be updated
-            
+
             Globals.inventoryController.Update();
             Globals.Camera.Update(gameTime);
             //Look into updating LinkItemSystem as well
@@ -73,7 +73,7 @@ namespace sprint0.GameStates
             Rectangle larry = new Rectangle();
             larry.Height = Cursor.CursorTexture.Height;
             larry.Width = Cursor.CursorTexture.Width;
-            spriteBatch.Draw(Cursor.CursorTexture, Cursor.CursorPosition, larry,Color.White, 0.0f, new Vector2(0,0), new Vector2(1.15f,0.7f), SpriteEffects.None, 0.0f);
+            spriteBatch.Draw(Cursor.CursorTexture, Cursor.CursorPosition, larry, Color.White, 0.0f, new Vector2(0, 0), new Vector2(1.15f, 0.7f), SpriteEffects.None, 0.0f);
 
             if (!ScrollOnce)
             {
@@ -121,4 +121,3 @@ namespace sprint0.GameStates
 
     }
 }
-

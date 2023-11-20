@@ -23,14 +23,14 @@ namespace sprint0.GameStates
     public class PlayState : IGameState
     {
 
-        public int ScreenWidth {get;set;}
+        public int ScreenWidth { get; set; }
         public int ScreenHeight { get; set; }
         private float inputPoll = 1;
         private bool inputLimit = true;
         public GraphicsDeviceManager graphics { get; set; }
         GameStateManager GameStateManager;
         public PlayState(GameStateManager manager, int screenWidth, int screenHeight)
-		{
+        {
             GameStateManager = manager;
             ScreenHeight = screenHeight;
             ScreenWidth = screenWidth;
@@ -57,7 +57,7 @@ namespace sprint0.GameStates
             Globals.Update(gameTime);
 
             //Collision iterator, 
-            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), ScreenWidth,ScreenHeight);
+            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), ScreenWidth, ScreenHeight);
 
             this.TransitionState();
         }
@@ -93,7 +93,8 @@ namespace sprint0.GameStates
             }
             //Checks for pause and inventory
             List<Keys> pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
-            if (!inputLimit) {
+            if (!inputLimit)
+            {
                 foreach (Keys key in pressed)
                 {
                     if (pressed.Contains(Keys.P))
@@ -102,7 +103,8 @@ namespace sprint0.GameStates
                         inputLimit = true;
                         inputPoll = 1.0f;
                         break;
-                    } else if (pressed.Contains(Keys.I))
+                    }
+                    else if (pressed.Contains(Keys.I))
                     {
                         GameStateManager.ChangeState("inventory");
                         inputLimit = true;
@@ -114,4 +116,3 @@ namespace sprint0.GameStates
 
     }
 }
-

@@ -6,14 +6,14 @@ using sprint0;
 
 namespace sprint0.GameStates
 {
-	public class ScrollState:IGameState
-	{
+    public class ScrollState : IGameState
+    {
         public enum Direction { Left, Right, Up, Down }
         public Direction scrollDirection;
 
         public ScrollState(GameStateManager managers)
-		{
-		}
+        {
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -61,4 +61,3 @@ namespace sprint0.GameStates
 
     }
 }
-
