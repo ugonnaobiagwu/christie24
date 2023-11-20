@@ -209,7 +209,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)

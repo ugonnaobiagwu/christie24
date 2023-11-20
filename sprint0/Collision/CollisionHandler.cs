@@ -548,7 +548,7 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(35);
                     break;
             }
-            enemy.takeDamage();
+            enemy.TakeDamage();
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
@@ -578,27 +578,6 @@ namespace sprint0.Collision
             enemy.TakeDamage();
         }
 
-        private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
-        {
-            Bokoblin enemy = (Bokoblin)obj;
-            switch (collisionType)
-            {
-                case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
-                    break;
-                case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
-                    break;
-                case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
-                    break;
-                case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
-                    break;
-            }
-            enemy.takeDamage();
-            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
-        }
 
         private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
@@ -638,7 +617,7 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(50);
                     break;
             }
-            enemy.takeDamage();
+            enemy.TakeDamage();
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
