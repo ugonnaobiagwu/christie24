@@ -267,13 +267,26 @@ namespace sprint0
 
             //Sword
             Texture2D swordTexture = Content.Load<Texture2D>("linkSword");
+            Texture2D iceSwordTexture = Content.Load<Texture2D>("linkIceSword");
+            Texture2D fireSwordTexture = Content.Load<Texture2D>("linkFireSword");
             SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
             swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
-            Globals.LinkItemSystem.LoadSword(swordFactory);
+            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory iceSwordFactory = new SpriteFactory(iceSwordTexture, 1, 4);
+            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory fireSwordFactory = new SpriteFactory(fireSwordTexture, 1, 4);
+            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
+            Globals.LinkItemSystem.LoadSword(swordFactory, iceSwordFactory, fireSwordFactory);
 
+            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.FIRE;
 
             //SoundEffects
             SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");

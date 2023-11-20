@@ -19,6 +19,7 @@ namespace sprint0
 		public static ILink Link;
 		public enum ItemSlots { SLOT_A, SLOT_B };
 		public enum ItemsInSlots { BOW, BETTER_BOW, BOOMERANG, BETTER_BOOMERANG, BLAZE, BOMB, SWORD, EMPTY};
+		public enum LinkTunic {GREEN, ICE, FIRE};
     }
 }
 
