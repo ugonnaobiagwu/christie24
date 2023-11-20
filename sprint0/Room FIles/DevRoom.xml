@@ -29,6 +29,8 @@
 				/*NOTE: This is 5 so the DamagedState can get a square from off the screen, may need changed*/
 				<ColumnCount>5</ColumnCount>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>Up</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -41,6 +43,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>Down</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -53,6 +57,8 @@
 						</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>Left</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -65,6 +71,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>Right</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -77,6 +85,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>ItemUp</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -89,6 +99,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>ItemDown</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -101,6 +113,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>ItemLeft</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -113,6 +127,8 @@
 					</Columns>
 				</Animation>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>ItemRight</AnimationName>
 					<FrameCount>2</FrameCount>
 					<Rows>
@@ -146,6 +162,8 @@
 				<RowCount>3</RowCount>	
 				<ColumnCount>4</ColumnCount>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName>DungeonBlueBlock</AnimationName>
 					<FrameCount>1</FrameCount>
 					<Rows>
@@ -167,6 +185,8 @@
 				<RowCount></RowCount>
 				<ColumnCount></ColumnCount>
 				<Animation>
+					<WidthScale>.29</WidthScale>
+                        <HeightScale>.21</HeightScale>
 					<AnimationName></AnimationName>
 					<FrameCount></FrameCount>
 					<Rows>

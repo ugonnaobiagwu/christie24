@@ -74,7 +74,7 @@ namespace sprint0.Blocks
 
         }*/
 
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
         public void Explode() { }
         public void Update() { }
 
