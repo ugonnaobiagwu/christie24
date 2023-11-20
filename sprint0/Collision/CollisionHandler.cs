@@ -532,7 +532,7 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(35);
                     break;
             }
-            enemy.TakeDamage();
+            enemy.takeDamage();
         }
         private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
@@ -613,7 +613,7 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(50);
                     break;
             }
-            enemy.TakeDamage();
+            enemy.takeDamage();
         }
 
         private void MoveDragon(CollisionDetector.CollisionType collisionType, IGameObject obj)

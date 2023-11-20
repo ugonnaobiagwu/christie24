@@ -79,7 +79,7 @@ namespace sprint0.Enemies
             return Health;
         }
 
-        public String GetState()
+        public String getState()
         {
             String state = "";
             switch (SkellyState)
@@ -94,7 +94,7 @@ namespace sprint0.Enemies
 
             return state;
         }
-        public void SetState(String state)
+        public void setState(String state)
         {
             switch (state)
             {
