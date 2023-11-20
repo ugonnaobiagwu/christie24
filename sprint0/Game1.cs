@@ -228,41 +228,41 @@ namespace sprint0
             //Bow + Better Bow
             Texture2D bowTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBowDown");
             SpriteFactory bowFactory = new SpriteFactory(bowTexture, 1, 1);
-            bowFactory.createAnimation("Bow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            bowFactory.createAnimation("Bow", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
             Texture2D betterBowTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBowDown");
             SpriteFactory betterBowFactory = new SpriteFactory(betterBowTexture, 1, 1);
-            betterBowFactory.createAnimation("BetterBow", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            betterBowFactory.createAnimation("BetterBow", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
             Texture2D bowDespawnTexture = Content.Load<Texture2D>("equippedItemSprites/weaponProjectileHit");
             SpriteFactory bowDespawnFactory = new SpriteFactory(bowDespawnTexture, 1, 1);
-            bowDespawnFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            bowDespawnFactory.createAnimation("BowDespawn", new int[] { 0 }, new int[] { 0 }, 1, .5f, 1.5f, 1.5f); // single sprite animation
             Globals.LinkItemSystem.LoadBow(bowFactory, bowDespawnFactory);
             Globals.LinkItemSystem.LoadBetterBow(betterBowFactory, bowDespawnFactory);
 
             //Boomerang + Better Boomerang
             Texture2D boomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
             SpriteFactory boomerangFactory = new SpriteFactory(boomerangTexture, 2, 3);
-            boomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
-            boomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            boomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3, .2f,  1.5f, 1.5f);
+            boomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3, .2f, 1.5f, 1.5f);
             Texture2D betterBoomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBetterBoomerang");
             SpriteFactory betterBoomerangFactory = new SpriteFactory(betterBoomerangTexture, 2, 3);
-            betterBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
-            betterBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3);
+            betterBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3, .2f, 1.5f, 1.5f);
+            betterBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3, .2f, 1.5f, 1.5f);
             Globals.LinkItemSystem.LoadBoomerang(boomerangFactory);
             Globals.LinkItemSystem.LoadBetterBoomerang(betterBoomerangFactory);
 
             //Blaze
             Texture2D blazeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBlaze");
             SpriteFactory blazeFactory = new SpriteFactory(blazeTexture, 1, 2);
-            blazeFactory.createAnimation("Blaze", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            blazeFactory.createAnimation("Blaze", new int[] { 0, 0 }, new int[] { 0, 1 }, 2, .1f, 1.5f, 1.5f);
             Globals.LinkItemSystem.LoadBlaze(blazeFactory);
 
             //Bomb
             Texture2D bombTexture = Content.Load<Texture2D>("groundItemSprites/groundBomb");
             SpriteFactory bombFactory = new SpriteFactory(bombTexture, 1, 1);
-            bombFactory.createAnimation("Bomb", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            bombFactory.createAnimation("Bomb", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
             Texture2D bombExplodeTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBombExplode");
             SpriteFactory bombExplodeFactory = new SpriteFactory(bombExplodeTexture, 1, 3);
-            bombExplodeFactory.createAnimation("BombExplosion", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3);
+            bombExplodeFactory.createAnimation("BombExplosion", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3, .05f, 1.5f, 1.5f);
             Globals.LinkItemSystem.LoadBomb(bombFactory, bombExplodeFactory);
 
             //Sword
@@ -270,23 +270,23 @@ namespace sprint0
             Texture2D iceSwordTexture = Content.Load<Texture2D>("linkIceSword");
             Texture2D fireSwordTexture = Content.Load<Texture2D>("linkFireSword");
             SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
-            swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
+            swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1, 1.5f, 1.5f); // single sprite animation 
+            swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1, 1.5f, 1.5f); // single sprite animation 
+            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1, 1.5f, 1.5f); // single sprite animation
             SpriteFactory iceSwordFactory = new SpriteFactory(iceSwordTexture, 1, 4);
-            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1, 1.5f, 1.5f); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1, 1.5f, 1.5f); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1, 1.5f, 1.5f); // single sprite animation
             SpriteFactory fireSwordFactory = new SpriteFactory(fireSwordTexture, 1, 4);
-            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1, 1.5f, 1.5f); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1, 1.5f, 1.5f); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1, 1.5f, 1.5f); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1, 1.5f, 1.5f); // single sprite animation 
             Globals.LinkItemSystem.LoadSword(swordFactory, iceSwordFactory, fireSwordFactory);
 
-            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.FIRE;
+            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.ICE;
 
             //SoundEffects
             SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");

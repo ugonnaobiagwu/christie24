@@ -54,16 +54,16 @@ namespace sprint0.LinkSword
                     // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                     // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
                     case Direction.Left:
-                        currentItemSprite.Draw(spritebatch, xPos - linkWidth, yPos - (linkHeight / 2), rotation);
+                        currentItemSprite.Draw(spritebatch, xPos - linkWidth + 5, yPos - (linkHeight / 2) - 15, rotation);
                         break;
                     case Direction.Right:
-                        currentItemSprite.Draw(spritebatch, xPos + linkWidth, yPos - (linkHeight / 2), rotation);
+                        currentItemSprite.Draw(spritebatch, xPos + linkWidth - 5, yPos - (linkHeight / 2) + 15, rotation);
                         break;
                     case Direction.Down:
-                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 6), yPos, rotation);
+                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 6), yPos + linkHeight - 10, rotation);
                         break;
                     case Direction.Up:
-                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 2), yPos - linkHeight, rotation);
+                        currentItemSprite.Draw(spritebatch, xPos + (linkWidth / 10), yPos - linkHeight + 10, rotation);
                         break;
                 }
             }
