@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using sprint0.Commands;
 using sprint0.Blocks;
 using sprint0;
+using sprint0.Commands.GameStateCommand;
 
 namespace sprint0.Controllers
 {
@@ -33,6 +34,8 @@ namespace sprint0.Controllers
         private ICommand nextEnemy;
         private ICommand quit;
         private ICommand reset;
+        private ICommand pause;
+        private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
@@ -69,7 +72,8 @@ namespace sprint0.Controllers
             //nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
-
+            pause = new PauseCommand(Game);
+            leftScroll = new LeftScrollCommand(Game);
         }
 
         // used to register keys with their respective commands
@@ -109,6 +113,10 @@ namespace sprint0.Controllers
             //KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
             //KeyMap.Add(Keys.R, reset);
+
+            KeyMap.Add(Keys.P, pause);
+            KeyMap.Add(Keys.J, leftScroll);
+
         }
 
         // executes commands for each key pressed
