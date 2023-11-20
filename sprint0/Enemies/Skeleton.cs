@@ -79,7 +79,7 @@ namespace sprint0.Enemies
             return Health;
         }
 
-        public String GetState()
+        public String getState()
         {
             String state = "";
             switch (SkellyState)
@@ -94,7 +94,7 @@ namespace sprint0.Enemies
 
             return state;
         }
-        public void SetState(String state)
+        public void setState(String state)
         {
             switch (state)
             {
@@ -121,13 +121,13 @@ namespace sprint0.Enemies
         public int width()
         {
             /* Temporary Value */
-            return 1;
+            return SkellySprite.GetWidth();
         }
 
         public int height()
         {
             /* Temporary Value */
-            return 1;
+            return SkellySprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -164,7 +164,7 @@ namespace sprint0.Enemies
         {
             if(SkellyState != State.Dead)
             {
-                SkellySprite.Draw(spriteBatch, xPos, yPos);
+                SkellySprite.Draw(spriteBatch, xPos, yPos, 0.0f);
             }
         }
 
@@ -193,7 +193,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)

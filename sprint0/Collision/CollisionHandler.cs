@@ -557,7 +557,7 @@ namespace sprint0.Collision
         private void MoveSkeletonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
-            enemy.takeDamage();
+            enemy.TakeDamage();
         }
 
         private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -654,7 +654,7 @@ namespace sprint0.Collision
                     enemy.ChangeEnemyX(50);
                     break;
             }
-            enemy.takeDamage();
+            enemy.TakeDamage();
         }
 
     }

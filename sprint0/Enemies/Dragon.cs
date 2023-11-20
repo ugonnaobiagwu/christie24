@@ -119,13 +119,13 @@ namespace sprint0.Enemies
         public int width()
         {
             /* Temporary Value */
-            return 1;
+            return DragonSprite.GetWidth();
         }
 
         public int height()
         {
             /* Temporary Value */
-            return 1;
+            return DragonSprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -162,7 +162,7 @@ namespace sprint0.Enemies
         {
             if(DragonState != State.Dead)
             {
-                DragonSprite.Draw(spriteBatch, xPos, yPos);
+                DragonSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
                 foreach (DragonBlaze fireball in Fireballs)
                 {
                     if (fireball.ThisStateMachine().isItemInUse())
@@ -204,7 +204,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
