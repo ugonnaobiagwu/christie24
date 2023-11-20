@@ -22,6 +22,7 @@ namespace sprint0
         private List<IGameObject> dynamics;
         private List<IGameObject> inPlay;
         private List<IGameObject> deleteList;
+        private List<IGameObject> roomList;
 
         private List<int> roomIDs;
 
@@ -38,6 +39,7 @@ namespace sprint0
             dynamics = new List<IGameObject>();
             inPlay = new List<IGameObject>();
             deleteList = new List<IGameObject>();
+            roomList = new List<IGameObject>();
             roomIDs = new List<int>();
 
             // map to hold all the objects in each room
@@ -65,10 +67,13 @@ namespace sprint0
             {
                 dynamics.Add(obj);
             }
-            if (obj.isDrawable()) // drawable objects
+            if (obj.isDrawable() && obj.type() != "Room") // drawable objects
             {
                 drawables.Add(obj);
-                drawables = orderDrawableList(drawables);
+            }
+            else if (obj.isDrawable() && obj.type() == "Room")
+            { 
+                roomList.Add(obj);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -78,6 +83,8 @@ namespace sprint0
             {
                 inPlay.Add(obj);
             }
+
+            drawables = orderDrawableList(drawables);
         }
 
         private List<IGameObject> orderDrawableList(List<IGameObject> list) 
@@ -86,7 +93,6 @@ namespace sprint0
             List<IGameObject> itemList = new List<IGameObject>();
             List<IGameObject> enemyList = new List<IGameObject>();
             List<IGameObject> linkList = new List<IGameObject>();
-            List<IGameObject> roomList = new List<IGameObject>();
             List<IGameObject> orderedList = new List<IGameObject>();
 
 
@@ -108,11 +114,8 @@ namespace sprint0
                 {
                     linkList.Add(obj);
                 }
-                else if (obj.type() == "Room")
-                {
-                    roomList.Add(obj);
-                }
             }
+            orderedList.AddRange(roomList);
             orderedList.AddRange(blockList);
             orderedList.AddRange(itemList);
             orderedList.AddRange(enemyList); 
