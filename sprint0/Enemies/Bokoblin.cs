@@ -46,8 +46,8 @@ namespace sprint0.Enemies
             Boomerang = new BokoblinBoomerang(projectileFactory);
 
             /* Temporary Values */
-            Width = 1;
-            Height = 1;
+            Width = BokoSprite.GetWidth();
+            Height = BokoSprite.GetHeight();
 
             /* Should be reduced to 1 line */
             SpriteSheetFrames = new int[] {64, 79, 65, 80, 66, 81, 67, 82};
@@ -183,7 +183,7 @@ namespace sprint0.Enemies
         {
             if(BokoState != State.Dead)
             {
-                BokoSprite.Draw(spriteBatch, xPos, yPos);
+                BokoSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
                 if (Boomerang.ThisStateMachine().isItemInUse())
                 {
                     Boomerang.Draw(spriteBatch);
@@ -222,7 +222,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
