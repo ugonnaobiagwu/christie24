@@ -42,5 +42,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             RoomSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
         }
+        public String type() { return "Block"; }
     }
 }

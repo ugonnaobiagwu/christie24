@@ -15,6 +15,8 @@ namespace sprint0.Enemies
         SpriteFactory SkeletonFactory;
         SpriteBatch SpriteBatch;
         ISprite SkellySprite;
+        public enum State { Default, Dead };
+        State SkellyState = State.Default;
         private int Health;
         private int xPos;
         private int yPos;
@@ -77,6 +79,34 @@ namespace sprint0.Enemies
             return Health;
         }
 
+        public String getState()
+        {
+            String state = "";
+            switch (SkellyState)
+            {
+                case State.Default:
+                    state = "Default";
+                    break;
+                case State.Dead:
+                    state = "Dead";
+                    break;
+            }
+
+            return state;
+        }
+        public void setState(String state)
+        {
+            switch (state)
+            {
+                case "Default":
+                    SkellyState = State.Default;
+                    break;
+                case "Dead":
+                    SkellyState = State.Dead;
+                    break;
+            }
+        }
+
         /* ---IGameObject--- */
         public int xPosition()
         {
@@ -132,7 +162,10 @@ namespace sprint0.Enemies
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            SkellySprite.Draw(spriteBatch, xPos, yPos);
+            if(SkellyState != State.Dead)
+            {
+                SkellySprite.Draw(spriteBatch, xPos, yPos);
+            }
         }
 
         public void Update()
@@ -185,7 +218,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Skeleton */
+                SkellyState = State.Dead;
             }
         }
 
@@ -198,5 +231,6 @@ namespace sprint0.Enemies
         {
             yPos += change;
         }
+        public String type() { return "Enemy"; }
     }
 }

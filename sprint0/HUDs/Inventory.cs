@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.HUDs
 {
-   internal static class Inventory
+    public static class Inventory
     {
 
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
@@ -28,6 +28,10 @@ namespace sprint0.HUDs
             SLOTA,
             SLOTB
         }
+
+        public static bool hasPage { get; set; }
+        public static bool hasCompass { get; set; }
+        public static bool hasTriforce { get; set; }
 
         //ILink link;
         //ISprite currentSprite;

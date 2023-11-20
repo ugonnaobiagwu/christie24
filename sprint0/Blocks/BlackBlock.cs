@@ -72,6 +72,7 @@ namespace sprint0.Blocks
         public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
         public void Explode() { }
         public void Update() { }
+        public String type() { return "Block"; }
 
         //hard code for now (make new class for these?)
         public int xPosition() { return XValue; } // returns X pos of object

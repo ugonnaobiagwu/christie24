@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -58,7 +58,6 @@ namespace sprint0.GameStates
         {
             //Check to see if scroll is done
         }
-
 
     }
 }

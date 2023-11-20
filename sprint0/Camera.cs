@@ -6,6 +6,7 @@ using sprint0.LinkObj;
 
 public class Camera
 {
+    // MAKE BOOLEAN TO CHECK WHEN SCROLLSTATE IS OVER!!!!
     private Vector2 cameraPosition;
     private Vector2 targetPosition; // Target position for smooth scrolling
     private int roomHeight, roomWidth;
@@ -16,8 +17,7 @@ public class Camera
 
     public float getCameraYPos() { return cameraPosition.Y; }
 
-    public Camera()
-    {
+    public Camera() {
         // up to change later
         roomHeight = 160;
         roomWidth = 120;
@@ -79,7 +79,7 @@ public class Camera
     // for smooth scrolling
     public void MoveCameraToLeftRoom()
     {
-        targetPosition = new Vector2(cameraPosition.X + roomWidth, cameraPosition.Y);
+        targetPosition = new Vector2(cameraPosition.X + roomWidth ,cameraPosition.Y);
     }
 
     public void MoveCameraToRightRoom()
@@ -106,5 +106,12 @@ public class Camera
         // Update the transform with the new camera position
         UpdateTransform(graphicsDeviceManager);
     }
+    public Boolean cameraMovementComplete() {
 
+        // Calculate the distance between the current and target positions
+        float distance = Vector2.Distance(cameraPosition, targetPosition);
+
+        // If the distance is less than the threshold, consider scrolling as over
+        return distance < 1.0f;
+    }
 }

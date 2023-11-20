@@ -85,5 +85,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             doorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0.0f);
         }
+        public String type() { return "Block"; }
     }
 }

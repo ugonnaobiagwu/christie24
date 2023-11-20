@@ -28,8 +28,8 @@ namespace sprint0.Enemies
         private enum Direction { Up, Down, Left, Right };
         private Direction BokoblinDirection;
         private int Health;
-        private enum State { Attack, Walk };
-        private State BokoblinState;
+        private enum State { Dead, Default };
+        private State BokoState = State.Default;
         private int[] SpriteSheetFrames;
         private BokoblinBoomerang Boomerang;
 
@@ -115,11 +115,17 @@ namespace sprint0.Enemies
 
         public String getState()
         {
-            if (BokoblinState == State.Attack)
+            String state = "";
+            switch (BokoState)
             {
-                return "Attack";
+                case State.Default:
+                    state = "Default";
+                    break;
+                case State.Dead:
+                    state = "Dead";
+                    break;
             }
-            return "Walk";
+            return state;
         }
 
         /* ---IGameObject--- */
@@ -175,10 +181,13 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            BokoSprite.Draw(spriteBatch, xPos, yPos);
-            if (Boomerang.ThisStateMachine().isItemInUse())
+            if(BokoState != State.Dead)
             {
-                Boomerang.Draw(spriteBatch);
+                BokoSprite.Draw(spriteBatch, xPos, yPos);
+                if (Boomerang.ThisStateMachine().isItemInUse())
+                {
+                    Boomerang.Draw(spriteBatch);
+                }
             }
         }
 
@@ -213,7 +222,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void TakeDamage()
+        public void takeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
@@ -238,7 +247,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Bokoblin */
+                BokoState = State.Dead;
             }
         }
 
@@ -246,11 +255,11 @@ namespace sprint0.Enemies
         {
             switch (state)
             {
-                case "Attack":
-                    BokoblinState = State.Attack;
+                case "Default":
+                    BokoState = State.Default;
                     break;
-                case "Walk":
-                    BokoblinState = State.Walk;
+                case "Dead":
+                    BokoState = State.Dead;
                     break;
             }
         }
@@ -270,5 +279,6 @@ namespace sprint0.Enemies
         {
            yPos += change;
         }
+        public String type() { return "Enemy"; }
     }
 }

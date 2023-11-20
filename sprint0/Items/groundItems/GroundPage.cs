@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 
 namespace sprint0.Items.groundItems
 {
@@ -50,6 +51,7 @@ namespace sprint0.Items.groundItems
 
         public void PickUp()
         {
+            Inventory.hasPage = true;
             isPickedUp = true;
         }
 
@@ -87,6 +89,7 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
+        public String type() { return "Item"; }
     }
 }
 

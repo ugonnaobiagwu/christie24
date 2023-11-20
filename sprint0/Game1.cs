@@ -21,7 +21,7 @@ using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
 using System;
-
+using sprint0.GameStates;
 
 namespace sprint0
 {
@@ -47,6 +47,8 @@ namespace sprint0
 
         //Camera
         public Camera camera;
+        ScrollState scrollState;
+        MouseState mouse;
         
         //Block
         public IBlock block;
@@ -181,29 +183,14 @@ namespace sprint0
             DragonObj = new sprint0.Enemies.Dragon(600, 100, 1, DragonFactory, DragonBlazeFactory);
 
 
+
             //Game States - in progress
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
             Cursor = new InventoryCursor(CursorTexture, 500, 100);
             gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            
-            //currentGameState = new PlayState();
-            //currentGameState.screenHeight = GraphicsDevice.Viewport.Height;
-            //currentGameState.screenWidth = GraphicsDevice.Viewport.Width;
-            //currentGameState.graphics = graphics;
-            //tempPauseState = new PauseState(font);
-            //tempPauseState.screenHeight = GraphicsDevice.Viewport.Height;
-            //tempPauseState.screenWidth = GraphicsDevice.Viewport.Width;
-            //Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
-            //Cursor = new InventoryCursor(CursorTexture, 500,100);
-            //Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
-            //tempInventoryState = new InventoryState(InventoryTexture, hud);
-            //tempInventoryState.Cursor = Cursor;
-            //tempDeathState = new DeathState(font);
-            ////Globals bs - TBD
-            //Globals.isPaused = false;
-
-
+            scrollState = new ScrollState();
+            mouse = Mouse.GetState();
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -298,13 +285,26 @@ namespace sprint0
 
             //Sword
             Texture2D swordTexture = Content.Load<Texture2D>("linkSword");
+            Texture2D iceSwordTexture = Content.Load<Texture2D>("linkIceSword");
+            Texture2D fireSwordTexture = Content.Load<Texture2D>("linkFireSword");
             SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
             swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
             swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
-            Globals.LinkItemSystem.LoadSword(swordFactory);
+            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory iceSwordFactory = new SpriteFactory(iceSwordTexture, 1, 4);
+            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
+            SpriteFactory fireSwordFactory = new SpriteFactory(fireSwordTexture, 1, 4);
+            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
+            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
+            Globals.LinkItemSystem.LoadSword(swordFactory, iceSwordFactory, fireSwordFactory);
 
+            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.FIRE;
 
             //SoundEffects
             SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
@@ -406,38 +406,13 @@ namespace sprint0
         {
 
             // TODO: Add your update logic here
-
-
             //GameState testing
             gameStateManager.Update(gameTime);
 
-            //if (Globals.isPaused) { tempPauseState.Update(gameTime); }
-            //else { currentGameState.Update(gameTime); }
-            //tempInventoryState.Update(gameTime);
-            //if (!Globals.isPaused) { currentGameState.Update(gameTime); }
-            //else { tempDeathState.Update(gameTime); }
-
-            //Old(?) code - to be moved to game states
-            //KeyboardCont.Update();
-            //Globals.LinkItemSystem.Update();
-            //List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
-            //foreach (IGameObject updateable in Updateables)
-            //{
-            //    updateable.Update();
-            //}
-            ///*LINK ADDED FOR TESTING: TO BE DELETED*/
-            ////LinkObj.Update();
-            //Globals.Update(gameTime);
-            ////Camera 
-            //// UNCOMMENT OUT IF SMOOTH SCROLLING DOESNT WORK SO WE CAN AT LEAST FOLLOW LINK:
-            //Globals.Camera.FollowLink(Globals.Link, graphics);
-            //Console.WriteLine(Globals.Link.width());
-            ///*ENEMY ADDED FOR TESTING: TO BE DELETED*/
-            //SkeletonObj.Update();
-            //OktorokObj.Update();
-            //BokoblinObj.Update();
-            //DragonObj.Update();
-            //CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            SkeletonObj.Update();
+            OktorokObj.Update();
+            BokoblinObj.Update();
+            DragonObj.Update();
             base.Update(gameTime);
         }
 
@@ -458,24 +433,14 @@ namespace sprint0
 
             ////HUD draw
             //hud.Draw();
-            
-            ////if (LinkObj != null)
-            ////{
-            ////    LinkObj.Draw(spriteBatch);
-            ////}
+
             //block.Draw(spriteBatch);
             ///* ENEMIES ADDED FOR TESTING: TO BE DELETED */
-            //SkeletonObj.Draw(spriteBatch);
-            //BokoblinObj.Draw(spriteBatch);
-            //OktorokObj.Draw(spriteBatch);
-            //DragonObj.Draw(spriteBatch);
+            SkeletonObj.Draw(spriteBatch);
+            BokoblinObj.Draw(spriteBatch);
+            OktorokObj.Draw(spriteBatch);
+            DragonObj.Draw(spriteBatch);
             //Globals.LinkItemSystem.Draw();
-            ////LinkObj.Draw(spriteBatch);
-            //List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
-            //foreach (IGameObject obj in Drawables)
-            //{
-            //    obj.Draw(spriteBatch);
-            //}
             base.Draw(gameTime);
             spriteBatch.End();
         }
