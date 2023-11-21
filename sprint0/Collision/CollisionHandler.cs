@@ -155,6 +155,8 @@ namespace sprint0.Collision
             GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
             GameObjectDelegate MoveOktorokAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamageFromSword);
             GameObjectDelegate MoveBokoblinAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamageFromSword);
+            GameObjectDelegate MoveLinkAndTakeDamageFromFireElementDelegate = new GameObjectDelegate(MoveLinkAndTakeDamageFromFireElement);
+            GameObjectDelegate MoveLinkAndTakeDamageFromIceElementDelegate = new GameObjectDelegate(MoveLinkAndTakeDamageFromIceElement);
 
 
 
@@ -302,9 +304,9 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageFromFireElementDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageFromIceElementDelegate, null });
 
             // LINK AND THE GROUND ITEMS.
             // play the item use Link animation here.
@@ -400,6 +402,89 @@ namespace sprint0.Collision
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
             Inventory.LoseHeart();
             link.LinkTakeDamage();
+            link.LinkTakeDamage();
+
+        }
+
+        private void MoveLinkAndTakeDamageFromFireElement(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            LinkObj.Link link = (LinkObj.Link)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    link.YVal -= 50;
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    link.YVal += 50;
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    link.XVal -= 50;
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    link.XVal += 50;
+                    break;
+            }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+            Inventory.LoseHeart();
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    link.LinkTakeDamage(); // TAKE LESS DAMAGE
+                    Console.WriteLine("You've been minorly hit.");
+                    break;
+                case Globals.LinkTunic.ICE:
+                    Console.WriteLine("You've been critically hit!");
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage();
+                    // TAKE MORE DAMAGE
+                    break;
+                default:
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage();
+
+                    break;
+            }
+            
+        }
+
+        private void MoveLinkAndTakeDamageFromIceElement(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            LinkObj.Link link = (LinkObj.Link)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    link.YVal -= 50;
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    link.YVal += 50;
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    link.XVal -= 50;
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    link.XVal += 50;
+                    break;
+            }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+            Inventory.LoseHeart();
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    Console.WriteLine("You've been critically hit!");
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage(); // TAKE MORE DAMAGE
+                    break;
+                case Globals.LinkTunic.ICE:
+                    link.LinkTakeDamage(); // TAKE LESS DAMAGE THAN NORMAL
+                    Console.WriteLine("You've been minorly hit.");
+                    break;
+                default:
+                    link.LinkTakeDamage();
+                    link.LinkTakeDamage();// TAKES NORMAL DAMAGE
+                    break;
+            }
         }
 
         /*
