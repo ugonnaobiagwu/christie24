@@ -38,6 +38,7 @@ namespace sprint0.Items
             spriteChanged = false;
             rotation = 0;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("BetterBow");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -79,10 +80,7 @@ namespace sprint0.Items
                     }
 
                 }
-                if (this.currentItemSprite != null)
-                {
-                    this.currentItemSprite.Update();
-                }
+                
             }
 
         }
@@ -101,7 +99,8 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                this.currentItemSprite = null;
+                Globals.GameObjectManager.removeObject(this);
+
             }
         }
 
@@ -115,10 +114,10 @@ namespace sprint0.Items
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
-                this.itemMaxX = linkXPos + 100;
-                this.itemMaxY = linkYPos + 100;
-                this.itemMinX = linkXPos - 100;
-                this.itemMinY = linkYPos - 100;
+                this.itemMaxX = linkXPos + 150;
+                this.itemMaxY = linkYPos + 150;
+                this.itemMinX = linkXPos - 150;
+                this.itemMinY = linkYPos - 150;
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).

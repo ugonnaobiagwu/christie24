@@ -105,6 +105,7 @@ namespace sprint0.Enemies
                     break;
                 case "Dead":
                     DragonState = State.Dead;
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_DIE);
                     break;
             }
         }

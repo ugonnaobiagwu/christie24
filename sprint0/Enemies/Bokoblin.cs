@@ -261,6 +261,7 @@ namespace sprint0.Enemies
                     break;
                 case "Dead":
                     BokoState = State.Dead;
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_DIE);
                     break;
             }
         }

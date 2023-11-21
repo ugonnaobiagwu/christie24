@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.Items;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Enemies
 {
@@ -245,6 +246,7 @@ namespace sprint0.Enemies
             {
                 case "Dead":
                     OktoState = State.Dead;
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_DIE);
                     break;
                 case "Default":
                     OktoState = State.Default;

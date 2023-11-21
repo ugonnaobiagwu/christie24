@@ -72,7 +72,7 @@ namespace sprint0.Collision
             {
                 if (obj1.isDynamic())
                 {
-                    System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
+                    //System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
                     foreach (IGameObject obj2 in collidablesInQuadrant)
                     {
                         if (obj2 != obj1)

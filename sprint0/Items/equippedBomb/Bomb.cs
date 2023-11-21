@@ -31,6 +31,8 @@ namespace sprint0.Items
             maxBombTicks = 60;
             bombTicks = 0;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bomb");
+
 
         }
 
@@ -56,10 +58,9 @@ namespace sprint0.Items
                 {
                     bombTicks++;
                 }
-                if (this.currentItemSprite != null)
-                {
+                
                     this.currentItemSprite.Update();
-                }
+                
 
             }
 
@@ -80,9 +81,10 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                this.currentItemSprite = null;
                 bombTicks = 0;
-                
+                Globals.GameObjectManager.removeObject(this);
+
+
             }
         }
 
@@ -113,7 +115,7 @@ namespace sprint0.Items
                         this.itemXPos = linkXPos;
                         break;
                     case Direction.Left:
-                        this.itemXPos = linkXPos + 15;
+                        this.itemXPos = linkXPos - 15;
                         this.itemYPos = linkYPos;
                         break;
 
@@ -155,7 +157,7 @@ namespace sprint0.Items
 
         public bool isDynamic()
         {
-            return false;
+            return true;
         }
 
         public bool isUpdateable()

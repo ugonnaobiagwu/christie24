@@ -8,6 +8,7 @@ using sprint0.Blocks;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using sprint0.HUDs;
+using sprint0.LinkSword;
 
 namespace sprint0.Collision
 {
@@ -145,6 +146,7 @@ namespace sprint0.Collision
             GameObjectDelegate MoveDragonDelegate = new GameObjectDelegate(MoveDragon);
             GameObjectDelegate MoveDragonAndTakeDamageDelegate = new GameObjectDelegate(MoveDragonAndTakeDamage);
             GameObjectDelegate BowImpactDelegate = new GameObjectDelegate(BowImpact);
+            GameObjectDelegate SwordImpactDelegate = new GameObjectDelegate(SwordImpact);
             GameObjectDelegate BetterBowImpactDelegate = new GameObjectDelegate(BetterBowImpact);
             GameObjectDelegate BoomerangImpactDelegate = new GameObjectDelegate(BoomerangImpact);
             GameObjectDelegate BetterBoomerangImpactDelegate = new GameObjectDelegate(BetterBoomerangImpact);
@@ -286,10 +288,10 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Dragon", BombImpactDelegate, MoveDragonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.LinkObj.Link", null, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Bokoblin", null, MoveBokoblinAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Oktorok", null, MoveOktorokAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Skeleton", null, MoveSkeletonAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Dragon", null, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Bokoblin", SwordImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Oktorok", SwordImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Skeleton", SwordImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Dragon", SwordImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
 
             // COMBAT ON LINK COLLISIONS
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
@@ -380,16 +382,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    link.YVal -= 25;
+                    link.YVal -= 50;
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    link.YVal += 25;
+                    link.YVal += 50;
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    link.XVal -= 25;
+                    link.XVal -= 50;
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    link.XVal += 25;
+                    link.XVal += 50;
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
@@ -411,6 +413,7 @@ namespace sprint0.Collision
         private void BetterBowImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             BetterBow betterBow = (BetterBow)obj;
+            Console.WriteLine("Better Bow Collision occured");
             betterBow.thisStateMachine.CeaseUse();
         }
 
@@ -419,11 +422,14 @@ namespace sprint0.Collision
         {
             Boomerang boomerang = (Boomerang)obj;
             boomerang.thisStateMachine.CeaseUse();
+            Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
+
         }
         private void BetterBoomerangImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             BetterBoomerang betterBoomerang = (BetterBoomerang)obj;
             betterBoomerang.thisStateMachine.CeaseUse();
+            Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
         }
 
         //Blaze
@@ -442,6 +448,17 @@ namespace sprint0.Collision
             if (bomb.bombTicks < bomb.maxBombTicks)
             {
                 bomb.bombTicks = bomb.maxBombTicks;
+            }
+        }
+
+        private void SwordImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            // Collision with bomb in dormant state causes explosion to occur.
+            //COUPLING! EW!
+            Sword sword = (Sword)obj;
+            if (sword.currentSwordTicks < sword.totalSwordTicks)
+            {
+                sword.currentSwordTicks = sword.totalSwordTicks;
             }
         }
 

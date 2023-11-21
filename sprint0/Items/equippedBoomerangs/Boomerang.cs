@@ -17,7 +17,7 @@ namespace sprint0.Items
         private int itemMinY;
         private int itemXOrigin;
         private int itemYOrigin;
-        private int spriteVelocity = 1;
+        private int spriteVelocity = 3;
         private int itemRoomID;
         // needs these positions for sprite swapping.
 
@@ -35,6 +35,8 @@ namespace sprint0.Items
             currentItemDirection = Direction.Down;
             spriteChanged = false;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
+
 
 
         }
@@ -77,8 +79,9 @@ namespace sprint0.Items
                     {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
-                        this.currentItemSprite = null;
                         Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
+                        Globals.GameObjectManager.removeObject(this);
+
                     }
                 }
                 else
@@ -103,11 +106,7 @@ namespace sprint0.Items
                     }
 
                 }
-                if (this.currentItemSprite != null)
-                {
                     this.currentItemSprite.Update();
-                }
-
             }
 
         }

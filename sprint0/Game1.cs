@@ -389,7 +389,6 @@ namespace sprint0
             // TODO: Add your update logic here
 
             KeyboardCont.Update();
-            Globals.LinkItemSystem.Update();
             List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
             foreach (IGameObject updateable in Updateables)
             {
@@ -458,7 +457,6 @@ namespace sprint0
             BokoblinObj.Draw(spriteBatch);
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
-            Globals.LinkItemSystem.Draw();
             //LinkObj.Draw(spriteBatch);
             List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach (IGameObject obj in Drawables)

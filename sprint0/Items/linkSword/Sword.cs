@@ -24,8 +24,8 @@ namespace sprint0.LinkSword
         private IItemStateMachine thisStateMachine;
         private Direction currentItemDirection;
         private bool isDrawn;
-        private int totalSwordTicks = 25;
-        private int currentSwordTicks;
+        public int totalSwordTicks = 25;
+        public int currentSwordTicks;
 
         /*
          * Constant lifetime, will not get instantiated upon equipment like other items do.
@@ -54,7 +54,7 @@ namespace sprint0.LinkSword
                     // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                     // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
                     case Direction.Left:
-                        currentItemSprite.Draw(spritebatch, xPos - linkWidth + 5, yPos - (linkHeight / 2) - 15, rotation);
+                        currentItemSprite.Draw(spritebatch, xPos - linkWidth + 5, yPos - (linkHeight / 2) + 15, rotation);
                         break;
                     case Direction.Right:
                         currentItemSprite.Draw(spritebatch, xPos + linkWidth - 5, yPos - (linkHeight / 2) + 15, rotation);
@@ -132,6 +132,7 @@ namespace sprint0.LinkSword
           if (currentSwordTicks >= totalSwordTicks) { 
                 this.isDrawn = false;
                 this.thisStateMachine.CeaseUse();
+                Globals.GameObjectManager.removeObject(this);
                 
             }
             currentItemSprite.Update();
@@ -151,13 +152,13 @@ namespace sprint0.LinkSword
                 // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                 // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
                 case Direction.Left:
-                    return xPos - linkWidth;
+                    return xPos - linkWidth + 5;
                 case Direction.Right:
-                    return xPos + linkWidth;
+                    return xPos + linkWidth - 5;
                 case Direction.Down:
-                    return xPos + (linkWidth / 2);
+                    return xPos + (linkWidth / 6);
                 case Direction.Up:
-                    return xPos + (linkWidth / 2);
+                    return xPos + (linkWidth / 10);
                 default:
                     return xPos;
             }
@@ -170,13 +171,13 @@ namespace sprint0.LinkSword
                 // SET DRAW TO THE MUCKED UP X AND Y POS THAT THE SWORD MUST BE DRAWN AT.
                 // HALFWAY THROUGH + ALL THE WAY TO THE EDGE OF THE SPRITE DEPENDING ON ORIENT.
                 case Direction.Left:
-                    return yPos - (linkHeight / 2);
+                    return yPos - (linkHeight / 2) + 15;
                 case Direction.Right:
-                    return yPos - (linkHeight / 2);
+                    return yPos - (linkHeight / 2) + 15;
                 case Direction.Down:
-                    return yPos + linkHeight;
+                    return yPos + linkHeight - 10;
                 case Direction.Up:
-                    return yPos - linkHeight;
+                    return yPos - linkHeight + 10;
                 default:
                     return yPos;
             }
