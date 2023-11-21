@@ -39,6 +39,10 @@ namespace sprint0.Enemies
             DragonFactory = spriteFactory;
             DragonSprite = DragonFactory.getAnimatedSprite("Default");
             Fireballs = new DragonBlaze[] { new DragonBlaze(projectileFactory, 0), new DragonBlaze(projectileFactory, 1), new DragonBlaze(projectileFactory, 2) };
+            foreach(DragonBlaze fire in Fireballs)
+            {
+                Globals.GameObjectManager.addObject(fire);
+            }
             SpriteSheetFrames = new int[] { 0, 1, 2, 3 };
         }
 
