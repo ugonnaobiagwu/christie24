@@ -44,6 +44,8 @@ namespace sprint0
         public Bokoblin BokoblinObj;
         public Dragon DragonObj;
 
+        public GroundHeart heart;
+
         //Camera
         public Camera camera;
         ScrollState scrollState;
@@ -198,10 +200,6 @@ namespace sprint0
             SpriteFactory groundBlazeFactory = new SpriteFactory(groundBlazeTexture, 1, 1);
             groundBlazeFactory.createAnimation("GroundBlaze", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
 
-            Texture2D groundHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundHeart");
-            SpriteFactory groundHeartFactory = new SpriteFactory(groundHeartTexture, 1, 1);
-            groundHeartFactory.createAnimation("GroundHeart", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
-
             Texture2D groundTriforceTexture = Content.Load<Texture2D>("groundItemSprites/groundTriforce");
             SpriteFactory groundTriforceFactory = new SpriteFactory(groundTriforceTexture, 1, 1);
             groundTriforceFactory.createAnimation("GroundTriforce", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
@@ -221,6 +219,14 @@ namespace sprint0
             Texture2D groundCompassTexture = Content.Load<Texture2D>("groundItemSprites/groundCompass");
             SpriteFactory groundCompassFactory = new SpriteFactory(groundCompassTexture, 1, 1);
             groundCompassFactory.createAnimation("GroundCompass", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+
+            Texture2D groundRupeeTexture = Content.Load<Texture2D>("groundItemSprites/groundShimmeringRupee");
+            SpriteFactory groundRupeeFactory = new SpriteFactory(groundRupeeTexture, 1, 2);
+            groundRupeeFactory.createAnimation("GroundRupee", new int[] { 0, 0}, new int[] { 0, 1}, 2); 
+
+            Texture2D groundHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundHeart");
+            SpriteFactory groundHeartFactory = new SpriteFactory(groundHeartTexture, 1, 1);
+            groundHeartFactory.createAnimation("GroundHeart", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
             // Level Loader should place these items in the right spots, yes? I can instantiate them here and draw them for testing purposes if we'd like.
 
             //LINK'S ITEM SYSTEM STUFF
@@ -358,13 +364,16 @@ namespace sprint0
             // Camera, keep this since I need graphics
             Globals.Camera.FollowLink(graphics, true);
 
-            //Globals.GameObjectManager.addObject(LinkObj);
+            //Globals.GameObjectManager.addObject(Globals.Link);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
+            //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
             //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
             //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
             //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
+            heart = new GroundHeart(groundHeartFactory, 0, -100);
+            Globals.GameObjectManager.addObject(heart);
 
             // TODO: use this.Content to load your game content here
 
@@ -441,7 +450,7 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
             //HUD draw
-            hud.Draw();
+            //hud.Draw();
             
             //if (LinkObj != null)
             //{

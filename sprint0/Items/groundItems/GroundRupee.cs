@@ -16,7 +16,7 @@ namespace sprint0.Items.groundItems
         // Does Level Loader like this signature?
         public GroundRupee(SpriteFactory factory, int xPos, int yPos)
         {
-            this.currentItemSprite = factory.getAnimatedSprite("Rupee");
+            this.currentItemSprite = factory.getAnimatedSprite("GroundRupee");
             this.xPos = xPos;
             this.yPos = yPos;
             isPickedUp = false;

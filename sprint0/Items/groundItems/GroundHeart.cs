@@ -16,7 +16,7 @@ namespace sprint0.Items.groundItems
         // Does Level Loader like this signature?
         public GroundHeart(SpriteFactory factory, int xPos, int yPos)
         {
-            this.currentItemSprite = factory.getAnimatedSprite("Rupee");
+            this.currentItemSprite = factory.getAnimatedSprite("GroundHeart");
             this.xPos = xPos;
             this.yPos = yPos;
             isPickedUp = false;
@@ -58,7 +58,7 @@ namespace sprint0.Items.groundItems
 
         public bool isUpdateable()
         {
-            return false;
+            return true;
         }
 
         public bool isInPlay()
