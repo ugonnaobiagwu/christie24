@@ -7,6 +7,7 @@ using sprint0.Items.groundItems;
 using sprint0.Blocks;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
+using sprint0.HUDs;
 
 namespace sprint0.Collision
 {
@@ -260,7 +261,7 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
-
+            //collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Blocks.DungeonPyramidBlock", BetterBowImpactDelegate, MoveDungeonPyramidBlockDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
@@ -392,6 +393,7 @@ namespace sprint0.Collision
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+            Inventory.LoseHeart();
             link.LinkTakeDamage();
         }
 
@@ -575,7 +577,25 @@ namespace sprint0.Collision
         private void MoveSkeletonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+
+
         }
 
 

@@ -367,9 +367,9 @@ namespace sprint0
             //Globals.GameObjectManager.addObject(Globals.Link);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
-            //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
+            Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
-            //Globals.GameObjectManager.addObject((IGameObject)SkeletonObj);
+            Globals.GameObjectManager.addObject(SkeletonObj);
             //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
             //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
             heart = new GroundHeart(groundHeartFactory, 0, -100);
@@ -430,18 +430,14 @@ namespace sprint0
             // during tests, the camera will pan back to link after releasing the mouse buttons, which is because
             // you follow link again
             Globals.Camera.FollowLink(graphics, true);
-
             // keep this here for the final game.
             Globals.Camera.Update(gameTime);
-
-            Console.WriteLine(Globals.Link.width());
-            Console.WriteLine(Globals.Link.width());
             /*ENEMY ADDED FOR TESTING: TO BE DELETED*/
             SkeletonObj.Update();
             OktorokObj.Update();
             BokoblinObj.Update();
             DragonObj.Update();
-            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+            CollisionIterator.Iterate(Globals.GameObjectManager.getList("drawables"));
             base.Update(gameTime);
         }
 
