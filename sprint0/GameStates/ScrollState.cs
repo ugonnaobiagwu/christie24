@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
-
+using sprint0.BoundariesDoorsAndRooms;
+using static sprint0.Globals;
 namespace sprint0.GameStates
 {
     public class ScrollState : IGameState
     {
-        public enum Direction { Left, Right, Up, Down }
-        public Direction scrollDirection;
-
-        public ScrollState(GameStateManager managers)
+        
+        public Direction ScrollDirection;
+        private Door EnteredDoor { get; set; }
+        Direction SideOfRoomDirection;
+        private int NewRoomId;
+        public ScrollState(GameStateManager managers, int toRoomId, Direction sideOfRoom)
         {
+            NewRoomId = toRoomId;
+            SideOfRoomDirection = sideOfRoom;
         }
 
         public void Update(GameTime gameTime)
         {
             Globals.Camera.Update(gameTime);
 
-            switch (scrollDirection)
+            switch (ScrollDirection)
             {
                 case (Direction.Left):
                     Globals.Camera.MoveCameraToLeftRoom();
