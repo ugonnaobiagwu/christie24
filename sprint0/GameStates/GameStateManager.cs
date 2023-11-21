@@ -67,6 +67,7 @@ namespace sprint0.GameStates
         public void SetNewScrollState(int toRoomId, Direction sideOfRoom)
         {
             ScrollState = new ScrollState(this,toRoomId,sideOfRoom);
+            if (CurrentState.Equals(PlayState)) { this.ChangeState("scroll"); }
         }
     }
 }
