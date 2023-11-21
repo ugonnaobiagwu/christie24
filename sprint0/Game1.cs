@@ -367,11 +367,11 @@ namespace sprint0
             //Globals.GameObjectManager.addObject(Globals.Link);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
-            //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
+            Globals.GameObjectManager.addObject(OktorokObj);
             Globals.GameObjectManager.addObject(SkeletonObj);
 
-            //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
-            //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
+            Globals.GameObjectManager.addObject(BokoblinObj);
+            Globals.GameObjectManager.addObject(DragonObj);
             heart = new GroundHeart(groundHeartFactory, 0, -100);
             Globals.GameObjectManager.addObject(heart);
 
