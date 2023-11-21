@@ -71,7 +71,7 @@ namespace sprint0.LinkSword
 
         public int height()
         {
-            return this.currentItemSprite.GetHeight();
+            return this.currentItemSprite.GetHeight() + 20;
         }
 
         public bool isDynamic()
@@ -142,7 +142,7 @@ namespace sprint0.LinkSword
 
         public int width()
         {
-            return this.currentItemSprite.GetWidth();
+            return this.currentItemSprite.GetWidth() + 20;
         }
 
         public int xPosition()

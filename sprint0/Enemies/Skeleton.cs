@@ -28,7 +28,7 @@ namespace sprint0.Enemies
         public Skeleton(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
             /* Can be adjusted */
-            Health = 3;
+            Health = 4;
 
             xPos = x;
             yPos = y;
