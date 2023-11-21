@@ -128,7 +128,10 @@ namespace sprint0
         {
             currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            deleteList.Add(obj);
+            if (!inPlay.Contains(obj)) {
+
+                deleteList.Add(obj);
+            }
 
         }
 
