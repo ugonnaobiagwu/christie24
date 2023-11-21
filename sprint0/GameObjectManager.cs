@@ -22,11 +22,7 @@ namespace sprint0
         private List<IGameObject> dynamics;
         private List<IGameObject> inPlay;
         private List<IGameObject> deleteList;
-
-        private List<IGameObject> blockList;
-        private List<IGameObject> itemList;
-        private List<IGameObject> enemyList;
-        private List<IGameObject> linkList;
+        private List<IGameObject> roomList;
 
         private List<int> roomIDs;
 
@@ -36,9 +32,6 @@ namespace sprint0
         // need a constructor
         private Dictionary<int, List<IGameObject>> ObjectMap;
 
-        // dictionary of all items in rooms at the moment of leaving
-        private Dictionary<int, List<IGameObject>> pastRoomObjectMap;
-
         public GameObjectManager()
         {
             drawables = new List<IGameObject>();
@@ -46,17 +39,8 @@ namespace sprint0
             dynamics = new List<IGameObject>();
             inPlay = new List<IGameObject>();
             deleteList = new List<IGameObject>();
+            roomList = new List<IGameObject>();
             roomIDs = new List<int>();
-
-            // initialize all the types lists
-            //blockList = new List<Type> { BlackBlock, BlueDragonBlock, BlueFishBlock, DungeonBlueBlock, DungeonDragonBlock, DungeonFishBlock, DungeonPyramidBlock, GrassBlock, RedPyramidBlock, StairBlock, WaterBlock };
-            //itemList = new List<Type> { Blaze, Bomb, BetterBoomerang, Boomerang, BetterBow, Bow, GroundBigHeart, GroundBlaze, GroundBoomerang, GroundCompass, GroundKey, GroundPage, GroundTriforce, Sword };
-            //enemyList = new List<Type> { BokoblinBoomerang, DragonBlaze, OktorokBlaze, Bokoblin, Dragon, Oktorok, Skeleton };
-            //linkList = new List<Type> { Link, DamagedLink };
-            blockList = new List<IGameObject>();
-            enemyList = new List<IGameObject>();
-            itemList = new List<IGameObject>();
-            linkList = new List<IGameObject>();
 
             // map to hold all the objects in each room
             ObjectMap = new Dictionary<int, List<IGameObject>>();
@@ -83,9 +67,13 @@ namespace sprint0
             {
                 dynamics.Add(obj);
             }
-            if (obj.isDrawable()) // drawable objects
+            if (obj.isDrawable() && obj.type() != "Room") // drawable objects
             {
-                addToTypeList(obj);
+                drawables.Add(obj);
+            }
+            else if (obj.isDrawable() && obj.type() == "Room")
+            {
+                roomList.Add(obj);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -95,45 +83,52 @@ namespace sprint0
             {
                 inPlay.Add(obj);
             }
+
+            drawables = orderDrawableList(drawables);
         }
 
-        private void addToTypeList(IGameObject obj)
+        private List<IGameObject> orderDrawableList(List<IGameObject> list)
         {
-            if (obj.type() == "Block")
+            List<IGameObject> blockList = new List<IGameObject>();
+            List<IGameObject> itemList = new List<IGameObject>();
+            List<IGameObject> enemyList = new List<IGameObject>();
+            List<IGameObject> linkList = new List<IGameObject>();
+            List<IGameObject> orderedList = new List<IGameObject>();
+
+
+            foreach (IGameObject obj in list)
             {
-                blockList.Add(obj);
+                if (obj.type() == "Block")
+                {
+                    blockList.Add(obj);
+                }
+                else if (obj.type() == "Item")
+                {
+                    itemList.Add(obj);
+                }
+                else if (obj.type() == "Enemy")
+                {
+                    enemyList.Add(obj);
+                }
+                else if (obj.type() == "Link")
+                {
+                    linkList.Add(obj);
+                }
             }
-            else if (obj.type() == "Item") {
-                itemList.Add(obj);
-            }
-            else if (obj.type() == "Enemy")
-            {
-                enemyList.Add(obj);
-            }
-            else if (obj.type() == "Link") 
-            {
-                linkList.Add(obj);
-            }
+            orderedList.AddRange(roomList);
+            orderedList.AddRange(blockList);
+            orderedList.AddRange(itemList);
+            orderedList.AddRange(enemyList);
+            orderedList.AddRange(linkList);
+            return orderedList;
         }
 
-        private void orderDrawables()
-        {
-            drawables.Clear();
-            drawables.AddRange(blockList);
-            drawables.AddRange(itemList);
-            drawables.AddRange(enemyList);
-            drawables.AddRange(linkList);
-        }
-
-        // if objects are not in play and are removable are added into the delete queue
+        // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
             currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            if (!inPlay.Contains(obj))
-            {
-                deleteList.Add(obj);
-            }
+            deleteList.Add(obj);
 
         }
 
@@ -146,6 +141,26 @@ namespace sprint0
                 if (ObjectMap[currentRoomID].Contains(obj))
                 {
                     ObjectMap[currentRoomID].Remove(obj);
+                }
+                if (dynamics.Contains(obj)) // dynamic objects
+                {
+                    dynamics.Remove(obj);
+                }
+                if (drawables.Contains(obj)) // drawable objects
+                {
+                    drawables.Remove(obj);
+                }
+                if (roomList.Contains(obj))
+                {
+                    roomList.Remove(obj);
+                }
+                if (updateables.Contains(obj)) // updateable objects
+                {
+                    updateables.Remove(obj);
+                }
+                if (inPlay.Contains(obj)) // objects that are in play
+                {
+                    inPlay.Remove(obj);
                 }
 
             }
@@ -173,7 +188,6 @@ namespace sprint0
             switch (listName)
             {
                 case "drawables":
-                    orderDrawables();
                     return drawables;
                 case "updateables":
                     return updateables;
@@ -199,6 +213,34 @@ namespace sprint0
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
             return ObjectMap.ContainsKey(currentRoomID) ? ObjectMap[currentRoomID] : new List<IGameObject>();
+        }
+
+        public List<IGameObject> drawablesInRoom()
+        {
+            List<IGameObject> roomDrawables = new List<IGameObject>();
+
+            foreach (IGameObject obj in drawables)
+            {
+                if (ObjectMap[currentRoomID].Contains(obj))
+                {
+                    roomDrawables.Add(obj);
+                }
+            }
+            return orderDrawableList(roomDrawables);
+        }
+
+        public List<IGameObject> updateablesInRoom()
+        {
+            List<IGameObject> roomUpdateables = new List<IGameObject>();
+
+            foreach (IGameObject obj in updateables)
+            {
+                if (ObjectMap[currentRoomID].Contains(obj))
+                {
+                    roomUpdateables.Add(obj);
+                }
+            }
+            return roomUpdateables;
         }
 
         // to get the list of objects in a room just by its ID
