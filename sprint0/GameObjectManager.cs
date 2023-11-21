@@ -145,6 +145,26 @@ namespace sprint0
                 {
                     ObjectMap[currentRoomID].Remove(obj);
                 }
+                if (dynamics.Contains(obj)) // dynamic objects
+                {
+                    dynamics.Remove(obj);
+                }
+                if (drawables.Contains(obj)) // drawable objects
+                {
+                    drawables.Remove(obj);
+                }
+                if (roomList.Contains(obj))
+                {
+                    roomList.Remove(obj);
+                }
+                if (updateables.Contains(obj)) // updateable objects
+                {
+                    updateables.Remove(obj);
+                }
+                if (inPlay.Contains(obj)) // objects that are in play
+                {
+                    inPlay.Remove(obj);
+                }
 
             }
             // clears list
