@@ -41,6 +41,7 @@ namespace sprint0.Enemies
             OktorokFactory = spriteFactory;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
             Projectile = new OktorokBlaze(projectileFactory);
+            Globals.GameObjectManager.addObject(Projectile);
 
             /* Temporary Values */
             Height = OktoSprite.GetHeight();

@@ -44,6 +44,7 @@ namespace sprint0.Enemies
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
             Boomerang = new BokoblinBoomerang(projectileFactory);
+            Globals.GameObjectManager.addObject(Boomerang);
 
             /* Temporary Values */
             Width = BokoSprite.GetWidth();
