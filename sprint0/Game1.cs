@@ -450,8 +450,8 @@ namespace sprint0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
             //HUD draw
-            //hud.Draw();
-            
+            hud.Draw();
+
             //if (LinkObj != null)
             //{
             //    LinkObj.Draw(spriteBatch);
