@@ -9,17 +9,19 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
 
 namespace sprint0.Enemies
 {
-    public class Bokoblin : IEnemy
+    public class Bokoblin : IEnemy, IElementalEnemy
     {
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
         private SpriteBatch SpriteBatch;
         private ISprite BokoSprite;
+        private Globals.EnemyElementType element;
         private int xPos;
         private int yPos;
         private int Height;
@@ -36,7 +38,7 @@ namespace sprint0.Enemies
         public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Subject to Change */
-            Health = 3;
+            Health = 4;
 
             xPos = x;
             yPos = y;
@@ -44,6 +46,8 @@ namespace sprint0.Enemies
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
             Boomerang = new BokoblinBoomerang(projectileFactory);
+            element = Globals.EnemyElementType.NEUTRAL;
+
             Globals.GameObjectManager.addObject(Boomerang);
 
             /* Temporary Values */
@@ -197,6 +201,13 @@ namespace sprint0.Enemies
             BokoSprite.Update();
             Boomerang.Update();
 
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH)
+                /*|| Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH) */)
+            // it shouldn't change once its set so idk if the above line is neccesary
+            {
+                element = Globals.EnemyElementType.FIRE;
+            }
+
             Random rnd = new Random();
             int direction = rnd.Next(4);
 
@@ -245,7 +256,7 @@ namespace sprint0.Enemies
                 }
             }
 
-            Health--;
+            Health = Health - 2;
             if (Health <= 0)
             {
                 BokoState = State.Dead;
@@ -282,5 +293,77 @@ namespace sprint0.Enemies
            yPos += change;
         }
         public String type() { return "Enemy"; }
+
+        public Globals.EnemyElementType EnemyElement()
+        {
+            return element;
+        }
+
+        public void TakeCriticalDamage()
+        {
+            // theres no such thing as crit damage if you have not been leveled up yet.
+            if (element.Equals(Globals.EnemyElementType.FIRE))
+            {
+                Console.WriteLine("Critical Hit!");
+                /* Placeholder Knockback animation */
+                for (int i = 0; i < 10; i++)
+                {
+                    switch (getDirection())
+                    {
+                        case 0:
+                            yPos--;
+                            break;
+                        case 1:
+                            xPos++;
+                            break;
+                        case 2:
+                            yPos++;
+                            break;
+                        case 3:
+                            xPos--;
+                            break;
+                    }
+                }
+
+                Health = Health - 3;
+                if (Health <= 0)
+                {
+                    BokoState = State.Dead;
+                }
+            }
+        }
+
+        public void TakeMinimalDamage()
+        {
+            // likewise theres no such thing as min damage if you have not been leveled up yet.
+            if (element.Equals(Globals.EnemyElementType.FIRE))
+            {
+                /* Placeholder Knockback animation */
+                for (int i = 0; i < 10; i++)
+                {
+                    switch (getDirection())
+                    {
+                        case 0:
+                            yPos--;
+                            break;
+                        case 1:
+                            xPos++;
+                            break;
+                        case 2:
+                            yPos++;
+                            break;
+                        case 3:
+                            xPos--;
+                            break;
+                    }
+                }
+
+                Health = Health - 1;
+                if (Health <= 0)
+                {
+                    BokoState = State.Dead;
+                }
+            }
+        }
     }
 }

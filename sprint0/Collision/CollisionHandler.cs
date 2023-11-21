@@ -153,6 +153,9 @@ namespace sprint0.Collision
             GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
             GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
+            GameObjectDelegate MoveOktorokAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamageFromSword);
+            GameObjectDelegate MoveBokoblinAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamageFromSword);
+
 
 
             // BOUNDARIES
@@ -288,10 +291,10 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Dragon", BombImpactDelegate, MoveDragonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.LinkObj.Link", null, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Bokoblin", SwordImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Oktorok", SwordImpactDelegate, MoveOktorokAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Bokoblin", SwordImpactDelegate, MoveBokoblinAndTakeDamageFromSwordDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Oktorok", SwordImpactDelegate, MoveOktorokAndTakeDamageFromSwordDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Skeleton", SwordImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Dragon", SwordImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Dragon", SwordImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
             // COMBAT ON LINK COLLISIONS
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
@@ -570,6 +573,40 @@ namespace sprint0.Collision
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
+        private void MoveOktorokAndTakeDamageFromSword(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Oktorok enemy = (Oktorok)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-35);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(35);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-35);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(35);
+                    break;
+            }
+            
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    break;
+                case Globals.LinkTunic.ICE:
+                    ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    break;
+                default:
+                    enemy.TakeDamage();
+                    break;
+            }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+        }
+
         private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
@@ -654,6 +691,39 @@ namespace sprint0.Collision
                     break;
             }
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+        }
+
+        private void MoveBokoblinAndTakeDamageFromSword(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Bokoblin enemy = (Bokoblin)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-50);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(50);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-50);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(50);
+                    break;
+            }
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    break;
+                case Globals.LinkTunic.ICE:
+                    ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    break;
+                default:
+                    enemy.TakeDamage();
+                    break;
+            }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 

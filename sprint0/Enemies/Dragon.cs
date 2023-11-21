@@ -4,9 +4,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
 
@@ -31,7 +33,7 @@ namespace sprint0.Enemies
         public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Can be adjusted */
-            Health = 10;
+            Health = 12;
 
             xPos = x;
             yPos = y;
@@ -185,6 +187,21 @@ namespace sprint0.Enemies
             {
                 fireball.Update();
             }
+
+            /*
+             * Link's Level can only be increased, not decreased, 
+             * so this should be fine. We won't do this at the constructor
+             * level, since his health wont increase as Link plays the game.
+             */
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.MEDIUM))
+            {
+                Health = 14;
+            }
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH))
+            {
+                Health = 16;
+            }
+
 
             Random rnd = new Random();
             int direction = rnd.Next(4);
