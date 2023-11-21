@@ -413,7 +413,6 @@ namespace sprint0.Collision
         private void BetterBowImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             BetterBow betterBow = (BetterBow)obj;
-            Console.WriteLine("Better Bow Collision occured");
             betterBow.thisStateMachine.CeaseUse();
         }
 

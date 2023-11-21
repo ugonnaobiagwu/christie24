@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Sound.Ocarina;
 using static sprint0.Globals;
 
@@ -90,8 +91,9 @@ namespace sprint0.Items
 
         public void Use(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         {
-            if (!thisStateMachine.isItemInUse())
+            if (!thisStateMachine.isItemInUse() && Inventory.items[Inventory.ItemTypes.BOMB] > 0)
             {
+                Inventory.LoseBomb();
                 Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOMB_DROP);
                 this.spriteChanged = false; //reset
                 thisStateMachine.Use(); // sets usage in play
@@ -103,19 +105,19 @@ namespace sprint0.Items
                 switch (linkDirection)
                 {
                     case Direction.Right:
-                        this.itemXPos = linkXPos + 15;
+                        this.itemXPos = linkXPos + 35;
                         this.itemYPos = linkYPos;
                         break;
                     case Direction.Up:
-                        this.itemYPos = linkYPos - 15;
+                        this.itemYPos = linkYPos - 35;
                         this.itemXPos = linkXPos;
                         break;
                     case Direction.Down:
-                        this.itemYPos = linkYPos + 15;
+                        this.itemYPos = linkYPos + 35;
                         this.itemXPos = linkXPos;
                         break;
                     case Direction.Left:
-                        this.itemXPos = linkXPos - 15;
+                        this.itemXPos = linkXPos - 35;
                         this.itemYPos = linkYPos;
                         break;
 
@@ -136,7 +138,7 @@ namespace sprint0.Items
         {
             if (spriteChanged) // change hitbox if in explosion state 
             {
-                return this.currentItemSprite.GetWidth() + 15;
+                return this.currentItemSprite.GetWidth() + 20;
             } else
             {
                 return this.currentItemSprite.GetWidth();
@@ -147,7 +149,7 @@ namespace sprint0.Items
         {
             if (spriteChanged) // change hitbox if in explosion state 
             {
-                return this.currentItemSprite.GetHeight() + 15;
+                return this.currentItemSprite.GetHeight() + 20;
             }
             else
             {
