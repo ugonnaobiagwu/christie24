@@ -54,6 +54,8 @@ namespace sprint0.Items.groundItems
         {
             isPickedUp = true;
             Inventory.CountRupee();
+            Globals.GameObjectManager.removeObject(this);
+
         }
 
         public bool isUpdateable()
@@ -63,7 +65,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
@@ -93,7 +95,7 @@ namespace sprint0.Items.groundItems
 
         public string type()
         {
-            return "GroundRupee";
+            return "Item";
         }
     }
 }

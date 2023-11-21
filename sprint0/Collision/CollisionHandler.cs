@@ -704,20 +704,23 @@ namespace sprint0.Collision
         private void GenericGroundItemPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             IGroundItem item = (IGroundItem)obj;
-            item.PickUp();
-            String itemType = item.GetType().ToString();
-            if (itemType.Equals("GroundRupee"))
+            if (item.isInPlay())
             {
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
+                item.PickUp();
+                String itemType = item.GetType().ToString();
+                if (itemType.Equals("sprint0.Items.groundItems.GroundRupee"))
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
 
-            }
-            else if (itemType.Equals("GroundKey") || itemType.Equals("GroundHeart"))
-            {
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
-            }
-            else
-            {
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+                }
+                else if (itemType.Equals("sprint0.Items.groundItems.GroundKey") || itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+                }
+                else
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+                }
             }
 
         }

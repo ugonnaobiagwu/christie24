@@ -190,43 +190,43 @@ namespace sprint0
             // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
             Texture2D groundBoomerangTexture = Content.Load<Texture2D>("groundItemSprites/groundBoomerang");
             SpriteFactory groundBoomerangFactory = new SpriteFactory(groundBoomerangTexture, 1, 1);
-            groundBoomerangFactory.createAnimation("GroundBoomerang", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundBoomerangFactory.createAnimation("GroundBoomerang", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundBombTexture = Content.Load<Texture2D>("groundItemSprites/groundBomb");
             SpriteFactory groundBombFactory = new SpriteFactory(groundBombTexture, 1, 1);
-            groundBombFactory.createAnimation("GroundBomb", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundBombFactory.createAnimation("GroundBomb", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundBlazeTexture = Content.Load<Texture2D>("groundItemSprites/groundBlaze");
             SpriteFactory groundBlazeFactory = new SpriteFactory(groundBlazeTexture, 1, 1);
-            groundBlazeFactory.createAnimation("GroundBlaze", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundBlazeFactory.createAnimation("GroundBlaze", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundTriforceTexture = Content.Load<Texture2D>("groundItemSprites/groundTriforce");
             SpriteFactory groundTriforceFactory = new SpriteFactory(groundTriforceTexture, 1, 1);
-            groundTriforceFactory.createAnimation("GroundTriforce", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundTriforceFactory.createAnimation("GroundTriforce", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundKeyTexture = Content.Load<Texture2D>("groundItemSprites/groundKey");
             SpriteFactory groundKeyFactory = new SpriteFactory(groundKeyTexture, 1, 1);
-            groundKeyFactory.createAnimation("GroundKey", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundKeyFactory.createAnimation("GroundKey", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundPageTexture = Content.Load<Texture2D>("groundItemSprites/groundPage");
             SpriteFactory groundPageFactory = new SpriteFactory(groundPageTexture, 1, 1);
-            groundPageFactory.createAnimation("GroundPage", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundPageFactory.createAnimation("GroundPage", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundBigHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundBigHeart");
             SpriteFactory groundBigHeartFactory = new SpriteFactory(groundBigHeartTexture, 1, 1);
-            groundBigHeartFactory.createAnimation("GroundBigHeart", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundBigHeartFactory.createAnimation("GroundBigHeart", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundCompassTexture = Content.Load<Texture2D>("groundItemSprites/groundCompass");
             SpriteFactory groundCompassFactory = new SpriteFactory(groundCompassTexture, 1, 1);
-            groundCompassFactory.createAnimation("GroundCompass", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation
+            groundCompassFactory.createAnimation("GroundCompass", new int[] { 0 }, new int[] { 0 }, 1, .05f, 1.5f, 1.5f); // single sprite animation
 
             Texture2D groundRupeeTexture = Content.Load<Texture2D>("groundItemSprites/groundShimmeringRupee");
             SpriteFactory groundRupeeFactory = new SpriteFactory(groundRupeeTexture, 1, 2);
-            groundRupeeFactory.createAnimation("GroundRupee", new int[] { 0, 0}, new int[] { 0, 1}, 2); 
+            groundRupeeFactory.createAnimation("GroundRupee", new int[] { 0, 0}, new int[] { 0, 1}, 2, .05f, 1.5f, 1.5f); 
 
             Texture2D groundHeartTexture = Content.Load<Texture2D>("groundItemSprites/groundHeart");
-            SpriteFactory groundHeartFactory = new SpriteFactory(groundHeartTexture, 1, 1);
-            groundHeartFactory.createAnimation("GroundHeart", new int[] { 0, 0 }, new int[] { 0, 1 }, 2);
+            SpriteFactory groundHeartFactory = new SpriteFactory(groundHeartTexture, 1, 2);
+            groundHeartFactory.createAnimation("GroundHeart", new int[] { 0, 0 }, new int[] { 0, 1 }, 2, 1, 1.5f, 1.5f);
             // Level Loader should place these items in the right spots, yes? I can instantiate them here and draw them for testing purposes if we'd like.
 
             //LINK'S ITEM SYSTEM STUFF
@@ -367,9 +367,9 @@ namespace sprint0
             //Globals.GameObjectManager.addObject(Globals.Link);
             //Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             Globals.GameObjectManager.addObject(block);
-            Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
             //Globals.GameObjectManager.addObject((IGameObject)OktorokObj);
             Globals.GameObjectManager.addObject(SkeletonObj);
+
             //Globals.GameObjectManager.addObject((IGameObject)BokoblinObj);
             //Globals.GameObjectManager.addObject((IGameObject)DragonObj);
             heart = new GroundHeart(groundHeartFactory, 0, -100);
@@ -436,6 +436,7 @@ namespace sprint0
             OktorokObj.Update();
             BokoblinObj.Update();
             DragonObj.Update();
+            heart.Update();
             CollisionIterator.Iterate(Globals.GameObjectManager.getList("drawables"));
             base.Update(gameTime);
         }
@@ -458,6 +459,7 @@ namespace sprint0
             OktorokObj.Draw(spriteBatch);
             DragonObj.Draw(spriteBatch);
             //LinkObj.Draw(spriteBatch);
+            heart.Draw(spriteBatch);
             List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach (IGameObject obj in Drawables)
             {

@@ -55,6 +55,8 @@ namespace sprint0.Items.groundItems
             Inventory.GainHeart();
             Inventory.GainHeart();
             Inventory.GainHeart();
+            Globals.GameObjectManager.removeObject(this);
+
         }
 
         public bool isUpdateable()
@@ -64,7 +66,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()

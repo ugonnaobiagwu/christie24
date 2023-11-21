@@ -51,6 +51,7 @@ namespace sprint0.Items.groundItems
         public void PickUp()
         {
             isPickedUp = true;
+
         }
 
         public bool isUpdateable()
@@ -60,7 +61,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
