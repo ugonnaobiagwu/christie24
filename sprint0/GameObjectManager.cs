@@ -123,15 +123,12 @@ namespace sprint0
             return orderedList;
         }
 
-        // if objects are not in play and are removable are added into the delete queue
+        // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
             currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            if (!inPlay.Contains(obj))
-            {
                 deleteList.Add(obj);
-            }
 
         }
 
