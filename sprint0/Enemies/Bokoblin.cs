@@ -40,12 +40,10 @@ namespace sprint0.Enemies
         private int direction;
         private Vector2 posVector;
         private Vector2 linkVector;
-        private Vector2 oldLinkVector;
-        private Vector2 linkVelocity;
         private float followSpeed = .05f;
-        private float followThreshold = 500.0f;
-        private int followticks = 0;
-        private int totalfollowticks = 10;
+        private float followThreshold = 250.0f;
+        private int changeFollowingCourseTicks = 0;
+        private int totalFollowingCourseTicks = 10;
         private bool inPlay;
 
 
@@ -183,7 +181,7 @@ namespace sprint0.Enemies
 
         public bool isInPlay()
         {
-            return true;
+            return inPlay;
         }
 
         public bool isDrawable()
@@ -228,13 +226,25 @@ namespace sprint0.Enemies
             }
 
             //Enemy Movement
+            
+            /*
+             * If Link is at max level, the enemies will chase him. Here's how it works for when I'm reading this again later:
+             * 
+             * Given two vectors, Link's vector and a vector for the Enemy's position..
+             * If the distance between the two positions are smaller than the follow threshold 
+             * (which will ensure enemies outside of Link's room won't try to follow him) as well as the followTicks limit is met
+             * (which just controls how quickly the Sprite can "change course")
+             * 
+             * Grab the direction in which the Enemy mus travel towards Link, and increment his position to be a fraction of the total distance in the direction an enemy must travel to get to Link.
+             * Change its Sprite depending on where it's going, and reset the "changeCourse" timer.
+             * 
+             * Set his new X and Y positions.
+             */
             if (followLinkBehaviorOn)
             {
-                oldLinkVector = new Vector2(linkVector.X, linkVector.Y);
                 posVector = new Vector2(xPos, yPos);
                 linkVector = new Vector2(Globals.Link.xPosition(), Globals.Link.yPosition());
-                linkVelocity = linkVector - oldLinkVector;
-                if (Vector2.Distance(posVector, linkVector) <= followThreshold && followticks >= totalfollowticks)
+                if (Vector2.Distance(posVector, linkVector) <= followThreshold && changeFollowingCourseTicks >= totalFollowingCourseTicks)
                 {
                     Vector2 direction = Vector2.Normalize(linkVector - posVector);
                     posVector += direction * followSpeed * Vector2.Distance(posVector, linkVector);
@@ -246,9 +256,9 @@ namespace sprint0.Enemies
                     {
                         BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
                     }
-                    followticks = 0;
+                    changeFollowingCourseTicks = 0;
                 }
-                followticks++;
+                changeFollowingCourseTicks++;
 
                 this.xPos = (int)posVector.X;
                 this.yPos = (int)posVector.Y;
