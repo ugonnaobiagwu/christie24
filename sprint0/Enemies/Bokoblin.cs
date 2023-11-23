@@ -38,7 +38,15 @@ namespace sprint0.Enemies
         private int changeDirectionTicks = 0;
         private int totalChangeDirectionTicks = 60;
         private int direction;
-
+        private Vector2 posVector;
+        private Vector2 linkVector;
+        private Vector2 oldLinkVector;
+        private Vector2 linkVelocity;
+        private float followSpeed = .05f;
+        private float followThreshold = 500.0f;
+        private int followticks = 0;
+        private int totalfollowticks = 10;
+        private bool inPlay;
 
 
 
@@ -62,8 +70,9 @@ namespace sprint0.Enemies
             Height = BokoSprite.GetHeight();
 
             /* Should be reduced to 1 line */
-            SpriteSheetFrames = new int[] {64, 79, 65, 80, 66, 81, 67, 82};
+            SpriteSheetFrames = new int[] { 64, 79, 65, 80, 66, 81, 67, 82 };
             followLinkBehaviorOn = false;
+            inPlay = true;
         }
 
         /* ---Movement--- */
@@ -219,11 +228,45 @@ namespace sprint0.Enemies
             }
 
             //Enemy Movement
-            //if (followLinkBehaviorOn)
-            //{
-            //    // still working this out.
-            //}
-            
+            if (followLinkBehaviorOn)
+            {
+                oldLinkVector = new Vector2(linkVector.X, linkVector.Y);
+                posVector = new Vector2(xPos, yPos);
+                linkVector = new Vector2(Globals.Link.xPosition(), Globals.Link.yPosition());
+                linkVelocity = linkVector - oldLinkVector;
+                if (Vector2.Distance(posVector, linkVector) <= followThreshold && followticks >= totalfollowticks)
+                {
+                    Vector2 direction = Vector2.Normalize(linkVector - posVector);
+                    posVector += direction * followSpeed * Vector2.Distance(posVector, linkVector);
+                    if (linkVector.X > posVector.X)
+                    {
+                        BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
+                    }
+                    else if (linkVector.X < posVector.X)
+                    {
+                        BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
+                    }
+                    followticks = 0;
+                }
+                followticks++;
+
+                this.xPos = (int)posVector.X;
+                this.yPos = (int)posVector.Y;
+
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    BokoblinDirection = (Direction)rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+
+            }
+            else
+            {
                 if (changeDirectionTicks >= totalChangeDirectionTicks)
                 {
                     Random rnd = new Random();
@@ -249,13 +292,19 @@ namespace sprint0.Enemies
                         EnemyDown();
                         break;
                 }
-            
+            }
 
             if (!Boomerang.ThisStateMachine().isItemInUse())
             {
                 BokoblinThrow();
             }
 
+            if (this.BokoState.Equals(State.Dead))
+            {
+                inPlay = false;
+                Globals.GameObjectManager.removeObject(this);
+
+            }
 
         }
 
@@ -316,7 +365,7 @@ namespace sprint0.Enemies
 
         public void ChangeEnemyX(int change)
         {
-           yPos += change;
+            yPos += change;
         }
         public String type() { return "Enemy"; }
 
