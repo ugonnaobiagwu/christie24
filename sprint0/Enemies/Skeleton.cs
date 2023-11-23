@@ -24,6 +24,9 @@ namespace sprint0.Enemies
         private int Direction;
         private int[] SpriteSheetFrames;
         private int RoomId;
+        private int changeDirectionTicks = 0;
+        private int totalChangeDirectionTicks = 60;
+        private int direction;
 
         public Skeleton(int x, int y, int roomId, SpriteFactory spriteFactory)
         {
@@ -43,13 +46,13 @@ namespace sprint0.Enemies
         public void EnemyUp()
         {
             Direction = 0;
-            yPos++;
+            yPos--;
         }
         
         public void EnemyDown()
         {
             Direction = 2;
-            yPos--;
+            yPos++;
         }
 
         public void EnemyLeft()
@@ -174,22 +177,30 @@ namespace sprint0.Enemies
         {
             SkellySprite.Update();
 
-            Random rnd = new Random();
-            int direction = rnd.Next(4);
+            if (changeDirectionTicks >= totalChangeDirectionTicks)
+            {
+                Random rnd = new Random();
+                direction = rnd.Next(4);
+                changeDirectionTicks = 0;
+            }
+            else
+            {
+                changeDirectionTicks++;
+            }
 
             switch (direction)
             {
                 case 0:
-                    EnemyUp();
-                    break;
-                case 1:
                     EnemyLeft();
                     break;
+                case 1:
+                    EnemyRight();
+                    break;
                 case 2:
-                    EnemyDown();
+                    EnemyUp();
                     break;
                 case 3:
-                    EnemyRight();
+                    EnemyDown();
                     break;
             }
         }

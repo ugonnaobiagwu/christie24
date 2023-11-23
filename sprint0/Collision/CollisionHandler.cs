@@ -152,6 +152,8 @@ namespace sprint0.Collision
             GameObjectDelegate BetterBoomerangImpactDelegate = new GameObjectDelegate(BetterBoomerangImpact);
             GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
+            GameObjectDelegate EnemyProjectileImpactDelegate = new GameObjectDelegate(EnemyProjectileImpact);
+
             GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
             GameObjectDelegate MoveOktorokAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamageFromSword);
             GameObjectDelegate MoveBokoblinAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamageFromSword);
@@ -304,9 +306,9 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageFromFireElementDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageFromIceElementDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageFromFireElementDelegate, EnemyProjectileImpactDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, EnemyProjectileImpactDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageFromIceElementDelegate, EnemyProjectileImpactDelegate });
 
             // LINK AND THE GROUND ITEMS.
             // play the item use Link animation here.
@@ -853,6 +855,31 @@ namespace sprint0.Collision
             enemy.TakeDamage();
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE);
         }
+
+        private void EnemyProjectileImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            String objType = obj.GetType().ToString();
+            switch (objType)
+            {
+                case ("sprint0.Items.OktorokBlaze"):
+                    OktorokBlaze oktoblaze = (OktorokBlaze)obj;
+                    oktoblaze.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(oktoblaze);
+                    break;
+                case ("sprint0.Items.BokoblinBoomerang"):
+                    BokoblinBoomerang bokoboomerang = (BokoblinBoomerang)obj;
+                    bokoboomerang.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(bokoboomerang);
+                    break;
+                case ("sprint0.Items.DragonBlaze"):
+                    DragonBlaze dragonBreath = (DragonBlaze)obj;
+                    dragonBreath.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(dragonBreath);
+                    break;
+            }
+        }
+
+        // GROUND ITEMS
 
         // Ground Items handle their own "pick up call"
         private void GenericGroundItemPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)

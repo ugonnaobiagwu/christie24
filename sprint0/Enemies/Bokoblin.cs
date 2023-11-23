@@ -33,7 +33,14 @@ namespace sprint0.Enemies
         private enum State { Dead, Default };
         private State BokoState = State.Default;
         private int[] SpriteSheetFrames;
+        private bool followLinkBehaviorOn;
         private BokoblinBoomerang Boomerang;
+        private int changeDirectionTicks = 0;
+        private int totalChangeDirectionTicks = 60;
+        private int direction;
+
+
+
 
         public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
@@ -56,6 +63,7 @@ namespace sprint0.Enemies
 
             /* Should be reduced to 1 line */
             SpriteSheetFrames = new int[] {64, 79, 65, 80, 66, 81, 67, 82};
+            followLinkBehaviorOn = false;
         }
 
         /* ---Movement--- */
@@ -63,16 +71,16 @@ namespace sprint0.Enemies
         {
             BokoblinDirection = Direction.Up;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Up");
-            yPos++;
-            BokoSprite.Update();
+            yPos--;
+
         }
 
         public void EnemyDown()
         {
             BokoblinDirection = Direction.Down;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
-            yPos--;
-            BokoSprite.Update();
+            yPos++;
+
         }
 
         public void EnemyLeft()
@@ -80,7 +88,7 @@ namespace sprint0.Enemies
             BokoblinDirection = Direction.Left;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
             xPos--;
-            BokoSprite.Update();
+
         }
 
         public void EnemyRight()
@@ -88,7 +96,7 @@ namespace sprint0.Enemies
             BokoblinDirection = Direction.Right;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
             xPos++;
-            BokoSprite.Update();
+
         }
 
         /* ---Get Methods--- */
@@ -98,16 +106,16 @@ namespace sprint0.Enemies
             switch (BokoblinDirection)
             {
                 case Direction.Left:
-                    direction = 1;
-                    break;
-                case Direction.Right:
-                    direction = 3;
-                    break;
-                case Direction.Up:
                     direction = 0;
                     break;
-                case Direction.Down:
+                case Direction.Right:
+                    direction = 1;
+                    break;
+                case Direction.Up:
                     direction = 2;
+                    break;
+                case Direction.Down:
+                    direction = 3;
                     break;
             }
             return direction;
@@ -186,16 +194,17 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            if(BokoState != State.Dead)
+            if (!this.BokoState.Equals(State.Dead))
             {
                 BokoSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
-                if (Boomerang.ThisStateMachine().isItemInUse())
-                {
-                    Boomerang.Draw(spriteBatch);
-                }
+            }
+            else
+            {
+                Boomerang.thisStateMachine.CeaseUse();
             }
         }
 
+        //Code Smell: Long Method
         public void Update()
         {
             BokoSprite.Update();
@@ -206,31 +215,48 @@ namespace sprint0.Enemies
             // it shouldn't change once its set so idk if the above line is neccesary
             {
                 element = Globals.EnemyElementType.FIRE;
+                followLinkBehaviorOn = true;
             }
 
-            Random rnd = new Random();
-            int direction = rnd.Next(4);
-
-            switch (direction)
-            {
-                case 0:
-                    EnemyUp();
-                    break;
-                case 1:
-                    EnemyLeft();
-                    break;
-                case 2:
-                    EnemyDown();
-                    break;
-                case 3:
-                    EnemyRight();
-                    break;
-            }
+            //Enemy Movement
+            //if (followLinkBehaviorOn)
+            //{
+            //    // still working this out.
+            //}
+            
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    direction = rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+                switch (direction)
+                {
+                    case 0:
+                        EnemyLeft();
+                        break;
+                    case 1:
+                        EnemyRight();
+                        break;
+                    case 2:
+                        EnemyUp();
+                        break;
+                    case 3:
+                        EnemyDown();
+                        break;
+                }
+            
 
             if (!Boomerang.ThisStateMachine().isItemInUse())
             {
                 BokoblinThrow();
             }
+
+
         }
 
         /* ---Other Methods--- */

@@ -32,6 +32,9 @@ namespace sprint0.Enemies
         private State OktoState = State.Default;
         private int[] SpriteSheetFrames;
         private OktorokBlaze Projectile;
+        private int changeDirectionTicks = 0;
+        private int totalChangeDirectionTicks = 60;
+        private int direction;
 
         public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
@@ -46,6 +49,7 @@ namespace sprint0.Enemies
             Projectile = new OktorokBlaze(projectileFactory);
             element = Globals.EnemyElementType.NEUTRAL;
             Globals.GameObjectManager.addObject(Projectile);
+            direction = 2;
 
             /* Temporary Values */
             Height = OktoSprite.GetHeight();
@@ -59,16 +63,15 @@ namespace sprint0.Enemies
         {
             OktorokDirection = Direction.Up;
             OktoSprite = OktorokFactory.getAnimatedSprite("Up");
-            yPos++;
-            OktoSprite.Update();
+            yPos--;
+
         }
 
         public void EnemyDown()
         {
             OktorokDirection = Direction.Down;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
-            yPos--;
-            OktoSprite.Update();
+            yPos++;
         }
 
         public void EnemyLeft()
@@ -76,7 +79,6 @@ namespace sprint0.Enemies
             OktorokDirection = Direction.Left;
             OktoSprite = OktorokFactory.getAnimatedSprite("Left");
             xPos--;
-            OktoSprite.Update();
         }
 
         public void EnemyRight()
@@ -84,7 +86,6 @@ namespace sprint0.Enemies
             OktorokDirection = Direction.Right;
             OktoSprite = OktorokFactory.getAnimatedSprite("Right");
             xPos++;
-            OktoSprite.Update();
         }
 
         /* ---Get Methods--- */
@@ -94,16 +95,16 @@ namespace sprint0.Enemies
             switch (OktorokDirection)
             {
                 case Direction.Left:
-                    direction = 1;
-                    break;
-                case Direction.Right:
-                    direction = 3;
-                    break;
-                case Direction.Up:
                     direction = 0;
                     break;
-                case Direction.Down:
+                case Direction.Right:
+                    direction = 1;
+                    break;
+                case Direction.Up:
                     direction = 2;
+                    break;
+                case Direction.Down:
+                    direction = 3;
                     break;
             }
             return direction;
@@ -179,10 +180,11 @@ namespace sprint0.Enemies
             if(OktoState != State.Dead)
             {
                 OktoSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
-                if (Projectile.ThisStateMachine().isItemInUse())
-                {
-                    Projectile.Draw(spriteBatch);
-                }
+                
+            }
+            else
+            {
+                Projectile.thisStateMachine.CeaseUse();
             }
         }
 
@@ -198,22 +200,29 @@ namespace sprint0.Enemies
                 element = Globals.EnemyElementType.ICE;
             }
 
-            Random rnd = new Random();
-            int direction = rnd.Next(4);
+            if (changeDirectionTicks >= totalChangeDirectionTicks)
+            {
+                Random rnd = new Random();
+                direction = rnd.Next(4);
+                changeDirectionTicks = 0;
+            } else
+            {
+                changeDirectionTicks++;
+            }
 
             switch (direction)
             {
                 case 0:
-                    EnemyUp();
-                    break;
-                case 1:
                     EnemyLeft();
                     break;
+                case 1:
+                    EnemyRight();
+                    break;
                 case 2:
-                    EnemyDown();
+                    EnemyUp();
                     break;
                 case 3:
-                    EnemyRight();
+                    EnemyDown();
                     break;
             }
 

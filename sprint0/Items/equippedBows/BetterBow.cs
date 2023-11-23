@@ -114,10 +114,10 @@ namespace sprint0.Items
                 thisStateMachine.Use(); // sets usage in play
                 this.itemXPos = linkXPos;
                 this.itemYPos = linkYPos;
-                this.itemMaxX = linkXPos + 150;
-                this.itemMaxY = linkYPos + 150;
-                this.itemMinX = linkXPos - 150;
-                this.itemMinY = linkYPos - 150;
+                this.itemMaxX = linkXPos + 250;
+                this.itemMaxY = linkYPos + 250;
+                this.itemMinX = linkXPos - 250;
+                this.itemMinY = linkYPos - 250;
                 // since the bow may go up or down.
                 // all items start at the same position as link.
                 // Set the the current item sprite based on link orientation (if needed).

@@ -437,6 +437,8 @@ namespace sprint0
             BokoblinObj.Update();
             DragonObj.Update();
             heart.Update();
+
+
             CollisionIterator.Iterate(Globals.GameObjectManager.getList("drawables"));
             Globals.GameObjectManager.deleteObjects();
             base.Update(gameTime);
