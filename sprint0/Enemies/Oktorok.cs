@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
@@ -25,8 +26,7 @@ namespace sprint0.Enemies
         private int Height;
         private int Width;
         private int RoomId;
-        private enum Direction { Up, Down, Left, Right };
-        private Direction OktorokDirection;
+        private Globals.Direction OktorokDirection;
         private int Health;
         private enum State { Dead, Default };
         private State OktoState = State.Default;
@@ -34,7 +34,15 @@ namespace sprint0.Enemies
         private OktorokBlaze Projectile;
         private int changeDirectionTicks = 0;
         private int totalChangeDirectionTicks = 60;
-        private int direction;
+        private Vector2 posVector;
+        private Vector2 linkVector;
+        private float followSpeed = .05f;
+        private float followThreshold = 250.0f;
+        private int changeFollowingCourseTicks = 0;
+        private int totalFollowingCourseTicks = 10;
+        private bool inPlay;
+        private bool followLinkBehaviorOn;
+
 
         public Oktorok(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
@@ -49,19 +57,21 @@ namespace sprint0.Enemies
             Projectile = new OktorokBlaze(projectileFactory);
             element = Globals.EnemyElementType.NEUTRAL;
             Globals.GameObjectManager.addObject(Projectile);
-            direction = 2;
+            OktorokDirection = Globals.Direction.Down;
 
             /* Temporary Values */
             Height = OktoSprite.GetHeight();
             Width = OktoSprite.GetWidth();
 
             SpriteSheetFrames = new int[] { 0, 15, 1, 16, 2, 17, 3, 18 };
+            followLinkBehaviorOn = false;
+            inPlay = true;
         }
 
         /* ---Movement--- */
         public void EnemyUp()
         {
-            OktorokDirection = Direction.Up;
+            OktorokDirection = Globals.Direction.Up;
             OktoSprite = OktorokFactory.getAnimatedSprite("Up");
             yPos--;
 
@@ -69,21 +79,21 @@ namespace sprint0.Enemies
 
         public void EnemyDown()
         {
-            OktorokDirection = Direction.Down;
+            OktorokDirection = Globals.Direction.Down;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
             yPos++;
         }
 
         public void EnemyLeft()
         {
-            OktorokDirection = Direction.Left;
+            OktorokDirection = Globals.Direction.Left;
             OktoSprite = OktorokFactory.getAnimatedSprite("Left");
             xPos--;
         }
 
         public void EnemyRight()
         {
-            OktorokDirection = Direction.Right;
+            OktorokDirection = Globals.Direction.Right;
             OktoSprite = OktorokFactory.getAnimatedSprite("Right");
             xPos++;
         }
@@ -91,23 +101,7 @@ namespace sprint0.Enemies
         /* ---Get Methods--- */
         public int getDirection()
         {
-            int direction = -1;
-            switch (OktorokDirection)
-            {
-                case Direction.Left:
-                    direction = 0;
-                    break;
-                case Direction.Right:
-                    direction = 1;
-                    break;
-                case Direction.Up:
-                    direction = 2;
-                    break;
-                case Direction.Down:
-                    direction = 3;
-                    break;
-            }
-            return direction;
+            return (int)OktorokDirection;
         }
 
         public int GetHealth()
@@ -157,7 +151,7 @@ namespace sprint0.Enemies
 
         public bool isInPlay()
         {
-            return true;
+            return inPlay;
         }
 
         public bool isDrawable()
@@ -200,58 +194,94 @@ namespace sprint0.Enemies
                 element = Globals.EnemyElementType.ICE;
             }
 
-            if (changeDirectionTicks >= totalChangeDirectionTicks)
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH)
+                /*|| Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH) */)
+            // it shouldn't change once its set so idk if the above line is neccesary
             {
-                Random rnd = new Random();
-                direction = rnd.Next(4);
-                changeDirectionTicks = 0;
-            } else
-            {
-                changeDirectionTicks++;
+                followLinkBehaviorOn = true;
             }
 
-            switch (direction)
+            if (followLinkBehaviorOn)
             {
-                case 0:
-                    EnemyLeft();
-                    break;
-                case 1:
-                    EnemyRight();
-                    break;
-                case 2:
-                    EnemyUp();
-                    break;
-                case 3:
-                    EnemyDown();
-                    break;
+                posVector = new Vector2(xPos, yPos);
+                linkVector = new Vector2(Globals.Link.xPosition(), Globals.Link.yPosition());
+                if (Vector2.Distance(posVector, linkVector) <= followThreshold && changeFollowingCourseTicks >= totalFollowingCourseTicks)
+                {
+                    Vector2 direction = Vector2.Normalize(linkVector - posVector);
+                    posVector += direction * followSpeed * Vector2.Distance(posVector, linkVector);
+                    if (linkVector.X > posVector.X)
+                    {
+                        OktoSprite = OktorokFactory.getAnimatedSprite("Right");
+                    }
+                    else if (linkVector.X < posVector.X)
+                    {
+                        OktoSprite = OktorokFactory.getAnimatedSprite("Left");
+                    }
+                    changeFollowingCourseTicks = 0;
+                }
+                changeFollowingCourseTicks++;
+
+                this.xPos = (int)posVector.X;
+                this.yPos = (int)posVector.Y;
+
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    OktorokDirection = (Globals.Direction)rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+
+            }
+            else
+            {
+
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    OktorokDirection = (Globals.Direction)rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+
+                switch (OktorokDirection)
+                {
+                    case Globals.Direction.Left:
+                        EnemyLeft();
+                        break;
+                    case Globals.Direction.Right:
+                        EnemyRight();
+                        break;
+                    case Globals.Direction.Up:
+                        EnemyUp();
+                        break;
+                    case Globals.Direction.Down:
+                        EnemyDown();
+                        break;
+                }
             }
 
-            OktorokShoot();
+            if (!Projectile.ThisStateMachine().isItemInUse())
+            {
+                OktorokShoot();
+            }
+            if (this.OktoState.Equals(State.Dead))
+            {
+                inPlay = false;
+                Globals.GameObjectManager.removeObject(this);
+
+            }
         }
 
         /* ---Other Methods--- */
         public void TakeDamage()
         {
-            /* Placeholder Knockback animation */
-            for (int i = 0; i < 10; i++)
-            {
-                switch (getDirection())
-                {
-                    case 0:
-                        yPos--;
-                        break;
-                    case 1:
-                        xPos++;
-                        break;
-                    case 2:
-                        yPos++;
-                        break;
-                    case 3:
-                        xPos--;
-                        break;
-                }
-            }
-
             Health = Health - 2;
             if (Health <= 0)
             {
@@ -298,26 +328,7 @@ namespace sprint0.Enemies
             // theres no such thing as crit damage if you have not been leveled up yet.
             if (element.Equals(Globals.EnemyElementType.ICE))
             {
-                /* Placeholder Knockback animation */
-                for (int i = 0; i < 10; i++)
-                {
-                    switch (getDirection())
-                    {
-                        case 0:
-                            yPos--;
-                            break;
-                        case 1:
-                            xPos++;
-                            break;
-                        case 2:
-                            yPos++;
-                            break;
-                        case 3:
-                            xPos--;
-                            break;
-                    }
-                }
-
+                Console.WriteLine("Critical Hit!");
                 Health = Health - 3;
                 if (Health <= 0)
                 {
@@ -331,26 +342,7 @@ namespace sprint0.Enemies
             // likewise theres no such thing as min damage if you have not been leveled up yet.
             if (element.Equals(Globals.EnemyElementType.ICE))
             {
-                /* Placeholder Knockback animation */
-                for (int i = 0; i < 10; i++)
-                {
-                    switch (getDirection())
-                    {
-                        case 0:
-                            yPos--;
-                            break;
-                        case 1:
-                            xPos++;
-                            break;
-                        case 2:
-                            yPos++;
-                            break;
-                        case 3:
-                            xPos--;
-                            break;
-                    }
-                }
-
+                Console.WriteLine("Minimal Hit");
                 Health = Health - 1;
                 if (Health <= 0)
                 {

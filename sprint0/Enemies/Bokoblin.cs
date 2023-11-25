@@ -27,8 +27,7 @@ namespace sprint0.Enemies
         private int Height;
         private int Width;
         private int RoomId;
-        private enum Direction { Up, Down, Left, Right };
-        private Direction BokoblinDirection;
+        private Globals.Direction BokoblinDirection;
         private int Health;
         private enum State { Dead, Default };
         private State BokoState = State.Default;
@@ -37,7 +36,6 @@ namespace sprint0.Enemies
         private BokoblinBoomerang Boomerang;
         private int changeDirectionTicks = 0;
         private int totalChangeDirectionTicks = 60;
-        private int direction;
         private Vector2 posVector;
         private Vector2 linkVector;
         private float followSpeed = .05f;
@@ -76,7 +74,7 @@ namespace sprint0.Enemies
         /* ---Movement--- */
         public void EnemyUp()
         {
-            BokoblinDirection = Direction.Up;
+            BokoblinDirection = Globals.Direction.Up;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Up");
             yPos--;
 
@@ -84,7 +82,7 @@ namespace sprint0.Enemies
 
         public void EnemyDown()
         {
-            BokoblinDirection = Direction.Down;
+            BokoblinDirection = Globals.Direction.Down;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
             yPos++;
 
@@ -92,7 +90,7 @@ namespace sprint0.Enemies
 
         public void EnemyLeft()
         {
-            BokoblinDirection = Direction.Left;
+            BokoblinDirection = Globals.Direction.Left;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
             xPos--;
 
@@ -100,7 +98,7 @@ namespace sprint0.Enemies
 
         public void EnemyRight()
         {
-            BokoblinDirection = Direction.Right;
+            BokoblinDirection = Globals.Direction.Right;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
             xPos++;
 
@@ -109,23 +107,7 @@ namespace sprint0.Enemies
         /* ---Get Methods--- */
         public int getDirection()
         {
-            int direction = -1;
-            switch (BokoblinDirection)
-            {
-                case Direction.Left:
-                    direction = 0;
-                    break;
-                case Direction.Right:
-                    direction = 1;
-                    break;
-                case Direction.Up:
-                    direction = 2;
-                    break;
-                case Direction.Down:
-                    direction = 3;
-                    break;
-            }
-            return direction;
+            return (int)BokoblinDirection;
         }
 
         public int GetHealth()
@@ -266,7 +248,7 @@ namespace sprint0.Enemies
                 if (changeDirectionTicks >= totalChangeDirectionTicks)
                 {
                     Random rnd = new Random();
-                    BokoblinDirection = (Direction)rnd.Next(4);
+                    BokoblinDirection = (Globals.Direction)rnd.Next(4);
                     changeDirectionTicks = 0;
                 }
                 else
@@ -280,25 +262,25 @@ namespace sprint0.Enemies
                 if (changeDirectionTicks >= totalChangeDirectionTicks)
                 {
                     Random rnd = new Random();
-                    direction = rnd.Next(4);
+                    BokoblinDirection = (Globals.Direction)rnd.Next(4);
                     changeDirectionTicks = 0;
                 }
                 else
                 {
                     changeDirectionTicks++;
                 }
-                switch (direction)
+                switch (BokoblinDirection)
                 {
-                    case 0:
+                    case Globals.Direction.Left:
                         EnemyLeft();
                         break;
-                    case 1:
+                    case Globals.Direction.Right:
                         EnemyRight();
                         break;
-                    case 2:
+                    case Globals.Direction.Up:
                         EnemyUp();
                         break;
-                    case 3:
+                    case Globals.Direction.Down:
                         EnemyDown();
                         break;
                 }
@@ -390,26 +372,6 @@ namespace sprint0.Enemies
             if (element.Equals(Globals.EnemyElementType.FIRE))
             {
                 Console.WriteLine("Critical Hit!");
-                /* Placeholder Knockback animation */
-                for (int i = 0; i < 10; i++)
-                {
-                    switch (getDirection())
-                    {
-                        case 0:
-                            yPos--;
-                            break;
-                        case 1:
-                            xPos++;
-                            break;
-                        case 2:
-                            yPos++;
-                            break;
-                        case 3:
-                            xPos--;
-                            break;
-                    }
-                }
-
                 Health = Health - 3;
                 if (Health <= 0)
                 {
@@ -423,26 +385,7 @@ namespace sprint0.Enemies
             // likewise theres no such thing as min damage if you have not been leveled up yet.
             if (element.Equals(Globals.EnemyElementType.FIRE))
             {
-                /* Placeholder Knockback animation */
-                for (int i = 0; i < 10; i++)
-                {
-                    switch (getDirection())
-                    {
-                        case 0:
-                            yPos--;
-                            break;
-                        case 1:
-                            xPos++;
-                            break;
-                        case 2:
-                            yPos++;
-                            break;
-                        case 3:
-                            xPos--;
-                            break;
-                    }
-                }
-
+                Console.WriteLine("Minimal Hit");
                 Health = Health - 1;
                 if (Health <= 0)
                 {

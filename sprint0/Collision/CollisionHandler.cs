@@ -319,6 +319,9 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundRupee", null, GroundItemPickUpDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundItemPickUpDelegate });
+
+            // ENEMY BUMPING
+            //collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Enemies.Bokoblin", MoveOktorokDelegate, MoveBokoblinDelegate });
         }
 
 
@@ -624,16 +627,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-1);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(1);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-1);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(1);
                     break;
             }
         }
@@ -644,16 +647,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-60);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(60);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-60);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(60);
                     break;
             }
             enemy.TakeDamage();
@@ -666,16 +669,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-60);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(60);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-60);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(60);
                     break;
             }
             
@@ -700,16 +703,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-1);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(1);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-1);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(1);
                     break;
             }
         }
@@ -720,16 +723,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-60);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(60);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-60);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(60);
                     break;
             }
             enemy.TakeDamage();
@@ -745,16 +748,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-1);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(1);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-1);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(1);
                     break;
             }
         }
@@ -765,16 +768,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-60);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(60);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-60);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(60);
                     break;
             }
             enemy.TakeDamage();
@@ -787,16 +790,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-60);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(60);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-60);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(60);
                     break;
             }
             switch (Globals.LinkItemSystem.CurrentTunic)
@@ -820,16 +823,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-1);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(1);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-1);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(1);
                     break;
             }
         }
@@ -840,16 +843,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-20);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(20);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-20);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(20);
                     break;
             }
             enemy.TakeDamage();
