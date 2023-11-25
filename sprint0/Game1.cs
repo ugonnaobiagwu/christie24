@@ -94,7 +94,7 @@ namespace sprint0
             //TEST FOR HUD
 
             hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
-
+            /*
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
             SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
@@ -111,7 +111,7 @@ namespace sprint0
             blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
 
             block = new DungeonPyramidBlock(0, 0, 1, blockFactory);
-
+            */
             // Linky
             //Link = new Link()
             //Link's Item System
@@ -183,8 +183,8 @@ namespace sprint0
         protected override void LoadContent()
         {
             XmlDocument xmlFile = new XmlDocument();
-            xmlFile.Load("Content/RoomTestRoom.xml");
-            XmlParser.ParseFile(xmlFile, Content, this);
+            xmlFile.Load("Content/FirstDungeon.xml");
+            XmlParser.ParseFile(xmlFile, Content);
 
             // GROUND ITEM SYSTEM STUFF
             // SMELLY IMPLEMENTATION: These should really go in one big texture to cut down on factories.
