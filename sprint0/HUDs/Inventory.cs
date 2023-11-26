@@ -1,6 +1,10 @@
-﻿using sprint0.LinkObj;
+﻿using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0.LinkObj;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +12,20 @@ using System.Threading.Tasks;
 namespace sprint0.HUDs
 {
     public static class Inventory
+
+
     {
 
+        public enum LinkLevel
+        {
+            LOW, MEDIUM, HIGH
+        }
+
+        /* ELEMENTAL ENEMIES AND SCALING TESTING. REMOVE THIS LINE AND INIT
+         * THIS VALUE PROPERLY WHEN YOU GET TO IT.
+         */
+
+       
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
         //ENUM
         public enum ItemTypes
@@ -29,12 +45,23 @@ namespace sprint0.HUDs
             SLOTB
         }
 
+        public enum GroundItemsInSlot
+        {
+            BOW,
+            BETTER_BOW,
+            BOOMERANG,
+            BETTER_BOOMERANG,
+            BLAZE,
+            BOMB,
+            SWORD,
+            EMPTY
+        }
         public static bool hasPage { get; set; }
         public static bool hasCompass { get; set; }
         public static bool hasTriforce { get; set; }
 
-        //ILink link;
-        //ISprite currentSprite;
+        static private ContentManager contentManager;
+        static ItemSystem itemSystem;
         static IGameObject igameObject;
         static int fullLife = 10; //5 hearts
         static int defaultLife = 6; //3 hearts
@@ -42,13 +69,19 @@ namespace sprint0.HUDs
         static int initialState = 0;
         
         
-        
+       
 
-        static HUD hud;
+        public static LinkLevel currentLinkLevel = LinkLevel.HIGH;
+        public static Globals.ItemsInSlots slotA = Globals.ItemsInSlots.EMPTY;
+        public static Globals.ItemsInSlots slotB = Globals.ItemsInSlots.EMPTY;
+           
         public static  Dictionary<ItemTypes, int> items;
-        public static Dictionary<slotTypes, string> slotItems;
+        //public static Dictionary<slotTypes, string> slotItems;
+        public static Dictionary<GroundItemsInSlot, Texture2D> itemSheets;
+        public static Dictionary<Globals.ItemSlots, Globals.ItemsInSlots> currentSlot;
 
-         static Inventory()
+
+        static Inventory()
         {
             items = new Dictionary<ItemTypes, int>
             {
@@ -61,15 +94,106 @@ namespace sprint0.HUDs
                 {ItemTypes.MINIMAP,initialState}
             };
 
-            slotItems = new Dictionary<slotTypes, string> {
+            currentSlot = new Dictionary<Globals.ItemSlots, Globals.ItemsInSlots> {
 
-                { slotTypes.SLOTA,"EMPTY"},
-               { slotTypes.SLOTB,"EMPTY"}
+
+               { Globals.ItemSlots.SLOT_A,Globals.ItemsInSlots.EMPTY},
+               { Globals.ItemSlots.SLOT_B,Globals.ItemsInSlots.EMPTY}
             };
         }
 
-        //use delegates
-        public static void AddItem() { }
+        public static void SetContentManager(ContentManager content)
+        {
+            contentManager = content;
+            if (contentManager != null)
+            {
+                itemSheets = new Dictionary<GroundItemsInSlot, Texture2D> {
+                { GroundItemsInSlot.BOW, contentManager.Load<Texture2D>("groundItemSprites/groundBow") } ,
+                { GroundItemsInSlot.BETTER_BOW, contentManager.Load<Texture2D>("equippedItemSprites/equippedBetterBow") } ,
+                { GroundItemsInSlot.BOOMERANG, contentManager.Load<Texture2D>("groundItemSprites/groundBoomerang") } ,
+                { GroundItemsInSlot.BETTER_BOOMERANG, contentManager.Load<Texture2D>("hud/hudBetterBoomerang") } ,
+                { GroundItemsInSlot.BLAZE, contentManager.Load<Texture2D>("hud/hudBlaze") },
+                { GroundItemsInSlot.BOMB, contentManager.Load<Texture2D>("groundItemSprites/groundBomb") },
+                { GroundItemsInSlot.SWORD, contentManager.Load<Texture2D>("hud/hudSword") }
+
+
+
+            };
+            }
+
+        }
+        public static Texture2D LocateCurrentAItemSheet()
+        {
+            //Globals.ItemSlots currentKey;
+
+            
+            Texture2D tempSheetItem = null;
+            // string temp = currentSlot[Globals.ItemSlots.SLOT_A].ToString()
+
+
+
+            foreach (var item in itemSheets.Keys)
+            {
+                string itemString = item.ToString();
+               
+
+
+                if (!string.IsNullOrEmpty(itemString) && itemString.Equals(slotA.ToString()))
+                {
+
+                    tempSheetItem = itemSheets[item];
+                    
+                    break;
+                }
+
+
+            }
+
+            if (tempSheetItem == null)
+            {
+                Console.WriteLine("ERROR tempSheetItem Null \n");
+            }
+           
+            return tempSheetItem;
+
+        }
+
+        public static Texture2D LocateCurrentBItemSheet()
+        {
+            //Globals.ItemsInSlots currentKey = default;
+
+
+            Texture2D tempSheetItem = null;
+            string temp = currentSlot[Globals.ItemSlots.SLOT_B].ToString();
+
+
+
+
+            foreach (var item in itemSheets.Keys)
+            {
+                string itemString = item.ToString();
+
+
+
+                if (!string.IsNullOrEmpty(itemString) && itemString.Equals(slotB.ToString()))
+                {
+
+                    tempSheetItem = itemSheets[item];
+
+                    break;
+                }
+
+
+            }
+
+            if (tempSheetItem == null)
+            {
+                Console.WriteLine("ERROR tempSheetItem Null \n");
+            }
+
+            return tempSheetItem;
+
+        }
 
         //METHOD STARTS FROM HERE
         //DELETE ALL int PARAMETERS (except for ROOMID in roomLevel method)LATER in INVENTORY!! IT WILL CALLED WHEN WE NEED IT!
@@ -146,46 +270,75 @@ namespace sprint0.HUDs
         //checks for slot A before B
         //if A is empty, put the item in A, else B
         // if A and B is full, then add it to B(?)
-        public static void Slots(string currentItem)
+        public static void Slots(Globals.ItemSlots currentSlotPlacement, Globals.ItemsInSlots currentSlotA, Globals.ItemsInSlots currentSlotB)
         {
+            string stringCurrentSlot = currentSlotPlacement.ToString();
+            slotA = currentSlotA;
+            slotB = currentSlotB;
 
+
+            if (currentSlotPlacement.ToString() == "SLOT_A")
+            {
+
+                LocateCurrentAItemSheet();
+
+
+            }
+            else if (currentSlotPlacement.ToString() == "SLOT_B")
+            {
+
+                LocateCurrentBItemSheet();
+
+            }
+
+            // string vals = currentSlot[Globals.ItemSlots.SLOT_A].ToString();
             //before adding in slotB check for slot As
-            if (slotItems[slotTypes.SLOTA] == "EMPTY")
-            { hud.SlotADisplay(currentItem); }
 
-            else { hud.SlotBDisplay(currentItem); }
 
 
         }
 
         //METHOD MIGHT NOT BE USED (method slots used instead)
-        public static void SlotAItem(string currentItemA)
+        public static void SlotAItem(Globals.ItemsInSlots currentSlotA)
         {
+            slotA = currentSlotA;
 
+            currentSlot[Globals.ItemSlots.SLOT_A] = currentSlotA;
             //displayslot A item if picked up
+            LocateCurrentAItemSheet();
+            
+
+        }
+
+        public static void SlotBItem(Globals.ItemsInSlots currentSlotB)
+        {
+            slotB = currentSlotB;
+
+            currentSlot[Globals.ItemSlots.SLOT_B] = currentSlotB;
+            //display slot B item if picked up
+            LocateCurrentBItemSheet();
 
 
         }
 
-        public static void SlotBItem(string currentItemB)
+        public static bool PageResult()
         {
 
-            //display slot B item if picked up
-
-            //before adding in slotB check for slot As
-            if (slotItems[slotTypes.SLOTA] == "EMPTY")
-            {
-
-                SlotAItem(currentItemB);
-            }
-            else
-            {
-
-                //display in slot B HUD
-
-            }
-
+            return hasPage;
         }
+        public static bool CompassResult()
+        {
+
+            return hasCompass;
+        }
+        public static bool TriforceResult()
+        {
+
+            return hasTriforce;
+        }
+
+
+
 
     }
 }

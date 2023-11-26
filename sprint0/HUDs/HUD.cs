@@ -17,7 +17,7 @@ namespace sprint0.HUDs
     {   //change HUD to static as well??
 
         static Texture2D hudBackground;
-        static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB;
+        static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB, triforce;
         SpriteBatch spriteBatch;
         SpriteFont font;     
         //Inventory inventory;
@@ -122,58 +122,120 @@ namespace sprint0.HUDs
         }
 
         //slot A item
-        public void SlotADisplay(string currentItemA)
+        public void SlotADisplay()
         {
+            itemA = Inventory.LocateCurrentAItemSheet();
             //get currentA item if not null
+            if (Inventory.slotA != Globals.ItemsInSlots.EMPTY && itemA != null) {
+                float scaledWidth = 2f;
+                float scaledHeight = 2f;
+                int x = 500;
+                int y = 60;
+
+                int width = (int)(itemA.Width * scaledWidth);
+                int height = (int)(itemA.Height * scaledHeight);
+
+
+
+
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                spriteBatch.Draw(itemA, destinationRectangle, Color.White);
+
+            }
 
         }
         //slot B item
-        public void SlotBDisplay(string currentItemB)
+        public void SlotBDisplay()
         {
-            //get current B item if not null
-        }
 
+            itemB = Inventory.LocateCurrentBItemSheet();
+            //get current B item if not null
+            if (Inventory.slotB != Globals.ItemsInSlots.EMPTY && itemB !=null) {
+
+                float scaledWidth = 2f;
+                float scaledHeight = 2f;
+                int x = 415;
+                int y = 65;
+
+                int width = (int)(itemB.Width * scaledWidth);
+                int height = (int)(itemB.Height * scaledHeight);
+
+
+
+
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                spriteBatch.Draw(itemB, destinationRectangle, Color.White);
+            }
+        }
         //Will change the logic. I wanted to just display
         protected void MiniMapDisplay()
         {
 
+            if (Inventory.PageResult())
+            {
+                float scaledWidth = 1f;
+                float scaledHeight = 1f;
+                int x = 30;
+                int y = 40;
 
-            float scaledWidth = 1f;
-            float scaledHeight = 1f;
-            int x = 30;
-            int y = 40;
-
-            int width = (int)(miniMap.Width * scaledWidth);
-            int height = (int)(miniMap.Height * scaledHeight);
+                int width = (int)(miniMap.Width * scaledWidth);
+                int height = (int)(miniMap.Height * scaledHeight);
 
 
 
 
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
-            spriteBatch.Draw(miniMap, destinationRectangle, Color.White);
-
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                spriteBatch.Draw(miniMap, destinationRectangle, Color.White);
+            }
 
         }
-        
-           //Will change the logic. Just wanted to display
-        protected void linkLocatorDisplay()
+
+        //Will change the logic. Just wanted to display
+        protected void LinkLocatorDisplay()
         {
-            float scaledWidth = 0.55f;
-            float scaledHeight = 0.40f;
-            int x = 40;
-            int y = 90;
 
-            int width = (int)(linkLocator.Width * scaledWidth);
-            int height = (int)(linkLocator.Height * scaledHeight);
+            if (Inventory.CompassResult())
+            {
+                float scaledWidth = 0.55f;
+                float scaledHeight = 0.40f;
+                int x = 40;
+                int y = 90;
+
+                int width = (int)(linkLocator.Width * scaledWidth);
+                int height = (int)(linkLocator.Height * scaledHeight);
 
 
 
 
-            Rectangle destinationRectangle = new Rectangle(x, y, width, height);
-            spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
-
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
+            }
 
         }
+
+        //still need sprite for this
+        protected void TriforceDisplay()
+        {
+
+            if (Inventory.TriforceResult())
+            {
+                float scaledWidth = 0.55f;
+                float scaledHeight = 0.40f;
+                int x = 40;
+                int y = 90;
+
+                int width = (int)(triforce.Width * scaledWidth);
+                int height = (int)(triforce.Height * scaledHeight);
+
+
+
+
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                spriteBatch.Draw(triforce, destinationRectangle, Color.White);
+            }
+
+        }
+
 
 
         protected void LevelDisplay()
@@ -189,16 +251,16 @@ namespace sprint0.HUDs
         //Display all (called in Game1)
         public void Draw()
         {
-            this.BackgroundDisplay();
+            BackgroundDisplay();
             MiniMapDisplay();
-            linkLocatorDisplay();
+            LinkLocatorDisplay();
             HeartDisplay();
-            this.RupeeDisplay();
-            this.KeyDisplay();
-            this.BombDisplay();
-            this.SlotADisplay(""); //change
-            this.SlotBDisplay(""); //change
-            this.LevelDisplay();
+            RupeeDisplay();
+            KeyDisplay();
+            BombDisplay();
+            SlotADisplay(); //change
+            SlotBDisplay(); //change
+            LevelDisplay();
 
 
         }

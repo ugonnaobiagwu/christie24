@@ -52,6 +52,7 @@ namespace sprint0
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
+        ItemSystem itemSystem;
 
         public Sprint0()
         {
@@ -72,10 +73,11 @@ namespace sprint0
             miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
             linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
-            //inventory = new Inventory();
+
+            
 
             //TEST FOR HUD DELETE LATER!!
-
+            
             for (int i = 0; i < 3; i++)
             {
                 Inventory.GainHeart();
@@ -92,6 +94,17 @@ namespace sprint0
             //TEST FOR HUD
 
             hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
+           Inventory.SetContentManager(Content);
+            //ItemSystem.Instance.EquipBomb(Globals.ItemSlots.SLOT_A);
+            //ItemSystem.Instance.EquipBow(Globals.ItemSlots.SLOT_B);
+            //ItemSystem.Instance.EquipBetterBow(Globals.ItemSlots.SLOT_A);
+            //ItemSystem.Instance.EquipBow(Globals.ItemSlots.SLOT_A);
+
+            Inventory.SlotAItem(Globals.ItemsInSlots.BOMB);
+            Inventory.SlotBItem(Globals.ItemsInSlots.BETTER_BOW);
+            Inventory.SlotBItem(Globals.ItemsInSlots.BLAZE);
+            Inventory.SlotAItem(Globals.ItemsInSlots.SWORD);
+            //Inventory.SlotAItem(Globals.ItemsInSlots.BETTER_BOOMERANG);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
