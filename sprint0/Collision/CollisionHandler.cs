@@ -9,6 +9,7 @@ using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
 using sprint0.HUDs;
 using sprint0.LinkSword;
+using sprint0.BoundariesDoorsAndRooms;
 
 namespace sprint0.Collision
 {
@@ -129,6 +130,8 @@ namespace sprint0.Collision
             collisionTable.Columns.Add("HandleB", typeof(GameObjectDelegate));
             GameObjectDelegate MoveLinkDelegate = new GameObjectDelegate(MoveLink);
             GameObjectDelegate MoveLinkAndTakeDamageDelegate = new GameObjectDelegate(MoveLinkAndTakeDamage);
+            GameObjectDelegate LinkKnockOnDoorDelegate = new GameObjectDelegate(LinkKnockOnDoor);
+            GameObjectDelegate BombExplodeDoorDelegate = new GameObjectDelegate(BombExplodeDoor);
             GameObjectDelegate MoveDungeonPyramidBlockDelegate = new GameObjectDelegate(MoveDungeonPyramidBlock);
             GameObjectDelegate GroundBigHeartPickUpDelegate = new GameObjectDelegate(GroundBigHeartPickUp);
             GameObjectDelegate GroundBlazeSteppedOnDelegate = new GameObjectDelegate(GroundBlazeSteppedOn);
@@ -153,7 +156,6 @@ namespace sprint0.Collision
             GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
             GameObjectDelegate EnemyProjectileImpactDelegate = new GameObjectDelegate(EnemyProjectileImpact);
-
             GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
             GameObjectDelegate MoveOktorokAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamageFromSword);
             GameObjectDelegate MoveBokoblinAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamageFromSword);
@@ -164,21 +166,26 @@ namespace sprint0.Collision
 
             // BOUNDARIES
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveDragonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.BoundariesDoorsAndRooms.Boundary", BowImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBowImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BoomerangImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBoomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBoomerangImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.BoundariesDoorsAndRooms.Boundary", BlazeImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", null, null });
+
+            // DOORS
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", null, LinkKnockOnDoorDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", BombImpactDelegate, BombExplodeDoorDelegate });
+
+
 
             // BLOCKS
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
@@ -343,6 +350,7 @@ namespace sprint0.Collision
 		 * 
 		 */
         private delegate void GameObjectDelegate(CollisionDetector.CollisionType collisionType, IGameObject obj);
+
         //BLOCKS
         private void MoveDungeonPyramidBlock(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
@@ -361,6 +369,50 @@ namespace sprint0.Collision
                 case CollisionDetector.CollisionType.RIGHT:
                     block.XValue--;
                     break;
+            }
+        }
+
+        // DOOR
+        private void LinkKnockOnDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Door door = (Door)obj;
+            switch (door.GetState())
+            {
+                case IDoor.DoorState.Locked: // Link could potentially open the door...
+                    if (Inventory.items[Inventory.ItemTypes.KEY] >= 1) // can be opened
+                    {
+                        Inventory.items[Inventory.ItemTypes.KEY]--;
+                        door.SetState(IDoor.DoorState.Open);
+                        StartScrollEvent(door);
+                    } else // cannot be unlocked
+                    {
+                        MoveLink(collisionType, Globals.Link);
+                    }
+                    break;
+                case IDoor.DoorState.Open: // Walk through the door and start scrolling!
+                    StartScrollEvent(door);
+                    break;
+                case IDoor.DoorState.Exploded: // Walk through the (exploded) door and start scrolling!
+                    StartScrollEvent(door);
+                    break;
+                default: // bombable, closed, or wall. If Link collides with it, it should just move 'em back.
+                    MoveLink(collisionType, Globals.Link);
+                    break;
+
+            }
+        }
+
+        private void StartScrollEvent(Door door)
+        {
+
+        }
+
+        private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Door door = (Door)obj;
+            if (door.GetState().Equals(IDoor.DoorState.Bombable))
+            {
+                door.SetState(IDoor.DoorState.Exploded);
             }
         }
 

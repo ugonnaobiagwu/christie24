@@ -143,10 +143,10 @@ namespace sprint0.Items
                 this.itemXOrigin = linkXPos;
                 this.itemYPos = linkYPos;
                 this.itemYOrigin = linkYPos;
-                this.itemMaxX = linkXPos + 200;
-                this.itemMaxY = linkYPos + 200;
-                this.itemMinX = linkXPos - 200;
-                this.itemMinY = linkYPos - 200;
+                this.itemMaxX = linkXPos + 100;
+                this.itemMaxY = linkYPos + 100;
+                this.itemMinX = linkXPos - 100;
+                this.itemMinY = linkYPos - 100;
                 currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
