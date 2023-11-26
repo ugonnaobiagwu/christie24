@@ -24,7 +24,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos, 0);
             }
         }
 
