@@ -235,7 +235,7 @@ namespace sprint0
 
             foreach (IGameObject obj in drawables)
             {
-                if (ObjectMap[currentRoomID].Contains(obj))
+                if (obj.GetRoomId() == currentRoomID)
                 {
                     roomDrawables.Add(obj);
                 }
