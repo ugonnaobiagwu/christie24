@@ -213,7 +213,7 @@ namespace sprint0.LevelLoading
                     Globals.LinkItemSystem.LoadBetterBoomerang(factoryList[0]);
                     break;
                 case "Sword":
-                    //  Globals.LinkItemSystem.LoadSword(factoryList[0], factoryList[1], factoryList[2]);
+                    Globals.LinkItemSystem.LoadSword(factoryList[0], factoryList[1], factoryList[2]);
                     break;
                 default:
                     break;
