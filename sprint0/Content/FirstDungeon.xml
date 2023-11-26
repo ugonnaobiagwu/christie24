@@ -391,7 +391,7 @@
 				<Animation>
 					<AnimationName>Blaze</AnimationName>
 					<FrameCount>2</FrameCount>
-					<SecondsPerFrame>0.1</SecondsPerFrame>>
+					<SecondsPerFrame>.75</SecondsPerFrame>>
 					<WidthScale>1.5</WidthScale>
 					<HeightScale>1.5</HeightScale>
 					<Rows>
