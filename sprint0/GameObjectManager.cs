@@ -249,7 +249,7 @@ namespace sprint0
 
             foreach (IGameObject obj in updateables)
             {
-                if (ObjectMap[currentRoomID].Contains(obj))
+                if (obj.GetRoomId() == currentRoomID)
                 {
                     roomUpdateables.Add(obj);
                 }
