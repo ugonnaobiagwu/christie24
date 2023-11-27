@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../../../../Documents/college/Project_3902/zelda/hudXPSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../../Documents/college/Project_3902/zelda/hudXPSheet.png;hud/hudXPSheet.png
+
 #begin background_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -483,6 +495,18 @@
 /processorParam:TextureFormat=Color
 /build:hud/hudBlaze.png
 
+#begin hud/hudLinkLevelSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/hudLinkLevelSheet.png
+
 #begin hud/hudSword.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -506,6 +530,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:hud/hudTriforce.png
+
+#begin hud/hudXPMonitor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/hudXPMonitor.png
+
+#begin hud/hudXPSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/hudXPSheet.png
+
+#begin hud/miniMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/miniMap.png
 
 #begin hudFont.spritefont
 /importer:FontDescriptionImporter
@@ -597,18 +657,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
-
-#begin miniMap.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:miniMap.png
 
 #begin RoomTestRoom.xml
 /copy:RoomTestRoom.xml

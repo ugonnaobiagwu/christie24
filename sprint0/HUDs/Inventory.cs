@@ -16,73 +16,55 @@ namespace sprint0.HUDs
 
     {
 
-        public enum LinkLevel
-        {
-            LOW, MEDIUM, HIGH
-        }
 
-        /* ELEMENTAL ENEMIES AND SCALING TESTING. REMOVE THIS LINE AND INIT
-         * THIS VALUE PROPERLY WHEN YOU GET TO IT.
-         */
-
-       
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
-        //ENUM
+
+        /* ENUM DECLARATION*/
+        public enum LinkLevel
+        { LOW, MEDIUM, HIGH }
+
         public enum ItemTypes
-        {
-            HEART,
-            RUPEE,
-            KEY,
-            BOMB,
-            LEVEL,
-            MINIMAP
+        { HEART,RUPEE,KEY,BOMB,LEVEL,MINIMAP }
 
-        }
-
-        public enum slotTypes
-        {
-            SLOTA,
-            SLOTB
-        }
-
+        //Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator,Texture2D defaultLink
+        public enum HUDSpriteSheet { BACKGROUNDSHEET, HEARTSHEET, MINIMAPSHEET, LINKLOCATORSHEET, LINKLEVELSHEET, XPSHEET,XPMONITORSHEET }
+        public enum XPEnum
+        { XP }
         public enum GroundItemsInSlot
-        {
-            BOW,
-            BETTER_BOW,
-            BOOMERANG,
-            BETTER_BOOMERANG,
-            BLAZE,
-            BOMB,
-            SWORD,
-            EMPTY
-        }
+        { EMPTY,BOW,BETTER_BOW,BOOMERANG, BETTER_BOOMERANG, BLAZE, BOMB, SWORD }
+        /* ENUM DECLARATION ENDS HERE*/
+
         public static bool hasPage { get; set; }
         public static bool hasCompass { get; set; }
         public static bool hasTriforce { get; set; }
 
         static private ContentManager contentManager;
-        static ItemSystem itemSystem;
-        static IGameObject igameObject;
-        static int fullLife = 10; //5 hearts
-        static int defaultLife = 6; //3 hearts
-        static int noLife = 0;
-        static int initialState = 0;
+        static private IGameObject igameObject;
+       // static private float xpPoint = 0;
+        static private int noLife, initialState; // both are initialized as 0 in default
+        static private int fullLife = 10; //5 hearts
+        static private int defaultLife = 6; //3 hearts
+       
         
         
        
 
-        public static LinkLevel currentLinkLevel = LinkLevel.HIGH;
+        public static LinkLevel currentLinkLevel = LinkLevel.LOW;
         public static Globals.ItemsInSlots slotA = Globals.ItemsInSlots.EMPTY;
         public static Globals.ItemsInSlots slotB = Globals.ItemsInSlots.EMPTY;
            
-        public static  Dictionary<ItemTypes, int> items;
-        //public static Dictionary<slotTypes, string> slotItems;
+        public static Dictionary<ItemTypes, int> items;
+        public static Dictionary<HUDSpriteSheet, Texture2D> hudSpritSheet;
+        public static Dictionary<XPEnum, float> currentXP;
         public static Dictionary<GroundItemsInSlot, Texture2D> itemSheets;
         public static Dictionary<Globals.ItemSlots, Globals.ItemsInSlots> currentSlot;
 
 
         static Inventory()
         {
+
+            currentXP = new Dictionary<XPEnum, float> { { XPEnum.XP,0} };
+
             items = new Dictionary<ItemTypes, int>
             {
 
@@ -108,17 +90,26 @@ namespace sprint0.HUDs
             if (contentManager != null)
             {
                 itemSheets = new Dictionary<GroundItemsInSlot, Texture2D> {
-                { GroundItemsInSlot.BOW, contentManager.Load<Texture2D>("groundItemSprites/groundBow") } ,
-                { GroundItemsInSlot.BETTER_BOW, contentManager.Load<Texture2D>("equippedItemSprites/equippedBetterBow") } ,
-                { GroundItemsInSlot.BOOMERANG, contentManager.Load<Texture2D>("groundItemSprites/groundBoomerang") } ,
-                { GroundItemsInSlot.BETTER_BOOMERANG, contentManager.Load<Texture2D>("hud/hudBetterBoomerang") } ,
-                { GroundItemsInSlot.BLAZE, contentManager.Load<Texture2D>("hud/hudBlaze") },
-                { GroundItemsInSlot.BOMB, contentManager.Load<Texture2D>("groundItemSprites/groundBomb") },
-                { GroundItemsInSlot.SWORD, contentManager.Load<Texture2D>("hud/hudSword") }
+                    { GroundItemsInSlot.BOW, contentManager.Load<Texture2D>("groundItemSprites/groundBow") } ,
+                    { GroundItemsInSlot.BETTER_BOW, contentManager.Load<Texture2D>("equippedItemSprites/equippedBetterBow") } ,
+                    { GroundItemsInSlot.BOOMERANG, contentManager.Load<Texture2D>("groundItemSprites/groundBoomerang") } ,
+                    { GroundItemsInSlot.BETTER_BOOMERANG, contentManager.Load<Texture2D>("hud/hudBetterBoomerang") } ,
+                    { GroundItemsInSlot.BLAZE, contentManager.Load<Texture2D>("hud/hudBlaze") },
+                    { GroundItemsInSlot.BOMB, contentManager.Load<Texture2D>("groundItemSprites/groundBomb") },
+                    { GroundItemsInSlot.SWORD, contentManager.Load<Texture2D>("hud/hudSword") }   
+                };
 
+                hudSpritSheet = new Dictionary<HUDSpriteSheet, Texture2D> {
 
+                    { HUDSpriteSheet.BACKGROUNDSHEET,contentManager.Load<Texture2D>("background_sheet") },
+                    { HUDSpriteSheet.HEARTSHEET,contentManager.Load<Texture2D>("lives") },
+                    { HUDSpriteSheet.MINIMAPSHEET,contentManager.Load<Texture2D>("hud/miniMap") },
+                    { HUDSpriteSheet.LINKLOCATORSHEET,contentManager.Load<Texture2D>("linkLocator") },
+                    { HUDSpriteSheet.LINKLEVELSHEET,contentManager.Load<Texture2D>("hud/hudLinkLevelSheet") },
+                    { HUDSpriteSheet.XPSHEET,contentManager.Load<Texture2D>("hud/hudXPSheet") },
+                    { HUDSpriteSheet.XPMONITORSHEET,contentManager.Load<Texture2D>("hud/hudXPMonitor") }
 
-            };
+                };
             }
 
         }
@@ -320,7 +311,22 @@ namespace sprint0.HUDs
 
 
         }
+        public static void UpdateXPLevel(float updatedXp) {
+            float midLowPoint = 4.0f;
+            float midHighPoint = 5.9f;
+            float highLowPoint = 6.0f;
 
+            currentXP[XPEnum.XP] += updatedXp;
+
+            if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint) {
+                currentLinkLevel = LinkLevel.MEDIUM;
+            }
+            else if (currentXP[XPEnum.XP] >= highLowPoint) {
+
+                currentLinkLevel = LinkLevel.HIGH;
+            }           
+        
+        }
         public static bool PageResult()
         {
 

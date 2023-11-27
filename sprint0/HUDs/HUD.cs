@@ -17,7 +17,7 @@ namespace sprint0.HUDs
     {   //change HUD to static as well??
 
         static Texture2D hudBackground;
-        static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB, triforce;
+        static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB, triforce,link, xp,xpMonitor;
         SpriteBatch spriteBatch;
         SpriteFont font;     
         //Inventory inventory;
@@ -25,20 +25,19 @@ namespace sprint0.HUDs
         float fontSize = 1.5f;
 
         //CHANGE HUD CONSTRUCTOR SO IT DOESN"T HAVE TO PASS IN TH TEXTURE@D (Probably Level loader?)
-        public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator)
+        public HUD(SpriteBatch spriteBatch, SpriteFont font)
         {
+           
             this.spriteBatch = spriteBatch;
             this.font = font;
-            hudBackground = hudspriteSheet;
-            miniMap = minimap;
-            linkLocator = linklocator;
-            heart = Hearttexture;
+           
         }
 
 
         protected void BackgroundDisplay()
         {
             {
+                hudBackground = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.BACKGROUNDSHEET];
                 float scaledWidth = 0.95f;
                 float scaledHeight = 0.7f;
                 int x = 0;
@@ -62,18 +61,16 @@ namespace sprint0.HUDs
         protected void HeartDisplay()
         {
             //Each heart is count of 2. If it's an odd number, that means it's an half heart
-
-            int fullHeart = 10; //5 hearts
+            heart = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.HEARTSHEET];
             int heartSpacing = 40;
             int j = 0;
-            int i;
+            int i = 0;
             int heartChecker = 2;
             int heartNum = Inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
             int heartWidth = heart.Width / 3;
             int heartHeight = heart.Height;
             Rectangle fullHeartsheet = new Rectangle(0, 0, heartWidth, heartHeight); // first full Heart
             Rectangle halfHeartsheet = new Rectangle(heartWidth, 0, heartWidth, heartHeight);
-            Rectangle emptyHeartsheet = new Rectangle(2, 0, heartWidth, heartHeight);
            
 
             for (i = 1; i <= heartNum; i++) //Loops the amount of hearts from enum HEART in the inventory
@@ -170,9 +167,11 @@ namespace sprint0.HUDs
         //Will change the logic. I wanted to just display
         protected void MiniMapDisplay()
         {
+            miniMap = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.MINIMAPSHEET];
 
             if (Inventory.PageResult())
             {
+               
                 float scaledWidth = 1f;
                 float scaledHeight = 1f;
                 int x = 30;
@@ -193,7 +192,7 @@ namespace sprint0.HUDs
         //Will change the logic. Just wanted to display
         protected void LinkLocatorDisplay()
         {
-
+            linkLocator = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.LINKLOCATORSHEET];
             if (Inventory.CompassResult())
             {
                 float scaledWidth = 0.55f;
@@ -247,25 +246,70 @@ namespace sprint0.HUDs
 
         //xp calculation
         // if Link attacks, gain xp (200)
+        public void XPDisplay() {
 
-        //Display all (called in Game1)
-        public void Draw()
+            //int xpSpacing = 30;
+            link = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.LINKLEVELSHEET];
+            xp = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPSHEET];
+            xpMonitor = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPMONITORSHEET];
+            int j = 0;
+            int i = 0;
+            float xpNum = Inventory.currentXP[Inventory.XPEnum.XP];
+            int linkWidth = link.Width;
+            int linkHeight = link.Height / 3;
+            int currentRow = 0;
+            Vector2 vectorPositionLinkLevel = new Vector2(380, 125);
+            Vector2 vectorPositionxp = new Vector2(410, 125);
+            Rectangle linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight); //default is low link
+            //Rectangle xpMonitor = new Rectangle(0, 0, linkWidth, linkHeight);
+
+            //if  (Inventory.currentLinkLevel == Inventory.LinkLevel.LOW) { Rectangle lowLink = new Rectangle(0, 0, linkWidth, linkHeight); }
+            if (Inventory.currentLinkLevel == Inventory.LinkLevel.MEDIUM) { currentRow = linkHeight; }
+           else if (Inventory.currentLinkLevel == Inventory.LinkLevel.HIGH) { currentRow = linkHeight * 2; }
+
+            linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight);
+
+
+            // reference:   spriteBatch.Draw(heart, new Vector2(590 + j, 90), halfHeartsheet, Color.White);
+            spriteBatch.Draw(xp,vectorPositionxp,Color.White);
+            spriteBatch.Draw(xpMonitor, vectorPositionxp, Color.White);
+            spriteBatch.Draw(link, vectorPositionLinkLevel, linkLevel, Color.White);
+
+            for (i = 0; i <= (int)xpNum; i++) //Loops the amount of xp from enum XP in the inventory
+            {
+
+                
+
+
+
+            }
+        
+        }
+
+        public void XPMonitorDisplay()
+        { }
+
+            //Display all (called in Game1)
+            public void Draw()
         {
+
             BackgroundDisplay();
+            XPDisplay();
             MiniMapDisplay();
             LinkLocatorDisplay();
             HeartDisplay();
             RupeeDisplay();
             KeyDisplay();
             BombDisplay();
-            SlotADisplay(); //change
-            SlotBDisplay(); //change
+            SlotADisplay(); 
+            SlotBDisplay(); 
             LevelDisplay();
+           
 
 
         }
 
-        /*public void XP(){}*/
+
 
 
     }

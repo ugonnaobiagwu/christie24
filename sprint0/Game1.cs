@@ -33,7 +33,7 @@ namespace sprint0
         Texture2D textureBlock;
 
         //HUD
-        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
+     
         SpriteFont font;
         
         HUD hud;
@@ -68,10 +68,7 @@ namespace sprint0
 
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
-            lifeSpriteSheet = Content.Load<Texture2D>("lives");
-            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
-            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
-            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
+       
 
 
             
@@ -93,7 +90,7 @@ namespace sprint0
 
             //TEST FOR HUD
 
-            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
+            hud = new HUD(spriteBatch, font);
            Inventory.SetContentManager(Content);
             //ItemSystem.Instance.EquipBomb(Globals.ItemSlots.SLOT_A);
             //ItemSystem.Instance.EquipBow(Globals.ItemSlots.SLOT_B);
@@ -105,6 +102,8 @@ namespace sprint0
             Inventory.SlotBItem(Globals.ItemsInSlots.BLAZE);
             Inventory.SlotAItem(Globals.ItemsInSlots.SWORD);
             //Inventory.SlotAItem(Globals.ItemsInSlots.BETTER_BOOMERANG);
+
+            Inventory.UpdateXPLevel(4.1f);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
