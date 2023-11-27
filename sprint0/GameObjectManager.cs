@@ -17,12 +17,12 @@ namespace sprint0
     {
         // UNFINISHED!!!
         // lists for drawable objects updateable objects, dynamic objects and all objects that need to be removed
-        private List<IGameObject> drawables;
-        private List<IGameObject> updateables;
-        private List<IGameObject> dynamics;
-        private List<IGameObject> inPlay;
-        private List<IGameObject> deleteList;
-        private List<IGameObject> roomList;
+        private List<IGameObject> drawables; // list of drawable objects
+        private List<IGameObject> updateables; // list of updateable objects
+        private List<IGameObject> dynamics; // list of dynamic objects
+        private List<IGameObject> inPlay; // list of objects in Play
+        private List<IGameObject> deleteList; // list of objects to remove
+        private List<IGameObject> roomList; // list of room objects - so they can be always drawn and drawn first
 
         private List<int> roomIDs;
 
@@ -87,6 +87,7 @@ namespace sprint0
             drawables = orderDrawableList(drawables);
         }
 
+        // used to order the drawables lists
         private List<IGameObject> orderDrawableList(List<IGameObject> list)
         {
             List<IGameObject> blockList = new List<IGameObject>();
@@ -212,12 +213,21 @@ namespace sprint0
         }
 
         // returns list of room objects
-        public List<IGameObject> getObjectsInRoom()
+        public List<IGameObject> getObjectsInRoom(int roomID)
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
-            return ObjectMap.ContainsKey(currentRoomID) ? ObjectMap[currentRoomID] : new List<IGameObject>();
+            return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<IGameObject>();
         }
 
+        // returns the objects in the current room
+        public List<IGameObject> getOjectsInCurrentRoom()
+        {
+            List<IGameObject> objectsInCurrentRoom = new List<IGameObject>();
+            objectsInCurrentRoom = ObjectMap[currentRoomID];
+            return objectsInCurrentRoom;
+        }
+
+        // mreturns list of all the objects in the current room that are drawable
         public List<IGameObject> drawablesInRoom()
         {
             List<IGameObject> roomDrawables = new List<IGameObject>();
@@ -232,6 +242,7 @@ namespace sprint0
             return orderDrawableList(roomDrawables);
         }
 
+        // returns list of updateables in current room
         public List<IGameObject> updateablesInRoom()
         {
             List<IGameObject> roomUpdateables = new List<IGameObject>();
