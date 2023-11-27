@@ -99,7 +99,7 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                Globals.GameObjectManager.removeObject(this);
+                //Globals.GameObjectManager.removeObject(this);
 
             }
         }

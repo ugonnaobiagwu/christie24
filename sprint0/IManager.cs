@@ -12,6 +12,6 @@ public interface IManager<T> where T : IGameObject
     void deleteObjects();
     List<T> getList(string listName);
     List<int> getRoomIDs();
-    List<T> getObjectsInRoom();
+    List<T> getObjectsInRoom(int roomID);
     Dictionary<int, List<T>> getDictionary();
 }
