@@ -438,7 +438,7 @@ namespace sprint0
             //heart.Update();
 
 
-            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInRoom());
+            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInRoom(0));
             Globals.GameObjectManager.deleteObjects();
             base.Update(gameTime);
         }

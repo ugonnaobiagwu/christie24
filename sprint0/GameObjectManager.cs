@@ -267,33 +267,33 @@ namespace sprint0
             return roomUpdateables;
         }
 
-        public List<IGameObject> drawablesInRoom()
-        {
-            List<IGameObject> roomDrawables = new List<IGameObject>();
+        //public List<IGameObject> drawablesInRoom()
+        //{
+        //    List<IGameObject> roomDrawables = new List<IGameObject>();
 
-            foreach (IGameObject obj in drawables)
-            {
-                if (obj.GetRoomId() == currentRoomID)
-                {
-                    roomDrawables.Add(obj);
-                }
-            }
-            return orderDrawableList(roomDrawables);
-        }
+        //    foreach (IGameObject obj in drawables)
+        //    {
+        //        if (obj.GetRoomId() == currentRoomID)
+        //        {
+        //            roomDrawables.Add(obj);
+        //        }
+        //    }
+        //    return orderDrawableList(roomDrawables);
+        //}
 
-        public List<IGameObject> updateablesInRoom()
-        {
-            List<IGameObject> roomUpdateables = new List<IGameObject>();
+        //public List<IGameObject> updateablesInRoom()
+        //{
+        //    List<IGameObject> roomUpdateables = new List<IGameObject>();
 
-            foreach (IGameObject obj in updateables)
-            {
-                if (obj.GetRoomId() == currentRoomID)
-                {
-                    roomUpdateables.Add(obj);
-                }
-            }
-            return roomUpdateables;
-        }
+        //    foreach (IGameObject obj in updateables)
+        //    {
+        //        if (obj.GetRoomId() == currentRoomID)
+        //        {
+        //            roomUpdateables.Add(obj);
+        //        }
+        //    }
+        //    return roomUpdateables;
+        //}
 
         // to get the list of objects in a room just by its ID
         // might not be necessary, but it might also simplify things alot

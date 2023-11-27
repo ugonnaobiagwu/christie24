@@ -196,7 +196,7 @@ namespace sprint0
             if (this.currentItem != null)
             {
                 this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-                //Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
             }
         }
 
