@@ -4,9 +4,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
 
@@ -25,11 +27,16 @@ namespace sprint0.Enemies
         private int[] SpriteSheetFrames;
         private int RoomId;
         private DragonBlaze[] Fireballs;
+        private enum State { Dead, Default };
+        private State DragonState = State.Default;
+        private int changeDirectionTicks = 0;
+        private int totalChangeDirectionTicks = 100;
+        private int direction;
 
         public Dragon(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Can be adjusted */
-            Health = 10;
+            Health = 12;
 
             xPos = x;
             yPos = y;
@@ -37,6 +44,10 @@ namespace sprint0.Enemies
             DragonFactory = spriteFactory;
             DragonSprite = DragonFactory.getAnimatedSprite("Default");
             Fireballs = new DragonBlaze[] { new DragonBlaze(projectileFactory, 0), new DragonBlaze(projectileFactory, 1), new DragonBlaze(projectileFactory, 2) };
+            foreach(DragonBlaze fire in Fireballs)
+            {
+                Globals.GameObjectManager.addObject(fire);
+            }
             SpriteSheetFrames = new int[] { 0, 1, 2, 3 };
         }
 
@@ -44,13 +55,13 @@ namespace sprint0.Enemies
         public void EnemyUp()
         {
             Direction = 0;
-            yPos++;
+            yPos--;
         }
 
         public void EnemyDown()
         {
             Direction = 2;
-            yPos--;
+            yPos++;
         }
 
         public void EnemyLeft()
@@ -81,6 +92,29 @@ namespace sprint0.Enemies
             return Health;
         }
 
+        public String getState()
+        {
+            if(DragonState == State.Default)
+            {
+                return "Default";
+            }
+            return "Dead";
+        }
+
+        public void setState(String state)
+        {
+            switch (state)
+            {
+                case "Default":
+                    DragonState = State.Default;
+                    break;
+                case "Dead":
+                    DragonState = State.Dead;
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_DIE);
+                    break;
+            }
+        }
+
         /* ---IGameObject--- */
         public int xPosition()
         {
@@ -95,13 +129,13 @@ namespace sprint0.Enemies
         public int width()
         {
             /* Temporary Value */
-            return 1;
+            return DragonSprite.GetWidth();
         }
 
         public int height()
         {
             /* Temporary Value */
-            return 1;
+            return DragonSprite.GetHeight();
         }
 
         public bool isDynamic()
@@ -136,12 +170,24 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            DragonSprite.Draw(spriteBatch, xPos, yPos);
-            foreach (DragonBlaze fireball in Fireballs)
+            if(DragonState != State.Dead)
             {
-                if(fireball.ThisStateMachine().isItemInUse())
+                DragonSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
+                //foreach (DragonBlaze fireball in Fireballs)
+                //{
+                //    if (fireball.ThisStateMachine().isItemInUse())
+                //    {
+                //        fireball.Draw(spriteBatch);
+                //    }
+                //}
+            } else
+            {
+                foreach (DragonBlaze fireball in Fireballs)
                 {
-                    fireball.Draw(spriteBatch);
+                    if (fireball.ThisStateMachine().isItemInUse())
+                    {
+                        fireball.thisStateMachine.CeaseUse();
+                    }
                 }
             }
         }
@@ -154,22 +200,45 @@ namespace sprint0.Enemies
                 fireball.Update();
             }
 
-            Random rnd = new Random();
-            int direction = rnd.Next(4);
+            /*
+             * Link's Level can only be increased, not decreased, 
+             * so this should be fine. We won't do this at the constructor
+             * level, since his health wont increase as Link plays the game.
+             */
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.MEDIUM))
+            {
+                Health = 14;
+            }
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH))
+            {
+                Health = 16;
+            }
+
+
+            if (changeDirectionTicks >= totalChangeDirectionTicks)
+            {
+                Random rnd = new Random();
+                direction = rnd.Next(4);
+                changeDirectionTicks = 0;
+            }
+            else
+            {
+                changeDirectionTicks++;
+            }
 
             switch (direction)
             {
                 case 0:
-                    EnemyUp();
-                    break;
-                case 1:
                     EnemyLeft();
                     break;
+                case 1:
+                    EnemyRight();
+                    break;
                 case 2:
-                    EnemyDown();
+                    EnemyUp();
                     break;
                 case 3:
-                    EnemyRight();
+                    EnemyDown();
                     break;
             }
 
@@ -177,7 +246,7 @@ namespace sprint0.Enemies
         }
 
         /* ---Other Methods--- */
-        public void takeDamage()
+        public void TakeDamage()
         {
             /* Placeholder Knockback animation */
             for (int i = 0; i < 10; i++)
@@ -202,7 +271,7 @@ namespace sprint0.Enemies
             Health--;
             if (Health <= 0)
             {
-                /* Code to delete the Dragon */
+                DragonState = State.Dead;
             }
 
         }

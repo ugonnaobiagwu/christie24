@@ -13,8 +13,29 @@
 
 #---------------------------------- Content ---------------------------------#
 
-
 #begin background_sheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:background_sheet.png
+
+#begin ChristieSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ChristieSpriteSheet.png
 
 #begin Debug.spritefont
 /importer:FontDescriptionImporter
@@ -48,7 +69,6 @@
 /build:Dungeon1BlockSpriteSheet.png
 
 #begin Dungeon1Boundaries.png
-
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -58,13 +78,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-
-/build:background_sheet.png
-
 /build:Dungeon1Boundaries.png
 
 #begin Dungeon1Doors.png
-
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -75,6 +91,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Dungeon1Doors.png
+
+#begin Dungeon1FloorTextures.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dungeon1FloorTextures.png
 
 #begin equippedItemSprites/equippedBetterBoomerang.png
 /importer:TextureImporter
@@ -287,6 +315,9 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;Font.spritefont
 
+#begin FirstDungeon.xml
+/copy:FirstDungeon.xml
+
 #begin groundItemSprites/groundBigHeart.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -455,7 +486,6 @@
 /processorParam:TextureFormat=Color
 /build:groundItemSprites/groundTriforce.png
 
-
 #begin hudFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -475,7 +505,6 @@
 /processorParam:TextureFormat=Color
 /build:legendofzelda_bosses_sheet.png
 
-
 #begin Link.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -488,11 +517,7 @@
 /processorParam:TextureFormat=Color
 /build:Link.png
 
-
-#begin linkLocator.png
-
-#begin LinkSpriteSheet.png
-
+#begin linkFireSword.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -502,11 +527,43 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
+/build:linkFireSword.png
 
+#begin linkIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkIceSword.png
+
+#begin linkLocator.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:linkLocator.png
 
+#begin LinkSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /build:LinkSpriteSheet.png
-
 
 #begin linkSword.png
 /importer:TextureImporter
@@ -544,7 +601,6 @@
 /processorParam:TextureFormat=Color
 /build:luigiSpriteSheet.png
 
-
 #begin miniMap.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -559,7 +615,6 @@
 
 #begin RoomTestRoom.xml
 /copy:RoomTestRoom.xml
-
 
 #begin songs/DUNGEON.mp3
 /importer:Mp3Importer

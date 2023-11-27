@@ -1,6 +1,6 @@
-﻿using sprint0.AnimatedSpriteFactory;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using sprint0.AnimatedSpriteFactory;
 using sprint0;
 using System;
 using System.Collections.Generic;
@@ -11,20 +11,33 @@ using static sprint0.Globals;
 
 namespace sprint0.BoundariesDoorsAndRooms
 {
-    internal class Door : IGameObject
+    internal class Door : IDoor
     {
+        SpriteFactory spriteFactory;
         ISprite doorSprite;
         int roomId;
         int toRoomId;
         Vector2 position;
         Globals.Direction sideOfRoom;
-        public Door(int x, int y, int toRoomId, SpriteFactory spriteFactory, Globals.Direction sideOfRoom)
+        IDoor.DoorState state;
+        static Dictionary<IDoor.DoorState, string> stateSprites;
+        public Door(int x, int y, SpriteFactory spriteFactory, Globals.Direction sideOfRoom)
         {
             position.X = x;
             position.Y = y;
-            this.toRoomId = toRoomId;
-            doorSprite = spriteFactory.getAnimatedSprite("Door");
+            this.spriteFactory = spriteFactory;
             this.sideOfRoom = sideOfRoom;
+            stateSprites = new Dictionary<IDoor.DoorState, string>();
+            PopulateDoorStates();
+        }
+        private static void PopulateDoorStates()
+        {
+            stateSprites.Add(IDoor.DoorState.Open, "Open");
+            stateSprites.Add(IDoor.DoorState.Closed, "Closed");
+            stateSprites.Add(IDoor.DoorState.Locked, "Locked");
+            stateSprites.Add(IDoor.DoorState.Bombable, "Bombable");
+            stateSprites.Add(IDoor.DoorState.Exploded, "Exploded");
+            stateSprites.Add(IDoor.DoorState.Wall, "Wall");
         }
         public int xPosition()
         {
@@ -49,6 +62,15 @@ namespace sprint0.BoundariesDoorsAndRooms
         public void setSideOfRoom(Globals.Direction side)
         {
             sideOfRoom = side;
+        }
+        public void SetState(IDoor.DoorState newState)
+        {
+            state = newState;
+            doorSprite = spriteFactory.getAnimatedSprite(stateSprites[newState]);
+        }
+        public IDoor.DoorState GetState()
+        {
+            return state;
         }
         public bool isDrawable()
         {
@@ -76,7 +98,14 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             return roomId;
         }
-
+        public int GetToRoomId()
+        {
+            return toRoomId;
+        }
+        public void SetToRoomId(int toRoomId)
+        {
+            this.toRoomId = toRoomId;
+        }
         public void Update()
         {
             //Nothing to update but states would require it to be added
@@ -85,6 +114,9 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             doorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0);
         }
-        public String type() { return "Block"; }
+        public string type()
+        {
+            return "Door";
+        }
     }
 }

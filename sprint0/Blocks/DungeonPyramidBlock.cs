@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace sprint0.Blocks
 {
     internal class DungeonPyramidBlock : IBlock
-    {   
+    {
 
         int scaledWidth;
         int scaledHeight;
@@ -28,13 +28,12 @@ namespace sprint0.Blocks
 
 
 
-        public DungeonPyramidBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public DungeonPyramidBlock(int x, int y, SpriteFactory spriteFactory)
         {
             blockSpriteFactory = spriteFactory;
             blockSprite = spriteFactory.getAnimatedSprite("DungeonPyramidBlock");
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
 
         public DungeonPyramidBlock(Texture2D texture, int rows, int columns)
@@ -43,10 +42,10 @@ namespace sprint0.Blocks
             Rows = rows;
             Columns = columns;
 
-            
+
         }
 
-        
+
 
         /*public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
@@ -74,7 +73,10 @@ namespace sprint0.Blocks
 
         }*/
 
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
+        public void SetToRoomId(int ToRoomId) { }
+        public int GetToRoomId()
+        { return -1; }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0); }
         public void Explode() { }
         public void Update() { }
 
@@ -94,6 +96,3 @@ namespace sprint0.Blocks
     }
 
 }
-
-
-

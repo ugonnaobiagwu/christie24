@@ -25,7 +25,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos, 0);
             }
         }
 
@@ -51,6 +51,8 @@ namespace sprint0.Items.groundItems
         public void PickUp()
         {
             isPickedUp = true;
+            Globals.GameObjectManager.removeObject(this);
+
         }
 
         public bool isUpdateable()
@@ -60,7 +62,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
