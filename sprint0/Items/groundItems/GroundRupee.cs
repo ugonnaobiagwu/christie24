@@ -16,7 +16,7 @@ namespace sprint0.Items.groundItems
         // Does Level Loader like this signature?
         public GroundRupee(SpriteFactory factory, int xPos, int yPos)
         {
-            this.currentItemSprite = factory.getAnimatedSprite("Rupee");
+            this.currentItemSprite = factory.getAnimatedSprite("GroundRupee");
             this.xPos = xPos;
             this.yPos = yPos;
             isPickedUp = false;
@@ -26,7 +26,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos,0);
             }
         }
 
@@ -54,6 +54,8 @@ namespace sprint0.Items.groundItems
         {
             isPickedUp = true;
             Inventory.CountRupee();
+            Globals.GameObjectManager.removeObject(this);
+
         }
 
         public bool isUpdateable()
@@ -63,7 +65,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
@@ -93,7 +95,7 @@ namespace sprint0.Items.groundItems
 
         public string type()
         {
-            return "GroundRupee";
+            return "Item";
         }
     }
 }

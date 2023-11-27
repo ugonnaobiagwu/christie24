@@ -9,6 +9,16 @@ namespace sprint0.HUDs
 {
     public static class Inventory
     {
+        public enum LinkLevel
+        {
+            LOW, MEDIUM, HIGH
+        }
+
+        /* ELEMENTAL ENEMIES AND SCALING TESTING. REMOVE THIS LINE AND INIT
+         * THIS VALUE PROPERLY WHEN YOU GET TO IT.
+         */
+        
+        public static LinkLevel CurrentLinkLevel = LinkLevel.HIGH;
 
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
         //ENUM
