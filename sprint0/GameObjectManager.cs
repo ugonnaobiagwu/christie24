@@ -8,6 +8,8 @@ using sprint0.LinkObj;
 using sprint0;
 using System.ComponentModel.Design;
 using sprint0.Items.groundItems;
+using sprint0.LinkSword;
+using sprint0.Enemies;
 
 namespace sprint0
 {
@@ -37,6 +39,7 @@ namespace sprint0
             dynamics = new List<IGameObject>();
             inPlay = new List<IGameObject>();
             deleteList = new List<IGameObject>();
+            roomList = new List<IGameObject>();
             roomIDs = new List<int>();
 
             // map to hold all the objects in each room
@@ -48,24 +51,29 @@ namespace sprint0
         // adds object into their respective lists
         public void addObject(IGameObject obj)
         {
-            
+            currentRoomID = obj.GetRoomId();
+
             // if it is a new room, it makes a new room and add the object in 
-            if (!ObjectMap.ContainsKey(obj.GetRoomId()))
+            if (!ObjectMap.ContainsKey(currentRoomID))
             {
-                ObjectMap[obj.GetRoomId()] = new List<IGameObject>();
-                roomIDs.Add(obj.GetRoomId());
+                ObjectMap[currentRoomID] = new List<IGameObject>();
+                roomIDs.Add(currentRoomID);
             }
             // adds object in the stated room 
-            ObjectMap[obj.GetRoomId()].Add(obj);
+            ObjectMap[currentRoomID].Add(obj);
 
             // check the type of the object and add it to the corresponding list
             if (obj.isDynamic()) // dynamic objects
             {
                 dynamics.Add(obj);
             }
-            if (obj.isDrawable()) // drawable objects
+            if (obj.isDrawable() && obj.type() != "Room") // drawable objects
             {
                 drawables.Add(obj);
+            }
+            else if (obj.isDrawable() && obj.type() == "Room")
+            {
+                roomList.Add(obj);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -79,32 +87,41 @@ namespace sprint0
             drawables = orderDrawableList(drawables);
         }
 
-        private void addToTypeList(IGameObject obj)
+        // used to order the drawables lists
+        private List<IGameObject> orderDrawableList(List<IGameObject> list)
         {
-            if (obj.type() == "Block")
-            {
-                blockList.Add(obj);
-            }
-            else if (obj.type() == "Item") {
-                itemList.Add(obj);
-            }
-            else if (obj.type() == "Enemy")
-            {
-                enemyList.Add(obj);
-            }
-            else if (obj.type() == "Link") 
-            {
-                linkList.Add(obj);
-            }
-        }
+            List<IGameObject> blockList = new List<IGameObject>();
+            List<IGameObject> itemList = new List<IGameObject>();
+            List<IGameObject> enemyList = new List<IGameObject>();
+            List<IGameObject> linkList = new List<IGameObject>();
+            List<IGameObject> orderedList = new List<IGameObject>();
 
-        private void orderDrawables()
-        {
-            drawables.Clear();
-            drawables.AddRange(blockList);
-            drawables.AddRange(itemList);
-            drawables.AddRange(enemyList);
-            drawables.AddRange(linkList);
+
+            foreach (IGameObject obj in list)
+            {
+                if (obj.type() == "Block")
+                {
+                    blockList.Add(obj);
+                }
+                else if (obj.type() == "Item")
+                {
+                    itemList.Add(obj);
+                }
+                else if (obj.type() == "Enemy")
+                {
+                    enemyList.Add(obj);
+                }
+                else if (obj.type() == "Link")
+                {
+                    linkList.Add(obj);
+                }
+            }
+            orderedList.AddRange(roomList);
+            orderedList.AddRange(blockList);
+            orderedList.AddRange(itemList);
+            orderedList.AddRange(enemyList);
+            orderedList.AddRange(linkList);
+            return orderedList;
         }
 
         // objects are added into the delete queue
@@ -114,6 +131,7 @@ namespace sprint0
             // removes the object from the room
             if (!inPlay.Contains(obj))
             {
+
                 deleteList.Add(obj);
             }
 
@@ -203,7 +221,7 @@ namespace sprint0
         }
 
         // returns the objects in the current room
-        public List<IGameObject> getOjectsInCurrentRoom()
+        public List<IGameObject> getObjectsInCurrentRoom()
         {
             List<IGameObject> objectsInCurrentRoom = new List<IGameObject>();
             objectsInCurrentRoom = ObjectMap[currentRoomID];
@@ -233,34 +251,6 @@ namespace sprint0
             foreach (IGameObject obj in updateables)
             {
                 if (ObjectMap[currentRoomID].Contains(obj))
-                {
-                    roomUpdateables.Add(obj);
-                }
-            }
-            return roomUpdateables;
-        }
-
-        public List<IGameObject> drawablesInRoom()
-        {
-            List<IGameObject> roomDrawables = new List<IGameObject>();
-
-            foreach (IGameObject obj in drawables)
-            {
-                if (obj.GetRoomId() == currentRoomID)
-                {
-                    roomDrawables.Add(obj);
-                }
-            }
-            return orderDrawableList(roomDrawables);
-        }
-
-        public List<IGameObject> updateablesInRoom()
-        {
-            List<IGameObject> roomUpdateables = new List<IGameObject>();
-
-            foreach (IGameObject obj in updateables)
-            {
-                if (obj.GetRoomId() == currentRoomID)
                 {
                     roomUpdateables.Add(obj);
                 }
