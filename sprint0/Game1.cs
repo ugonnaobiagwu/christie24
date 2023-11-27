@@ -21,7 +21,6 @@ using sprint0.Collision;
 using sprint0.LevelLoading;
 using System.Xml;
 using System;
-using sprint0.GameStates;
 
 namespace sprint0
 {
@@ -58,13 +57,10 @@ namespace sprint0
 
         //State Manager - in progress
         GameStateManager gameStateManager;
-        //PlayState currentGameState;
-        //PauseState tempPauseState;
-        //InventoryController inventoryController;
-        //InventoryState tempInventoryState;
+        SpriteFactory InventoryFactory;
         InventoryController InventoryCont;
         InventoryCursor Cursor;
-        //DeathState tempDeathState;
+
 
         public Sprint0()
         {
@@ -189,9 +185,15 @@ namespace sprint0
             //Game States - in progress
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
+            Texture2D inventoryItemsTexture = Content.Load<Texture2D>("itemSpriteSheet");
+            InventoryFactory = new SpriteFactory(inventoryItemsTexture, 4, 15);
+            InventoryFactory.createAnimation("Boomerang", new int[] { 3 }, new int[] { 7 }, 1, 1, 3, 2);
+            InventoryFactory.createAnimation("Bomb", new int[] { 1 }, new int[] { 13 }, 1, 1, 3, 2);
+            InventoryFactory.createAnimation("Bow", new int[] { 2 }, new int[] { 15 }, 1, 1, 3, 2);
+            InventoryFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 14 }, 1, 1, 3, 2);
             Cursor = new InventoryCursor(CursorTexture, 500, 100);
-            gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
-            scrollState = new ScrollState(gameStateManager);
+            gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory);
+           
             mouse = Mouse.GetState();
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton

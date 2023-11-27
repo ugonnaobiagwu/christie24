@@ -3,7 +3,7 @@
   <SourceFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/soundEffects/SWORD_SLASH.wav</SourceFile>
   <SourceTime>2023-11-06T14:58:32.8005695-05:00</SourceTime>
   <DestFile>/Users/mattdan/Documents/GitHub/christie24/sprint0/Content/bin/DesktopGL/Content/soundEffects/SWORD_SLASH.xnb</DestFile>
-  <DestTime>2023-11-11T09:37:51.554206-05:00</DestTime>
+  <DestTime>2023-11-26T20:45:03.3214146-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

@@ -29,11 +29,13 @@ namespace sprint0.GameStates
         private bool inputLimit = true;
         public GraphicsDeviceManager graphics { get; set; }
         GameStateManager GameStateManager;
-        public PlayState(GameStateManager manager, int screenWidth, int screenHeight)
+        HUD GameHud;
+        public PlayState(GameStateManager manager, int screenWidth, int screenHeight, HUD gameHud)
         {
             GameStateManager = manager;
             ScreenHeight = screenHeight;
             ScreenWidth = screenWidth;
+            GameHud = gameHud;
         }
 
         public void Update(GameTime gameTime)
@@ -57,18 +59,26 @@ namespace sprint0.GameStates
             Globals.Update(gameTime);
 
             //Collision iterator, 
-            CollisionIterator.Search(Globals.GameObjectManager.getList("drawables"), ScreenWidth, ScreenHeight);
+            
+            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInRoom());
 
             this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            
+            
             Globals.LinkItemSystem.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
+            }
+            GameHud.Draw();
+            if (Globals.Link != null)
+            {
+                Globals.Link.Draw(spriteBatch);
             }
         }
 

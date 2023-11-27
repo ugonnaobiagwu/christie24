@@ -45,7 +45,11 @@ namespace sprint0.Blocks
 
         }
 
-
+        public void SetToRoomId(int roomId) { }
+        public int GetToRoomId()
+        {
+            return -1;
+        }
 
         /*public void Draw(SpriteBatch spriteBatch, int x, int y)
         {

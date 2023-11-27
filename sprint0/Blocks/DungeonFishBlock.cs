@@ -86,5 +86,11 @@ namespace sprint0.Blocks
 
 
 
+        public void SetToRoomId(int roomId) { }
+        public int GetToRoomId()
+        {
+            return -1;
+        }
+
     }
 }

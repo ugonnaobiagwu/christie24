@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0.GameStates;
 using sprint0.HUDs;
 using sprint0.BoundariesDoorsAndRooms;
+using sprint0.AnimatedSpriteFactory;
 using static sprint0.Globals;
 
 namespace sprint0.GameStates
@@ -18,12 +19,12 @@ namespace sprint0.GameStates
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory)
         {
 
             DeathState = new DeathState(this, font);
-            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud);
-            PlayState = new PlayState(this, screenWidth, screenHeight);
+            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory);
+            PlayState = new PlayState(this, screenWidth, screenHeight, gameHud);
             ScrollState = new ScrollState(this, 0, Direction.Up);
             PauseState = new PauseState(this, font, screenWidth, screenHeight);
             CurrentState = PlayState;

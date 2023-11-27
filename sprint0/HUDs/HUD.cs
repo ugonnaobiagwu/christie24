@@ -212,7 +212,7 @@ namespace sprint0.HUDs
 
         /*public void XP(){}*/
 
-
+        public int ReturnHUDHeight() { return hudBackground.Height; }
     }
 
 }

@@ -18,7 +18,10 @@ namespace sprint0.GameStates
 		public void moveLeft() {CursorPosition.X-=MovementOffset;}
 		public void moveRight() { CursorPosition.X += MovementOffset; }
 		public void moveUp() { CursorPosition.Y -= MovementOffset; }
-		public void moveDown() { CursorPosition.Y += MovementOffset; }
+		public void moveDown() { CursorPosition.Y += MovementOffset;
+			Console.WriteLine(CursorPosition.X);
+            Console.WriteLine(CursorPosition.Y);
+        }
 	}
 }
 
