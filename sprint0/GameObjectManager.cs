@@ -15,12 +15,12 @@ namespace sprint0
     {
         // UNFINISHED!!!
         // lists for drawable objects updateable objects, dynamic objects and all objects that need to be removed
-        private List<IGameObject> drawables;
-        private List<IGameObject> updateables;
-        private List<IGameObject> dynamics;
-        private List<IGameObject> inPlay;
-        private List<IGameObject> deleteList;
-        private List<IGameObject> roomList;
+        private List<IGameObject> drawables; // list of drawable objects
+        private List<IGameObject> updateables; // list of updateable objects
+        private List<IGameObject> dynamics; // list of dynamic objects
+        private List<IGameObject> inPlay; // list of objects in Play
+        private List<IGameObject> deleteList; // list of objects to remove
+        private List<IGameObject> roomList; // list of room objects - so they can be always drawn and drawn first
         private List<IGameObject> floorList;
         private List<IGameObject> doorList;
 
@@ -68,6 +68,7 @@ namespace sprint0
             {
                 dynamics.Add(obj);
             }
+
             if (obj.isDrawable() && obj.type() != "Room" && obj.type() !="Floor" && obj.type() != "Door") // drawable objects
             {
                 drawables.Add(obj);
@@ -132,7 +133,6 @@ namespace sprint0
             orderedList.AddRange(linkList);
             return orderedList;
         }
-
         // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
@@ -223,10 +223,48 @@ namespace sprint0
         }
 
         // returns list of room objects
-        public List<IGameObject> getObjectsInRoom()
+        public List<IGameObject> getObjectsInRoom(int roomID)
         {
             // returns list, otherwise if it is an unknown roomID, returns empty List
-            return ObjectMap.ContainsKey(currentRoomID) ? ObjectMap[currentRoomID] : new List<IGameObject>();
+            return ObjectMap.ContainsKey(roomID) ? ObjectMap[roomID] : new List<IGameObject>();
+        }
+
+        // returns the objects in the current room
+        public List<IGameObject> getOjectsInCurrentRoom()
+        {
+            List<IGameObject> objectsInCurrentRoom = new List<IGameObject>();
+            objectsInCurrentRoom = ObjectMap[currentRoomID];
+            return objectsInCurrentRoom;
+        }
+
+        // mreturns list of all the objects in the current room that are drawable
+        public List<IGameObject> drawablesInRoom()
+        {
+            List<IGameObject> roomDrawables = new List<IGameObject>();
+
+            foreach (IGameObject obj in drawables)
+            {
+                if (ObjectMap[currentRoomID].Contains(obj))
+                {
+                    roomDrawables.Add(obj);
+                }
+            }
+            return orderDrawableList(roomDrawables);
+        }
+
+        // returns list of updateables in current room
+        public List<IGameObject> updateablesInRoom()
+        {
+            List<IGameObject> roomUpdateables = new List<IGameObject>();
+
+            foreach (IGameObject obj in updateables)
+            {
+                if (ObjectMap[currentRoomID].Contains(obj))
+                {
+                    roomUpdateables.Add(obj);
+                }
+            }
+            return roomUpdateables;
         }
 
         public List<IGameObject> drawablesInRoom()
