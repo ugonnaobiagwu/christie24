@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace sprint0.Blocks
     internal class StairBlock : IBlock
     {
 
-        
+
         int scaledWidth;
         int scaledHeight;
         int RoomId;
@@ -24,17 +25,16 @@ namespace sprint0.Blocks
         public int Columns { get; set; }
         private int XValue { get; set; }
         private int YValue { get; set; }
+        public int ToRoomId;
 
 
 
-
-        public StairBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public StairBlock(int x, int y, SpriteFactory spriteFactory)
         {
             blockSprite = spriteFactory.getAnimatedSprite("StairBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
         public StairBlock(Texture2D texture, int rows, int columns)
         {
@@ -43,29 +43,36 @@ namespace sprint0.Blocks
             Columns = columns;
 
         }
-
-       /* public void Draw(SpriteBatch spriteBatch, int x, int y)
+        public void SetToRoomId(int ToRoomId)
         {
+            this.ToRoomId = ToRoomId;
+        }
+        public int GetToRoomId()
+        {
+            return ToRoomId;
+        }
+        /* public void Draw(SpriteBatch spriteBatch, int x, int y)
+         {
 
-            int width = this.Texture.Width / Columns;
-            int height = this.Texture.Height / Rows;
-            int blockRow = 1;
-            int blockColumn = 3;
+             int width = this.Texture.Width / Columns;
+             int height = this.Texture.Height / Rows;
+             int blockRow = 1;
+             int blockColumn = 3;
 
-            Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
+             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
-            //resize block image
-            double scale = 0.2; //40% of the orignal size image
-            scaledWidth = (int)(width * scale);
-            scaledHeight = (int)(height * scale);
-
-
-            Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
+             //resize block image
+             double scale = 0.2; //40% of the orignal size image
+             scaledWidth = (int)(width * scale);
+             scaledHeight = (int)(height * scale);
 
 
-            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
+             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
 
-        }*/
+
+             spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
+
+         }*/
         public void Draw(SpriteBatch spriteBatch)
         {
             blockSprite.Draw(spriteBatch, XValue, YValue, 0.0f);

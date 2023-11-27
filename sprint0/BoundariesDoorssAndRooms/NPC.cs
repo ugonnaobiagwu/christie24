@@ -1,25 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace sprint0.BoundariesDoorsAndRooms
 {
-    public class Room : IGameObject
+    internal class NPC : IGameObject
     {
-        ISprite roomSprite;
         Vector2 position;
+        ISprite nPCSprite;
         int roomId;
-        public Room(int x, int y, SpriteFactory roomFactory)
+        public NPC(int x, int y, SpriteFactory spriteFactory)
         {
-            roomSprite = roomFactory.getAnimatedSprite("Room");
             position = new Vector2(x, y);
+            nPCSprite = spriteFactory.getAnimatedSprite("NPC");
         }
         public int xPosition()
         {
@@ -31,27 +30,11 @@ namespace sprint0.BoundariesDoorsAndRooms
         }
         public int width()
         {
-            return roomSprite.GetWidth();
+            return nPCSprite.GetWidth();
         }
         public int height()
         {
-            return roomSprite.GetHeight();
-        }
-        public bool isDynamic()
-        {
-            return false;
-        }
-        public bool isUpdateable()
-        {
-            return false;
-        }
-        public bool isDrawable()
-        {
-            return true;
-        }
-        public bool isInPlay()
-        {
-            return true;
+            return nPCSprite.GetHeight();
         }
         public void SetRoomId(int roomId)
         {
@@ -61,13 +44,33 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             return roomId;
         }
-        public void Update()
+        public bool isDynamic()
         {
-            //Nothing to update
+            return false;
+        }
+        public bool isDrawable()
+        {
+            return true;
+        }
+        public bool isUpdateable()
+        {
+            return false;
+        }
+        public bool isInPlay()
+        {
+            return true;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            RoomSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
+            nPCSprite.Draw(spriteBatch, xPosition(), yPosition(), 0);
+        }
+        public void Update()
+        {
+            //nothing to update
+        }
+        public string type()
+        {
+            return "NPC";
         }
     }
 }

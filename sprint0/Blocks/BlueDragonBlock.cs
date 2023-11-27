@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class BlueDragonBlock: IBlock
+    internal class BlueDragonBlock : IBlock
     {
 
         int scaledWidth;
@@ -17,7 +18,7 @@ namespace sprint0.Blocks
         //SpriteFactory blockSpriteFactory;
         ISprite blockSprite;
         IBlock iblock;
-        
+
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
@@ -27,13 +28,12 @@ namespace sprint0.Blocks
 
 
 
-        public BlueDragonBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public BlueDragonBlock(int x, int y, SpriteFactory spriteFactory)
         {
-            
+
             blockSprite = spriteFactory.getAnimatedSprite("BlueDragonBlock");
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
 
 
@@ -43,6 +43,9 @@ namespace sprint0.Blocks
             blockSprite.Draw(spriteBatch, XValue, YValue, 0.0f);
         }
 
+        public void SetToRoomId(int ToRoomId) { }
+        public int GetToRoomId()
+        { return -1; }
         public void Explode() { }
         public void Update() { }
 

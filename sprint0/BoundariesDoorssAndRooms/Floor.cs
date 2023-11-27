@@ -1,25 +1,24 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace sprint0.BoundariesDoorsAndRooms
 {
-    public class Room : IGameObject
+    internal class Floor : IGameObject
     {
-        ISprite roomSprite;
         Vector2 position;
+        ISprite floorSprite;
         int roomId;
-        public Room(int x, int y, SpriteFactory roomFactory)
+        public Floor(int x, int y, SpriteFactory floorFactory)
         {
-            roomSprite = roomFactory.getAnimatedSprite("Room");
-            position = new Vector2(x, y);
+            position.X = x; position.Y = y;
+            floorSprite = floorFactory.getAnimatedSprite("Floor");
         }
         public int xPosition()
         {
@@ -31,17 +30,21 @@ namespace sprint0.BoundariesDoorsAndRooms
         }
         public int width()
         {
-            return roomSprite.GetWidth();
+            return floorSprite.GetWidth();
         }
         public int height()
         {
-            return roomSprite.GetHeight();
+            return floorSprite.GetHeight();
+        }
+        public void SetRoomId(int roomId)
+        {
+            this.roomId = roomId;
+        }
+        public int GetRoomId()
+        {
+            return roomId;
         }
         public bool isDynamic()
-        {
-            return false;
-        }
-        public bool isUpdateable()
         {
             return false;
         }
@@ -53,21 +56,21 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             return true;
         }
-        public void SetRoomId(int roomId)
+        public bool isUpdateable()
         {
-            this.roomId = roomId;
-        }
-        public int GetRoomId()
-        {
-            return roomId;
+            return false;
         }
         public void Update()
         {
-            //Nothing to update
+            //nothing to update
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            RoomSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
+            floorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0);
+        }
+        public string type()
+        {
+            return "Floor";
         }
     }
 }

@@ -30,28 +30,28 @@ namespace sprint0.Collision
 		 * 
 		 */
 
-        private const int INITIATE_LOOP_THRESHOLD = 4;
+        //private const int INITIATE_LOOP_THRESHOLD = 4;
         private static CollisionHandler handler = new CollisionHandler();
 
-        public static void Search(IList<IGameObject> collidables, int screenWidth, int screenHeight)
-        {
-            BranchOrIterate(collidables, 0, screenWidth, 0, screenHeight);
-        }
+        //public static void Search(IList<IGameObject> collidables, int screenWidth, int screenHeight)
+        //{
+        //    BranchOrIterate(collidables, 0, screenWidth, 0, screenHeight);
+        //}
 
-        private static void BranchOrIterate(IList<IGameObject> collidablesInQuadrant,
-            int xQuadrantMinBound, int xQuadrantMaxBound, int yQuadrantMinBound,
-            int yQuadrantMaxBound)
-        {
-            if (collidablesInQuadrant.Count < INITIATE_LOOP_THRESHOLD)
-            {
-                CollisionIterator.Iterate(collidablesInQuadrant);
+        //private static void BranchOrIterate(IList<IGameObject> collidablesInQuadrant,
+        //    int xQuadrantMinBound, int xQuadrantMaxBound, int yQuadrantMinBound,
+        //    int yQuadrantMaxBound)
+        //{
+        //    if (collidablesInQuadrant.Count < INITIATE_LOOP_THRESHOLD)
+        //    {
+        //        CollisionIterator.Iterate(collidablesInQuadrant);
 
-            }
-            else
-            {
-                CollisionIterator.Branch(collidablesInQuadrant, xQuadrantMinBound, xQuadrantMaxBound, yQuadrantMinBound, yQuadrantMaxBound);
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        CollisionIterator.Branch(collidablesInQuadrant, xQuadrantMinBound, xQuadrantMaxBound, yQuadrantMinBound, yQuadrantMaxBound);
+        //    }
+        //}
 
         /*
 		 * Private method used to loop for collision once a quadrant is under 
@@ -66,13 +66,13 @@ namespace sprint0.Collision
 		 * Game Object Interface should have a method that returns whether 
 		 * or not an object is dynamic. If so, loop through.
 		 */
-        private static void Iterate(IList<IGameObject> collidablesInQuadrant)
+        public static void Iterate(IList<IGameObject> collidablesInQuadrant)
         {
             foreach (IGameObject obj1 in collidablesInQuadrant)
             {
                 if (obj1.isDynamic())
                 {
-                    System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
+                    //System.Diagnostics.Debug.WriteLine("OBJ1 WIDTH AND HEIGHT  " + obj1.width() + " " + obj1.height());
                     foreach (IGameObject obj2 in collidablesInQuadrant)
                     {
                         if (obj2 != obj1)
@@ -116,40 +116,40 @@ namespace sprint0.Collision
 		 * Game Object Interface should have a method that returns whether 
 		 * or not an object is dynamic. If so, loop through.
 		 */
-        private static void Branch(IList<IGameObject> collidablesInQuadrant,
-            int xQuadrantMinBound, int xQuadrantMaxBound,
-            int yQuadrantMinBound, int yQuadrantMaxBound)
-        {
-            int xQuadrantHalfBound = ((xQuadrantMaxBound - xQuadrantMinBound) / 2) + xQuadrantMinBound;
-            int yQuadrantHalfBound = ((yQuadrantMaxBound - yQuadrantMinBound) / 2) + yQuadrantMinBound;
-            IList<IGameObject> q1 = new List<IGameObject>();
-            IList<IGameObject> q2 = new List<IGameObject>();
-            IList<IGameObject> q3 = new List<IGameObject>();
-            IList<IGameObject> q4 = new List<IGameObject>();
-            foreach (IGameObject obj in collidablesInQuadrant)
-            {
-                if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
-                {
-                    q1.Add(obj);
-                    CollisionIterator.BranchOrIterate(q1, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantMinBound, yQuadrantHalfBound);
-                }
-                else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
-                {
-                    q2.Add(obj);
-                    CollisionIterator.BranchOrIterate(q2, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantMinBound, yQuadrantHalfBound);
-                }
-                else if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
-                {
-                    q3.Add(obj);
-                    CollisionIterator.BranchOrIterate(q3, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantHalfBound, yQuadrantMaxBound);
-                }
-                else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
-                {
-                    q4.Add(obj);
-                    CollisionIterator.BranchOrIterate(q4, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantHalfBound, yQuadrantMaxBound);
-                }
-            }
-        }
+        //private static void Branch(IList<IGameObject> collidablesInQuadrant,
+        //    int xQuadrantMinBound, int xQuadrantMaxBound,
+        //    int yQuadrantMinBound, int yQuadrantMaxBound)
+        //{
+        //    int xQuadrantHalfBound = ((xQuadrantMaxBound - xQuadrantMinBound) / 2) + xQuadrantMinBound;
+        //    int yQuadrantHalfBound = ((yQuadrantMaxBound - yQuadrantMinBound) / 2) + yQuadrantMinBound;
+        //    IList<IGameObject> q1 = new List<IGameObject>();
+        //    IList<IGameObject> q2 = new List<IGameObject>();
+        //    IList<IGameObject> q3 = new List<IGameObject>();
+        //    IList<IGameObject> q4 = new List<IGameObject>();
+        //    foreach (IGameObject obj in collidablesInQuadrant)
+        //    {
+        //        if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
+        //        {
+        //            q1.Add(obj);
+        //            CollisionIterator.BranchOrIterate(q1, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantMinBound, yQuadrantHalfBound);
+        //        }
+        //        else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() <= yQuadrantHalfBound)
+        //        {
+        //            q2.Add(obj);
+        //            CollisionIterator.BranchOrIterate(q2, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantMinBound, yQuadrantHalfBound);
+        //        }
+        //        else if (obj.xPosition() <= xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
+        //        {
+        //            q3.Add(obj);
+        //            CollisionIterator.BranchOrIterate(q3, xQuadrantMinBound, xQuadrantHalfBound, yQuadrantHalfBound, yQuadrantMaxBound);
+        //        }
+        //        else if (obj.xPosition() > xQuadrantHalfBound && obj.yPosition() > yQuadrantHalfBound)
+        //        {
+        //            q4.Add(obj);
+        //            CollisionIterator.BranchOrIterate(q4, xQuadrantHalfBound, xQuadrantMaxBound, yQuadrantHalfBound, yQuadrantMaxBound);
+        //        }
+        //    }
+        //}
 
     }
 }

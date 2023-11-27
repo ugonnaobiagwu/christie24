@@ -43,7 +43,11 @@ namespace sprint0.Blocks
             Columns = columns;
 
         }
-
+        public int GetToRoomId()
+        {
+            return - 1;
+        }
+        public void SetToRoomId(int toRoomId) { }
        /* public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 

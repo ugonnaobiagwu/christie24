@@ -71,7 +71,7 @@ namespace sprint0.Items
 
         public bool isDynamic()
         {
-            return false;
+            return true;
         }
 
         public bool isUpdateable()

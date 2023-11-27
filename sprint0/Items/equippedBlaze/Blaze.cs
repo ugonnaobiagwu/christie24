@@ -35,13 +35,14 @@ namespace sprint0.Items
             maxFireTicks = 120;
             fireTicks = 0;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0);
             }
         }
 
@@ -49,6 +50,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse())
             {
+                currentItemSprite.Update();
 
                 // has the sprite reached it's final location?
                 if ((itemXPos >= itemMaxX || itemYPos >= itemMaxY || itemXPos <= itemMinX || itemYPos <= itemMinY)) // sprite just reached its max
@@ -57,6 +59,8 @@ namespace sprint0.Items
                     {
                         thisStateMachine.CeaseUse();
                         fireTicks = 0;
+                        Globals.GameObjectManager.removeObject(this);
+
                     }
                 }
                 else
@@ -82,10 +86,7 @@ namespace sprint0.Items
 
                 }
                 fireTicks++;
-                if (this.currentItemSprite != null)
-                {
-                    this.currentItemSprite.Update();
-                }
+                
 
             }
 

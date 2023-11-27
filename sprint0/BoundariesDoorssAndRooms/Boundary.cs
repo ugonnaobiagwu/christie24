@@ -1,77 +1,73 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using sprint0.AnimatedSpriteFactory;
+﻿using Microsoft.Xna.Framework.Graphics;
+using sprint0;
 using System;
 using System.Collections.Generic;
-
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sprint0.BoundariesDoorsAndRooms
 {
-    internal class Boundary : IGameObject
+    public class Boundary : IGameObject
     {
-
-        Rectangle BoundaryObj;
-        int RoomId;
-        bool IsDynamic = false;
-        bool IsInPlay = false;
-        bool IsUpdateable = false;
-        bool IsDrawable = false;
-        public Boundary(Rectangle boundary, int roomId) 
-        { 
-            BoundaryObj = boundary;
-            RoomId = roomId;
+        Rectangle boundaryObj;
+        int roomId;
+        public Boundary(Rectangle boundaryObj)
+        {
+            this.boundaryObj = boundaryObj;
         }
         public int xPosition()
         {
-            return BoundaryObj.X;
+            return boundaryObj.X;
         }
         public int yPosition()
         {
-            return BoundaryObj.Y;
-        }
-        public bool isDynamic()
-        {
-            return IsDynamic;
+            return boundaryObj.Y;
         }
         public int width()
         {
-            return BoundaryObj.Width;
+            return boundaryObj.Width;
         }
-        public int height() 
+        public int height()
         {
-            return BoundaryObj.Height;
+            return boundaryObj.Height;
         }
-        public bool isInPlay()
+        public bool isDynamic()
         {
-            return IsInPlay;
+            return false;
         }
         public bool isUpdateable()
         {
-            return IsUpdateable;
+            return false;
         }
         public bool isDrawable()
         {
-            return IsDrawable;
+            return false;
         }
-        public void SetRoomId(int newId)
+        public bool isInPlay()
         {
-            RoomId = newId;
+            return true;
+        }
+        public void SetRoomId(int roomId)
+        {
+            this.roomId = roomId;
         }
         public int GetRoomId()
         {
-            return RoomId;
+            return roomId;
         }
         public void Update()
         {
-            /*Nothing to update*/
+            //Nothing to update
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             //Nothing to draw
         }
-        public String type() { return "Block"; }
+        public string type()
+        {
+            return "Boundary";
+        }
     }
 }

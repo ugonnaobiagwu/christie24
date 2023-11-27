@@ -147,34 +147,47 @@ namespace sprint0
         {
           
             this.currentItem = new Bow(bowFactory, bowDespawnFactory);
+            Globals.GameObjectManager.addObject(currentItem);
         }
 
         public void EquipBetterBow()
         {
             this.currentItem = new BetterBow(betterBowFactory, bowDespawnFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
 
         public void EquipBoomerang()
         {
             this.currentItem = new Boomerang(boomerangFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
 
         public void EquipBetterBoomerang()
         {
             this.currentItem = new BetterBoomerang(betterBoomerangFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
 
         public void EquipBlaze()
         {
             this.currentItem = new Blaze(blazeFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
         public void EquipBomb()
         {
             this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
         public void EquipSword()
         {
             this.currentItem = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
+            Globals.GameObjectManager.addObject(currentItem);
+
         }
 
         public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
@@ -183,7 +196,7 @@ namespace sprint0
             if (this.currentItem != null)
             {
                 this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+                //Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
             }
         }
 
