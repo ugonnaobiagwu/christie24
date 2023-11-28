@@ -11,10 +11,11 @@ namespace sprint0
 	public class ItemSystem : IItemSystem
 	{
         private static ItemSystem instance;
-        public IItem currentItem;
+        //public IItem currentItem;
         public IItem currentItemA;
         public IItem currentItemB;
-        private IItem sword;
+        public ItemsInSlots ItemInSlotA;
+        public ItemsInSlots ItemInSlotB;
         private SpriteFactory bowFactory;
         private SpriteFactory bowDespawnFactory;
         private SpriteFactory betterBowFactory;
@@ -27,15 +28,16 @@ namespace sprint0
         private SpriteFactory iceSwordFactory;
         private SpriteFactory fireSwordFactory;
         private SpriteBatch spriteBatch;
-        public LinkTunic CurrentTunic { get; set; }
-        private IList<String> theseItems;       
+        public LinkTunic CurrentTunic { get; set; }    
         /*
          * [code: theseItems] will be used to limit whether or not link can equip an 
          * item depending on how the inventory system works
          */
 
         public ItemSystem() {
-            currentItem = new NullItem();
+            //currentItem = new NullItem();
+            currentItemA = new NullItem();
+            currentItemB = new NullItem();
         }
 
         public static ItemSystem Instance
@@ -144,28 +146,105 @@ namespace sprint0
          * TO AVOID NEW ITEMS BEING EQUIPPED IN THE MIDDLE OF THE CURRENT ONE
          * 
          * WHEN ITEM EQUIPMENT IS IN... DELETE THE OBJECT 
+         * If an item is already in one slot, it will swap the item to the requested one.
          */
-        public void EquipBow()
+        public void EquipBow(Globals.ItemSlots itemSlot)
         {
-            this.currentItem = new Bow(bowFactory, bowDespawnFactory);
-            Globals.GameObjectManager.addObject(currentItem);
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BOW)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BOW)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new Bow(bowFactory, bowDespawnFactory);
+                         Globals.GameObjectManager.addObject(currentItemA);
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BOW)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BOW)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new Bow(bowFactory, bowDespawnFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
+            //this.currentItem = new Bow(bowFactory, bowDespawnFactory);
         }
 
-        public void EquipBetterBow()
+        public void EquipBetterBow(Globals.ItemSlots itemSlot)
         {
-            this.currentItem = new BetterBow(betterBowFactory, bowDespawnFactory);
-            Globals.GameObjectManager.addObject(currentItem);
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BETTER_BOW)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BETTER_BOW)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new BetterBow(bowFactory, bowDespawnFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
 
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BETTER_BOW)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BETTER_BOW)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new BetterBow(bowFactory, bowDespawnFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
         }
 
-        public void EquipBoomerang()
+        public void EquipBoomerang(Globals.ItemSlots itemSlot)
         {
-            this.currentItem = new Boomerang(boomerangFactory);
-            Globals.GameObjectManager.addObject(currentItem);
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BOOMERANG)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BOOMERANG)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new Boomerang(boomerangFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
 
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BOOMERANG)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BOOMERANG)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new Boomerang(boomerangFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
         }
 
-        public void EquipBetterBoomerang()
+        public void EquipBetterBoomerang(Globals.ItemSlots itemSlot)
         {
             this.currentItem = new BetterBoomerang(betterBoomerangFactory);
             Globals.GameObjectManager.addObject(currentItem);
@@ -180,31 +259,135 @@ namespace sprint0
         }
         public void EquipBomb()
         {
-            this.currentItem = new Bomb(bombFactory, bombExplodeFactory);
-            Globals.GameObjectManager.addObject(currentItem);
-
-        }
-        public void EquipSword()
-        {
-            this.currentItem = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
-            Globals.GameObjectManager.addObject(currentItem);
-
-        }
-
-        public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
-        {
-            
-            if (this.currentItem != null)
+            switch (itemSlot)
             {
-                this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-                //Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BETTER_BOOMERANG)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BETTER_BOOMERANG)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new BetterBoomerang(betterBoomerangFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
+
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BETTER_BOOMERANG)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BETTER_BOOMERANG)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new BetterBoomerang(betterBoomerangFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
             }
         }
 
-        //public void SwingSword(int linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        public void EquipBlaze(Globals.ItemSlots itemSlot)
+        {
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BLAZE)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BLAZE)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new Blaze(blazeFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BLAZE)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BLAZE)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new Blaze(blazeFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
+        }
+        public void EquipBomb(Globals.ItemSlots itemSlot)
+        {
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.BOMB)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.BOMB)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new Bomb(bombFactory, bombExplodeFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.BOMB)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.BOMB)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemB = new Bomb(bombFactory, bombExplodeFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
+        }
+        public void EquipSword(Globals.ItemSlots itemSlot)
+        {
+            switch (itemSlot)
+            {
+                case ItemSlots.SLOT_A:
+                    if (ItemInSlotA != ItemsInSlots.SWORD)
+                    {
+                        if (ItemInSlotB == ItemsInSlots.SWORD)
+                        {
+                            ItemInSlotB = ItemsInSlots.EMPTY;
+                            this.currentItemB = new NullItem();
+                        }
+                        this.currentItemA = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
+                        Globals.GameObjectManager.addObject(currentItemA);
+                    }
+                    break;
+                case ItemSlots.SLOT_B:
+                    if (ItemInSlotB != ItemsInSlots.SWORD)
+                    {
+                        if (ItemInSlotA == ItemsInSlots.SWORD)
+                        {
+                            ItemInSlotA = ItemsInSlots.EMPTY;
+                            this.currentItemA = new NullItem();
+                        }
+                        this.currentItemA = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
+                        Globals.GameObjectManager.addObject(currentItemB);
+                    }
+                    break;
+            }
+        }
+
+        //public void UseCurrentItem(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
         //{
-        //    this.sword.SwingSword(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-        //    Console.WriteLine("DEBUG: SWORD HAS BEEN SWUNG.");
+            
+        //    if (this.currentItem != null)
+        //    {
+        //        this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+        //        Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+        //    }
         //}
 
         /*
@@ -212,32 +395,47 @@ namespace sprint0
          */
         public void Draw()
         {
-            if (this.currentItem != null )
+            if (this.currentItemA != null)
             {
-                this.currentItem.Draw(this.spriteBatch);
+                this.currentItemA.Draw(this.spriteBatch);
             }
-            //if (this.sword != null)
-            //{
-            //    this.sword.Draw(this.spriteBatch);
-            //}
+            if (this.currentItemB != null)
+            {
+                this.currentItemB.Draw(this.spriteBatch);
+            }
 
-           
         }
 
         public void Update()
         {
-            if (this.currentItem != null)
+            if (this.currentItemA != null)
             {
-                this.currentItem.Update();
+                this.currentItemA.Update();
             }
-            //if (this.sword != null)
-            //{
-            //    this.sword.Draw(this.spriteBatch);
-            //}
-
+            if (this.currentItemB != null)
+            {
+                this.currentItemB.Update();
+            }
 
         }
 
+        public void UseCurrentItemA(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        {
+            if (this.currentItemA != null)
+            {
+                this.currentItemA.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+            }
+        }
+
+        public void UseCurrentItemB(Direction linkDirection, int linkXPos, int linkYPos, int linkHeight, int linkWidth)
+        {
+            if (this.currentItemB != null)
+            {
+                this.currentItemB.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
+                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+            }
+        }
     }
 }
 
