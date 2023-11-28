@@ -16,7 +16,8 @@ namespace sprint0.Controllers
         private ICommand linkWalkingDown;
         private ICommand linkWalkingLeft;
         private ICommand linkWalkingRight;
-        private ICommand linkItemUse;
+        private ICommand linkItemUseA;
+        private ICommand linkItemUseB;
         private ICommand linkSword;
         private ICommand linkEquipBow;
         private ICommand linkEquipBetterBow;
@@ -35,7 +36,7 @@ namespace sprint0.Controllers
         private ICommand quit;
         private ICommand reset;
         private ICommand pause;
-        private ICommand leftScroll;
+        //private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
@@ -55,6 +56,8 @@ namespace sprint0.Controllers
             linkWalkingDown = new WalkDownCommand(Game, Globals.Link);
             linkWalkingRight = new WalkRightCommand(Game, Globals.Link);
 
+            linkItemUseA = new LinkAttackWithACommand();
+            linkItemUseB = new LinkAttackWithBCommand();
             //linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
             //linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
@@ -73,7 +76,7 @@ namespace sprint0.Controllers
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
             pause = new PauseCommand(Game);
-            leftScroll = new LeftScrollCommand(Game);
+            //leftScroll = new LeftScrollCommand(Game);
         }
 
         // used to register keys with their respective commands
@@ -115,7 +118,9 @@ namespace sprint0.Controllers
             //KeyMap.Add(Keys.R, reset);
 
             KeyMap.Add(Keys.P, pause);
-            KeyMap.Add(Keys.J, leftScroll);
+            KeyMap.Add(Keys.N, linkItemUseA);
+            KeyMap.Add(Keys.M, linkItemUseB);
+            //KeyMap.Add(Keys.J, leftScroll);
 
         }
 

@@ -25,6 +25,7 @@ namespace sprint0.Commands.GameStateCommand
 
         public void execute()
         {
+            Console.WriteLine("Item switch A");
             switch (Cursor.ReturnSelectedItem())
             {
                 case ItemTypes.BOOMERANG:

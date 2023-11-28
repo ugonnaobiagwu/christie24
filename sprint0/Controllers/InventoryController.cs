@@ -41,7 +41,8 @@ namespace sprint0.Controllers
         private ICommand linkEquipSwordA;
         private ICommand linkEquipSwordB;
 
-        private ICommand SelectItem;
+        private ICommand SelectItemA;
+        private ICommand SelectItemB;
 
         private ICommand leftScroll;
 
@@ -77,18 +78,21 @@ namespace sprint0.Controllers
             linkEquipBombB = new EquipBombToBCommand();
             linkEquipSwordA = new EquipSwordToACommand();
             linkEquipSwordB = new EquipSwordToBCommand();
-            SelectItem = new SelectItem(Game, cursor, linkEquipBow, linkEquipBomb, linkEquipBoomerang, linkEquipBlaze);
+            SelectItemA = new SelectItemACommand(Game, cursor, linkEquipBowA, linkEquipBombA, linkEquipBoomerangA, linkEquipBlazeA);
+            SelectItemB = new SelectItemBCommand(Game, cursor, linkEquipBowB, linkEquipBombB, linkEquipBoomerangB, linkEquipBlazeB);
+
             leftScroll = new LeftScrollCommand(Game);
         }
         public void registerKeys()
         {
-            KeyMap.Add(Keys.W, cursorUp);
-            KeyMap.Add(Keys.A, cursorLeft);
-            KeyMap.Add(Keys.S, cursorDown);
-            KeyMap.Add(Keys.D, cursorRight);
+            KeyMap.Add(Keys.Up, cursorUp);
+            KeyMap.Add(Keys.Left, cursorLeft);
+            KeyMap.Add(Keys.Down, cursorDown);
+            KeyMap.Add(Keys.Right, cursorRight);
 
             KeyMap.Add(Keys.J, leftScroll);
-            KeyMap.Add(Keys.B, SelectItem);
+            KeyMap.Add(Keys.A, SelectItemA);
+            KeyMap.Add(Keys.B, SelectItemB);
         }
 
         public void Update()
