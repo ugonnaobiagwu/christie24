@@ -36,6 +36,7 @@ namespace sprint0.Items
             fireTicks = 0;
             itemRoomID = 0;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
+            nullifyPosition();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -44,6 +45,12 @@ namespace sprint0.Items
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0);
             }
+        }
+
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Update()
@@ -59,7 +66,8 @@ namespace sprint0.Items
                     {
                         thisStateMachine.CeaseUse();
                         fireTicks = 0;
-                        Globals.GameObjectManager.removeObject(this);
+                        //Globals.GameObjectManager.removeObject(this);
+                        nullifyPosition();
 
                     }
                 }
