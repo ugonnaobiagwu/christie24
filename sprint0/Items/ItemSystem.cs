@@ -142,10 +142,11 @@ namespace sprint0
          * 
          * THESE EQUIPMENTS WILL BE MOVED TO THE INVENTORY SYSTEM 
          * TO AVOID NEW ITEMS BEING EQUIPPED IN THE MIDDLE OF THE CURRENT ONE
+         * 
+         * WHEN ITEM EQUIPMENT IS IN... DELETE THE OBJECT 
          */
         public void EquipBow()
         {
-          
             this.currentItem = new Bow(bowFactory, bowDespawnFactory);
             Globals.GameObjectManager.addObject(currentItem);
         }
@@ -196,7 +197,7 @@ namespace sprint0
             if (this.currentItem != null)
             {
                 this.currentItem.Use(linkDirection, linkXPos, linkYPos, linkHeight, linkWidth);
-                Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
+                //Console.WriteLine("DEBUG: ITEM HAS BEEN USED.");
             }
         }
 
