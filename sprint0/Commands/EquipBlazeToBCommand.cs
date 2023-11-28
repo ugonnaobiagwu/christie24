@@ -7,20 +7,16 @@ using sprint0;
 
 namespace sprint0.Commands
 {
-    public class EquipBombCommand : ICommand
+    public class EquipBlazeToBCommand : ICommand
     {
-        Sprint0 Game;
-        IItemSystem Item;
 
-        public EquipBombCommand(Sprint0 game, IItemSystem item)
+        public EquipBlazeToBCommand()
         {
-            this.Game = game;
-            this.Item = item;
         }
 
         public void execute()
         {
-            Item.EquipBomb();
+            Globals.LinkItemSystem.EquipBlaze(Globals.ItemSlots.SLOT_B);
         }
     }
 }

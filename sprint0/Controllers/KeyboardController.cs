@@ -55,15 +55,15 @@ namespace sprint0.Controllers
             linkWalkingDown = new WalkDownCommand(Game, Globals.Link);
             linkWalkingRight = new WalkRightCommand(Game, Globals.Link);
 
-            linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
+            //linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
-            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
-            linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
-            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
-            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
-            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
-            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
-            linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
+            //linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
             //linkDamaged = new DamagedCommand(Game);
             //nextBlock = new NextBlockCommand(Game, Game.block);
             //previousBlock = new PreviousBlockCommand(Game, Game.block);
@@ -95,15 +95,15 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.Right, linkWalkingRight);
 
             // other commands
-            KeyMap.Add(Keys.N, linkItemUse);
+            //KeyMap.Add(Keys.N, linkItemUse);
             //KeyMap.Add(Keys.Z, linkSword);
-            KeyMap.Add(Keys.D1, linkEquipBow);
-            KeyMap.Add(Keys.D2, linkEquipBetterBow);
-            KeyMap.Add(Keys.D3, linkEquipBoomerang);
-            KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
-            KeyMap.Add(Keys.D5, linkEquipBomb);
-            KeyMap.Add(Keys.D6, linkEquipBlaze);
-            KeyMap.Add(Keys.D7, linkEquipSword);
+            //KeyMap.Add(Keys.D1, linkEquipBow);
+            //KeyMap.Add(Keys.D2, linkEquipBetterBow);
+            //KeyMap.Add(Keys.D3, linkEquipBoomerang);
+            //KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
+            //KeyMap.Add(Keys.D5, linkEquipBomb);
+            //KeyMap.Add(Keys.D6, linkEquipBlaze);
+            //KeyMap.Add(Keys.D7, linkEquipSword);
             //KeyMap.Add(Keys.E, linkDamaged);
             //KeyMap.Add(Keys.T, previousBlock);
             //KeyMap.Add(Keys.Y, nextBlock);

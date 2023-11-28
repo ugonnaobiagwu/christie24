@@ -36,9 +36,13 @@ namespace sprint0.Items
             spriteChanged = false;
             itemRoomID = 0;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
+            nullifyPosition();
+        }
 
-
-
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -80,7 +84,8 @@ namespace sprint0.Items
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
                         Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
-                        Globals.GameObjectManager.removeObject(this);
+                        //Globals.GameObjectManager.removeObject(this);
+                        nullifyPosition();
 
                     }
                 }
@@ -121,7 +126,6 @@ namespace sprint0.Items
             {
                 this.currentItemSprite = itemSpriteFactory.getAnimatedSprite("Coming");
                 this.spriteChanged = true;
-
             }
         }
 

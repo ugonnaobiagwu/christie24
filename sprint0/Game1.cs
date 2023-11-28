@@ -417,19 +417,8 @@ namespace sprint0
 
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
-            // Camera, keep this since I need graphics
+            // Camera, keep this since I need graphics -- DELETE WHEN SCROLLING IS GOOD.
             Globals.Camera.FollowLink(graphics, true);
-
-            ////Globals.GameObjectManager.addObject(Globals.Link);
-            ////Globals.GameObjectManager.addObject(Globals.LinkItemSystem.currentItem);
-            ////Globals.GameObjectManager.addObject(block);
-            Globals.GameObjectManager.addObject(OktorokObj);
-            Globals.GameObjectManager.addObject(SkeletonObj);
-
-            Globals.GameObjectManager.addObject(BokoblinObj);
-            Globals.GameObjectManager.addObject(DragonObj);
-            //Globals.GameObjectManager.addObject(heart);
-
             // TODO: use this.Content to load your game content here
 
             KeyboardCont = new KeyboardController(this);
@@ -466,27 +455,7 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
-
-            //GameState testing
-            
             gameStateManager.Draw(spriteBatch);
-
-            // if (Globals.isPaused) { tempPauseState.Draw(spriteBatch); }
-            // else { currentGameState.Draw(spriteBatch); }
-            //tempInventoryState.Draw(spriteBatch);
-            //if (!Globals.isPaused) { currentGameState.Draw(spriteBatch); }
-            //else { tempDeathState.Draw(spriteBatch); }
-
-            ////HUD draw
-            //hud.Draw();
-
-            //block.Draw(spriteBatch);
-            ///* ENEMIES ADDED FOR TESTING: TO BE DELETED */
-            SkeletonObj.Draw(spriteBatch);
-            BokoblinObj.Draw(spriteBatch);
-            OktorokObj.Draw(spriteBatch);
-            DragonObj.Draw(spriteBatch);
-            //Globals.LinkItemSystem.Draw();
             base.Draw(gameTime);
             spriteBatch.End();
         }
