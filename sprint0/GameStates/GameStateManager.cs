@@ -26,7 +26,7 @@ namespace sprint0.GameStates
             InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory);
             PlayState = new PlayState(this, screenWidth, screenHeight, gameHud);
             ScrollState = new ScrollState(this, 0, Direction.Up);
-            PauseState = new PauseState(this, font, screenWidth, screenHeight);
+            PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
             CurrentState = PlayState;
             Console.WriteLine("GameStateManager Constructor");
         }
