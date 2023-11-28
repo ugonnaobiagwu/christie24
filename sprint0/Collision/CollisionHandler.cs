@@ -277,7 +277,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
-            //collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Blocks.DungeonPyramidBlock", BetterBowImpactDelegate, MoveDungeonPyramidBlockDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
@@ -404,7 +403,8 @@ namespace sprint0.Collision
 
         private void StartScrollEvent(Door door)
         {
-
+            Globals.startScrolling = true;
+            Globals.scrollFromThisDirection = door.getSideOfRoom();
         }
 
         private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
