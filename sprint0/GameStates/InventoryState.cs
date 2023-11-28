@@ -51,7 +51,7 @@ namespace sprint0.GameStates
             Globals.inventoryController.Update();
             Globals.Camera.Update(gameTime);
             //Look into updating LinkItemSystem as well
-
+            
             //Check for state transition
             this.TransitionState();
         }
@@ -81,10 +81,10 @@ namespace sprint0.GameStates
 
             //Draw the Hud
             GameHud.Draw();
-            InventoryFactory.getAnimatedSprite("Boomerang").Draw(spriteBatch, 500, -300,0.0f);
-            InventoryFactory.getAnimatedSprite("Bomb").Draw(spriteBatch, 500, -300,0.0f);
-            InventoryFactory.getAnimatedSprite("Bow").Draw(spriteBatch, 600, -200, 0.0f);
-            InventoryFactory.getAnimatedSprite("Blaze").Draw(spriteBatch, 700, -300, 0.0f);
+            InventoryFactory.getAnimatedSprite("Boomerang").Draw(spriteBatch, 455, -290,0.0f);
+            InventoryFactory.getAnimatedSprite("Bomb").Draw(spriteBatch, 585, -280,0.0f);
+            InventoryFactory.getAnimatedSprite("Bow").Draw(spriteBatch, 650, -285, 0.0f);
+            InventoryFactory.getAnimatedSprite("Blaze").Draw(spriteBatch, 730, -275, 0.0f);
             //Draw items
             //foreach (KeyValuePair<ItemTypes, Texture2D> itemEntry in itemTextureDict)
             //{

@@ -191,7 +191,7 @@ namespace sprint0
             InventoryFactory.createAnimation("Bomb", new int[] { 1 }, new int[] { 13 }, 1, 1, 3, 2);
             InventoryFactory.createAnimation("Bow", new int[] { 2 }, new int[] { 15 }, 1, 1, 3, 2);
             InventoryFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 14 }, 1, 1, 3, 2);
-            Cursor = new InventoryCursor(CursorTexture, 500, 100);
+            Cursor = new InventoryCursor(CursorTexture, 450, -300);
             gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory);
            
             mouse = Mouse.GetState();

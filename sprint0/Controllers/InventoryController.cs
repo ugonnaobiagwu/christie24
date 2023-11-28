@@ -20,8 +20,19 @@ namespace sprint0.Controllers
         private ICommand selectItemA;
         private ICommand selectItemB;
 
+        private ICommand linkEquipBow;
+        private ICommand linkEquipBetterBow;
+        private ICommand linkEquipBoomerang;
+        private ICommand linkEquipBetterBoomerang;
+        private ICommand linkEquipBomb;
+        private ICommand linkEquipBlaze;
+        private ICommand linkEquipSword;
+        private ICommand SelectItem;
+
         private ICommand leftScroll;
 
+        public float inputPoll = 0.5f;
+        public bool inputLimit = false;
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
         // to store the previous keyboard state
@@ -38,6 +49,15 @@ namespace sprint0.Controllers
             cursorUp = new CursorUpCommand(Game, cursor);
             cursorDown = new CursorDownCommand(Game, cursor);
 
+            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
+            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
+            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
+            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
+            //linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
+            SelectItem = new SelectItem(Game, cursor, linkEquipBow, linkEquipBomb, linkEquipBoomerang, linkEquipBlaze);
+
             leftScroll = new LeftScrollCommand(Game);
         }
         public void registerKeys()
@@ -48,10 +68,17 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.D, cursorRight);
 
             KeyMap.Add(Keys.J, leftScroll);
+            KeyMap.Add(Keys.B, SelectItem);
         }
 
         public void Update()
         {
+            inputPoll -= Globals.TotalSeconds;
+            if (inputPoll <= 0)
+            {
+                inputPoll += 0.5f;
+                inputLimit = false;
+            }
 
             // EDGE TRANSITIONS
             // If a key is in pressed but not in previousKeys
@@ -59,19 +86,22 @@ namespace sprint0.Controllers
             pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
 
             // press transitions
-            foreach (Keys key in pressed)
+            if (!inputLimit)
             {
-                // adds to the list the current action/command
-                if (KeyMap.ContainsKey(key) && previousKeys.Contains(key) && pressed.Contains(key))
+                foreach (Keys key in pressed)
                 {
-                    // edge transition from up to down
-                    KeyMap[key].execute();
-                    previousKeys.Add(key);
-                    // just executes ONE command
-                    break;
+                    // adds to the list the current action/command
+                    if (KeyMap.ContainsKey(key) && previousKeys.Contains(key) && pressed.Contains(key))
+                    {
+                        // edge transition from up to down
+                        KeyMap[key].execute();
+                        previousKeys.Add(key);
+                        // just executes ONE command
+                        inputLimit = true;
+                        break;
+                    }
                 }
             }
-
             // save current keys into previous keys
             previousKeys = new List<Keys>(pressed);
         }
