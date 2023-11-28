@@ -60,7 +60,7 @@ namespace sprint0.GameStates
 
             //Collision iterator, 
             
-            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInRoom());
+            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
 
             this.TransitionState();
         }

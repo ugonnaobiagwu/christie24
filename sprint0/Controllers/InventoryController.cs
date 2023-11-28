@@ -20,13 +20,27 @@ namespace sprint0.Controllers
         private ICommand selectItemA;
         private ICommand selectItemB;
 
-        private ICommand linkEquipBow;
-        private ICommand linkEquipBetterBow;
-        private ICommand linkEquipBoomerang;
-        private ICommand linkEquipBetterBoomerang;
-        private ICommand linkEquipBomb;
-        private ICommand linkEquipBlaze;
-        private ICommand linkEquipSword;
+        private ICommand linkEquipBowA;
+        private ICommand linkEquipBowB;
+
+        private ICommand linkEquipBetterBowA;
+        private ICommand linkEquipBetterBowB;
+
+        private ICommand linkEquipBoomerangA;
+        private ICommand linkEquipBoomerangB;
+
+        private ICommand linkEquipBetterBoomerangA;
+        private ICommand linkEquipBetterBoomerangB;
+
+        private ICommand linkEquipBombA;
+        private ICommand linkEquipBombB;
+
+        private ICommand linkEquipBlazeA;
+        private ICommand linkEquipBlazeB;
+
+        private ICommand linkEquipSwordA;
+        private ICommand linkEquipSwordB;
+
         private ICommand SelectItem;
 
         private ICommand leftScroll;
@@ -49,15 +63,21 @@ namespace sprint0.Controllers
             cursorUp = new CursorUpCommand(Game, cursor);
             cursorDown = new CursorDownCommand(Game, cursor);
 
-            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
-            //linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
-            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
-            //linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
-            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
-            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
-            //linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
+            linkEquipBowA = new EquipBowToACommand();
+            linkEquipBowB = new EquipBowToBCommand();
+            linkEquipBetterBowA = new EquipBetterBowToACommand();
+            linkEquipBetterBowB = new EquipBetterBowToBCommand();
+            linkEquipBoomerangA = new EquipBoomerangToACommand();
+            linkEquipBoomerangB = new EquipBoomerangToBCommand();
+            linkEquipBetterBoomerangA = new EquipBetterBoomerangToACommand();
+            linkEquipBetterBoomerangB = new EquipBetterBoomerangToBCommand();
+            linkEquipBlazeA = new EquipBlazeToACommand();
+            linkEquipBlazeB = new EquipBlazeToBCommand();
+            linkEquipBombA = new EquipBombToACommand();
+            linkEquipBombB = new EquipBombToBCommand();
+            linkEquipSwordA = new EquipSwordToACommand();
+            linkEquipSwordB = new EquipSwordToBCommand();
             SelectItem = new SelectItem(Game, cursor, linkEquipBow, linkEquipBomb, linkEquipBoomerang, linkEquipBlaze);
-
             leftScroll = new LeftScrollCommand(Game);
         }
         public void registerKeys()
