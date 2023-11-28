@@ -28,6 +28,9 @@ namespace sprint0
 		public enum ItemsInSlots { BOW, BETTER_BOW, BOOMERANG, BETTER_BOOMERANG, BLAZE, BOMB, SWORD, EMPTY};
 		public enum LinkTunic {GREEN, ICE, FIRE};
 		public enum EnemyElementType {NEUTRAL, ICE, FIRE};
+
+		public static bool startScrolling = false;
+		public static Direction scrollFromThisDirection;
     }
 }
 
