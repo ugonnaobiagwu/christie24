@@ -246,19 +246,6 @@ namespace sprint0
 
         public void EquipBetterBoomerang(Globals.ItemSlots itemSlot)
         {
-            this.currentItem = new BetterBoomerang(betterBoomerangFactory);
-            Globals.GameObjectManager.addObject(currentItem);
-
-        }
-
-        public void EquipBlaze()
-        {
-            this.currentItem = new Blaze(blazeFactory);
-            Globals.GameObjectManager.addObject(currentItem);
-
-        }
-        public void EquipBomb()
-        {
             switch (itemSlot)
             {
                 case ItemSlots.SLOT_A:
