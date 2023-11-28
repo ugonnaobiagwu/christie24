@@ -29,16 +29,28 @@ namespace sprint0.Commands.GameStateCommand
             switch (Cursor.ReturnSelectedItem())
             {
                 case ItemTypes.BOOMERANG:
-                    linkEquipBoomerang.execute();
+                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOOMERANG)
+                    {
+                        linkEquipBoomerang.execute();
+                    }
                     break;
                 case ItemTypes.BOMB:
-                    linkEquipBomb.execute();
+                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOMB)
+                    {
+                        linkEquipBomb.execute();
+                    }
                     break;
                 case ItemTypes.BOW:
-                    linkEquipBow.execute();
+                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOW)
+                    {
+                        linkEquipBow.execute();
+                    }
                     break;
                 case ItemTypes.BLAZE:
-                    linkEquipBlaze.execute();
+                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BLAZE)
+                    {
+                        linkEquipBlaze.execute();
+                    }
                     break;
             }
         }
