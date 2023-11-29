@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0.Commands;
@@ -33,7 +33,7 @@ namespace sprint0
         Texture2D textureBlock;
 
         //HUD
-        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
+     
         SpriteFont font;
         
         HUD hud;
@@ -54,6 +54,7 @@ namespace sprint0
         //Block
         public IBlock block;
         KeyboardController KeyboardCont;
+        ItemSystem itemSystem;
 
         //State Manager - in progress
         GameStateManager gameStateManager;
@@ -76,29 +77,20 @@ namespace sprint0
 
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
-            lifeSpriteSheet = Content.Load<Texture2D>("lives");
-            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
-            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
-            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
-            //inventory = new Inventory();
-
-            //TEST FOR HUD DELETE LATER!!
-
-            for (int i = 0; i < 3; i++)
-            {
-                Inventory.GainHeart();
-            }
-          
-
-            Inventory.CountRupee();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.GainBomb();
-            Inventory.GainBomb();
-            Inventory.LoseBomb();
-
-            //TEST FOR HUD
+            //hud = new HUD(spriteBatch, font);
+           Inventory.SetContentManager(Content);
+           
+            //TEST for XP
+            // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
+            // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
+            // Each block per bar is .375, so a full block would be 3
+           /* Inventory.UpdateXPLevel(6f);
+            Inventory.UpdateXPLevel(.22f);
+            Inventory.UpdateXPLevel(.22f);
+            Inventory.UpdateXPLevel(-.375f)*/;
+            Inventory.UpdateXPLevel(6f);
+           // Inventory.UpdateXPLevel(.375f);
 
             hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
             /*
