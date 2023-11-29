@@ -13,19 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-
-#begin ../../../../../../Documents/college/Project_3902/zelda/hudXPSheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:../../../../../../Documents/college/Project_3902/zelda/hudXPSheet.png;hud/hudXPSheet.png
-
 #begin background_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -499,7 +486,6 @@
 /processorParam:TextureFormat=Color
 /build:groundItemSprites/groundTriforce.png
 
-
 #begin hud/hudBetterBoomerang.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -584,6 +570,18 @@
 /processorParam:TextureFormat=Color
 /build:hud/hudXPSheet.png
 
+#begin hud/hudXPSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/hudXPSheet.png
+
 #begin hud/miniMap.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -651,17 +649,6 @@
 /processorParam:TextureFormat=Color
 /build:linkFireSword.png
 
-#begin linkIceSword.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-
 #begin linkLocator.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -686,18 +673,6 @@
 /processorParam:TextureFormat=Color
 /build:LinkSpriteSheet.png
 
-#begin linkSword.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:LinkSpriteSheet.png
-
 #begin lives.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -711,9 +686,6 @@
 /build:lives.png
 
 #begin luigiSpriteSheet.png
-/build:luigiSpriteSheet.png
-
-#begin miniMap.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -949,18 +921,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:zeldaCursor.png
-
-#begin zeldaMenuBlank.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:zeldaMenuBlank.png
 
 #begin zeldaMenuBlank.png
 /importer:TextureImporter
