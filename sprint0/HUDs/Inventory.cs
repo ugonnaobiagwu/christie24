@@ -53,13 +53,8 @@ namespace sprint0.HUDs
             BOOMERANG,
             BLAZE,
             LIFEPOTION
+        }
 
-        /* ENUM DECLARATION*/
-        public enum LinkLevel
-        { LOW, MEDIUM, HIGH }
-
-        public enum ItemTypes
-        { HEART,RUPEE,KEY,BOMB,LEVEL,MINIMAP }
 
         //Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator,Texture2D defaultLink
         public enum HUDSpriteSheet { BACKGROUNDSHEET, HEARTSHEET, MINIMAPSHEET, LINKLOCATORSHEET, TRIFORCESHEET, LINKLEVELSHEET, XPSHEET,XPMONITORSHEET }
@@ -141,7 +136,7 @@ namespace sprint0.HUDs
                     { HUDSpriteSheet.HEARTSHEET,contentManager.Load<Texture2D>("lives") },
                     { HUDSpriteSheet.MINIMAPSHEET,contentManager.Load<Texture2D>("hud/miniMap") },
                     { HUDSpriteSheet.LINKLOCATORSHEET,contentManager.Load<Texture2D>("linkLocator") },
-                     { HUDSpriteSheet.TRIFORCESHEET,contentManager.Load<Texture2D>("hud/hudTriforceLocator") },
+                     { HUDSpriteSheet.TRIFORCESHEET,contentManager.Load<Texture2D>("hud/hudTriforce") },
                     { HUDSpriteSheet.LINKLEVELSHEET,contentManager.Load<Texture2D>("hud/hudLinkLevelSheet") },
                     { HUDSpriteSheet.XPSHEET,contentManager.Load<Texture2D>("hud/hudXPSheet") },
                     { HUDSpriteSheet.XPMONITORSHEET,contentManager.Load<Texture2D>("hud/hudXPMonitor") }

@@ -32,7 +32,7 @@ namespace sprint0.HUDs
         public int HudYOffset { get; set; }
 
         //CHANGE HUD CONSTRUCTOR SO IT DOESN"T HAVE TO PASS IN TH TEXTURE@D (Probably Level loader?)
-        public HUD(SpriteBatch spriteBatch, SpriteFont font)
+        public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator)
         {
            
             this.spriteBatch = spriteBatch;

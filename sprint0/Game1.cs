@@ -31,9 +31,10 @@ namespace sprint0
         private SpriteBatch spriteBatch;
         //public ILink LinkObj;
         Texture2D textureBlock;
+        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
 
         //HUD
-     
+
         SpriteFont font;
         
         HUD hud;
@@ -90,7 +91,12 @@ namespace sprint0
             Inventory.UpdateXPLevel(.22f);
             Inventory.UpdateXPLevel(-.375f)*/;
             Inventory.UpdateXPLevel(6f);
-           // Inventory.UpdateXPLevel(.375f);
+            // Inventory.UpdateXPLevel(.375f);
+            font = Content.Load<SpriteFont>("hudFont");
+            lifeSpriteSheet = Content.Load<Texture2D>("lives");
+            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
+            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
+            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
             hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
             /*
