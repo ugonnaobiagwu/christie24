@@ -222,10 +222,10 @@ namespace sprint0.HUDs
 
             if (Inventory.CompassResult())
             {
-                float scaledWidth = .5f;
-                float scaledHeight = .5f;
-                int x = 70;
-                int y = 60;
+                float scaledWidth = .25f;
+                float scaledHeight = .25f;
+                int x = 234;
+                int y = 72;
 
                 int width = (int)(triforce.Width * scaledWidth);
                 int height = (int)(triforce.Height * scaledHeight);
