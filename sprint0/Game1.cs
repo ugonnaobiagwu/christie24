@@ -107,7 +107,11 @@ namespace sprint0
             // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
             // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
             // Each block per bar is .375, so a full block would be 3
-            Inventory.UpdateXPLevel(3.75f);
+            Inventory.UpdateXPLevel(6f);
+            Inventory.UpdateXPLevel(.22f);
+            Inventory.UpdateXPLevel(.22f);
+            //Inventory.UpdateXPLevel(-.75f);
+            //Inventory.UpdateXPLevel(.375f);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");

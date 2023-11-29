@@ -294,8 +294,9 @@ namespace sprint0.HUDs
 
 
 
-
+                
                 spriteBatch.Draw(xpMonitor, new Vector2(410 + j, 125), Color.White);
+                
 
 
                 j += xpSpacing;
@@ -314,7 +315,10 @@ namespace sprint0.HUDs
                     spriteBatch.Draw(xp, vectorPositionxp, Color.White);
 
                 }
-                if (i == maxLoop - 1 && j > xpMonitorEdge) { i = 0; }
+                if (i == maxLoop - 1) {
+
+                    if (j > xpMonitorEdge || xpNum > 0) { i = 0; }
+                } 
 
                
 
