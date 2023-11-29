@@ -68,50 +68,21 @@ namespace sprint0
 
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
-       
-
-
-            
-
-            //TEST FOR HUD DELETE LATER!!
-            
-            for (int i = 0; i < 3; i++)
-            {
-                Inventory.GainHeart();
-            }
-          
-
-            Inventory.CountRupee();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.GainBomb();
-            Inventory.GainBomb();
-            Inventory.LoseBomb();
-
-            //TEST FOR HUD
 
             hud = new HUD(spriteBatch, font);
            Inventory.SetContentManager(Content);
-            //ItemSystem.Instance.EquipBomb(Globals.ItemSlots.SLOT_A);
-            //ItemSystem.Instance.EquipBow(Globals.ItemSlots.SLOT_B);
-            //ItemSystem.Instance.EquipBetterBow(Globals.ItemSlots.SLOT_A);
-            //ItemSystem.Instance.EquipBow(Globals.ItemSlots.SLOT_A);
-
-            Inventory.SlotAItem(Globals.ItemsInSlots.BOMB);
-            Inventory.SlotBItem(Globals.ItemsInSlots.BETTER_BOW);
-            Inventory.SlotBItem(Globals.ItemsInSlots.BLAZE);
-            Inventory.SlotAItem(Globals.ItemsInSlots.SWORD);
-            //Inventory.SlotAItem(Globals.ItemsInSlots.BETTER_BOOMERANG);
+           
 
             //TEST for XP
             // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
             // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
             // Each block per bar is .375, so a full block would be 3
+           /* Inventory.UpdateXPLevel(6f);
+            Inventory.UpdateXPLevel(.22f);
+            Inventory.UpdateXPLevel(.22f);
+            Inventory.UpdateXPLevel(-.375f)*/;
             Inventory.UpdateXPLevel(6f);
-            Inventory.UpdateXPLevel(.22f);
-            Inventory.UpdateXPLevel(.22f);
-            //Inventory.UpdateXPLevel(-.75f);
-            //Inventory.UpdateXPLevel(.375f);
+           // Inventory.UpdateXPLevel(.375f);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");

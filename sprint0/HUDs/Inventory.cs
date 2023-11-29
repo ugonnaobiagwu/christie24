@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static sprint0.Globals;
 
 namespace sprint0.HUDs
 {
@@ -27,7 +28,7 @@ namespace sprint0.HUDs
         { HEART,RUPEE,KEY,BOMB,LEVEL,MINIMAP }
 
         //Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator,Texture2D defaultLink
-        public enum HUDSpriteSheet { BACKGROUNDSHEET, HEARTSHEET, MINIMAPSHEET, LINKLOCATORSHEET, LINKLEVELSHEET, XPSHEET,XPMONITORSHEET }
+        public enum HUDSpriteSheet { BACKGROUNDSHEET, HEARTSHEET, MINIMAPSHEET, LINKLOCATORSHEET, TRIFORCESHEET, LINKLEVELSHEET, XPSHEET,XPMONITORSHEET }
         public enum XPEnum
         { XP }
         public enum GroundItemsInSlot
@@ -37,9 +38,10 @@ namespace sprint0.HUDs
         public static bool hasPage { get; set; }
         public static bool hasCompass { get; set; }
         public static bool hasTriforce { get; set; }
+        public static LinkTunic CurrentTunic { get; set; }
 
         static private ContentManager contentManager;
-        static private IGameObject igameObject;
+        static private GameObjectManager gameObject;
        // static private float xpPoint = 0;
         static private int noLife, initialState; // both are initialized as 0 in default
         static private int fullLife = 10; //5 hearts
@@ -105,6 +107,7 @@ namespace sprint0.HUDs
                     { HUDSpriteSheet.HEARTSHEET,contentManager.Load<Texture2D>("lives") },
                     { HUDSpriteSheet.MINIMAPSHEET,contentManager.Load<Texture2D>("hud/miniMap") },
                     { HUDSpriteSheet.LINKLOCATORSHEET,contentManager.Load<Texture2D>("linkLocator") },
+                     { HUDSpriteSheet.TRIFORCESHEET,contentManager.Load<Texture2D>("hud/hudTriforceLocator") },
                     { HUDSpriteSheet.LINKLEVELSHEET,contentManager.Load<Texture2D>("hud/hudLinkLevelSheet") },
                     { HUDSpriteSheet.XPSHEET,contentManager.Load<Texture2D>("hud/hudXPSheet") },
                     { HUDSpriteSheet.XPMONITORSHEET,contentManager.Load<Texture2D>("hud/hudXPMonitor") }
@@ -193,7 +196,7 @@ namespace sprint0.HUDs
         {
 
             //compare the first roomID number. The first number of the roomID indicates the level number
-            items[ItemTypes.LEVEL] = igameObject.GetRoomId();
+            items[ItemTypes.LEVEL] = gameObject.getCurrentRoomID();
 
         }
         public static void GainHeart()
@@ -257,37 +260,6 @@ namespace sprint0.HUDs
         }
 
 
-        //the slots might just be in one whole method
-        //checks for slot A before B
-        //if A is empty, put the item in A, else B
-        // if A and B is full, then add it to B(?)
-        public static void Slots(Globals.ItemSlots currentSlotPlacement, Globals.ItemsInSlots currentSlotA, Globals.ItemsInSlots currentSlotB)
-        {
-            string stringCurrentSlot = currentSlotPlacement.ToString();
-            slotA = currentSlotA;
-            slotB = currentSlotB;
-
-
-            if (currentSlotPlacement.ToString() == "SLOT_A")
-            {
-
-                LocateCurrentAItemSheet();
-
-
-            }
-            else if (currentSlotPlacement.ToString() == "SLOT_B")
-            {
-
-                LocateCurrentBItemSheet();
-
-            }
-
-            // string vals = currentSlot[Globals.ItemSlots.SLOT_A].ToString();
-            //before adding in slotB check for slot As
-
-
-
-        }
 
         //METHOD MIGHT NOT BE USED (method slots used instead)
         public static void SlotAItem(Globals.ItemsInSlots currentSlotA)
