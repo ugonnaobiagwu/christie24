@@ -230,11 +230,9 @@ namespace sprint0
         }
 
         // returns the objects in the current room
-        public List<IGameObject> getOjectsInCurrentRoom()
+        public List<IGameObject> getObjectsInCurrentRoom()
         {
-            List<IGameObject> objectsInCurrentRoom = new List<IGameObject>();
-            objectsInCurrentRoom = ObjectMap[currentRoomID];
-            return objectsInCurrentRoom;
+            return ObjectMap[currentRoomID];
         }
 
         // mreturns list of all the objects in the current room that are drawable

@@ -40,7 +40,7 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            blockSprite.Draw(spriteBatch, XValue, YValue);
+            blockSprite.Draw(spriteBatch, XValue, YValue, 0.0f);
         }
         public void SetToRoomId(int ToRoomId) { }
         public int GetToRoomId()

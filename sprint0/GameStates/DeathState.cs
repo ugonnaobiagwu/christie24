@@ -1,48 +1,65 @@
 ﻿using System;
-namespace sprint0.GameStates;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using sprint0.Commands;
-using sprint0.Items.groundItems;
-using System.Runtime.CompilerServices;
-using sprint0.Controllers;
-using sprint0.Blocks;
-using sprint0.LinkObj;
-using System.Collections.Generic;
-using sprint0.AnimatedSpriteFactory;
+using sprint0.GameStates;
 
-	public class DeathState : IState
-	{
-		public DeathState()
-		{
-		}
+namespace sprint0.GameStates
+{
+    public class DeathState : IGameState
+    {
 
-        //Takes a list of all enemies and updates their 
-        public void EnemyUpdate()
+        SpriteFont Font;
+        public DeathState(GameStateManager manager, SpriteFont font)
         {
-            throw new NotImplementedException();
+            Font = font;
         }
 
-        public bool GameResettable()
+        public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+
+            //Code to check if R is pressed to reset - too lazy to make a command
+            List<Keys> pressed = new List<Keys>(Keyboard.GetState().GetPressedKeys());
+            // press transitions
+            foreach (Keys key in pressed)
+            {
+                // adds to the list the current action/command
+                if (pressed.Contains(Keys.R))
+                {
+                    this.TransitionState();
+
+                    break;
+                }
+            }
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            //Draw Screen
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
+
+            //Draw Menu - magic numbers here
+            spriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
         }
 
         public string GetState()
         {
-            throw new NotImplementedException();
+            return "death";
         }
 
-        public void LinkUpdate()
+        public void TransitionState()
         {
-            throw new NotImplementedException();
+            //Set all game objects to initial Values (New link, new GOM)
+            Globals.GameObjectManager = InitialStateHolder.InitialGameObjectManager;
+            Globals.Camera = InitialStateHolder.InitialCamera;
+            Globals.Link = InitialStateHolder.InitialLink;
         }
 
-        public void RoomUpdate()
-        {
-            throw new NotImplementedException();
-        }
+
     }
-
-
+}

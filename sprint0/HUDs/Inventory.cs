@@ -24,12 +24,26 @@ namespace sprint0.HUDs
         //ENUM
         public enum ItemTypes
         {
+            //Hud items
             HEART,
             RUPEE,
             KEY,
             BOMB,
             LEVEL,
-            MINIMAP
+            MINIMAP,
+
+            //Non-equipabble items
+            RAFT,
+            STEPLADDER,
+            POWERBRACELET,
+            COMPASS,
+            DUNGEONMAP,
+
+            //Usable items
+            BOW,
+            BOOMERANG,
+            BLAZE,
+            LIFEPOTION
 
         }
 

@@ -1,0 +1,16 @@
+Code Review Author: Matthew Dannery
+Date: 11/10/2023
+Sprint 4
+Name of File: AnimationParser.cs
+C Sharp Author: Ryan Greene
+Time Taken: 5 Minutes
+Notes: On first pass – file is very lacking in comments, adding comments to ParseAnimation and ParseAnimationSet are very dense and could use them! Otherwise methods are compact and file fits in one screen – yay.
+
+Quality:
+Code Review Author: Matthew Dannery
+Date: 11/10/2023
+Sprint 4
+Name of File: XMLParser.cs
+C Sharp Author: Ryan Greene
+Notes: File is separated into methods based on each game object, method names make the aspects of the file easy to parse, but comments would be useful within methods to understand them. 
+Otherwise file is well written and functions well within game.

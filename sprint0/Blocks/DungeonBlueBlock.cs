@@ -31,7 +31,7 @@ namespace sprint0.Blocks
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            blockSprite.Draw(spriteBatch, xValue, yValue, 0);
+            blockSprite.Draw(spriteBatch, xPosition(), yPosition(),0.0f);
         }
         public void SetToRoomId(int ToRoomId) { }
         public int GetToRoomId()

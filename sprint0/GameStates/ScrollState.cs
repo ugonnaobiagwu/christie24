@@ -1,55 +1,79 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using sprint0;
+using sprint0.BoundariesDoorsAndRooms;
+using static sprint0.Globals;
 namespace sprint0.GameStates
 {
-    public class ScrollState : StateManager, IState
+    public class ScrollState : IGameState
     {
-        public ScrollState()
+        
+        //public Direction ScrollDirection;
+        private Door EnteredDoor { get; set; }
+        Direction SideOfRoomDirection;
+        private int NewRoomId;
+        private float ScrollTime = 1.5f;
+        GameStateManager GameStateManager;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom)
         {
+            GameStateManager = manager;
+            NewRoomId = toRoomId;
+            SideOfRoomDirection = sideOfRoom;
         }
 
-        public void ScrollLeft()
+        public void Update(GameTime gameTime)
         {
-            ScrollTransition("scrollLeft");
-        }
+            Globals.Camera.Update(gameTime);
 
-        public void ScrollRight()
-        {
-            ScrollTransition("scrollRight");
-        }
-
-        public void ScrollUp()
-        {
-            ScrollTransition("scrollUp");
-        }
-
-        public void ScrollDown()
-        {
-            ScrollTransition("scrollDown");
-        }
-
-        public void ScrollTransition(string scrollInstruction)
-        {
-            switch (scrollInstruction)
+            switch (Globals.scrollFromThisDirection)
             {
-                // hopefully this works for 16x12 rooms
-                case "scrollLeft":
+                case (Direction.Left):
                     Globals.Camera.MoveCameraToLeftRoom();
                     break;
-                case "scrollRight":
+                case (Direction.Right):
                     Globals.Camera.MoveCameraToRightRoom();
                     break;
-                case "scrollUp":
+                case (Direction.Up):
                     Globals.Camera.MoveCameraToTopRoom();
                     break;
-                case "scrollDown":
+                case (Direction.Down):
                     Globals.Camera.MoveCameraToBottomRoom();
                     break;
-                default: break;
+            }
+
+            Globals.Update(gameTime);
+
+            this.TransitionState();
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Globals.LinkItemSystem.Draw();
+
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
             }
         }
 
-        public Boolean TransitionComplete() { return Globals.Camera.cameraMovementComplete();  }
+        public string GetState()
+        {
+            return "scroll";
+        }
+
+        public void TransitionState()
+        {
+            //Check to see if scroll is done
+            ScrollTime = Globals.TotalSeconds;
+            if (ScrollTime <= 0)
+            {
+                ScrollTime += 1.5f;
+                GameStateManager.ChangeState("play");
+            }
+        }
+
     }
 }
