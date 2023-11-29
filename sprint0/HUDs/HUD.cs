@@ -9,6 +9,7 @@ using System.Reflection.Metadata;
 //using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static sprint0.HUDs.Inventory;
 
 
 namespace sprint0.HUDs
@@ -64,7 +65,7 @@ namespace sprint0.HUDs
             heart = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.HEARTSHEET];
             int heartSpacing = 40;
             int j = 0;
-            int i = 0;
+            //int i = 0;
             int heartChecker = 2;
             int heartNum = Inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
             int heartWidth = heart.Width / 3;
@@ -73,7 +74,7 @@ namespace sprint0.HUDs
             Rectangle halfHeartsheet = new Rectangle(heartWidth, 0, heartWidth, heartHeight);
            
 
-            for (i = 1; i <= heartNum; i++) //Loops the amount of hearts from enum HEART in the inventory
+            for (int i = 1; i <= heartNum; i++) //Loops the amount of hearts from enum HEART in the inventory
             {
                
                 if (i == heartNum && i % heartChecker != 0) { //checks if i is at the last heart and if the last heart is odd
@@ -204,7 +205,9 @@ namespace sprint0.HUDs
                 int height = (int)(linkLocator.Height * scaledHeight);
 
 
-
+                //if link goes door above add
+                //if linkgoes left door add
+                //if link goes right door add
 
                 Rectangle destinationRectangle = new Rectangle(x, y, width, height);
                 spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
@@ -246,64 +249,103 @@ namespace sprint0.HUDs
 
         //xp calculation
         // if Link attacks, gain xp (200)
-        public void XPDisplay() {
+        public void XPLinkLevel() {
 
-            //int xpSpacing = 30;
+            
             link = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.LINKLEVELSHEET];
-            xp = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPSHEET];
-            xpMonitor = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPMONITORSHEET];
-            int j = 0;
-            int i = 0;
-            float xpNum = Inventory.currentXP[Inventory.XPEnum.XP];
+                 
             int linkWidth = link.Width;
             int linkHeight = link.Height / 3;
             int currentRow = 0;
-            Vector2 vectorPositionLinkLevel = new Vector2(380, 125);
-            Vector2 vectorPositionxp = new Vector2(410, 125);
+            Vector2 vectorPositionLinkLevel = new Vector2(380, 125);          
             Rectangle linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight); //default is low link
-            //Rectangle xpMonitor = new Rectangle(0, 0, linkWidth, linkHeight);
-
-            //if  (Inventory.currentLinkLevel == Inventory.LinkLevel.LOW) { Rectangle lowLink = new Rectangle(0, 0, linkWidth, linkHeight); }
+            
+          
             if (Inventory.currentLinkLevel == Inventory.LinkLevel.MEDIUM) { currentRow = linkHeight; }
            else if (Inventory.currentLinkLevel == Inventory.LinkLevel.HIGH) { currentRow = linkHeight * 2; }
 
             linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight);
-
-
-            // reference:   spriteBatch.Draw(heart, new Vector2(590 + j, 90), halfHeartsheet, Color.White);
-            spriteBatch.Draw(xp,vectorPositionxp,Color.White);
-            spriteBatch.Draw(xpMonitor, vectorPositionxp, Color.White);
+           
             spriteBatch.Draw(link, vectorPositionLinkLevel, linkLevel, Color.White);
 
-            for (i = 0; i <= (int)xpNum; i++) //Loops the amount of xp from enum XP in the inventory
-            {
-
-                
-
-
-
-            }
+            
         
         }
 
         public void XPMonitorDisplay()
-        { }
+        {
+            int xpSpacing = 17;
+            int xpMonitorEdge = 119;
+            int maxLoop = 8;
+            int j = 0;
+           //.375 = 3/8
+            float xpNum = Inventory.currentXP[Inventory.XPEnum.XP];
+            xpMonitor = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPMONITORSHEET];
+            xp = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPSHEET];
+            Vector2 vectorPositionxp = new Vector2(410, 125);
+
+            spriteBatch.Draw(xp, vectorPositionxp, Color.White);
+            //(int)xpNum
+            //for (int i = 0; i < 1; i++) //Loops the amount of xp from enum XP in the inventory
+            // {
+            int i = 0;
+            int yOffSet = 0;
+            while (i < maxLoop) {
+
+
+
+
+                spriteBatch.Draw(xpMonitor, new Vector2(410 + j, 125), Color.White);
+
+
+                j += xpSpacing;
+                xpNum -= .375f;
+
+
+                if (xpNum == 0 || (xpNum <= 0 && xpNum > -0.375f)) { break; } //stop draw when xpNum is 0 or negative number less than -.375
+                else if (xpNum <= -.375f) {
+                    xpNum = -1 * xpNum; // make it positive               
+                }
+
+                else if (xpNum > 0 && j > xpMonitorEdge) {
+
+                    i = 0;
+                    j = 0; // start back from 0
+                    spriteBatch.Draw(xp, vectorPositionxp, Color.White);
+
+                }
+                if (i == maxLoop - 1 && j > xpMonitorEdge) { i = 0; }
+
+               
+
+                i++;
+
+            }
+
+          
+            
+
+
+
+        }
 
             //Display all (called in Game1)
             public void Draw()
         {
 
             BackgroundDisplay();
-            XPDisplay();
+            XPLinkLevel();
+            XPMonitorDisplay();
             MiniMapDisplay();
             LinkLocatorDisplay();
             HeartDisplay();
             RupeeDisplay();
             KeyDisplay();
             BombDisplay();
+            LevelDisplay();
             SlotADisplay(); 
             SlotBDisplay(); 
-            LevelDisplay();
+            
            
 
 

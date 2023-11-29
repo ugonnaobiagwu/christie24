@@ -312,16 +312,17 @@ namespace sprint0.HUDs
 
         }
         public static void UpdateXPLevel(float updatedXp) {
-            float midLowPoint = 4.0f;
+            float midLowPoint = 3.0f;
             float midHighPoint = 5.9f;
             float highLowPoint = 6.0f;
+            float highHighPoint = 8.9f;
 
             currentXP[XPEnum.XP] += updatedXp;
 
             if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint) {
                 currentLinkLevel = LinkLevel.MEDIUM;
             }
-            else if (currentXP[XPEnum.XP] >= highLowPoint) {
+            else if (currentXP[XPEnum.XP] >= highLowPoint && currentXP[XPEnum.XP] <= highHighPoint) {
 
                 currentLinkLevel = LinkLevel.HIGH;
             }           

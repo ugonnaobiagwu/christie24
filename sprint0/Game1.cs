@@ -103,7 +103,11 @@ namespace sprint0
             Inventory.SlotAItem(Globals.ItemsInSlots.SWORD);
             //Inventory.SlotAItem(Globals.ItemsInSlots.BETTER_BOOMERANG);
 
-            Inventory.UpdateXPLevel(4.1f);
+            //TEST for XP
+            // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
+            // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
+            // Each block per bar is .375, so a full block would be 3
+            Inventory.UpdateXPLevel(3.75f);
 
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
