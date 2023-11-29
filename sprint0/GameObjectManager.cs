@@ -99,6 +99,7 @@ namespace sprint0
 
             foreach (IGameObject obj in list)
             {
+                // change magic strings to enum
                 if (obj.type() == "Block")
                 {
                     blockList.Add(obj);
