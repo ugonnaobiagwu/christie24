@@ -28,6 +28,7 @@ namespace sprint0.AnimatedSpriteFactory
 		{
 			List<Rectangle> sourceRectangleList = new List<Rectangle>();
             int width = spriteSheet.Width / spriteSheetColumns;
+            
             int height = spriteSheet.Height / spriteSheetRows;
 
             //Creates List containing source rectangles

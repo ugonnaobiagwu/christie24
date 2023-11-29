@@ -13,6 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
+
 #begin ../../../../../../Documents/college/Project_3902/zelda/hudXPSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +37,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:background_sheet.png
+
+#begin ChristieSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ChristieSpriteSheet.png
 
 #begin Debug.spritefont
 /importer:FontDescriptionImporter
@@ -91,6 +104,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Dungeon1Doors.png
+
+#begin Dungeon1FloorTextures.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Dungeon1FloorTextures.png
 
 #begin equippedItemSprites/equippedBetterBoomerang.png
 /importer:TextureImporter
@@ -303,6 +328,9 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;Font.spritefont
 
+#begin FirstDungeon.xml
+/copy:FirstDungeon.xml
+
 #begin groundItemSprites/groundBigHeart.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -471,6 +499,7 @@
 /processorParam:TextureFormat=Color
 /build:groundItemSprites/groundTriforce.png
 
+
 #begin hud/hudBetterBoomerang.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -574,6 +603,18 @@
 /processorParam:TextureFormat=Compressed
 /build:hudFont.spritefont
 
+#begin itemSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:itemSpriteSheet.png
+
 #begin legendofzelda_bosses_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -597,6 +638,29 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Link.png
+
+#begin linkFireSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkFireSword.png
+
+#begin linkIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 
 #begin linkLocator.png
 /importer:TextureImporter
@@ -632,7 +696,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:linkSword.png
+/build:LinkSpriteSheet.png
 
 #begin lives.png
 /importer:TextureImporter
@@ -647,6 +711,9 @@
 /build:lives.png
 
 #begin luigiSpriteSheet.png
+/build:luigiSpriteSheet.png
+
+#begin miniMap.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -870,4 +937,40 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:zelda-sprites-enemies.png
+
+#begin zeldaCursor.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zeldaCursor.png
+
+#begin zeldaMenuBlank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zeldaMenuBlank.png
+
+#begin zeldaMenuBlank.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:zeldaMenuBlank.png
 

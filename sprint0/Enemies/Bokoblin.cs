@@ -9,34 +9,47 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
 
 namespace sprint0.Enemies
 {
-    public class Bokoblin : IEnemy
+    public class Bokoblin : IEnemy, IElementalEnemy
     {
         private Sprint0 Game;
         private SpriteFactory BokoblinFactory;
         private SpriteBatch SpriteBatch;
         private ISprite BokoSprite;
+        private Globals.EnemyElementType element;
         private int xPos;
         private int yPos;
         private int Height;
         private int Width;
         private int RoomId;
-        private enum Direction { Up, Down, Left, Right };
-        private Direction BokoblinDirection;
+        private Globals.Direction BokoblinDirection;
         private int Health;
-        private enum State { Attack, Walk };
-        private State BokoblinState;
+        private enum State { Dead, Default };
+        private State BokoState = State.Default;
         private int[] SpriteSheetFrames;
+        private bool followLinkBehaviorOn;
         private BokoblinBoomerang Boomerang;
+        private int changeDirectionTicks = 0;
+        private int totalChangeDirectionTicks = 60;
+        private Vector2 posVector;
+        private Vector2 linkVector;
+        private float followSpeed = .05f;
+        private float followThreshold = 250.0f;
+        private int changeFollowingCourseTicks = 0;
+        private int totalFollowingCourseTicks = 10;
+        private bool inPlay;
+
+
 
         public Bokoblin(int x, int y, int roomId, SpriteFactory spriteFactory, SpriteFactory projectileFactory)
         {
             /* Subject to Change */
-            Health = 3;
+            Health = 4;
 
             xPos = x;
             yPos = y;
@@ -44,68 +57,57 @@ namespace sprint0.Enemies
             BokoblinFactory = spriteFactory;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
             Boomerang = new BokoblinBoomerang(projectileFactory);
+            element = Globals.EnemyElementType.NEUTRAL;
+
+            Globals.GameObjectManager.addObject(Boomerang);
 
             /* Temporary Values */
-            Width = 1;
-            Height = 1;
+            Width = BokoSprite.GetWidth();
+            Height = BokoSprite.GetHeight();
 
             /* Should be reduced to 1 line */
-            SpriteSheetFrames = new int[] {64, 79, 65, 80, 66, 81, 67, 82};
+            SpriteSheetFrames = new int[] { 64, 79, 65, 80, 66, 81, 67, 82 };
+            followLinkBehaviorOn = false;
+            inPlay = true;
         }
 
         /* ---Movement--- */
         public void EnemyUp()
         {
-            BokoblinDirection = Direction.Up;
+            BokoblinDirection = Globals.Direction.Up;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Up");
-            yPos++;
-            BokoSprite.Update();
+            yPos--;
+
         }
 
         public void EnemyDown()
         {
-            BokoblinDirection = Direction.Down;
+            BokoblinDirection = Globals.Direction.Down;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Down");
-            yPos--;
-            BokoSprite.Update();
+            yPos++;
+
         }
 
         public void EnemyLeft()
         {
-            BokoblinDirection = Direction.Left;
+            BokoblinDirection = Globals.Direction.Left;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
             xPos--;
-            BokoSprite.Update();
+
         }
 
         public void EnemyRight()
         {
-            BokoblinDirection = Direction.Right;
+            BokoblinDirection = Globals.Direction.Right;
             BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
             xPos++;
-            BokoSprite.Update();
+
         }
 
         /* ---Get Methods--- */
         public int getDirection()
         {
-            int direction = -1;
-            switch (BokoblinDirection)
-            {
-                case Direction.Left:
-                    direction = 1;
-                    break;
-                case Direction.Right:
-                    direction = 3;
-                    break;
-                case Direction.Up:
-                    direction = 0;
-                    break;
-                case Direction.Down:
-                    direction = 2;
-                    break;
-            }
-            return direction;
+            return (int)BokoblinDirection;
         }
 
         public int GetHealth()
@@ -115,11 +117,17 @@ namespace sprint0.Enemies
 
         public String getState()
         {
-            if (BokoblinState == State.Attack)
+            String state = "";
+            switch (BokoState)
             {
-                return "Attack";
+                case State.Default:
+                    state = "Default";
+                    break;
+                case State.Dead:
+                    state = "Dead";
+                    break;
             }
-            return "Walk";
+            return state;
         }
 
         /* ---IGameObject--- */
@@ -155,7 +163,7 @@ namespace sprint0.Enemies
 
         public bool isInPlay()
         {
-            return true;
+            return inPlay;
         }
 
         public bool isDrawable()
@@ -175,41 +183,121 @@ namespace sprint0.Enemies
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            BokoSprite.Draw(spriteBatch, xPos, yPos);
-            if (Boomerang.ThisStateMachine().isItemInUse())
+            if (!this.BokoState.Equals(State.Dead))
             {
-                Boomerang.Draw(spriteBatch);
+                BokoSprite.Draw(spriteBatch, xPos, yPos, 0.0f);
+            }
+            else
+            {
+                Boomerang.thisStateMachine.CeaseUse();
             }
         }
 
+        //Code Smell: Long Method
         public void Update()
         {
             BokoSprite.Update();
             Boomerang.Update();
 
-            Random rnd = new Random();
-            int direction = rnd.Next(4);
-
-            switch (direction)
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH)
+                /*|| Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH) */)
+            // it shouldn't change once its set so idk if the above line is neccesary
             {
-                case 0:
-                    EnemyUp();
-                    break;
-                case 1:
-                    EnemyLeft();
-                    break;
-                case 2:
-                    EnemyDown();
-                    break;
-                case 3:
-                    EnemyRight();
-                    break;
+                element = Globals.EnemyElementType.FIRE;
+                followLinkBehaviorOn = true;
+            }
+
+            //Enemy Movement
+            
+            /*
+             * If Link is at max level, the enemies will chase him. Here's how it works for when I'm reading this again later:
+             * 
+             * Given two vectors, Link's vector and a vector for the Enemy's position..
+             * If the distance between the two positions are smaller than the follow threshold 
+             * (which will ensure enemies outside of Link's room won't try to follow him) as well as the followTicks limit is met
+             * (which just controls how quickly the Sprite can "change course")
+             * 
+             * Grab the direction in which the Enemy mus travel towards Link, and increment his position to be a fraction of the total distance in the direction an enemy must travel to get to Link.
+             * Change its Sprite depending on where it's going, and reset the "changeCourse" timer.
+             * 
+             * Set his new X and Y positions.
+             */
+            if (followLinkBehaviorOn)
+            {
+                posVector = new Vector2(xPos, yPos);
+                linkVector = new Vector2(Globals.Link.xPosition(), Globals.Link.yPosition());
+                if (Vector2.Distance(posVector, linkVector) <= followThreshold && changeFollowingCourseTicks >= totalFollowingCourseTicks)
+                {
+                    Vector2 direction = Vector2.Normalize(linkVector - posVector);
+                    posVector += direction * followSpeed * Vector2.Distance(posVector, linkVector);
+                    if (linkVector.X > posVector.X)
+                    {
+                        BokoSprite = BokoblinFactory.getAnimatedSprite("Right");
+                    }
+                    else if (linkVector.X < posVector.X)
+                    {
+                        BokoSprite = BokoblinFactory.getAnimatedSprite("Left");
+                    }
+                    changeFollowingCourseTicks = 0;
+                }
+                changeFollowingCourseTicks++;
+
+                this.xPos = (int)posVector.X;
+                this.yPos = (int)posVector.Y;
+
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    BokoblinDirection = (Globals.Direction)rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+
+            }
+            else
+            {
+                if (changeDirectionTicks >= totalChangeDirectionTicks)
+                {
+                    Random rnd = new Random();
+                    BokoblinDirection = (Globals.Direction)rnd.Next(4);
+                    changeDirectionTicks = 0;
+                }
+                else
+                {
+                    changeDirectionTicks++;
+                }
+                switch (BokoblinDirection)
+                {
+                    case Globals.Direction.Left:
+                        EnemyLeft();
+                        break;
+                    case Globals.Direction.Right:
+                        EnemyRight();
+                        break;
+                    case Globals.Direction.Up:
+                        EnemyUp();
+                        break;
+                    case Globals.Direction.Down:
+                        EnemyDown();
+                        break;
+                }
             }
 
             if (!Boomerang.ThisStateMachine().isItemInUse())
             {
                 BokoblinThrow();
             }
+
+            if (this.BokoState.Equals(State.Dead))
+            {
+                inPlay = false;
+                Globals.GameObjectManager.removeObject(this);
+
+            }
+
         }
 
         /* ---Other Methods--- */
@@ -235,10 +323,10 @@ namespace sprint0.Enemies
                 }
             }
 
-            Health--;
+            Health = Health - 2;
             if (Health <= 0)
             {
-                /* Code to delete the Bokoblin */
+                BokoState = State.Dead;
             }
         }
 
@@ -246,11 +334,12 @@ namespace sprint0.Enemies
         {
             switch (state)
             {
-                case "Attack":
-                    BokoblinState = State.Attack;
+                case "Default":
+                    BokoState = State.Default;
                     break;
-                case "Walk":
-                    BokoblinState = State.Walk;
+                case "Dead":
+                    BokoState = State.Dead;
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_DIE);
                     break;
             }
         }
@@ -268,8 +357,41 @@ namespace sprint0.Enemies
 
         public void ChangeEnemyX(int change)
         {
-           yPos += change;
+            yPos += change;
         }
         public String type() { return "Enemy"; }
+
+        public Globals.EnemyElementType EnemyElement()
+        {
+            return element;
+        }
+
+        public void TakeCriticalDamage()
+        {
+            // theres no such thing as crit damage if you have not been leveled up yet.
+            if (element.Equals(Globals.EnemyElementType.FIRE))
+            {
+                Console.WriteLine("Critical Hit!");
+                Health = Health - 3;
+                if (Health <= 0)
+                {
+                    BokoState = State.Dead;
+                }
+            }
+        }
+
+        public void TakeMinimalDamage()
+        {
+            // likewise theres no such thing as min damage if you have not been leveled up yet.
+            if (element.Equals(Globals.EnemyElementType.FIRE))
+            {
+                Console.WriteLine("Minimal Hit");
+                Health = Health - 1;
+                if (Health <= 0)
+                {
+                    BokoState = State.Dead;
+                }
+            }
+        }
     }
 }

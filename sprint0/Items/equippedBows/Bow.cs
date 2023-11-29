@@ -17,7 +17,7 @@ namespace sprint0.Items
         private int itemMinX;
         private int itemMinY;
         private float rotation;
-        private int spriteVelocity = 1;
+        private int spriteVelocity = 3;
         // needs these positions for sprite swapping.
 
         //direction stuff
@@ -38,8 +38,14 @@ namespace sprint0.Items
             spriteChanged = false;
             rotation = 0;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bow");
+            nullifyPosition();
+        }
 
-
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -81,10 +87,7 @@ namespace sprint0.Items
                     }
 
                 }
-                if (this.currentItemSprite != null)
-                {
-                    this.currentItemSprite.Update();
-                }
+
             }
 
         }
@@ -103,7 +106,8 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                this.currentItemSprite = null;
+                //Globals.GameObjectManager.removeObject(this);
+                nullifyPosition();
             }
         }
 
@@ -149,12 +153,8 @@ namespace sprint0.Items
 
         private bool finishedAnimationCycle()
         {
-            //Console.WriteLine(currentItemSprite.GetCurrentFrame());
-
             if (currentItemSprite.GetCurrentFrame() == 0)
             {
-                //Console.WriteLine("eyo! an animation has finished");
-
                 return true;
             }
             else

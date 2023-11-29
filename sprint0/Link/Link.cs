@@ -26,7 +26,7 @@ namespace sprint0.LinkObj
         private bool IsInPlay = true;
         private bool IsDynamic = true;
         SpriteFactory LinkSpriteFactory;
-        private int HealthVal { get; set; }
+        public int HealthVal { get; set; }
         public int XVal { get; set; }
         public int YVal { get; set; }
         private int RoomId;

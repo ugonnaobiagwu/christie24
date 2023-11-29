@@ -43,7 +43,11 @@ namespace sprint0.Blocks
             Columns = columns;
 
         }
-
+        public int GetToRoomId()
+        {
+            return - 1;
+        }
+        public void SetToRoomId(int toRoomId) { }
        /* public void Draw(SpriteBatch spriteBatch, int x, int y)
         {
 
@@ -69,7 +73,7 @@ namespace sprint0.Blocks
 
         }*/
 
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
         public void Explode() { }
         public void Update() { }
         public String type() { return "Block"; }

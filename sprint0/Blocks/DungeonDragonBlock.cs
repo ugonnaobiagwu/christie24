@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,17 +25,16 @@ namespace sprint0.Blocks
         public int Columns { get; set; }
         private int XValue { get; set; }
         private int YValue { get; set; }
+        private int toRoomId { get; set; }
 
 
 
-
-        public DungeonDragonBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public DungeonDragonBlock(int x, int y, SpriteFactory spriteFactory)
         {
             blockSprite = spriteFactory.getAnimatedSprite("DungeonDragonBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
         public DungeonDragonBlock(Texture2D texture, int rows, int columns)
         {
@@ -45,6 +45,14 @@ namespace sprint0.Blocks
             /*InitializeFrame();*/
         }
 
+        public void SetToRoomId(int toRoomId)
+        {
+            this.toRoomId = toRoomId;
+        }
+        public int GetToRoomId()
+        {
+            return toRoomId;
+        }
         /* private void InitializeFrame()
          {
 
@@ -77,7 +85,7 @@ namespace sprint0.Blocks
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }*/
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
         public void Explode() { }
         public void Update() { }
 
@@ -98,6 +106,3 @@ namespace sprint0.Blocks
     }
 
 }
-
-
-

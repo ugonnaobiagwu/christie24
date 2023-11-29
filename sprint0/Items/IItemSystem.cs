@@ -15,12 +15,11 @@ namespace sprint0
 
 		public void LoadBow(SpriteFactory factory, SpriteFactory despawnFactory);
 		public void LoadBetterBow(SpriteFactory factory, SpriteFactory despawnFactory);
-
         public void LoadBoomerang(SpriteFactory factory);
 		public void LoadBetterBoomerang(SpriteFactory factory);
 		public void LoadBlaze(SpriteFactory factory);
 		public void LoadBomb(SpriteFactory factory, SpriteFactory explosiveFactory);
-        public void LoadSword(SpriteFactory factory);
+		public void LoadSword(SpriteFactory factory, SpriteFactory iceFactory, SpriteFactory fireFactory);
         public void LoadSpriteBatch(SpriteBatch incomingSpriteBatch);
 
         /* Equipment methods. Can only be called if an item is not alraedy equipped to that 

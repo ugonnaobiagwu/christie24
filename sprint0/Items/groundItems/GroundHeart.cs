@@ -16,7 +16,7 @@ namespace sprint0.Items.groundItems
         // Does Level Loader like this signature?
         public GroundHeart(SpriteFactory factory, int xPos, int yPos)
         {
-            this.currentItemSprite = factory.getAnimatedSprite("Rupee");
+            this.currentItemSprite = factory.getAnimatedSprite("GroundHeart");
             this.xPos = xPos;
             this.yPos = yPos;
             isPickedUp = false;
@@ -26,7 +26,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos, 0);
             }
         }
 
@@ -54,16 +54,17 @@ namespace sprint0.Items.groundItems
         {
             isPickedUp = true;
             Inventory.GainHeart();
+            Globals.GameObjectManager.removeObject(this);
         }
 
         public bool isUpdateable()
         {
-            return false;
+            return true;
         }
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
@@ -93,7 +94,7 @@ namespace sprint0.Items.groundItems
 
         public string type()
         {
-            return "GroundHeart";
+            return "Item";
         }
     }
 }
