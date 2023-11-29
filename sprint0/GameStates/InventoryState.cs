@@ -85,6 +85,10 @@ namespace sprint0.GameStates
             InventoryFactory.getAnimatedSprite("Bomb").Draw(HudInvSpriteBatch, 585, -280,0.0f);
             InventoryFactory.getAnimatedSprite("Bow").Draw(HudInvSpriteBatch, 650, -285, 0.0f);
             InventoryFactory.getAnimatedSprite("Blaze").Draw(HudInvSpriteBatch, 730, -275, 0.0f);
+
+            InventoryFactory.getAnimatedSprite("NeutralState").Draw(HudInvSpriteBatch, 475, -345, 0.0f);
+            InventoryFactory.getAnimatedSprite("FireState").Draw(HudInvSpriteBatch, 545, -345, 0.0f);
+            InventoryFactory.getAnimatedSprite("IceState").Draw(HudInvSpriteBatch, 615, -345, 0.0f);
             //Draw items
             //foreach (KeyValuePair<ItemTypes, Texture2D> itemEntry in itemTextureDict)
             //{

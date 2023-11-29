@@ -193,6 +193,10 @@ namespace sprint0
             InventoryFactory.createAnimation("Bomb", new int[] { 1 }, new int[] { 13 }, 1, 1, 3, 2);
             InventoryFactory.createAnimation("Bow", new int[] { 2 }, new int[] { 15 }, 1, 1, 3, 2);
             InventoryFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 14 }, 1, 1, 3, 2);
+            InventoryFactory.createAnimation("NeutralState", new int[] { 3}, new int[] {4},1,1,3,2);
+            InventoryFactory.createAnimation("FireState", new int[] { 3 }, new int[] { 5 }, 1, 1, 3, 2);
+            InventoryFactory.createAnimation("IceState", new int[] { 3 }, new int[] { 6 }, 1, 1, 3, 2);
+
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
             gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content);
            
