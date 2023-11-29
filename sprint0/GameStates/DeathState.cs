@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using sprint0.GameStates;
 using sprint0.LevelLoading;
 using Microsoft.Xna.Framework.Content;
+using sprint0.Controllers;
 
 namespace sprint0.GameStates
 {
@@ -67,6 +68,7 @@ namespace sprint0.GameStates
             XmlDocument xmlFile = new XmlDocument();
             xmlFile.Load("Content/FirstDungeon.xml");
             XmlParser.ParseFile(xmlFile, Content);
+            Globals.keyboardController.resetLinkCommands();
             GameStateManager.ChangeState("play");
         }
 

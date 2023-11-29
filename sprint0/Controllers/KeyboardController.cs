@@ -37,6 +37,7 @@ namespace sprint0.Controllers
         private ICommand reset;
         private ICommand pause;
         private ICommand damageLink;
+        private Sprint0 game1;
         //private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
@@ -48,6 +49,7 @@ namespace sprint0.Controllers
 
         public KeyboardController(sprint0.Sprint0 Game)
         {
+            game1 = Game;
             KeyMap = new Dictionary<Keys, ICommand>();
             previousKeys = new List<Keys>();
 
@@ -124,6 +126,16 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.M, linkItemUseB);
             //KeyMap.Add(Keys.J, leftScroll);
 
+        }
+
+        public void resetLinkCommands()
+        {
+            linkWalkingUp = new WalkUpCommand(game1, Globals.Link);
+            linkWalkingLeft = new WalkLeftCommand(game1, Globals.Link);
+            linkWalkingDown = new WalkDownCommand(game1, Globals.Link);
+            linkWalkingRight = new WalkRightCommand(game1, Globals.Link);
+            KeyMap = new Dictionary<Keys, ICommand>();
+            this.registerKeys();
         }
 
         // executes commands for each key pressed
