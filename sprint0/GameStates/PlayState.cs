@@ -90,11 +90,18 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Code for state transition here
+            //Death State
             if (Globals.Link.GetHealth() <= 0)
             {
                 GameStateManager.ChangeState("death");
             }
 
+            //Scroll State
+            if(Globals.startScrolling == true)
+            {
+                Globals.startScrolling = false;
+                GameStateManager.ChangeState("scroll");
+            }
             inputPoll -= Globals.TotalSeconds;
             if (inputPoll <= 0)
             {

@@ -10,12 +10,15 @@ namespace sprint0.GameStates
     public class ScrollState : IGameState
     {
         
-        public Direction ScrollDirection;
+        //public Direction ScrollDirection;
         private Door EnteredDoor { get; set; }
         Direction SideOfRoomDirection;
         private int NewRoomId;
-        public ScrollState(GameStateManager managers, int toRoomId, Direction sideOfRoom)
+        private float ScrollTime = 1.5f;
+        GameStateManager GameStateManager;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom)
         {
+            GameStateManager = manager;
             NewRoomId = toRoomId;
             SideOfRoomDirection = sideOfRoom;
         }
@@ -24,7 +27,7 @@ namespace sprint0.GameStates
         {
             Globals.Camera.Update(gameTime);
 
-            switch (ScrollDirection)
+            switch (Globals.scrollFromThisDirection)
             {
                 case (Direction.Left):
                     Globals.Camera.MoveCameraToLeftRoom();
@@ -41,6 +44,8 @@ namespace sprint0.GameStates
             }
 
             Globals.Update(gameTime);
+
+            this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -62,6 +67,12 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Check to see if scroll is done
+            ScrollTime = Globals.TotalSeconds;
+            if (ScrollTime <= 0)
+            {
+                ScrollTime += 1.5f;
+                GameStateManager.ChangeState("play");
+            }
         }
 
     }

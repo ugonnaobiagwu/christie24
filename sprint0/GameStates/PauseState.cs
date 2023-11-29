@@ -4,6 +4,7 @@ using System.Reflection.Metadata;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0.HUDs;
 
 namespace sprint0.GameStates
 {
@@ -14,13 +15,15 @@ namespace sprint0.GameStates
         SpriteFont Font;
         private float inputPoll = 2.0f;
         private bool inputLimit = true;
+        HUD GameHud;
         GameStateManager GameStateManager;
-        public PauseState(GameStateManager manager, SpriteFont font, int screenWidth, int screenHeight)
+        public PauseState(GameStateManager manager, SpriteFont font, int screenWidth, int screenHeight, HUD gameHud)
         {
             GameStateManager = manager;
             Font = font;
             ScreenWidth = screenWidth;
             ScreenHeight = screenHeight;
+            GameHud = gameHud;
         }
 
         public void Update(GameTime gameTime)
@@ -34,12 +37,12 @@ namespace sprint0.GameStates
         {
             //Draw all room and game objects + hud here
             Globals.LinkItemSystem.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
             }
-
+            GameHud.Draw();
             //Draw pause in center of screen
             spriteBatch.DrawString(Font, "-Pause-", new Vector2(ScreenWidth / 2, ScreenHeight / 3), Color.White);
             //Notes - Vector2 has magic numbers, replace with values to draw in center of screen
