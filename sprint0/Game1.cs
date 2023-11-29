@@ -29,6 +29,7 @@ namespace sprint0
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private SpriteBatch HudInventorySpriteBatch;
         //public ILink LinkObj;
         Texture2D textureBlock;
 
@@ -73,6 +74,7 @@ namespace sprint0
         {
             //Moved here in order to have values initialized before key mapping
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            HudInventorySpriteBatch = new SpriteBatch(GraphicsDevice);
 
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
@@ -100,7 +102,7 @@ namespace sprint0
 
             //TEST FOR HUD
 
-            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
+            hud = new HUD(HudInventorySpriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
             /*
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
@@ -192,7 +194,7 @@ namespace sprint0
             InventoryFactory.createAnimation("Bow", new int[] { 2 }, new int[] { 15 }, 1, 1, 3, 2);
             InventoryFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 14 }, 1, 1, 3, 2);
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
-            gameStateManager = new GameStateManager(font, spriteBatch, InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content);
            
             mouse = Mouse.GetState();
 
@@ -297,7 +299,10 @@ namespace sprint0
             WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
 
             // Camera, keep this since I need graphics -- DELETE WHEN SCROLLING IS GOOD.
+            //These are the only way the graphics device manager is initialized in camera
+            //- will need to add new way to do this if we delete these calls
             Globals.Camera.FollowLink(graphics, true);
+            Globals.HudInventoryCamera.FollowLink(graphics, true);
             // TODO: use this.Content to load your game content here
 
             KeyboardCont = new KeyboardController(this);
@@ -335,9 +340,11 @@ namespace sprint0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(transformMatrix: Globals.Camera.Transform);
-            gameStateManager.Draw(spriteBatch);
+            HudInventorySpriteBatch.Begin(transformMatrix: Globals.HudInventoryCamera.Transform);
+            gameStateManager.Draw(spriteBatch, HudInventorySpriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
+            HudInventorySpriteBatch.End();
         }
     }
 }

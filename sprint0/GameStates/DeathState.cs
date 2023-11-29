@@ -43,7 +43,7 @@ namespace sprint0.GameStates
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             //Draw Screen
             List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
@@ -53,7 +53,7 @@ namespace sprint0.GameStates
             }
 
             //Draw Menu - magic numbers here
-            spriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
+            HudInvSpriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
         }
 
         public string GetState()
@@ -63,6 +63,7 @@ namespace sprint0.GameStates
 
         public void TransitionState()
         {
+            //Note for future - camera does not currently reset, needs fix
             //Set all game objects to initial Values (New link, new GOM)
             Globals.GameObjectManager.ResetGOM();
             XmlDocument xmlFile = new XmlDocument();

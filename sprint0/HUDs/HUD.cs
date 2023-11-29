@@ -111,21 +111,21 @@ namespace sprint0.HUDs
             int rupeeCount = Inventory.items[Inventory.ItemTypes.RUPEE];
             
             //draw rupee number            
-            spriteBatch.DrawString(font, rupeeCount.ToString(), new Vector2(340, 35), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
+            spriteBatch.DrawString(font, rupeeCount.ToString(), new Vector2(340, 35 + HudYOffset), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
 
         }
         //Key display
         protected void KeyDisplay()
         {
             int keyCount = Inventory.items[Inventory.ItemTypes.KEY];
-            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(340, 75), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
+            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(340, 75 + HudYOffset), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
         }
 
         protected void BombDisplay()
         {
             int bombCount = Inventory.items[Inventory.ItemTypes.BOMB];
 
-            spriteBatch.DrawString(font, bombCount.ToString(), new Vector2(340, 110), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
+            spriteBatch.DrawString(font, bombCount.ToString(), new Vector2(340, 110 + HudYOffset), Color.White, 0, Vector2.Zero, fontSize, SpriteEffects.None, 0);
         }
 
         //slot A item
@@ -187,7 +187,7 @@ namespace sprint0.HUDs
         {
             //get the level room number
             //change "1" so it links to the roomID that gets passed into the parameter of Inventory
-            spriteBatch.DrawString(font, "1", new Vector2(210, 15), Color.White, 0, Vector2.Zero, 2, SpriteEffects.None, 0);
+            spriteBatch.DrawString(font, "1", new Vector2(210, 15 + HudYOffset), Color.White, 0, Vector2.Zero, 2, SpriteEffects.None, 0);
         }
 
         //xp calculation
@@ -213,6 +213,7 @@ namespace sprint0.HUDs
         /*public void XP(){}*/
 
         public int ReturnHUDHeight() { return hudBackground.Height; }
+        public void setSpriteBatch(SpriteBatch newSpriteBatch) { this.spriteBatch = newSpriteBatch; Console.WriteLine("Hud SB changed"); }
     }
 
 }

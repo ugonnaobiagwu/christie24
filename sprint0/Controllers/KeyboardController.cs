@@ -38,7 +38,7 @@ namespace sprint0.Controllers
         private ICommand pause;
         private ICommand damageLink;
         private Sprint0 game1;
-        //private ICommand leftScroll;
+        private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
@@ -80,7 +80,7 @@ namespace sprint0.Controllers
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
             pause = new PauseCommand(Game);
-            //leftScroll = new LeftScrollCommand(Game);
+            leftScroll = new LeftScrollCommand(Game);
         }
 
         // used to register keys with their respective commands
@@ -124,7 +124,7 @@ namespace sprint0.Controllers
             KeyMap.Add(Keys.P, pause);
             KeyMap.Add(Keys.N, linkItemUseA);
             KeyMap.Add(Keys.M, linkItemUseB);
-            //KeyMap.Add(Keys.J, leftScroll);
+            KeyMap.Add(Keys.J, leftScroll);
 
         }
 
