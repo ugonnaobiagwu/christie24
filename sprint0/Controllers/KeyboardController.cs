@@ -36,6 +36,7 @@ namespace sprint0.Controllers
         private ICommand quit;
         private ICommand reset;
         private ICommand pause;
+        private ICommand damageLink;
         //private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
@@ -58,6 +59,7 @@ namespace sprint0.Controllers
 
             linkItemUseA = new LinkAttackWithACommand();
             linkItemUseB = new LinkAttackWithBCommand();
+            damageLink = new DamageLinkCommand();
             //linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
             //linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
@@ -96,7 +98,7 @@ namespace sprint0.Controllers
             // link moves right for right arrow key, and d key
             KeyMap.Add(Keys.D, linkWalkingRight);
             KeyMap.Add(Keys.Right, linkWalkingRight);
-
+            KeyMap.Add(Keys.Y, damageLink);
             // other commands
             //KeyMap.Add(Keys.N, linkItemUse);
             //KeyMap.Add(Keys.Z, linkSword);

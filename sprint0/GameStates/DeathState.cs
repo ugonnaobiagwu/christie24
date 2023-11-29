@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
+using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0.GameStates;
+using sprint0.LevelLoading;
+using Microsoft.Xna.Framework.Content;
 
 namespace sprint0.GameStates
 {
@@ -11,9 +15,13 @@ namespace sprint0.GameStates
     {
 
         SpriteFont Font;
-        public DeathState(GameStateManager manager, SpriteFont font)
+        ContentManager Content;
+        GameStateManager GameStateManager;
+        public DeathState(GameStateManager manager, SpriteFont font, ContentManager content, GameStateManager gameStateManager)
         {
             Font = font;
+            Content = content;
+            GameStateManager = gameStateManager;
         }
 
         public void Update(GameTime gameTime)
@@ -37,7 +45,7 @@ namespace sprint0.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             //Draw Screen
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
@@ -55,9 +63,11 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Set all game objects to initial Values (New link, new GOM)
-            Globals.GameObjectManager = InitialStateHolder.InitialGameObjectManager;
-            Globals.Camera = InitialStateHolder.InitialCamera;
-            Globals.Link = InitialStateHolder.InitialLink;
+            Globals.GameObjectManager.ResetGOM();
+            XmlDocument xmlFile = new XmlDocument();
+            xmlFile.Load("Content/FirstDungeon.xml");
+            XmlParser.ParseFile(xmlFile, Content);
+            GameStateManager.ChangeState("play");
         }
 
 
