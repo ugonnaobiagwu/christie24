@@ -203,6 +203,8 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot B.");
                             this.currentItemB = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot A.");
+
                         this.currentItemA = new BetterBow(bowFactory, bowDespawnFactory);
                         ItemInSlotA = ItemsInSlots.BETTER_BOW;
                         Globals.GameObjectManager.addObject(currentItemA);
@@ -219,6 +221,7 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot A.");
                             this.currentItemA = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         this.currentItemB = new BetterBow(bowFactory, bowDespawnFactory);
                         ItemInSlotB = ItemsInSlots.BETTER_BOW;
                         Globals.GameObjectManager.addObject(currentItemB);
@@ -280,6 +283,7 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot B.");
                             this.currentItemB = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         this.currentItemA = new BetterBoomerang(betterBoomerangFactory);
                         ItemInSlotA = ItemsInSlots.BETTER_BOOMERANG;
                         Globals.GameObjectManager.addObject(currentItemA);
@@ -296,6 +300,7 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot A.");
                             this.currentItemA = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot B.");
                         this.currentItemB = new BetterBoomerang(betterBoomerangFactory);
                         ItemInSlotB = ItemsInSlots.BETTER_BOOMERANG;
                         Globals.GameObjectManager.addObject(currentItemB);
@@ -318,9 +323,9 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot B.");
                             this.currentItemB = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         this.currentItemA = new Blaze(blazeFactory);
                         ItemInSlotA = ItemsInSlots.BLAZE;
-
                         Globals.GameObjectManager.addObject(currentItemA);
                     }
                     break;
@@ -334,9 +339,9 @@ namespace sprint0
                             Console.WriteLine("Nullified Item in Item Slot A.");
                             this.currentItemA = new NullItem();
                         }
+                        Console.WriteLine("Equipped Item in Item Slot B.");
                         this.currentItemB = new Blaze(blazeFactory);
                         ItemInSlotB = ItemsInSlots.BLAZE;
-
                         Globals.GameObjectManager.addObject(currentItemB);
                     }
                     break;
@@ -358,7 +363,7 @@ namespace sprint0
                         }
                         this.currentItemA = new Bomb(bombFactory, bombExplodeFactory);
                         ItemInSlotA = ItemsInSlots.BOMB;
-
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         Globals.GameObjectManager.addObject(currentItemA);
                     }
                     break;
@@ -374,7 +379,7 @@ namespace sprint0
                         }
                         this.currentItemB = new Bomb(bombFactory, bombExplodeFactory);
                         ItemInSlotB = ItemsInSlots.BOMB;
-
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         Globals.GameObjectManager.addObject(currentItemB);
                     }
                     break;
@@ -396,7 +401,7 @@ namespace sprint0
                         }
                         this.currentItemA = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
                         ItemInSlotA = ItemsInSlots.SWORD;
-
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         Globals.GameObjectManager.addObject(currentItemA);
                     }
                     break;
@@ -412,7 +417,7 @@ namespace sprint0
                         }
                         this.currentItemB = new Sword(swordFactory, iceSwordFactory, fireSwordFactory);
                         ItemInSlotB = ItemsInSlots.SWORD;
-
+                        Console.WriteLine("Equipped Item in Item Slot A.");
                         Globals.GameObjectManager.addObject(currentItemB);
                     }
                     break;
@@ -450,10 +455,13 @@ namespace sprint0
             if (this.currentItemA != null)
             {
                 this.currentItemA.Update();
+                this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
             }
             if (this.currentItemB != null)
             {
                 this.currentItemB.Update();
+                this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
+
             }
 
         }
