@@ -55,11 +55,11 @@ namespace sprint0.GameStates
                 updateable.Update();
             }
 
-            //Update global timer
+            //Update global timer.
             Globals.Update(gameTime);
 
             //Collision iterator, 
-            
+
             CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
 
             this.TransitionState();

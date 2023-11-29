@@ -322,6 +322,7 @@ namespace sprint0
             // TODO: Add your update logic here
             //GameState testing
             gameStateManager.Update(gameTime);
+            Globals.GameObjectManager.deleteObjects();
 
             //SkeletonObj.Update();
             //OktorokObj.Update();

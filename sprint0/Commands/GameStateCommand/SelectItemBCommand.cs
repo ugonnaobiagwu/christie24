@@ -25,32 +25,20 @@ namespace sprint0.Commands.GameStateCommand
 
         public void execute()
         {
-            Console.WriteLine("Item switch Bs");
+            //Console.WriteLine("Item switch Bs");
             switch (Cursor.ReturnSelectedItem())
             {
                 case ItemTypes.BOOMERANG:
-                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOOMERANG)
-                    {
-                        linkEquipBoomerang.execute();
-                    }
+                    linkEquipBoomerang.execute();
                     break;
                 case ItemTypes.BOMB:
-                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOMB)
-                    {
-                        linkEquipBomb.execute();
-                    }
+                    linkEquipBomb.execute();
                     break;
                 case ItemTypes.BOW:
-                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BOW)
-                    {
-                        linkEquipBow.execute();
-                    }
+                    linkEquipBow.execute();
                     break;
                 case ItemTypes.BLAZE:
-                    if (Globals.LinkItemSystem.ItemInSlotA != Globals.ItemsInSlots.BLAZE)
-                    {
-                        linkEquipBlaze.execute();
-                    }
+                    linkEquipBlaze.execute();
                     break;
             }
         }
