@@ -19,6 +19,11 @@ namespace sprint0.Collision
         private const float CRIT_XP = .375f;
         private const float MIN_XP = .1f;
         private const float REG_XP = .238f;
+        private const float KEY_ITEM_FIND_XP = .7f;
+        private const float ITEM_FIND_XP = .4f;
+        private const float RUPEE_FIND_XP = .2f;
+
+
 
 
         /*
@@ -412,6 +417,7 @@ namespace sprint0.Collision
             Globals.startScrolling = true;
             Globals.scrollFromThisDirection = door.getSideOfRoom();
             Globals.Link.SetRoomId(door.GetToRoomId());
+            Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
         }
 
         private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -960,15 +966,31 @@ namespace sprint0.Collision
                 if (itemType.Equals("sprint0.Items.groundItems.GroundRupee"))
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
+                    Inventory.UpdateXPLevel(RUPEE_FIND_XP);
 
                 }
                 else if (itemType.Equals("sprint0.Items.groundItems.GroundKey") || itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+                    Inventory.UpdateXPLevel(ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
+                    {
+                        Globals.Link.GainHealth(1);
+                        Inventory.GainHeart();
+                    }
                 }
                 else
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+                    Inventory.UpdateXPLevel(KEY_ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
+                    {
+                        Globals.Link.GainHealth(3);
+                        Inventory.GainHeart();
+                        Inventory.GainHeart();
+                        Inventory.GainHeart();
+                    }
+
                 }
             }
 
