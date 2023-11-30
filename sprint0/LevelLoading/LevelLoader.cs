@@ -100,6 +100,7 @@ namespace sprint0.LevelLoading
         public static void CreateLink(int x, int y, SpriteFactory spriteFactory)
         {
             ILink linkObj = new Link(x, y, spriteFactory);
+            Globals.Link = linkObj;
             Globals.GameObjectManager.addObject(Globals.Link);
         }
         public static void CreateProjectileEnemy(int x, int y, int roomId, string enemyType, SpriteFactory enemyFactory, SpriteFactory projectileFactory)
