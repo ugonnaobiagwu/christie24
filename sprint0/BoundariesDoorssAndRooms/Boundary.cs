@@ -65,9 +65,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             //Nothing to draw
         }
-        public string type()
-        {
-            return "Boundary";
-        }
+        public GameObjectType type { get { return GameObjectType.BOUNDARY; } }
     }
 }

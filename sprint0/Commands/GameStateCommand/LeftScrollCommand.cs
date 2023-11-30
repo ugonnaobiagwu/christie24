@@ -10,7 +10,8 @@ namespace sprint0.Commands.GameStateCommand
         }
         public void execute()
         {
-            Globals.Camera.MoveCameraToLeftRoom();
+            Globals.startScrolling = true;
+            //Globals.Camera.MoveCameraToLeftRoom();
             Console.WriteLine("Left scroll command");
         }
     }

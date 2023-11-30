@@ -570,18 +570,6 @@
 /processorParam:TextureFormat=Color
 /build:hud/hudXPSheet.png
 
-#begin hud/hudXPSheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:hud/hudXPSheet.png
-
 #begin hud/miniMap.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -648,6 +636,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:linkFireSword.png
+
+#begin linkIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkIceSword.png
 
 #begin linkLocator.png
 /importer:TextureImporter

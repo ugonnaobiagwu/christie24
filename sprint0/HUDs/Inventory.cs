@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.LinkObj;
+using sprint0.Sound.Ocarina;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -20,12 +21,6 @@ namespace sprint0.HUDs
         {
             LOW, MEDIUM, HIGH
         }
-
-        /* ELEMENTAL ENEMIES AND SCALING TESTING. REMOVE THIS LINE AND INIT
-         * THIS VALUE PROPERLY WHEN YOU GET TO IT.
-         */
-        
-        public static LinkLevel CurrentLinkLevel = LinkLevel.HIGH;
 
 
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
@@ -67,7 +62,6 @@ namespace sprint0.HUDs
         public static bool hasPage { get; set; }
         public static bool hasCompass { get; set; }
         public static bool hasTriforce { get; set; }
-        public static LinkTunic CurrentTunic { get; set; }
 
         static private ContentManager contentManager;
         static private GameObjectManager gameObject;
@@ -80,7 +74,7 @@ namespace sprint0.HUDs
         
        
 
-        public static LinkLevel currentLinkLevel = LinkLevel.LOW;
+        public static LinkLevel CurrentLinkLevel = LinkLevel.LOW;
         public static Globals.ItemsInSlots slotA = Globals.ItemsInSlots.EMPTY;
         public static Globals.ItemsInSlots slotB = Globals.ItemsInSlots.EMPTY;
            
@@ -102,7 +96,7 @@ namespace sprint0.HUDs
                 {ItemTypes.HEART, defaultLife}, //Begins with 3 Hearts
                 {ItemTypes.RUPEE, initialState},
                 {ItemTypes.KEY,initialState},
-                {ItemTypes.BOMB,initialState},
+                {ItemTypes.BOMB,10},
                 {ItemTypes.LEVEL,1}, //starts at level 1
                 {ItemTypes.MINIMAP,initialState}
             };
@@ -320,12 +314,20 @@ namespace sprint0.HUDs
 
             currentXP[XPEnum.XP] += updatedXp;
 
-            if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint) {
-                currentLinkLevel = LinkLevel.MEDIUM;
+            if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint)
+            { 
+                if (CurrentLinkLevel != LinkLevel.MEDIUM)
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED);
+                }
+                CurrentLinkLevel = LinkLevel.MEDIUM;
             }
             else if (currentXP[XPEnum.XP] >= highLowPoint && currentXP[XPEnum.XP] <= highHighPoint) {
-
-                currentLinkLevel = LinkLevel.HIGH;
+                if (CurrentLinkLevel != LinkLevel.HIGH)
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED);
+                }
+                CurrentLinkLevel = LinkLevel.HIGH;
             }           
         
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using sprint0.GameStates;
+using static sprint0.Globals;
 using static sprint0.HUDs.Inventory;
 
 namespace sprint0.Commands.GameStateCommand
@@ -26,20 +27,38 @@ namespace sprint0.Commands.GameStateCommand
         public void execute()
         {
             //Console.WriteLine("Item switch Bs");
-            switch (Cursor.ReturnSelectedItem())
+            if (Cursor.currentRow == 0)
             {
-                case ItemTypes.BOOMERANG:
-                    linkEquipBoomerang.execute();
-                    break;
-                case ItemTypes.BOMB:
-                    linkEquipBomb.execute();
-                    break;
-                case ItemTypes.BOW:
-                    linkEquipBow.execute();
-                    break;
-                case ItemTypes.BLAZE:
-                    linkEquipBlaze.execute();
-                    break;
+                switch (Cursor.ReturnSelectedItem())
+                {
+                    case ItemTypes.BOOMERANG:
+                        linkEquipBoomerang.execute();
+                        break;
+                    case ItemTypes.BOMB:
+                        linkEquipBomb.execute();
+                        break;
+                    case ItemTypes.BOW:
+                        linkEquipBow.execute();
+                        break;
+                    case ItemTypes.BLAZE:
+                        linkEquipBlaze.execute();
+                        break;
+                }
+            }
+            else if (Cursor.currentRow == 1)
+            {
+                switch (Cursor.ReturnSelectedTunic())
+                {
+                    case LinkTunic.GREEN:
+                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.GREEN;
+                        break;
+                    case LinkTunic.FIRE:
+                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
+                        break;
+                    case LinkTunic.ICE:
+                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        break;
+                }
             }
         }
     }

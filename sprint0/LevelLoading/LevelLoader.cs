@@ -10,6 +10,7 @@ using sprint0.BoundariesDoorsAndRooms;
 using sprint0.Items.groundItems;
 using sprint0.LinkObj;
 using sprint0;
+using sprint0.Enemies;
 
 namespace sprint0.LevelLoading
 {
@@ -63,19 +64,16 @@ namespace sprint0.LevelLoading
                 case "DungeonFishBlock":
                     block = new DungeonFishBlock(x, y, spriteFactory);
                     block.SetRoomId(roomId);
-                    block.SetToRoomId(toRoomId); ;
                     SendToGOM(block);
                     break;
                 case "DungeonDragonBlock":
                     block = new DungeonDragonBlock(x, y, spriteFactory);
                     block.SetRoomId(roomId);
-                    block.SetToRoomId(toRoomId); ;
                     SendToGOM(block);
                     break;
                 case "RedPyramidBlock":
                     block = new RedPyramidBlock(x, y, spriteFactory);
                     block.SetRoomId(roomId);
-                    block.SetToRoomId(toRoomId); ;
                     SendToGOM(block);
                     break;
                 default:
@@ -101,24 +99,29 @@ namespace sprint0.LevelLoading
         {
             ILink linkObj = new Link(x, y, spriteFactory);
             Globals.Link = linkObj;
-            Globals.GameObjectManager.addObject(Globals.Link);
+            linkObj.SetRoomId(0);
 
+            Globals.GameObjectManager.addObject(Globals.Link);
         }
-        public static void CreateProjectileEnemy(int x, int y, int roomId, string enemyType, SpriteFactory enemyFactory, SpriteFactory projectileFactory)
+        public static void CreateEnemy(int x, int y, int roomId, string enemyType, SpriteFactory[] factoryArray)
         {
             IGameObject enemy;
-            /*NOTE FOR REFACTORING: If we were to add methods to IBlock for altering its attributes, we wouldn't need multiple block
-             concrete classes and could remove this block statement.  This would require new XmlNodes and edits to CreateBlock()*/
             switch (enemyType)
             {
                 case "Oktorok":
-                    /* enemy = new DungeonBlueBlock(x, y, spriteFactory);
-                       enemy.SetRoomId(roomId);
-                       SendToGOM(enemy);*/
+                   enemy = new Oktorok(x, y, roomId, factoryArray[0],factoryArray[1]);
+                      //SendToGOM(enemy);
+                    break;
+                case "Bokoblin":
+                    enemy = new Bokoblin(x, y, roomId, factoryArray[0], factoryArray[1]);
+                    break;
+                case "Skeleton":
+                    enemy = new Skeleton(x, y, roomId, factoryArray[0]);
                     break;
                 default:
                     break;
             }
+            
         }
         public static void CreateFloor(int x, int y, int roomId, SpriteFactory floorFactory)
         {

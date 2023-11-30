@@ -69,19 +69,19 @@ namespace sprint0
                 dynamics.Add(obj);
             }
 
-            if (obj.isDrawable() && obj.type() != "Room" && obj.type() !="Floor" && obj.type() != "Door") // drawable objects
+            if (obj.isDrawable() && obj.type != GameObjectType.ROOM && obj.type != GameObjectType.FLOOR && obj.type != GameObjectType.DOOR) // drawable objects
             {
                 drawables.Add(obj);
             }
-            else if (obj.isDrawable() && obj.type() == "Room")
+            else if (obj.isDrawable() && obj.type == GameObjectType.ROOM)
             {
                 roomList.Add(obj);
             }
-            else if (obj.isDrawable() && obj.type() == "Door")
+            else if (obj.isDrawable() && obj.type == GameObjectType.DOOR)
             {
                 doorList.Add(obj);
             }
-            else if (obj.isDrawable() && obj.type() == "Floor")
+            else if (obj.isDrawable() && obj.type == GameObjectType.FLOOR)
             {
                 floorList.Add(obj);
             }
@@ -107,19 +107,19 @@ namespace sprint0
 
             foreach (IGameObject obj in list)
             {
-                if (obj.type() == "Block")
+                if (obj.type == GameObjectType.BLOCK)
                 {
                     blockList.Add(obj);
                 }
-                else if (obj.type() == "Item")
+                else if (obj.type == GameObjectType.ITEM)
                 {
                     itemList.Add(obj);
                 }
-                else if (obj.type() == "Enemy")
+                else if (obj.type == GameObjectType.ENEMY)
                 {
                     enemyList.Add(obj);
                 }
-                else if (obj.type() == "Link")
+                else if (obj.type == GameObjectType.LINK)
                 {
                     linkList.Add(obj);
                 }
@@ -300,6 +300,23 @@ namespace sprint0
             // returns list, otherwise if it is an unknown roomID, returns empty List
             return ObjectMap;
 
+        }
+        public void ResetGOM()
+        {
+            drawables = new List<IGameObject>();
+            updateables = new List<IGameObject>();
+            dynamics = new List<IGameObject>();
+            inPlay = new List<IGameObject>();
+            deleteList = new List<IGameObject>();
+            roomList = new List<IGameObject>();
+            doorList = new List<IGameObject>();
+            floorList = new List<IGameObject>();
+            roomIDs = new List<int>();
+
+            // map to hold all the objects in each room
+            ObjectMap = new Dictionary<int, List<IGameObject>>();
+
+            currentRoomID = 0;
         }
     }
 }

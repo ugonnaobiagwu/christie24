@@ -30,19 +30,22 @@ namespace sprint0.GameStates
         public GraphicsDeviceManager graphics { get; set; }
         GameStateManager GameStateManager;
         HUD GameHud;
-        public PlayState(GameStateManager manager, int screenWidth, int screenHeight, HUD gameHud)
+        SpriteBatch SpriteBatch,StaticHudSB;
+        public PlayState(GameStateManager manager, int screenWidth, int screenHeight, HUD gameHud, SpriteBatch spriteBatch,  SpriteBatch staticHudSB)
         {
             GameStateManager = manager;
             ScreenHeight = screenHeight;
             ScreenWidth = screenWidth;
             GameHud = gameHud;
+            StaticHudSB = staticHudSB;
+            SpriteBatch = spriteBatch;
         }
 
         public void Update(GameTime gameTime)
         {
             //Globals.Camera.FollowLink(graphics, true);
             Globals.Camera.Update(gameTime);
-
+            Globals.HudInventoryCamera.Update(gameTime);
 
             //KeyboardCont.Update();
             Globals.keyboardController.Update();
@@ -65,7 +68,7 @@ namespace sprint0.GameStates
             this.TransitionState();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             
             
@@ -75,6 +78,7 @@ namespace sprint0.GameStates
             {
                 obj.Draw(spriteBatch);
             }
+            //GameHud.setSpriteBatch(spriteBatch);
             GameHud.Draw();
             if (Globals.Link != null)
             {
@@ -99,6 +103,7 @@ namespace sprint0.GameStates
             //Scroll State
             if(Globals.startScrolling == true)
             {
+                
                 Globals.startScrolling = false;
                 GameStateManager.ChangeState("scroll");
             }

@@ -89,7 +89,7 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
-        public String type() { return "Item"; }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

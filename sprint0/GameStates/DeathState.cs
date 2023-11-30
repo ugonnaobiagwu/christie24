@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
+using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using sprint0.GameStates;
+using sprint0.LevelLoading;
+using Microsoft.Xna.Framework.Content;
+using sprint0.Controllers;
 
 namespace sprint0.GameStates
 {
@@ -11,9 +16,13 @@ namespace sprint0.GameStates
     {
 
         SpriteFont Font;
-        public DeathState(GameStateManager manager, SpriteFont font)
+        ContentManager Content;
+        GameStateManager GameStateManager;
+        public DeathState(GameStateManager manager, SpriteFont font, ContentManager content, GameStateManager gameStateManager)
         {
             Font = font;
+            Content = content;
+            GameStateManager = gameStateManager;
         }
 
         public void Update(GameTime gameTime)
@@ -34,17 +43,17 @@ namespace sprint0.GameStates
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             //Draw Screen
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
             }
 
             //Draw Menu - magic numbers here
-            spriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
+            HudInvSpriteBatch.DrawString(Font, "Press R to reset game", new Vector2(150, 150), Color.White);
         }
 
         public string GetState()
@@ -54,10 +63,14 @@ namespace sprint0.GameStates
 
         public void TransitionState()
         {
+            //Note for future - camera does not currently reset, needs fix
             //Set all game objects to initial Values (New link, new GOM)
-            Globals.GameObjectManager = InitialStateHolder.InitialGameObjectManager;
-            Globals.Camera = InitialStateHolder.InitialCamera;
-            Globals.Link = InitialStateHolder.InitialLink;
+            Globals.GameObjectManager.ResetGOM();
+            XmlDocument xmlFile = new XmlDocument();
+            xmlFile.Load("Content/FirstDungeon.xml");
+            XmlParser.ParseFile(xmlFile, Content);
+            Globals.keyboardController.resetLinkCommands();
+            GameStateManager.ChangeState("play");
         }
 
 

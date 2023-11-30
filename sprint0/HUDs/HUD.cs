@@ -17,9 +17,6 @@ namespace sprint0.HUDs
     public class HUD
     {
 
-
-        
-
         static Texture2D hudBackground;
         static Texture2D heart, miniMap, linkLocator, gem, itemA, itemB, triforce,link, xp,xpMonitor;
         SpriteBatch spriteBatch;
@@ -431,10 +428,6 @@ namespace sprint0.HUDs
 
                 while (i < maxLoop)
                 {
-
-
-
-
                     spriteBatch.Draw(xpMonitor, new Vector2((xpX + j) + HudXOffset, xpY + HudYOffset), Color.White);
 
 
@@ -492,14 +485,12 @@ namespace sprint0.HUDs
             SlotADisplay(); 
             SlotBDisplay(); 
             
-           
-
-
         }
 
 
 
         public int ReturnHUDHeight() { return hudBackground.Height; }
+        public void setSpriteBatch(SpriteBatch newSpriteBatch) { this.spriteBatch = newSpriteBatch; Console.WriteLine("Hud SB changed"); }
     }
 
 }
