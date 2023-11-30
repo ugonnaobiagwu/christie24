@@ -15,4 +15,5 @@ public interface IManager<T> where T : IGameObject
     List<T> getObjectsInRoom(int roomID);
     List<IGameObject> getObjectsInCurrentRoom();
     Dictionary<int, List<T>> getDictionary();
+    void ResetGOM();
 }

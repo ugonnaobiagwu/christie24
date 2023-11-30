@@ -32,7 +32,10 @@ namespace sprint0.LevelLoading
         //COMMENTED OUT WHILE Game1 is a parameter static ParseDelegate LinkParser = new ParseDelegate(ParseLink);
         public static void ParseFile(XmlDocument doc, ContentManager content)
         {
-            PopulateParseInstructions();
+            if (ContentParseInstructions.Count == 0)
+            {
+                PopulateParseInstructions();
+            }
             ParseLink(doc.DocumentElement.SelectSingleNode("Link"), content);
             ParseItems(doc.DocumentElement.SelectSingleNode("Items"), content);
             XmlNodeList roomList = doc.DocumentElement.SelectNodes("Room");

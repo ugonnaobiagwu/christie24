@@ -8,7 +8,7 @@ namespace sprint0.GameStates
     {
         //Self explanatory
         void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, SpriteBatch HudInventorySpriteBatch);
 
         //State methods
         String GetState();

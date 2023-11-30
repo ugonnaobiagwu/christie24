@@ -301,5 +301,22 @@ namespace sprint0
             return ObjectMap;
 
         }
+        public void ResetGOM()
+        {
+            drawables = new List<IGameObject>();
+            updateables = new List<IGameObject>();
+            dynamics = new List<IGameObject>();
+            inPlay = new List<IGameObject>();
+            deleteList = new List<IGameObject>();
+            roomList = new List<IGameObject>();
+            doorList = new List<IGameObject>();
+            floorList = new List<IGameObject>();
+            roomIDs = new List<int>();
+
+            // map to hold all the objects in each room
+            ObjectMap = new Dictionary<int, List<IGameObject>>();
+
+            currentRoomID = 0;
+        }
     }
 }

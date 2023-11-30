@@ -18,6 +18,7 @@ namespace sprint0
 		public static GameObjectManager GameObjectManager = new GameObjectManager();
 		public enum Direction { Left, Right, Up, Down }
 		public static Camera Camera = new Camera();
+		public static Camera HudInventoryCamera = new Camera();
 		public static ILink Link;
 		public static KeyboardController keyboardController;
 

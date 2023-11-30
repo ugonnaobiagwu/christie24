@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using sprint0;
 using sprint0.BoundariesDoorsAndRooms;
 using static sprint0.Globals;
+using sprint0.HUDs;
 namespace sprint0.GameStates
 {
     public class ScrollState : IGameState
@@ -16,11 +17,13 @@ namespace sprint0.GameStates
         private int NewRoomId;
         private float ScrollTime = 1.5f;
         GameStateManager GameStateManager;
-        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom)
+        HUD GameHud;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud)
         {
             GameStateManager = manager;
             NewRoomId = toRoomId;
             SideOfRoomDirection = sideOfRoom;
+            GameHud = newHud;
         }
 
         public void Update(GameTime gameTime)
@@ -48,15 +51,16 @@ namespace sprint0.GameStates
             this.TransitionState();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             Globals.LinkItemSystem.Draw();
-
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
             }
+            GameHud.Draw();
         }
 
         public string GetState()
@@ -67,10 +71,11 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Check to see if scroll is done
-            ScrollTime = Globals.TotalSeconds;
+            ScrollTime -= Globals.TotalSeconds;
             if (ScrollTime <= 0)
             {
                 ScrollTime += 1.5f;
+                Globals.startScrolling = false;
                 GameStateManager.ChangeState("play");
             }
         }

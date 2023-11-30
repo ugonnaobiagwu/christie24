@@ -33,7 +33,7 @@ namespace sprint0.GameStates
             this.TransitionState();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             //Draw all room and game objects + hud here
             Globals.LinkItemSystem.Draw();
@@ -44,7 +44,7 @@ namespace sprint0.GameStates
             }
             GameHud.Draw();
             //Draw pause in center of screen
-            spriteBatch.DrawString(Font, "-Pause-", new Vector2(ScreenWidth / 2, ScreenHeight / 3), Color.White);
+            HudInvSpriteBatch.DrawString(Font, "-Pause-", new Vector2(ScreenWidth / 2, ScreenHeight / 3), Color.White);
             //Notes - Vector2 has magic numbers, replace with values to draw in center of screen
         }
 

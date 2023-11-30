@@ -6,6 +6,7 @@ using sprint0.HUDs;
 using sprint0.BoundariesDoorsAndRooms;
 using sprint0.AnimatedSpriteFactory;
 using static sprint0.Globals;
+using Microsoft.Xna.Framework.Content;
 
 namespace sprint0.GameStates
 {
@@ -19,13 +20,13 @@ namespace sprint0.GameStates
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content)
         {
 
-            DeathState = new DeathState(this, font);
+            DeathState = new DeathState(this, font, content, this);
             InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory);
-            PlayState = new PlayState(this, screenWidth, screenHeight, gameHud);
-            ScrollState = new ScrollState(this, 0, Direction.Up);
+            PlayState = new PlayState(this, screenWidth, screenHeight, gameHud, spriteBatch,staticHudSB);
+            ScrollState = new ScrollState(this, 0, Direction.Up,gameHud);
             PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
             CurrentState = PlayState;
             Console.WriteLine("GameStateManager Constructor");
@@ -36,10 +37,10 @@ namespace sprint0.GameStates
             CurrentState.Update(gameTime);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
 
-            CurrentState.Draw(spriteBatch);
+            CurrentState.Draw(spriteBatch, HudInvSpriteBatch);
         }
         public void ChangeState(String newState)//Change to enum in the future - lazy for now
         {
@@ -65,10 +66,10 @@ namespace sprint0.GameStates
             }
         }
         public IGameState GetInventoryState() { return InventoryState; }
-        public void SetNewScrollState(int toRoomId, Direction sideOfRoom)
-        {
-            ScrollState = new ScrollState(this,toRoomId,sideOfRoom);
-            if (CurrentState.Equals(PlayState)) { this.ChangeState("scroll"); }
-        }
+        //public void SetNewScrollState(int toRoomId, Direction sideOfRoom)
+        //{
+        //    ScrollState = new ScrollState(this,toRoomId,sideOfRoom);
+        //    if (CurrentState.Equals(PlayState)) { this.ChangeState("scroll"); }
+        //}
     }
 }

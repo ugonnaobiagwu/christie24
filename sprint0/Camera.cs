@@ -21,6 +21,8 @@ public class Camera
         // up to change later
         roomHeight = 160;
         roomWidth = 120;
+
+        
     }
     /* The Camera now follows Link 
      * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)

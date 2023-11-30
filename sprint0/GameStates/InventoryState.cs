@@ -56,7 +56,7 @@ namespace sprint0.GameStates
             this.TransitionState();
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             //Draw paused game to scroll out of
             Globals.LinkItemSystem.Draw();
@@ -77,14 +77,18 @@ namespace sprint0.GameStates
             int width = (int)(InventoryTexture.Width * ScaleWidth);
             int height = (int)(InventoryTexture.Height * ScaleHeight);
             Rectangle destinationRectangle = new Rectangle(x, y, width, height);
-            spriteBatch.Draw(InventoryTexture, destinationRectangle, Color.White);
+            HudInvSpriteBatch.Draw(InventoryTexture, destinationRectangle, Color.White);
 
             //Draw the Hud
             GameHud.Draw();
-            InventoryFactory.getAnimatedSprite("Boomerang").Draw(spriteBatch, 455, -290,0.0f);
-            InventoryFactory.getAnimatedSprite("Bomb").Draw(spriteBatch, 585, -280,0.0f);
-            InventoryFactory.getAnimatedSprite("Bow").Draw(spriteBatch, 650, -285, 0.0f);
-            InventoryFactory.getAnimatedSprite("Blaze").Draw(spriteBatch, 730, -275, 0.0f);
+            InventoryFactory.getAnimatedSprite("Boomerang").Draw(HudInvSpriteBatch, 455, -290,0.0f);
+            InventoryFactory.getAnimatedSprite("Bomb").Draw(HudInvSpriteBatch, 585, -280,0.0f);
+            InventoryFactory.getAnimatedSprite("Bow").Draw(HudInvSpriteBatch, 650, -285, 0.0f);
+            InventoryFactory.getAnimatedSprite("Blaze").Draw(HudInvSpriteBatch, 730, -275, 0.0f);
+
+            InventoryFactory.getAnimatedSprite("NeutralState").Draw(HudInvSpriteBatch, 475, -345, 0.0f);
+            InventoryFactory.getAnimatedSprite("FireState").Draw(HudInvSpriteBatch, 545, -345, 0.0f);
+            InventoryFactory.getAnimatedSprite("IceState").Draw(HudInvSpriteBatch, 615, -345, 0.0f);
             //Draw items
             //foreach (KeyValuePair<ItemTypes, Texture2D> itemEntry in itemTextureDict)
             //{
@@ -109,13 +113,14 @@ namespace sprint0.GameStates
             Rectangle sourceRectangle = new Rectangle();
             sourceRectangle.Height = Cursor.CursorTexture.Height;
             sourceRectangle.Width = Cursor.CursorTexture.Width;
-            spriteBatch.Draw(Cursor.CursorTexture, Cursor.CursorPosition, sourceRectangle, Color.White, 0.0f, new Vector2(0, 0), new Vector2(1.15f, 0.7f), SpriteEffects.None, 0.0f);
+            HudInvSpriteBatch.Draw(Cursor.CursorTexture, Cursor.CursorPosition, sourceRectangle, Color.White, 0.0f, new Vector2(0, 0), new Vector2(1.15f, 0.7f), SpriteEffects.None, 0.0f);
 
             if (!ScrollOnce)
             {
                 //Console.WriteLine(Globals.Camera.getCameraYPos());
                 ScrollOnce = true;
                 Globals.Camera.MoveCameraUp((int)((float)InventoryTexture.Height * ScaleHeight));
+                Globals.HudInventoryCamera.MoveCameraUp((int)((float)InventoryTexture.Height * ScaleHeight));
                 //Globals.Camera.MoveCameraUp(100);
                 //Console.WriteLine(Globals.Camera.getCameraYPos());
             }
@@ -145,6 +150,7 @@ namespace sprint0.GameStates
                     if (pressed.Contains(Keys.I))
                     {
                         Globals.Camera.MoveCameraDown((int)((float)InventoryTexture.Height * ScaleHeight));
+                        Globals.HudInventoryCamera.MoveCameraDown((int)((float)InventoryTexture.Height * ScaleHeight));
                         inputPoll = 2.0f;
                         inputLimit = true;
                         ScrollOnce = false;
