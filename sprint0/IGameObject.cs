@@ -1,10 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Security.Cryptography.X509Certificates;
-
+using sprint0;
 
 namespace sprint0
 {
+    public enum GameObjectType
+    {
+        BOUNDARY,
+        ROOM,
+        DOOR,
+        FLOOR,
+        BLOCK,
+        ITEM,
+        ENEMY,
+        LINK,
+        NPC
+    }
     public interface IGameObject
     {
         public int xPosition();
@@ -19,6 +31,6 @@ namespace sprint0
         public int GetRoomId();
         public void Draw(SpriteBatch spriteBatch);
         public void Update();
-        public String type();
+        public GameObjectType type{ get; }
     }
 }

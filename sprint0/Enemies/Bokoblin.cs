@@ -359,7 +359,7 @@ namespace sprint0.Enemies
         {
             yPos += change;
         }
-        public String type() { return "Enemy"; }
+        public GameObjectType type { get { return GameObjectType.ENEMY; } }
 
         public Globals.EnemyElementType EnemyElement()
         {

@@ -185,7 +185,7 @@ namespace sprint0.LinkObj
             LinkObj.Update();
         }
 
-        public String type() { return "Link"; }
+        public GameObjectType type { get { return GameObjectType.LINK; } }
         public void ChangeXandYValue(int x, int y)
         {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using sprint0;
 
 namespace sprint0.LinkObj
 {
@@ -16,7 +17,7 @@ namespace sprint0.LinkObj
     using System.Numerics;
     using System.Security.Cryptography.X509Certificates;
     using static sprint0.Globals;
-
+    using sprint0;
 
     /* Need to make interface*/
     public class Link : ILink
@@ -244,7 +245,7 @@ namespace sprint0.LinkObj
         {
             LinkSprite.Draw(spriteBatch, XVal, YVal,0);
         }
-        public String type() { return "Link"; }
+        public GameObjectType type { get { return GameObjectType.LINK; } }
         public void ChangeXandYValue(int x, int y)
         {
             XVal = x;

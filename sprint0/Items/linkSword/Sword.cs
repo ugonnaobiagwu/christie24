@@ -215,7 +215,7 @@ namespace sprint0.LinkSword
         {
             return this.itemRoomID;
         }
-        public String type() { return "Item"; }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 
