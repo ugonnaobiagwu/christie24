@@ -40,6 +40,7 @@ KNOWN BUGS AND ISSUES:
 * Fun Fact: Collision Rectangles are slightly off because the images use a float for scaling, but the width and height gets the decimal value truncated. White space in the SpriteSheets don't help either.
 * Certain Song files fade out and start again. Purely because thats how the file was ripped.
 * Some animations don't actually animate.
+* Link won't start wearing his new tunic until he starts walking again.
 
 
 Please visit the issues for additional bugs that may not have been addressed here. This, by no means, is an exhaustive list.
