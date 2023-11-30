@@ -80,6 +80,7 @@ namespace sprint0
             hud = new HUD(HudInventorySpriteBatch, font);
 
             //Game States - in progress
+            Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
             Texture2D inventoryItemsTexture = Content.Load<Texture2D>("itemSpriteSheet");
@@ -94,7 +95,7 @@ namespace sprint0
             InventoryFactory.createAnimation("IceState", new int[] { 3 }, new int[] { 6}, 1, 1, 3, 2);
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen);
            
             mouse = Mouse.GetState();
 
