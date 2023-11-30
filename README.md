@@ -2,6 +2,7 @@
 # SPRINT 5: 
 
 WHAT WE ACCOMPLISHED:
+
 --Our Sprint 4 Backlog is Near Completion (as of 11/30)!
 * Collision: Collision is Working with All Game Objects and Handles the Collision Events
 * GameStates: Scrolling, Inventory, Pause and Death States are In
