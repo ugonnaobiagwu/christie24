@@ -130,18 +130,9 @@ namespace sprint0.LevelLoading
             SpriteFactory[] factoryArray = new SpriteFactory[AnimationSetNodes.Count];
             for (int i = 0; i < AnimationSetNodes.Count; i++)
             {
-                SpriteFactory enemyFactory = AnimationParser.ParseAnimationSet(AnimationSetNodes[0], content);
-                factoryArray[i] = enemyFactory;
+                factoryArray[i] = AnimationParser.ParseAnimationSet(AnimationSetNodes[i], content);
             }
-            //This could probably be crunched into a list of some kind
-            if (AnimationSetNodes.Count > 1)
-            {
-                //CreateProjectileEnemy(x, y, enemyType, roomId, enemyType, factoryArray);
-            }
-            else
-            {
-                // CreateEnemy(x, y, enemyType, roomId, enemyType);
-            }
+            LevelLoader.CreateEnemy(x, y, roomId, enemyType, factoryArray);
         }
         private static void ParseFloor(XmlNode floorNode, int roomId, ContentManager content)
         {

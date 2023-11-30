@@ -1,12 +1,12 @@
-﻿using sprint0.AnimatedSpriteFactory;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using sprint0.LinkObj;
+using sprint0;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static sprint0.Globals;
-using sprint0.LinkObj;
 
 namespace sprint0.LinkObj
 {
@@ -18,14 +18,15 @@ namespace sprint0.LinkObj
         public void LinkLeft();
         public void LinkRight();
         public void LinkTakeDamage();
-        public void LinkUseItem();
         public String GetState();
         public Direction GetDirection();
         public int GetHealth();
         public void SetLink(ILink link);
-        public void SetState(Link.State newState);
+        public void SetState(Link.State state);
         public void SetSprite(ISprite newSprite);
+        public void GainHealth(int addedHealth);
         public void ChangeXandYValue(int x, int y);
 
-    } 
+
+    }
 }
