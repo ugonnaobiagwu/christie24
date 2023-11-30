@@ -164,7 +164,7 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
-        public String type() { return "Enemy"; }
+        public GameObjectType type { get { return GameObjectType.ENEMY; } }
 
     }
 }

@@ -68,9 +68,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             floorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0);
         }
-        public string type()
-        {
-            return "Floor";
-        }
+        public GameObjectType type { get { return GameObjectType.FLOOR; } }
     }
 }
