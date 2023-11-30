@@ -93,12 +93,9 @@ namespace sprint0
             Inventory.UpdateXPLevel(6f);
             // Inventory.UpdateXPLevel(.375f);
             font = Content.Load<SpriteFont>("hudFont");
-            lifeSpriteSheet = Content.Load<Texture2D>("lives");
-            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
-            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
-            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
-            hud = new HUD(spriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
+            Inventory.SetContentManager(Content);
+            hud = new HUD(spriteBatch, font);
             /*
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");

@@ -37,15 +37,11 @@ namespace sprint0.HUDs
         public int HudYOffset { get; set; }
 
         //CHANGE HUD CONSTRUCTOR SO IT DOESN"T HAVE TO PASS IN TH TEXTURE@D (Probably Level loader?)
-        public HUD(SpriteBatch spriteBatch, SpriteFont font, Texture2D hudspriteSheet, Texture2D Hearttexture, Texture2D minimap, Texture2D linklocator)
+        public HUD(SpriteBatch spriteBatch, SpriteFont font)
         {
-           
             this.spriteBatch = spriteBatch;
             this.font = font;
-            hudBackground = hudspriteSheet;
-            miniMap = minimap;
-            linkLocator = linklocator;
-            heart = Hearttexture;
+           
             HudXOffset = 0;
             HudYOffset = 0;
         }
@@ -57,8 +53,7 @@ namespace sprint0.HUDs
                 hudBackground = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.BACKGROUNDSHEET];
                 const float scaledWidth = 0.95f;
                 const float scaledHeight = 0.7f;
-                //int x = 0;
-                //int y = 0;
+                
                 int x = 0 + HudXOffset;
                 int y = 0 + HudYOffset;
 
@@ -271,7 +266,9 @@ namespace sprint0.HUDs
 
             string level = "1";
             float scalingFont = 2;
-            Vector2 levelFontPosition = new Vector2(210 +HudXOffset, 15 + HudYOffset);
+            int levelX = 210;
+            int levelY = 15;
+            Vector2 levelFontPosition = new Vector2(levelX +HudXOffset, levelY + HudYOffset);
          
             spriteBatch.DrawString(font, level, levelFontPosition, Color.White, inititalState, Vector2.Zero, scalingFont, SpriteEffects.None, inititalState);
         }
@@ -288,11 +285,11 @@ namespace sprint0.HUDs
             int currentRow = inititalState;
             int secondColumn = 2;
             Vector2 vectorPositionLinkLevel = new Vector2(linkLevelX + HudXOffset, linkLevelY +HudYOffset);          
-            Rectangle linkLevel = new Rectangle(inititalState, currentRow, linkWidth, linkHeight); //default is low link
+            Rectangle linkLevel = new Rectangle(inititalState, currentRow, linkWidth, linkHeight); //default is green link
             
           
-           if (Inventory.CurrentTunic == Globals.LinkTunic.ICE) { currentRow = linkHeight; }
-           else if (Inventory.CurrentTunic == Globals.LinkTunic.FIRE) { currentRow = linkHeight * secondColumn; }
+           if (Globals.LinkItemSystem.CurrentTunic == Globals.LinkTunic.ICE) { currentRow = linkHeight; }
+           else if(Globals.LinkItemSystem.CurrentTunic == Globals.LinkTunic.FIRE) { currentRow = linkHeight * secondColumn; }
 
             linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight);
            
