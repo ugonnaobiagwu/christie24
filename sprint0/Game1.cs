@@ -30,6 +30,7 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private SpriteBatch HudInventorySpriteBatch;
+        private MouseState mouse;
         //public ILink LinkObj;
         Texture2D textureBlock;
         Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
@@ -50,13 +51,9 @@ namespace sprint0
 
         //Camera
         public Camera camera;
-        ScrollState scrollState;
-        MouseState mouse;
-        
+
         //Block
-        public IBlock block;
         KeyboardController KeyboardCont;
-        ItemSystem itemSystem;
 
         //State Manager - in progress
         GameStateManager gameStateManager;
@@ -82,18 +79,8 @@ namespace sprint0
             font = Content.Load<SpriteFont>("hudFont");
 
             //hud = new HUD(spriteBatch, font);
-           Inventory.SetContentManager(Content);
-           
-            //TEST for XP
-            // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
-            // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
-            // Each block per bar is .375, so a full block would be 3
-           /* Inventory.UpdateXPLevel(6f);
-            Inventory.UpdateXPLevel(.22f);
-            Inventory.UpdateXPLevel(.22f);
-            Inventory.UpdateXPLevel(-.375f)*/;
-            Inventory.UpdateXPLevel(9f);
-            // Inventory.UpdateXPLevel(.375f);
+           Inventory.SetContentManager(Content);           
+
             font = Content.Load<SpriteFont>("hudFont");
             lifeSpriteSheet = Content.Load<Texture2D>("lives");
             hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
@@ -101,52 +88,22 @@ namespace sprint0
             linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
 
             hud = new HUD(HudInventorySpriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
-            /*
-            //Block 
-            textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
-            SpriteFactory blockFactory = new SpriteFactory(textureBlock, 3, 4);
-            blockFactory.createAnimation("DungeonBlueBlock",new int[] {0 },new int[] {0 }, 1);
-            blockFactory.createAnimation("DungeonPyramidBlock", new int[] { 0 }, new int[] { 1 }, 1,0.0f,0.3f,0.2f);
-            blockFactory.createAnimation("DungeonFishBlock", new int[] { 0 }, new int[] { 2 }, 1);
-            blockFactory.createAnimation("DungeonDragonBlock", new int[] { 0 }, new int[] { 3 }, 1);
-            blockFactory.createAnimation("BlackBlock", new int[] { 1 }, new int[] { 0 }, 1);
-            blockFactory.createAnimation("GrassBlock", new int[] { 1 }, new int[] { 1 }, 1);
-            blockFactory.createAnimation("StairBlock", new int[] { 1 }, new int[] { 2 }, 1);
-            blockFactory.createAnimation("WaterBlock", new int[] { 1 }, new int[] { 3 }, 1);
-            blockFactory.createAnimation("PyramidRedBlock", new int[] { 2 }, new int[] { 0 }, 1);
-            blockFactory.createAnimation("BlueFishBlock", new int[] { 2 }, new int[] { 1 }, 1);
-            blockFactory.createAnimation("BlueDragonBlock", new int[] { 2 }, new int[] { 2 }, 1);
 
-            block = new DungeonPyramidBlock(0, 0, 1, blockFactory);
-            */
-            // Linky
-            //Link = new Link()
-            //Link's Item System
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
-            /*LINK TEST: TO BE DELETED*/
-            //Texture2D LinkTexture = Content.Load<Texture2D>("Link");
-            ///*NOTE: The 5 columns is to get one that is off the screen for damaged state*/
-            //SpriteFactory LinkFactory = new SpriteFactory(LinkTexture, 5, 4);
-
-            
-            
-            
-            //LinkFactory.createAnimation("GreenUp", new int[] { 0, 1 }, new int[] { 2, 2 }, 2,1.5f,1.5f);
-            //LinkFactory.createAnimation("GreenDown", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenLeft", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenRight", new int[] { 0, 1 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenItemUp", new int[] { 0, 2 }, new int[] { 2, 2 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenItemDown", new int[] { 0, 2 }, new int[] { 0, 0 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenItemLeft", new int[] { 0, 2 }, new int[] { 1, 1 }, 2, 1.5f, 1.5f);
-            //LinkFactory.createAnimation("GreenItemRight", new int[] { 0, 2 }, new int[] { 3, 3 }, 2, 1.5f, 1.5f);
-           
-            //LinkFactory.createAnimation("Damaged", new int[] { 3}, new int[] { 3 }, 1, 1.5f, 1.5f);
-
-            //LinkObj = new sprint0.LinkObj.Link(400, 200, LinkFactory);
-            //LinkObj.SetRoomId(0);
-
-            /*ENEMY TESTS: TO BE DELETED*/
+            /*
+             * ATTENTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+             * 
+             * 
+             * 
+             * 
+             * 
+             * DO NOT DELETE UNTIL ENEMIES ARE IN LEVEL LOADER IM DOING RYAN A FAVOR BY KEEPING THIS STUFF HERE!
+             * 
+             * 
+             * 
+             * 
+             */
             //Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
 
             //SpriteFactory SkeletonFactory = new SpriteFactory(EnemyTexture, 6, 15);
@@ -209,29 +166,6 @@ namespace sprint0
             XmlDocument xmlFile = new XmlDocument();
             xmlFile.Load("Content/FirstDungeon.xml");
             XmlParser.ParseFile(xmlFile, Content);
-
-            //Sword
-            Texture2D swordTexture = Content.Load<Texture2D>("linkSword");
-            Texture2D iceSwordTexture = Content.Load<Texture2D>("linkIceSword");
-            Texture2D fireSwordTexture = Content.Load<Texture2D>("linkFireSword");
-            SpriteFactory swordFactory = new SpriteFactory(swordTexture, 1, 4);
-            swordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            swordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
-            SpriteFactory iceSwordFactory = new SpriteFactory(iceSwordTexture, 1, 4);
-            iceSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            iceSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation
-            SpriteFactory fireSwordFactory = new SpriteFactory(fireSwordTexture, 1, 4);
-            fireSwordFactory.createAnimation("ItemDown", new int[] { 0 }, new int[] { 0 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemLeft", new int[] { 0 }, new int[] { 1 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemUp", new int[] { 0 }, new int[] { 2 }, 1); // single sprite animation 
-            fireSwordFactory.createAnimation("ItemRight", new int[] { 0 }, new int[] { 3 }, 1); // single sprite animation 
-            Globals.LinkItemSystem.LoadSword(swordFactory, iceSwordFactory, fireSwordFactory);
-
-            Globals.LinkItemSystem.CurrentTunic = Globals.LinkTunic.FIRE;
 
             //SoundEffects
             SoundEffect SWORD_SLASH = Content.Load<SoundEffect>("soundEffects/SWORD_SLASH");
@@ -330,11 +264,6 @@ namespace sprint0
             //GameState testing
             gameStateManager.Update(gameTime);
             Globals.GameObjectManager.deleteObjects();
-
-            //SkeletonObj.Update();
-            //OktorokObj.Update();
-            //BokoblinObj.Update();
-            //DragonObj.Update();
             base.Update(gameTime);
         }
 
