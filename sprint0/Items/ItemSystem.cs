@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.LinkSword;
 using static sprint0.Globals;
@@ -456,13 +457,15 @@ namespace sprint0
             {
                 this.currentItemA.Update();
                 this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
+                Inventory.SlotAItem(ItemInSlotA);
             }
             if (this.currentItemB != null)
             {
                 this.currentItemB.Update();
                 this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
-
             }
+            Inventory.SlotAItem(ItemInSlotA);
+            Inventory.SlotBItem(ItemInSlotB);
 
         }
 
