@@ -17,6 +17,7 @@ namespace sprint0.HUDs
     public class HUD
     {
 
+
         
 
         static Texture2D hudBackground;
@@ -32,6 +33,7 @@ namespace sprint0.HUDs
         private int xpX = 410 ;
         private int xpY = 125;
 
+       
         //Vars to change hud position - need for inventory screen
         public int HudXOffset { get; set; }
         public int HudYOffset { get; set; }
@@ -79,8 +81,9 @@ namespace sprint0.HUDs
             heart = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.HEARTSHEET];
             int heartSpacing = 40;
             int j = 0;
-           
-            int heartChecker = 2;
+            const int x = 590;
+            const int y = 90;
+            const int heartChecker = 2;
             int heartNum = Inventory.items[Inventory.ItemTypes.HEART]; //up to max 10
             int heartWidth = heart.Width / perImage;
             int heartHeight = heart.Height;
@@ -94,12 +97,12 @@ namespace sprint0.HUDs
                 if (i == heartNum && i % heartChecker != 0) { //checks if i is at the last heart and if the last heart is odd
 
                     //if odd draw a half heart
-                    spriteBatch.Draw(heart, new Vector2(590 + j + HudXOffset, 90 + HudYOffset), halfHeartsheet, Color.White);
+                    spriteBatch.Draw(heart, new Vector2(x + j + HudXOffset, y + HudYOffset), halfHeartsheet, Color.White);
                     j += heartSpacing; 
                 }
                 else if (i % heartChecker == 0) //if the the last heart is even, or if not the last heart, draw a full heart
                 {
-                    spriteBatch.Draw(heart, new Vector2(590 + j + HudXOffset, 90 +HudYOffset), fullHeartsheet, Color.White);
+                    spriteBatch.Draw(heart, new Vector2(x + j + HudXOffset, y +HudYOffset), fullHeartsheet, Color.White);
                     j += heartSpacing; //I still have to look into why there has to be two j +=heartSpacing.
                 }
 
@@ -114,29 +117,29 @@ namespace sprint0.HUDs
         private void RupeeDisplay()
         {
             int rupeeCount = Inventory.items[Inventory.ItemTypes.RUPEE];
-            int rupeeX = 340 + HudXOffset;
-            int rupeeY = 35 + HudYOffset;
+            int rupeeX = 340;
+            int rupeeY = 35;
             
             //draw rupee number            
-            spriteBatch.DrawString(font, rupeeCount.ToString(), new Vector2(rupeeX, rupeeY), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
+            spriteBatch.DrawString(font, rupeeCount.ToString(), new Vector2(rupeeX + HudXOffset, rupeeY + HudYOffset), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
 
         }
         //Key display
         protected void KeyDisplay()
         {
             int keyCount = Inventory.items[Inventory.ItemTypes.KEY];
-            int keyX = 340 + HudXOffset;
-            int keyY = 75 + HudYOffset;
-            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(keyX, keyY), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
+            int keyX = 340 ;
+            int keyY = 75;
+            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(keyX + HudYOffset, keyY + HudYOffset), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
         }
 
         protected void BombDisplay()
         {
             int bombCount = Inventory.items[Inventory.ItemTypes.BOMB];
-            int bombX = 340 + HudXOffset;
-            int bombY = 110 + HudYOffset;
+            int bombX = 340;
+            int bombY = 110;
 
-            spriteBatch.DrawString(font, bombCount.ToString(), new Vector2(bombX, bombY), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
+            spriteBatch.DrawString(font, bombCount.ToString(), new Vector2(bombX + HudXOffset, bombY + HudYOffset), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
         }
 
         //slot A item
@@ -207,7 +210,7 @@ namespace sprint0.HUDs
 
 
 
-                Rectangle destinationRectangle = new Rectangle(x+HudXOffset, y+HudYOffset, width, height);
+                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
                 spriteBatch.Draw(miniMap, destinationRectangle, Color.White);
             }
 
@@ -219,20 +222,126 @@ namespace sprint0.HUDs
             linkLocator = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.LINKLOCATORSHEET];
             if (Inventory.CompassResult())
             {
+                
+                int defaultRoomID = 0;
+                int currentRoomID = Inventory.RoomID();
+                int xUpdate = 0;
+                int yUpdate = 0; 
+                
+                //deafault position for link location on the minimap
+                int x = 120; 
+                int y = 143;
                 float scaledWidth = 0.55f;
                 float scaledHeight = 0.40f;
-                int x = 40;
-                int y = 90;
 
                 int width = (int)(linkLocator.Width * scaledWidth);
                 int height = (int)(linkLocator.Height * scaledHeight);
 
 
-                Rectangle destinationRectangle = new Rectangle(x + HudXOffset, y + HudYOffset, width, height);
-                spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
+            if (currentRoomID > defaultRoomID)
+            {
+                x += CalculateXLinkLocator(xUpdate, currentRoomID);  // x position change is +-35 per room
+                y += CalculateYLinkLocator(yUpdate, currentRoomID); // y position change is +-18 per room
+            }
+
+            Rectangle destinationRectangle = new Rectangle(x + HudXOffset , y + HudYOffset, width, height); // default
+
+            spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
             }
 
         }
+
+        private int  CalculateXLinkLocator(int x, int currentRoomID) {
+            const int xpostionChange = 35;
+            int xScaleFactor;
+            switch (currentRoomID) {
+
+                case 1:
+                case 4:
+                case 8:
+                case 13:
+
+                    x -= xpostionChange;
+                    break;
+                case 2:
+                case 6:
+                case 10:
+                    x += xpostionChange;
+                    break;
+                case 7:
+                    xScaleFactor = 2;
+                    x -= (xpostionChange * xScaleFactor);
+                    break;
+                case 11:
+                case 15:
+                    xScaleFactor = 2;
+                    x += (xpostionChange * xScaleFactor);
+                    break;
+                case 16:
+                    xScaleFactor = 3;
+                    x += (xpostionChange * xScaleFactor);
+
+                    break;
+
+            }
+            
+
+
+            return x;
+            
+        }
+
+        private int CalculateYLinkLocator(int y, int currentRoomID)
+        {
+            const int yPostionChange = 18;
+            int yScaleFactor;
+
+            switch (currentRoomID)
+            {
+
+                case 3:
+                    y -= yPostionChange;
+
+                    break;
+                case 4:
+                case 5: 
+                case 6:
+
+                    yScaleFactor = 2;
+                    y -= (yPostionChange * yScaleFactor);
+
+                    break;
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+
+                    yScaleFactor = 3;
+                    y -= (yPostionChange * yScaleFactor);
+                    break;
+                case 12:
+                case 15:
+                case 16:
+                    yScaleFactor = 4;
+                    y -= (yPostionChange * yScaleFactor);
+                    break;
+
+                case 13:
+                case 14:
+
+                    yScaleFactor = 5;
+                    y -= (yPostionChange * yScaleFactor);
+                    break;
+
+
+            }
+
+
+            return y;
+
+        }
+
 
         //triforce
         private void TriforceDisplay()
@@ -305,6 +414,7 @@ namespace sprint0.HUDs
             const int xpMonitorEdge = 119;
             const float perXPFrame = .375f;
             const int maxLoop = 8;
+            const int lastLoopNum = maxLoop-1;
             int i = inititalState;
             int j = inititalState;
            
@@ -342,7 +452,7 @@ namespace sprint0.HUDs
                     spriteBatch.Draw(xp, vectorPositionxp, Color.White);
 
                 }
-                if (i == maxLoop - 1) {
+                if (i == lastLoopNum) {
 
                     if (j > xpMonitorEdge || xpNum > inititalState) { i = inititalState; }
                 } 

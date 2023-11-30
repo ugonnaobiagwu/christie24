@@ -81,21 +81,20 @@ namespace sprint0
 
             //hud = new HUD(spriteBatch, font);
            Inventory.SetContentManager(Content);
-           
+            hud = new HUD(spriteBatch, font);
+
             //TEST for XP
             // //Highest point is 9.0. Antyhing below 0 or above a 9 becomes the default green link
             // Low 0 - 2.9 Mid 3.0 - 5.9 High 6-8.9
             // Each block per bar is .375, so a full block would be 3
-           /* Inventory.UpdateXPLevel(6f);
-            Inventory.UpdateXPLevel(.22f);
-            Inventory.UpdateXPLevel(.22f);
-            Inventory.UpdateXPLevel(-.375f)*/;
+            /* Inventory.UpdateXPLevel(6f);
+             Inventory.UpdateXPLevel(.22f);
+             Inventory.UpdateXPLevel(.22f);
+             Inventory.UpdateXPLevel(-.375f)*/
+            ;
             Inventory.UpdateXPLevel(6f);
             // Inventory.UpdateXPLevel(.375f);
-            font = Content.Load<SpriteFont>("hudFont");
-
-            Inventory.SetContentManager(Content);
-            hud = new HUD(spriteBatch, font);
+          
             /*
             //Block 
             textureBlock = Content.Load<Texture2D>("Dungeon1BlockSpriteSheet");
