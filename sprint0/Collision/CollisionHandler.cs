@@ -15,6 +15,12 @@ namespace sprint0.Collision
 {
     public class CollisionHandler
     {
+
+        private const float CRIT_XP = .375f;
+        private const float MIN_XP = .1f;
+        private const float REG_XP = .238f;
+
+
         /*
          * DEVELOPMENT NOTES:
          * 
@@ -739,12 +745,15 @@ namespace sprint0.Collision
             {
                 case Globals.LinkTunic.FIRE:
                     ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
                     break;
                 case Globals.LinkTunic.ICE:
                     ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
                     break;
                 default:
                     enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
@@ -859,12 +868,15 @@ namespace sprint0.Collision
             {
                 case Globals.LinkTunic.FIRE:
                     ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
                     break;
                 case Globals.LinkTunic.ICE:
                     ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
                     break;
                 default:
                     enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
