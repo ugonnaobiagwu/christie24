@@ -130,7 +130,7 @@ namespace sprint0.HUDs
             int keyCount = Inventory.items[Inventory.ItemTypes.KEY];
             int keyX = 340 ;
             int keyY = 75;
-            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(keyX + HudYOffset, keyY + HudYOffset), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
+            spriteBatch.DrawString(font, keyCount.ToString(), new Vector2(keyX + HudXOffset, keyY + HudYOffset), Color.White, inititalState, Vector2.Zero, fontSize, SpriteEffects.None, inititalState);
         }
 
         protected void BombDisplay()
@@ -417,6 +417,7 @@ namespace sprint0.HUDs
             const int lastLoopNum = maxLoop-1;
             int i = inititalState;
             int j = inititalState;
+            int noXP = 0;
            
             float xpNum = Inventory.currentXP[Inventory.XPEnum.XP];
             xpMonitor = Inventory.hudSpritSheet[Inventory.HUDSpriteSheet.XPMONITORSHEET];
@@ -424,43 +425,49 @@ namespace sprint0.HUDs
             Vector2 vectorPositionxp = new Vector2(xpX + HudXOffset, xpY + HudYOffset);
 
             spriteBatch.Draw(xp, vectorPositionxp, Color.White);
-            
-            
-         
-            while (i < maxLoop) {
+
+            if (xpNum != noXP)
+            {
+
+                while (i < maxLoop)
+                {
 
 
 
-                
-                spriteBatch.Draw(xpMonitor, new Vector2((xpX + j) + HudXOffset, xpY +HudYOffset), Color.White);
-                
+
+                    spriteBatch.Draw(xpMonitor, new Vector2((xpX + j) + HudXOffset, xpY + HudYOffset), Color.White);
 
 
-                j += xpSpacing;
-                xpNum -= perXPFrame;
+
+                    j += xpSpacing;
+                    xpNum -= perXPFrame;
 
 
-                if (xpNum == 0 || (xpNum <= inititalState && xpNum > -perXPFrame)) { break; } //stop draw when xpNum is 0 or negative number less than -.375
-                else if (xpNum <= -perXPFrame) {
-                    xpNum = -xpNum; // make it positive               
+                    if (xpNum == 0 || (xpNum <= inititalState && xpNum > -perXPFrame)) { break; } //stop draw when xpNum is 0 or negative number less than -.375
+                    else if (xpNum <= -perXPFrame)
+                    {
+                        xpNum = -xpNum; // make it positive               
+                    }
+
+                    else if (xpNum > inititalState && j > xpMonitorEdge)
+                    {
+
+                        i = inititalState;
+                        j = inititalState; // start back from 0
+                        spriteBatch.Draw(xp, vectorPositionxp, Color.White);
+
+                    }
+                    if (i == lastLoopNum)
+                    {
+
+                        if (j > xpMonitorEdge || xpNum > inititalState) { i = inititalState; }
+                    }
+
+
+
+                    i++;
+
                 }
-
-                else if (xpNum > inititalState && j > xpMonitorEdge) {
-
-                    i = inititalState;
-                    j = inititalState; // start back from 0
-                    spriteBatch.Draw(xp, vectorPositionxp, Color.White);
-
-                }
-                if (i == lastLoopNum) {
-
-                    if (j > xpMonitorEdge || xpNum > inititalState) { i = inititalState; }
-                } 
-
-               
-
-                i++;
-
             }
 
 
