@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Security.Cryptography.X509Certificates;
-using sprint0;
 
 namespace sprint0
 {

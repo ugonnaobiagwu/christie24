@@ -109,8 +109,7 @@ namespace sprint0.Blocks
         public int width() {  } // (i.e.) "how big are you?"
         public int height() {  } // (i.e.) "how big are you?"
         public bool isDynamic() { return false; } // does this object move? 
-        public String 
-{ return "Block"; }
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
 
 
 
