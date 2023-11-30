@@ -245,6 +245,11 @@ namespace sprint0.LinkObj
             LinkSprite.Draw(spriteBatch, XVal, YVal,0);
         }
         public String type() { return "Link"; }
+        public void ChangeXandYValue(int x, int y)
+        {
+            XVal = x;
+            YVal = y;
+        }
     }
 
 }

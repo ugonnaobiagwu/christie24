@@ -16,6 +16,7 @@ namespace sprint0.GameStates
         Direction SideOfRoomDirection;
         private int NewRoomId;
         private float ScrollTime = 1.5f;
+        private bool ScrollOnce = true;
         GameStateManager GameStateManager;
         HUD GameHud;
         public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud)
@@ -30,22 +31,28 @@ namespace sprint0.GameStates
         {
             Globals.Camera.Update(gameTime);
 
-            switch (Globals.scrollFromThisDirection)
+            if (ScrollOnce)
             {
-                case (Direction.Left):
-                    Globals.Camera.MoveCameraToLeftRoom();
-                    break;
-                case (Direction.Right):
-                    Globals.Camera.MoveCameraToRightRoom();
-                    break;
-                case (Direction.Up):
-                    Globals.Camera.MoveCameraToTopRoom();
-                    break;
-                case (Direction.Down):
-                    Globals.Camera.MoveCameraToBottomRoom();
-                    break;
-            }
-
+                switch (Globals.scrollFromThisDirection)
+                {
+                    case (Direction.Left):
+                        Globals.Camera.MoveCameraToLeftRoom();
+                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() - 220, Globals.Link.yPosition());
+                        break;
+                    case (Direction.Right):
+                        Globals.Camera.MoveCameraToRightRoom();
+                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() + 220, Globals.Link.yPosition());
+                        break;
+                    case (Direction.Up):
+                        Globals.Camera.MoveCameraToTopRoom();
+                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() - 220);
+                        break;
+                    case (Direction.Down):
+                        Globals.Camera.MoveCameraToBottomRoom();
+                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() + 220);
+                        break;
+                }
+            } ScrollOnce = false;
             Globals.Update(gameTime);
 
             this.TransitionState();
@@ -72,10 +79,12 @@ namespace sprint0.GameStates
         {
             //Check to see if scroll is done
             ScrollTime -= Globals.TotalSeconds;
-            if (ScrollTime <= 0)
+            
+            if (ScrollTime <= 0.0f)
             {
-                ScrollTime += 1.5f;
+                ScrollOnce = true;
                 Globals.startScrolling = false;
+                ScrollTime += 1.5f;
                 GameStateManager.ChangeState("play");
             }
         }

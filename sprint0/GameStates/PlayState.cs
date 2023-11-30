@@ -103,7 +103,7 @@ namespace sprint0.GameStates
             //Scroll State
             if(Globals.startScrolling == true)
             {
-                GameHud.setSpriteBatch(StaticHudSB);
+                
                 Globals.startScrolling = false;
                 GameStateManager.ChangeState("scroll");
             }

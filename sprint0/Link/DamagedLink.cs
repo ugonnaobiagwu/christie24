@@ -186,5 +186,9 @@ namespace sprint0.LinkObj
         }
 
         public String type() { return "Link"; }
+        public void ChangeXandYValue(int x, int y)
+        {
+
+        }
     }
 }

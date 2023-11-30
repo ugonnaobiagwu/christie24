@@ -40,7 +40,7 @@ namespace sprint0.AnimatedSpriteFactory
             animationComplete = false;
 
 
-           ScaledSpriteWidth =(int)( ((float)Texture.Width / (float)Columns) * width);
+           ScaledSpriteWidth =(int)(((float)Texture.Width / (float)Columns) * width);
             ScaledSpriteHeight = (int)(((float)Texture.Height / (float)Rows) * height);
         }
         public int GetWidth()

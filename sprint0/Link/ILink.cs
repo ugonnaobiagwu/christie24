@@ -25,7 +25,7 @@ namespace sprint0.LinkObj
         public void SetLink(ILink link);
         public void SetState(Link.State newState);
         public void SetSprite(ISprite newSprite);
-
+        public void ChangeXandYValue(int x, int y);
 
     } 
 }
