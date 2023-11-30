@@ -412,6 +412,7 @@ namespace sprint0.Collision
             Globals.startScrolling = true;
             Globals.scrollFromThisDirection = door.getSideOfRoom();
             Globals.Link.SetRoomId(door.GetToRoomId());
+            Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
         }
 
         private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)

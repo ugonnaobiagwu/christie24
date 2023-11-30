@@ -12,7 +12,8 @@ namespace sprint0.Commands.GameStateCommand
         private ICommand linkEquipBoomerang;
         private ICommand linkEquipBomb;
         private ICommand linkEquipBlaze;
-        public SelectItemACommand(Sprint0 game, InventoryCursor cursor, ICommand equipBow, ICommand equipBomb, ICommand equipBoomerang, ICommand equipBlaze)
+        private ICommand linkEquipSword;
+        public SelectItemACommand(Sprint0 game, InventoryCursor cursor, ICommand equipBow, ICommand equipBomb, ICommand equipBoomerang, ICommand equipBlaze, ICommand equipSword)
 		{
             this.Game = game;
             Cursor = cursor;
@@ -21,6 +22,7 @@ namespace sprint0.Commands.GameStateCommand
             linkEquipBoomerang = equipBoomerang;
             linkEquipBomb = equipBomb;
             linkEquipBlaze = equipBlaze;
+            linkEquipSword = equipSword;
         }
 
         public void execute()
@@ -47,16 +49,19 @@ namespace sprint0.Commands.GameStateCommand
             {
                 switch (Cursor.ReturnSelectedTunic())
                 {
-                    case LinkTunic.GREEN:
+                    case ItemTypes.GREENTUNIC:
                         Console.WriteLine("A green tunic");
                         Globals.LinkItemSystem.CurrentTunic = LinkTunic.GREEN;
                         break;
-                    case LinkTunic.FIRE:
+                    case ItemTypes.REDTUNIC:
                         Console.WriteLine("A fire tunic");
                         Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
                         break;
-                    case LinkTunic.ICE:
+                    case ItemTypes.BLUETUNIC:
                         Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        break;
+                    case ItemTypes.SWORD:
+                        linkEquipSword.execute();
                         break;
                 }
             }
