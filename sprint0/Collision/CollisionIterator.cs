@@ -77,7 +77,7 @@ namespace sprint0.Collision
                     {
                         if (obj2 != obj1)
                         {
-                            //Console.WriteLine("DEBUG: COLLISION DETECTOR TESTS COLLISION BETWEEN  " + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
+                            Console.WriteLine("DEBUG: COLLISION DETECTOR TESTS COLLISION BETWEEN  " + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
                             //System.Diagnostics.Debug.WriteLine("OBJ2 WIDTH AND HEIGHT  " + obj2.width() + " " + obj2.height());
                             CollisionDetector.CollisionType thisCollisionType = CollisionDetector.CollisionCheck(obj1, obj2);
                             if (thisCollisionType != CollisionDetector.CollisionType.NONE)
