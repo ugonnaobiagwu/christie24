@@ -6,7 +6,7 @@ WHAT WE ACCOMPLISHED:
 --Our Sprint 4 Backlog is Near Completion (as of 11/30)!
 * Collision: Collision is Working with All Game Objects and Handles the Collision Events
 * GameStates: Scrolling, Inventory, Pause and Death States are In
-* Level Loader: Completely functional.
+* Level Loader: Completely functional. Complete first level is in as well.
 * Inventory: Improved and fleshed out HUD that is also dynamic and reacts to Link's Inventory and States.
 * Enemies: Improved Enemy Behavior
 * GameObjectManager: Improved Game Object Management
