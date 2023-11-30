@@ -110,13 +110,15 @@ namespace sprint0.LevelLoading
             {
                 case "Oktorok":
                    enemy = new Oktorok(x, y, roomId, factoryArray[0],factoryArray[1]);
-                      //SendToGOM(enemy);
+                    SendToGOM(enemy);
                     break;
                 case "Bokoblin":
                     enemy = new Bokoblin(x, y, roomId, factoryArray[0], factoryArray[1]);
+                    SendToGOM(enemy);
                     break;
                 case "Skeleton":
                     enemy = new Skeleton(x, y, roomId, factoryArray[0]);
+                    SendToGOM(enemy);
                     break;
                 default:
                     break;
