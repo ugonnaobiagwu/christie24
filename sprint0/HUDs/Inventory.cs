@@ -97,7 +97,7 @@ namespace sprint0.HUDs
                 {ItemTypes.HEART, defaultLife}, //Begins with 3 Hearts
                 {ItemTypes.RUPEE, initialState},
                 {ItemTypes.KEY,initialState},
-                {ItemTypes.BOMB,initialState},
+                {ItemTypes.BOMB,10},
                 {ItemTypes.LEVEL,1}, //starts at level 1
                 {ItemTypes.MINIMAP,initialState}
             };
