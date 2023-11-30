@@ -7,6 +7,7 @@ using sprint0.BoundariesDoorsAndRooms;
 using sprint0.AnimatedSpriteFactory;
 using static sprint0.Globals;
 using Microsoft.Xna.Framework.Content;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.GameStates
 {
@@ -48,6 +49,8 @@ namespace sprint0.GameStates
             {
                 case "death":
                     CurrentState = DeathState;
+                    WindWaker.StopSong(WindWaker.Songs.DUNGEON);
+                    WindWaker.PlaySong(WindWaker.Songs.ENDING);
                     break;
                 case "inventory":
                     Console.WriteLine("inventory transition");
@@ -56,12 +59,15 @@ namespace sprint0.GameStates
                 case "play":
                     Console.WriteLine("play transition");
                     CurrentState = PlayState;
+                    WindWaker.ResumeSong(WindWaker.Songs.DUNGEON);
+
                     break;
                 case "scroll":
                     CurrentState = ScrollState;
                     break;
                 case "pause":
                     CurrentState = PauseState;
+                    WindWaker.PauseSong(WindWaker.Songs.DUNGEON);
                     break;
             }
         }

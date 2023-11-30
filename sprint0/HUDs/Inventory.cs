@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.LinkObj;
+using sprint0.Sound.Ocarina;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -314,11 +315,19 @@ namespace sprint0.HUDs
 
             currentXP[XPEnum.XP] += updatedXp;
 
-            if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint) {
+            if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint)
+            { 
+                if (CurrentLinkLevel != LinkLevel.MEDIUM)
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED);
+                }
                 CurrentLinkLevel = LinkLevel.MEDIUM;
             }
             else if (currentXP[XPEnum.XP] >= highLowPoint && currentXP[XPEnum.XP] <= highHighPoint) {
-
+                if (CurrentLinkLevel != LinkLevel.HIGH)
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.PUZZLE_SOLVED);
+                }
                 CurrentLinkLevel = LinkLevel.HIGH;
             }           
         
