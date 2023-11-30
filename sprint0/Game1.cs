@@ -30,10 +30,8 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private SpriteBatch HudInventorySpriteBatch;
-        private MouseState mouse;
-        //public ILink LinkObj;
-        Texture2D textureBlock;
-        Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
+
+        MouseState mouse;
 
         //HUD
 
@@ -78,66 +76,8 @@ namespace sprint0
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
 
-            //hud = new HUD(spriteBatch, font);
-           Inventory.SetContentManager(Content);           
-
-            font = Content.Load<SpriteFont>("hudFont");
-            lifeSpriteSheet = Content.Load<Texture2D>("lives");
-            hudSpriteSheet = Content.Load<Texture2D>("background_sheet");
-            miniMapSpriteSheet = Content.Load<Texture2D>("miniMap");
-            linkLocatorSpriteSheet = Content.Load<Texture2D>("linkLocator");
-
-            hud = new HUD(HudInventorySpriteBatch, font, hudSpriteSheet, lifeSpriteSheet,miniMapSpriteSheet, linkLocatorSpriteSheet);
-
-            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
-
-            /*
-             * ATTENTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-             * 
-             * 
-             * 
-             * 
-             * 
-             * DO NOT DELETE UNTIL ENEMIES ARE IN LEVEL LOADER IM DOING RYAN A FAVOR BY KEEPING THIS STUFF HERE!
-             * 
-             * 
-             * 
-             * 
-             */
-            //Texture2D EnemyTexture = Content.Load<Texture2D>("zelda-sprites-enemies-condensed");
-
-            //SpriteFactory SkeletonFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            //SkeletonFactory.createAnimation("Default", new int[] { 4, 5 }, new int[] { 14, 14 }, 2, 0.25f, 1.5f, 1.5f);
-            //SkeletonObj = new sprint0.Enemies.Skeleton(0, 600, 1, SkeletonFactory);
-
-            //SpriteFactory OktorokFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            //SpriteFactory OktorokProjectileFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            //OktorokFactory.createAnimation("Down", new int[] { 0, 1 }, new int[] { 0, 0 }, 2, 0.25f, 1.5f, 1.5f);
-            //OktorokFactory.createAnimation("Left", new int[] { 0, 1 }, new int[] { 1, 1 }, 2, 0.25f, 1.5f, 1.5f);
-            //OktorokFactory.createAnimation("Up", new int[] { 0, 1 }, new int[] { 2, 2 }, 2, 0.25f, 1.5f, 1.5f);
-            //OktorokFactory.createAnimation("Right", new int[] { 0, 1 }, new int[] { 3, 3 }, 2, 0.25f, 1.5f, 1.5f);
-            //OktorokProjectileFactory.createAnimation("Blaze", new int[] { 1 }, new int[] { 12 }, 1, 0.125f, 1.5f, 1.5f);
-            //OktorokObj = new sprint0.Enemies.Oktorok(100, 600, 1, OktorokFactory, OktorokProjectileFactory);
-
-            //SpriteFactory BokoblinFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            //Texture2D BokoblinBoomerangTexture = Content.Load<Texture2D>("equippedItemSprites/equippedBoomerang");
-            //SpriteFactory BokoblinBoomerangFactory = new SpriteFactory(BokoblinBoomerangTexture, 2, 3);
-            //BokoblinFactory.createAnimation("Down", new int[] { 4, 5 }, new int[] { 4, 4 }, 2, 0.25f, 1.5f, 1.5f);
-            //BokoblinFactory.createAnimation("Left", new int[] { 4, 5 }, new int[] { 5, 5 }, 2, 0.25f, 1.5f, 1.5f);
-            //BokoblinFactory.createAnimation("Up", new int[] { 4, 5 }, new int[] { 6, 6 }, 2, 0.25f, 1.5f, 1.5f);
-            //BokoblinFactory.createAnimation("Right", new int[] { 4, 5 }, new int[] { 7, 7 }, 2, 0.25f, 1.5f, 1.5f);
-            //BokoblinBoomerangFactory.createAnimation("Coming", new int[] { 0, 0, 0 }, new int[] { 0, 1, 2 }, 3, 0.125f, 1.5f, 1.5f);
-            //BokoblinBoomerangFactory.createAnimation("Going", new int[] { 1, 1, 1 }, new int[] { 0, 1, 2 }, 3, 0.125f, 1.5f, 1.5f);
-            //BokoblinObj = new sprint0.Enemies.Bokoblin(200, 600, 1, BokoblinFactory, BokoblinBoomerangFactory);
-
-            //Texture2D DragonTexture = Content.Load<Texture2D>("legendofzelda_bosses_sheet");
-            //SpriteFactory DragonFactory = new SpriteFactory(DragonTexture, 1, 4);
-            //SpriteFactory DragonBlazeFactory = new SpriteFactory(EnemyTexture, 6, 15);
-            //DragonFactory.createAnimation("Default", new int[] {0, 0, 0, 0}, new int[] {0, 1, 2, 3}, 4, 0.25f, 2.0f, 2.0f);
-            //DragonBlazeFactory.createAnimation("Blaze", new int[] { 0 }, new int[] { 11 }, 1, 0.125f, 1.5f, 1.5f);
-            //DragonObj = new sprint0.Enemies.Dragon(300, 600, 1, DragonFactory, DragonBlazeFactory);
-
-
+            Inventory.SetContentManager(Content);
+            hud = new HUD(spriteBatch, font);
 
             //Game States - in progress
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");

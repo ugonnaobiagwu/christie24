@@ -146,13 +146,12 @@ namespace sprint0.HUDs
             }
 
         }
-        public static Texture2D LocateCurrentAItemSheet()
+        public static Texture2D LocateCurrentAItemSheet() //used in the HUD
         {
-            //Globals.ItemSlots currentKey;
-
+           
             
             Texture2D tempSheetItem = null;
-            // string temp = currentSlot[Globals.ItemSlots.SLOT_A].ToString()
+            
 
 
 
@@ -182,9 +181,9 @@ namespace sprint0.HUDs
 
         }
 
-        public static Texture2D LocateCurrentBItemSheet()
+        public static Texture2D LocateCurrentBItemSheet() //used in the HUD
         {
-            //Globals.ItemsInSlots currentKey = default;
+          
 
 
             Texture2D tempSheetItem = null;
@@ -222,11 +221,12 @@ namespace sprint0.HUDs
         //METHOD STARTS FROM HERE
         //DELETE ALL int PARAMETERS (except for ROOMID in roomLevel method)LATER in INVENTORY!! IT WILL CALLED WHEN WE NEED IT!
 
-        public static void RoomLevel(int roomID)
+        public static int RoomID()
         {
 
             //compare the first roomID number. The first number of the roomID indicates the level number
-            items[ItemTypes.LEVEL] = gameObject.getCurrentRoomID();
+            //items[ItemTypes.LEVEL] =
+                return gameObject.getCurrentRoomID();
 
         }
         public static void GainHeart()
