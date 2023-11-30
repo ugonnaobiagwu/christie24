@@ -233,7 +233,7 @@ namespace sprint0.HUDs
                 int height = (int)(linkLocator.Height * scaledHeight);
 
 
-                Rectangle destinationRectangle = new Rectangle(x, y, width, height);
+                Rectangle destinationRectangle = new Rectangle(x + HudXOffset, y + HudYOffset, width, height);
                 spriteBatch.Draw(linkLocator, destinationRectangle, Color.White);
             }
 
@@ -271,7 +271,7 @@ namespace sprint0.HUDs
 
             string level = "1";
             float scalingFont = 2;
-            Vector2 levelFontPosition = new Vector2(210, 15 + HudYOffset);
+            Vector2 levelFontPosition = new Vector2(210 +HudXOffset, 15 + HudYOffset);
          
             spriteBatch.DrawString(font, level, levelFontPosition, Color.White, inititalState, Vector2.Zero, scalingFont, SpriteEffects.None, inititalState);
         }
