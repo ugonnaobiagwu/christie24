@@ -29,7 +29,9 @@ namespace sprint0
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-       
+        private SpriteBatch HudInventorySpriteBatch;
+
+        MouseState mouse;
 
         //HUD
 
