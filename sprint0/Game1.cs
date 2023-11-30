@@ -30,6 +30,7 @@ namespace sprint0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private SpriteBatch HudInventorySpriteBatch;
+        private MouseState mouse;
         //public ILink LinkObj;
         Texture2D textureBlock;
         Texture2D lifeSpriteSheet, hudSpriteSheet, miniMapSpriteSheet, linkLocatorSpriteSheet;
@@ -78,8 +79,7 @@ namespace sprint0
             font = Content.Load<SpriteFont>("hudFont");
 
             //hud = new HUD(spriteBatch, font);
-           Inventory.SetContentManager(Content);
-           
+           Inventory.SetContentManager(Content);           
 
             font = Content.Load<SpriteFont>("hudFont");
             lifeSpriteSheet = Content.Load<Texture2D>("lives");
