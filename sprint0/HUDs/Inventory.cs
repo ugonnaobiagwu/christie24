@@ -21,12 +21,6 @@ namespace sprint0.HUDs
             LOW, MEDIUM, HIGH
         }
 
-        /* ELEMENTAL ENEMIES AND SCALING TESTING. REMOVE THIS LINE AND INIT
-         * THIS VALUE PROPERLY WHEN YOU GET TO IT.
-         */
-        
-        public static LinkLevel CurrentLinkLevel = LinkLevel.HIGH;
-
 
         //Checking on global for pause (!pause) or a boolean method to check if this is paused??
 
@@ -80,7 +74,7 @@ namespace sprint0.HUDs
         
        
 
-        public static LinkLevel currentLinkLevel = LinkLevel.LOW;
+        public static LinkLevel CurrentLinkLevel = LinkLevel.LOW;
         public static Globals.ItemsInSlots slotA = Globals.ItemsInSlots.EMPTY;
         public static Globals.ItemsInSlots slotB = Globals.ItemsInSlots.EMPTY;
            
@@ -321,11 +315,11 @@ namespace sprint0.HUDs
             currentXP[XPEnum.XP] += updatedXp;
 
             if (currentXP[XPEnum.XP] >= midLowPoint && currentXP[XPEnum.XP] <= midHighPoint) {
-                currentLinkLevel = LinkLevel.MEDIUM;
+                CurrentLinkLevel = LinkLevel.MEDIUM;
             }
             else if (currentXP[XPEnum.XP] >= highLowPoint && currentXP[XPEnum.XP] <= highHighPoint) {
 
-                currentLinkLevel = LinkLevel.HIGH;
+                CurrentLinkLevel = LinkLevel.HIGH;
             }           
         
         }

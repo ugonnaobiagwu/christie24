@@ -92,7 +92,7 @@ namespace sprint0
             Inventory.UpdateXPLevel(.22f);
             Inventory.UpdateXPLevel(.22f);
             Inventory.UpdateXPLevel(-.375f)*/;
-            Inventory.UpdateXPLevel(6f);
+            Inventory.UpdateXPLevel(9f);
             // Inventory.UpdateXPLevel(.375f);
             font = Content.Load<SpriteFont>("hudFont");
             lifeSpriteSheet = Content.Load<Texture2D>("lives");
