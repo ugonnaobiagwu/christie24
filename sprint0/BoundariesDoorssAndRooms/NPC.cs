@@ -68,9 +68,6 @@ namespace sprint0.BoundariesDoorsAndRooms
         {
             //nothing to update
         }
-        public string type()
-        {
-            return "NPC";
-        }
+        public GameObjectType type { get { return GameObjectType.NPC; } }
     }
 }

@@ -59,6 +59,6 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
-        public String type() { return "Block"; }
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
     }
 }
