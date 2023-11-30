@@ -1,0 +1,18 @@
+Readability
+Reivew Author: Ryan Greene
+Date: 11/30/2023
+Sprint: 5
+Name of File: DeathState.cs
+Name of Author: Matthew Dannery
+Minutes Taken: 5
+Notes: Everything is kept compact and to a single purpose. Also like the use of comments describing what certain lines do and issues with them.
+
+Maintainability
+Readability
+Reivew Author: Ryan Greene
+Date: 11/30/2023
+Sprint: 5
+Name of File: InventoryState.cs
+Name of Author: Matthew Dannery
+Comments: Your code looks good overall, my only issue is with the use of magic numbers at the top during variable creation. There is also commented code that needs to be removed if not using.
+Suggestion: The easiest way to get truly data driven code would be through xml, where there would be a method to load all of the values needed, although with the time remaining this likely isnt possible.
