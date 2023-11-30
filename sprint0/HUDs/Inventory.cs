@@ -62,7 +62,6 @@ namespace sprint0.HUDs
         public static bool hasPage { get; set; }
         public static bool hasCompass { get; set; }
         public static bool hasTriforce { get; set; }
-        public static LinkTunic CurrentTunic { get; set; }
 
         static private ContentManager contentManager;
         static private GameObjectManager gameObject;

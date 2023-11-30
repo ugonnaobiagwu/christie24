@@ -288,8 +288,8 @@ namespace sprint0.HUDs
             Rectangle linkLevel = new Rectangle(inititalState, currentRow, linkWidth, linkHeight); //default is low link
             
           
-           if (Inventory.CurrentTunic == Globals.LinkTunic.ICE) { currentRow = linkHeight; }
-           else if (Inventory.CurrentTunic == Globals.LinkTunic.FIRE) { currentRow = linkHeight * secondColumn; }
+           if (Globals.LinkItemSystem.CurrentTunic == Globals.LinkTunic.ICE) { currentRow = linkHeight; }
+           else if (Globals.LinkItemSystem.CurrentTunic == Globals.LinkTunic.FIRE) { currentRow = linkHeight * secondColumn; }
 
             linkLevel = new Rectangle(0, currentRow, linkWidth, linkHeight);
            
