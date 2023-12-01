@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
@@ -50,9 +50,9 @@ namespace sprint0.Sound.Ocarina
                 {
                     songInstance.IsLooped = true;
                 }
-                songInstance.Play();
                 if (!InPlaySound.ContainsKey(songName))
                 {
+                    songInstance.Play();
                     InPlaySound.Add(songName, songInstance);
                 }
 
@@ -87,6 +87,7 @@ namespace sprint0.Sound.Ocarina
             {
                 SoundEffectInstance songInstance = InPlaySound[songName];
                 songInstance.Pause();
+                if (!InPauseSound.ContainsKey(songName)) 
                 InPauseSound.Add(songName, songInstance);
                 InPlaySound.Remove(songName);
 
@@ -101,7 +102,7 @@ namespace sprint0.Sound.Ocarina
         // As well as is currently paused. If not, will print error to console.
         public static void ResumeSong(WindWaker.Songs songName)
         {
-            if (InPauseSound.ContainsKey(songName))
+            if (InPauseSound.ContainsKey(songName) && !InPlaySound.ContainsKey(songName))
             {
                 SoundEffectInstance songInstance = InPauseSound[songName];
                 InPauseSound.Remove(songName);

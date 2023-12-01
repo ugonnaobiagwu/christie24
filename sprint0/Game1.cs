@@ -84,8 +84,6 @@ namespace sprint0
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
 
-
-
             //Game States - in progress
             Texture2D InvRoomTexture = Content.Load<Texture2D>("InventoryMapRoom");
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
@@ -210,11 +208,12 @@ namespace sprint0
 
         protected override void Update(GameTime gameTime)
         {
-
+            //Console.WriteLine(Globals.GameObjectManager.getCurrentRoomID());
             // TODO: Add your update logic here
             //GameState testing
             gameStateManager.Update(gameTime);
             Globals.GameObjectManager.deleteObjects();
+            //Console.WriteLine("HERE IS LINK X: " + Globals.Link.xPosition() + "HERE IS LINK Y: " + Globals.Link.yPosition());
             base.Update(gameTime);
         }
 

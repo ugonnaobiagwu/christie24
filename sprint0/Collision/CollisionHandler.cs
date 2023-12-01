@@ -417,6 +417,7 @@ namespace sprint0.Collision
             Globals.startScrolling = true;
             Globals.scrollFromThisDirection = door.getSideOfRoom();
             Globals.Link.SetRoomId(door.GetToRoomId());
+            Console.WriteLine(door.GetToRoomId());
             Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
         }
 

@@ -191,7 +191,7 @@ namespace sprint0
         // to set the Room ID
         public void setCurrentRoomID(int ID)
         {
-            currentRoomID = ID;
+            this.currentRoomID = ID;
         }
 
         // returns list 

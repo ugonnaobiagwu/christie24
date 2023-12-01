@@ -52,7 +52,7 @@ namespace sprint0.GameStates
             Globals.LinkItemSystem.Update();
 
             //Updates list of updatables in GOM (blocks, enemies, items etc)
-            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updateables");
+            List<IGameObject> Updateables = Globals.GameObjectManager.updateablesInRoom();
             foreach (IGameObject updateable in Updateables)
             {
                 updateable.Update();
@@ -61,11 +61,11 @@ namespace sprint0.GameStates
             //Update global timer.
             Globals.Update(gameTime);
 
-            //Collision iterator, 
+            //Collision iterator,
 
-            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
+            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
 
-            this.TransitionState();
+                this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
