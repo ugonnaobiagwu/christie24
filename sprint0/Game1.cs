@@ -86,6 +86,7 @@ namespace sprint0
 
 
             //Game States - in progress
+            Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
             Texture2D inventoryItemsTexture = Content.Load<Texture2D>("itemSpriteSheet");
@@ -100,7 +101,7 @@ namespace sprint0
             InventoryFactory.createAnimation("IceState", new int[] { 3 }, new int[] { 6}, 1, 1, 3, 2);
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen);
            
             mouse = Mouse.GetState();
 
@@ -179,7 +180,7 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
 
-            WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
+            WindWaker.PlaySong(WindWaker.Songs.TITLE);
 
             // Camera, keep this since I need graphics -- DELETE WHEN SCROLLING IS GOOD.
             //These are the only way the graphics device manager is initialized in camera

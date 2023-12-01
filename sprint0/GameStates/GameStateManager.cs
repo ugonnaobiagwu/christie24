@@ -18,10 +18,11 @@ namespace sprint0.GameStates
         private IGameState PlayState;
         private IGameState ScrollState;
         private IGameState PauseState;
+        private IGameState TitleState;
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture)
         {
 
             DeathState = new DeathState(this, font, content, this);
@@ -29,7 +30,8 @@ namespace sprint0.GameStates
             PlayState = new PlayState(this, screenWidth, screenHeight, gameHud, spriteBatch,staticHudSB);
             ScrollState = new ScrollState(this, 0, Direction.Up,gameHud);
             PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
-            CurrentState = PlayState;
+            TitleState = new TitleScreenState(this, titleScreenTexture,font);
+            CurrentState = TitleState;
             Console.WriteLine("GameStateManager Constructor");
         }
         public void Update(GameTime gameTime)
@@ -57,10 +59,11 @@ namespace sprint0.GameStates
                     CurrentState = InventoryState;
                     break;
                 case "play":
+                    WindWaker.StopSong(WindWaker.Songs.TITLE);
+                    WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
                     Console.WriteLine("play transition");
                     CurrentState = PlayState;
                     WindWaker.ResumeSong(WindWaker.Songs.DUNGEON);
-
                     break;
                 case "scroll":
                     CurrentState = ScrollState;
@@ -68,6 +71,13 @@ namespace sprint0.GameStates
                 case "pause":
                     CurrentState = PauseState;
                     WindWaker.PauseSong(WindWaker.Songs.DUNGEON);
+                    break;
+                case "title":
+                    CurrentState = TitleState;
+                    WindWaker.StopSong(WindWaker.Songs.DUNGEON);
+                    WindWaker.StopSong(WindWaker.Songs.ENDING);
+                    WindWaker.StopSong(WindWaker.Songs.TRIFORCE_OBTAIN);
+                    WindWaker.PlaySong(WindWaker.Songs.TITLE);
                     break;
             }
         }
