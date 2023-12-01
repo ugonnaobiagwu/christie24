@@ -40,7 +40,7 @@ namespace sprint0.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            blockSprite.Draw(spriteBatch, XValue, YValue, 0);
+            blockSprite.Draw(spriteBatch, XValue, YValue, 0.0f);
         }
 
         public void SetToRoomId(int ToRoomId) { }
@@ -60,6 +60,6 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
-        public String type() { return "Block"; }
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
     }
 }

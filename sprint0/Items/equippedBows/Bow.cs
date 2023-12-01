@@ -39,6 +39,13 @@ namespace sprint0.Items
             rotation = 0;
             itemRoomID = 0;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bow");
+            nullifyPosition();
+        }
+
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -99,8 +106,8 @@ namespace sprint0.Items
             {
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
-                Globals.GameObjectManager.removeObject(this);
-
+                //Globals.GameObjectManager.removeObject(this);
+                nullifyPosition();
             }
         }
 
@@ -205,7 +212,7 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
-        public String type() { return "Item"; }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

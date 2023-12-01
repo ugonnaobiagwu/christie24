@@ -112,11 +112,8 @@ namespace sprint0.BoundariesDoorsAndRooms
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            doorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0);
+            doorSprite.Draw(spriteBatch, xPosition(), yPosition(), 0.0f);
         }
-        public string type()
-        {
-            return "Door";
-        }
+        public GameObjectType type { get { return GameObjectType.DOOR ; } }
     }
 }

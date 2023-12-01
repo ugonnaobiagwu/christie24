@@ -15,6 +15,17 @@ namespace sprint0.Collision
 {
     public class CollisionHandler
     {
+
+        private const float CRIT_XP = .375f;
+        private const float MIN_XP = .1f;
+        private const float REG_XP = .238f;
+        private const float KEY_ITEM_FIND_XP = .7f;
+        private const float ITEM_FIND_XP = .4f;
+        private const float RUPEE_FIND_XP = .2f;
+
+
+
+
         /*
          * DEVELOPMENT NOTES:
          * 
@@ -277,7 +288,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
-            //collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Blocks.DungeonPyramidBlock", BetterBowImpactDelegate, MoveDungeonPyramidBlockDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
@@ -404,7 +414,10 @@ namespace sprint0.Collision
 
         private void StartScrollEvent(Door door)
         {
-
+            Globals.startScrolling = true;
+            Globals.scrollFromThisDirection = door.getSideOfRoom();
+            Globals.Link.SetRoomId(door.GetToRoomId());
+            Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
         }
 
         private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -738,12 +751,15 @@ namespace sprint0.Collision
             {
                 case Globals.LinkTunic.FIRE:
                     ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
                     break;
                 case Globals.LinkTunic.ICE:
                     ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
                     break;
                 default:
                     enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
@@ -858,12 +874,15 @@ namespace sprint0.Collision
             {
                 case Globals.LinkTunic.FIRE:
                     ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
                     break;
                 case Globals.LinkTunic.ICE:
                     ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
                     break;
                 default:
                     enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
@@ -947,15 +966,30 @@ namespace sprint0.Collision
                 if (itemType.Equals("sprint0.Items.groundItems.GroundRupee"))
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
+                    Inventory.UpdateXPLevel(RUPEE_FIND_XP);
 
                 }
                 else if (itemType.Equals("sprint0.Items.groundItems.GroundKey") || itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+                    Inventory.UpdateXPLevel(ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
+                    {
+                        Globals.Link.GainHealth(2);
+                        Inventory.GainHeart();
+                    }
                 }
                 else
                 {
                     Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+                    Inventory.UpdateXPLevel(KEY_ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
+                    {
+                        Globals.Link.GainHealth(4);
+                        Inventory.GainHeart();
+                        Inventory.GainHeart();
+                    }
+
                 }
             }
 

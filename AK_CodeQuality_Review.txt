@@ -1,0 +1,15 @@
+Alex Kim
+Nov 10, 2023
+Sprint 4
+
+WindWaker.cs
+Ugonna Obiagwu
+
+Notes:
++ Dictionary ensures that each sound will have an instance that can be easily depicted
++ Pause, Stop, and Resume methods make implementation with other methods less jumbled
+- Dictionary having the song being the key, leads to potential for multiple songs playing at the same time.
+
+Suggested Fix:
+	Have the key of the Dictionary be the instance, because only 1 song should be playing for each instance, while hypothetically, you
+could have multiple occurences where you would want to play the same song.

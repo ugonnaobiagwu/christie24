@@ -85,7 +85,7 @@ namespace sprint0.Blocks
             spriteBatch.Draw(Texture, destinationRectangle, sourceLocation, Color.White);
 
         }*/
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0); }
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue, 0.0f); }
         public void Explode() { }
         public void Update() { }
 
@@ -100,8 +100,7 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
-        public String type() { return "Block"; }
-
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
 
     }
 

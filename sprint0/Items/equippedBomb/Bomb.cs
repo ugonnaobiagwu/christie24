@@ -33,7 +33,7 @@ namespace sprint0.Items
             bombTicks = 0;
             itemRoomID = 0;
             currentItemSprite = itemSpriteFactory.getAnimatedSprite("Bomb");
-
+            nullifyPosition();
 
         }
 
@@ -43,6 +43,12 @@ namespace sprint0.Items
             {
                 currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0);
             }
+        }
+
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Update()
@@ -83,7 +89,8 @@ namespace sprint0.Items
                 thisStateMachine.CeaseUse();
                 this.spriteChanged = false; //reset
                 bombTicks = 0;
-                Globals.GameObjectManager.removeObject(this);
+                //Globals.GameObjectManager.removeObject(this);
+                nullifyPosition();
 
 
             }
@@ -197,7 +204,7 @@ namespace sprint0.Items
                 return false;
             }
         }
-        public String type() { return "Item"; }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

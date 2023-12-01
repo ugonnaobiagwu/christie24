@@ -19,8 +19,10 @@ public class Camera
 
     public Camera() {
         // up to change later
-        roomHeight = 160;
-        roomWidth = 120;
+        roomHeight = 480;
+        roomWidth = 800;
+
+        
     }
     /* The Camera now follows Link 
      * Haven't been able to get the logic behind the screen scrolling but working on it. But use this as a guide :)
@@ -106,7 +108,6 @@ public class Camera
         // Update the transform with the new camera position
         UpdateTransform(graphicsDeviceManager);
     }
-
     public Boolean cameraMovementComplete() {
 
         // Calculate the distance between the current and target positions

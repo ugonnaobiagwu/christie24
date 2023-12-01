@@ -42,7 +42,14 @@ namespace sprint0.LinkSword
             currentItemSprite = currentSpriteFactory.getAnimatedSprite("ItemDown");
             currentSwordTicks = 0;
             itemRoomID = 0;
+            nullifyPosition();
 
+        }
+
+        private void nullifyPosition()
+        {
+            this.xPos = -10000;
+            this.yPos = -10000;
         }
 
         public void Draw(SpriteBatch spritebatch)
@@ -132,8 +139,9 @@ namespace sprint0.LinkSword
           if (currentSwordTicks >= totalSwordTicks) { 
                 this.isDrawn = false;
                 this.thisStateMachine.CeaseUse();
-                Globals.GameObjectManager.removeObject(this);
-                
+                //Globals.GameObjectManager.removeObject(this);
+                nullifyPosition();
+
             }
             currentItemSprite.Update();
             currentSwordTicks++;
@@ -207,7 +215,7 @@ namespace sprint0.LinkSword
         {
             return this.itemRoomID;
         }
-        public String type() { return "Item"; }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 
