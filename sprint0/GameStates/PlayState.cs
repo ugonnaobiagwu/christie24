@@ -62,7 +62,7 @@ namespace sprint0.GameStates
             Globals.Update(gameTime);
 
             //Collision iterator, 
-            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
+            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
 
             this.TransitionState();
         }

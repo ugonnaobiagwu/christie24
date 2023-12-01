@@ -73,12 +73,6 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
             HudInventorySpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //delete these when ready to submit
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
@@ -87,8 +81,6 @@ namespace sprint0
 
             hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
-
-
 
 
             //Game States - in progress

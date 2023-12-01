@@ -79,7 +79,7 @@ namespace sprint0.Items
                     {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
-                        this.currentItemSprite = null;
+                        //this.currentItemSprite = null;
                     }
                 }
                 else
