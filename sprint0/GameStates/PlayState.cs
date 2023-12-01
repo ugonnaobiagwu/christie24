@@ -62,7 +62,6 @@ namespace sprint0.GameStates
             Globals.Update(gameTime);
 
             //Collision iterator, 
-
             CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
 
             this.TransitionState();
@@ -73,7 +72,7 @@ namespace sprint0.GameStates
             
             
             Globals.LinkItemSystem.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
+            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);

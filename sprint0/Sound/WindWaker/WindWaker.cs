@@ -87,6 +87,7 @@ namespace sprint0.Sound.Ocarina
             {
                 SoundEffectInstance songInstance = InPlaySound[songName];
                 songInstance.Pause();
+                if (!InPauseSound.ContainsKey(songName)) 
                 InPauseSound.Add(songName, songInstance);
                 InPlaySound.Remove(songName);
 
