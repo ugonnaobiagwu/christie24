@@ -24,7 +24,7 @@ namespace sprint0.GameStates
             KnownRoomHorizontalConnectors = new List<Vector2>();
             KnownRoomVerticalConnectors = new List<Vector2>();
             RoomTexture = roomTexture;
-            this.CompleteMap();
+           
 		}
         public void Draw(SpriteBatch spriteBatch)
         {

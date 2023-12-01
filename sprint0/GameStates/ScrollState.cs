@@ -34,29 +34,29 @@ namespace sprint0.GameStates
         public void Update(GameTime gameTime)
         {
             Globals.Camera.Update(gameTime);
-
+            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
             if (ScrollOnce)
             {
                 switch (Globals.scrollFromThisDirection)
                 {
                     case (Direction.Left):
                         Globals.Camera.MoveCameraToLeftRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() - 220, Globals.Link.yPosition());
+                        Globals.Link.ChangeXandYValue(Globals.DoorX - 180, Globals.DoorY);
                         Cartographer.addLeftRoom();
                         break;
                     case (Direction.Right):
                         Globals.Camera.MoveCameraToRightRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() + 220, Globals.Link.yPosition());
+                        Globals.Link.ChangeXandYValue(Globals.DoorX + 180, Globals.DoorY);
                         Cartographer.addRightRoom();
                         break;
                     case (Direction.Up):
                         Globals.Camera.MoveCameraToTopRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() - 220);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY - 135);
                         Cartographer.addTopRoom();
                         break;
                     case (Direction.Down):
                         Globals.Camera.MoveCameraToBottomRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() + 220);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY + 135);
                         Cartographer.addBottomRoom();
                         break;
                 }
