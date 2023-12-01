@@ -975,7 +975,7 @@ namespace sprint0.Collision
                     Inventory.UpdateXPLevel(ITEM_FIND_XP);
                     if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
                     {
-                        Globals.Link.GainHealth(1);
+                        Globals.Link.GainHealth(2);
                         Inventory.GainHeart();
                     }
                 }
@@ -985,8 +985,7 @@ namespace sprint0.Collision
                     Inventory.UpdateXPLevel(KEY_ITEM_FIND_XP);
                     if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
                     {
-                        Globals.Link.GainHealth(3);
-                        Inventory.GainHeart();
+                        Globals.Link.GainHealth(4);
                         Inventory.GainHeart();
                         Inventory.GainHeart();
                     }

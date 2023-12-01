@@ -73,11 +73,17 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
             HudInventorySpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
 
             Inventory.SetContentManager(Content);
-            hud = new HUD(HudInventorySpriteBatch, font);
+
+            hud = new HUD(spriteBatch, font);
+            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
+
+
+
 
             //Game States - in progress
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");

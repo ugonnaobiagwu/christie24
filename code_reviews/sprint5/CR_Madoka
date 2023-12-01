@@ -1,0 +1,33 @@
+Sprint 5 Code Review
+Author of Code Review: Madoka Kamishima
+
+Date reviewed: 11/30/2023
+
+Code Quality
+
+File: GameStates/ScrollState.cs
+Author of the file: Xing Wu
+
+Each method aren't too long, and the method names have an appropriate names for its functions. In addition. the first letter of the method names are all capitalized.
+Parameters aren't too much.
+The class size is't too big. 
+Neatly formatted
+
+comment out unnecessary or unused codes (i.e:  //public Direction ScrollDirection;)
+Make Sure to get all magic numbers out. Not only numerical values but also strings (such as "play")
+
+
+
+Readability
+File: GameObjectManager.cs
+Author of the file: Xing Wu
+
+
+GameObjectManager
+Time read: 2 min
+
+Neatly organized and the method names and variables are well formed, so it was easy to read. 
+
+Over all there aren't much change I would ask for as for readability. There are not magic numbers, so it was easy to read on the functionality of the codes.
+
+The only thing I would recommend is to remove the codes that are commented out.

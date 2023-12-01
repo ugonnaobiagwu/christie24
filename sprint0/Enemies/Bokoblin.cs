@@ -12,6 +12,7 @@ using sprint0.AnimatedSpriteFactory;
 using sprint0.HUDs;
 using sprint0.Items;
 using sprint0.Sound.Ocarina;
+using static sprint0.Globals;
 
 namespace sprint0.Enemies
 {
@@ -40,6 +41,7 @@ namespace sprint0.Enemies
         private Vector2 linkVector;
         private float followSpeed = .05f;
         private float followThreshold = 250.0f;
+        private float dodgeThreshold = 50.0f;
         private int changeFollowingCourseTicks = 0;
         private int totalFollowingCourseTicks = 10;
         private bool inPlay;
@@ -298,6 +300,105 @@ namespace sprint0.Enemies
 
             }
 
+            /* Dodge Arrows */
+            /* Checks A and B independently in case Link happens to have the Bow and BetterBow equipped at the same time */
+            if (LinkHasBowA())
+            {
+                if (Globals.LinkItemSystem.currentItemA.isInPlay())
+                {
+                    if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+                    {
+                        if (ItemInRange(Globals.LinkItemSystem.currentItemA))
+                        {
+                            Dodge(Globals.LinkItemSystem.currentItemA);
+                        }
+                    }
+                }
+            }
+            if (LinkHasBowB())
+            {
+                if (Globals.LinkItemSystem.currentItemB.isInPlay())
+                {
+                    if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+                    {
+                        if (ItemInRange(Globals.LinkItemSystem.currentItemB))
+                        {
+                            Dodge(Globals.LinkItemSystem.currentItemA);
+                        }
+                    }
+                }
+            }
+        }
+
+        //Helper Methods for dodge behavior
+        private bool LinkHasBowA()
+        {
+            return Globals.LinkItemSystem.currentItemA != null &&
+                (Globals.LinkItemSystem.currentItemA.GetType().ToString().Equals("Bow") || Globals.LinkItemSystem.currentItemA.GetType().ToString().Equals("BetterBow"));
+        }
+
+        private bool LinkHasBowB()
+        {
+            return Globals.LinkItemSystem.currentItemA != null &&
+                (Globals.LinkItemSystem.currentItemB.GetType().ToString().Equals("Bow") || Globals.LinkItemSystem.currentItemB.GetType().ToString().Equals("BetterBow"));
+        }
+
+        private bool ItemInRange(IItem bow)
+        {
+            switch (Globals.Link.GetDirection())
+            {
+                case Direction.Left:
+                    return Math.Abs(yPos - Globals.Link.yPosition()) <= height() &&
+                        bow.xPosition() - xPos <= dodgeThreshold;
+                case Direction.Right:
+                    return Math.Abs(yPos - Globals.Link.yPosition()) <= height() &&
+                        xPos - bow.xPosition() <= dodgeThreshold;
+                case Direction.Up:
+                    return Math.Abs(xPos - Globals.Link.xPosition()) <= width() &&
+                        yPos - bow.yPosition() <= dodgeThreshold;
+                case Direction.Down:
+                    return Math.Abs(xPos - Globals.Link.xPosition()) <= height() &&
+                        bow.yPosition() - yPos <= dodgeThreshold;
+            }
+            return false;
+        }
+
+        private void Dodge(IItem bow)
+        {
+            if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+            {
+                if (yPos < Globals.Link.yPosition())
+                {
+                    while (ItemInRange(bow))
+                    {
+                        EnemyDown();
+                    }
+                }
+                else
+                {
+                    while (ItemInRange(bow))
+                    {
+                        EnemyUp();
+                    }
+                }
+            }
+            else
+            {
+                if (xPos < Globals.Link.xPosition())
+                {
+                    while (ItemInRange(bow))
+                    {
+                        EnemyLeft();
+                    }
+                }
+                else
+                {
+                    while (ItemInRange(bow))
+                    {
+                        EnemyRight();
+                    }
+                }
+            }
         }
 
         /* ---Other Methods--- */
