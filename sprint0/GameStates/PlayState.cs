@@ -61,10 +61,11 @@ namespace sprint0.GameStates
             //Update global timer.
             Globals.Update(gameTime);
 
-            //Collision iterator, 
+            //Collision iterator,
+
             CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
 
-            this.TransitionState();
+                this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)

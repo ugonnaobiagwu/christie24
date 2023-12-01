@@ -6,6 +6,8 @@ using sprint0;
 using sprint0.BoundariesDoorsAndRooms;
 using static sprint0.Globals;
 using sprint0.HUDs;
+using sprint0.Collision;
+
 namespace sprint0.GameStates
 {
     public class ScrollState : IGameState
@@ -54,7 +56,6 @@ namespace sprint0.GameStates
                 }
             } ScrollOnce = false;
             Globals.Update(gameTime);
-
             this.TransitionState();
         }
 

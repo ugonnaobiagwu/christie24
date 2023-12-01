@@ -205,7 +205,7 @@ namespace sprint0
 
         protected override void Update(GameTime gameTime)
         {
-
+            //Console.WriteLine(Globals.GameObjectManager.getCurrentRoomID());
             // TODO: Add your update logic here
             //GameState testing
             gameStateManager.Update(gameTime);
