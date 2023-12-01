@@ -34,6 +34,7 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             ProjectileID = projectileID;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
             //maxFireTicks = 120;
             //fireTicks = 0;
         }

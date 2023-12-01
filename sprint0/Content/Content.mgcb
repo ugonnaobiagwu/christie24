@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../LevelLoading/XmlRooms/FirstDungeon.xml
+/copy:../LevelLoading/XmlRooms/FirstDungeon.xml;FirstDungeon.xml
+
 #begin background_sheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -314,9 +317,6 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;Font.spritefont
-
-#begin FirstDungeon.xml
-/copy:FirstDungeon.xml
 
 #begin groundItemSprites/groundBigHeart.png
 /importer:TextureImporter

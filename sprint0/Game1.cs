@@ -73,6 +73,12 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
             HudInventorySpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //delete these when ready to submit
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.CountKey();
+
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
@@ -212,6 +218,7 @@ namespace sprint0
             //GameState testing
             gameStateManager.Update(gameTime);
             Globals.GameObjectManager.deleteObjects();
+            //Console.WriteLine("HERE IS LINK X: " + Globals.Link.xPosition() + "HERE IS LINK Y: " + Globals.Link.yPosition());
             base.Update(gameTime);
         }
 

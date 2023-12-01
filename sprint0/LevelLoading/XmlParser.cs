@@ -125,7 +125,7 @@ namespace sprint0.LevelLoading
         {
             int x = ParseXCoordinate(enemyNode);
             int y = ParseYCoordinate(enemyNode);
-            string enemyType = enemyNode.SelectSingleNode("EnemyNode").InnerText;
+            string enemyType = enemyNode.SelectSingleNode("EnemyType").InnerText;
             XmlNodeList AnimationSetNodes = enemyNode.SelectNodes("AnimationSet");
             SpriteFactory[] factoryArray = new SpriteFactory[AnimationSetNodes.Count];
             for (int i = 0; i < AnimationSetNodes.Count; i++)

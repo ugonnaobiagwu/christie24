@@ -36,6 +36,7 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Coming");
 
         }
 

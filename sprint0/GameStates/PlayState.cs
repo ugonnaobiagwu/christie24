@@ -52,7 +52,7 @@ namespace sprint0.GameStates
             Globals.LinkItemSystem.Update();
 
             //Updates list of updatables in GOM (blocks, enemies, items etc)
-            List<IGameObject> Updateables = Globals.GameObjectManager.updateablesInRoom();
+            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updatables");
             foreach (IGameObject updateable in Updateables)
             {
                 updateable.Update();
@@ -72,7 +72,7 @@ namespace sprint0.GameStates
             
             
             Globals.LinkItemSystem.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
