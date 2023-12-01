@@ -52,7 +52,7 @@ namespace sprint0.GameStates
             Globals.LinkItemSystem.Update();
 
             //Updates list of updatables in GOM (blocks, enemies, items etc)
-            List<IGameObject> Updateables = Globals.GameObjectManager.getList("updatables");
+            List<IGameObject> Updateables = Globals.GameObjectManager.updateablesInRoom();
             foreach (IGameObject updateable in Updateables)
             {
                 updateable.Update();
