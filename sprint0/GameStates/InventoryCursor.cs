@@ -14,7 +14,7 @@ namespace sprint0.GameStates
 		private const int MovementXOffset = 75;
         private const int MovementYOffset = 60;
         public ItemTypes[] SelectedItem;
-		public LinkTunic[] SelectedTunic;
+		public ItemTypes[] SelectedItem2;
 		public int CurrentSelected = 0;
 		public int currentRow = 0;
 		public InventoryCursor(Texture2D cursorTexture, int initialX, int initialY)
@@ -23,7 +23,7 @@ namespace sprint0.GameStates
 			CursorPosition = new Vector2(initialX, initialY);
 			//If the inventory ever gets bigger make a better system for item selection
 			SelectedItem = new ItemTypes[4] {ItemTypes.BOOMERANG,ItemTypes.BOMB,ItemTypes.BOW,ItemTypes.BLAZE};
-			SelectedTunic = new LinkTunic[4] { LinkTunic.GREEN, LinkTunic.FIRE, LinkTunic.ICE, LinkTunic.GREEN }; //Green at the end as placeholder
+			SelectedItem2 = new ItemTypes[4] { ItemTypes.GREENTUNIC,ItemTypes.REDTUNIC, ItemTypes.BLUETUNIC, ItemTypes.SWORD}; //Green at the end as placeholder
 		}
 
 		public void moveLeft() {
@@ -60,9 +60,9 @@ namespace sprint0.GameStates
 			return SelectedItem[CurrentSelected]; 
 			
 		}
-		public LinkTunic ReturnSelectedTunic()
+		public ItemTypes ReturnSelectedTunic()
 		{
-			return SelectedTunic[CurrentSelected];
+			return SelectedItem2[CurrentSelected];
 		}
 		public int GetMovementOffset() { return MovementXOffset; }
 	}

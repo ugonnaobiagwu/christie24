@@ -47,7 +47,14 @@ namespace sprint0.HUDs
             BOW,
             BOOMERANG,
             BLAZE,
-            LIFEPOTION
+            LIFEPOTION,
+
+            //Tunics
+            GREENTUNIC,
+            REDTUNIC,
+            BLUETUNIC,
+            SWORD //Outlier I know, using for inventory selection
+
         }
 
 

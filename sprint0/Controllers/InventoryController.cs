@@ -78,8 +78,8 @@ namespace sprint0.Controllers
             linkEquipBombB = new EquipBombToBCommand();
             linkEquipSwordA = new EquipSwordToACommand();
             linkEquipSwordB = new EquipSwordToBCommand();
-            SelectItemA = new SelectItemACommand(Game, cursor, linkEquipBowA, linkEquipBombA, linkEquipBoomerangA, linkEquipBlazeA);
-            SelectItemB = new SelectItemBCommand(Game, cursor, linkEquipBowB, linkEquipBombB, linkEquipBoomerangB, linkEquipBlazeB);
+            SelectItemA = new SelectItemACommand(Game, cursor, linkEquipBowA, linkEquipBombA, linkEquipBoomerangA, linkEquipBlazeA, linkEquipSwordA);
+            SelectItemB = new SelectItemBCommand(Game, cursor, linkEquipBowB, linkEquipBombB, linkEquipBoomerangB, linkEquipBlazeB, linkEquipSwordB);
 
             leftScroll = new LeftScrollCommand(Game);
         }

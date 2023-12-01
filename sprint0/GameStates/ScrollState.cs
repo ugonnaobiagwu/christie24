@@ -61,7 +61,7 @@ namespace sprint0.GameStates
         public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
         {
             Globals.LinkItemSystem.Draw();
-            
+
             List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
