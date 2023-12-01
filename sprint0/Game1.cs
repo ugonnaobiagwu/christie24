@@ -78,7 +78,12 @@ namespace sprint0
             font = Content.Load<SpriteFont>("hudFont");
 
             Inventory.SetContentManager(Content);
-            hud = new HUD(HudInventorySpriteBatch, font);
+
+            hud = new HUD(spriteBatch, font);
+            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
+
+
+
 
             //Game States - in progress
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
