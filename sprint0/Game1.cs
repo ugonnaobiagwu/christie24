@@ -79,7 +79,7 @@ namespace sprint0
 
             Inventory.SetContentManager(Content);
 
-            hud = new HUD(spriteBatch, font);
+            hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
 
