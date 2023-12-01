@@ -7,6 +7,7 @@ using sprint0.GameStates;
 using sprint0.Commands.GameStateCommand;
 using Microsoft.Xna.Framework.Input;
 using static sprint0.HUDs.Inventory;
+using static sprint0.HUDs.Inventory;
 using sprint0.AnimatedSpriteFactory;
 
 namespace sprint0.GameStates
@@ -30,11 +31,12 @@ namespace sprint0.GameStates
         private const int InventoryBoxRightBound = 710;
         private const int InventoryBoxUpperBound = -300;
         private const int InventoryBoxLowerBound = -260;
+        Cartographer Cartographer;
         GameStateManager GameStateManager;
 
-        public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, SpriteFactory inventoryFactory)
+        public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, SpriteFactory inventoryFactory, Cartographer cartographer)
 
-     //   public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud,  IDictionary<ItemTypes, Texture2D> itemTextureDict)
+        //   public InventoryState(GameStateManager manager, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud,  IDictionary<ItemTypes, Texture2D> itemTextureDict)
         {
             GameStateManager = manager;
             InventoryTexture = inventoryTexture;
@@ -42,6 +44,7 @@ namespace sprint0.GameStates
             Cursor = cursor;
             GameHud.HudYOffset = -50;
             InventoryFactory = inventoryFactory;
+            Cartographer = cartographer;
 
         }
         public void Update(GameTime gameTime)
@@ -51,7 +54,7 @@ namespace sprint0.GameStates
             Globals.inventoryController.Update();
             Globals.Camera.Update(gameTime);
             //Look into updating LinkItemSystem as well
-            
+
             //Check for state transition
             this.TransitionState();
         }
@@ -72,7 +75,7 @@ namespace sprint0.GameStates
             //This is room height in camera class currently (160)- smelly magic number now that its in this class too
             //int y = -(int)((float)InventoryTexture.Height * ScaleHeight) - GameHud.ReturnHUDHeight();
             int y = -GameHud.ReturnHUDHeight() - InventoryTexture.Height + 20;
-            
+
 
             int width = (int)(InventoryTexture.Width * ScaleWidth);
             int height = (int)(InventoryTexture.Height * ScaleHeight);
@@ -81,14 +84,18 @@ namespace sprint0.GameStates
 
             //Draw the Hud
             GameHud.Draw();
-            InventoryFactory.getAnimatedSprite("Boomerang").Draw(HudInvSpriteBatch, 455, -290,0.0f);
-            InventoryFactory.getAnimatedSprite("Bomb").Draw(HudInvSpriteBatch, 585, -280,0.0f);
+            InventoryFactory.getAnimatedSprite("Boomerang").Draw(HudInvSpriteBatch, 455, -290, 0.0f);
+            InventoryFactory.getAnimatedSprite("Bomb").Draw(HudInvSpriteBatch, 585, -280, 0.0f);
             InventoryFactory.getAnimatedSprite("Bow").Draw(HudInvSpriteBatch, 650, -285, 0.0f);
             InventoryFactory.getAnimatedSprite("Blaze").Draw(HudInvSpriteBatch, 730, -275, 0.0f);
 
             InventoryFactory.getAnimatedSprite("NeutralState").Draw(HudInvSpriteBatch, 475, -345, 0.0f);
-            InventoryFactory.getAnimatedSprite("FireState").Draw(HudInvSpriteBatch, 545, -345, 0.0f);
-            InventoryFactory.getAnimatedSprite("IceState").Draw(HudInvSpriteBatch, 615, -345, 0.0f);
+            if (Inventory.CurrentLinkLevel == LinkLevel.HIGH) {
+                InventoryFactory.getAnimatedSprite("FireState").Draw(HudInvSpriteBatch, 545, -345, 0.0f);
+            }
+            if (Inventory.CurrentLinkLevel == LinkLevel.MEDIUM || Inventory.CurrentLinkLevel == LinkLevel.HIGH) {
+                InventoryFactory.getAnimatedSprite("IceState").Draw(HudInvSpriteBatch, 615, -345, 0.0f);
+            }
             InventoryFactory.getAnimatedSprite("Sword").Draw(HudInvSpriteBatch, 715, -330, 0.0f);
             //Draw items
             //foreach (KeyValuePair<ItemTypes, Texture2D> itemEntry in itemTextureDict)
@@ -109,7 +116,8 @@ namespace sprint0.GameStates
             //            break;
             //    }
             //}
-
+            //Draw Map
+            Cartographer.Draw(HudInvSpriteBatch);
             //Draw Cursor
             Rectangle sourceRectangle = new Rectangle();
             sourceRectangle.Height = Cursor.CursorTexture.Height;

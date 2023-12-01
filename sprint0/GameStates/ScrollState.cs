@@ -19,12 +19,14 @@ namespace sprint0.GameStates
         private bool ScrollOnce = true;
         GameStateManager GameStateManager;
         HUD GameHud;
-        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud)
+        Cartographer Cartographer;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud,Cartographer cartographer)
         {
             GameStateManager = manager;
             NewRoomId = toRoomId;
             SideOfRoomDirection = sideOfRoom;
             GameHud = newHud;
+            Cartographer = cartographer;
         }
 
         public void Update(GameTime gameTime)
@@ -38,18 +40,22 @@ namespace sprint0.GameStates
                     case (Direction.Left):
                         Globals.Camera.MoveCameraToLeftRoom();
                         Globals.Link.ChangeXandYValue(Globals.Link.xPosition() - 220, Globals.Link.yPosition());
+                        Cartographer.addLeftRoom();
                         break;
                     case (Direction.Right):
                         Globals.Camera.MoveCameraToRightRoom();
                         Globals.Link.ChangeXandYValue(Globals.Link.xPosition() + 220, Globals.Link.yPosition());
+                        Cartographer.addRightRoom();
                         break;
                     case (Direction.Up):
                         Globals.Camera.MoveCameraToTopRoom();
                         Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() - 220);
+                        Cartographer.addTopRoom();
                         break;
                     case (Direction.Down):
                         Globals.Camera.MoveCameraToBottomRoom();
                         Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() + 220);
+                        Cartographer.addBottomRoom();
                         break;
                 }
             } ScrollOnce = false;
