@@ -73,6 +73,7 @@ namespace sprint0
             spriteBatch = new SpriteBatch(GraphicsDevice);
             HudInventorySpriteBatch = new SpriteBatch(GraphicsDevice);
 
+            Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
             //HUD
             font = Content.Load<SpriteFont>("hudFont");
 
