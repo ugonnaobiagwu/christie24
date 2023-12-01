@@ -101,7 +101,7 @@ namespace sprint0.Sound.Ocarina
         // As well as is currently paused. If not, will print error to console.
         public static void ResumeSong(WindWaker.Songs songName)
         {
-            if (InPauseSound.ContainsKey(songName))
+            if (InPauseSound.ContainsKey(songName) && !InPlaySound.ContainsKey(songName))
             {
                 SoundEffectInstance songInstance = InPauseSound[songName];
                 InPauseSound.Remove(songName);
