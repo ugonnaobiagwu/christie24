@@ -69,21 +69,20 @@ namespace sprint0
                 dynamics.Add(obj);
             }
 
-            if (obj.isDrawable() && obj.type != GameObjectType.ROOM && obj.type != GameObjectType.FLOOR && obj.type != GameObjectType.DOOR) // drawable objects
+            if (obj.isDrawable()) // drawable objects
             {
-                drawables.Add(obj);
-            }
-            else if (obj.isDrawable() && obj.type == GameObjectType.ROOM)
-            {
-                roomList.Add(obj);
-            }
-            else if (obj.isDrawable() && obj.type == GameObjectType.DOOR)
-            {
-                doorList.Add(obj);
-            }
-            else if (obj.isDrawable() && obj.type == GameObjectType.FLOOR)
-            {
-                floorList.Add(obj);
+                switch (obj.type)
+                {
+                    case GameObjectType.ROOM:
+                        roomList.Add(obj); break;
+                    case GameObjectType.DOOR:
+                        doorList.Add(obj); break;
+                    case GameObjectType.FLOOR:
+                        floorList.Add(obj); break;
+                    default:
+                        drawables.Add(obj); break;
+                }
+                drawables = orderDrawableList(drawables);
             }
             if (obj.isUpdateable()) // updateable objects
             {
@@ -107,21 +106,16 @@ namespace sprint0
 
             foreach (IGameObject obj in list)
             {
-                if (obj.type == GameObjectType.BLOCK)
+                switch (obj.type)
                 {
-                    blockList.Add(obj);
-                }
-                else if (obj.type == GameObjectType.ITEM)
-                {
-                    itemList.Add(obj);
-                }
-                else if (obj.type == GameObjectType.ENEMY)
-                {
-                    enemyList.Add(obj);
-                }
-                else if (obj.type == GameObjectType.LINK)
-                {
-                    linkList.Add(obj);
+                    case GameObjectType.BLOCK:
+                        blockList.Add(obj); break;
+                    case GameObjectType.ITEM:
+                        itemList.Add(obj); break;
+                    case GameObjectType.ENEMY:
+                        enemyList.Add(obj); break;
+                    case GameObjectType.LINK:
+                        linkList.Add(obj); break;
                 }
             }
             orderedList.AddRange(roomList);
@@ -140,7 +134,6 @@ namespace sprint0
             // removes the object from the room
             if (!inPlay.Contains(obj))
             {
-
                 deleteList.Add(obj);
             }
 
@@ -264,34 +257,6 @@ namespace sprint0
             }
             return roomUpdateables;
         }
-
-        //public List<IGameObject> drawablesInRoom()
-        //{
-        //    List<IGameObject> roomDrawables = new List<IGameObject>();
-
-        //    foreach (IGameObject obj in drawables)
-        //    {
-        //        if (obj.GetRoomId() == currentRoomID)
-        //        {
-        //            roomDrawables.Add(obj);
-        //        }
-        //    }
-        //    return orderDrawableList(roomDrawables);
-        //}
-
-        //public List<IGameObject> updateablesInRoom()
-        //{
-        //    List<IGameObject> roomUpdateables = new List<IGameObject>();
-
-        //    foreach (IGameObject obj in updateables)
-        //    {
-        //        if (obj.GetRoomId() == currentRoomID)
-        //        {
-        //            roomUpdateables.Add(obj);
-        //        }
-        //    }
-        //    return roomUpdateables;
-        //}
 
         // to get the list of objects in a room just by its ID
         // might not be necessary, but it might also simplify things alot
