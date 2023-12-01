@@ -180,7 +180,7 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
 
-            WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
+            WindWaker.PlaySong(WindWaker.Songs.TITLE);
 
             // Camera, keep this since I need graphics -- DELETE WHEN SCROLLING IS GOOD.
             //These are the only way the graphics device manager is initialized in camera

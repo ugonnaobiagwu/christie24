@@ -59,10 +59,11 @@ namespace sprint0.GameStates
                     CurrentState = InventoryState;
                     break;
                 case "play":
+                    WindWaker.StopSong(WindWaker.Songs.TITLE);
+                    WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
                     Console.WriteLine("play transition");
                     CurrentState = PlayState;
                     WindWaker.ResumeSong(WindWaker.Songs.DUNGEON);
-
                     break;
                 case "scroll":
                     CurrentState = ScrollState;
@@ -70,6 +71,13 @@ namespace sprint0.GameStates
                 case "pause":
                     CurrentState = PauseState;
                     WindWaker.PauseSong(WindWaker.Songs.DUNGEON);
+                    break;
+                case "title":
+                    CurrentState = TitleState;
+                    WindWaker.StopSong(WindWaker.Songs.DUNGEON);
+                    WindWaker.StopSong(WindWaker.Songs.ENDING);
+                    WindWaker.StopSong(WindWaker.Songs.TRIFORCE_OBTAIN);
+                    WindWaker.PlaySong(WindWaker.Songs.TITLE);
                     break;
             }
         }
