@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
@@ -50,9 +50,9 @@ namespace sprint0.Sound.Ocarina
                 {
                     songInstance.IsLooped = true;
                 }
-                songInstance.Play();
                 if (!InPlaySound.ContainsKey(songName))
                 {
+                    songInstance.Play();
                     InPlaySound.Add(songName, songInstance);
                 }
 
