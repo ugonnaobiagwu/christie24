@@ -46,7 +46,7 @@ namespace sprint0.GameStates
                         break;
                     case (Direction.Right):
                         Globals.Camera.MoveCameraToRightRoom();
-                        Globals.Link.ChangeXandYValue(Globals.DoorX + 180, Globals.DoorY);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX + 230, Globals.DoorY);
                         Cartographer.addRightRoom();
                         break;
                     case (Direction.Up):
