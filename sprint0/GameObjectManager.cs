@@ -82,6 +82,7 @@ namespace sprint0
                     default:
                         drawables.Add(obj); break;
                 }
+                // that way the list is ALWAYS ordered
                 drawables = orderDrawableList(drawables);
             }
             if (obj.isUpdateable()) // updateable objects
@@ -96,6 +97,7 @@ namespace sprint0
             drawables = orderDrawableList(drawables);
         }
 
+        // to order drawable lists
         private List<IGameObject> orderDrawableList(List<IGameObject> list)
         {
             List<IGameObject> blockList = new List<IGameObject>();
@@ -127,6 +129,7 @@ namespace sprint0
             orderedList.AddRange(linkList);
             return orderedList;
         }
+
         // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
@@ -139,7 +142,7 @@ namespace sprint0
 
         }
 
-        // removes object from room
+        // removes object all lists
         public void deleteObjects()
         {
             foreach (IGameObject obj in deleteList)
@@ -266,6 +269,8 @@ namespace sprint0
             return ObjectMap;
 
         }
+
+        // to reset the game object manager
         public void ResetGOM()
         {
             drawables = new List<IGameObject>();
