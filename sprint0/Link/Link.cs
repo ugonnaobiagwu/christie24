@@ -20,6 +20,8 @@ namespace sprint0.LinkObj
     using System.Security.Cryptography.X509Certificates;
     using static sprint0.Globals;
     using sprint0;
+    using sprint0.HUDs;
+    using sprint0.Sound.Ocarina;
 
     /* Need to make interface*/
     public class Link : ILink
@@ -124,8 +126,9 @@ namespace sprint0.LinkObj
         {
             if (LinkState != State.Damaged)
             {
-                LinkState = State.Damaged;
-                HealthVal--;
+               Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+               LinkState = State.Damaged;
+               HealthVal--;
                 if (HealthVal == 0)
                 {
                     LinkState = State.Dead;
@@ -136,14 +139,15 @@ namespace sprint0.LinkObj
         }
         public void Update()
         {
+            Inventory.items[Inventory.ItemTypes.HEART] = HealthVal;
             if (LinkItemSystem.CurrentTunic != currentTunic)
             {
                 currentFormattedTunic = (FormattedTunic)Globals.LinkItemSystem.CurrentTunic;
             }
             if (LinkState == State.Damaged)
             {
-
-                if (damageTimer == 30)
+                //Console.WriteLine("Link State Check Reached:  Damage Timer is at " + damageTimer);
+                if (damageTimer == 80)
                 {
                     LinkState = State.Default;
                     damageTimer = 0;

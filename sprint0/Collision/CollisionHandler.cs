@@ -318,8 +318,8 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Dragon", SwordImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
             // COMBAT ON LINK COLLISIONS
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageFromIceElementDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageFromFireElementDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
 
@@ -459,7 +459,7 @@ namespace sprint0.Collision
         {
             if (!Globals.Link.GetState().Equals(Link.State.Damaged))
             {
-                Console.WriteLine("Link has been damaged!");
+                //Console.WriteLine("Link has been damaged!");
                 LinkObj.Link link = (LinkObj.Link)obj;
                 switch (collisionType)
                 {
@@ -476,8 +476,8 @@ namespace sprint0.Collision
                         link.XVal += 20;
                         break;
                 }
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
-                Inventory.LoseHeart();
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+                //Inventory.LoseHeart();
 
                 //Globals.Link.LinkTakeDamage();
                 link.LinkTakeDamage();
@@ -507,13 +507,12 @@ namespace sprint0.Collision
                         link.XVal += 20;
                         break;
                 }
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
-                Inventory.LoseHeart();
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
                 switch (Globals.LinkItemSystem.CurrentTunic)
                 {
                     case Globals.LinkTunic.FIRE:
                         link.LinkTakeDamage(); // TAKE LESS DAMAGE
-                        Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
                         Console.WriteLine("You've been minorly hit.");
                         break;
                     case Globals.LinkTunic.ICE:
@@ -521,16 +520,16 @@ namespace sprint0.Collision
                         link.LinkTakeDamage();
                         link.LinkTakeDamage();
                         link.LinkTakeDamage();
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
                         // TAKE MORE DAMAGE
                         break;
                     default:
                         link.LinkTakeDamage();
                         link.LinkTakeDamage();
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
                         break;
                 }
             }
@@ -557,8 +556,7 @@ namespace sprint0.Collision
                         link.XVal += 20;
                         break;
                 }
-                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
-                Inventory.LoseHeart();
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
                 switch (Globals.LinkItemSystem.CurrentTunic)
                 {
                     case Globals.LinkTunic.FIRE:
@@ -566,20 +564,20 @@ namespace sprint0.Collision
                         link.LinkTakeDamage();
                         link.LinkTakeDamage();
                         link.LinkTakeDamage(); // TAKE MORE DAMAGE
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
                         break;
                     case Globals.LinkTunic.ICE:
                         link.LinkTakeDamage(); // TAKE LESS DAMAGE THAN NORMAL
-                        Inventory.LoseHeart();
+
+                        //Inventory.LoseHeart();
                         Console.WriteLine("You've been minorly hit.");
                         break;
                     default:
                         link.LinkTakeDamage();
                         link.LinkTakeDamage();// TAKES NORMAL DAMAGE
-                        Inventory.LoseHeart();
-                        Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
                         break;
                 }
             }
@@ -1005,7 +1003,7 @@ namespace sprint0.Collision
                     if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
                     {
                         Globals.Link.GainHealth(2);
-                        Inventory.GainHeart();
+                        //Inventory.GainHeart();
                         Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
                     }
                     
@@ -1017,8 +1015,8 @@ namespace sprint0.Collision
                     if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
                     {
                         Globals.Link.GainHealth(4);
-                        Inventory.GainHeart();
-                        Inventory.GainHeart();
+                        //Inventory.GainHeart();
+                        //Inventory.GainHeart();
                     }
 
                 }
