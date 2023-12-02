@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
 using sprint0.HUDs;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Items.groundItems
 {
@@ -51,10 +52,13 @@ namespace sprint0.Items.groundItems
 
         public void PickUp()
         {
-            Inventory.CountKey();
-            isPickedUp = true;
-            Globals.GameObjectManager.removeObject(this);
-
+            if (isPickedUp == false)
+            {
+                isPickedUp = true;
+                Globals.GameObjectManager.removeObject(this);
+                Inventory.CountKey();
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+            }
         }
 
         public bool isUpdateable()
@@ -64,7 +68,13 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return !isPickedUp;
+            if (isPickedUp)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
         }
 
         public bool isDrawable()

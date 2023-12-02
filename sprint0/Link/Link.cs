@@ -39,8 +39,8 @@ namespace sprint0.LinkObj
         ILink LinkObj;
         ISprite LinkSprite;
         LinkTunic currentTunic;
-        //FormattedTunic currentFormattedTunic;
-        //private enum FormattedTunic { Green, Blue, Red };
+        FormattedTunic currentFormattedTunic;
+        private enum FormattedTunic { GREEN, BLUE, RED };
         int damageTimer;
         /*Edited to have a texture, row, and column input for the purpose of drawing*/
         public Link(int x, int y, SpriteFactory spriteFactory)
@@ -53,7 +53,8 @@ namespace sprint0.LinkObj
             IsDynamic = true;
             LinkState = State.Default;
             currentTunic = Globals.LinkItemSystem.CurrentTunic;
-            LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + "Down");
+            currentFormattedTunic = (FormattedTunic)Globals.LinkItemSystem.CurrentTunic;
+            LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Down");
             damageTimer = 0;
 
 
@@ -68,7 +69,7 @@ namespace sprint0.LinkObj
             {
 
                 LinkDirection = Direction.Up;
-                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + "Up");
+                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Up");
             }
             if (LinkState == State.Default || LinkState == State.Damaged)
             {
@@ -83,7 +84,7 @@ namespace sprint0.LinkObj
             if (LinkDirection != Direction.Down && LinkState == State.Default || LinkState == State.Damaged)
             {
                 LinkDirection = Direction.Down;
-                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + "Down");
+                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Down");
             }
             if (LinkState == State.Default || LinkState == State.Damaged)
             {
@@ -97,7 +98,7 @@ namespace sprint0.LinkObj
             if (LinkDirection != Direction.Right && LinkState == State.Default || LinkState == State.Damaged)
             {
                 LinkDirection = Direction.Right;
-                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + "Right");
+                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Right");
             }
             if (LinkState == State.Default || LinkState == State.Damaged)
             {
@@ -111,7 +112,7 @@ namespace sprint0.LinkObj
             if (LinkDirection != Direction.Left && LinkState == State.Default || LinkState == State.Damaged)
             {
                 LinkDirection = Direction.Left;
-                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + "Left");
+                LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Left");
             }
             if (LinkState == State.Default || LinkState == State.Damaged)
             {
@@ -137,12 +138,12 @@ namespace sprint0.LinkObj
         {
             if (LinkItemSystem.CurrentTunic != currentTunic)
             {
-                currentTunic = LinkItemSystem.CurrentTunic;
+                currentFormattedTunic = (FormattedTunic)Globals.LinkItemSystem.CurrentTunic;
             }
             if (LinkState == State.Damaged)
             {
 
-                if (damageTimer == 60)
+                if (damageTimer == 30)
                 {
                     LinkState = State.Default;
                     damageTimer = 0;
@@ -154,7 +155,7 @@ namespace sprint0.LinkObj
                 }
                 else
                 {
-                    LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentTunic.ToString() + LinkDirection.ToString());
+                    LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + LinkDirection.ToString());
                 }
                 damageTimer++;
             }

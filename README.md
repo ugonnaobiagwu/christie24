@@ -34,13 +34,25 @@ CONTROLS:
 * Attack Using Item A with N
 * Attack Using Item B with M
 * Pause the game with P.
+* Reset the game with R
+* Auto-Damage Link with Y (For Testing)
 
 
 KNOWN BUGS AND ISSUES:
 * Fun Fact: Collision Rectangles are slightly off because the images use a float for scaling, but the width and height gets the decimal value truncated. White space in the SpriteSheets don't help either.
 * Certain Song files fade out and start again. Purely because thats how the file was ripped.
-* Some animations don't actually animate.
-* Link won't start wearing his new tunic until he starts walking again.
+* Some animations don't actually animate / animate quickly.
+* Link won't start wearing his new tunic until he starts walking again when he equips it
+* Collision / Level Loader: There’s a gap between some walls and some doors.
+* Enemies Exploit these Gaps and can get to other rooms that way (Design Feature?)
+* State Change during scroll affects the draw and freezes the scroll.
+* Death Music does not stop upon reset
+* Door Collision is magnetic-like and can lead to Scroll Errors
+* Damage is consistent with Link Health HUD
+* Collision with Certain Blocks Are Weird and Can Soft Lock Link
+* Key Equip Causes a Spam to the SFX.
+* When death occurs Camera doesn’t change.
+
 
 
 Please visit the issues for additional bugs that may not have been addressed here. This, by no means, is an exhaustive list.
