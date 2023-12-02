@@ -4925,7 +4925,7 @@
 				<y>-878</y>
 				<ToRoomId>7</ToRoomId>
 				<SideOfRoom>0</SideOfRoom>
-				<DoorState>1</DoorState>
+				<DoorState>0</DoorState>
 				<AnimationSet>
 					<Texture2D>Dungeon1Doors</Texture2D>
 					<RowCount>4</RowCount>
@@ -4940,7 +4940,7 @@
 							<Row>1</Row>
 						</Rows>
 						<Columns>
-							<Column>3</Column>
+							<Column>1</Column>
 						</Columns>
 					</Animation>
 					<Animation>
