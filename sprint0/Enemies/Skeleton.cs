@@ -269,7 +269,8 @@ namespace sprint0.Enemies
                 {
                     if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
                     {
-                        if (ItemInRange(Globals.LinkItemSystem.currentItemA))
+                        Random dodgeRng = new Random();
+                        if(dodgeRng.Next(10) < 4)
                         {
                             Dodge(Globals.LinkItemSystem.currentItemA);
                         }
@@ -279,10 +280,11 @@ namespace sprint0.Enemies
             if (LinkHasBowB())
             {
                 if (Globals.LinkItemSystem.currentItemB.isInPlay())
-                {
-                    if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+                {   
+                    if (ItemInRange(Globals.LinkItemSystem.currentItemB))
                     {
-                        if (ItemInRange(Globals.LinkItemSystem.currentItemB))
+                        Random dodgeRng = new Random();
+                        if (dodgeRng.Next(10) < 4)
                         {
                             Dodge(Globals.LinkItemSystem.currentItemA);
                         }
