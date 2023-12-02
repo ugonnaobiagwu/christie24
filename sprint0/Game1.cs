@@ -31,26 +31,15 @@ namespace sprint0
         private SpriteBatch spriteBatch;
         private SpriteBatch HudInventorySpriteBatch;
 
-        MouseState mouse;
-
         //HUD
 
         SpriteFont font;
-        
         HUD hud;
-
-        /* For Testing Purposes */
-        public Skeleton SkeletonObj;
-        public Oktorok OktorokObj;
-        public Bokoblin BokoblinObj;
-        public Dragon DragonObj;
-
-        public GroundHeart heart;
 
         //Camera
         public Camera camera;
 
-        //Block
+        // Controller
         KeyboardController KeyboardCont;
 
         //State Manager - in progress
@@ -58,6 +47,7 @@ namespace sprint0
         SpriteFactory InventoryFactory;
         InventoryController InventoryCont;
         InventoryCursor Cursor;
+        Cartographer Cartographer;
 
 
         public Sprint0()
@@ -79,11 +69,18 @@ namespace sprint0
 
             Inventory.SetContentManager(Content);
 
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.CountKey();
+            Inventory.CountKey();
+
             hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
 
             //Game States - in progress
+            Texture2D InvRoomTexture = Content.Load<Texture2D>("InventoryMapRoom");
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
@@ -99,9 +96,9 @@ namespace sprint0
             InventoryFactory.createAnimation("IceState", new int[] { 3 }, new int[] { 6}, 1, 1, 3, 2);
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen);
-           
-            mouse = Mouse.GetState();
+            Cartographer = new Cartographer(InvRoomTexture);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer);
+
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -177,7 +174,6 @@ namespace sprint0
             WindWaker.LoadSong(WindWaker.Songs.DUNGEON, DUNGEON, true);
             WindWaker.LoadSong(WindWaker.Songs.ENDING, ENDING, true);
             WindWaker.LoadSong(WindWaker.Songs.TRIFORCE_OBTAIN, TRIFORCE_OBTAIN);
-
             WindWaker.PlaySong(WindWaker.Songs.TITLE);
 
             // Camera, keep this since I need graphics -- DELETE WHEN SCROLLING IS GOOD.

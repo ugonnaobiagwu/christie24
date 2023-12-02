@@ -19,7 +19,7 @@ public class Camera
 
     public Camera() {
         // up to change later
-        roomHeight = 480;
+        roomHeight = 380;
         roomWidth = 800;
 
         

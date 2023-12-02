@@ -32,6 +32,8 @@ namespace sprint0
 
 		public static bool startScrolling = false;
 		public static Direction scrollFromThisDirection;
+		public static int DoorX;
+		public static int DoorY;
     }
 }
 
