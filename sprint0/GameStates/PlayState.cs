@@ -64,8 +64,8 @@ namespace sprint0.GameStates
             //Collision iterator,
 
             CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
-
-                this.TransitionState();
+            Console.WriteLine(Globals.Link.GetHealth());
+            this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
@@ -95,6 +95,11 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Code for state transition here
+            //Win State
+            if (Inventory.hasTriforce == true)
+            {
+                GameStateManager.ChangeState("win");
+            }
             //Death State
             if (Globals.Link.GetHealth() <= 0)
             {
