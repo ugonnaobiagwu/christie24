@@ -2,6 +2,8 @@
 using sprint0.GameStates;
 using static sprint0.HUDs.Inventory;
 using static sprint0.Globals;
+using sprint0.HUDs;
+
 namespace sprint0.Commands.GameStateCommand
 {
 	public class SelectItemACommand :ICommand
@@ -50,15 +52,19 @@ namespace sprint0.Commands.GameStateCommand
                 switch (Cursor.ReturnSelectedTunic())
                 {
                     case ItemTypes.GREENTUNIC:
-                        Console.WriteLine("A green tunic");
                         Globals.LinkItemSystem.CurrentTunic = LinkTunic.GREEN;
                         break;
                     case ItemTypes.REDTUNIC:
-                        Console.WriteLine("A fire tunic");
-                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
+                        if (Inventory.CurrentLinkLevel == LinkLevel.HIGH)
+                        {
+                            Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
+                        }
                         break;
                     case ItemTypes.BLUETUNIC:
-                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        if (Inventory.CurrentLinkLevel == LinkLevel.MEDIUM || Inventory.CurrentLinkLevel == LinkLevel.HIGH)
+                        {
+                            Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        }
                         break;
                     case ItemTypes.SWORD:
                         linkEquipSword.execute();

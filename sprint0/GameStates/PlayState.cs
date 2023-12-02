@@ -61,9 +61,10 @@ namespace sprint0.GameStates
             //Update global timer.
             Globals.Update(gameTime);
 
-            //Collision iterator, 
-            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
+            //Collision iterator,
 
+            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
+            Console.WriteLine(Globals.Link.GetHealth());
             this.TransitionState();
         }
 
@@ -71,8 +72,8 @@ namespace sprint0.GameStates
         {
             
             
-            Globals.LinkItemSystem.Draw();
-            List<IGameObject> Drawables = Globals.GameObjectManager.getList("drawables");
+            
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
                 obj.Draw(spriteBatch);
@@ -83,6 +84,7 @@ namespace sprint0.GameStates
             {
                 Globals.Link.Draw(spriteBatch);
             }
+            Globals.LinkItemSystem.Draw();
         }
 
         public string GetState()
@@ -93,6 +95,11 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Code for state transition here
+            //Win State
+            if (Inventory.hasTriforce == true)
+            {
+                GameStateManager.ChangeState("win");
+            }
             //Death State
             if (Globals.Link.GetHealth() <= 0)
             {

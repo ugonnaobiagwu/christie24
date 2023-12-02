@@ -133,12 +133,12 @@ namespace sprint0
         // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
-            currentRoomID = obj.GetRoomId();
+            //currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            if (!inPlay.Contains(obj))
-            {
+            
+
                 deleteList.Add(obj);
-            }
+            
 
         }
 
@@ -187,7 +187,7 @@ namespace sprint0
         // to set the Room ID
         public void setCurrentRoomID(int ID)
         {
-            currentRoomID = ID;
+            this.currentRoomID = ID;
         }
 
         // returns list 
@@ -228,7 +228,13 @@ namespace sprint0
         // returns the objects in the current room
         public List<IGameObject> getObjectsInCurrentRoom()
         {
-            return ObjectMap[currentRoomID];
+            List<IGameObject> objectsInRoom = new List<IGameObject>();
+            objectsInRoom.AddRange(ObjectMap[currentRoomID]);
+            objectsInRoom.Add(Globals.Link);
+            objectsInRoom.Add(Globals.LinkItemSystem.currentItemA);
+            objectsInRoom.Add(Globals.LinkItemSystem.currentItemB);
+
+            return objectsInRoom;
         }
 
         // mreturns list of all the objects in the current room that are drawable

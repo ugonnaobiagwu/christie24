@@ -455,14 +455,16 @@ namespace sprint0
         {
             if (this.currentItemA != null)
             {
-                this.currentItemA.Update();
+                
                 this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
                 Inventory.SlotAItem(ItemInSlotA);
+                this.currentItemA.Update();
             }
             if (this.currentItemB != null)
             {
                 this.currentItemB.Update();
                 this.currentItemA.SetRoomId(Globals.GameObjectManager.getCurrentRoomID());
+                this.currentItemB.Update();
             }
             Inventory.SlotAItem(ItemInSlotA);
             Inventory.SlotBItem(ItemInSlotB);

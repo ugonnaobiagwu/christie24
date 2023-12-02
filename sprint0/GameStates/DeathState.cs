@@ -63,7 +63,6 @@ namespace sprint0.GameStates
 
         public void TransitionState()
         {
-            //Note for future - camera does not currently reset, needs fix
             //Set all game objects to initial Values (New link, new GOM)
             Globals.GameObjectManager.ResetGOM();
             XmlDocument xmlFile = new XmlDocument();
@@ -71,6 +70,7 @@ namespace sprint0.GameStates
             XmlParser.ParseFile(xmlFile, Content);
             Globals.keyboardController.resetLinkCommands();
             GameStateManager.ChangeState("play");
+            Globals.Camera.ResetCameraPos();
         }
 
 

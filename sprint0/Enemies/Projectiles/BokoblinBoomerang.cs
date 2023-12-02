@@ -36,6 +36,7 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Coming");
 
         }
 
@@ -78,7 +79,7 @@ namespace sprint0.Items
                     {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
-                        this.currentItemSprite = null;
+                        //this.currentItemSprite = null;
                     }
                 }
                 else

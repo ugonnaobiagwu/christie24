@@ -174,7 +174,7 @@ namespace sprint0.HUDs
 
             if (tempSheetItem == null)
             {
-                Console.WriteLine("ERROR tempSheetItem Null \n");
+                //Console.WriteLine("ERROR tempSheetItem Null \n");
             }
            
             return tempSheetItem;
@@ -211,7 +211,7 @@ namespace sprint0.HUDs
 
             if (tempSheetItem == null)
             {
-                Console.WriteLine("ERROR tempSheetItem Null \n");
+                //Console.WriteLine("ERROR tempSheetItem Null \n");
             }
 
             return tempSheetItem;

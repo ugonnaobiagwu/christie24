@@ -1,0 +1,11 @@
+Alex Kim
+Nov 30, 2023
+Sprint 5
+ItemSystem.cs
+Ugonna Obiagwu
+
++ Each object has a separate load method for increased efficiency
+- If/Else would be better than switch cases for equiping items since there are only 2 possibilities
+
+Hypothetical Change: A lot of methods have both an A and B variant with almost identical code. It would make more sense to just have a check
+for which slot to use.

@@ -40,7 +40,7 @@ namespace sprint0.LinkObj
         ISprite LinkSprite;
         LinkTunic currentTunic;
         FormattedTunic currentFormattedTunic;
-        private enum FormattedTunic { Green, Blue, Red };
+        private enum FormattedTunic { GREEN, BLUE, RED };
         int damageTimer;
         /*Edited to have a texture, row, and column input for the purpose of drawing*/
         public Link(int x, int y, SpriteFactory spriteFactory)
@@ -52,7 +52,8 @@ namespace sprint0.LinkObj
             LinkObj = this;
             IsDynamic = true;
             LinkState = State.Default;
-            currentTunic = (LinkTunic)FormattedTunic.Green;
+            currentTunic = Globals.LinkItemSystem.CurrentTunic;
+            currentFormattedTunic = (FormattedTunic)Globals.LinkItemSystem.CurrentTunic;
             LinkSprite = LinkSpriteFactory.getAnimatedSprite(currentFormattedTunic.ToString() + "Down");
             damageTimer = 0;
 
@@ -135,14 +136,14 @@ namespace sprint0.LinkObj
         }
         public void Update()
         {
-            if (LinkItemSystem.CurrentTunic != (LinkTunic)currentFormattedTunic)
+            if (LinkItemSystem.CurrentTunic != currentTunic)
             {
-                currentFormattedTunic = (FormattedTunic)LinkItemSystem.CurrentTunic;
+                currentFormattedTunic = (FormattedTunic)Globals.LinkItemSystem.CurrentTunic;
             }
             if (LinkState == State.Damaged)
             {
 
-                if (damageTimer == 60)
+                if (damageTimer == 30)
                 {
                     LinkState = State.Default;
                     damageTimer = 0;

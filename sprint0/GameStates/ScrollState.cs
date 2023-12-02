@@ -6,6 +6,8 @@ using sprint0;
 using sprint0.BoundariesDoorsAndRooms;
 using static sprint0.Globals;
 using sprint0.HUDs;
+using sprint0.Collision;
+
 namespace sprint0.GameStates
 {
     public class ScrollState : IGameState
@@ -19,42 +21,48 @@ namespace sprint0.GameStates
         private bool ScrollOnce = true;
         GameStateManager GameStateManager;
         HUD GameHud;
-        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud)
+        Cartographer Cartographer;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud,Cartographer cartographer)
         {
             GameStateManager = manager;
             NewRoomId = toRoomId;
             SideOfRoomDirection = sideOfRoom;
             GameHud = newHud;
+            Cartographer = cartographer;
         }
 
         public void Update(GameTime gameTime)
         {
             Globals.Camera.Update(gameTime);
-
+            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
             if (ScrollOnce)
             {
                 switch (Globals.scrollFromThisDirection)
                 {
                     case (Direction.Left):
                         Globals.Camera.MoveCameraToLeftRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() - 220, Globals.Link.yPosition());
+                        Globals.Link.ChangeXandYValue(Globals.DoorX - 180, Globals.DoorY);
+                        Cartographer.addLeftRoom();
                         break;
                     case (Direction.Right):
                         Globals.Camera.MoveCameraToRightRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition() + 220, Globals.Link.yPosition());
+                        //Whole game seems offset to the right?? thats why this magic number is bigger
+                        Globals.Link.ChangeXandYValue(Globals.DoorX + 230, Globals.DoorY);
+                        Cartographer.addRightRoom();
                         break;
                     case (Direction.Up):
                         Globals.Camera.MoveCameraToTopRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() - 220);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY - 135);
+                        Cartographer.addTopRoom();
                         break;
                     case (Direction.Down):
                         Globals.Camera.MoveCameraToBottomRoom();
-                        Globals.Link.ChangeXandYValue(Globals.Link.xPosition(), Globals.Link.yPosition() + 220);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY + 135);
+                        Cartographer.addBottomRoom();
                         break;
                 }
             } ScrollOnce = false;
             Globals.Update(gameTime);
-
             this.TransitionState();
         }
 

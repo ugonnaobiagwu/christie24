@@ -19,18 +19,20 @@ namespace sprint0.GameStates
         private IGameState ScrollState;
         private IGameState PauseState;
         private IGameState TitleState;
+        private IGameState WinState;
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture, Cartographer cartographer,Texture2D winScreenTexture)
         {
 
             DeathState = new DeathState(this, font, content, this);
-            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory);
+            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory,cartographer);
             PlayState = new PlayState(this, screenWidth, screenHeight, gameHud, spriteBatch,staticHudSB);
-            ScrollState = new ScrollState(this, 0, Direction.Up,gameHud);
+            ScrollState = new ScrollState(this, 0, Direction.Up,gameHud,cartographer);
             PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
             TitleState = new TitleScreenState(this, titleScreenTexture,font);
+            WinState = new WinState( font, content, this,winScreenTexture);
             CurrentState = TitleState;
             Console.WriteLine("GameStateManager Constructor");
         }
@@ -49,6 +51,11 @@ namespace sprint0.GameStates
         {
             switch (newState)
             {
+                case "win":
+                    CurrentState = WinState;
+                    WindWaker.StopSong(WindWaker.Songs.DUNGEON);
+                    WindWaker.PlaySong(WindWaker.Songs.TRIFORCE_OBTAIN);
+                    break;
                 case "death":
                     CurrentState = DeathState;
                     WindWaker.StopSong(WindWaker.Songs.DUNGEON);
@@ -59,7 +66,9 @@ namespace sprint0.GameStates
                     CurrentState = InventoryState;
                     break;
                 case "play":
+                    WindWaker.StopSong(WindWaker.Songs.TRIFORCE_OBTAIN);
                     WindWaker.StopSong(WindWaker.Songs.TITLE);
+                    WindWaker.StopSong(WindWaker.Songs.ENDING);
                     WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
                     Console.WriteLine("play transition");
                     CurrentState = PlayState;
