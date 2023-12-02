@@ -1,0 +1,12 @@
+Sprint 5 Reflection
+
+Created by: Ryan Greene, Ugonna Obiagwu, Alex Kim, Madoka Kamishima, Matthew Dannery, Xing Wu
+
+Sprint 4 Catch Up: Despite trying to get caught up in the first week of the sprint, sprint 4 features took us until the final week to finish. Getting the level loading, collision, and inventory all correct turned out to be a bigger undertaking than expected. The team managed to get all three to a state that is presentable and, with extra days, it is likely the team would have been able to iron out the remaining issues. 
+
+Sprint 5 Accomplishments: We were able to add all of the elemental effects and enemy AI, as well as update existing items needed to make our xp and elemental system working.  We were unable to get the enemies to dodge arrows correctly, however the rest of our sprint 5 should be present. 
+
+Challenges: Much of this sprint felt like a time limit and that gave the team stress to fight through.
+
+What We Would Do Next?: As stated prior, given a few more days, the team is confident many of the current bugs could be ironed out. Outside of bug issues, there are a few minor features still missing. Link does not do an animation when using an item,doors that should be opened under special conditions fail to do so, and collision needs a little more tweaking so it works fluidly. There are also minor issues with sprite issues.
+
