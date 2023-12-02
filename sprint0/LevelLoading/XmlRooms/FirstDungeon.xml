@@ -11447,7 +11447,7 @@
 					<RowCount>1</RowCount>
 					<ColumnCount>4</ColumnCount>
 					<Animation>
-						<AnimationName>Deafult</AnimationName>
+						<AnimationName>Default</AnimationName>
 						<FrameCount>4</FrameCount>
 						<SecondsPerFrame>.25</SecondsPerFrame>
 						<WidthScale>2</WidthScale>
