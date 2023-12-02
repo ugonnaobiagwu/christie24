@@ -80,6 +80,7 @@ namespace sprint0
 
 
             //Game States - in progress
+            Texture2D winScreenTexture = Content.Load<Texture2D>("christieHardImage");
             Texture2D InvRoomTexture = Content.Load<Texture2D>("InventoryMapRoom");
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
@@ -97,7 +98,7 @@ namespace sprint0
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
             Cartographer = new Cartographer(InvRoomTexture);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer,winScreenTexture);
            
         
 
