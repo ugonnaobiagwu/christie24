@@ -21,8 +21,8 @@ namespace sprint0.Blocks
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
-        private int XValue { get; set; }
-        private int YValue { get; set; }
+        public int XValue { get; set; }
+        public int YValue { get; set; }
 
 
 

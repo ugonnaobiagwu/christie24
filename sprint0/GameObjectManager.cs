@@ -136,13 +136,12 @@ namespace sprint0
         // objects are added into the delete queue
         public void removeObject(IGameObject obj)
         {
-            currentRoomID = obj.GetRoomId();
+            //currentRoomID = obj.GetRoomId();
             // removes the object from the room
-            if (!inPlay.Contains(obj))
-            {
+            
 
                 deleteList.Add(obj);
-            }
+            
 
         }
 

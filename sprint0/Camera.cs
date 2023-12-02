@@ -10,7 +10,7 @@ public class Camera
     private Vector2 cameraPosition;
     private Vector2 targetPosition; // Target position for smooth scrolling
     private int roomHeight, roomWidth;
-    private float lerpFactor = 0.01f; // the higher the number, the faster it scrolls
+    private float lerpFactor = 0.03f; // the higher the number, the faster it scrolls
     private GraphicsDeviceManager graphicsDeviceManager;
     public Matrix Transform { get; private set; }
     GraphicsDeviceManager Graphics;

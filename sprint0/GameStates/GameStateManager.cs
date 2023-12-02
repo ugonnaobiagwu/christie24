@@ -60,6 +60,7 @@ namespace sprint0.GameStates
                     break;
                 case "play":
                     WindWaker.StopSong(WindWaker.Songs.TITLE);
+                    WindWaker.StopSong(WindWaker.Songs.ENDING);
                     WindWaker.PlaySong(WindWaker.Songs.DUNGEON);
                     Console.WriteLine("play transition");
                     CurrentState = PlayState;
