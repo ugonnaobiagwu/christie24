@@ -53,6 +53,7 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/hud/hudXPSheet.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/hud/miniMap.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/hudFont.spritefont</File>
+    <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/InventoryMapRoom.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/itemSpriteSheet.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/legendofzelda_bosses_sheet.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/Link.png</File>
@@ -60,6 +61,7 @@
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/linkIceSword.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/linkLocator.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/LinkSpriteSheet.png</File>
+    <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/linkSword.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/lives.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/luigiSpriteSheet.png</File>
     <File>C:/Users/alexy/source/repos/christie24/sprint0/Content/songs/DUNGEON.mp3</File>
@@ -125,6 +127,8 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
