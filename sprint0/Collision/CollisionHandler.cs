@@ -1003,7 +1003,7 @@ namespace sprint0.Collision
                     if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
                     {
                         Globals.Link.GainHealth(2);
-                        Inventory.GainHeart();
+                        //Inventory.GainHeart();
                         Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
                     }
                     
@@ -1015,8 +1015,8 @@ namespace sprint0.Collision
                     if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
                     {
                         Globals.Link.GainHealth(4);
-                        Inventory.GainHeart();
-                        Inventory.GainHeart();
+                        //Inventory.GainHeart();
+                        //Inventory.GainHeart();
                     }
 
                 }

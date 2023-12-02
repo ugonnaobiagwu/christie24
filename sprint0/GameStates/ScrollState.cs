@@ -57,7 +57,7 @@ namespace sprint0.GameStates
                         break;
                     case (Direction.Down):
                         Globals.Camera.MoveCameraToBottomRoom();
-                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY + 135);
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY + 180);
                         Cartographer.addBottomRoom();
                         break;
                 }
