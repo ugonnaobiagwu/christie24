@@ -1,0 +1,17 @@
+Code Review Author: Matthew Dannery
+Date: 11/10/2023
+Sprint 4
+Name of File: bokoblin.cs
+C Sharp Author: Alex Kim
+Time Taken: 5 Minutes
+Notes: The big comment block explaining how enemies will chase link is beautiful. The separate logic for following link or not following link could be separated out into methods, 
+having a huge if else block in update makes the method much harder to read.
+
+Quality:
+Code Review Author: Matthew Dannery
+Date: 11/10/2023
+Sprint 4
+Name of File: skeleton.cs
+C Sharp Author: Alex Kim
+Notes – New code for dodge methods is very clean, uncommented but uses calls to other methods in skeleton so still very understandable. 
+Update method is a bit of an if-else mess, could use more comments to break it up. Found a bug in the Update method check for bow where when checking if Link has a bow in the B item slot it calls the dodge method using the item in the A slot. 
