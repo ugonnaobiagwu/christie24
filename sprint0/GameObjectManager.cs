@@ -105,6 +105,8 @@ namespace sprint0
             List<IGameObject> enemyList = new List<IGameObject>();
             List<IGameObject> linkList = new List<IGameObject>();
             List<IGameObject> orderedList = new List<IGameObject>();
+            List<IGameObject> NPCList = new List<IGameObject>();
+
 
             foreach (IGameObject obj in list)
             {
@@ -118,6 +120,8 @@ namespace sprint0
                         enemyList.Add(obj); break;
                     case GameObjectType.LINK:
                         linkList.Add(obj); break;
+                    case GameObjectType.NPC:
+                        NPCList.Add(obj); break;
                 }
             }
             orderedList.AddRange(roomList);
@@ -127,6 +131,9 @@ namespace sprint0
             orderedList.AddRange(itemList);
             orderedList.AddRange(enemyList);
             orderedList.AddRange(linkList);
+            orderedList.AddRange(NPCList);
+
+
             return orderedList;
         }
 

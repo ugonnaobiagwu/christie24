@@ -199,13 +199,13 @@ namespace sprint0.Collision
 
 
             // BLOCKS
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonFishBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonFishBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonFishBlock", MoveOktorokDelegate, null });

@@ -41,7 +41,7 @@ namespace sprint0.GameStates
             else
             {
                 Rectangle destionationRectangle = new Rectangle(0, -50, 800, 500);
-                spriteBatch.Draw(WinScreenTexture, destionationRectangle, Color.White);
+                HudInventorySpriteBatch.Draw(WinScreenTexture, destionationRectangle, Color.White);
                 //Draw Menu - magic numbers here
                 HudInventorySpriteBatch.DrawString(Font, "You Win!", new Vector2(580, 280), Color.White);
                 HudInventorySpriteBatch.DrawString(Font, "Press R to reset game", new Vector2(550,330), Color.White);
