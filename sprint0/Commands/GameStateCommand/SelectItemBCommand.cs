@@ -1,5 +1,6 @@
 ﻿using System;
 using sprint0.GameStates;
+using sprint0.HUDs;
 using static sprint0.Globals;
 using static sprint0.HUDs.Inventory;
 
@@ -56,11 +57,16 @@ namespace sprint0.Commands.GameStateCommand
                         Globals.LinkItemSystem.CurrentTunic = LinkTunic.GREEN;
                         break;
                     case ItemTypes.REDTUNIC:
-                        Console.WriteLine("A fire tunic");
-                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
+                        if (Inventory.CurrentLinkLevel == LinkLevel.HIGH)
+                        {
+                            Globals.LinkItemSystem.CurrentTunic = LinkTunic.FIRE;
+                        }
                         break;
                     case ItemTypes.BLUETUNIC:
-                        Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        if (Inventory.CurrentLinkLevel == LinkLevel.MEDIUM || Inventory.CurrentLinkLevel == LinkLevel.HIGH)
+                        {
+                            Globals.LinkItemSystem.CurrentTunic = LinkTunic.ICE;
+                        }
                         break;
                     case ItemTypes.SWORD:
                         linkEquipSword.execute();

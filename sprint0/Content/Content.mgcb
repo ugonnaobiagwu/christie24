@@ -13,8 +13,17 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../LevelLoading/XmlRooms/FirstDungeon.xml
-/copy:../LevelLoading/XmlRooms/FirstDungeon.xml;FirstDungeon.xml
+#begin ../../../../../Pictures/InventoryMapRoom.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Pictures/InventoryMapRoom.png;InventoryMapRoom.png
 
 #begin background_sheet.png
 /importer:TextureImporter
@@ -318,6 +327,9 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;Font.spritefont
 
+#begin FirstDungeon.xml
+/copy:FirstDungeon.xml
+
 #begin groundItemSprites/groundBigHeart.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -582,12 +594,36 @@
 /processorParam:TextureFormat=Color
 /build:hud/miniMap.png
 
+#begin hud/miniMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:hud/miniMap.png
+
 #begin hudFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:hudFont.spritefont
+
+#begin InventoryMapRoom.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:InventoryMapRoom.png
 
 #begin itemSpriteSheet.png
 /importer:TextureImporter
@@ -649,6 +685,18 @@
 /processorParam:TextureFormat=Color
 /build:linkIceSword.png
 
+#begin linkIceSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkIceSword.png
+
 #begin linkLocator.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -672,6 +720,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:LinkSpriteSheet.png
+
+#begin linkSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:linkSword.png
 
 #begin lives.png
 /importer:TextureImporter
