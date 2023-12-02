@@ -19,10 +19,11 @@ namespace sprint0.GameStates
         private IGameState ScrollState;
         private IGameState PauseState;
         private IGameState TitleState;
+        private IGameState WinState;
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture, Cartographer cartographer)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture, Cartographer cartographer,Texture2D winScreenTexture)
         {
 
             DeathState = new DeathState(this, font, content, this);
@@ -31,6 +32,7 @@ namespace sprint0.GameStates
             ScrollState = new ScrollState(this, 0, Direction.Up,gameHud,cartographer);
             PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
             TitleState = new TitleScreenState(this, titleScreenTexture,font);
+            WinState = new WinState( font, content, this,winScreenTexture);
             CurrentState = TitleState;
             Console.WriteLine("GameStateManager Constructor");
         }
@@ -49,6 +51,9 @@ namespace sprint0.GameStates
         {
             switch (newState)
             {
+                case "win":
+                    CurrentState = WinState;
+                    break;
                 case "death":
                     CurrentState = DeathState;
                     WindWaker.StopSong(WindWaker.Songs.DUNGEON);
