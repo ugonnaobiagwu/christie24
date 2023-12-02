@@ -5138,8 +5138,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -5247,8 +5247,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -5356,8 +5356,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -6026,8 +6026,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -6482,8 +6482,9 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+						
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -6591,8 +6592,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -6700,8 +6701,9 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -10492,8 +10494,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -10601,8 +10603,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -10710,8 +10712,8 @@
 						<WidthScale>1.5</WidthScale>
 						<HeightScale>1.5</HeightScale>
 						<Rows>
-							<Row>0</Row>
-							<Row>1</Row>
+							<Row>4</Row>
+							<Row>5</Row>
 						</Rows>
 						<Columns>
 							<Column>7</Column>
@@ -10886,24 +10888,11 @@
 				<y>-1266</y>
 				<ToRoomId>16</ToRoomId>
 				<SideOfRoom>1</SideOfRoom>
-				<DoorState>1</DoorState>
+				<DoorState>0</DoorState>
 				<AnimationSet>
 					<Texture2D>Dungeon1Doors</Texture2D>
 					<RowCount>4</RowCount>
 					<ColumnCount>5</ColumnCount>
-					<Animation>
-						<AnimationName>Closed</AnimationName>
-						<FrameCount>1</FrameCount>
-						<SecondsPerFrame>1</SecondsPerFrame>
-						<WidthScale>3.12</WidthScale>
-						<HeightScale>2.3</HeightScale>
-						<Rows>
-							<Row>2</Row>
-						</Rows>
-						<Columns>
-							<Column>3</Column>
-						</Columns>
-					</Animation>
 					<Animation>
 						<AnimationName>Open</AnimationName>
 						<FrameCount>1</FrameCount>
@@ -11451,7 +11440,7 @@
 			</GroundItem>
 			<Enemy>
 				<x>4500</x>
-				<y>200</y>
+				<y>-1352</y>
 				<EnemyType>Dragon</EnemyType>
 				<AnimationSet>
 					<Texture2D>legendofzelda_bosses_sheet</Texture2D>
