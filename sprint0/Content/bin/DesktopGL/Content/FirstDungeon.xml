@@ -8,7 +8,7 @@
 			<RowCount>4</RowCount>
 			<ColumnCount>12</ColumnCount>
 			<Animation>
-				<AnimationName>GreenUp</AnimationName>
+				<AnimationName>GREENUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.9</WidthScale>
@@ -23,7 +23,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueUp</AnimationName>
+				<AnimationName>BLUEUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.9</WidthScale>
@@ -38,7 +38,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedUp</AnimationName>
+				<AnimationName>REDUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.9</WidthScale>
@@ -53,7 +53,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenDown</AnimationName>
+				<AnimationName>GREENDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -68,7 +68,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueDown</AnimationName>
+				<AnimationName>BLUEDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -83,7 +83,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedDown</AnimationName>
+				<AnimationName>REDDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -98,7 +98,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenLeft</AnimationName>
+				<AnimationName>GREENLeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -113,7 +113,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueLeft</AnimationName>
+				<AnimationName>BLUELeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -128,7 +128,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedLeft</AnimationName>
+				<AnimationName>REDLeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -143,7 +143,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenRight</AnimationName>
+				<AnimationName>GREENRight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -158,7 +158,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedRight</AnimationName>
+				<AnimationName>REDRight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -173,7 +173,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueRight</AnimationName>
+				<AnimationName>BLUERight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -188,7 +188,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenItemUp</AnimationName>
+				<AnimationName>GREENItemUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -203,7 +203,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueItemUp</AnimationName>
+				<AnimationName>BLUEItemUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -218,7 +218,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedItemUp</AnimationName>
+				<AnimationName>REDItemUp</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -233,7 +233,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenItemDown</AnimationName>
+				<AnimationName>GREENItemDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -248,7 +248,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedItemDown</AnimationName>
+				<AnimationName>REDItemDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -263,7 +263,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueItemDown</AnimationName>
+				<AnimationName>BLUEItemDown</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -278,7 +278,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueItemLeft</AnimationName>
+				<AnimationName>BLUEItemLeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -293,7 +293,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenItemLeft</AnimationName>
+				<AnimationName>GREENItemLeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -308,7 +308,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedItemLeft</AnimationName>
+				<AnimationName>REDItemLeft</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -323,7 +323,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>GreenItemRight</AnimationName>
+				<AnimationName>GREENItemRight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -338,7 +338,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>BlueItemRight</AnimationName>
+				<AnimationName>BLUEItemRight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -353,7 +353,7 @@
 				</Columns>
 			</Animation>
 			<Animation>
-				<AnimationName>RedItemRight</AnimationName>
+				<AnimationName>REDItemRight</AnimationName>
 				<FrameCount>2</FrameCount>
 				<SecondsPerFrame>1</SecondsPerFrame>
 				<WidthScale>1.5</WidthScale>
@@ -374,10 +374,23 @@
 				<WidthScale>1.5</WidthScale>
 				<HeightScale>1.5</HeightScale>
 				<Rows>
-					<Row>0</Row>
+					<Row>3</Row>
 				</Rows>
 				<Columns>
-					<Column>5</Column>
+					<Column>3</Column>
+				</Columns>
+			</Animation>
+			<Animation>
+				<AnimationName>Dead</AnimationName>
+				<FrameCount>1</FrameCount>
+				<SecondsPerFrame>1</SecondsPerFrame>
+				<WidthScale>1.5</WidthScale>
+				<HeightScale>1.5</HeightScale>
+				<Rows>
+					<Row>3</Row>
+				</Rows>
+				<Columns>
+					<Column>6</Column>
 				</Columns>
 			</Animation>
 		</AnimationSet>
@@ -534,7 +547,7 @@
 					<SecondsPerFrame>1</SecondsPerFrame>>
 					<WidthScale>1.5</WidthScale>
 					<HeightScale>1.5</HeightScale>
-					<Rows>
+					<Rows>f
 						<Row>0</Row>
 						<Row>0</Row>
 						<Row>0</Row>
@@ -1407,8 +1420,8 @@
 				</AnimationSet>
 			</Floor>
 			<GroundItem>
-				<x>623</x>
-				<y>390</y>
+				<x>-675</x>
+				<y>285</y>
 				<GroundItemType>GroundKey</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundKey</Texture2D>
@@ -1429,50 +1442,314 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>-375</x>
+				<y>320</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>0</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-475</x>
+				<y>250</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>0</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-575</x>
+				<y>285</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>0</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
+				<x>-800</x>
 				<y>93</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>-800</x>
 				<y>93</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
+				<x>-350</x>
 				<y>93</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
+				<x>-100</x>
 				<y>93</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>-800</x>
 				<y>409</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>-800</x>
 				<y>320</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
+				<x>-350</x>
 				<y>409</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
+				<x>-100</x>
 				<y>320</y>
 				<Width>100</Width>
 				<Height>156</Height>
@@ -1624,7 +1901,7 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>275</x>
+				<x>1075</x>
 				<y>320</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1647,7 +1924,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
+				<x>1025</x>
 				<y>320</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1670,7 +1947,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
+				<x>1075</x>
 				<y>285</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1693,7 +1970,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
+				<x>1025</x>
 				<y>285</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1716,7 +1993,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
+				<x>1075</x>
 				<y>250</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1739,7 +2016,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
+				<x>1025</x>
 				<y>250</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1762,7 +2039,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
+				<x>1325</x>
 				<y>320</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1785,7 +2062,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
+				<x>1375</x>
 				<y>320</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1808,7 +2085,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
+				<x>1325</x>
 				<y>285</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1831,7 +2108,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
+				<x>1375</x>
 				<y>285</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1854,7 +2131,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
+				<x>1325</x>
 				<y>250</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1877,7 +2154,7 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
+				<x>1375</x>
 				<y>250</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
@@ -1900,7 +2177,7 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>623</x>
+				<x>1423</x>
 				<y>390</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
@@ -1923,7 +2200,7 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>588</x>
+				<x>1388</x>
 				<y>390</y>
 				<GroundItemType>GroundKey</GroundItemType>
 				<AnimationSet>
@@ -1946,7 +2223,7 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>553</x>
+				<x>1353</x>
 				<y>390</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
@@ -1970,50 +2247,150 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>1375</x>
+				<y>180</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1175</x>
+				<y>285</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1475</x>
+				<y>320</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1275</x>
+				<y>390</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
+				<x>800</x>
 				<y>93</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>800</x>
 				<y>93</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
+				<x>1250</x>
 				<y>93</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
+				<x>1500</x>
 				<y>93</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>800</x>
 				<y>409</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
+				<x>800</x>
 				<y>320</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
+				<x>1250</x>
 				<y>409</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
+				<x>1500</x>
 				<y>320</y>
 				<Width>100</Width>
 				<Height>156</Height>
@@ -2166,7 +2543,7 @@
 			</Floor>
 			<Block>
 				<x>375</x>
-				<y>320</y>
+				<y>-68</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2189,7 +2566,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>320</y>
+				<y>-68</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2212,7 +2589,7 @@
 			</Block>
 			<Block>
 				<x>375</x>
-				<y>285</y>
+				<y>-103</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2235,7 +2612,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>285</y>
+				<y>-103</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2258,7 +2635,7 @@
 			</Block>
 			<Block>
 				<x>375</x>
-				<y>250</y>
+				<y>-138</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2281,7 +2658,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>250</y>
+				<y>-138</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2302,51 +2679,101 @@
 					</Animation>
 				</AnimationSet>
 			</Block>
+			<Enemy>
+				<x>175</x>
+				<y>388</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>625</x>
+				<y>603</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-295</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>295</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>93</y>
+				<y>295</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>93</y>
+				<y>295</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>409</y>
+				<y>21</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>320</y>
+				<y>-68</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>409</y>
+				<y>21</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>320</y>
+				<y>-68</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -2523,8 +2950,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>375</x>
-				<y>320</y>
+				<x>-425</x>
+				<y>-456</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2546,8 +2973,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>320</y>
+				<x>-375</x>
+				<y>-456</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2569,8 +2996,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>285</y>
+				<x>-425</x>
+				<y>-491</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2592,8 +3019,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>285</y>
+				<x>-375</x>
+				<y>-491</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2615,8 +3042,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>250</y>
+				<x>-425</x>
+				<y>-526</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2638,8 +3065,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>250</y>
+				<x>-375</x>
+				<y>-526</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2660,51 +3087,403 @@
 					</Animation>
 				</AnimationSet>
 			</Block>
+			<Enemy>
+				<x>-325</x>
+				<y>-456</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-575</x>
+				<y>-421</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-475</x>
+				<y>-561</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-675</x>
+				<y>-526</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>-350</x>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>-100</x>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>-800</x>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>-800</x>
+				<y>-356</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>-350</x>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>-100</x>
+				<y>-456</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -2869,7 +3648,7 @@
 			</Floor>
 			<Block>
 				<x>225</x>
-				<y>320</y>
+				<y>-456</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2892,7 +3671,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>320</y>
+				<y>-456</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2915,7 +3694,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>250</y>
+				<y>-526</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2938,7 +3717,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>250</y>
+				<y>-526</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -2961,7 +3740,7 @@
 			</Block>
 			<GroundItem>
 				<x>623</x>
-				<y>390</y>
+				<y>-386</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -2984,7 +3763,7 @@
 			</GroundItem>
 			<GroundItem>
 				<x>588</x>
-				<y>390</y>
+				<y>-386</y>
 				<GroundItemType>GroundKey</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundKey</Texture2D>
@@ -3007,7 +3786,7 @@
 			</GroundItem>
 			<GroundItem>
 				<x>535</x>
-				<y>390</y>
+				<y>-386</y>
 				<GroundItemType>GroundHeart</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundHeart</Texture2D>
@@ -3030,51 +3809,126 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>475</x>
+				<y>-456</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>375</x>
+				<y>-526</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>175</x>
+				<y>-561</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>93</y>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>93</y>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>409</y>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>320</y>
+				<y>-456</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>409</y>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>320</y>
+				<y>-456</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -3238,8 +4092,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>225</x>
-				<y>357</y>
+				<x>1025</x>
+				<y>-419</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -3261,8 +4115,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>357</y>
+				<x>1375</x>
+				<y>-419</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -3284,8 +4138,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
-				<y>215</y>
+				<x>1025</x>
+				<y>-561</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -3307,8 +4161,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>215</y>
+				<x>1375</x>
+				<y>-561</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -3330,8 +4184,8 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>623</x>
-				<y>390</y>
+				<x>-1423</x>
+				<y>-386</y>
 				<GroundItemType>GroundCompass</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundCompass</Texture2D>
@@ -3352,51 +4206,403 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>1375</x>
+				<y>-526</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1175</x>
+				<y>-491</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1475</x>
+				<y>-596</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1325</x>
+				<y>-456</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>800</x>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>800</x>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>1250</x>
+				<y>-683</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>1500</x>
+				<y>-683</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>800</x>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>800</x>
+				<y>-456</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>1250</x>
+				<y>-367</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>1500</x>
+				<y>-456</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -3548,8 +4754,8 @@
 			</Floor>
 
 			<NPC>
-				<x>400</x>
-				<y>250</y>
+				<x>-1200</x>
+				<y>-914</y>
 				<AnimationSet>
 					<Texture2D>ChristieSpriteSheet</Texture2D>
 					<RowCount>1</RowCount>
@@ -3570,8 +4776,8 @@
 				</AnimationSet>
 			</NPC>
 			<GroundItem>
-				<x>550</x>
-				<y>250</y>
+				<x>-1050</x>
+				<y>-914</y>
 				<GroundItemType>GroundBlaze</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundBlaze</Texture2D>
@@ -3595,8 +4801,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>250</x>
-				<y>250</y>
+				<x>-1350</x>
+				<y>-914</y>
 				<GroundItemType>GroundBlaze</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundBlaze</Texture2D>
@@ -3620,8 +4826,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>400</x>
-				<y>350</y>
+				<x>-120</x>
+				<y>-426</y>
 				<GroundItemType>GroundBigHeart</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundBigHeart</Texture2D>
@@ -3643,50 +4849,50 @@
 				</AnimationSet>
 			</GroundItem>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-1600</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-1600</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>-1150</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>-900</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>-1600</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>-1600</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>-1150</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>-900</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -3850,8 +5056,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>375</x>
-				<y>285</y>
+				<x>-425</x>
+				<y>-879</y>
 				<BlockType>RedPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -3872,51 +5078,378 @@
 					</Animation>
 				</AnimationSet>
 			</Block>
+			<Enemy>
+				<x>-625</x>
+				<y>-914</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-225</x>
+				<y>-949</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>-175</x>
+				<y>-809</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>-350</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>-100</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>-800</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>-800</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>-350</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>-100</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -4094,7 +5627,7 @@
 			</Floor>
 			<Block>
 				<x>375</x>
-				<y>285</y>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4117,7 +5650,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>285</y>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4140,7 +5673,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>215</y>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4163,7 +5696,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>215</y>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4186,7 +5719,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>215</y>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4209,7 +5742,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>215</y>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4230,10 +5763,9 @@
 					</Animation>
 				</AnimationSet>
 			</Block>
-
 			<Block>
 				<x>175</x>
-				<y>355</y>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4256,7 +5788,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>355</y>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4279,7 +5811,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>355</y>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4302,7 +5834,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>355</y>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4325,7 +5857,7 @@
 			</Block>
 			<GroundItem>
 				<x>625</x>
-				<y>285</y>
+				<y>-879</y>
 				<GroundItemType>GroundPage</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundPage</Texture2D>
@@ -4346,51 +5878,248 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>325</x>
+				<y>-879</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>575</x>
+				<y>-879</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>93</y>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>93</y>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>409</y>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>320</y>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>409</y>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>320</y>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -4554,8 +6283,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>225</x>
-				<y>320</y>
+				<x>1025</x>
+				<y>-844</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4577,8 +6306,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>320</y>
+				<x>1375</x>
+				<y>-844</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4600,8 +6329,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
-				<y>250</y>
+				<x>1025</x>
+				<y>-914</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4623,8 +6352,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>250</y>
+				<x>1375</x>
+				<y>-917</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4646,8 +6375,8 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>623</x>
-				<y>390</y>
+				<x>1423</x>
+				<y>-774</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -4669,8 +6398,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>535</x>
-				<y>390</y>
+				<x>1335</x>
+				<y>-774</y>
 				<GroundItemType>GroundBow</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundBow</Texture2D>
@@ -4693,51 +6422,378 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>1325</x>
+				<y>-949</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1275</x>
+				<y>-809</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1275</x>
+				<y>-949</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>800</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>800</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>1250</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>1500</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>800</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>800</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>1250</x>
+				<y>-755</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>1500</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -4901,8 +6957,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>175</x>
-				<y>285</y>
+				<x>1775</x>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4924,8 +6980,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>215</y>
+				<x>1775</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4947,8 +7003,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>355</y>
+				<x>1775</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4970,8 +7026,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>355</y>
+				<x>1875</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -4993,8 +7049,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>285</y>
+				<x>1875</x>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5016,8 +7072,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>215</y>
+				<x>1875</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5039,8 +7095,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>355</y>
+				<x>1975</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5062,8 +7118,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>285</y>
+				<x>1975</x>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5085,8 +7141,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>215</y>
+				<x>1975</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5108,8 +7164,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>285</y>
+				<x>2225</x>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5131,8 +7187,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>215</y>
+				<x>2225</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5154,8 +7210,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>355</y>
+				<x>2225</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5177,8 +7233,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>355</y>
+				<x>2125</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5200,8 +7256,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>285</y>
+				<x>2125</x>
+				<y>-879</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5223,32 +7279,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>215</y>
-				<BlockType>DungeonPyramidBlock</BlockType>
-				<AnimationSet>
-					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
-					<RowCount>3</RowCount>
-					<ColumnCount>4</ColumnCount>
-					<Animation>
-						<AnimationName>DungeonPyramidBlock</AnimationName>
-						<FrameCount>1</FrameCount>
-						<SecondsPerFrame>1</SecondsPerFrame>
-						<WidthScale>.29</WidthScale>
-						<HeightScale>.21</HeightScale>
-						<Rows>
-							<Row>0</Row>
-						</Rows>
-						<Columns>
-							<Column>1</Column>
-						</Columns>
-					</Animation>
-				</AnimationSet>
-			</Block>
-
-			<Block>
-				<x>425</x>
-				<y>355</y>
+				<x>2125</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5270,8 +7302,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>285</y>
+				<x>2025</x>
+				<y>-809</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5293,8 +7325,31 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>215</y>
+				<x>2025</x>
+				<y>-879</y>
+				<BlockType>DungeonPyramidBlock</BlockType>
+				<AnimationSet>
+					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
+					<RowCount>3</RowCount>
+					<ColumnCount>4</ColumnCount>
+					<Animation>
+						<AnimationName>DungeonPyramidBlock</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>1</SecondsPerFrame>
+						<WidthScale>.29</WidthScale>
+						<HeightScale>.21</HeightScale>
+						<Rows>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Block>
+			<Block>
+				<x>2025</x>
+				<y>-949</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5316,8 +7371,8 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>623</x>
-				<y>390</y>
+				<x>2223</x>
+				<y>-774</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -5339,8 +7394,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>535</x>
-				<y>315</y>
+				<x>2135</x>
+				<y>-549</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -5362,8 +7417,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>525</x>
-				<y>390</y>
+				<x>2125</x>
+				<y>-774</y>
 				<GroundItemType>GroundKey</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundKey</Texture2D>
@@ -5385,8 +7440,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>475</x>
-				<y>390</y>
+				<x>2075</x>
+				<y>-774</y>
 				<GroundItemType>GroundHeart</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundHeart</Texture2D>
@@ -5410,8 +7465,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>275</x>
-				<y>390</y>
+				<x>1875</x>
+				<y>-774</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -5433,8 +7488,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>175</x>
-				<y>315</y>
+				<x>1775</x>
+				<y>-849</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -5456,8 +7511,8 @@
 				</AnimationSet>
 			</GroundItem>
 			<GroundItem>
-				<x>425</x>
-				<y>390</y>
+				<x>2025</x>
+				<y>-774</y>
 				<GroundItemType>GroundRupee</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundRupee</Texture2D>
@@ -5478,51 +7533,403 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>2075</x>
+				<y>-914</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1925</x>
+				<y>-914</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>2075</x>
+				<y>-844</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>1925</x>
+				<y>-844</y>
+				<EnemyType>Oktorok</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>1</Column>
+							<Column>1</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>2</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>3</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>12</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>1600</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>1600</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>2050</x>
+				<y>-1071</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>2300</x>
+				<y>-1071</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>1600</x>
+				<y>-674</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>1600</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>2050</x>
+				<y>-674</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>2300</x>
+				<y>-844</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -5687,7 +8094,7 @@
 			</Floor>
 			<Block>
 				<x>175</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5710,7 +8117,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5733,7 +8140,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>320</y>
+				<y>-1232</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5756,7 +8163,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>355</y>
+				<y>-1197</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5779,7 +8186,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5802,7 +8209,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>319</y>
+				<y>-1233</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5825,7 +8232,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>355</y>
+				<y>-1197</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5848,7 +8255,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>283</y>
+				<y>-1269</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5871,7 +8278,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5894,7 +8301,7 @@
 			</Block>
 			<Block>
 				<x>275</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5917,7 +8324,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5940,7 +8347,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5963,7 +8370,7 @@
 			</Block>
 			<Block>
 				<x>525</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -5986,7 +8393,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>575</y>
+				<y>-977</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6009,7 +8416,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6032,7 +8439,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6055,7 +8462,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6078,7 +8485,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>355</y>
+				<y>-1197</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6101,7 +8508,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>319</y>
+				<y>-1233</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6124,7 +8531,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6147,7 +8554,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>215</y>
+				<y>-1337</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6170,7 +8577,7 @@
 			</Block>
 			<Block>
 				<x>675</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6193,7 +8600,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6216,7 +8623,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6239,7 +8646,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>215</y>
+				<y>-1337</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6262,7 +8669,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6285,7 +8692,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>285</y>
+				<y>-1267</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6308,7 +8715,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>320</y>
+				<y>-1232</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6331,7 +8738,7 @@
 			</Block>
 			<Block>
 				<x>525</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6354,7 +8761,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6377,7 +8784,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>391</y>
+				<y>-1161</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6400,7 +8807,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>355</y>
+				<y>-1197</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6423,7 +8830,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>320</y>
+				<y>-1232</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6446,7 +8853,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>285</y>
+				<y>-1267</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6469,7 +8876,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6492,7 +8899,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6515,7 +8922,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>320</y>
+				<y>-1232</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6538,7 +8945,7 @@
 			</Block>
 			<Block>
 				<x>375</x>
-				<y>320</y>
+				<y>-1232</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6561,7 +8968,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>285</y>
+				<y>-1267</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6584,7 +8991,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6607,7 +9014,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>215</y>
+				<y>-1337</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6630,7 +9037,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6653,7 +9060,7 @@
 			</Block>
 			<Block>
 				<x>275</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6676,7 +9083,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6699,7 +9106,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6722,7 +9129,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>180</y>
+				<y>-1372</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6745,7 +9152,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>215</y>
+				<y>-1337</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6768,7 +9175,7 @@
 			</Block>
 			<Block>
 				<x>125</x>
-				<y>250</y>
+				<y>-1302</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -6791,7 +9198,7 @@
 			</Block>
 			<GroundItem>
 				<x>425</x>
-				<y>355</y>
+				<y>-1197</y>
 				<GroundItemType>GroundHeart</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundHeart</Texture2D>
@@ -6814,51 +9221,101 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>175</x>
+				<y>-1337</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>625</x>
+				<y>-1197</y>
+				<EnemyType>Skeleton</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Default</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>14</Column>
+							<Column>14</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>93</y>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>93</y>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>409</y>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>320</y>
+				<y>-1232</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>409</y>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>320</y>
+				<y>-1232</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -7009,8 +9466,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>425</x>
-				<y>215</y>
+				<x>-375</x>
+				<y>-1725</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7032,8 +9489,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>250</y>
+				<x>-425</x>
+				<y>-1690</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7055,8 +9512,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>250</y>
+				<x>-323</x>
+				<y>-1690</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7078,8 +9535,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>325</x>
-				<y>285</y>
+				<x>-475</x>
+				<y>-1655</y>
 				<BlockType>RedPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7101,8 +9558,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>285</y>
+				<x>-275</x>
+				<y>-1655</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7124,8 +9581,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>320</y>
+				<x>-425</x>
+				<y>-1620</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7147,8 +9604,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>320</y>
+				<x>-325</x>
+				<y>-1620</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7170,8 +9627,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>355</y>
+				<x>-375</x>
+				<y>-1585</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7193,8 +9650,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>285</y>
+				<x>-375</x>
+				<y>-1655</y>
 				<BlockType>StairBlock</BlockType>
 				<ToRoomId>17</ToRoomId>
 				<AnimationSet>
@@ -7217,50 +9674,50 @@
 				</AnimationSet>
 			</Block>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-1847</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>-800</x>
+				<y>-1847</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>-350</x>
+				<y>-1847</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>-100</x>
+				<y>-1847</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>-800</x>
+				<y>-1531</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>-800</x>
+				<y>-1620</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>-350</x>
+				<y>-1531</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>-100</x>
+				<y>-1620</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -7425,7 +9882,7 @@
 			</Floor>
 			<Block>
 				<x>275</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7448,7 +9905,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7471,7 +9928,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7494,7 +9951,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>250</y>
+				<y>-1690</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7517,7 +9974,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7540,7 +9997,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>320</y>
+				<y>-1620</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7563,7 +10020,7 @@
 			</Block>
 			<Block>
 				<x>175</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7586,7 +10043,7 @@
 			</Block>
 			<Block>
 				<x>225</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7609,7 +10066,7 @@
 			</Block>
 			<Block>
 				<x>275</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7632,7 +10089,7 @@
 			</Block>
 			<Block>
 				<x>275</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7655,7 +10112,7 @@
 			</Block>
 			<Block>
 				<x>325</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7678,7 +10135,7 @@
 			</Block>
 			<Block>
 				<x>375</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7701,7 +10158,7 @@
 			</Block>
 			<Block>
 				<x>525</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7724,7 +10181,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7747,7 +10204,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>215</y>
+				<y>-1725</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7770,7 +10227,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>250</y>
+				<y>-1690</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7793,7 +10250,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7816,7 +10273,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>320</y>
+				<y>-1620</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7839,7 +10296,7 @@
 			</Block>
 			<Block>
 				<x>625</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7862,7 +10319,7 @@
 			</Block>
 			<Block>
 				<x>575</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7885,7 +10342,7 @@
 			</Block>
 			<Block>
 				<x>525</x>
-				<y>355</y>
+				<y>-1585</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7908,7 +10365,7 @@
 			</Block>
 			<Block>
 				<x>525</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7931,7 +10388,7 @@
 			</Block>
 			<Block>
 				<x>475</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7954,7 +10411,7 @@
 			</Block>
 			<Block>
 				<x>425</x>
-				<y>285</y>
+				<y>-1655</y>
 				<BlockType>WaterBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -7975,51 +10432,378 @@
 					</Animation>
 				</AnimationSet>
 			</Block>
+			<Enemy>
+				<x>425</x>
+				<y>-1760</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>475</x>
+				<y>-1690</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
+			<Enemy>
+				<x>625</x>
+				<y>-1550</y>
+				<EnemyType>Bokoblin</EnemyType>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Down</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>4</Column>
+							<Column>4</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Left</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>5</Column>
+							<Column>5</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Up</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>4</Row>
+							<Row>5</Row>
+						</Rows>
+						<Columns>
+							<Column>6</Column>
+							<Column>6</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Right</AnimationName>
+						<FrameCount>2</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>7</Column>
+							<Column>7</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Coming</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+					<Animation>
+						<AnimationName>Going</AnimationName>
+						<FrameCount>3</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+							<Row>1</Row>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1847</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>93</y>
+				<y>-1847</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>93</y>
+				<y>-1847</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>93</y>
+				<y>-1847</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>409</y>
+				<y>-1531</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>0</x>
-				<y>320</y>
+				<y>-1620</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
 				<x>450</x>
-				<y>409</y>
+				<y>-1531</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
 				<x>700</x>
-				<y>320</y>
+				<y>-1620</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -8183,8 +10967,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>675</x>
-				<y>180</y>
+				<x>2275</x>
+				<y>-1372</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8206,8 +10990,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>180</y>
+				<x>2225</x>
+				<y>-1372</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8229,8 +11013,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>180</y>
+				<x>2175</x>
+				<y>-1372</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8252,8 +11036,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>180</y>
+				<x>2125</x>
+				<y>-1372</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8275,8 +11059,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>180</y>
+				<x>2075</x>
+				<y>-1372</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8298,8 +11082,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>675</x>
-				<y>215</y>
+				<x>2275</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8321,8 +11105,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>215</y>
+				<x>2225</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8344,8 +11128,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>215</y>
+				<x>2175</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8367,8 +11151,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>675</x>
-				<y>250</y>
+				<x>2275</x>
+				<y>-1302</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8390,8 +11174,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>250</y>
+				<x>225</x>
+				<y>-1302</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8413,8 +11197,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>675</x>
-				<y>320</y>
+				<x>2275</x>
+				<y>-1232</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8436,8 +11220,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>320</y>
+				<x>2225</x>
+				<y>-1323</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8459,8 +11243,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>355</y>
+				<x>2175</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8482,8 +11266,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>355</y>
+				<x>2225</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8505,8 +11289,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>675</x>
-				<y>355</y>
+				<x>2275</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8528,8 +11312,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>675</x>
-				<y>390</y>
+				<x>2275</x>
+				<y>-1162</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8551,8 +11335,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>390</y>
+				<x>2225</x>
+				<y>-1162</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8574,8 +11358,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>390</y>
+				<x>2175</x>
+				<y>-1162</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8597,8 +11381,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>390</y>
+				<x>2125</x>
+				<y>-1162</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8620,8 +11404,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>390</y>
+				<x>2075</x>
+				<y>-1162</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8643,8 +11427,8 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>625</x>
-				<y>285</y>
+				<x>2225</x>
+				<y>-1267</y>
 				<GroundItemType>GroundBigHeart</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundBigHeart</Texture2D>
@@ -8665,51 +11449,98 @@
 					</Animation>
 				</AnimationSet>
 			</GroundItem>
+			<Enemy>
+				<x>4500</x>
+				<y>200</y>
+				<EnemyType>Dragon</EnemyType>
+				<AnimationSet>
+					<Texture2D>legendofzelda_bosses_sheet</Texture2D>
+					<RowCount>1</RowCount>
+					<ColumnCount>4</ColumnCount>
+					<Animation>
+						<AnimationName>Deafult</AnimationName>
+						<FrameCount>4</FrameCount>
+						<SecondsPerFrame>.25</SecondsPerFrame>
+						<WidthScale>2</WidthScale>
+						<HeightScale>2</HeightScale>
+						<Rows>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+							<Row>0</Row>
+						</Rows>
+						<Columns>
+							<Column>0</Column>
+							<Column>1</Column>
+							<Column>2</Column>
+							<Column>3</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+				<AnimationSet>
+					<Texture2D>zelda-sprites-enemies-condensed</Texture2D>
+					<RowCount>6</RowCount>
+					<ColumnCount>15</ColumnCount>
+					<Animation>
+						<AnimationName>Blaze</AnimationName>
+						<FrameCount>1</FrameCount>
+						<SecondsPerFrame>.125</SecondsPerFrame>
+						<WidthScale>1.5</WidthScale>
+						<HeightScale>1.5</HeightScale>
+						<Rows>
+							<Row>1</Row>
+						</Rows>
+						<Columns>
+							<Column>11</Column>
+						</Columns>
+					</Animation>
+				</AnimationSet>
+			</Enemy>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>1600</x>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>1600</x>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>2050</x>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>2300</x>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>1600</x>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>1600</x>
+				<y>-1232</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>2050</x>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>2300</x>
+				<y>-1232</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
@@ -8860,8 +11691,8 @@
 				</AnimationSet>
 			</Floor>
 			<Block>
-				<x>475</x>
-				<y>355</y>
+				<x>2875</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8883,8 +11714,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>355</y>
+				<x>2975</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8906,8 +11737,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>355</y>
+				<x>2925</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8929,8 +11760,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>355</y>
+				<x>3025</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8952,8 +11783,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>320</y>
+				<x>3025</x>
+				<y>-1232</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8975,8 +11806,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>285</y>
+				<x>3025</x>
+				<y>-1267</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -8998,8 +11829,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>250</y>
+				<x>3025</x>
+				<y>-1302</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9021,8 +11852,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>625</x>
-				<y>215</y>
+				<x>3025</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9044,8 +11875,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>575</x>
-				<y>215</y>
+				<x>2975</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9067,8 +11898,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>215</y>
+				<x>2925</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9090,8 +11921,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>215</y>
+				<x>2875</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9113,8 +11944,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>425</x>
-				<y>215</y>
+				<x>2825</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9136,8 +11967,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>475</x>
-				<y>250</y>
+				<x>2875</x>
+				<y>-1302</y>
 				<BlockType>DungeonDragonBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9159,8 +11990,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>525</x>
-				<y>285</y>
+				<x>2925</x>
+				<y>-1267</y>
 				<BlockType>DungeonDragonBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9182,8 +12013,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>325</x>
-				<y>355</y>
+				<x>273</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9205,8 +12036,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
-				<y>355</y>
+				<x>2625</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9228,8 +12059,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>355</y>
+				<x>2675</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9251,8 +12082,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>355</y>
+				<x>2575</x>
+				<y>-1197</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9274,8 +12105,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>320</y>
+				<x>2575</x>
+				<y>-1232</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9297,8 +12128,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>285</y>
+				<x>2575</x>
+				<y>-1267</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9320,8 +12151,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>250</y>
+				<x>2575</x>
+				<y>-1302</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9343,8 +12174,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>175</x>
-				<y>215</y>
+				<x>2575</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9366,8 +12197,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>225</x>
-				<y>215</y>
+				<x>2625</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9389,8 +12220,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>215</y>
+				<x>2675</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9412,8 +12243,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>325</x>
-				<y>215</y>
+				<x>2725</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9435,8 +12266,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>375</x>
-				<y>215</y>
+				<x>2775</x>
+				<y>-1337</y>
 				<BlockType>DungeonPyramidBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9458,8 +12289,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>325</x>
-				<y>250</y>
+				<x>2725</x>
+				<y>-1302</y>
 				<BlockType>DungeonFishBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9481,8 +12312,8 @@
 				</AnimationSet>
 			</Block>
 			<Block>
-				<x>275</x>
-				<y>285</y>
+				<x>2675</x>
+				<y>-1267</y>
 				<BlockType>DungeonFishBlock</BlockType>
 				<AnimationSet>
 					<Texture2D>Dungeon1BlockSpriteSheet</Texture2D>
@@ -9504,8 +12335,8 @@
 				</AnimationSet>
 			</Block>
 			<GroundItem>
-				<x>400</x>
-				<y>250</y>
+				<x>2800</x>
+				<y>-1302</y>
 				<GroundItemType>GroundTriforce</GroundItemType>
 				<AnimationSet>
 					<Texture2D>groundItemSprites/groundTriforce</Texture2D>
@@ -9529,50 +12360,50 @@
 				</AnimationSet>
 			</GroundItem>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>2400</x>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>93</y>
+				<x>2400</x>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>93</y>
+				<x>2850</x>
+				<y>-1459</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>93</y>
+				<x>3100</x>
+				<y>-1459</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>409</y>
+				<x>2400</x>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>0</x>
-				<y>320</y>
+				<x>2400</x>
+				<y>-132</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>
 			<Boundary>
-				<x>450</x>
-				<y>409</y>
+				<x>2850</x>
+				<y>-1143</y>
 				<Width>350</Width>
 				<Height>70</Height>
 			</Boundary>
 			<Boundary>
-				<x>700</x>
-				<y>320</y>
+				<x>3100</x>
+				<y>-1232</y>
 				<Width>100</Width>
 				<Height>156</Height>
 			</Boundary>

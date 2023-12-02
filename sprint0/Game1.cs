@@ -47,6 +47,7 @@ namespace sprint0
         SpriteFactory InventoryFactory;
         InventoryController InventoryCont;
         InventoryCursor Cursor;
+        Cartographer Cartographer;
 
 
         public Sprint0()
@@ -73,6 +74,7 @@ namespace sprint0
 
 
             //Game States - in progress
+            Texture2D InvRoomTexture = Content.Load<Texture2D>("InventoryMapRoom");
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
             Texture2D CursorTexture = Content.Load<Texture2D>("zeldaCursor");
@@ -88,7 +90,8 @@ namespace sprint0
             InventoryFactory.createAnimation("IceState", new int[] { 3 }, new int[] { 6}, 1, 1, 3, 2);
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen);
+            Cartographer = new Cartographer(InvRoomTexture);
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer);
 
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton

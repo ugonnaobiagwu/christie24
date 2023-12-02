@@ -22,13 +22,13 @@ namespace sprint0.GameStates
         public IGameState CurrentState;
         HUD GameHud;
         private Door EnteredDoor { get; set; }
-        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture)
+        public GameStateManager(SpriteFont font, SpriteBatch spriteBatch, SpriteBatch staticHudSB, Texture2D inventoryTexture, InventoryCursor cursor, HUD gameHud, int screenWidth, int screenHeight, SpriteFactory inventoryFactory, ContentManager content, Texture2D titleScreenTexture, Cartographer cartographer)
         {
 
             DeathState = new DeathState(this, font, content, this);
-            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory);
+            InventoryState = new InventoryState(this, inventoryTexture, cursor, gameHud,inventoryFactory,cartographer);
             PlayState = new PlayState(this, screenWidth, screenHeight, gameHud, spriteBatch,staticHudSB);
-            ScrollState = new ScrollState(this, 0, Direction.Up,gameHud);
+            ScrollState = new ScrollState(this, 0, Direction.Up,gameHud,cartographer);
             PauseState = new PauseState(this, font, screenWidth, screenHeight,gameHud);
             TitleState = new TitleScreenState(this, titleScreenTexture,font);
             CurrentState = TitleState;
