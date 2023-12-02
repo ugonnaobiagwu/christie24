@@ -53,6 +53,8 @@ namespace sprint0.GameStates
             {
                 case "win":
                     CurrentState = WinState;
+                    WindWaker.StopSong(WindWaker.Songs.DUNGEON);
+                    WindWaker.PlaySong(WindWaker.Songs.TRIFORCE_OBTAIN);
                     break;
                 case "death":
                     CurrentState = DeathState;
@@ -64,6 +66,7 @@ namespace sprint0.GameStates
                     CurrentState = InventoryState;
                     break;
                 case "play":
+                    WindWaker.StopSong(WindWaker.Songs.TRIFORCE_OBTAIN);
                     WindWaker.StopSong(WindWaker.Songs.TITLE);
                     WindWaker.StopSong(WindWaker.Songs.ENDING);
                     WindWaker.PlaySong(WindWaker.Songs.DUNGEON);

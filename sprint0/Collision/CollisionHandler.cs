@@ -478,6 +478,7 @@ namespace sprint0.Collision
                 }
                 Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
                 Inventory.LoseHeart();
+
                 Globals.Link.LinkTakeDamage();
                 link.LinkTakeDamage();
                 Console.WriteLine(Globals.Link.GetHealth());
@@ -698,7 +699,6 @@ namespace sprint0.Collision
         {
             GroundTriforce groundTriforce = (GroundTriforce)obj;
             groundTriforce.PickUp();
-            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.FANFARE);
             Inventory.hasTriforce = true;
 
             // code that impacts inventory system goes here.

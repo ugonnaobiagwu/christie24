@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using sprint0.HUDs;
 using sprint0.LevelLoading;
 
 namespace sprint0.GameStates
@@ -78,6 +79,7 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Set all game objects to initial Values (New link, new GOM)
+            Inventory.hasTriforce = false;
             Globals.GameObjectManager.ResetGOM();
             XmlDocument xmlFile = new XmlDocument();
             xmlFile.Load("Content/FirstDungeon.xml");
