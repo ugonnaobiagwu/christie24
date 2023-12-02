@@ -5148,7 +5148,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -5257,7 +5257,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -5366,7 +5366,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -6036,7 +6036,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -6492,7 +6492,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+				<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -6601,7 +6601,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -6710,7 +6710,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -10502,7 +10502,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -10611,7 +10611,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
@@ -10720,7 +10720,7 @@
 					</Animation>
 				</AnimationSet>
 				<AnimationSet>
-					<Texture2D>equippedItems/Boomerang</Texture2D>
+					<Texture2D>equippedItemSprite/equippedBoomerang</Texture2D>
 					<RowCount>1</RowCount>
 					<ColumnCount>3</ColumnCount>
 					<Animation>
