@@ -69,11 +69,7 @@ namespace sprint0
 
             Inventory.SetContentManager(Content);
 
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
+            
 
             hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
@@ -100,7 +96,6 @@ namespace sprint0
             Cartographer = new Cartographer(InvRoomTexture);
             gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer,winScreenTexture);
            
-        
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -205,7 +200,6 @@ namespace sprint0
         {
             //Console.WriteLine(Globals.GameObjectManager.getCurrentRoomID());
             // TODO: Add your update logic here
-            //GameState testing
             gameStateManager.Update(gameTime);
             Globals.GameObjectManager.deleteObjects();
             //Console.WriteLine("HERE IS LINK X: " + Globals.Link.xPosition() + "HERE IS LINK Y: " + Globals.Link.yPosition());
