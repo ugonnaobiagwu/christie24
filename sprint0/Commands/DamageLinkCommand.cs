@@ -1,4 +1,6 @@
 ﻿using System;
+using sprint0.HUDs;
+
 namespace sprint0.Commands
 {
 	public class DamageLinkCommand :ICommand
@@ -10,6 +12,7 @@ namespace sprint0.Commands
         public void execute()
         {
             Globals.Link.LinkTakeDamage();
+            Inventory.LoseHeart();
         }
     }
 }
