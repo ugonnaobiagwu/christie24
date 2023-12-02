@@ -46,6 +46,7 @@ namespace sprint0.Enemies
             Fireballs = new DragonBlaze[] { new DragonBlaze(projectileFactory, 0), new DragonBlaze(projectileFactory, 1), new DragonBlaze(projectileFactory, 2) };
             foreach(DragonBlaze fire in Fireballs)
             {
+                fire.SetRoomId(roomId);
                 Globals.GameObjectManager.addObject(fire);
             }
             SpriteSheetFrames = new int[] { 0, 1, 2, 3 };
@@ -287,12 +288,12 @@ namespace sprint0.Enemies
 
         public void ChangeEnemyY(int change)
         {
-            xPos += change;
+            yPos += change;
         }
 
         public void ChangeEnemyX(int change)
         {
-            yPos += change;
+            xPos += change;
         }
         public GameObjectType type { get { return GameObjectType.ENEMY; } }
     }

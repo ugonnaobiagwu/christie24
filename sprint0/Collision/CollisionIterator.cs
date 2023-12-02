@@ -82,6 +82,7 @@ namespace sprint0.Collision
                             CollisionDetector.CollisionType thisCollisionType = CollisionDetector.CollisionCheck(obj1, obj2);
                             if (thisCollisionType != CollisionDetector.CollisionType.NONE)
                             {
+                                Console.WriteLine("DEBUG: COLLISION DETECTOR HAS FOUND COLLISION BETWEEN  " + obj1.GetType().ToString() + " AND " + obj2.GetType().ToString());
                                 //Console.WriteLine("DEBUG: COLLISION TYPE FOUND:  " + thisCollisionType.ToString());
                                 bool foundCollision = handler.HandleCollision(obj1, obj2, thisCollisionType);
                                 if (!foundCollision)

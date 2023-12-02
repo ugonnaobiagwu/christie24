@@ -232,7 +232,10 @@ namespace sprint0
         // returns the objects in the current room
         public List<IGameObject> getObjectsInCurrentRoom()
         {
-            return ObjectMap[currentRoomID];
+            List<IGameObject> objectsInRoom = new List<IGameObject>();
+            objectsInRoom.AddRange(ObjectMap[currentRoomID]);
+            objectsInRoom.Add(Globals.Link);
+            return objectsInRoom;
         }
 
         // mreturns list of all the objects in the current room that are drawable
