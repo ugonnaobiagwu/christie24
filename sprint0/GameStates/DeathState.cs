@@ -71,6 +71,7 @@ namespace sprint0.GameStates
             XmlParser.ParseFile(xmlFile, Content);
             Globals.keyboardController.resetLinkCommands();
             GameStateManager.ChangeState("play");
+            Globals.Camera.ResetCameraPos();
         }
 
 

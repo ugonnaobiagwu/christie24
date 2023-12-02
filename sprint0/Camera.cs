@@ -13,6 +13,7 @@ public class Camera
     private float lerpFactor = 0.03f; // the higher the number, the faster it scrolls
     private GraphicsDeviceManager graphicsDeviceManager;
     public Matrix Transform { get; private set; }
+    GraphicsDeviceManager Graphics;
     public float getCameraXPos() { return cameraPosition.X; }
 
     public float getCameraYPos() { return cameraPosition.Y; }
@@ -48,6 +49,7 @@ public class Camera
         var offset = Matrix.CreateTranslation(width, height, 0);
 
         Transform = position * offset;
+        Graphics = graphics;
     }
 
     public void MoveCameraLeft(int units)
@@ -115,5 +117,12 @@ public class Camera
 
         // If the distance is less than the threshold, consider scrolling as over
         return distance < 1.0f;
+    }
+    public void ResetCameraPos()
+    {
+        cameraPosition = new Vector2(-Globals.Link.xPosition(), -Globals.Link.yPosition());
+        graphicsDeviceManager = Graphics;
+        UpdateTransform(graphicsDeviceManager);
+        targetPosition = cameraPosition;
     }
 }
