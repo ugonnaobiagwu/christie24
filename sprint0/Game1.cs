@@ -93,7 +93,7 @@ namespace sprint0
             Cartographer = new Cartographer(InvRoomTexture);
             gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer);
            
-            mouse = Mouse.GetState();
+        
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
