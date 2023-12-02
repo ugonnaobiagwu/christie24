@@ -235,6 +235,9 @@ namespace sprint0
             List<IGameObject> objectsInRoom = new List<IGameObject>();
             objectsInRoom.AddRange(ObjectMap[currentRoomID]);
             objectsInRoom.Add(Globals.Link);
+            objectsInRoom.Add(Globals.LinkItemSystem.currentItemA);
+            objectsInRoom.Add(Globals.LinkItemSystem.currentItemB);
+
             return objectsInRoom;
         }
 

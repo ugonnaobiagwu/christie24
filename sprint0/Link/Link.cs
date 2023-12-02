@@ -142,7 +142,7 @@ namespace sprint0.LinkObj
             if (LinkState == State.Damaged)
             {
 
-                if (damageTimer == 60)
+                if (damageTimer == 30)
                 {
                     LinkState = State.Default;
                     damageTimer = 0;
