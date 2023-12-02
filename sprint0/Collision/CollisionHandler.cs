@@ -419,7 +419,7 @@ namespace sprint0.Collision
             Globals.startScrolling = true;
             Globals.scrollFromThisDirection = door.getSideOfRoom();
             Globals.Link.SetRoomId(door.GetToRoomId());
-            Console.WriteLine(door.GetToRoomId());
+            //Console.WriteLine(door.GetToRoomId());
             Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
             
         }
@@ -461,16 +461,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    link.YVal -= 50;
+                    link.YVal -= 20;
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    link.YVal += 50;
+                    link.YVal += 20;
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    link.XVal -= 50;
+                    link.XVal -= 20;
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    link.XVal += 50;
+                    link.XVal += 20;
                     break;
             }
             Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);

@@ -63,7 +63,7 @@ namespace sprint0.GameStates
 
             //Collision iterator,
 
-            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
+            CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
 
                 this.TransitionState();
         }
@@ -72,7 +72,7 @@ namespace sprint0.GameStates
         {
             
             
-            Globals.LinkItemSystem.Draw();
+            
             List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
             foreach (IGameObject obj in Drawables)
             {
@@ -84,6 +84,7 @@ namespace sprint0.GameStates
             {
                 Globals.Link.Draw(spriteBatch);
             }
+            Globals.LinkItemSystem.Draw();
         }
 
         public string GetState()

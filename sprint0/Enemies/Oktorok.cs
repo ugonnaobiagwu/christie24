@@ -57,6 +57,7 @@ namespace sprint0.Enemies
             OktorokFactory = spriteFactory;
             OktoSprite = OktorokFactory.getAnimatedSprite("Down");
             Projectile = new OktorokBlaze(projectileFactory);
+            Projectile.SetRoomId(roomId);
             element = Globals.EnemyElementType.NEUTRAL;
             Globals.GameObjectManager.addObject(Projectile);
             OktorokDirection = Globals.Direction.Down;
@@ -411,12 +412,12 @@ namespace sprint0.Enemies
         }
         public void ChangeEnemyY(int change)
         {
-            xPos += change;
+            yPos += change;
         }
 
         public void ChangeEnemyX(int change)
         {
-            yPos += change;
+            xPos += change;
         }
         public GameObjectType type { get { return GameObjectType.ENEMY; } }
 
