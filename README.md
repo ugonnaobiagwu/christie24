@@ -1,9 +1,8 @@
-
 # SPRINT 5: 
 
 WHAT WE ACCOMPLISHED:
 
---Our Sprint 4 Backlog is Near Completion (as of 11/30)!
+--Our Sprint 4 Backlog is Complete!
 * Collision: Collision is Working with All Game Objects and Handles the Collision Events
 * GameStates: Scrolling, Inventory, Pause and Death States are In
 * Level Loader: Completely functional. Complete first level is in as well.
@@ -13,7 +12,7 @@ WHAT WE ACCOMPLISHED:
 * SpriteFactory: Fixed Abnormal Scaling Issues
 * Sound: More Sound Effects and Music Are In. Music Now Pauses in the Pause State
 
---Sprint 5 Feature is Complete
+--Sprint 5 Feature is Complete (Almost)
 * Elemental Link, Link Sword, and Enemies
 * Elemental Type Advantages (Critical Hits, Weak Hits)
 * XP Boosts when Link Kills an Enemy or Picks up an Item
@@ -22,7 +21,7 @@ WHAT WE ACCOMPLISHED:
 * When Link is at a HIGH Level, enemies will start to gun him down!
   
 WHAT WE DID NOT ACCOMPLISH:
-* Check back on November 30th!
+* Enemy AI Scaling for Level Medium isn't in. (Enemies dodging out 40% of the time)
   
 Please see the Sprint 5 Reflection / Planning Document for more details.
 
