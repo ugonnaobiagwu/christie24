@@ -479,10 +479,10 @@ namespace sprint0.Collision
                 Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
                 Inventory.LoseHeart();
 
-                Globals.Link.LinkTakeDamage();
+                //Globals.Link.LinkTakeDamage();
                 link.LinkTakeDamage();
-                Console.WriteLine(Globals.Link.GetHealth());
-                Console.WriteLine(link.GetHealth());
+                //Console.WriteLine(Globals.Link.GetHealth());
+                //Console.WriteLine(link.GetHealth());
             }
 
         }
