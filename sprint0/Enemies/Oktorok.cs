@@ -281,30 +281,36 @@ namespace sprint0.Enemies
 
             }
 
-            /* Dodge Arrows */
-            /* Checks A and B independently in case Link happens to have the Bow and BetterBow equipped at the same time */
-            if (LinkHasBowA())
+            if (Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.MEDIUM) || Inventory.CurrentLinkLevel.Equals(Inventory.LinkLevel.HIGH))
             {
-                if (Globals.LinkItemSystem.currentItemA.isInPlay())
+
+                /* Dodge Arrows */
+                /* Checks A and B independently in case Link happens to have the Bow and BetterBow equipped at the same time */
+                if (LinkHasBowA())
                 {
-                    if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+                    if (Globals.LinkItemSystem.currentItemA.isInPlay())
                     {
-                        if (ItemInRange(Globals.LinkItemSystem.currentItemA))
+                        if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
                         {
-                            Dodge(Globals.LinkItemSystem.currentItemA);
+                            Random dodgeRng = new Random();
+                            if (dodgeRng.Next(10) < 4)
+                            {
+                                Dodge(Globals.LinkItemSystem.currentItemA);
+                            }
                         }
                     }
                 }
-            }
-            if (LinkHasBowB())
-            {
-                if (Globals.LinkItemSystem.currentItemB.isInPlay())
+                if (LinkHasBowB())
                 {
-                    if (Globals.Link.GetDirection() == Direction.Left || Globals.Link.GetDirection() == Direction.Right)
+                    if (Globals.LinkItemSystem.currentItemB.isInPlay())
                     {
                         if (ItemInRange(Globals.LinkItemSystem.currentItemB))
                         {
-                            Dodge(Globals.LinkItemSystem.currentItemA);
+                            Random dodgeRng = new Random();
+                            if (dodgeRng.Next(10) < 4)
+                            {
+                                Dodge(Globals.LinkItemSystem.currentItemA);
+                           }
                         }
                     }
                 }

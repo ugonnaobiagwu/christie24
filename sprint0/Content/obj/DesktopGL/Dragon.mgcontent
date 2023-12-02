@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/Dragon.png</SourceFile>
-  <SourceTime>2023-11-06T15:49:40.0675941-05:00</SourceTime>
+  <SourceTime>2023-11-15T15:26:57.9116348-05:00</SourceTime>
   <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/Dragon.xnb</DestFile>
-  <DestTime>2023-11-10T14:56:56.4944824-05:00</DestTime>
+  <DestTime>2023-12-01T19:53:38.1596601-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

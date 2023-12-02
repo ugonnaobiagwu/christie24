@@ -69,13 +69,6 @@ namespace sprint0
 
             Inventory.SetContentManager(Content);
 
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-            Inventory.CountKey();
-
-
             hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
