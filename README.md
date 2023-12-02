@@ -51,7 +51,10 @@ KNOWN BUGS AND ISSUES:
 * Damage is consistent with Link Health HUD
 * Collision with Certain Blocks Are Weird and Can Soft Lock Link
 * Key Equip Causes a Spam to the SFX.
-* When death occurs Camera doesn’t change.
+* Skeleton is still collidable even after death
+* GOM might not be deleting things lmao
+* Backtracking is a little funky.
+* Link does not take damage outside of first room.
 
 
 
