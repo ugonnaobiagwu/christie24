@@ -17,7 +17,7 @@ namespace sprint0.Items
         private int itemMinY;
         private int itemXOrigin;
         private int itemYOrigin;
-        private int spriteVelocity = 1;
+        private int spriteVelocity = 3;
         private int itemRoomID;
         // needs these positions for sprite swapping.
 
@@ -35,15 +35,21 @@ namespace sprint0.Items
             currentItemDirection = Direction.Down;
             spriteChanged = false;
             itemRoomID = 0;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
+            nullifyPosition();
+        }
 
-
+        private void nullifyPosition()
+        {
+            this.itemXPos = -10000;
+            this.itemYPos = -10000;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0);
             }
         }
 
@@ -77,8 +83,10 @@ namespace sprint0.Items
                     {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
-                        this.currentItemSprite = null;
                         Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
+                        nullifyPosition();
+                        //Globals.GameObjectManager.removeObject(this);
+
                     }
                 }
                 else
@@ -103,11 +111,7 @@ namespace sprint0.Items
                     }
 
                 }
-                if (this.currentItemSprite != null)
-                {
                     this.currentItemSprite.Update();
-                }
-
             }
 
         }
@@ -144,10 +148,10 @@ namespace sprint0.Items
                 this.itemXOrigin = linkXPos;
                 this.itemYPos = linkYPos;
                 this.itemYOrigin = linkYPos;
-                this.itemMaxX = linkXPos + 200;
-                this.itemMaxY = linkYPos + 200;
-                this.itemMinX = linkXPos - 200;
-                this.itemMinY = linkYPos - 200;
+                this.itemMaxX = linkXPos + 100;
+                this.itemMaxY = linkYPos + 100;
+                this.itemMinX = linkXPos - 100;
+                this.itemMinY = linkYPos - 100;
                 currentItemSprite = itemSpriteFactory.getAnimatedSprite("Going");
                 // since the bow may go up or down.
                 // all items start at the same position as link.
@@ -220,6 +224,7 @@ namespace sprint0.Items
         {
             return itemRoomID;
         }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

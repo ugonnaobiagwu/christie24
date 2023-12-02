@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using sprint0.Commands;
 using sprint0.Blocks;
 using sprint0;
+using sprint0.Commands.GameStateCommand;
 
 namespace sprint0.Controllers
 {
@@ -15,7 +16,8 @@ namespace sprint0.Controllers
         private ICommand linkWalkingDown;
         private ICommand linkWalkingLeft;
         private ICommand linkWalkingRight;
-        private ICommand linkItemUse;
+        private ICommand linkItemUseA;
+        private ICommand linkItemUseB;
         private ICommand linkSword;
         private ICommand linkEquipBow;
         private ICommand linkEquipBetterBow;
@@ -33,6 +35,10 @@ namespace sprint0.Controllers
         private ICommand nextEnemy;
         private ICommand quit;
         private ICommand reset;
+        private ICommand pause;
+        private ICommand damageLink;
+        private Sprint0 game1;
+        private ICommand leftScroll;
 
         // makes a dictionary for the keys and commands
         private Dictionary<Keys, ICommand> KeyMap;
@@ -43,6 +49,7 @@ namespace sprint0.Controllers
 
         public KeyboardController(sprint0.Sprint0 Game)
         {
+            game1 = Game;
             KeyMap = new Dictionary<Keys, ICommand>();
             previousKeys = new List<Keys>();
 
@@ -52,15 +59,18 @@ namespace sprint0.Controllers
             linkWalkingDown = new WalkDownCommand(Game, Globals.Link);
             linkWalkingRight = new WalkRightCommand(Game, Globals.Link);
 
-            linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
+            linkItemUseA = new LinkAttackWithACommand();
+            linkItemUseB = new LinkAttackWithBCommand();
+            damageLink = new DamageLinkCommand();
+            //linkItemUse = new AttackCommand(Game, Globals.Link, Globals.LinkItemSystem);
             //linkSword = new SwingSwordCommand(Game);
-            linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
-            linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
-            linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
-            linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
-            linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
-            linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
-            linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBow = new EquipBowCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBow = new EquipBetterBowCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBoomerang = new EquipBoomerangCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBetterBoomerang = new EquipBetterBoomerangCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBomb = new EquipBombCommand(Game, Globals.LinkItemSystem);
+            //linkEquipBlaze = new EquipBlazeCommand(Game, Globals.LinkItemSystem);
+            //linkEquipSword = new EquipSwordCommand(Game, Globals.LinkItemSystem);
             //linkDamaged = new DamagedCommand(Game);
             //nextBlock = new NextBlockCommand(Game, Game.block);
             //previousBlock = new PreviousBlockCommand(Game, Game.block);
@@ -69,7 +79,8 @@ namespace sprint0.Controllers
             //nextEnemy = new NextEnemyCommand(Game);
             //quit = new QuitCommand(Game);
             //reset = new ResetCommand(Game);
-
+            pause = new PauseCommand(Game);
+            leftScroll = new LeftScrollCommand(Game);
         }
 
         // used to register keys with their respective commands
@@ -89,17 +100,17 @@ namespace sprint0.Controllers
             // link moves right for right arrow key, and d key
             KeyMap.Add(Keys.D, linkWalkingRight);
             KeyMap.Add(Keys.Right, linkWalkingRight);
-
+            KeyMap.Add(Keys.Y, damageLink);
             // other commands
-            KeyMap.Add(Keys.N, linkItemUse);
+            //KeyMap.Add(Keys.N, linkItemUse);
             //KeyMap.Add(Keys.Z, linkSword);
-            KeyMap.Add(Keys.D1, linkEquipBow);
-            KeyMap.Add(Keys.D2, linkEquipBetterBow);
-            KeyMap.Add(Keys.D3, linkEquipBoomerang);
-            KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
-            KeyMap.Add(Keys.D5, linkEquipBomb);
-            KeyMap.Add(Keys.D6, linkEquipBlaze);
-            KeyMap.Add(Keys.D7, linkEquipSword);
+            //KeyMap.Add(Keys.D1, linkEquipBow);
+            //KeyMap.Add(Keys.D2, linkEquipBetterBow);
+            //KeyMap.Add(Keys.D3, linkEquipBoomerang);
+            //KeyMap.Add(Keys.D4, linkEquipBetterBoomerang);
+            //KeyMap.Add(Keys.D5, linkEquipBomb);
+            //KeyMap.Add(Keys.D6, linkEquipBlaze);
+            //KeyMap.Add(Keys.D7, linkEquipSword);
             //KeyMap.Add(Keys.E, linkDamaged);
             //KeyMap.Add(Keys.T, previousBlock);
             //KeyMap.Add(Keys.Y, nextBlock);
@@ -109,6 +120,22 @@ namespace sprint0.Controllers
             //KeyMap.Add(Keys.P, nextEnemy);
             KeyMap.Add(Keys.Q, quit);
             //KeyMap.Add(Keys.R, reset);
+
+            KeyMap.Add(Keys.P, pause);
+            KeyMap.Add(Keys.N, linkItemUseA);
+            KeyMap.Add(Keys.M, linkItemUseB);
+            KeyMap.Add(Keys.J, leftScroll);
+
+        }
+
+        public void resetLinkCommands()
+        {
+            linkWalkingUp = new WalkUpCommand(game1, Globals.Link);
+            linkWalkingLeft = new WalkLeftCommand(game1, Globals.Link);
+            linkWalkingDown = new WalkDownCommand(game1, Globals.Link);
+            linkWalkingRight = new WalkRightCommand(game1, Globals.Link);
+            KeyMap = new Dictionary<Keys, ICommand>();
+            this.registerKeys();
         }
 
         // executes commands for each key pressed

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace sprint0.Blocks
 {
     internal class DungeonFishBlock : IBlock
-    { 
+    {
 
         int scaledWidth;
         int scaledHeight;
@@ -24,17 +25,16 @@ namespace sprint0.Blocks
         public int Columns { get; set; }
         private int XValue { get; set; }
         private int YValue { get; set; }
+        private int toRoomId { get; set; }
 
 
 
-
-        public DungeonFishBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public DungeonFishBlock(int x, int y, SpriteFactory spriteFactory)
         {
             blockSprite = spriteFactory.getAnimatedSprite("DungeonFishBlock");
             blockSpriteFactory = spriteFactory;
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
         public DungeonFishBlock(Texture2D texture, int rows, int columns)
         {
@@ -44,30 +44,30 @@ namespace sprint0.Blocks
 
         }
 
-       /* public void Draw(SpriteBatch spriteBatch,int x,int y)
-        {  
+        /* public void Draw(SpriteBatch spriteBatch,int x,int y)
+         {  
 
-            int width = this.Texture.Width / Columns;
-            int height = this.Texture.Height / Rows;
-            int blockRow = 0;
-            int blockColumn = 2;
+             int width = this.Texture.Width / Columns;
+             int height = this.Texture.Height / Rows;
+             int blockRow = 0;
+             int blockColumn = 2;
 
-            Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
+             Rectangle sourceLocation = new Rectangle(width * blockColumn, height * blockRow, width, height);
 
-            //resize block image
-            double scale = 0.2; //40% of the orignal size image
-            scaledWidth = (int)(width * scale);
-            scaledHeight = (int)(height * scale);
-
-
-            Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
+             //resize block image
+             double scale = 0.2; //40% of the orignal size image
+             scaledWidth = (int)(width * scale);
+             scaledHeight = (int)(height * scale);
 
 
-            spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
+             Rectangle destinationRectangle = new Rectangle(x, y, scaledWidth, scaledHeight);
 
-        }*/
 
-        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue); }
+             spriteBatch.Draw(this.Texture, destinationRectangle, sourceLocation, Color.White);
+
+         }*/
+
+        public void Draw(SpriteBatch spritebatch) { blockSprite.Draw(spritebatch, XValue, YValue,0.0f); }
         public void Explode() { }
         public void Update() { }
 
@@ -82,8 +82,15 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
 
 
+
+        public void SetToRoomId(int roomId) { }
+        public int GetToRoomId()
+        {
+            return -1;
+        }
 
     }
 }

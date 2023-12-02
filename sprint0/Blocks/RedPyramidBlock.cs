@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.Blocks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace sprint0.Blocks
 {
-    internal class RedPyramidBlock: IBlock
+    internal class RedPyramidBlock : IBlock
     {
 
         int scaledWidth;
@@ -20,32 +21,38 @@ namespace sprint0.Blocks
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
-        private int XValue { get; set; }
-        private int YValue { get; set; }
+        public int XValue { get; set; }
+        public int YValue { get; set; }
 
 
 
 
-        public RedPyramidBlock(int x, int y, int roomId, SpriteFactory spriteFactory)
+        public RedPyramidBlock(int x, int y, SpriteFactory spriteFactory)
         {
 
             blockSpriteFactory = spriteFactory;
             blockSprite = spriteFactory.getAnimatedSprite("RedPyramidBlock");
             XValue = x; YValue = y;
             iblock = this;
-            RoomId = roomId;
         }
 
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            blockSprite.Draw(spriteBatch, XValue, YValue);
+            blockSprite.Draw(spriteBatch, XValue, YValue, 0.0f);
         }
 
         public void Explode() { }
         public void Update() { }
-
+        public void SetToRoomId(int toRoomId)
+        {
+            //No toRoomId
+        }
+        public int GetToRoomId()
+        {
+            return -1; // nothing to return
+        }
         //hard code for now (make new class for these?)
         public int xPosition() { return XValue; } // returns X pos of object
         public int yPosition() { return YValue; } // returns Y pos of object
@@ -57,5 +64,6 @@ namespace sprint0.Blocks
         public bool isDrawable() { return true; }
         public void SetRoomId(int roomId) { RoomId = roomId; }
         public int GetRoomId() { return RoomId; }
+        public GameObjectType type { get { return GameObjectType.BLOCK; } }
     }
 }

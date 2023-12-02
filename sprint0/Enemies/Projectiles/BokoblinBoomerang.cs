@@ -36,6 +36,7 @@ namespace sprint0.Items
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
             spriteChanged = false;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Coming");
 
         }
 
@@ -43,7 +44,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0.0f);
             }
         }
 
@@ -78,7 +79,7 @@ namespace sprint0.Items
                     {  // if sprite makes it home
                         thisStateMachine.CeaseUse();
                         this.spriteChanged = false; //reset
-                        this.currentItemSprite = null;
+                        //this.currentItemSprite = null;
                     }
                 }
                 else
@@ -224,6 +225,7 @@ namespace sprint0.Items
         {
             return itemRoomID;
         }
+        public GameObjectType type { get { return GameObjectType.ENEMY; } }
     }
 }
 

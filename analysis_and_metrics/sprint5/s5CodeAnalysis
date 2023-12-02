@@ -1,0 +1,1 @@
+After running code metrics upon the arrival of our final feature we found that our code is relatively maintainable with an index in the green (88). We have 2 depth/s of inheritance and 198 instances of coupling (Most likely due to the use of our Global references). Our cylcomatic complexity is rather high sitting at 2,262 instances

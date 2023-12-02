@@ -1,51 +1,101 @@
 using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using sprint0;
+using sprint0.BoundariesDoorsAndRooms;
+using static sprint0.Globals;
+using sprint0.HUDs;
+using sprint0.Collision;
+
 namespace sprint0.GameStates
 {
-    public class ScrollState : StateManager, IState
+    public class ScrollState : IGameState
     {
-        public ScrollState()
+        
+        //public Direction ScrollDirection;
+        private Door EnteredDoor { get; set; }
+        Direction SideOfRoomDirection;
+        private int NewRoomId;
+        private float ScrollTime = 1.5f;
+        private bool ScrollOnce = true;
+        GameStateManager GameStateManager;
+        HUD GameHud;
+        Cartographer Cartographer;
+        public ScrollState(GameStateManager manager, int toRoomId, Direction sideOfRoom, HUD newHud,Cartographer cartographer)
         {
+            GameStateManager = manager;
+            NewRoomId = toRoomId;
+            SideOfRoomDirection = sideOfRoom;
+            GameHud = newHud;
+            Cartographer = cartographer;
         }
 
-        public void ScrollLeft()
+        public void Update(GameTime gameTime)
         {
-            ScrollTransition("scrollLeft");
-        }
-
-        public void ScrollRight()
-        {
-            ScrollTransition("scrollRight");
-        }
-
-        public void ScrollUp()
-        {
-            ScrollTransition("scrollRight");
-        }
-
-        public void ScrollDown()
-        {
-            ScrollTransition("scrollRight");
-        }
-
-        public void ScrollTransition(string scrollInstruction)
-        {
-            switch (scrollInstruction)
+            Globals.Camera.Update(gameTime);
+            CollisionIterator.Iterate(Globals.GameObjectManager.getDictionary()[Globals.GameObjectManager.getCurrentRoomID()]);
+            if (ScrollOnce)
             {
-                // hopefully this works for 16x12 rooms
-                case "scrollLeft":
-                    Globals.Camera.MoveCameraLeft(16);
-                    break;
-                case "scrollRight":
-                    Globals.Camera.MoveCameraRight(16);
-                    break;
-                case "scrollUp":
-                    Globals.Camera.MoveCameraUp(12);
-                    break;
-                case "scrollDown":
-                    Globals.Camera.MoveCameraDown(12);
-                    break;
-                default: break;
+                switch (Globals.scrollFromThisDirection)
+                {
+                    case (Direction.Left):
+                        Globals.Camera.MoveCameraToLeftRoom();
+                        Globals.Link.ChangeXandYValue(Globals.DoorX - 180, Globals.DoorY);
+                        Cartographer.addLeftRoom();
+                        break;
+                    case (Direction.Right):
+                        Globals.Camera.MoveCameraToRightRoom();
+                        //Whole game seems offset to the right?? thats why this magic number is bigger
+                        Globals.Link.ChangeXandYValue(Globals.DoorX + 230, Globals.DoorY);
+                        Cartographer.addRightRoom();
+                        break;
+                    case (Direction.Up):
+                        Globals.Camera.MoveCameraToTopRoom();
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY - 135);
+                        Cartographer.addTopRoom();
+                        break;
+                    case (Direction.Down):
+                        Globals.Camera.MoveCameraToBottomRoom();
+                        Globals.Link.ChangeXandYValue(Globals.DoorX, Globals.DoorY + 180);
+                        Cartographer.addBottomRoom();
+                        break;
+                }
+            } ScrollOnce = false;
+            Globals.Update(gameTime);
+            this.TransitionState();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
+        {
+            Globals.LinkItemSystem.Draw();
+
+            List<IGameObject> Drawables = Globals.GameObjectManager.drawablesInRoom();
+            foreach (IGameObject obj in Drawables)
+            {
+                obj.Draw(spriteBatch);
+            }
+            GameHud.Draw();
+        }
+
+        public string GetState()
+        {
+            return "scroll";
+        }
+
+        public void TransitionState()
+        {
+            //Check to see if scroll is done
+            ScrollTime -= Globals.TotalSeconds;
+            
+            if (ScrollTime <= 0.0f)
+            {
+                ScrollOnce = true;
+                Globals.startScrolling = false;
+                ScrollTime += 1.5f;
+                GameStateManager.ChangeState("play");
             }
         }
+
     }
 }

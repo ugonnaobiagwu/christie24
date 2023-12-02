@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
+using sprint0.Sound.Ocarina;
 
 namespace sprint0.Items.groundItems
 {
@@ -25,7 +27,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos, 0);
             }
         }
 
@@ -50,7 +52,13 @@ namespace sprint0.Items.groundItems
 
         public void PickUp()
         {
-            isPickedUp = true;
+            if (isPickedUp == false)
+            {
+                isPickedUp = true;
+                Globals.GameObjectManager.removeObject(this);
+                Inventory.CountKey();
+                Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+            }
         }
 
         public bool isUpdateable()
@@ -60,7 +68,13 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            if (isPickedUp)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
         }
 
         public bool isDrawable()
@@ -87,6 +101,7 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

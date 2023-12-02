@@ -1,0 +1,38 @@
+[Readibility]
+
+Author of the code review: 
+	Xing Wu
+Date of the code review: 
+	11/30/2023
+Sprint number: 
+	Sprint 5
+Name of the .cs file being reviewed:
+	sprint0/HUDs/HUD.cs
+Author of the .cs file being reviewed: 
+	Madoka Kamishima
+Number of minutes taken to complete the review:
+	5
+Specific comments on what is readable and what is not:
+	Everything is well-spaced and I like how almost there are basic comments explaining what it is.
+	However, I did notice that there are places with much bigger spaces than others. It doesn't affect its readibility though.	
+
+[Code Quality]
+
+Author of the code review: 
+	Xing Wu
+Date of the code review: 
+	11/30/2023
+Sprint number: 
+	Sprint 5
+Name of the .cs file being reviewed:
+	sprint0/HUDs/Inventory.cs
+Author of the .cs file being reviewed: 
+	Madoka Kamishima
+Specific comments on code quality:
+	There are some code commented out that can be deleted if not needed anymore.
+	However, everything seems alright in terms of code quality.
+A hypothetical change to make to the game related to the file being reviewed and how the current implementation could or could not easily support that change:
+	It might be good practice to declare variables such as addBomb and addRupee as a static private set for future possible changes. However, In our case, since this would be the last sprint, it is not needed. 
+	However, it would be relatively easy to change if we ever hypothetically needed to change the ammount of bombs and rupees are picked up.
+
+  

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Graphics;
 using sprint0.AnimatedSpriteFactory;
+using sprint0.HUDs;
 
 namespace sprint0.Items.groundItems
 {
@@ -25,7 +26,7 @@ namespace sprint0.Items.groundItems
         {
             if (!isPickedUp)
             {
-                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos);
+                this.currentItemSprite.Draw(spritebatch, this.xPos, this.yPos, 0);
             }
         }
 
@@ -51,6 +52,11 @@ namespace sprint0.Items.groundItems
         public void PickUp()
         {
             isPickedUp = true;
+            Inventory.GainHeart();
+            Inventory.GainHeart();
+            Inventory.GainHeart();
+            Globals.GameObjectManager.removeObject(this);
+
         }
 
         public bool isUpdateable()
@@ -60,7 +66,7 @@ namespace sprint0.Items.groundItems
 
         public bool isInPlay()
         {
-            return isPickedUp;
+            return !isPickedUp;
         }
 
         public bool isDrawable()
@@ -87,6 +93,7 @@ namespace sprint0.Items.groundItems
         {
             return this.currentItemSprite.GetHeight();
         }
+        public GameObjectType type { get { return GameObjectType.ITEM; } }
     }
 }
 

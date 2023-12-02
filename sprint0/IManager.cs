@@ -10,8 +10,10 @@ public interface IManager<T> where T : IGameObject
     void addObject(T obj);
     void removeObject(T obj);
     void deleteObjects();
-    List<IGameObject> getList(string listName);
+    List<T> getList(string listName);
     List<int> getRoomIDs();
-    List<IGameObject> getObjectsInRoom();
-    Dictionary<int, List<IGameObject>> getDictionary();
+    List<T> getObjectsInRoom(int roomID);
+    List<IGameObject> getObjectsInCurrentRoom();
+    Dictionary<int, List<T>> getDictionary();
+    void ResetGOM();
 }

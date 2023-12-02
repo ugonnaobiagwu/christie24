@@ -1,55 +1,58 @@
-
-# SPRINT 4: 
+# SPRINT 5: 
 
 WHAT WE ACCOMPLISHED:
-* Enemies: Enemies and Boss (Aquamentus) is in and near completion
-* Collision Code is tested and working (though keep reading for Bugs and Issues)
-* Sound Systems: Music and Sound Effects
-* Link: Can walk around and shoot all his items out. (though keep reading for Bugs and Issues)
-* Level Loader /  XML Parsing: Can be used to place items in the game
-* GameObjectManager: Object Management is working and can speak to Level Loader and Collsion Systems. (though keep reading for Bugs and Issues)
-* Game States foundation has been built.
-* HUD: Can be displayed and updated hard-coded-ly through Game 1... (see controls below) 
-* Inventory: Data file that keeps track of what Link's got.
-* Room Scrolling: We have camera movement that will act as a PoC for Room Scrolling in the next sprint
-* SpriteFactory: Completed factory that all GameObjects now respond to
-* IGameObject: Shiny new interface that all GameObjects speak to which allows Collision, Level loading and Game Object Management to work.
-* Utilization of Test Plan: Blocks, Collision and Level Loading were tested "off-repo" and the changes were brought back to our main one with "Cache Coherency" issues being the utmost concern.
-* Camera: Follows Link and Moves Up Down Left and Right, so the foundation for  the camera code is in.
+
+--Our Sprint 4 Backlog is Complete!
+* Collision: Collision works with All Game Objects and Handles the Collision Events (where they're specified to do so for gameplay/performance issues)
+* GameStates: Scrolling, Inventory, Pause, Win, Title and Death States are In
+* Level Loader: Completely functional. The complete first level is in as well.
+* Inventory: Improved and fleshed out HUD that is also dynamic and reacts to Link's Inventory and States.
+* Enemies: Improved Enemy Behavior
+* GameObjectManager: Improved Game Object Management
+* SpriteFactory: Fixed Abnormal Scaling Issues
+* Sound: More Sound Effects and Music Are In. Music Now Pauses in the Pause State 
+
+--Sprint 5 Feature is Complete (Almost)
+* Elemental Link, Link Sword, and Enemies
+* Elemental Type Advantages (Critical Hits, Weak Hits)
+* XP Boosts when Link Kills an Enemy or Picks up certain item
+* Link Will wear a Specific Tunic based on the Element he chooses to equip.
+* Tunics can be equipped from the Inventory as Link unlocks them (indicated by a SFX)
+* When Link is at a HIGH Level, enemies will start to gun him down!
   
 WHAT WE DID NOT ACCOMPLISH:
-* Collision needs to be expanded to include events sent to the Inventory System / Link Picking Up items.
-* LinkItems (Weapons) need further Collision testing, as well as integrating with inventory and the HUD.
-* Different Game State screens: Pause Screen etc
-* Completed Room Scrolling.
-* Complete first level.
-* HUD: Locator doesn't currently have logic behind it, but the design is done.
-* ScrollState: Scroll Transition code is in, but the integration is not in with Scroll State / Door Collisions
-* Other tasks not mentioned from our Sprint 4 planning doc.
+* Enemy AI Scaling for Level Medium isn't in. (Enemies dodging bows 40% of the time)
   
-Please see the Sprint 4 Reflection / Planning Document for more details.
+Please see the Sprint 5 Reflection / Planning Document for more details.
 
 ----
 
 CONTROLS:
-
-* Move with W, A, S, D
-* Shoot Items by pressing numbers 1-7 and the letter N.
-* Change HUD display via adding / removing Count/Gain/Lose methods at the top of Game1. Doing this shows that you can change the number of hearts, inventory items, and more.
-* Collision sort of works on the top right "pyramid block" at the moment. (Also a known bug)
-
-
+* Use W, A, S, D to walk around.
+* Press I to open the Inventory and from there, use the ARROW keys to select an item, then equip to an item slot by pressing A or B
+* Attack Using Item A with N
+* Attack Using Item B with M
+* Pause the game with P.
+* Reset the game with R
 
 KNOWN BUGS AND ISSUES:
-* Link and Item Animations: Really wonky right now. Item Sprite switches don't work, and Link's "UseItem" pose remains once the item is no longer in play.
-* Item Locations: Bows and Swords come from special directions and are oriented to meet that criteria, but their rotations are out of wack currently.
-* Wonky Enemy and Enemy Projectile sprite issues.
-* SpriteFactory is causing really weird scaling issues at the moment with the room and blocks, links and items, which is affecting the working Collision rectangles.
-* Level Loader places things in the game, but further fixes are ahead of us due to the ^^ issue.
-* Link can walk on the HUD
-* Inventory quantities / life quantity is in an island right now... the only thing talking to that system is the HUD currently.
-* Link Map Locator is static.
-* 
+* Fun Fact: Collision Rectangles are slightly off because the images use a float for scaling, but the width and height gets the decimal value truncated. White space in the SpriteSheets don't help either.
+* Certain Song files fade out and start again purely because that's how the file was ripped.
+* Some animations don't animate / animate quickly / have row/sheet problems
+* Link won't start wearing his new tunic until he starts walking in a different direction after he equips it
+* Collision / Level Loader: Potential for there being a gap between some walls and some doors. (Mostly fixed)
+* Enemies Exploit the abovee Gaps and can get to other rooms that way (Design Feature LOL?)
+* Certain Enemies freak out with Collision and can be thrown out of certain rooms (Aquamentus the Dragon)
+* State Change during scroll affects the draw and freezes the scroll.
+* Door Collision is magnetic-like and can lead to Scroll Errors in Certain Rooms (Mostly fixed)
+* Collision with Certain Blocks Are Weird and Can Soft Lock Link
+* Backtracking is a little funky.
+* Big Heart in Boss Room has a bug with the HUD and Link's Health
+* Text in NPC/Old Man Room is not present.
+* Certain Door State Changes Do not occur (Room with Pushable Block / Enemy Death Room)
+
+Please see the reflection / issue tab for more details as this list is not exhaustive.
+
 
 
 Please visit the issues for additional bugs that may not have been addressed here. This, by no means, is an exhaustive list.

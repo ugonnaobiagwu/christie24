@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/soundEffects/GET_GROUND_RUPEE.wav</SourceFile>
-  <SourceTime>2023-11-06T00:43:03.7034123-05:00</SourceTime>
+  <SourceTime>2023-11-15T15:26:59.4645029-05:00</SourceTime>
   <DestFile>C:/Users/alexy/source/repos/christie24/sprint0/Content/bin/DesktopGL/soundEffects/GET_GROUND_RUPEE.xnb</DestFile>
-  <DestTime>2023-11-10T14:56:59.3575766-05:00</DestTime>
+  <DestTime>2023-12-01T19:53:41.1578184-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

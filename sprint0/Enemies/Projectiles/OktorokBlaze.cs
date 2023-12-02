@@ -32,6 +32,7 @@ namespace sprint0.Items
             itemSpriteFactory = factory;
             thisStateMachine = new ItemStateMachine();
             currentItemDirection = Direction.DOWN;
+            currentItemSprite = itemSpriteFactory.getAnimatedSprite("Blaze");
             //maxFireTicks = 120;
             //fireTicks = 0;
         }
@@ -40,7 +41,7 @@ namespace sprint0.Items
         {
             if (thisStateMachine.isItemInUse() && this.currentItemSprite != null)
             {
-                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos);
+                currentItemSprite.Draw(spriteBatch, itemXPos, itemYPos, 0.0f);
             }
         }
 
@@ -180,7 +181,7 @@ namespace sprint0.Items
         {
             return this.itemRoomID;
         }
-
+        public GameObjectType type { get { return GameObjectType.ENEMY; } }
     }
 }
 

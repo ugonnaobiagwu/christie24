@@ -1,0 +1,11 @@
+Alex Kim
+Nov 30, 2023
+Sprint 5
+sword.cs
+Ugonna Obiagwu
+Time Taken to Complete: 8 minutes
+
++ nullifyPosition() method saves a few lines in the code later and makes it a little easier to understand what is happening in the code.
++ comments in various methods to help explain what code does
+- Use() method could use some comments to explain what each section does
+- Magic Numbers

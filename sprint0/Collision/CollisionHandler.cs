@@ -7,11 +7,25 @@ using sprint0.Items.groundItems;
 using sprint0.Blocks;
 using sprint0.Enemies;
 using sprint0.Sound.Ocarina;
+using sprint0.HUDs;
+using sprint0.LinkSword;
+using sprint0.BoundariesDoorsAndRooms;
 
 namespace sprint0.Collision
 {
     public class CollisionHandler
     {
+
+        private const float CRIT_XP = .375f;
+        private const float MIN_XP = .1f;
+        private const float REG_XP = .238f;
+        private const float KEY_ITEM_FIND_XP = .7f;
+        private const float ITEM_FIND_XP = .4f;
+        private const float RUPEE_FIND_XP = .2f;
+
+
+
+
         /*
          * DEVELOPMENT NOTES:
          * 
@@ -127,6 +141,8 @@ namespace sprint0.Collision
             collisionTable.Columns.Add("HandleB", typeof(GameObjectDelegate));
             GameObjectDelegate MoveLinkDelegate = new GameObjectDelegate(MoveLink);
             GameObjectDelegate MoveLinkAndTakeDamageDelegate = new GameObjectDelegate(MoveLinkAndTakeDamage);
+            GameObjectDelegate LinkKnockOnDoorDelegate = new GameObjectDelegate(LinkKnockOnDoor);
+            GameObjectDelegate BombExplodeDoorDelegate = new GameObjectDelegate(BombExplodeDoor);
             GameObjectDelegate MoveDungeonPyramidBlockDelegate = new GameObjectDelegate(MoveDungeonPyramidBlock);
             GameObjectDelegate GroundBigHeartPickUpDelegate = new GameObjectDelegate(GroundBigHeartPickUp);
             GameObjectDelegate GroundBlazeSteppedOnDelegate = new GameObjectDelegate(GroundBlazeSteppedOn);
@@ -144,23 +160,27 @@ namespace sprint0.Collision
             GameObjectDelegate MoveDragonDelegate = new GameObjectDelegate(MoveDragon);
             GameObjectDelegate MoveDragonAndTakeDamageDelegate = new GameObjectDelegate(MoveDragonAndTakeDamage);
             GameObjectDelegate BowImpactDelegate = new GameObjectDelegate(BowImpact);
+            GameObjectDelegate SwordImpactDelegate = new GameObjectDelegate(SwordImpact);
             GameObjectDelegate BetterBowImpactDelegate = new GameObjectDelegate(BetterBowImpact);
             GameObjectDelegate BoomerangImpactDelegate = new GameObjectDelegate(BoomerangImpact);
             GameObjectDelegate BetterBoomerangImpactDelegate = new GameObjectDelegate(BetterBoomerangImpact);
             GameObjectDelegate BlazeImpactDelegate = new GameObjectDelegate(BlazeImpact);
             GameObjectDelegate BombImpactDelegate = new GameObjectDelegate(BombImpact);
+            GameObjectDelegate EnemyProjectileImpactDelegate = new GameObjectDelegate(EnemyProjectileImpact);
+            GameObjectDelegate GroundItemPickUpDelegate = new GameObjectDelegate(GenericGroundItemPickUp);
+            GameObjectDelegate MoveOktorokAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveOktorokAndTakeDamageFromSword);
+            GameObjectDelegate MoveBokoblinAndTakeDamageFromSwordDelegate = new GameObjectDelegate(MoveBokoblinAndTakeDamageFromSword);
+            GameObjectDelegate MoveLinkAndTakeDamageFromFireElementDelegate = new GameObjectDelegate(MoveLinkAndTakeDamageFromFireElement);
+            GameObjectDelegate MoveLinkAndTakeDamageFromIceElementDelegate = new GameObjectDelegate(MoveLinkAndTakeDamageFromIceElement);
+
+
 
             // BOUNDARIES
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveLinkDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Boundary", MoveDragonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bow", "sprint0.BoundariesDoorsAndRooms.Boundary", BowImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.BoundariesDoorsAndRooms.Boundary", BetterBowImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.BoundariesDoorsAndRooms.Boundary", BoomerangImpactDelegate, null });
@@ -168,20 +188,30 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Blaze", "sprint0.BoundariesDoorsAndRooms.Boundary", BlazeImpactDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", null, null });
 
+            // DOORS
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.BoundariesDoorsAndRooms.Door", null, LinkKnockOnDoorDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.BoundariesDoorsAndRooms.Door", MoveSkeletonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.BoundariesDoorsAndRooms.Door", MoveBokoblinDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.BoundariesDoorsAndRooms.Door", MoveOktorokDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.BoundariesDoorsAndRooms.Door", MoveDragonDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.BoundariesDoorsAndRooms.Boundary", BombImpactDelegate, BombExplodeDoorDelegate });
+
+
+
             // BLOCKS
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonDragonBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonFishBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonFishBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonFishBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonFishBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonFishBlock", MoveDragonDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonPyramidBlock", MoveLinkDelegate, MoveDungeonPyramidBlockDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.DungeonPyramidBlock", MoveLinkDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.DungeonPyramidBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.DungeonPyramidBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.DungeonPyramidBlock", MoveOktorokDelegate, null });
@@ -223,19 +253,18 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.DungeonDragonBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueFishBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueFishBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueFishBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueFishBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueFishBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueFishBlock", MoveDragonDelegate, null });
 
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueDragonBlock", MoveLinkDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Blocks.BlueDragonBlock", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Skeleton", "sprint0.Blocks.BlueDragonBlock", MoveSkeletonDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Bokoblin", "sprint0.Blocks.BlueDragonBlock", MoveBokoblinDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Blocks.BlueDragonBlock", MoveOktorokDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Dragon", "sprint0.Blocks.BlueDragonBlock", MoveDragonDelegate, null });
-
 
             // LINK ITEMS + GROUND ITEMS
             //Grounds
@@ -259,7 +288,6 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Oktorok", BetterBowImpactDelegate, MoveOktorokAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Skeleton", BetterBowImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.BetterBow", "sprint0.Enemies.Dragon", BetterBowImpactDelegate, MoveDragonAndTakeDamageDelegate });
-
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.LinkObj.Link", null, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Bokoblin", BoomerangImpactDelegate, MoveBokoblinAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Boomerang", "sprint0.Enemies.Oktorok", BoomerangImpactDelegate, MoveOktorokAndTakeDamageDelegate });
@@ -284,25 +312,33 @@ namespace sprint0.Collision
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.Enemies.Dragon", BombImpactDelegate, MoveDragonAndTakeDamageDelegate });
             collisionTable.Rows.Add(new Object[] { "sprint0.Items.Bomb", "sprint0.LinkObj.Link", null, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Bokoblin", null, MoveBokoblinAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Oktorok", null, MoveOktorokAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Skeleton", null, MoveSkeletonAndTakeDamageDelegate });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword", "sprint0.Enemies.Dragon", null, MoveSkeletonAndTakeDamageDelegate });
-
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Bokoblin", SwordImpactDelegate, MoveBokoblinAndTakeDamageFromSwordDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Oktorok", SwordImpactDelegate, MoveOktorokAndTakeDamageFromSwordDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Skeleton", SwordImpactDelegate, MoveSkeletonAndTakeDamageDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkSword.Sword", "sprint0.Enemies.Dragon", SwordImpactDelegate, MoveDragonAndTakeDamageDelegate });
 
             // COMBAT ON LINK COLLISIONS
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Oktorok", MoveLinkAndTakeDamageFromIceElementDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Bokoblin", MoveLinkAndTakeDamageFromFireElementDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Skeleton", MoveLinkAndTakeDamageDelegate, null });
             collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Enemies.Dragon", MoveLinkAndTakeDamageDelegate, null });
 
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, null });
-            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageDelegate, null });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.BokoblinBoomerang", MoveLinkAndTakeDamageFromFireElementDelegate, EnemyProjectileImpactDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.DragonBlaze", MoveLinkAndTakeDamageDelegate, EnemyProjectileImpactDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.OktorokBlaze", MoveLinkAndTakeDamageFromIceElementDelegate, EnemyProjectileImpactDelegate });
 
+            // LINK AND THE GROUND ITEMS.
+            // play the item use Link animation here.
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundHeart", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundCompass", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundBigHeart", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundKey", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundPage", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundRupee", null, GroundItemPickUpDelegate });
+            collisionTable.Rows.Add(new Object[] { "sprint0.LinkObj.Link", "sprint0.Items.groundItems.GroundTriforce", null, GroundItemPickUpDelegate });
 
-
-
+            // ENEMY BUMPING
+            //collisionTable.Rows.Add(new Object[] { "sprint0.Enemies.Oktorok", "sprint0.Enemies.Bokoblin", MoveOktorokDelegate, MoveBokoblinDelegate });
         }
 
 
@@ -324,10 +360,11 @@ namespace sprint0.Collision
 		 * 
 		 */
         private delegate void GameObjectDelegate(CollisionDetector.CollisionType collisionType, IGameObject obj);
+
         //BLOCKS
         private void MoveDungeonPyramidBlock(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
-            DungeonPyramidBlock block = (DungeonPyramidBlock)obj;
+            RedPyramidBlock block = (RedPyramidBlock)obj;
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
@@ -345,6 +382,57 @@ namespace sprint0.Collision
             }
         }
 
+        // DOOR
+        private void LinkKnockOnDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Door door = (Door)obj;
+            switch (door.GetState())
+            {
+                case IDoor.DoorState.Locked: // Link could potentially open the door...
+                    if (Inventory.items[Inventory.ItemTypes.KEY] >= 1) // can be opened
+                    {
+                        Inventory.items[Inventory.ItemTypes.KEY]--;
+                        door.SetState(IDoor.DoorState.Open);
+                        StartScrollEvent(door);
+                    } else // cannot be unlocked
+                    {
+                        MoveLink(collisionType, Globals.Link);
+                    }
+                    break;
+                case IDoor.DoorState.Open: // Walk through the door and start scrolling!
+                    StartScrollEvent(door);
+                    break;
+                case IDoor.DoorState.Exploded: // Walk through the (exploded) door and start scrolling!
+                    StartScrollEvent(door);
+                    break;
+                default: // bombable, closed, or wall. If Link collides with it, it should just move 'em back.
+                    MoveLink(collisionType, Globals.Link);
+                    break;
+
+            }
+        }
+
+        private void StartScrollEvent(Door door)
+        {
+            Globals.DoorX = door.xPosition();
+            Globals.DoorY = door.yPosition();
+            Globals.startScrolling = true;
+            Globals.scrollFromThisDirection = door.getSideOfRoom();
+            Globals.Link.SetRoomId(door.GetToRoomId());
+            //Console.WriteLine(door.GetToRoomId());
+            Globals.GameObjectManager.setCurrentRoomID(door.GetToRoomId());
+            
+        }
+
+        private void BombExplodeDoor(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Door door = (Door)obj;
+            if (door.GetState().Equals(IDoor.DoorState.Bombable))
+            {
+                door.SetState(IDoor.DoorState.Exploded);
+            }
+        }
+
         //LINK
         private void MoveLink(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
@@ -353,39 +441,146 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    link.YVal -= 1;
+                    link.YVal -= 5;
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    link.YVal += 1;
+                    link.YVal += 5;
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    link.XVal -= 1;
+                    link.XVal -= 5;
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    link.XVal += 1;
+                    link.XVal += 5;
                     break;
             }
         }
 
         private void MoveLinkAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
-            LinkObj.Link link = (LinkObj.Link)obj;
-            switch (collisionType)
+            if (!Globals.Link.GetState().Equals(Link.State.Damaged))
             {
-                case CollisionDetector.CollisionType.TOP:
-                    link.YVal -= 25;
-                    break;
-                case CollisionDetector.CollisionType.BOTTOM:
-                    link.YVal += 25;
-                    break;
-                case CollisionDetector.CollisionType.LEFT:
-                    link.XVal -= 25;
-                    break;
-                case CollisionDetector.CollisionType.RIGHT:
-                    link.XVal += 25;
-                    break;
+                //Console.WriteLine("Link has been damaged!");
+                LinkObj.Link link = (LinkObj.Link)obj;
+                switch (collisionType)
+                {
+                    case CollisionDetector.CollisionType.TOP:
+                        link.YVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.BOTTOM:
+                        link.YVal += 20;
+                        break;
+                    case CollisionDetector.CollisionType.LEFT:
+                        link.XVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.RIGHT:
+                        link.XVal += 20;
+                        break;
+                }
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+                //Inventory.LoseHeart();
+
+                //Globals.Link.LinkTakeDamage();
+                link.LinkTakeDamage();
+                //Console.WriteLine(Globals.Link.GetHealth());
+                //Console.WriteLine(link.GetHealth());
             }
-            link.LinkTakeDamage();
+
+        }
+
+        private void MoveLinkAndTakeDamageFromFireElement(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            if (!Globals.Link.GetState().Equals(Link.State.Damaged))
+            {
+                LinkObj.Link link = (LinkObj.Link)obj;
+                switch (collisionType)
+                {
+                    case CollisionDetector.CollisionType.TOP:
+                        link.YVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.BOTTOM:
+                        link.YVal += 20;
+                        break;
+                    case CollisionDetector.CollisionType.LEFT:
+                        link.XVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.RIGHT:
+                        link.XVal += 20;
+                        break;
+                }
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+                switch (Globals.LinkItemSystem.CurrentTunic)
+                {
+                    case Globals.LinkTunic.FIRE:
+                        link.LinkTakeDamage(); // TAKE LESS DAMAGE
+                        //Inventory.LoseHeart();
+                        Console.WriteLine("You've been minorly hit.");
+                        break;
+                    case Globals.LinkTunic.ICE:
+                        Console.WriteLine("You've been critically hit!");
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        // TAKE MORE DAMAGE
+                        break;
+                    default:
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage();
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        break;
+                }
+            }
+            
+        }
+
+        private void MoveLinkAndTakeDamageFromIceElement(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            if (!Globals.Link.GetState().Equals(Link.State.Damaged))
+            {
+                LinkObj.Link link = (LinkObj.Link)obj;
+                switch (collisionType)
+                {
+                    case CollisionDetector.CollisionType.TOP:
+                        link.YVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.BOTTOM:
+                        link.YVal += 20;
+                        break;
+                    case CollisionDetector.CollisionType.LEFT:
+                        link.XVal -= 20;
+                        break;
+                    case CollisionDetector.CollisionType.RIGHT:
+                        link.XVal += 20;
+                        break;
+                }
+                //Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_TAKE_DAMAGE);
+                switch (Globals.LinkItemSystem.CurrentTunic)
+                {
+                    case Globals.LinkTunic.FIRE:
+                        Console.WriteLine("You've been critically hit!");
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage(); // TAKE MORE DAMAGE
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        break;
+                    case Globals.LinkTunic.ICE:
+                        link.LinkTakeDamage(); // TAKE LESS DAMAGE THAN NORMAL
+
+                        //Inventory.LoseHeart();
+                        Console.WriteLine("You've been minorly hit.");
+                        break;
+                    default:
+                        link.LinkTakeDamage();
+                        link.LinkTakeDamage();// TAKES NORMAL DAMAGE
+                        //Inventory.LoseHeart();
+                        //Inventory.LoseHeart();
+                        break;
+                }
+            }
         }
 
         /*
@@ -410,11 +605,14 @@ namespace sprint0.Collision
         {
             Boomerang boomerang = (Boomerang)obj;
             boomerang.thisStateMachine.CeaseUse();
+            Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
+
         }
         private void BetterBoomerangImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             BetterBoomerang betterBoomerang = (BetterBoomerang)obj;
             betterBoomerang.thisStateMachine.CeaseUse();
+            Ocarina.StopSoundEffect(Ocarina.SoundEffects.BOOMERANG_LAUNCH);
         }
 
         //Blaze
@@ -436,6 +634,17 @@ namespace sprint0.Collision
             }
         }
 
+        private void SwordImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            // Collision with bomb in dormant state causes explosion to occur.
+            //COUPLING! EW!
+            Sword sword = (Sword)obj;
+            if (sword.currentSwordTicks < sword.totalSwordTicks)
+            {
+                sword.currentSwordTicks = sword.totalSwordTicks;
+            }
+        }
+
         /*
          * GROUND ITEMS
          * Inventory system changes are included in these methods.
@@ -444,13 +653,15 @@ namespace sprint0.Collision
         private void GroundBigHeartPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             GroundBigHeart groundBigHeart = (GroundBigHeart)obj;
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
             groundBigHeart.PickUp();
             // code that impacts inventory system goes here.
         }
 
         private void GroundBoomerangPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
-            GroundBoomerang groundBoomerang = (GroundBoomerang)obj; 
+            GroundBoomerang groundBoomerang = (GroundBoomerang)obj;
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
             groundBoomerang.PickUp();
             // code that impacts inventory system goes here.
         }
@@ -458,6 +669,9 @@ namespace sprint0.Collision
         {
             GroundCompass groundCompass = (GroundCompass)obj;
             groundCompass.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+            Inventory.hasTriforce = true;
+
             // code that impacts inventory system goes here.
         }
 
@@ -465,6 +679,8 @@ namespace sprint0.Collision
         {
             GroundKey groundKey = (GroundKey)obj;
             groundKey.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+
             // code that impacts inventory system goes here.
         }
 
@@ -472,6 +688,8 @@ namespace sprint0.Collision
         {
             GroundPage groundPage = (GroundPage)obj;
             groundPage.PickUp();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+            Inventory.hasPage = true;
             // code that impacts inventory system goes here.
         }
 
@@ -479,6 +697,8 @@ namespace sprint0.Collision
         {
             GroundTriforce groundTriforce = (GroundTriforce)obj;
             groundTriforce.PickUp();
+            Inventory.hasTriforce = true;
+
             // code that impacts inventory system goes here.
         }
 
@@ -500,16 +720,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-15);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(15);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-15);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(15);
                     break;
             }
         }
@@ -520,36 +740,75 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-25);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(25);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-25);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(25);
                     break;
             }
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
+
+        private void MoveOktorokAndTakeDamageFromSword(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Oktorok enemy = (Oktorok)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-25);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(25);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-25);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(25);
+                    break;
+            }
+            
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
+                    break;
+                case Globals.LinkTunic.ICE:
+                    ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
+                    break;
+                default:
+                    enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
+                    break;
+            }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+        }
+
         private void MoveSkeleton(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-35);
+                    enemy.ChangeEnemyY(-15);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(35);
+                    enemy.ChangeEnemyY(15);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-35);
+                    enemy.ChangeEnemyX(-15);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(35);
+                    enemy.ChangeEnemyX(15);
                     break;
             }
         }
@@ -557,8 +816,27 @@ namespace sprint0.Collision
         private void MoveSkeletonAndTakeDamage(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
             Skeleton enemy = (Skeleton)obj;
-            enemy.takeDamage();
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-25);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(25);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-25);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(25);
+                    break;
+            }
+            enemy.TakeDamage();
+            Inventory.UpdateXPLevel(REG_XP);
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+
         }
+
 
         private void MoveBokoblin(CollisionDetector.CollisionType collisionType, IGameObject obj)
         {
@@ -566,31 +844,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-15);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(15);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-15);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
-                    break;
-            }
-            switch (collisionType)
-            {
-                case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
-                    break;
-                case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
-                    break;
-                case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
-                    break;
-                case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(15);
                     break;
             }
         }
@@ -601,19 +864,56 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-25);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(25);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-25);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(25);
                     break;
             }
             enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
+        }
+
+        private void MoveBokoblinAndTakeDamageFromSword(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            Bokoblin enemy = (Bokoblin)obj;
+            switch (collisionType)
+            {
+                case CollisionDetector.CollisionType.TOP:
+                    enemy.ChangeEnemyY(-25);
+                    break;
+                case CollisionDetector.CollisionType.BOTTOM:
+                    enemy.ChangeEnemyY(25);
+                    break;
+                case CollisionDetector.CollisionType.LEFT:
+                    enemy.ChangeEnemyX(-25);
+                    break;
+                case CollisionDetector.CollisionType.RIGHT:
+                    enemy.ChangeEnemyX(25);
+                    break;
+            }
+            switch (Globals.LinkItemSystem.CurrentTunic)
+            {
+                case Globals.LinkTunic.FIRE:
+                    ((IElementalEnemy)enemy).TakeMinimalDamage();
+                    Inventory.UpdateXPLevel(MIN_XP);
+                    break;
+                case Globals.LinkTunic.ICE:
+                    ((IElementalEnemy)enemy).TakeCriticalDamage();
+                    Inventory.UpdateXPLevel(CRIT_XP);
+                    break;
+                default:
+                    enemy.TakeDamage();
+                    Inventory.UpdateXPLevel(REG_XP);
+                    break;
+            }
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.ENEMY_HIT);
         }
 
         private void MoveDragon(CollisionDetector.CollisionType collisionType, IGameObject obj)
@@ -622,16 +922,16 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-15);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(15);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-15);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(15);
                     break;
             }
         }
@@ -642,21 +942,86 @@ namespace sprint0.Collision
             switch (collisionType)
             {
                 case CollisionDetector.CollisionType.TOP:
-                    enemy.ChangeEnemyY(-50);
+                    enemy.ChangeEnemyY(-15);
                     break;
                 case CollisionDetector.CollisionType.BOTTOM:
-                    enemy.ChangeEnemyY(50);
+                    enemy.ChangeEnemyY(15);
                     break;
                 case CollisionDetector.CollisionType.LEFT:
-                    enemy.ChangeEnemyX(-50);
+                    enemy.ChangeEnemyX(-15);
                     break;
                 case CollisionDetector.CollisionType.RIGHT:
-                    enemy.ChangeEnemyX(50);
+                    enemy.ChangeEnemyX(15);
                     break;
             }
-            enemy.takeDamage();
+            enemy.TakeDamage();
+            Ocarina.PlaySoundEffect(Ocarina.SoundEffects.BOSS_TAKE_DAMAGE);
         }
 
+        private void EnemyProjectileImpact(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            String objType = obj.GetType().ToString();
+            switch (objType)
+            {
+                case ("sprint0.Items.OktorokBlaze"):
+                    OktorokBlaze oktoblaze = (OktorokBlaze)obj;
+                    oktoblaze.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(oktoblaze);
+                    break;
+                case ("sprint0.Items.BokoblinBoomerang"):
+                    BokoblinBoomerang bokoboomerang = (BokoblinBoomerang)obj;
+                    bokoboomerang.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(bokoboomerang);
+                    break;
+                case ("sprint0.Items.DragonBlaze"):
+                    DragonBlaze dragonBreath = (DragonBlaze)obj;
+                    dragonBreath.thisStateMachine.CeaseUse();
+                    Globals.GameObjectManager.removeObject(dragonBreath);
+                    break;
+            }
+        }
+
+        // GROUND ITEMS
+
+        // Ground Items handle their own "pick up call"
+        private void GenericGroundItemPickUp(CollisionDetector.CollisionType collisionType, IGameObject obj)
+        {
+            IGroundItem item = (IGroundItem)obj;
+            if (item.isInPlay())
+            {
+                item.PickUp();
+                String itemType = item.GetType().ToString();
+                if (itemType.Equals("sprint0.Items.groundItems.GroundRupee"))
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_RUPEE);
+                    Inventory.UpdateXPLevel(RUPEE_FIND_XP);
+
+                }
+                else if (itemType.Equals("sprint0.Items.groundItems.GroundKey") || itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
+                {
+                    Inventory.UpdateXPLevel(ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundHeart"))
+                    {
+                        Globals.Link.GainHealth(2);
+                        //Inventory.GainHeart();
+                        Ocarina.PlaySoundEffect(Ocarina.SoundEffects.GET_GROUND_HEART_KEY);
+                    }
+                    
+                }
+                else
+                {
+                    Ocarina.PlaySoundEffect(Ocarina.SoundEffects.LINK_ITEM_GET);
+                    Inventory.UpdateXPLevel(KEY_ITEM_FIND_XP);
+                    if (itemType.Equals("sprint0.Items.groundItems.GroundBigHeart"))
+                    {
+                        Globals.Link.GainHealth(4);
+                        //Inventory.GainHeart();
+                        //Inventory.GainHeart();
+                    }
+
+                }
+            }
+
+        }
     }
 }
-

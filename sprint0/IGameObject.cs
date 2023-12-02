@@ -1,23 +1,35 @@
-﻿using System;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace sprint0
 {
-	public interface IGameObject
-	{
-		public int xPosition(); // returns X pos of object
-		public int yPosition(); // returns Y pos of object
-		public int width(); // (i.e.) "how big are you?"
-        public int height(); // (i.e.) "how big are you?"
-        public bool isDynamic(); // does this object move?
+    public enum GameObjectType
+    {
+        BOUNDARY,
+        ROOM,
+        DOOR,
+        FLOOR,
+        BLOCK,
+        ITEM,
+        ENEMY,
+        LINK,
+        NPC
+    }
+    public interface IGameObject
+    {
+        public int xPosition();
+        public int yPosition();
+        public int width();
+        public int height();
+        public bool isDynamic();
         public bool isUpdateable();
         public bool isInPlay();
         public bool isDrawable();
-
         public void SetRoomId(int roomId);
         public int GetRoomId();
-	public void Draw(SpriteBatch spritebatch);
-	public void Update();
+        public void Draw(SpriteBatch spriteBatch);
+        public void Update();
+        public GameObjectType type{ get; }
     }
 }
-
