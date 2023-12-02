@@ -46,7 +46,8 @@ namespace sprint0.GameStates
                         break;
                     case (Direction.Right):
                         Globals.Camera.MoveCameraToRightRoom();
-                        Globals.Link.ChangeXandYValue(Globals.DoorX + 180, Globals.DoorY);
+                        //Whole game seems offset to the right?? thats why this magic number is bigger
+                        Globals.Link.ChangeXandYValue(Globals.DoorX + 230, Globals.DoorY);
                         Cartographer.addRightRoom();
                         break;
                     case (Direction.Up):
