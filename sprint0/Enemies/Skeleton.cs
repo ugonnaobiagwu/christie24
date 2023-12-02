@@ -374,12 +374,12 @@ namespace sprint0.Enemies
 
         public void ChangeEnemyY(int change)
         {
-            xPos += change;
+            yPos += change;
         }
 
         public void ChangeEnemyX(int change)
         {
-            yPos += change;
+            xPos += change;
         }
         public GameObjectType type { get { return GameObjectType.ENEMY; } }
     }
