@@ -51,6 +51,12 @@ namespace sprint0.GameStates
             Globals.keyboardController.Update();
             Globals.LinkItemSystem.Update();
 
+            // Link Update
+            if (Globals.Link !=  null )
+            {
+                Globals.Link.Update();
+            }
+
             //Updates list of updatables in GOM (blocks, enemies, items etc)
             List<IGameObject> Updateables = Globals.GameObjectManager.updateablesInRoom();
             foreach (IGameObject updateable in Updateables)
@@ -65,7 +71,7 @@ namespace sprint0.GameStates
 
             CollisionIterator.Iterate(Globals.GameObjectManager.getObjectsInCurrentRoom());
 
-                this.TransitionState();
+            this.TransitionState();
         }
 
         public void Draw(SpriteBatch spriteBatch, SpriteBatch HudInvSpriteBatch)
@@ -95,6 +101,11 @@ namespace sprint0.GameStates
         public void TransitionState()
         {
             //Code for state transition here
+            //Win State
+            if (Inventory.hasTriforce == true)
+            {
+                GameStateManager.ChangeState("win");
+            }
             //Death State
             if (Globals.Link.GetHealth() <= 0)
             {

@@ -75,11 +75,13 @@ namespace sprint0
             Inventory.CountKey();
             Inventory.CountKey();
 
+
             hud = new HUD(HudInventorySpriteBatch, font);
             Globals.LinkItemSystem.LoadSpriteBatch(spriteBatch);
 
 
             //Game States - in progress
+            Texture2D winScreenTexture = Content.Load<Texture2D>("christieHardImage");
             Texture2D InvRoomTexture = Content.Load<Texture2D>("InventoryMapRoom");
             Texture2D titleScreen = Content.Load<Texture2D>("TitleScreenBackGround");
             Texture2D InventoryTexture = Content.Load<Texture2D>("zeldaMenuBlank");
@@ -97,8 +99,8 @@ namespace sprint0
 
             Cursor = new InventoryCursor(CursorTexture, 450, -300);
             Cartographer = new Cartographer(InvRoomTexture);
-            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer);
-
+            gameStateManager = new GameStateManager(font, spriteBatch, HudInventorySpriteBatch,InventoryTexture, Cursor, hud, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, InventoryFactory, Content,titleScreen,Cartographer,winScreenTexture);
+           
 
             //ATTENTION: MouseController.cs exists, although it is never used due to the interface needing keys and Monogame lacking Keys.LButton and Keys.RButton
             base.Initialize();
@@ -203,7 +205,6 @@ namespace sprint0
         {
             //Console.WriteLine(Globals.GameObjectManager.getCurrentRoomID());
             // TODO: Add your update logic here
-            //GameState testing
             gameStateManager.Update(gameTime);
             Globals.GameObjectManager.deleteObjects();
             //Console.WriteLine("HERE IS LINK X: " + Globals.Link.xPosition() + "HERE IS LINK Y: " + Globals.Link.yPosition());
