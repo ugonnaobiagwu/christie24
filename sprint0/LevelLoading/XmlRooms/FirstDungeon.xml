@@ -11439,7 +11439,7 @@
 				</AnimationSet>
 			</GroundItem>
 			<Enemy>
-				<x>4500</x>
+				<x>2000</x>
 				<y>-1352</y>
 				<EnemyType>Dragon</EnemyType>
 				<AnimationSet>
